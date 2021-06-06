@@ -98,6 +98,8 @@ def create_php_dict(url, limit=5000, max_files_per_repo=50, max_files_per_dir=10
             total_added_files += len(curr_repo_files)
             php_dict[curr_repo] = curr_repo_files.copy()
             print("Finished processing {}. Added total of {} files".format(curr_repo, len(curr_repo_files)))
+            if total_added_files > limit:
+                break
 
         # Go to next page
         print("Went to the next page")
