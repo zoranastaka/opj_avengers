@@ -5,6 +5,7 @@ Create create_php_dict will return a list of repo_link: list_of_files pairs.
 # HTML parsing libraries:
 from bs4 import BeautifulSoup
 import urllib.request as urllib2
+import json
 
 
 def get_repo_url(repo):
@@ -71,7 +72,8 @@ def get_repo_files(repo_url, limit=None, dir_limit=None, extension='.php'):
 
 def create_php_dict(url, limit=5000, max_files_per_repo=50, max_files_per_dir=10):
     """
-    Generate a set of repo-file objects.
+    Generate a set of repo-file objects. Search page should be limited to repositories only!
+    Sort and keywords are optional.
 
     :param url: Base url to github search page
     :param limit: Number of files to return. Files are returned as
@@ -106,4 +108,30 @@ def create_php_dict(url, limit=5000, max_files_per_repo=50, max_files_per_dir=10
         curr_url = 'https://github.com' + soup.find('a', {"class": "next_page"}).get('href')
 
     return php_dict
+
+
+def store_dict(data, filename='data.json'):
+    """
+    Writes dictionary into a json file.
+
+    :param data: Dictionary created using create_php_dict() function.
+    :param filename: Name of the .json file in which to write data
+    :return: Nothing
+    """
+    with open(filename, 'w') as json_file:
+        json.dump(data, json_file)
+
+
+def read_json(path):
+    """
+    Reads data from a json file into a dictionary.
+
+    :param path: Path to the file.
+    :return: Dictionary
+    """
+
+    with open(path) as json_file:
+        data = json.load(json_file)
+
+    return data
 
