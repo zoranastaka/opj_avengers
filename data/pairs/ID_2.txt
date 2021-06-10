@@ -1,0 +1,64 @@
+    /**
+     * Run before each test is started.
+     */
+
+    protected function set_up()
+    {
+        $this->INCLUDE_DIR = dirname(__DIR__); //Default to the dir above the test dir, i.e. the project home dir
+        if (file_exists($this->INCLUDE_DIR . '/test/testbootstrap.php')) {
+            include $this->INCLUDE_DIR . '/test/testbootstrap.php'; //Overrides go in here
+        }
+        $this->Mail = new PHPMailer();
+        $this->Mail->SMTPDebug = SMTP::DEBUG_CONNECTION; //Full debug output
+        $this->Mail->Debugoutput = ['PHPMailer\Test\DebugLogTestListener', 'debugLog'];
+        $this->Mail->Priority = 3;
+        $this->Mail->Encoding = '8bit';
+        $this->Mail->CharSet = PHPMailer::CHARSET_ISO88591;
+        if (array_key_exists('mail_from', $_REQUEST)) {
+            $this->Mail->From = $_REQUEST['mail_from'];
+        } else {
+            $this->Mail->From = 'unit_test@phpmailer.example.com';
+        }
+        $this->Mail->FromName = 'Unit Tester';
+        $this->Mail->Sender = '';
+        $this->Mail->Subject = 'Unit Test';
+        $this->Mail->Body = '';
+        $this->Mail->AltBody = '';
+        $this->Mail->WordWrap = 0;
+        if (array_key_exists('mail_host', $_REQUEST)) {
+            $this->Mail->Host = $_REQUEST['mail_host'];
+        } else {
+            $this->Mail->Host = 'mail.example.com';
+        }
+        if (array_key_exists('mail_port', $_REQUEST)) {
+            $this->Mail->Port = $_REQUEST['mail_port'];
+        } else {
+            $this->Mail->Port = 25;
+        }
+        $this->Mail->Helo = 'localhost.localdomain';
+        $this->Mail->SMTPAuth = false;
+        $this->Mail->Username = '';
+        $this->Mail->Password = '';
+        if (array_key_exists('mail_useauth', $_REQUEST)) {
+            $this->Mail->SMTPAuth = $_REQUEST['mail_useauth'];
+        }
+        if (array_key_exists('mail_username', $_REQUEST)) {
+            $this->Mail->Username = $_REQUEST['mail_username'];
+        }
+        if (array_key_exists('mail_userpass', $_REQUEST)) {
+            $this->Mail->Password = $_REQUEST['mail_userpass'];
+        }
+        $this->Mail->addReplyTo('no_reply@phpmailer.example.com', 'Reply Guy');
+        $this->Mail->Sender = 'unit_test@phpmailer.example.com';
+        if ($this->Mail->Host != '') {
+            $this->Mail->isSMTP();
+        } else {
+            $this->Mail->isMail();
+        }
+        if (array_key_exists('mail_to', $_REQUEST)) {
+            $this->setAddress($_REQUEST['mail_to'], 'Test User', 'to');
+        }
+        if (array_key_exists('mail_cc', $_REQUEST) && $_REQUEST['mail_cc'] !== '') {
+            $this->setAddress($_REQUEST['mail_cc'], 'Carbon User', 'cc');
+        }
+    }

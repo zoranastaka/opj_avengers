@@ -1,0 +1,80 @@
+    /**
+     * Test header encoding & folding.
+     */
+
+    public function testHeaderEncoding()
+    {
+        $this->Mail->CharSet = PHPMailer::CHARSET_UTF8;
+        $letter = html_entity_decode('&eacute;', ENT_COMPAT, PHPMailer::CHARSET_UTF8);
+        //This should select B-encoding automatically and should fold
+        $bencode = str_repeat($letter, PHPMailer::STD_LINE_LENGTH + 1);
+        //This should select Q-encoding automatically and should fold
+        $qencode = str_repeat('e', PHPMailer::STD_LINE_LENGTH) . $letter;
+        //This should select B-encoding automatically and should not fold
+        $bencodenofold = str_repeat($letter, 10);
+        //This should select Q-encoding automatically and should not fold
+        $qencodenofold = str_repeat('e', 9) . $letter;
+        //This should Q-encode as ASCII and fold (previously, this did not encode)
+        $longheader = str_repeat('e', PHPMailer::STD_LINE_LENGTH + 10);
+        //This should Q-encode as UTF-8 and fold
+        $longutf8 = str_repeat($letter, PHPMailer::STD_LINE_LENGTH + 10);
+        //This should not change
+        $noencode = 'eeeeeeeeee';
+        $this->Mail->isMail();
+        //Expected results
+
+        $bencoderes = '=?utf-8?B?w6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6k=?=' .
+            PHPMailer::getLE() .
+            ' =?utf-8?B?w6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6k=?=' .
+            PHPMailer::getLE() .
+            ' =?utf-8?B?w6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6k=?=' .
+            PHPMailer::getLE() .
+            ' =?utf-8?B?w6nDqcOpw6nDqcOpw6nDqcOpw6nDqQ==?=';
+        $qencoderes = '=?utf-8?Q?eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee?=' .
+            PHPMailer::getLE() .
+            ' =?utf-8?Q?eeeeeeeeeeeeeeeeeeeeeeeeee=C3=A9?=';
+        $bencodenofoldres = '=?utf-8?B?w6nDqcOpw6nDqcOpw6nDqcOpw6k=?=';
+        $qencodenofoldres = '=?utf-8?Q?eeeeeeeee=C3=A9?=';
+        $longheaderres = '=?us-ascii?Q?eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee?=' .
+            PHPMailer::getLE() . ' =?us-ascii?Q?eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee?=';
+        $longutf8res = '=?utf-8?B?w6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6k=?=' .
+             PHPMailer::getLE() . ' =?utf-8?B?w6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6k=?=' .
+             PHPMailer::getLE() . ' =?utf-8?B?w6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6k=?=' .
+             PHPMailer::getLE() . ' =?utf-8?B?w6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqcOpw6nDqQ==?=';
+        $noencoderes = 'eeeeeeeeee';
+        self::assertEquals(
+            $bencoderes,
+            $this->Mail->encodeHeader($bencode),
+            'Folded B-encoded header value incorrect'
+        );
+        self::assertEquals(
+            $qencoderes,
+            $this->Mail->encodeHeader($qencode),
+            'Folded Q-encoded header value incorrect'
+        );
+        self::assertEquals(
+            $bencodenofoldres,
+            $this->Mail->encodeHeader($bencodenofold),
+            'B-encoded header value incorrect'
+        );
+        self::assertEquals(
+            $qencodenofoldres,
+            $this->Mail->encodeHeader($qencodenofold),
+            'Q-encoded header value incorrect'
+        );
+        self::assertEquals(
+            $longheaderres,
+            $this->Mail->encodeHeader($longheader),
+            'Long header value incorrect'
+        );
+        self::assertEquals(
+            $longutf8res,
+            $this->Mail->encodeHeader($longutf8),
+            'Long UTF-8 header value incorrect'
+        );
+        self::assertEquals(
+            $noencoderes,
+            $this->Mail->encodeHeader($noencode),
+            'Unencoded header value incorrect'
+        );
+    }

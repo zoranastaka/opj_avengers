@@ -1,0 +1,11 @@
+    /**
+     * Expect exceptions on bad encoding
+     */
+
+    public function testAddAttachmentEncodingException()
+    {
+        $this->expectException(Exception::class);
+
+        $mail = new PHPMailer(true);
+        $mail->addAttachment(__FILE__, 'test.txt', 'invalidencoding');
+    }

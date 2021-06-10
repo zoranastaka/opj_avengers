@@ -1,0 +1,47 @@
+    /**
+     * Simple HTML and attachment test.
+     */
+
+    public function testHTMLAttachment()
+    {
+        $this->Mail->Body = 'This is the <strong>HTML</strong> part of the email.';
+        $this->Mail->Subject .= ': HTML + Attachment';
+        $this->Mail->isHTML(true);
+        $this->Mail->CharSet = 'UTF-8';
+
+        if (
+            !$this->Mail->addAttachment(
+                realpath($this->INCLUDE_DIR . '/examples/images/phpmailer_mini.png'),
+                'phpmailer_mini.png'
+            )
+        ) {
+            self::assertTrue(false, $this->Mail->ErrorInfo);
+
+            return;
+        }
+
+        //Make sure phar paths are rejected
+        self::assertFalse($this->Mail->addAttachment('phar://pharfile.php', 'pharfile.php'));
+        //Make sure any path that looks URLish is rejected
+        self::assertFalse($this->Mail->addAttachment('http://example.com/test.php', 'test.php'));
+        self::assertFalse(
+            $this->Mail->addAttachment(
+                'ssh2.sftp://user:pass@attacker-controlled.example.com:22/tmp/payload.phar',
+                'test.php'
+            )
+        );
+        self::assertFalse($this->Mail->addAttachment('x-1.cd+-://example.com/test.php', 'test.php'));
+
+        //Make sure that trying to attach a nonexistent file fails
+        $filename = __FILE__ . md5(microtime()) . 'nonexistent_file.txt';
+        self::assertFalse($this->Mail->addAttachment($filename));
+        //Make sure that trying to attach an existing but unreadable file fails
+        touch($filename);
+        chmod($filename, 0200);
+        self::assertFalse($this->Mail->addAttachment($filename));
+        chmod($filename, 0644);
+        unlink($filename);
+
+        $this->buildBody();
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+    }

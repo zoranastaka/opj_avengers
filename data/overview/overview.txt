@@ -1,0 +1,91 @@
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_1	 PHPMailer - PHP email transport unit test class.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_2	 Run before each test is started.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_3	 Run after each test is completed.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_4	 Build the body of the message in the appropriate format.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_5	 Check which default settings have been changed for the report.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_6	 Add a changelog entry.\n\n @param string $sName\n @param string $sNewValue\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_7	 Adds a simple note to the message.\n\n @param string $sValue\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_8	 Check that we have loaded default test params.\n Pretty much everything will fail due to unset recipient if this is not done.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_9	 Test CRAM-MD5 authentication.\n Needs a connection to a server that supports this auth mechanism, so commented out by default.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_10	 Test email address validation.\n Test addresses obtained from http://isemail.info\n Some failing cases commented out that are apparently up for debate!\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_11	 Test injecting a custom validator.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_12	 Word-wrap an ASCII message.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_13	 Word-wrap a multibyte message.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_14	 Test low priority.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_15	 Simple plain file attachment test.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_16	 Rejection of non-local file attachments test.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_17	 Simple plain string attachment test.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_18	 Plain quoted-printable message.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_19	 Test header encoding & folding.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_20	 Send an HTML message.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_21	 Send an HTML message specifying the DSN notifications we expect.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_22	 createBody test of switch case\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_23	 Send a message containing ISO-8859-1 text.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_24	 Send a message containing multilingual UTF-8 text.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_25	 Send a message containing multilingual UTF-8 text with an embedded image.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_26	 Send a message containing multilingual UTF-8 text.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_27	 Test simple message builder and html2text converters.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_28	 Simple HTML and attachment test.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_29	 Attachment naming test.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_30	 Test embedded image without a name.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_31	 Simple HTML and multiple attachment test.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_32	 An embedded attachment test.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_33	 An embedded attachment test.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_34	 Simple multipart/alternative test.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_35	 Simple HTML and attachment test.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_36	 Test sending multiple messages with separate connections.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_37	 Test sending using SendMail.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_38	 Test sending using Qmail.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_39	 Test sending using PHP mail() function.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_40	 Test sending an empty body.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_41	 Test constructing a multipart message that contains lines that are too long for RFC compliance.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_42	 Test constructing a message that does NOT contain lines that are too long for RFC compliance.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_43	 Test keepalive (sending multiple messages in a single connection).\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_44	 Test this denial of service attack.\n\n @see http://www.cybsec.com/vuln/PHPMailer-DOS.pdf\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_45	 Tests this denial of service attack.\n\n According to the ticket, this should get stuck in a loop, though I can't make it happen.\n @see https://sourceforge.net/p/phpmailer/bugs/383/\n\n @doesNotPerformAssertions\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_46	 Test error handling.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_47	 Test addressing.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_48	 Test addressing.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_49	 Test RFC822 address splitting.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_50	 Test address escaping.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_51	 Test MIME structure assembly.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_52	 Test BCC-only addressing.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_53	 Encoding and charset tests.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_54	 Expect exceptions on bad encoding\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_55	 Expect exceptions on sending after deleting a previously successfully attached file\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_56	 Expect error on sending after deleting a previously successfully attached file\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_57	 Expect exceptions on bad encoding\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_58	 Expect exceptions on bad encoding\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_59	 Expect exceptions on bad encoding\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_60	 Test base-64 encoding.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_61	 S/MIME Signing tests (self-signed).\n\n @requires extension openssl\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_62	 S/MIME Signing tests using a CA chain cert.\n To test that a generated message is signed correctly, save the message in a file called `signed.eml`\n and use openssl along with the certs generated by this script:\n `openssl smime -verify -in signed.eml -signer certfile.pem -CAfile cacertfile.pem`.\n\n @requires extension openssl\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_63	 DKIM body canonicalization tests.\n\n @see https://tools.ietf.org/html/rfc6376#section-3.4.4\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_64	 DKIM header canonicalization tests.\n\n @see https://tools.ietf.org/html/rfc6376#section-3.4.2\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_65	 DKIM copied header fields tests.\n\n @group dkim\n\n @see https://tools.ietf.org/html/rfc6376#section-3.5\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_66	 DKIM signing extra headers tests.\n\n @group dkim\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_67	 DKIM Signing tests.\n\n @requires extension openssl\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_68	 Test line break reformatting.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_69	 Test line length detection.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_70	 Test setting and retrieving message ID.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_71	 Check whether setting a bad custom header throws exceptions.\n\n @throws Exception\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_72	 Miscellaneous calls to improve test coverage and some small tests.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_73	 Tests the Custom header getter.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_74	 Tests setting and retrieving ConfirmReadingTo address, also known as "read receipt" address.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_75	 Tests CharSet and Unicode -> ASCII conversions for addresses with IDN.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_76	 Tests removal of duplicate recipients and reply-tos.\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_77	 Use a fake POP3 server to test POP-before-SMTP auth with a known-good login.\n\n @group pop3\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_78	 Use a fake POP3 server to test POP-before-SMTP auth\n with a known-bad login.\n\n @group pop3\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_79	 Test SMTP host connections.\n This test can take a long time, so run it last.\n\n @group slow\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_80	 Test OAuth method\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_81	 Test ICal method\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_82	 Test ICal missing method to use default (REQUEST)\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_83	 Test ICal invalid method to use default (REQUEST)\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_84	 @test\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_85	 @test\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_86	 @test\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_87	 Test RFC822 address list parsing using PHPMailer's parser.\n @test\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_88	 Test RFC822 address list parsing using the IMAP extension's parser.\n @test\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_89	 @test\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_90	 @test\n
+PHP	https://raw.githubusercontent.com/	https://github.com/PHPMailer/PHPMailer/raw/master/test/PHPMailerTest.php	ID_ID_91	 @test\n

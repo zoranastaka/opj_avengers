@@ -1,0 +1,15 @@
+    /**
+     * Expect exceptions on sending after deleting a previously successfully attached file
+     */
+
+    public function testDeletedAttachmentException()
+    {
+        $this->expectException(Exception::class);
+
+        $filename = __FILE__ . md5(microtime()) . 'test.txt';
+        touch($filename);
+        $this->Mail = new PHPMailer(true);
+        $this->Mail->addAttachment($filename);
+        unlink($filename);
+        $this->Mail->send();
+    }

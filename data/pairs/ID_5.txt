@@ -1,0 +1,34 @@
+    /**
+     * Check which default settings have been changed for the report.
+     */
+
+    private function checkChanges()
+    {
+        if (3 != $this->Mail->Priority) {
+            $this->addChange('Priority', $this->Mail->Priority);
+        }
+        if (PHPMailer::ENCODING_8BIT !== $this->Mail->Encoding) {
+            $this->addChange('Encoding', $this->Mail->Encoding);
+        }
+        if (PHPMailer::CHARSET_ISO88591 !== $this->Mail->CharSet) {
+            $this->addChange('CharSet', $this->Mail->CharSet);
+        }
+        if ('' != $this->Mail->Sender) {
+            $this->addChange('Sender', $this->Mail->Sender);
+        }
+        if (0 != $this->Mail->WordWrap) {
+            $this->addChange('WordWrap', $this->Mail->WordWrap);
+        }
+        if ('mail' !== $this->Mail->Mailer) {
+            $this->addChange('Mailer', $this->Mail->Mailer);
+        }
+        if (25 != $this->Mail->Port) {
+            $this->addChange('Port', $this->Mail->Port);
+        }
+        if ('localhost.localdomain' !== $this->Mail->Helo) {
+            $this->addChange('Helo', $this->Mail->Helo);
+        }
+        if ($this->Mail->SMTPAuth) {
+            $this->addChange('SMTPAuth', 'true');
+        }
+    }
