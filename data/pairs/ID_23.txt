@@ -1,0 +1,28 @@
+    /**
+     * Send a message containing ISO-8859-1 text.
+     */
+
+    public function testHtmlIso8859()
+    {
+        $this->Mail->isHTML(true);
+        $this->Mail->Subject .= ': ISO-8859-1 HTML';
+        $this->Mail->CharSet = PHPMailer::CHARSET_ISO88591;
+
+        //This file is in ISO-8859-1 charset
+        //Needs to be external because this file is in UTF-8
+        $content = file_get_contents(realpath($this->INCLUDE_DIR . '/examples/contents.html'));
+        //This is the string 'éèîüçÅñæß' in ISO-8859-1, base-64 encoded
+        $check = base64_decode('6eju/OfF8ebf');
+        //Make sure it really is in ISO-8859-1!
+        $this->Mail->msgHTML(
+            mb_convert_encoding(
+                $content,
+                'ISO-8859-1',
+                mb_detect_encoding($content, 'UTF-8, ISO-8859-1, ISO-8859-15', true)
+            ),
+            realpath($this->INCLUDE_DIR . '/examples')
+        );
+        $this->buildBody();
+        self::assertStringContainsString($check, $this->Mail->Body, 'ISO message body does not contain expected text');
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+    }

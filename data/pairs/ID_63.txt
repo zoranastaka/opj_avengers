@@ -1,0 +1,19 @@
+    /**
+     * DKIM body canonicalization tests.
+     *
+     * @see https://tools.ietf.org/html/rfc6376#section-3.4.4
+     */
+
+    public function testDKIMBodyCanonicalization()
+    {
+        //Example from https://tools.ietf.org/html/rfc6376#section-3.4.5
+        $prebody = " C \r\nD \t E\r\n\r\n\r\n";
+        $postbody = " C \r\nD \t E\r\n";
+        self::assertEquals($this->Mail->DKIM_BodyC(''), "\r\n", 'DKIM empty body canonicalization incorrect');
+        self::assertEquals(
+            'frcCV1k9oG9oKj3dpUqdJg1PxRT2RSN/XKdLCPjaYaY=',
+            base64_encode(hash('sha256', $this->Mail->DKIM_BodyC(''), true)),
+            'DKIM canonicalized empty body hash mismatch'
+        );
+        self::assertEquals($this->Mail->DKIM_BodyC($prebody), $postbody, 'DKIM body canonicalization incorrect');
+    }

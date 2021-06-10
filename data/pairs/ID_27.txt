@@ -1,0 +1,57 @@
+    /**
+     * Test simple message builder and html2text converters.
+     */
+
+    public function testMsgHTML()
+    {
+        $message = file_get_contents(realpath($this->INCLUDE_DIR . '/examples/contentsutf8.html'));
+        $this->Mail->CharSet = PHPMailer::CHARSET_UTF8;
+        $this->Mail->Body = '';
+        $this->Mail->AltBody = '';
+        //Uses internal HTML to text conversion
+        $this->Mail->msgHTML($message, realpath($this->INCLUDE_DIR . '/examples'));
+        $sub = $this->Mail->Subject . ': msgHTML';
+        $this->Mail->Subject .= $sub;
+
+        self::assertNotEmpty($this->Mail->Body, 'Body not set by msgHTML');
+        self::assertNotEmpty($this->Mail->AltBody, 'AltBody not set by msgHTML');
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+
+        //Again, using a custom HTML to text converter
+        $this->Mail->AltBody = '';
+        $this->Mail->msgHTML(
+            $message,
+            realpath($this->INCLUDE_DIR . '/examples'),
+            function ($html) {
+                return strtoupper(strip_tags($html));
+            }
+        );
+        $this->Mail->Subject = $sub . ' + custom html2text';
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+
+        //Test that local paths without a basedir are ignored
+        $this->Mail->msgHTML('<img src="/etc/hostname">test');
+        self::assertStringContainsString('src="/etc/hostname"', $this->Mail->Body);
+        //Test that local paths with a basedir are not ignored
+        $this->Mail->msgHTML('<img src="composer.json">test', realpath($this->INCLUDE_DIR));
+        self::assertStringNotContainsString('src="composer.json"', $this->Mail->Body);
+        //Test that local paths with parent traversal are ignored
+        $this->Mail->msgHTML('<img src="../composer.json">test', realpath($this->INCLUDE_DIR));
+        self::assertStringNotContainsString('src="composer.json"', $this->Mail->Body);
+        //Test that existing embedded URLs are ignored
+        $this->Mail->msgHTML('<img src="cid:5d41402abc4b2a76b9719d911017c592">test');
+        self::assertStringContainsString('src="cid:5d41402abc4b2a76b9719d911017c592"', $this->Mail->Body);
+        //Test that absolute URLs are ignored
+        $this->Mail->msgHTML('<img src="https://github.com/PHPMailer/PHPMailer/blob/master/composer.json">test');
+        self::assertStringContainsString(
+            'src="https://github.com/PHPMailer/PHPMailer/blob/master/composer.json"',
+            $this->Mail->Body
+        );
+        //Test that absolute URLs with anonymous/relative protocol are ignored
+        //Note that such URLs will not work in email anyway because they have no protocol to be relative to
+        $this->Mail->msgHTML('<img src="//github.com/PHPMailer/PHPMailer/blob/master/composer.json">test');
+        self::assertStringContainsString(
+            'src="//github.com/PHPMailer/PHPMailer/blob/master/composer.json"',
+            $this->Mail->Body
+        );
+    }

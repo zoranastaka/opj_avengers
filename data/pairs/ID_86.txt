@@ -1,0 +1,8 @@
+    /**
+     * @test
+     */
+
+    public function erroneousAddress_addAddress_returns_false()
+    {
+        $this->assertFalse($this->Mail->addAddress('mehome.com'));
+    }

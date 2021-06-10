@@ -1,0 +1,18 @@
+    /**
+     * Test keepalive (sending multiple messages in a single connection).
+     */
+
+    public function testSmtpKeepAlive()
+    {
+        $this->Mail->Body = 'SMTP keep-alive test.';
+        $this->buildBody();
+        $subject = $this->Mail->Subject;
+
+        $this->Mail->SMTPKeepAlive = true;
+        $this->Mail->Subject = $subject . ': SMTP keep-alive 1';
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+
+        $this->Mail->Subject = $subject . ': SMTP keep-alive 2';
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+        $this->Mail->smtpClose();
+    }

@@ -1,0 +1,31 @@
+    /**
+     * createBody test of switch case
+     */
+
+    public function testCreateBody()
+    {
+        $PHPMailer = new PHPMailer();
+        $reflection = new \ReflectionClass($PHPMailer);
+        $property = $reflection->getProperty('message_type');
+        $property->setAccessible(true);
+        $property->setValue($PHPMailer, 'inline');
+        self::assertIsString($PHPMailer->createBody());
+
+        $property->setValue($PHPMailer, 'attach');
+        self::assertIsString($PHPMailer->createBody());
+
+        $property->setValue($PHPMailer, 'inline_attach');
+        self::assertIsString($PHPMailer->createBody());
+
+        $property->setValue($PHPMailer, 'alt');
+        self::assertIsString($PHPMailer->createBody());
+
+        $property->setValue($PHPMailer, 'alt_inline');
+        self::assertIsString($PHPMailer->createBody());
+
+        $property->setValue($PHPMailer, 'alt_attach');
+        self::assertIsString($PHPMailer->createBody());
+
+        $property->setValue($PHPMailer, 'alt_inline_attach');
+        self::assertIsString($PHPMailer->createBody());
+    }
