@@ -1,0 +1,31 @@
+    /**
+     * DKIM Signing tests.
+     *
+     * @requires extension openssl
+     */
+
+    public function testDKIM()
+    {
+        $this->Mail->Subject .= ': DKIM signing';
+        $this->Mail->Body = 'This message is DKIM signed.';
+        $this->buildBody();
+        $privatekeyfile = 'dkim_private.pem';
+        //Make a new key pair
+        //(2048 bits is the recommended minimum key length -
+        //gmail won't accept less than 1024 bits)
+        $pk = openssl_pkey_new(
+            [
+                'private_key_bits' => 2048,
+                'private_key_type' => OPENSSL_KEYTYPE_RSA,
+            ]
+        );
+        openssl_pkey_export_to_file($pk, $privatekeyfile);
+        $this->Mail->DKIM_domain = 'example.com';
+        $this->Mail->DKIM_private = $privatekeyfile;
+        $this->Mail->DKIM_selector = 'phpmailer';
+        $this->Mail->DKIM_passphrase = ''; //key is not encrypted
+        self::assertTrue($this->Mail->send(), 'DKIM signed mail failed');
+        $this->Mail->isMail();
+        self::assertTrue($this->Mail->send(), 'DKIM signed mail via mail() failed');
+        unlink($privatekeyfile);
+    }

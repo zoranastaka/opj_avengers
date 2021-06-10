@@ -1,0 +1,11 @@
+    /**
+     * Expect exceptions on bad encoding
+     */
+
+    public function testEmbeddedImageEncodingException()
+    {
+        $this->expectException(Exception::class);
+
+        $mail = new PHPMailer(true);
+        $mail->addEmbeddedImage(__FILE__, 'cid', 'test.png', 'invalidencoding');
+    }

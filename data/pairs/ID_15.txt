@@ -1,0 +1,24 @@
+    /**
+     * Simple plain file attachment test.
+     */
+
+    public function testMultiplePlainFileAttachment()
+    {
+        $this->Mail->Body = 'Here is the text body';
+        $this->Mail->Subject .= ': Plain + Multiple FileAttachments';
+
+        if (!$this->Mail->addAttachment(realpath($this->INCLUDE_DIR . '/examples/images/phpmailer.png'))) {
+            self::assertTrue(false, $this->Mail->ErrorInfo);
+
+            return;
+        }
+
+        if (!$this->Mail->addAttachment(__FILE__, 'test.txt')) {
+            self::assertTrue(false, $this->Mail->ErrorInfo);
+
+            return;
+        }
+
+        $this->buildBody();
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+    }

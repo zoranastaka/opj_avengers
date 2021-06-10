@@ -1,0 +1,10 @@
+    /**
+     * Adds a simple note to the message.
+     *
+     * @param string $sValue
+     */
+
+    private function addNote($sValue)
+    {
+        $this->NoteLog[] = $sValue;
+    }

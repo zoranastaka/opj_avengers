@@ -1,0 +1,11 @@
+    /**
+     * Add a changelog entry.
+     *
+     * @param string $sName
+     * @param string $sNewValue
+     */
+
+    private function addChange($sName, $sNewValue)
+    {
+        $this->ChangeLog[] = [$sName, $sNewValue];
+    }

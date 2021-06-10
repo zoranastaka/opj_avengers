@@ -1,0 +1,28 @@
+    /**
+     * Test line length detection.
+     */
+
+    public function testLineLength()
+    {
+        //May have been altered by earlier tests, can interfere with line break format
+        $this->Mail->isSMTP();
+        $this->Mail->preSend();
+        $oklen = str_repeat(str_repeat('0', PHPMailer::MAX_LINE_LENGTH) . "\r\n", 2);
+        $badlen = str_repeat(str_repeat('1', PHPMailer::MAX_LINE_LENGTH + 1) . "\r\n", 2);
+        self::assertTrue(PHPMailer::hasLineLongerThanMax($badlen), 'Long line not detected (only)');
+        self::assertTrue(PHPMailer::hasLineLongerThanMax($oklen . $badlen), 'Long line not detected (first)');
+        self::assertTrue(PHPMailer::hasLineLongerThanMax($badlen . $oklen), 'Long line not detected (last)');
+        self::assertTrue(
+            PHPMailer::hasLineLongerThanMax($oklen . $badlen . $oklen),
+            'Long line not detected (middle)'
+        );
+        self::assertFalse(PHPMailer::hasLineLongerThanMax($oklen), 'Long line false positive');
+        $this->Mail->isHTML(false);
+        $this->Mail->Subject .= ': Line length test';
+        $this->Mail->CharSet = 'UTF-8';
+        $this->Mail->Encoding = '8bit';
+        $this->Mail->Body = $oklen . $badlen . $oklen . $badlen;
+        $this->buildBody();
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+        self::assertEquals('quoted-printable', $this->Mail->Encoding, 'Long line did not override transfer encoding');
+    }

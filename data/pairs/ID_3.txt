@@ -1,0 +1,16 @@
+    /**
+     * Run after each test is completed.
+     */
+
+    protected function tear_down()
+    {
+        //Clean global variables
+        $this->Mail = null;
+        $this->ChangeLog = [];
+        $this->NoteLog = [];
+
+        foreach ($this->pids as $pid) {
+            $p = escapeshellarg($pid);
+            shell_exec("ps $p && kill -TERM $p");
+        }
+    }
