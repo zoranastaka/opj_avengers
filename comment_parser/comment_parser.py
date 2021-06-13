@@ -32,6 +32,7 @@ def extract_comments():
         for value in values:
             extract_comments_from_file(key, value)
 
+    export_data()
 
 def extract_code(lines, code_line_no, comment_text, useful_text, repo_desc, source_desc):
     code = ''
@@ -66,7 +67,6 @@ def extract_code(lines, code_line_no, comment_text, useful_text, repo_desc, sour
                 code_line_no += 1
             except:
                 pass
-
 
         code_comment = Code_comment(repo_desc, 'https://github.com' + source_desc, code, comment)
         code_comments_list.append(code_comment)
@@ -134,7 +134,6 @@ def extract_comments_from_file(repo_desc, source_desc):
         else:
             line_no += 1
 
-    export_data()
 
 
 def prepare_data_for_export():
@@ -144,7 +143,9 @@ def prepare_data_for_export():
 
 def add_comments_id():
     for i in range(len(code_comments_list)):
-        code_comments_list[i].pair_id = 'ID_' + str(i + 1)
+        repo_part = code_comments_list[i].repo_desc.split('/')[-2:]
+        source_part = code_comments_list[i].source_desc.split('/')[-1:]
+        code_comments_list[i].pair_id = repo_part[0] + '_' + repo_part[1] + '_' + source_part[0][:-4] + '_' + str(i + 1)
 
 
 def export_pairs_to_txt_files():
@@ -162,10 +163,10 @@ def encode_new_line_and_tab_in_comments():
 
 
 def export_overview_to_txt_file():
-    file_overview = codecs.open('data/overview/overview.txt', 'w+', 'utf-8')
+    file_overview = codecs.open('data/overview/overview.txt', 'a+', 'utf-8')
     text_to_write = ''
     for pair in code_comments_list:
-        text_to_write += 'PHP' + '\t' + pair.repo_desc + '\t' + pair.source_desc + '\t' + 'ID_' + str(pair.pair_id) + '\t' + pair.comment.useful_text + '\n'
+        text_to_write += 'PHP' + '\t' + pair.repo_desc + '\t' + pair.source_desc + '\t' + str(pair.pair_id) + '\t' + pair.comment.useful_text + '\n'
 
     file_overview.write(text_to_write)
     file_overview.close()
@@ -174,10 +175,10 @@ def export_overview_to_txt_file():
 def create_dict_of_pairs():
     list_of_dict = []
     for pair in code_comments_list:
-        dict = {'pair_id': pair.pair_id, 'comment': pair.comment.useful_text, 'code': pair.code.replace('\n', '').replace('\t', ''), 'query': 0, 'convert int to string,priority queue': 0, 'string to date': 0, 'sort string list': 0, 'save list to file': 0, 'postgresql connection': 0, 'confusion matrix': 0, 'set working directory': 0, 'group by count': 0, 'binomial distribution': 0, 'aes encryption': 0, 'linear regression': 0, 'socket recv timeout': 0, 'write csv': 0, 'convert decimal to hex': 0, 'export to excel': 0, 'scatter plot': 0, 'convert json to csv': 0, 'pretty print json': 0, 'replace in file': 0, 'k means clustering': 0, 'connect to sql': 0, 'html encode string': 0, 'finding time elapsed using a timer': 0, 'parse binary file to custom class': 0, 'get current ip address': 0, 'convert int to bool': 0, 'read text file line by line': 0, 'get executable path': 0, 'httpclient post json': 0,
-                'get inner html': 0, 'convert string to number': 0, 'format date': 0, 'readonly array': 0, 'filter array': 0, 'map to json': 0, 'parse json file': 0, 'get current observable value': 0, 'get name of enumerated value': 0, 'encode url': 0, 'create cookie': 0, 'how to empty array': 0, 'how to get current date': 0, 'how to make the checkbox checked': 0, 'initializing array': 0, 'how to reverse a string': 0, 'read properties file': 0, 'copy to clipboard': 0, 'convert html to pdf': 0, 'json to xml conversion': 0, 'how to randomly pick a number': 0, 'normal distribution': 0, 'nelder mead optimize': 0, 'hash set for counting distinct elements': 0, 'how to get database table name': 0, 'deserialize json': 0, 'find int in string': 0, 'get current process id': 0, 'regex case insensitive': 0, 'custom http error response': 0, 'how to determine a string is a valid word': 0,
-                'html entities replace': 0, 'set file attrib hidden': 0, 'sorting multiple arrays based on another arrays sorted order': 0, 'string similarity levenshtein': 0, 'how to get html of website': 0, 'buffered file reader read text': 0, 'encrypt aes ctr mode': 0, 'matrix multiply': 0, 'print model summary': 0, 'unique elements': 0, 'extract data from html content': 0, 'heatmap from 3d coordinates': 0, 'get all parents of xml node': 0, 'how to extract zip file recursively': 0, 'underline text in label widget': 0, 'unzipping large files': 0, 'copying a file to a path': 0, 'get the description of a http status code': 0, 'randomly extract x items from a list': 0, 'convert a date string into yyyymmdd': 0, 'convert a utc time to epoch': 0, 'all permutations of a list': 0, 'extract latitude and longitude from given input': 0, 'how to check if a checkbox is checked': 0,
-                'converting uint8 array to image': 0, 'memoize to disk - persistent memoization': 0, 'parse command line argument': 0, 'how to read the contents of a .gz compressed file?': 0, 'sending binary data over a serial connection': 0, 'extracting data from a text file': 0, 'positions of substrings in string': 0, 'reading element from html - <td>': 0, 'deducting the median from each column': 0, 'concatenate several file remove header lines': 0, 'parse query string in url': 0, 'fuzzy match ranking': 0, 'output to html file': 0}
+        dict = {'pair_id': pair.pair_id, 'comment': pair.comment.useful_text, 'code': pair.code.replace('\n', '').replace('\t', ''), 'query': 0, 'convert int to string,priority queue': 0, 'string to date': 0, 'sort string list': 0, 'save list to file': 0, 'postgresql connection': 0, 'confusion matrix': 0, 'set working directory': 0, 'group by count': 0, 'binomial distribution': 0, 'aes encryption': 0, 'linear regression': 0, 'socket recv timeout': 0, 'write csv': 0, 'convert decimal to hex': 0, 'export to excel': 0, 'scatter plot': 0, 'convert json to csv': 0, 'pretty print json': 0, 'replace in file': 0, 'k means clustering': 0, 'connect to sql': 0, 'html encode string': 0, 'finding time elapsed using a timer': 0, 'parse binary file to custom class': 0, 'get current ip address': 0, 'convert int to bool': 0, 'read text file line by line': 0, 'get executable path': 0,
+                'httpclient post json': 0, 'get inner html': 0, 'convert string to number': 0, 'format date': 0, 'readonly array': 0, 'filter array': 0, 'map to json': 0, 'parse json file': 0, 'get current observable value': 0, 'get name of enumerated value': 0, 'encode url': 0, 'create cookie': 0, 'how to empty array': 0, 'how to get current date': 0, 'how to make the checkbox checked': 0, 'initializing array': 0, 'how to reverse a string': 0, 'read properties file': 0, 'copy to clipboard': 0, 'convert html to pdf': 0, 'json to xml conversion': 0, 'how to randomly pick a number': 0, 'normal distribution': 0, 'nelder mead optimize': 0, 'hash set for counting distinct elements': 0, 'how to get database table name': 0, 'deserialize json': 0, 'find int in string': 0, 'get current process id': 0, 'regex case insensitive': 0, 'custom http error response': 0,
+                'how to determine a string is a valid word': 0, 'html entities replace': 0, 'set file attrib hidden': 0, 'sorting multiple arrays based on another arrays sorted order': 0, 'string similarity levenshtein': 0, 'how to get html of website': 0, 'buffered file reader read text': 0, 'encrypt aes ctr mode': 0, 'matrix multiply': 0, 'print model summary': 0, 'unique elements': 0, 'extract data from html content': 0, 'heatmap from 3d coordinates': 0, 'get all parents of xml node': 0, 'how to extract zip file recursively': 0, 'underline text in label widget': 0, 'unzipping large files': 0, 'copying a file to a path': 0, 'get the description of a http status code': 0, 'randomly extract x items from a list': 0, 'convert a date string into yyyymmdd': 0, 'convert a utc time to epoch': 0, 'all permutations of a list': 0, 'extract latitude and longitude from given input': 0,
+                'how to check if a checkbox is checked': 0, 'converting uint8 array to image': 0, 'memoize to disk - persistent memoization': 0, 'parse command line argument': 0, 'how to read the contents of a .gz compressed file?': 0, 'sending binary data over a serial connection': 0, 'extracting data from a text file': 0, 'positions of substrings in string': 0, 'reading element from html - <td>': 0, 'deducting the median from each column': 0, 'concatenate several file remove header lines': 0, 'parse query string in url': 0, 'fuzzy match ranking': 0, 'output to html file': 0}
         list_of_dict.append(dict)
 
     return list_of_dict
@@ -186,7 +187,7 @@ def create_dict_of_pairs():
 def export_data_to_csv():
     list_of_dict = create_dict_of_pairs()
     df = pd.DataFrame(list_of_dict)
-    df.to_csv('data/annotation_matrix.csv', index=False)
+    df.to_csv('data/annotation_matrix.csv', index=False, mode='a')
 
 
 def export_data():
