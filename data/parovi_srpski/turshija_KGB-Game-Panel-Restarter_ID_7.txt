@@ -1,0 +1,13 @@
+	/*
+	 * Metoda ocisti output buffer, a zatim ispise gresku
+	 */
+	function izbaciGresku($tekst) {
+		@ob_clean();
+		$out =
+'<div style="margin:auto;padding:0px 30px 30px 30px;width:800px;border:2px solid blue;">
+<h3>Greska</h3>
+'.$tekst.'
+</div>';
+		die($out);
+	}
+}

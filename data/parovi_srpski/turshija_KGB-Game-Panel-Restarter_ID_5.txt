@@ -1,0 +1,17 @@
+	/*
+	 * metoda skenira server na GT.rs i vraca informacije
+	 */
+	function skenirajServer($ip) {
+		global $config;
+		$br_skeniranja = $config['broj_skeniranja'];
+		// $link = "ip={$ip}";
+		while (($br_skeniranja--)>0) {
+			$server = json_decode($this->procitaj($config['gtapilink']."/".$ip), true);
+			if ($server['apiError']) return false;
+			if ($server['status']) break;
+
+			sleep(1);
+		}
+		return $server;
+	}
+

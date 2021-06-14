@@ -1,0 +1,15 @@
+	/*
+	 * Metoda poziva parsiranje, i vraca listu servera u nizu
+	 */
+	function getServers() {
+		global $config;
+		$servers = array();
+		foreach ($config['tokens'] as $tokenid=>$token) {
+			$feed = "servers.php?auth=".$token;
+			$temp=$this->parseServersFromFeed($feed,$tokenid);
+			foreach ($temp as $server) {
+				array_push($servers,$server);
+			}
+		}
+		return $servers;
+	}
