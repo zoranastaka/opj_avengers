@@ -12,6 +12,20 @@ class Comment:
         self.text = text
         self.useful_text = useful_text
 
+    def __repr__(self):
+        temp_dict = {
+            'text': self.text,
+            'useful_text': self.useful_text
+        }
+        return str(temp_dict)
+
+    def __str__(self):
+        temp_dict = {
+            'text': self.text,
+            'useful_text': self.useful_text
+        }
+        return str(temp_dict)
+
 
 class Code_comment:
     def __init__(self, repo_desc, source_desc, code, comment: Comment):
@@ -21,18 +35,55 @@ class Code_comment:
         self.code = code
         self.comment: Comment = comment
 
+    def __repr__(self):
+        temp_dict = {
+            'pair_id': self.pair_id,
+            'repo_desc': self.repo_desc,
+            'source_desc': self.source_desc,
+            'code': self.code,
+            'comment': self.comment
+        }
+        return str(temp_dict)
+
+    def __str__(self):
+        temp_dict = {
+            'pair_id': self.pair_id,
+            'repo_desc': self.repo_desc,
+            'source_desc': self.source_desc,
+            'code': self.code,
+            'comment': self.comment
+        }
+        return str(temp_dict)
+
 
 code_comments_list: List[Code_comment] = []
 
 
-def extract_comments():
-    php_dict = read_json('php_files.json')
+def extract_comments(php_path='php_files.json', verbose=False):
+    """
+    Extracts comment-code pairs from a json file where keys are repository names and values are lists of relative file paths.
 
+    :param php_path: Path to the json file.
+    :param verbose: If True prints progress to the command line more often. Default: False
+    :return:
+    """
+    php_dict = read_json(php_path)
+
+    counter = 0
     for key, values in php_dict.items():
         for value in values:
-            extract_comments_from_file(key, value)
+            try:
+                extract_comments_from_file(key, value, verbose=verbose)
+            except urllib.error.HTTPError:
+                print("Skipping {}.".format(value))
+                continue
+
+        counter += 1
+        if counter % 5 == 0:
+            print('Processed {} repositories.'.format(counter))
 
     export_data()
+
 
 def extract_code(lines, code_line_no, comment_text, useful_text, repo_desc, source_desc):
     code = ''
@@ -72,7 +123,15 @@ def extract_code(lines, code_line_no, comment_text, useful_text, repo_desc, sour
         code_comments_list.append(code_comment)
 
 
-def extract_comments_from_file(repo_desc, source_desc):
+def extract_comments_from_file(repo_desc, source_desc, verbose=False):
+    """
+    Extracts comment-code pairs from a single file
+
+    :param repo_desc: Path to the repository containing the file.
+    :param source_desc: Relative path to the file.
+    :param verbose: If True prints progress to the command line more often. Default: False
+    :return:
+    """
     comment_text = ''
     useful_comment_text = ''
 
@@ -82,7 +141,8 @@ def extract_comments_from_file(repo_desc, source_desc):
     regex_pattern_single = r'^([\s]*)(\#|\/\/)'
 
     url_php_file = 'https://github.com' + source_desc
-    print(url_php_file)
+    if verbose:
+        print(url_php_file)
     response = urllib.request.urlopen(url_php_file)
 
     lines = response.readlines()
@@ -126,14 +186,13 @@ def extract_comments_from_file(repo_desc, source_desc):
                 line_no += 1
 
             if line_no < len(lines):
-                extract_code(lines, line_no, comment_text, repo_desc, useful_comment_text, source_desc)
+                extract_code(lines, line_no, comment_text, useful_comment_text, repo_desc, source_desc)
 
             comment_text = ''
             useful_comment_text = ''
 
         else:
             line_no += 1
-
 
 
 def prepare_data_for_export():
@@ -145,12 +204,20 @@ def add_comments_id():
     for i in range(len(code_comments_list)):
         repo_part = code_comments_list[i].repo_desc.split('/')[-2:]
         source_part = code_comments_list[i].source_desc.split('/')[-1:]
-        code_comments_list[i].pair_id = repo_part[0] + '_' + repo_part[1] + '_' + source_part[0][:-4] + '_' + str(i + 1)
+        try:
+            code_comments_list[i].pair_id = repo_part[0] + '_' + repo_part[1] + '_' + source_part[0][:-4] + '_' + str(i + 1)
+            # print("Success!")
+            # print(code_comments_list[i].repo_desc)
+        except IndexError as err:
+            print("Error!")
+            print(code_comments_list[i].repo_desc)
+            raise
 
 
 def export_pairs_to_txt_files():
     for pair in code_comments_list:
         file_code_comment_pair = codecs.open('data/pairs/' + pair.pair_id + '.txt', 'w+', 'utf-8')
+        # print("Wrote to {}.".format(pair.pair_id+'.txt'))
         text_to_write = pair.comment.text + '\n' + pair.code
         file_code_comment_pair.write(text_to_write)
         file_code_comment_pair.close()
@@ -175,13 +242,30 @@ def export_overview_to_txt_file():
 def create_dict_of_pairs():
     list_of_dict = []
     for pair in code_comments_list:
-        dict = {'pair_id': pair.pair_id, 'comment': pair.comment.useful_text, 'code': pair.code.replace('\n', '').replace('\t', ''), 'query': 0, 'convert int to string,priority queue': 0, 'string to date': 0, 'sort string list': 0, 'save list to file': 0, 'postgresql connection': 0, 'confusion matrix': 0, 'set working directory': 0, 'group by count': 0, 'binomial distribution': 0, 'aes encryption': 0, 'linear regression': 0, 'socket recv timeout': 0, 'write csv': 0, 'convert decimal to hex': 0, 'export to excel': 0, 'scatter plot': 0, 'convert json to csv': 0, 'pretty print json': 0, 'replace in file': 0, 'k means clustering': 0, 'connect to sql': 0, 'html encode string': 0, 'finding time elapsed using a timer': 0, 'parse binary file to custom class': 0, 'get current ip address': 0, 'convert int to bool': 0, 'read text file line by line': 0, 'get executable path': 0,
-                'httpclient post json': 0, 'get inner html': 0, 'convert string to number': 0, 'format date': 0, 'readonly array': 0, 'filter array': 0, 'map to json': 0, 'parse json file': 0, 'get current observable value': 0, 'get name of enumerated value': 0, 'encode url': 0, 'create cookie': 0, 'how to empty array': 0, 'how to get current date': 0, 'how to make the checkbox checked': 0, 'initializing array': 0, 'how to reverse a string': 0, 'read properties file': 0, 'copy to clipboard': 0, 'convert html to pdf': 0, 'json to xml conversion': 0, 'how to randomly pick a number': 0, 'normal distribution': 0, 'nelder mead optimize': 0, 'hash set for counting distinct elements': 0, 'how to get database table name': 0, 'deserialize json': 0, 'find int in string': 0, 'get current process id': 0, 'regex case insensitive': 0, 'custom http error response': 0,
-                'how to determine a string is a valid word': 0, 'html entities replace': 0, 'set file attrib hidden': 0, 'sorting multiple arrays based on another arrays sorted order': 0, 'string similarity levenshtein': 0, 'how to get html of website': 0, 'buffered file reader read text': 0, 'encrypt aes ctr mode': 0, 'matrix multiply': 0, 'print model summary': 0, 'unique elements': 0, 'extract data from html content': 0, 'heatmap from 3d coordinates': 0, 'get all parents of xml node': 0, 'how to extract zip file recursively': 0, 'underline text in label widget': 0, 'unzipping large files': 0, 'copying a file to a path': 0, 'get the description of a http status code': 0, 'randomly extract x items from a list': 0, 'convert a date string into yyyymmdd': 0, 'convert a utc time to epoch': 0, 'all permutations of a list': 0, 'extract latitude and longitude from given input': 0,
-                'how to check if a checkbox is checked': 0, 'converting uint8 array to image': 0, 'memoize to disk - persistent memoization': 0, 'parse command line argument': 0, 'how to read the contents of a .gz compressed file?': 0, 'sending binary data over a serial connection': 0, 'extracting data from a text file': 0, 'positions of substrings in string': 0, 'reading element from html - <td>': 0, 'deducting the median from each column': 0, 'concatenate several file remove header lines': 0, 'parse query string in url': 0, 'fuzzy match ranking': 0, 'output to html file': 0}
-        list_of_dict.append(dict)
+        curr_dict = {
+            'pair_id': pair.pair_id,
+            'comment': pair.comment.useful_text,
+            'code': pair.code.replace('\n', '').replace('\t', ''),
+        }
+        for query in read_queries('translated_updated.txt'):
+            curr_dict[query] = 0
+        list_of_dict.append(curr_dict)
 
     return list_of_dict
+
+
+def read_queries(path='translated_updated.txt'):
+    """
+    Gets list of queries from the file
+
+    :param path: Path to the file containing list of queries (one query per line)
+    :return: list of queries
+    """
+
+    with open(path, 'r') as file:
+        queries = file.readlines()
+
+    return queries
 
 
 def export_data_to_csv():
