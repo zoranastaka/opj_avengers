@@ -77,6 +77,8 @@ def extract_comments(php_path='php_files.json', verbose=False):
             except urllib.error.HTTPError:
                 print("Skipping {}.".format(value))
                 continue
+            except UnicodeDecodeError:
+                print("Skipping {} due to UnicodeDecodeError.".format(value))
 
         counter += 1
         if counter % 5 == 0:
