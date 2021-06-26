@@ -1,0 +1,63 @@
+<!-- PHP Scatter / Point Charts & Graphs. Scatter charts represents data as a series of points with their axis co-ordinates determined by x and y value of data point. Scatter Charts are also referred as Scatter Plot / Point Chart. Given example shows simple Scatter Chart along with source code that you can try running locally. -->
+<?php
+ 
+$dataPoints = array(
+	array("x"=> 51, "y"=> 51),
+	array("x"=> 77, "y"=> 56),
+	array("x"=> 82, "y"=> 57),
+	array("x"=> 82.5, "y"=> 63.5),
+	array("x"=> 83, "y"=> 59.5),
+	array("x"=> 85, "y"=> 58),
+	array("x"=> 90, "y"=> 65),
+	array("x"=> 97.5, "y"=> 66),
+	array("x"=> 99, "y"=> 59),
+	array("x"=> 102, "y"=> 64),
+	array("x"=> 102, "y"=> 63),
+	array("x"=> 111.5, "y"=> 68),
+	array("x"=> 112, "y"=> 70),
+	array("x"=> 113, "y"=> 61),
+	array("x"=> 128, "y"=> 65),
+	array("x"=> 132, "y"=> 66.5),
+	array("x"=> 151, "y"=> 71)
+);
+	
+?>
+<!DOCTYPE HTML>
+<html>
+<head>  
+<script>
+window.onload = function () {
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	exportEnabled: true,
+	theme: "light1", 
+	title:{
+		text: "Study of Height vs Weight"
+	},
+	axisX:{
+		title: "Weight",
+		suffix: " kg"
+	},
+	axisY:{
+		title: "Height",
+		suffix: " inch"
+	},
+	data: [{
+		type: "scatter",
+		markerType: "square",
+		markerSize: 10,
+		toolTipContent: "Height: {y} inch<br>Weight: {x} kg",
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
