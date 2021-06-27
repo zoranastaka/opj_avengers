@@ -26,7 +26,7 @@
 27125,PHP,98,thephpleague_csv_AbstractCsv_203,kako efikasno pročitati .csv datoteku,Vraća CSV dokument kao generator komada stringova.,0
 992,PHP,2,Intervention_image_AbstractColor_407,pretvaranje string u datum,"Inicijalizuje objekat boje od zadate R, G i B vrednosti.",0
 14937,PHP,87,markrogoyski_math-php_Descriptive_3482,parsiranje argumenata komandne linije,Deskriptivna statistika. Sažetak koji kvantitativno opisuje ili sumira obeležja skupa informacija.,0
-140343,PHP,60,symfony_http-foundation_IpUtils_8805,kako odrediti da li je string valida reč,"Poredi dve IPv6 adrese. U slučaju davanja podmreže, ona proverava da li sadrži IP zahtev",1
+140343,PHP,60,symfony_http-foundation_IpUtils_8805,kako odrediti da li je string valida reč,"Poredi dve IPv6 adrese. U slučaju davanja podmreže, ona proverava da li sadrži IP zahtev",0
 100605,PHP,21,PrestaShop_PrestaShop_Access_773,povezivanje na sql server,Ažuriranje (zastarelog) pristup modulu.,0
 48384,PHP,72,FriendsOfPHP_PHP-CS-Fixer_AbstractPhpdocTypesFixer_6892,toplotna mapa iz 3d koordinata,Abstraktna klasa popravljač predstavlja osnovnu klasu za popravljače čiji zadatak će biti ispravljanje tipova u PHPDoc.,0
 30647,PHP,56,ThingEngineer_PHP-MySQLi-Database-Class_MysqliDb_559,pronađi int unutar stringa,Ovaj metod vraća ID poslednje dodate stavke.,0
@@ -235,7 +235,7 @@
 139520,PHP,29,phalcon_cphalcon_Optimized_1228,odprema json datoteke pomoću HttpClient POST zahteva,Koristi prethodno generisanu sigurnu univerzalni build i generiše optimizovani build za određenu platformu,0
 91258,PHP,79,PHPOffice_PHPExcel_Calculation_160,nasumično izvuci x stavki iz liste,"izbacuje grešku, ali na fin na?in, ukoliko je potrebno",0
 85710,PHP,75,Intervention_image_Image_485,podvuci tekst u label vidžetu, Magi?na metoda koja hvata sve pozive slika obično bilo koja AbstractCommand,0
-147216,PHP,3,markrogoyski_math-php_Eigenvalue_2614,sortiranje string liste,Izrađuje sopstvene vrednosti za kvadratne matrice 2x2 - 4x4 \ n \ n Dat je matrica [a b]\n A =  [c d]. Pronađi sve Î »takve da:  |A-IÎ»| = 0. To se postiže pronalaženjem korena poliniomija koji nastaje prilikom izračunavanja odrednice matrice. Odrednica polinom izračunava se pomoću polinomske aritmetike,1
+147216,PHP,3,markrogoyski_math-php_Eigenvalue_2614,sortiranje string liste,Izrađuje sopstvene vrednosti za kvadratne matrice 2x2 - 4x4 \ n \ n Dat je matrica [a b]\n A =  [c d]. Pronađi sve Î »takve da:  |A-IÎ»| = 0. To se postiže pronalaženjem korena poliniomija koji nastaje prilikom izračunavanja odrednice matrice. Odrednica polinom izračunava se pomoću polinomske aritmetike,0
 71282,PHP,2,canvas_js_example,pretvaranje string u datum,"Php crtač dijagrama rasejanja i grafikona. Tabele rasejanja sadrže podatke u vidu niza koordinatnih tačaka od kojih svaka ima vrednosti koje odgovaraju x i y osi. Tabele rasejanja, se takođe oslovljava kao tabela tačaka ili dijagram rasejanja. Dat primer prikazuje jednostavnu tabelu rasejanja sa izvornim kodom koji možete lokalno pokrenuti.",0
 87387,PHP,69,Intervention_image_PsrResponseCommand_556,štampanje rezimea modela," Kreira odgovor koji je kompatibilan sa PSR7. Može zameniti komandu odgovora u budućnosti. Metoda će generisati binarni niz i postaviti unutar PSR-7 ResponseInterface. Naredni kod može biti opitimizovan korišćenjem nativnih php nizova i ""čistijeg"" streaming, međutim prvo je potrebno da drajveri budu ažurirani.",0
 54790,PHP,43,Intervention_image_Color_631,kako štiklirati checkbox,"Inicijalizuj objekat boje iz datog R, G i B vrednosti.",0
@@ -1219,7 +1219,7 @@
 145165,PHP,31,markrogoyski_math-php_LeastSquares_3612,pretvaranje string u broj,SStot - Ukupni kvadrati sume \ n \ n zbroj kvadratnih razlika \ n svakog posmatranja od ukupne srednje vrednosti za sva posmatranja. \ N https://en.wikipedia.org/wiki/Total_sum_of_squares\n\n Za jednostavnu linearnu regresiju\n SStot = âˆ‘(yáµ¢ - È³)Â²\n\n Za regresiju kroz tečku\n SStot = âˆ‘yáµ¢Â²\n\n ,0
 117449,PHP,35,briannesbitt_Carbon_CarbonPeriod_324,mapa u json,Vraća prvi datum u datumskom periodu.,0
 114737,PHP,95,briannesbitt_Carbon_CarbonInterval_229,parsiranje query stringa u url-u, Vraća dio CarbonInterval objekta.,0
-150324,PHP,42,markrogoyski_math-php_NumericalIntegration_3022,kako dohvatiti današnji datum,Osnovna klasa za tehnike numeričke integracije. Tehnike numeričke integracije koriste se za približavanje vrednosti neodređenog integrala. Ova klasa svakoj tehnici daje skup uobičajenih alata i zahteva da svaka tehnika odredi n approximate() metoda za približavanje neodređenog integrala,1
+150324,PHP,42,markrogoyski_math-php_NumericalIntegration_3022,kako dohvatiti današnji datum,Osnovna klasa za tehnike numeričke integracije. Tehnike numeričke integracije koriste se za približavanje vrednosti neodređenog integrala. Ova klasa svakoj tehnici daje skup uobičajenih alata i zahteva da svaka tehnika odredi n approximate() metoda za približavanje neodređenog integrala,0
 35370,PHP,27,src_Regressors_MLPRegressor_955,isčitavanje tekstualne datoteke liniju po liniju,"MLP regresor. Višeslojna neuralna mreža sa kontinualnim izlaznim slojem pogodna za regresione probleme. Kao višeslojni perceptronski klasifikator, MLP regresor je sposovan da rešava nelinearne regresione probleme tako što pravi reprezentacije ulaznih obeležja višeg reda pomoću skrivenih slojeva.",0
 42488,PHP,17,CachetHQ_Cachet_helpers_1161,pretvaranje json u csv,Formatiraj datum koristeći vremnsku zonu i izabrani format korisnika.,0
 131338,PHP,64,markrogoyski_math-php_Hypergeometric_3240,levenshteinova slicnost stringova,Funkcija kumulativne raspodele,0
@@ -1345,7 +1345,7 @@
 89173,PHP,73,Maatwebsite_Laravel-Excel_DelegatedMacroable_734,dohvatanje svih roditelja xml čvora, Dinami?ki rukuje pozivima klasi,0
 28263,PHP,48,thephpleague_csv_Reader_357,pretvaranje html stranice u pdf,Vraća zaglavlje kako bi se koristilo za iteraciju.,0
 81347,PHP,68,Intervention_image_CropCommand_598,matrica množenja,Se?e instancu slike,0
-129298,PHP,4,markrogoyski_math-php_MatrixFactory_2688,čuvanje liste u datoteku,Fabrika matrica za stvaranje matrica svih tipova. Koristitite fabriku umesto instanciranja pojedinačnih klasa matrica,1
+129298,PHP,4,markrogoyski_math-php_MatrixFactory_2688,čuvanje liste u datoteku,Fabrika matrica za stvaranje matrica svih tipova. Koristitite fabriku umesto instanciranja pojedinačnih klasa matrica,0
 4878,PHP,27,briannesbitt_Carbon_CarbonImmutable_4,isčitavanje tekstualne datoteke liniju po liniju,Napravi jako stari datum koji predstavlja početak vremena,0
 140475,PHP,93,firefly-iii_firefly-iii_breadcrumbs_832,oduzimanje medijana iz svake kolone,Odseče sredinu od stringa kada je veoma dugačka,0
 145560,PHP,30,symfony_symfony_AbstractDoctrineExtension_1827,dohvatanje unutrašnjeg svojstva html taga,Registrujte pseudonim za ovaj drajver za mapiranje. Aliasi se mogu koristiti u jezicima upita svih Doctrine menadžera objekata radi pojednostavljenja zadataka pisanja,0
@@ -1440,7 +1440,7 @@
 144313,PHP,70,markrogoyski_math-php_ChiSquared_3079,jedinstveni elementi,Medijana - aproksimacija zatvorenog oblika,0
 77443,PHP,25,Intervention_image_AbstractDecoder_425,dohvatanje trenutne ip adrese, Odlu?uje da li je trenutni izvor podataka SplFileInfo objekat,0
 144886,PHP,49,squizlabs_PHP_CodeSniffer_Runner_913,konverzija json u xml datoteku,"Obrađuje jednu datoteku, uključujući proveru i popravljanje",0
-71916,PHP,42,walkor_Workerman_Worker_7760,kako dohvatiti današnji datum,Sačuvaj statističke podatke na disk.,3
+71916,PHP,42,walkor_Workerman_Worker_7760,kako dohvatiti današnji datum,Sačuvaj statističke podatke na disk.,0
 87008,PHP,86,Intervention_image_Point_524,memoizacija na disk - persistentna memoizacija,Postavlja X koordinatu,0
 54490,PHP,40,Intervention_image_Color_569,kreiraj kolačić,Dohvati int vrednost trenutne instance boje.,0
 67787,PHP,71,PHPOffice_PHPWord_SettingsTest_1012,izvlačenje podataka iz sadržaja html koda,Testiraj seter i geter funkcije klase Zip,0
@@ -5367,7 +5367,7 @@
 75652,PHP,16,DesignPatternsPHP_DesignPatternsPHP_HelloCommand_6671,dijagram rasejanja," Ova konkretna komanda poziva ""print"" na prijemniku, ali eksterni invoker zna da može da pozove ""execute""",0
 57260,PHP,38,Intervention_image_Encoder_649,dohvati naziv za vrednost enumerisanog tipa podatka,Procesuiraj i vrati šifrovanu sliku kao JPEG string.,0
 78898,PHP,94,Intervention_image_Argument_542,uklanjanja zaglavlja prilikom spajanja nekoliko datoteka, Definiše trenutni argument kao potreban,0
-132683,PHP,23,walkor_Workerman_AsyncTcpConnection_7022,određivanje proteklog vremena korišćenjem časovnika,Dohvatanje udaljenog URI-ja,1
+132683,PHP,23,walkor_Workerman_AsyncTcpConnection_7022,određivanje proteklog vremena korišćenjem časovnika,Dohvatanje udaljenog URI-ja,0
 46876,PHP,49,DesignPatternsPHP_DesignPatternsPHP_HelloCommand_6398,konverzija json u xml datoteku,"Ova konkretna komanda poziva ""ispiši"" metodu na prijemniku. Tada će pozivalac znati da može da pozove ""izvrši"" metodu.",0
 108766,PHP,64,bcit-ci_CodeIgniter_Loader_377,levenshteinova slicnost stringova, CI Autoloader Učitava komponente koje su navedene u config/autoload.php file.,0
 144852,PHP,15,squizlabs_PHP_CodeSniffer_Runner_913,izvoz podataka u excel,"Obrađuje jednu datoteku, uključujući proveru i popravljanje",0
@@ -7662,7 +7662,7 @@
 20126,PHP,29,matomo-org_matomo_Controller_929,odprema json datoteke pomoću HttpClient POST zahteva,Spaja dva niza. Spaja dva niza kao php funkcija array_merge_recursive. Razlika je što trenutni celobrojni indeksi neće biti ponovno prebrojeni.,0
 58393,PHP,82,Intervention_image_Font_590,sve permutacije liste,Dohvati širinu unutrašnjeg font karaktera.,0
 134482,PHP,40,bobthecow_psysh_Configuration_1547,kreiraj kolačić,Kreiranje PHP ručnog povezivanja sa bazom podataka,0
-140127,PHP,42,symfony_http-foundation_JsonResponse_8807,kako dohvatiti današnji datum,"Odgovor predstavlja HTTP odgovor u JSON formatu. Imajte na umu da ova klasa ne prisiljava vraćeni JSON sadržaj da bude objekat. Međutim, preporučuje se da vratite objekat jer se on štiti od XSSSI i JSON-JavaScript hakovanja",1
+140127,PHP,42,symfony_http-foundation_JsonResponse_8807,kako dohvatiti današnji datum,"Odgovor predstavlja HTTP odgovor u JSON formatu. Imajte na umu da ova klasa ne prisiljava vraćeni JSON sadržaj da bude objekat. Međutim, preporučuje se da vratite objekat jer se on štiti od XSSSI i JSON-JavaScript hakovanja",0
 32866,PHP,97,ircmaxell_RandomLib_RandomBytes_699,izlaz u html datoteku,Proverava da li je izvor dostupan. Razlozi mogu biti da neka biblioteka nije instalirana.,0
 142177,PHP,13,predis_predis_ClusterStrategy_2167,upisivanje u csv datoteku,Izdvaja ključ iz BITOP naredbe,0
 65099,PHP,56,PHPOffice_PHPExcel_PHPExcel_86,pronađi int unutar stringa,PHP implementacija klase za rad sa Ekselom.,0
@@ -11489,7 +11489,7 @@
 55158,PHP,15,Intervention_image_Color_637,izvoz podataka u excel,Dohvati nijansu zelene trenutne boje.,0
 63947,PHP,92,PHPOffice_PHPExcel_Cell_178,čitanje elemenata iz html-a - <td>,Dohvati roditeljev radni list.,0
 147455,PHP,44,ramsey_uuid_FeatureSet_1941,inicijalizacija niza,Podešava kalkulator za upotrebu u ovom okruženju,0
-39571,PHP,70,symfony_http-kernel_CacheWarmerAggregate_3111,jedinstveni elementi,Ažuriraj keš.,3
+39571,PHP,70,symfony_http-kernel_CacheWarmerAggregate_3111,jedinstveni elementi,Ažuriraj keš.,0
 42254,PHP,80,PHPOffice_PHPExcel_Cell_170,konvertuj string datum u yyyymmdd format,Dohvati formatiranu vrednost ćelije.,0
 5685,PHP,42,composer_composer_Config_2510,kako dohvatiti današnji datum,Pretvara relativne putanje u apsolutne putanje bez realpath(). S obzirom da možda ne postoje svi direktorijumi realpath() ne sme da se pozove jer može da pukne.,0
 145646,PHP,17,symfony_symfony_DoctrineDataCollector_1820,pretvaranje json u csv,Sanitizira parametar. Povratna vrednost je niz sa saniranom vrednošću i logičkom bojom koji pokazuje da li je izvorna vrednost zadržana (omogućavajući upotrebu sanirane vrednosti za objašnjenje upita),0
@@ -14065,7 +14065,7 @@
 30862,PHP,73,ThingEngineer_PHP-MySQLi-Database-Class_MysqliDb_573,dohvatanje svih roditelja xml čvora,Apstraktni metod koji pravi deo “gde” izjave za grupisanje.,0
 135577,PHP,46,fzaninotto_Faker_Iban_928,pročitaj svojstva datoteke,Izračunava mod97 na numeričkom nizu,0
 117249,PHP,33,briannesbitt_Carbon_CarbonPeriod_335,nepromenjivi (readonly) niz,"Određuje da li je instanca jednaka ili ne drugoj. Upozorenje: ako se opcije razlikuju, instance nikada neće biti iste.",0
-66569,PHP,41,PHPOffice_PHPWord_PhpWordTest_1000,kako isprazniti niz,Testiraj dodavanje stila za naslov.,1
+66569,PHP,41,PHPOffice_PHPWord_PhpWordTest_1000,kako isprazniti niz,Testiraj dodavanje stila za naslov.,0
 30067,PHP,70,ThingEngineer_PHP-MySQLi-Database-Class_MysqliDb_542,jedinstveni elementi,Metod koji dogvara mysqli objekat ili ga pravi u slučaju da je potrebno.,0
 47112,PHP,87,DesignPatternsPHP_DesignPatternsPHP_Invoker_7047,parsiranje argumenata komandne linije,Klasa pozivalac koristi komandu koja mi je prosleđena. Primer:  Aplikacija u SF2,0
 127261,PHP,46,markrogoyski_math-php_SimpsonsRule_3028,pročitaj svojstva datoteke,"Koristite Simpsonovo pravilo za približavanje konačnog integrala funkcije f(x). Naš ulaz može podržati ili skup nizova, ili funkciju povratnog poziva sa argumentima (da bi se dobio niz nizova). Svaki niz u našem ulazu sadrži dva broja koji odgovaraju koordinatama (x, i) ili ekvivalentno, (x, f (x)), funkcije f(x) čiji konačni integral aproksimiramo. Napomena: Simpsonova metoda zahteva da imamo paran broj podintervala (moramo dostaviti neparan broj tačaka) i da je veličina svakog podintervala jednaka (razmak između svake tačke je jednak). Granice definitivnog integrala kojem se približavamo određuju naši unosi. Primer: approximate([0, 10], [5, 5], [10, 7]) će približite konačni integral funkcije koja daje ove koordinate sa donjom granicom 0, a gornjom granicom 10. Primer: approximate(funkcija ($x) {vrati $x skup nizova procenjujući povratni poziv u 5 ravnomerno raspoređenih tačaka između 0 i 4. Zatim će se ovaj niz koristiti u našoj aproksimaciji",0
@@ -14750,7 +14750,7 @@
 48647,PHP,38,Intervention_image_AbstractColor_403,dohvati naziv za vrednost enumerisanog tipa podatka,Inicijalizuj objekat boje iz celog broja.,0
 129935,PHP,47,symfony_process_ProcessFailedExceptionTest_1552,prekopiraj u klibord,Testovi ProcessFailedException bacaju izuzetak ako je proces bio uspešan,0
 50924,PHP,38,Intervention_image_AbstractDecoder_432,dohvati naziv za vrednost enumerisanog tipa podatka,Odreid da li je trenutan izvor podatka primenjuje base64 šifrovanje.,0
-150225,PHP,42,markrogoyski_math-php_NevillesMethod_2994,kako dohvatiti današnji datum,"Nevilles-ova metoda. U numeričkoj analizi, Nevilles-ova metoda je tehnika interpolacije koja koristi Lagranžove polinome nižih stepena rekurzivno kako bi izračunala Lagranžove polinome viših stepena. Nevilles-ova metoda pripada kolekciji tehnika koje interpoliraju funkciju ili skup vrednosti za približavanje funkcije u ciljnoj tački. Možemo ili direktno dostaviti skup ulaza i njihove odgovarajuće izlaze za pomenutu funkciju, ili ako eksplicitno znamo funkciju, možemo je definisati kao funkciju povratnog poziva, a zatim generisati skup tačaka procenjujući tu funkciju u n tačaka između početne i krajnje tačke. Zatim koristimo ove vrednosti za interpolaciju Lagranžovih polinoma rekurzivno u našu ciljnu tačku",1
+150225,PHP,42,markrogoyski_math-php_NevillesMethod_2994,kako dohvatiti današnji datum,"Nevilles-ova metoda. U numeričkoj analizi, Nevilles-ova metoda je tehnika interpolacije koja koristi Lagranžove polinome nižih stepena rekurzivno kako bi izračunala Lagranžove polinome viših stepena. Nevilles-ova metoda pripada kolekciji tehnika koje interpoliraju funkciju ili skup vrednosti za približavanje funkcije u ciljnoj tački. Možemo ili direktno dostaviti skup ulaza i njihove odgovarajuće izlaze za pomenutu funkciju, ili ako eksplicitno znamo funkciju, možemo je definisati kao funkciju povratnog poziva, a zatim generisati skup tačaka procenjujući tu funkciju u n tačaka između početne i krajnje tačke. Zatim koristimo ove vrednosti za interpolaciju Lagranžovih polinoma rekurzivno u našu ciljnu tačku",0
 150411,PHP,30,sebastianbergmann_comparator_DoubleComparator_2337,dohvatanje unutrašnjeg svojstva html taga,Upoređuje dve vrednosti da li su jednake,0
 13676,PHP,14,markrogoyski_math-php_Binomial_3223,pretvaranje decimalnog u heksadecimalni broj,Varijansa raspodele.,0
 77483,PHP,65,Intervention_image_AbstractDecoder_425,kako dohvatiti html kod sa veb sajta, Odlu?uje da li je trenutni izvor podataka SplFileInfo objekat,0
@@ -14773,7 +14773,7 @@
 93793,PHP,40,PHPOffice_PHPExcel_PHPExcel_111,kreiraj kolačić,Vra?a nazive listova,0
 94092,PHP,42,PHPOffice_PHPExcel_PHPExcel_115,kako dohvatiti današnji datum,Kopiranje radne knjige (!= klona),0
 92306,PHP,38,PHPOffice_PHPExcel_Cell_183,dohvati naziv za vrednost enumerisanog tipa podatka,Vra?a stil ?elije,0
-140443,PHP,61,firefly-iii_firefly-iii_breadcrumbs_832,zamena http entiteta,Odseče sredinu od stringa kada je veoma dugačka,1
+140443,PHP,61,firefly-iii_firefly-iii_breadcrumbs_832,zamena http entiteta,Odseče sredinu od stringa kada je veoma dugačka,0
 78685,PHP,79,Intervention_image_AbstractShape_474,nasumično izvuci x stavki iz liste, Odre?uje da li trenutni oblik ima okvir,0
 77337,PHP,18,Intervention_image_AbstractDecoder_423,lepo ispiši json, Odlu?uje da li je trenutni izvor podataka Imagick objekat,0
 91015,PHP,34,PHPOffice_PHPExcel_Calculation_158,filtriranje niza,Dormatira tip i detalje operanda za prikaz u evidenciji (na osnovu tipa operanda),0
