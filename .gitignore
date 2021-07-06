@@ -8,3 +8,4 @@ data/annotation_matrix_srpski.csv
 data/translate_queries.csv
 quickstart.py
 php_*.json
+data/pairs/*
