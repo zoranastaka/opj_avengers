@@ -111,9 +111,9 @@ def apply_stem(df, tokenize=stem_croatian, inplace=True, replace_columns=True, c
         """
 
     if replace_columns:
-        column_dict = {column:column for column in columns}
+        column_dict = {column: column for column in columns}
     else:
-        column_dict = {column:column + 'Stem' for column in columns}
+        column_dict = {column: column + 'Stem' for column in columns}
 
     if not inplace:
         temp_df = df.copy()
@@ -166,6 +166,31 @@ def count_mutual_bigrams(text1, text2):
     counter = 0
     for bigram in bigrams_text1:
         if bigram in bigrams_text2:
+            counter += 1
+    return counter
+
+
+def count_mutual_trigrams(text1, text2):
+    """
+    Counts number of trigrams which occur in both texts.
+
+    :param text1: First text
+    :param text2: Second text
+    :return:
+    """
+
+    words_text1 = text1.strip().split(' ')
+    trigrams_text1 = [
+        words_text1[i] + ' ' + words_text1[i + 1] + ' ' + words_text1[i + 2] for i in range(len(words_text1) - 2)
+    ]
+    words_text2 = text2.strip().split(' ')
+    trigrams_text2 = [
+        words_text2[i] + ' ' + words_text2[i + 1] + ' ' + words_text2[i + 2] for i in range(len(words_text2) - 2)
+    ]
+
+    counter = 0
+    for trigram in trigrams_text1:
+        if trigram in trigrams_text2:
             counter += 1
     return counter
 
@@ -259,8 +284,9 @@ def remove_interpunction(text):
     new_text = new_text.replace('? ', ' ')
     new_text = new_text.replace('"', '')
     new_text = new_text.replace('\'', '')
+    new_text = new_text.replace('.', '')
 
-    return new_text
+    return new_text.strip()
 
 
 def get_common_words(word_dict, threshold=0.9):
@@ -335,7 +361,7 @@ def make_bow_dfs(df, word_dict, comment_column='Comment', query_column='Query'):
     df_BOW = pd.DataFrame.from_dict(bag_of_words, orient='index', columns=unique_words)
     df_BOWQ = pd.DataFrame.from_dict(bag_of_words_queries, orient='index', columns=unique_words)
 
-    return {'Comment': df_BOW.copy(), 'Query': df_BOWQ.copy}
+    return {'Comment': df_BOW.copy(), 'Query': df_BOWQ.copy()}
 
 
 def calc_tf(text, words):
@@ -359,16 +385,16 @@ def make_tf_dfs(bow_dfs):
     named Query and contains query TF vectors
     """
     tf = {}
-    for word in bow_dfs['Comment'].columns:
-        curr_sum = sum(bow_dfs['Comment'].loc[word])
-        tf[word] = [c / curr_sum for c in bow_dfs['Comment'].loc[word].values]
+    for pair_id in bow_dfs['Comment'].index:
+        curr_sum = sum(bow_dfs['Comment'].loc[pair_id])
+        tf[pair_id] = [c / curr_sum for c in bow_dfs['Comment'].loc[pair_id].values]
 
     tf_df = pd.DataFrame.from_dict(tf, orient='index', columns=bow_dfs['Comment'].columns)
 
     tfQ = {}
-    for word in bow_dfs['Query'].columns:
-        curr_sum = sum(bow_dfs['Query'].loc[word])
-        tfQ[word] = [c / curr_sum for c in bow_dfs['Query'].loc[word].values]
+    for queryid in bow_dfs['Query'].index:
+        curr_sum = sum(bow_dfs['Query'].loc[queryid])
+        tfQ[queryid] = [c / curr_sum for c in bow_dfs['Query'].loc[queryid].values]
 
     tfQ_df = pd.DataFrame.from_dict(tfQ, orient='index', columns=bow_dfs['Query'].columns)
 
@@ -428,5 +454,41 @@ def cosine_sim(v1, v2):
     return np.dot(v1, v2)/(np.linalg.norm(v1) * np.linalg.norm(v2))
 
 
+def make_base_features(df, inplace=False, comment_column='Comment', query_column='Query'):
+    """
+    Adds base features (text length, query length, common words (w, w/o repetition) to a dataframe
+
+    :param df: Dataframe in which to add features.
+    :param inplace: If True modify existing dataframe. If False, return a new dataframe.
+    :param comment_column: Name of the column in the dataframe containing column text.
+    :param query_column: Name of the column in the dataframe containing query text.
+    :return: Either modifies input dataframe, or returns a new one containing both original columns as well as feature columns
+    """
+
+    if not inplace:
+        temp_df = df.copy()
+        temp_df['WordCount' + comment_column] = temp_df[comment_column].apply(lambda x: len(x.strip().split(' ')))
+        temp_df['WordCount' + query_column] = temp_df[query_column].apply(lambda x: len(x.strip().split(' ')))
+        temp_df['MutualUnique'] = temp_df.apply(
+            lambda x: count_mutual_words(x[query_column], x[comment_column], remove_duplicates=True),
+            axis=1
+        )
+        temp_df['MutualWithRepetition'] = temp_df.apply(
+            lambda x: count_mutual_words(x[query_column], x[comment_column], remove_duplicates=False),
+            axis=1
+        )
+        return temp_df
+    else:
+        df['WordCount' + comment_column] = df[comment_column].apply(lambda x: len(x.strip().split(' ')))
+        df['WordCount' + query_column] = df[query_column].apply(lambda x: len(x.strip().split(' ')))
+        df['MutualUnique'] = df.apply(
+            lambda x: count_mutual_words(x[query_column], x[comment_column], remove_duplicates=True),
+            axis=1
+        )
+        df['MutualWithRepetition'] = df.apply(
+            lambda x: count_mutual_words(x[query_column], x[comment_column], remove_duplicates=False),
+            axis=1
+        )
+    return
 
 
