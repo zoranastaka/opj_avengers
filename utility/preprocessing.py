@@ -74,27 +74,28 @@ def normalize_to_lowercase(df, inplace=False, columns={'Comment', 'Query'}):
     return
 
 
-def stem_croatian(text):
+def stem_croatian(text, ignore_case=False):
     """
     Stems text using Croatian stemmer - http://nlp.ffzg.hr/resources/tools/stemmer-for-croatian/
 
     :param text: Input text which will be tokenized.
+    :param ignore_case: Don't make difference between lower and upper cases
     :return: Text, but all words stemmed using Croatian stemmer.
     """
     new_text = ''
-
     for token in re.findall(r'\w+', text, re.UNICODE):
         if token.lower() in STOP:
-            try:
-                new_text += token.lower() + ' '
-            except TypeError:
-                print(type(token))
-                print(token)
-                raise TypeError
+            new_text += (token if ignore_case else token.lower()) + ' '
             continue
-        new_text += stemmer.korjenuj(
+
+        temp = stemmer.korjenuj(
             stemmer.transformiraj(token.lower(), TRANSFORMATIONS), RULES
-        ) + ' '
+        )
+        if ignore_case:
+            temp = token[0:temp.__len__()]
+
+        new_text += temp + ' '
+
     return new_text
 
 
