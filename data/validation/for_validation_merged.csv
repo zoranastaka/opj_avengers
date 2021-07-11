@@ -15433,7 +15433,3 @@
 18920,PHP,11,markrogoyski_math-php_Vector_2840,linearna regresija,Spoljašnji proizvod dva vektora.,0,0,0,0,0,0,0,0,0,0
 67935,PHP,21,PHPOffice_PHPWord_SettingsTest_1018,povezivanje na sql server,Testiraj funkcije za postavljanje i dohvatanje podrazmevane veličine fonta.,0,0,0,0,0,0,0,0,0,0
 97247,PHP,29,PHPOffice_PHPWord_ProofStateTest_1057,odprema json datoteke pomoću HttpClient POST zahteva,Test daje izuzetak ako je data pogrešna vrednost dokaza za pravopis,0,0,0,0,0,0,0,0,0,0
-,,,,,,,,,,11,24,18,14,9,23
-,,,,,,,,,,99.92858534,99.8441862,99.88313965,99.90910862,99.94156982,99.85067844
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,99.89287801,,
