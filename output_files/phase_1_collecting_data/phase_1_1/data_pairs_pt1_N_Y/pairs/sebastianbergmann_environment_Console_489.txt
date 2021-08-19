@@ -1,0 +1,18 @@
+    /**
+     * Returns the number of columns of the terminal.
+     *
+     * @codeCoverageIgnore
+     */
+
+    public function getNumberOfColumns(): int
+    {
+        if (!$this->isInteractive(defined('STDIN') ? STDIN : self::STDIN)) {
+            return 80;
+        }
+
+        if ($this->isWindows()) {
+            return $this->getNumberOfColumnsWindows();
+        }
+
+        return $this->getNumberOfColumnsInteractive();
+    }

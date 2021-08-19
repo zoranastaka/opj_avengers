@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider acceptsSucceedsProvider
+     */
+
+    public function testAcceptsSucceeds($expected, $actual): void
+    {
+        $this->assertTrue(
+            $this->comparator->accepts($expected, $actual)
+        );
+    }

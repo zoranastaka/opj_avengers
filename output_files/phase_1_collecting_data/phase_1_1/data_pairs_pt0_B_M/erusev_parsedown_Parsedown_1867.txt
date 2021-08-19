@@ -1,0 +1,18 @@
+    #
+    # ~
+    #
+
+    protected function paragraph($Line)
+    {
+        return array(
+            'type' => 'Paragraph',
+            'element' => array(
+                'name' => 'p',
+                'handler' => array(
+                    'function' => 'lineElements',
+                    'argument' => $Line['text'],
+                    'destination' => 'elements',
+                ),
+            ),
+        );
+    }

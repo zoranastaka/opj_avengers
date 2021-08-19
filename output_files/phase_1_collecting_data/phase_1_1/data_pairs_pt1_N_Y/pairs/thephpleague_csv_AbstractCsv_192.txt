@@ -1,0 +1,8 @@
+    /**
+     * Returns the current field enclosure.
+     */
+
+    public function getEnclosure(): string
+    {
+        return $this->enclosure;
+    }

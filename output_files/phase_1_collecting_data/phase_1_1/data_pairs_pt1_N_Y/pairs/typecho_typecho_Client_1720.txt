@@ -1,0 +1,12 @@
+    /**
+     * 获得返回值
+     *
+     * @access public
+     * @return void
+     */
+
+    public function __getResponse()
+    {
+        // methodResponses can only have one param - return that
+        return $this->message->params[0];
+    }

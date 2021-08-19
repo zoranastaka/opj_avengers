@@ -1,0 +1,14 @@
+/**
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+
+final class Valid extends AbstractRule
+{
+    /**
+     * {@inheritDoc}
+     */
+    public function validate($input): bool
+    {
+        return true;
+    }
+}

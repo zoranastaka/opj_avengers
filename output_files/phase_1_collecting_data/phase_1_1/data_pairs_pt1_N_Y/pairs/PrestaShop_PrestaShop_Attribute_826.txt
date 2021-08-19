@@ -1,0 +1,21 @@
+    /**
+     * Return true if the Attribute is a color.
+     *
+     * @return bool Color is the attribute type
+     */
+
+    public function isColorAttribute()
+    {
+        if (!Db::getInstance()->getRow('
+			SELECT `group_type`
+			FROM `' . _DB_PREFIX_ . 'attribute_group`
+			WHERE `id_attribute_group` = (
+				SELECT `id_attribute_group`
+				FROM `' . _DB_PREFIX_ . 'attribute`
+				WHERE `id_attribute` = ' . (int) $this->id . ')
+			AND group_type = \'color\'')) {
+            return false;
+        }
+
+        return Db::getInstance()->numRows();
+    }

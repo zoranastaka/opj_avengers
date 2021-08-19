@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function keys()
+    {
+        return array_keys($this->flashes['display']);
+    }

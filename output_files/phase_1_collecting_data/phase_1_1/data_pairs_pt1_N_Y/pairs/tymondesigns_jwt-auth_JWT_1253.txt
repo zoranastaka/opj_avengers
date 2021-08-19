@@ -1,0 +1,12 @@
+    /**
+     * Get the raw Payload instance.
+     *
+     * @return \Tymon\JWTAuth\Payload
+     */
+
+    public function getPayload()
+    {
+        $this->requireToken();
+
+        return $this->manager->decode($this->token);
+    }

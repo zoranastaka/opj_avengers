@@ -1,0 +1,14 @@
+    /**
+     * Add one dimension for intercept calculation.
+     */
+
+    private function getSamplesMatrix(): Matrix
+    {
+        $samples = [];
+        foreach ($this->samples as $sample) {
+            array_unshift($sample, 1);
+            $samples[] = $sample;
+        }
+
+        return new Matrix($samples);
+    }

@@ -1,0 +1,9 @@
+    /**
+     * @param $node
+     * @return int
+     */
+
+    private function getElementCategory($node) {
+        if (!is_object($node)) {
+            debug_print_backtrace();
+        }

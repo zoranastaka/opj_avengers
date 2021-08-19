@@ -1,0 +1,18 @@
+    /**
+     * Determines if the instance is less (before) or equal to another
+     *
+     * @example
+     * ```
+     * Carbon::parse('2018-07-25 12:45:16')->lte('2018-07-25 12:45:15'); // false
+     * Carbon::parse('2018-07-25 12:45:16')->lte('2018-07-25 12:45:16'); // true
+     * Carbon::parse('2018-07-25 12:45:16')->lte('2018-07-25 12:45:17'); // true
+     * ```
+     *
+     * @param \Carbon\Carbon|\DateTimeInterface|mixed $date
+     *
+     * @see lessThanOrEqualTo()
+     *
+     * @return bool
+     */
+
+    public function lte($date): bool;

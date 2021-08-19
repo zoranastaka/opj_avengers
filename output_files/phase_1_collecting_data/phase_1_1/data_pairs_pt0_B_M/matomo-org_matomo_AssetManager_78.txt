@@ -1,0 +1,8 @@
+    /**
+     * @param UIAssetFetcher $minimalStylesheetFetcher
+     */
+
+    public function setMinimalStylesheetFetcher($minimalStylesheetFetcher)
+    {
+        $this->minimalStylesheetFetcher = $minimalStylesheetFetcher;
+    }

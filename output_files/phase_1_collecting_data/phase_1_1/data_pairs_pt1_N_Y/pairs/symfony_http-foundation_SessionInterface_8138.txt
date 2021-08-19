@@ -1,0 +1,7 @@
+    /**
+     * Gets a bag instance by name.
+     *
+     * @return SessionBagInterface
+     */
+
+    public function getBag(string $name);

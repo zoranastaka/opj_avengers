@@ -1,0 +1,53 @@
+    /**
+     * Sets a logger for each error level.
+     *
+     * @param array $loggers Error levels to [LoggerInterface|null, LogLevel::*] map
+     *
+     * @return array The previous map
+     *
+     * @throws \InvalidArgumentException
+     */
+
+    public function setLoggers(array $loggers)
+    {
+        $prevLogged = $this->loggedErrors;
+        $prev = $this->loggers;
+        $flush = [];
+
+        foreach ($loggers as $type => $log) {
+            if (!isset($prev[$type])) {
+                throw new \InvalidArgumentException('Unknown error type: '.$type);
+            }
+            if (!\is_array($log)) {
+                $log = [$log];
+            } elseif (!\array_key_exists(0, $log)) {
+                throw new \InvalidArgumentException('No logger provided.');
+            }
+            if (null === $log[0]) {
+                $this->loggedErrors &= ~$type;
+            } elseif ($log[0] instanceof LoggerInterface) {
+                $this->loggedErrors |= $type;
+            } else {
+                throw new \InvalidArgumentException('Invalid logger provided.');
+            }
+            $this->loggers[$type] = $log + $prev[$type];
+
+            if ($this->bootstrappingLogger && $prev[$type][0] === $this->bootstrappingLogger) {
+                $flush[$type] = $type;
+            }
+        }
+        $this->reRegister($prevLogged | $this->thrownErrors);
+
+        if ($flush) {
+            foreach ($this->bootstrappingLogger->cleanLogs() as $log) {
+                $type = $log[2]['exception'] instanceof \ErrorException ? $log[2]['exception']->getSeverity() : \E_ERROR;
+                if (!isset($flush[$type])) {
+                    $this->bootstrappingLogger->log($log[0], $log[1], $log[2]);
+                } elseif ($this->loggers[$type][0]) {
+                    $this->loggers[$type][0]->log($this->loggers[$type][1], $log[1], $log[2]);
+                }
+            }
+        }
+
+        return $prev;
+    }

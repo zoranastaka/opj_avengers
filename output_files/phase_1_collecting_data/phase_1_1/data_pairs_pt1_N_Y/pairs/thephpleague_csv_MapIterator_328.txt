@@ -1,0 +1,9 @@
+    /**
+     * New instance.
+     */
+
+    public function __construct(Traversable $iterator, callable $callable)
+    {
+        parent::__construct($iterator);
+        $this->callable = $callable;
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @test         divide of real numbers returns the expected complex number
+     * @dataProvider dataProviderForDivideReal
+     */
+
+    public function testDivideReal($complex, $real, $expected)
+    {
+        // Given
+        $c = new Complex($complex['r'], $complex['i']);
+
+        // When
+        $result = $c->divide($real);
+
+        // Then
+        $this->assertEquals($expected['r'], $result->r);
+        $this->assertEquals($expected['i'], $result->i);
+    }

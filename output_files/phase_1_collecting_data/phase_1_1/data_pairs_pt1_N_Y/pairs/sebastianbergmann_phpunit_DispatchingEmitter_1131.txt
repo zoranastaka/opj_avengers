@@ -1,0 +1,14 @@
+    /**
+     * @psalm-param class-string $className
+     */
+
+    public function testPartialMockObjectCreated(string $className, string ...$methodNames): void
+    {
+        $this->dispatcher->dispatch(
+            new TestDouble\PartialMockObjectCreated(
+                $this->telemetryInfo(),
+                $className,
+                ...$methodNames
+            )
+        );
+    }

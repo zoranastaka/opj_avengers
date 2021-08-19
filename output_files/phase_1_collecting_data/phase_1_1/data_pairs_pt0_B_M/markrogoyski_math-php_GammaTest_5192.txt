@@ -1,0 +1,19 @@
+    /**
+     * @test         mean returns the expected average
+     * @dataProvider dataProviderForMean
+     * @param        float $k
+     * @param        float $θ
+     * @param        float $μ
+     */
+
+    public function testMean(float $k, float $θ, float $μ)
+    {
+        // Given
+        $gamma = new Gamma($k, $θ);
+
+        // When
+        $mean = $gamma->mean();
+
+        // Then
+        $this->assertEqualsWithDelta($μ, $mean, 0.0001);
+    }

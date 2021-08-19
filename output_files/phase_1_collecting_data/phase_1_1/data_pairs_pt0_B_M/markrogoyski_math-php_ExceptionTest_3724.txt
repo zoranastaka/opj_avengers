@@ -1,0 +1,12 @@
+    /**
+     * @test IncorrectTypeException
+     */
+
+    public function testIncorrectTypeException()
+    {
+        // Given
+        $e = new Exception\IncorrectTypeException('message');
+
+        // Then
+        $this->assertInstanceOf(Exception\MathException::class, $e);
+    }

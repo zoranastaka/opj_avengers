@@ -1,0 +1,21 @@
+    /**
+     * Register a custom macro.
+     *
+     * @example
+     * ```
+     * CarbonInterval::macro('twice', function () {
+     *   return $this->times(2);
+     * });
+     * echo CarbonInterval::hours(2)->twice();
+     * ```
+     *
+     * @param string          $name
+     * @param object|callable $macro
+     *
+     * @return void
+     */
+
+    public static function macro($name, $macro)
+    {
+        static::$macros[$name] = $macro;
+    }

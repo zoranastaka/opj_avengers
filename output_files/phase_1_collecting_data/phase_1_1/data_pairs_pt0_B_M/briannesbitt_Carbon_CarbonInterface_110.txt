@@ -1,0 +1,10 @@
+    /**
+     * Returns true if the given locale is internally supported and has words for 1-day diff (just now, yesterday, tomorrow).
+     * Support is considered enabled if the 3 words are translated in the given locale.
+     *
+     * @param string $locale locale ex. en
+     *
+     * @return bool
+     */
+
+    public static function localeHasDiffOneDayWords($locale);

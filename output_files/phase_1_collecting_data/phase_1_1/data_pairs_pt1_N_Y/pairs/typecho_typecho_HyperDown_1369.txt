@@ -1,0 +1,43 @@
+    /**
+     * parseCode
+     *
+     * @param array $lines
+     * @param array $parts
+     * @param int $start
+     * @return string
+     */
+
+    private function parseCode(array $lines, array $parts, $start)
+    {
+        list($blank, $lang) = $parts;
+        $lang = trim($lang);
+        $count = strlen($blank);
+
+        if (!preg_match("/^[_a-z0-9-\+\#\:\.]+$/i", $lang)) {
+            $lang = NULL;
+        } else {
+            $parts = explode(':', $lang);
+            if (count($parts) > 1) {
+                list($lang, $rel) = $parts;
+                $lang = trim($lang);
+                $rel = trim($rel);
+            }
+        }
+
+        $isEmpty = true;
+
+        $lines = array_map(function ($line) use ($count, &$isEmpty) {
+            $line = preg_replace("/^[ ]{{$count}}/", '', $line);
+            if ($isEmpty && !preg_match("/^\s*$/", $line)) {
+                $isEmpty = false;
+            }
+
+            return htmlspecialchars($line);
+        }, array_slice($lines, 1, -1));
+        $str = implode("\n", $this->markLines($lines, $start + 1));
+
+        return $isEmpty ? '' :
+            '<pre><code' . (!empty($lang) ? " class=\"{$lang}\"" : '')
+            . (!empty($rel) ? " rel=\"{$rel}\"" : '') . '>'
+            . $str . '</code></pre>';
+    }

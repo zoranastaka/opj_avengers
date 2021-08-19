@@ -1,0 +1,9 @@
+	/**
+	 * Get the keys of all stored by an app for the user
+	 *
+	 * @param string $userId the userId of the user that we want to store the value under
+	 * @param string $appName the appName that we stored the value under
+	 * @return string[]
+	 */
+
+	public function getUserKeys($userId, $appName) {

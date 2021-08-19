@@ -1,0 +1,12 @@
+    /**
+     * Test the initialization of the static counter (!== 0)
+     */
+
+    public function testCounterNotNull()
+    {
+        $class = static::getTestedClass();
+        $rand = new $class();
+        $reflection_class = new \ReflectionClass($class);
+        $static = $reflection_class->getStaticProperties();
+        $this->assertTrue($static['counter'] !== 0);
+    }

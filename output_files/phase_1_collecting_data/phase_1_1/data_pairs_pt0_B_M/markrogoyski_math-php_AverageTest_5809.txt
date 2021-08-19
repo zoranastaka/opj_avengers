@@ -1,0 +1,16 @@
+    /**
+     * @test         geometricMean
+     * @dataProvider dataProviderForGeometricMean
+     * @param        array $numbers
+     * @param        float $expectedMean
+     * @throws       \Exception
+     */
+
+    public function testGeometricMean(array $numbers, float $expectedMean)
+    {
+        // When
+        $mean = Average::geometricMean($numbers);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedMean, $mean, 0.01);
+    }

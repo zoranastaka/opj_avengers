@@ -1,0 +1,13 @@
+    /**
+     * Data for a car model, with labels
+     * ['mpg' => 21, 'cyl' => 6, 'disp' => 160, ... ]
+     *
+     * @param string $model
+     *
+     * @return number[]
+     */
+
+    public function getModelData(string $model): array
+    {
+        return \array_combine(self::LABELS, self::DATA[$model]);
+    }

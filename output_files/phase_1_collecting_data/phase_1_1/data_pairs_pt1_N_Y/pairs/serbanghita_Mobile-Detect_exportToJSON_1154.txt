@@ -1,0 +1,17 @@
+/**
+ * Mobile Detect Library
+ * - export -
+ * =====================
+ *
+ * Use the resulting JSON export file in other languages
+ * other than PHP. Always check for 'version' key because
+ * new major versions can modify the structure of the JSON file.
+ *
+ * The result of running this script is the export.json file.
+ *
+ * @license     Code and contributions have 'MIT License'
+ *              More details: https://github.com/serbanghita/Mobile-Detect/blob/master/LICENSE.txt
+ *
+ */
+
+// Included nicejson function to beautify the result JSON file.

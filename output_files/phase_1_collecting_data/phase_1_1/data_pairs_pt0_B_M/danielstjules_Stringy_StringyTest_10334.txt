@@ -1,0 +1,5 @@
+    /**
+     * @dataProvider containsAllProvider()
+     */
+
+    public function testContainsAll($expected, $haystack, $needles,

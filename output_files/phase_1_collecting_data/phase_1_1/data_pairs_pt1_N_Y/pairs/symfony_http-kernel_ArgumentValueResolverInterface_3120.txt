@@ -1,0 +1,7 @@
+    /**
+     * Returns the possible value(s).
+     *
+     * @return iterable
+     */
+
+    public function resolve(Request $request, ArgumentMetadata $argument);

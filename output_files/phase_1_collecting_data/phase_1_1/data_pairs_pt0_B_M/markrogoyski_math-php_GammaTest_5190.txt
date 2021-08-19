@@ -1,0 +1,20 @@
+    /**
+     * @test         cdf
+     * @dataProvider dataProviderForCdf
+     * @param        float $x   x ∈ (0,1)
+     * @param        float $k   shape parameter α > 0
+     * @param        float $θ   scale parameter θ > 0
+     * @param        float $expectedCdf
+     */
+
+    public function testCdf(float $x, float $k, float $θ, float $expectedCdf)
+    {
+        // Given
+        $gamma = new Gamma($k, $θ);
+
+        // When
+        $cdf = $gamma->cdf($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedCdf, $cdf, 0.000001);
+    }

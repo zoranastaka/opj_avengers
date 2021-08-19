@@ -1,0 +1,16 @@
+    /**
+     * Integer division - Returns the integer quotient from integer division
+     *
+     * @param int|string|ArbitraryInteger $divisor
+     *
+     * @return ArbitraryInteger
+     *
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function intdiv($divisor): ArbitraryInteger
+    {
+        [$int, $mod] = $this->fullIntdiv($divisor);
+        return $int;
+    }

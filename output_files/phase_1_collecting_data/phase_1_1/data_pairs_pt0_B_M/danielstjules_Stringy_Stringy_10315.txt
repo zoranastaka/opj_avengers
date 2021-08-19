@@ -1,0 +1,18 @@
+    /**
+     * Alias for mb_regex_encoding which default to a noop if the mbstring
+     * module is not installed.
+     */
+
+    protected function regexEncoding()
+    {
+        static $functionExists;
+
+        if ($functionExists === null) {
+            $functionExists = function_exists('\mb_regex_encoding');
+        }
+
+        if ($functionExists) {
+            $args = func_get_args();
+            return call_user_func_array('\mb_regex_encoding', $args);
+        }
+    }

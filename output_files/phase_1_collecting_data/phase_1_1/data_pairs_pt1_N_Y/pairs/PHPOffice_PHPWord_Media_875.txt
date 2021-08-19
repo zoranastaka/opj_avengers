@@ -1,0 +1,16 @@
+    /**
+     * Add new Section Link Element
+     *
+     * @deprecated 0.10.0
+     *
+     * @param string $linkSrc
+     *
+     * @return int
+     *
+     * @codeCoverageIgnore
+     */
+
+    public static function addSectionLinkElement($linkSrc)
+    {
+        return self::addElement('section', 'link', $linkSrc);
+    }

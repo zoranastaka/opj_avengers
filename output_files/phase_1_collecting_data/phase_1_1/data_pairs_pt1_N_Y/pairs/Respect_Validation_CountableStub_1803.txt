@@ -1,0 +1,21 @@
+/**
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ */
+
+final class CountableStub implements Countable
+{
+    /**
+     * @var int
+     */
+    private $value;
+
+    public function __construct(int $value)
+    {
+        $this->value = $value;
+    }
+
+    public function count(): int
+    {
+        return $this->value;
+    }
+}

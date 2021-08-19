@@ -1,0 +1,10 @@
+    /**
+     * @throws Exception
+     */
+
+    public function disconnectAll()
+    {
+        foreach (array_keys($this->_mysqli) as $k) {
+            $this->disconnect($k);
+        }
+    }

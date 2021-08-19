@@ -1,0 +1,16 @@
+    /**
+     * Find slug by Parent Tab ID.
+     *
+     * @param int $idParentTab Tab ID
+     *
+     * @return string Full module slug
+     */
+
+    public static function findSlugByIdParentTab($idParentTab)
+    {
+        return Db::getInstance()->executeS('
+            SELECT `class_name`
+            FROM `' . _DB_PREFIX_ . 'tab`
+            WHERE `id_parent` = "' . (int) $idParentTab . '"
+        ');
+    }

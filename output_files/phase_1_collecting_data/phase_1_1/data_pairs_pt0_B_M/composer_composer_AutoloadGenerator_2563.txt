@@ -1,0 +1,23 @@
+    /**
+     * @param RootPackageInterface $rootPackage
+     */
+
+    public function buildPackageMap(InstallationManager $installationManager, PackageInterface $rootPackage, array $packages)
+    {
+        // build package => install path map
+        $packageMap = array(array($rootPackage, ''));
+
+        foreach ($packages as $package) {
+            if ($package instanceof AliasPackage) {
+                continue;
+            }
+            $this->validatePackage($package);
+
+            $packageMap[] = array(
+                $package,
+                $installationManager->getInstallPath($package),
+            );
+        }
+
+        return $packageMap;
+    }

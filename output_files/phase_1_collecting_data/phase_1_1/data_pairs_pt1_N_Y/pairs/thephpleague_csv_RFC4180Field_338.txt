@@ -1,0 +1,11 @@
+    /**
+     * Is Valid White space replaced sequence.
+     *
+     * @return bool
+     */
+
+    protected function isValidSequence(array $params)
+    {
+        return isset($params['whitespace_replace'])
+            && strlen($params['whitespace_replace']) == strcspn($params['whitespace_replace'], self::$force_enclosure);
+    }

@@ -1,0 +1,12 @@
+                /*
+                 * Sum of squared errors or least squared errors cost function:
+                 *		J(x) = ∑ (y - h(x))^2
+                 *
+                 * If regularization term is given, then it will be added to the cost:
+                 *		for L2 : J(x) = J(x) +  λ/m . w
+                 *
+                 * The gradient of the cost function:
+                 *		∇J(x) = -(h(x) - y) . h(x) . (1 - h(x))
+                 */
+
+                return function ($weights, $sample, $y) use ($penalty): array {

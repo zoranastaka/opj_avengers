@@ -1,0 +1,14 @@
+    /**
+     * Get an AutoCompleter service instance.
+     *
+     * @return AutoCompleter
+     */
+
+    public function getAutoCompleter()
+    {
+        if (!isset($this->autoCompleter)) {
+            $this->autoCompleter = new AutoCompleter();
+        }
+
+        return $this->autoCompleter;
+    }

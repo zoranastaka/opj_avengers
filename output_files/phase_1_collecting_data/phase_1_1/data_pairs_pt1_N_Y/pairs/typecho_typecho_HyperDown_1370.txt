@@ -1,0 +1,18 @@
+    /**
+     * parsePre
+     *
+     * @param array $lines
+     * @param mixed $value
+     * @param int $start
+     * @return string
+     */
+
+    private function parsePre(array $lines, $value, $start)
+    {
+        foreach ($lines as &$line) {
+            $line = htmlspecialchars(substr($line, 4));
+        }
+
+        $str = implode("\n", $this->markLines($lines, $start));
+        return preg_match("/^\s*$/", $str) ? '' : '<pre><code>' . $str . '</code></pre>';
+    }

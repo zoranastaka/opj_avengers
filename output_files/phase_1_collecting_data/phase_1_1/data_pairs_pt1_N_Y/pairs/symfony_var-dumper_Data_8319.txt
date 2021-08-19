@@ -1,0 +1,20 @@
+    /**
+     * Dumps data with a DumperInterface dumper.
+     */
+
+    public function dump(DumperInterface $dumper)
+    {
+        $refs = [0];
+        $cursor = new Cursor();
+
+        if ($cursor->attr = $this->context[SourceContextProvider::class] ?? []) {
+            $cursor->attr['if_links'] = true;
+            $cursor->hashType = -1;
+            $dumper->dumpScalar($cursor, 'default', '^');
+            $cursor->attr = ['if_links' => true];
+            $dumper->dumpScalar($cursor, 'default', ' ');
+            $cursor->hashType = 0;
+        }
+
+        $this->dumpItem($dumper, $cursor, $refs, $this->data[$this->position][$this->key]);
+    }

@@ -1,0 +1,11 @@
+    /**
+     * @param  SuggestedPackagesReporter $suggestedPackagesReporter
+     * @return Installer
+     */
+
+    public function setSuggestedPackagesReporter(SuggestedPackagesReporter $suggestedPackagesReporter)
+    {
+        $this->suggestedPackagesReporter = $suggestedPackagesReporter;
+
+        return $this;
+    }

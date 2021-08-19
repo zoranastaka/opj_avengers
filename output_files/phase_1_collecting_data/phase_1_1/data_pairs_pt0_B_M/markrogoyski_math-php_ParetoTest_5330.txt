@@ -1,0 +1,20 @@
+    /**
+     * @test         inverse of CDF is x
+     * @dataProvider dataProviderForInverseOfCdf
+     * @param        float $x
+     * @param        float $a
+     * @param        float $b
+     */
+
+    public function testInverseOfCdf(float $x, float $a, float $b)
+    {
+        // Given
+        $pareto = new Pareto($a, $b);
+        $cdf     = $pareto->cdf($x);
+
+        // When
+        $inverse_of_cdf = $pareto->inverse($cdf);
+
+        // Then
+        $this->assertEqualsWithDelta($x, $inverse_of_cdf, 0.000001);
+    }

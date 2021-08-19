@@ -1,0 +1,16 @@
+    /**
+     * @return $this
+     */
+
+    public function setFlag(int $flag, bool $on): self
+    {
+        if ($on && !$this->hasFlag($flag)) {
+            $this->flags += $flag;
+        }
+
+        if (!$on && $this->hasFlag($flag)) {
+            $this->flags -= $flag;
+        }
+
+        return $this;
+    }

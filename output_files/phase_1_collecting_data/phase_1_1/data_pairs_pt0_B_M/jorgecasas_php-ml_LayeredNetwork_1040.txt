@@ -1,0 +1,8 @@
+    /**
+     * @return Layer[]
+     */
+
+    public function getLayers(): array
+    {
+        return $this->layers;
+    }

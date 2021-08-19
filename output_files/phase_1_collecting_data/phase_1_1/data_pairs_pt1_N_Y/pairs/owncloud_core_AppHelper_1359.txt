@@ -1,0 +1,6 @@
+/**
+ * Class AppHelper
+ * @deprecated 8.1.0
+ */
+
+class AppHelper implements \OCP\IHelper {

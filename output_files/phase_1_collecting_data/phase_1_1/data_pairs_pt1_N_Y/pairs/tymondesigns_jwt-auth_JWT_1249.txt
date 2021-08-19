@@ -1,0 +1,12 @@
+    /**
+     * Alias to generate a token for a given user.
+     *
+     * @param  \Tymon\JWTAuth\Contracts\JWTSubject  $user
+     *
+     * @return string
+     */
+
+    public function fromUser(JWTSubject $user)
+    {
+        return $this->fromSubject($user);
+    }

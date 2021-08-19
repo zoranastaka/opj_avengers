@@ -1,0 +1,11 @@
+    /**
+     * Magic getter method
+     *
+     * @param  int|string $offset Medium name value
+     * @return mixed         Medium value
+     */
+
+    public function __get($offset)
+    {
+        return $this->offsetGet($offset);
+    }

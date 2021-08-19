@@ -1,0 +1,3 @@
+	//vraća polje svih  članova koji su podnijeli zahtjev (i koje je tvrtka odbila)
+
+	function get_rejected_students_in_offer($id_offer){

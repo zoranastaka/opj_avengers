@@ -1,0 +1,10 @@
+    /** @test */
+
+    public function it_cant_get_a_gift_with_an_invalid_id()
+    {
+        $user = $this->signin();
+
+        $response = $this->json('GET', '/api/gifts/0');
+
+        $this->expectNotFound($response);
+    }

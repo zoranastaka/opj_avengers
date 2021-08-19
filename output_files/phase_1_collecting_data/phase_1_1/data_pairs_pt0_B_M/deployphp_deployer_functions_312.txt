@@ -1,0 +1,22 @@
+/**
+ * @return Localhost|Localhost[]|ObjectProxy
+ */
+
+function localhost(string ...$hostnames)
+{
+    $deployer = Deployer::get();
+    $hostnames = Range::expand($hostnames);
+
+    if (count($hostnames) <= 1) {
+        $host = count($hostnames) === 1 ? new Localhost($hostnames[0]) : new Localhost();
+        $deployer->hosts->set($host->getAlias(), $host);
+        return $host;
+    } else {
+        $hosts = array_map(function ($hostname) use ($deployer): Localhost {
+            $host = new Localhost($hostname);
+            $deployer->hosts->set($host->getAlias(), $host);
+            return $host;
+        }, $hostnames);
+        return new ObjectProxy($hosts);
+    }
+}

@@ -1,0 +1,20 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testCallingRedisCommandReturnsErrorResponseOnRedisError(): void
+    {
+        $expectedResponse = new Response\Error('ERR Operation against a key holding the wrong kind of value');
+
+        $connection = $this->getMockBuilder('Predis\Connection\ConnectionInterface')->getMock();
+        $connection
+            ->expects($this->once())
+            ->method('executeCommand')
+            ->with($this->isRedisCommand('PING'))
+            ->willReturn($expectedResponse);
+
+        $client = new Client($connection, array('exceptions' => false));
+        $response = $client->ping();
+
+        $this->assertSame($response, $expectedResponse);
+    }

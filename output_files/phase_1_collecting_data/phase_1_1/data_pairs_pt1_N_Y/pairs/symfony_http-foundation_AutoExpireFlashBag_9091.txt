@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getStorageKey()
+    {
+        return $this->storageKey;
+    }

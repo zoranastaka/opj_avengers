@@ -1,0 +1,12 @@
+    /** @test */
+
+    public function it_throws_an_exception_when_syncing_a_role_from_another_guard()
+    {
+        $this->expectException(RoleDoesNotExist::class);
+
+        $this->testUser->syncRoles('testRole', 'testAdminRole');
+
+        $this->expectException(GuardDoesNotMatch::class);
+
+        $this->testUser->syncRoles('testRole', $this->testAdminRole);
+    }

@@ -1,0 +1,11 @@
+    /**
+     * Creates the token map.
+     *
+     * The token map maps the PHP internal token identifiers
+     * to the identifiers used by the Parser. Additionally it
+     * maps T_OPEN_TAG_WITH_ECHO to T_ECHO and T_CLOSE_TAG to ';'.
+     *
+     * @return array The token map
+     */
+
+    protected function createTokenMap() : array {

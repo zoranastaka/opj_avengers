@@ -1,0 +1,16 @@
+    /**
+     * Get the most recent Exception.
+     *
+     * @throws \InvalidArgumentException If no Exception has been caught
+     *
+     * @return \Exception|null
+     */
+
+    public function getLastException()
+    {
+        if (!isset($this->lastException)) {
+            throw new \InvalidArgumentException('No most-recent exception');
+        }
+
+        return $this->lastException;
+    }

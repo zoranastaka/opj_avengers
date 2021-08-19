@@ -1,0 +1,17 @@
+   /**
+    * Returns an array of elements which name corresponds to element
+    *
+    * @param    string  Elements name to find
+    * @return   array
+    */
+
+    public function getElementsByName($name)
+    {
+        $found = array();
+        foreach ($this->getRecursiveIterator() as $element) {
+            if ($element->getName() == $name) {
+                $found[] = $element;
+            }
+        }
+        return $found;
+    }

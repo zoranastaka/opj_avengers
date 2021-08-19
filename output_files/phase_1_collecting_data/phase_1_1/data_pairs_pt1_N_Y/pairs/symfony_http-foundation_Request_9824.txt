@@ -1,0 +1,12 @@
+    /**
+     * Checks if the request method is of specified type.
+     *
+     * @param string $method Uppercase request method (GET, POST etc)
+     *
+     * @return bool
+     */
+
+    public function isMethod(string $method)
+    {
+        return $this->getMethod() === strtoupper($method);
+    }

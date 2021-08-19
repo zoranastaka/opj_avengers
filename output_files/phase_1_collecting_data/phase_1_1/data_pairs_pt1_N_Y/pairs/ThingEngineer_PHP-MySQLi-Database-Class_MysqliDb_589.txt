@@ -1,0 +1,25 @@
+    /**
+     * Method to check if needed table is created
+     *
+     * @param array $tables Table name or an Array of table names to check
+     *
+     * @return bool True if table exists
+     * @throws Exception
+     */
+
+    public function tableExists($tables)
+    {
+        $tables = !is_array($tables) ? Array($tables) : $tables;
+        $count = count($tables);
+        if ($count == 0) {
+            return false;
+        }
+
+        foreach ($tables as $i => $value)
+            $tables[$i] = self::$prefix . $value;
+        $db = isset($this->connectionsSettings[$this->defConnectionName]) ? $this->connectionsSettings[$this->defConnectionName]['db'] : null;
+        $this->where('table_schema', $db);
+        $this->where('table_name', $tables, 'in');
+        $this->get('information_schema.tables', $count);
+        return $this->count == $count;
+    }

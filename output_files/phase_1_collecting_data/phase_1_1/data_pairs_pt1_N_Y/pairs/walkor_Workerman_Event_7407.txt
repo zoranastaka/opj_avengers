@@ -1,0 +1,10 @@
+    /**
+     * Destroy loop.
+     *
+     * @return void
+     */
+
+    public function destroy()
+    {
+        $this->_eventBase->exit();
+    }

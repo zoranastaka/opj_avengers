@@ -1,0 +1,14 @@
+    /**
+     * Returns the requested URI (path and query string).
+     *
+     * @return string The raw URI (i.e. not URI decoded)
+     */
+
+    public function getRequestUri()
+    {
+        if (null === $this->requestUri) {
+            $this->requestUri = $this->prepareRequestUri();
+        }
+
+        return $this->requestUri;
+    }

@@ -1,0 +1,11 @@
+    /**
+     * @covers Whoops\Exception\Frame::getArgs
+     */
+
+    public function testGetArgs()
+    {
+        $data  = $this->getFrameData();
+        $frame = $this->getFrameInstance($data);
+
+        $this->assertEquals($frame->getArgs(), $data['args']);
+    }

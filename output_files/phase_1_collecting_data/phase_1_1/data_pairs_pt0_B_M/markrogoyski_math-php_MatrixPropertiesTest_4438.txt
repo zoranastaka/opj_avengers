@@ -1,0 +1,15 @@
+    /**
+     * @test         isUpperTriangular returns false for a non upper triangular matrix
+     * @dataProvider dataProviderForNotTriangularMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsNotUpperTriangular(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isUpperTriangular());
+    }

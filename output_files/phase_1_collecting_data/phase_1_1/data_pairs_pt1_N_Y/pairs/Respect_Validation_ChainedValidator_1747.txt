@@ -1,0 +1,5 @@
+    /**
+     * @param mixed $compareTo
+     */
+
+    public function equals($compareTo): ChainedValidator;

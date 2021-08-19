@@ -1,0 +1,12 @@
+  /**
+   * Record the beginning of a new startup phase.
+   *
+   * For phases which occur before @{class:PhabricatorStartup} loads, save the
+   * time and record it with @{method:recordStartupPhase} after the class is
+   * available.
+   *
+   * @param string Phase name.
+   * @task phases
+   */
+
+  public static function beginStartupPhase($phase) {

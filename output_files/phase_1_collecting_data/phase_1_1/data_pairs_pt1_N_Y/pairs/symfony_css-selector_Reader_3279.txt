@@ -1,0 +1,14 @@
+    /**
+     * @return array|false
+     */
+
+    public function findPattern(string $pattern)
+    {
+        $source = substr($this->source, $this->position);
+
+        if (preg_match($pattern, $source, $matches)) {
+            return $matches;
+        }
+
+        return false;
+    }

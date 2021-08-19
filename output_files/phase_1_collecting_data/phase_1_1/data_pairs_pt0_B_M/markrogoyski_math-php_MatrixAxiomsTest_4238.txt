@@ -1,0 +1,34 @@
+    /**
+     * @test Axiom: r(AB) = (rA)B = A(rB)
+     * Order of scalar multiplication does not matter.
+     *
+     * @dataProvider dataProviderForScalarMultiplicationOrder
+     * @param        array $A
+     * @param        array $B
+     * @param        int $r
+     * @throws       \Exception
+     */
+
+    public function testScalarMultiplcationOrder(array $A, array $B, int $r)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $B = MatrixFactory::create($B);
+
+        // When r(AB)
+        $AB = $A->multiply($B);
+        $r⟮AB⟯ = $AB->scalarMultiply($r);
+
+        // And (rA)B
+        $rA = $A->scalarMultiply($r);
+        $⟮rA⟯B = $rA->multiply($B);
+
+        // And A(rB)
+        $rB = $B->scalarMultiply($r);
+        $A⟮rB⟯ = $A->multiply($rB);
+
+        // Then
+        $this->assertEquals($r⟮AB⟯->getMatrix(), $⟮rA⟯B->getMatrix());
+        $this->assertEquals($⟮rA⟯B->getMatrix(), $A⟮rB⟯->getMatrix());
+        $this->assertEquals($r⟮AB⟯->getMatrix(), $A⟮rB⟯->getMatrix());
+    }

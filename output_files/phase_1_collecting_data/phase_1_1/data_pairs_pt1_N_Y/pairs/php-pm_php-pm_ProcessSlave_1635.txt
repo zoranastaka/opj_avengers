@@ -1,0 +1,14 @@
+    /**
+     * Connects to ProcessManager, master process.
+     */
+
+    public function run()
+    {
+        $this->loop = Factory::create();
+
+        $this->errorLogger = new BufferingLogger();
+        ErrorHandler::register(new ErrorHandler($this->errorLogger));
+
+        $this->tryConnect();
+        $this->loop->run();
+    }

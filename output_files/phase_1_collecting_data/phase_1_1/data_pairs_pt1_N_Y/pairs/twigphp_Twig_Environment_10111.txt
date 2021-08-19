@@ -1,0 +1,8 @@
+    /**
+     * @internal
+     */
+
+    public function getFunction(string $name): ?TwigFunction
+    {
+        return $this->extensionSet->getFunction($name);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Return the cluster prior probabilities.
+     *
+     * @return float[]
+     */
+
+    public function priors() : array
+    {
+        return array_map('exp', $this->logPriors);
+    }

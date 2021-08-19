@@ -1,0 +1,20 @@
+    /**
+     * @test         cdf
+     * @dataProvider dataProviderForCdf
+     * @param        float $x
+     * @param        float $a
+     * @param        float $b
+     * @param        float $expected_cdf
+     */
+
+    public function testCdf(float $x, float $a, float $b, float $expected_cdf)
+    {
+        // Given
+        $pareto = new Pareto($a, $b);
+
+        // When
+        $cdf = $pareto->cdf($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_cdf, $cdf, 0.00001);
+    }

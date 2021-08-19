@@ -1,0 +1,15 @@
+    /**
+     * Remove an element from the set
+     * Does nothing if the element does not exist in the set.
+     *
+     * @param  mixed $x
+     *
+     * @return Set (this set)
+     */
+
+    public function remove($x): Set
+    {
+        unset($this->A[$this->getKey($x)]);
+
+        return $this;
+    }

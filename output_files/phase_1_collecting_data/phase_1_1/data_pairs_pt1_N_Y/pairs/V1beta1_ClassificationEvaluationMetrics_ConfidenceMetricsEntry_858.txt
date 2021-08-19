@@ -1,0 +1,13 @@
+    /**
+     * Output only. The Recall (True Positive Rate) when only considering the
+     * label that has the highest prediction score and not below the confidence
+     * threshold for each example.
+     *
+     * Generated from protobuf field <code>float recall_at1 = 5;</code>
+     * @return float
+     */
+
+    public function getRecallAt1()
+    {
+        return $this->recall_at1;
+    }

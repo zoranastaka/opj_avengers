@@ -1,0 +1,8 @@
+	/**
+	 * Update the license file
+	 *
+	 * @param string $path
+	 * @param string|bool $gitRoot
+	 */
+
+	public function handleFile($path, $license, $gitRoot) {

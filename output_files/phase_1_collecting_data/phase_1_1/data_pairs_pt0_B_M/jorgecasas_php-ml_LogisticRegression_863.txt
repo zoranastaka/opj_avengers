@@ -1,0 +1,14 @@
+    /**
+     * Executes Conjugate Gradient method to optimize the weights of the LogReg model
+     */
+
+    protected function runConjugateGradient(array $samples, array $targets, Closure $gradientFunc): void
+    {
+        if ($this->optimizer === null) {
+            $this->optimizer = (new ConjugateGradient($this->featureCount))
+                ->setMaxIterations($this->maxIterations);
+        }
+
+        $this->weights = $this->optimizer->runOptimization($samples, $targets, $gradientFunc);
+        $this->costValues = $this->optimizer->getCostValues();
+    }

@@ -1,0 +1,18 @@
+    /**
+     * @test Axiom: (A ∩ B) ⊆ A
+     * A intersect B is a subset of A
+     *
+     * @dataProvider dataProviderForTwoSets
+     * @param        Set $A
+     * @param        Set $B
+     */
+
+    public function testAIntersectionBIsSubsetOfA(Set $A, Set $B)
+    {
+        // Given
+        $A∩B = $A->intersect($B);
+
+        // Then
+        $this->assertTrue($A∩B->isSubset($A));
+        $this->assertTrue($A∩B->isSubset($B));
+    }

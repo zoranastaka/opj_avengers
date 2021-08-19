@@ -1,0 +1,10 @@
+    /**
+     * Get the Manager instance.
+     *
+     * @return \Tymon\JWTAuth\Manager
+     */
+
+    public function manager()
+    {
+        return $this->manager;
+    }

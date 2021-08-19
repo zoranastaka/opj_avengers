@@ -1,0 +1,10 @@
+    /**
+     * Flush the cache.
+     */
+
+    public function forgetCachedPermissions()
+    {
+        $this->permissions = null;
+
+        return $this->cache->forget(self::$cacheKey);
+    }

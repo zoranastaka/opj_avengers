@@ -1,0 +1,37 @@
+    /**
+     * @test
+     */
+
+    public function can_queue_import_with_remote_temp_disk()
+    {
+        config()->set('excel.temporary_files.remote_disk', 'test');
+
+        // Delete the local temp file before each read chunk job
+        // to simulate using a shared remote disk, without
+        // having a dependency on a local temp file.
+        Queue::before(function (JobProcessing $event) {
+            if ($event->job->resolveName() === ReadChunk::class) {
+                /** @var TemporaryFile $tempFile */
+                $tempFile = $this->inspectJobProperty($event->job, 'temporaryFile');
+
+                $this->assertInstanceOf(RemoteTemporaryFile::class, $tempFile);
+
+                // Should exist remote
+                $this->assertTrue(
+                    $tempFile->exists()
+                );
+
+                $this->assertTrue(
+                    unlink($tempFile->getLocalPath())
+                );
+            }
+        });
+
+        $import = new QueuedImport();
+
+        $chain = $import->queue('import-batches.xlsx')->chain([
+            new AfterQueueImportJob(5000),
+        ]);
+
+        $this->assertInstanceOf(PendingDispatch::class, $chain);
+    }

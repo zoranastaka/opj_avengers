@@ -1,0 +1,13 @@
+    /**
+     * @test SingularMatrixException
+     */
+
+    public function testSingularMatrixException()
+    {
+        // Given
+        $e = new Exception\SingularMatrixException('message');
+
+        // Then
+        $this->assertInstanceOf(Exception\MatrixException::class, $e);
+        $this->assertInstanceOf(Exception\MathException::class, $e);
+    }

@@ -1,0 +1,7 @@
+    /**
+     * get midday/noon hour
+     *
+     * @return int
+     */
+
+    public static function getMidDayAt();

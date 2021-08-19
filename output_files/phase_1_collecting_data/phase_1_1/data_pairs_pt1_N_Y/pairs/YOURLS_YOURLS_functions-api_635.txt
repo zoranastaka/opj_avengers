@@ -1,0 +1,8 @@
+/**
+ * API function wrapper: Shorten a URL
+ *
+ * @since 1.6
+ * @return array Result of API call
+ */
+
+function yourls_api_action_shorturl() {

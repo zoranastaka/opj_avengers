@@ -1,0 +1,35 @@
+    /**
+     * @param string $pluginName
+     * @return boolean
+     */
+
+    private function pluginContainsJScriptAssets($pluginName)
+    {
+        $fetcher = new JScriptUIAssetFetcher(array($pluginName), $this->theme);
+
+        try {
+            $assets = $fetcher->getCatalog()->getAssets();
+        } catch (\Exception $e) {
+            // This can happen when a plugin is not valid (eg. Piwik 1.x format)
+            // When posting the event to the plugin, it returns an exception "Plugin has not been loaded"
+            return false;
+        }
+
+        $pluginManager = Manager::getInstance();
+        $plugin = null;
+        if ($pluginManager->isPluginLoaded($pluginName)) {
+            $plugin = $pluginManager->getLoadedPlugin($pluginName);
+        }
+
+        if ($plugin && $plugin->isTheme()) {
+            $theme = $pluginManager->getTheme($pluginName);
+
+            $javaScriptFiles = $theme->getJavaScriptFiles();
+
+            if (!empty($javaScriptFiles)) {
+                $assets = array_merge($assets, $javaScriptFiles);
+            }
+        }
+
+        return !empty($assets);
+    }

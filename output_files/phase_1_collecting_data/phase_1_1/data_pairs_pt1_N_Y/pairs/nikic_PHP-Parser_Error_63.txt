@@ -1,0 +1,7 @@
+    /**
+     * Sets the line of the PHP file the error occurred in.
+     *
+     * @param string $message Error message
+     */
+
+    public function setRawMessage(string $message) {

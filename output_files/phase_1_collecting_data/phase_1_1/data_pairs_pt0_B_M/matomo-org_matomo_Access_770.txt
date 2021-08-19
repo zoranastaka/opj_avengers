@@ -1,0 +1,12 @@
+    /**
+     * If the user doesn't have an WRITE access for at least one website, throws an exception
+     *
+     * @throws \Piwik\NoAccessException
+     */
+
+    public function checkUserHasSomeWriteAccess()
+    {
+        if (!$this->isUserHasSomeWriteAccess()) {
+            $this->throwNoAccessException(Piwik::translate('General_ExceptionPrivilegeAtLeastOneWebsite', array('write')));
+        }
+    }

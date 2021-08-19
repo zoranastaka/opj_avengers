@@ -1,0 +1,10 @@
+    /**
+     * Returns the original locale ID.
+     *
+     * @return string
+     */
+
+    public function __toString()
+    {
+        return $this->getId();
+    }

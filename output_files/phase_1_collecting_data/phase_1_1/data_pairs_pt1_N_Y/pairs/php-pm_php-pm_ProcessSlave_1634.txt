@@ -1,0 +1,3 @@
+            // Failed to connect to the controller, there was probably a timeout accessing the socket...
+
+            $this->loop->addTimer(1, function () {

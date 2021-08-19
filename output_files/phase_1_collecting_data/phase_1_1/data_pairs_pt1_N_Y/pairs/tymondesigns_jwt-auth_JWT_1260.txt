@@ -1,0 +1,16 @@
+    /**
+     * Check if the subject model matches the one saved in the token.
+     *
+     * @param  string|object  $model
+     *
+     * @return bool
+     */
+
+    public function checkSubjectModel($model)
+    {
+        if (($prv = $this->payload()->get('prv')) === null) {
+            return true;
+        }
+
+        return $this->hashSubjectModel($model) === $prv;
+    }

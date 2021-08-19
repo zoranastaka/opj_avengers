@@ -1,0 +1,11 @@
+    /** @test */
+
+    public function it_throws_if_the_arguments_do_not_match()
+    {
+        $spy = spy(function () {});
+
+        $spy(123);
+
+        $this->expectException(InvalidCountException::class);
+        $spy->shouldHaveBeenCalled()->with(123, 546);
+    }

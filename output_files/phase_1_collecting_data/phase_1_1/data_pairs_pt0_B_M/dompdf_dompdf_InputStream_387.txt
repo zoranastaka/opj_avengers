@@ -1,0 +1,5 @@
+// Some conventions:
+// /* */ indicates verbatim text from the HTML 5 specification
+// // indicates regular comments
+
+class HTML5_InputStream {

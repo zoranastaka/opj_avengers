@@ -1,0 +1,27 @@
+    /**
+    * Function loads one character in the internal array from file
+    *
+    * @param resource &$fp handle of font file
+    *
+    * @return mixed lines of the character or false if foef occured
+    * @access private
+    */
+
+    function _char(&$fp)
+    {
+        $out = array();
+
+        for ($i = 0; $i < $this->height; $i++) {
+            if (feof($fp)) {
+                return false;
+            }
+
+            $line = rtrim(fgets($fp, 2048), "\r\n");
+            if (preg_match('/(.){1,2}$/', $line, $r)) {
+                $line = str_replace($r[1], '', $line);
+            }
+
+            $line .= "\x00";
+
+            $out[] = $line;
+        }

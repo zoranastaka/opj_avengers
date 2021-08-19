@@ -1,0 +1,30 @@
+    /** @test */
+
+    public function it_can_group_commands_by_driver()
+    {
+        $calledSlack = false;
+        $calledAdditional = false;
+
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'bar',
+        ]);
+
+        $botman->group(['driver' => TestAdditionalDriver::class], function ($botman) use (&$calledTelegram) {
+            $botman->hears('bar', function ($bot) use (&$calledTelegram) {
+                $calledAdditional = true;
+            });
+        });
+
+        $botman->group(['driver' => FakeDriver::class], function ($botman) use (&$calledSlack) {
+            $botman->hears('bar', function ($bot) use (&$calledSlack) {
+                $calledSlack = true;
+            });
+        });
+
+        $botman->listen();
+
+        $this->assertFalse($calledAdditional);
+        $this->assertTrue($calledSlack);
+    }

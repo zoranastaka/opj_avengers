@@ -1,0 +1,10 @@
+    /**
+     * Returns the Pid (process identifier), if applicable.
+     *
+     * @return int|null The process id if running, null otherwise
+     */
+
+    public function getPid()
+    {
+        return $this->isRunning() ? $this->processInformation['pid'] : null;
+    }

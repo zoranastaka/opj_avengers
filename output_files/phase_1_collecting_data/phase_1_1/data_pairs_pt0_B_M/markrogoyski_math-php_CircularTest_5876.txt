@@ -1,0 +1,35 @@
+    /**
+     * Test data made with R package circular's function mean.circular()
+     * https://cran.r-project.org/web/packages/circular/circular.pdf
+     * @return array [angles, mean]
+     */
+
+    public function dataProviderForMean(): array
+    {
+        $π = \M_PI;
+
+        return [
+            [[0, 2 * $π], 0],
+            [[0, 0.5 * $π], 0.7853982],
+            [[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], 0.5],
+            [[0 * $π, 0.1 * $π, 0.2 * $π, 0.3 * $π, 0.4 * $π, 0.5 * $π, 0.6 * $π, 0.7 * $π, 0.8 * $π, 0.9 * $π, 1 * $π], 1.570796],
+            [[0, 0, 90], .5226276],
+            [[1.4 * $π, 1.7 * $π, 1.75 * $π, 2.54 * $π, 4.32 * $π], -0.4242655],
+            [[5, 60, 340], -1.423654],
+            [[5, 50, 150, 250], -0.9253517],
+            [[10, 20, 30], -1.991149],
+            [[355, 5, 15], -2.935443],
+
+            // In this test case, we end up with
+            //  sin(0) +  sin(π) = 0 + 0 = 0
+            // \cos(0) + \cos(π) = 1 - 1 = 0
+            // So it seems like it should end up as atan2(0, 0),
+            // but since the sum of sins isn't perfectly 0, it is a very small floating point number,
+            // like atan2(1.2246467991474E-16, 0),
+            // which ends up as arctan(infinity) which equals 1.57079633.
+            // R mean.circular results in NA,
+            // but tested with Python scipi.stats.circmean(), it results in 1.5707963267948966,
+            // which matches our PHP answer.
+            [[0, $π], 1.5707963267948966],
+        ];
+    }

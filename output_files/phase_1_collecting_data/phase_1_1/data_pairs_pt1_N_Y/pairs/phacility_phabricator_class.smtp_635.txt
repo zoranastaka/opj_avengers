@@ -1,0 +1,14 @@
+  /**
+   * Sends the command RCPT to the SMTP server with the TO: argument of $to.
+   * Returns true if the recipient was accepted false if it was rejected.
+   *
+   * Implements from rfc 821: RCPT <SP> TO:<forward-path> <CRLF>
+   *
+   * SMTP CODE SUCCESS: 250,251
+   * SMTP CODE FAILURE: 550,551,552,553,450,451,452
+   * SMTP CODE ERROR  : 500,501,503,421
+   * @access public
+   * @return bool
+   */
+
+  public function Recipient($to) {

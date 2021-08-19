@@ -1,0 +1,13 @@
+    /**
+     * @dataProvider provideMethodsThatNeedARunningProcess
+     */
+
+    public function testMethodsThatNeedARunningProcess($method)
+    {
+        $process = $this->getProcess('foo');
+
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage(sprintf('Process must be started before calling "%s()".', $method));
+
+        $process->{$method}();
+    }

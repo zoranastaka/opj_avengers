@@ -1,0 +1,14 @@
+    /**
+     * @test 5 variables
+     */
+
+    public function testDataHas5Variables()
+    {
+        // When
+        $data = $this->iris->getData();
+
+        // Then
+        foreach ($data as $observation) {
+            $this->assertCount(5, $observation);
+        }
+    }

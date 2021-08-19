@@ -1,0 +1,20 @@
+    /**
+     * @test         cdf
+     * @dataProvider dataProviderForCdf
+     * @param        float $x
+     * @param        float $k
+     * @param        float $λ
+     * @param        float $expected_cdf
+     */
+
+    public function testCdf(float $x, float $k, float $λ, float $expected_cdf)
+    {
+        // Given
+        $weibull = new Weibull($k, $λ);
+
+        // When
+        $cdf = $weibull->cdf($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_cdf, $cdf, 0.0000001);
+    }

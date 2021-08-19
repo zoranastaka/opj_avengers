@@ -1,0 +1,23 @@
+    /**
+     * Is the matrix nonsingular? (Regular matrix)
+     * A square matrix that is not singular. It has an inverse.
+     * If the determinant is nonzero, then the matrix is nonsingular.
+     * http://mathworld.wolfram.com/NonsingularMatrix.html
+     *
+     * @return bool true if nonsingular; false otherwise.
+     *
+     * @throws Exception\MatrixException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\BadParameterException
+     */
+
+    public function isNonsingular(): bool
+    {
+        $│A│ = $this->det();
+
+        if (Support::isNotZero($│A│, $this->ε)) {
+            return true;
+        }
+
+        return false;
+    }

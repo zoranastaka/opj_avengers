@@ -1,0 +1,29 @@
+    /**
+     * Is the matrix positive semidefinite?
+     *  - It is square and symmetric.
+     *  - All principal minors have positive determinants (≥ 0)
+     *
+     * http://mathworld.wolfram.com/PositiveSemidefiniteMatrix.html
+     *
+     * @return boolean true if positive semidefinite; false otherwise
+     *
+     * @throws Exception\MatrixException
+     * @throws Exception\OutOfBoundsException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\BadParameterException
+     */
+
+    public function isPositiveSemidefinite(): bool
+    {
+        if (!$this->isSymmetric()) {
+            return false;
+        }
+
+        for ($i = 1; $i <= $this->n; $i++) {
+            if ($this->leadingPrincipalMinor($i)->det() < 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }

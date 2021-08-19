@@ -1,0 +1,23 @@
+    /**
+     * η²p (Partial eta-squared)
+     *
+     * https://en.wikipedia.org/wiki/Effect_size#Eta-squared_.28.CE.B72.29
+     *
+     *          SSt
+     * η²p = ---------
+     *       SSt + SSE
+     *
+     * where:
+     *  SSt = sum of squares treatment
+     *  SSE = sum of squares error
+     *
+     * @param  float $SSt Sum of squares treatment
+     * @param  float $SSE Sum of squares error
+     *
+     * @return float
+     */
+
+    public static function partialEtaSquared(float $SSt, float $SSE): float
+    {
+        return $SSt / ($SSt + $SSE);
+    }

@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider failsProvider
+     */
+
+    public function testContainsFails($value): void
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Only arrays and objects are supported');
+
+        $this->context->contains($value);
+    }

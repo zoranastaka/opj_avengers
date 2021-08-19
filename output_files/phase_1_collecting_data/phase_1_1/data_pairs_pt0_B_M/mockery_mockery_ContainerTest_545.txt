@@ -1,0 +1,9 @@
+    /**
+     * @group issue/4
+     */
+
+    public function testCanMockClassContainingMagicCallMethod()
+    {
+        $m = mock('MockeryTest_Call1');
+        $this->assertInstanceOf(MockeryTest_Call1::class, $m);
+    }

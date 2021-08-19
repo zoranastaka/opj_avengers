@@ -1,0 +1,12 @@
+    /**
+     * Get the dompdf option value
+     *
+     * @param string $key
+     * @return mixed
+     * @deprecated
+     */
+
+    public function get_option($key)
+    {
+        return $this->options->get($key);
+    }

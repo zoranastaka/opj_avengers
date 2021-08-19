@@ -1,0 +1,10 @@
+    /**
+     * Ok, this sounds weird. Why should we care about ssl certificates when we are in CLI mode? It is needed for
+     * our simple fallback mode for Windows where we initiate HTTP requests instead of CLI.
+     * @param $acceptInvalidSSLCertificate
+     */
+
+    public function setAcceptInvalidSSLCertificate($acceptInvalidSSLCertificate)
+    {
+        $this->acceptInvalidSSLCertificate = $acceptInvalidSSLCertificate;
+    }

@@ -1,0 +1,13 @@
+	/**
+	 * Transients that don't need to be cleaned right away can be deleted on shutdown to avoid repetition.
+	 *
+	 * @since 3.6.0
+	 */
+
+	public static function delete_transients_on_shutdown() {
+		if ( self::$delete_transients ) {
+			foreach ( self::$delete_transients as $key ) {
+				delete_transient( $key );
+			}
+			self::$delete_transients = array();
+		}

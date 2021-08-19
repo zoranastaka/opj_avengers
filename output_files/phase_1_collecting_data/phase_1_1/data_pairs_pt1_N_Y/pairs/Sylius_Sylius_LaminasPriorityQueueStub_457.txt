@@ -1,0 +1,20 @@
+    /**
+     * Retrieve the inner iterator
+     *
+     * SplPriorityQueue acts as a heap, which typically implies that as items
+     * are iterated, they are also removed. This does not work for situations
+     * where the queue may be iterated multiple times. As such, this class
+     * aggregates the values, and also injects an SplPriorityQueue. This method
+     * retrieves the inner queue object, and clones it for purposes of
+     * iteration.
+     *
+     * @return SplPriorityQueue
+     *
+     * @psalm-return SplPriorityQueue<T>
+     */
+
+    public function getIterator()
+    {
+        $queue = $this->getQueue();
+        return clone $queue;
+    }

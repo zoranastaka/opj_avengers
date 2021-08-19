@@ -1,0 +1,17 @@
+    /** @test */
+
+    public function it_repeats_invalid_videos_answers()
+    {
+        $this->botman->hears('Hello', function (BotMan $bot) {
+            $bot->startConversation(new TestDataConversation());
+        });
+
+        $this->replyWithFakeMessage('Hello');
+        static::assertEquals('What do you want to test?', $this->fakeDriver->getBotMessages()[0]->getText());
+
+        $this->replyWithFakeMessage('videos');
+        static::assertEquals('Please supply a video', $this->fakeDriver->getBotMessages()[1]->getText());
+
+        $this->replyWithFakeMessage('not_a_video');
+        static::assertEquals('Please supply a video', $this->fakeDriver->getBotMessages()[2]->getText());
+    }

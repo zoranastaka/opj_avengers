@@ -1,0 +1,17 @@
+    /**
+     * @return Result
+     */
+
+    protected function parseDomainLiteral() : Result
+    {
+        try {
+            $this->lexer->find(EmailLexer::S_CLOSEBRACKET);
+        } catch (\RuntimeException $e) {
+            return new InvalidEmail(new ExpectingDomainLiteralClose(), $this->lexer->token['value']);
+        }
+
+        $domainLiteralParser = new DomainLiteralParser($this->lexer);
+        $result = $domainLiteralParser->parse();
+        $this->warnings = array_merge($this->warnings, $domainLiteralParser->getWarnings());
+        return $result;
+    }

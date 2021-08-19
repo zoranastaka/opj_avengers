@@ -1,0 +1,7 @@
+    /**
+     * Reverse the migrations.
+     */
+
+    public function down(): void
+    {
+    }

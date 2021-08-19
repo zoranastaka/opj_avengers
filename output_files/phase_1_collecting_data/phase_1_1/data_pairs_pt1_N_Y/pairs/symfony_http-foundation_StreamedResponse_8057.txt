@@ -1,0 +1,18 @@
+    /**
+     * {@inheritdoc}
+     *
+     * This method only sends the headers once.
+     *
+     * @return $this
+     */
+
+    public function sendHeaders()
+    {
+        if ($this->headersSent) {
+            return $this;
+        }
+
+        $this->headersSent = true;
+
+        return parent::sendHeaders();
+    }

@@ -1,0 +1,18 @@
+    /**
+     * @test Iteration
+     */
+
+    public function testIteration()
+    {
+        // When
+        foreach ($this->V as $element) {
+            // Then
+            $this->assertTrue(\is_int($element));
+        }
+
+        // When Rewinding
+        foreach ($this->V as $element) {
+            // Then
+            $this->assertTrue(\is_int($element));
+        }
+    }

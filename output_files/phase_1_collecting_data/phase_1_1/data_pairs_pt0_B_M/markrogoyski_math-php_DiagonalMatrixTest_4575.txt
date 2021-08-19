@@ -1,0 +1,15 @@
+    /**
+     * @test         isTriangular returns true
+     * @dataProvider dataProviderMulti
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsTriangular(array $A)
+    {
+        // Given
+        $D = MatrixFactory::diagonal($A);
+
+        // Then
+        $this->assertTrue($D->isTriangular());
+    }

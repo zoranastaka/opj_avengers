@@ -1,0 +1,16 @@
+/**
+ * Runs a task.
+ * ```php
+ * invoke('deploy:symlink');
+ * ```
+ *
+ * @throws Exception\Exception
+ */
+
+function invoke(string $taskName): void
+{
+    $task = Deployer::get()->tasks->get($taskName);
+    Deployer::get()->messenger->startTask($task);
+    $task->run(Context::get());
+    Deployer::get()->messenger->endTask($task);
+}

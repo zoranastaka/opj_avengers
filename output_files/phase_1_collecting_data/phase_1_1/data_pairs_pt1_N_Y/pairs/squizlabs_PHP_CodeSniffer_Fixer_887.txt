@@ -1,0 +1,46 @@
+    /**
+     * Stop recording actions for a changeset, and apply logged changes.
+     *
+     * @return boolean
+     */
+
+    public function endChangeset()
+    {
+        if ($this->inConflict === true) {
+            return false;
+        }
+
+        $this->inChangeset = false;
+
+        $success = true;
+        $applied = [];
+        foreach ($this->changeset as $stackPtr => $content) {
+            $success = $this->replaceToken($stackPtr, $content);
+            if ($success === false) {
+                break;
+            } else {
+                $applied[] = $stackPtr;
+            }
+        }
+
+        if ($success === false) {
+            // Rolling back all changes.
+            foreach ($applied as $stackPtr) {
+                $this->revertToken($stackPtr);
+            }
+
+            if (PHP_CODESNIFFER_VERBOSITY > 1) {
+                @ob_end_clean();
+                echo "\t=> Changeset failed to apply".PHP_EOL;
+                ob_start();
+            }
+        } else if (PHP_CODESNIFFER_VERBOSITY > 1) {
+            $fixes = count($this->changeset);
+            @ob_end_clean();
+            echo "\t=> Changeset ended: $fixes changes applied".PHP_EOL;
+            ob_start();
+        }
+
+        $this->changeset = [];
+
+    }//end endChangeset()

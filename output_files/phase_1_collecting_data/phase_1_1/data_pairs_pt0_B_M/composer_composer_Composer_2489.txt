@@ -1,0 +1,8 @@
+    /**
+     * @param Loop $loop
+     */
+
+    public function setLoop(Loop $loop)
+    {
+        $this->loop = $loop;
+    }

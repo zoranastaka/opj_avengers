@@ -1,0 +1,17 @@
+    /**
+     * @test cofactorMatrix exception - too small
+     */
+
+    public function testCofactorMatrixExceptionTooSmall()
+    {
+        // Given
+        $A = MatrixFactory::create([
+            [1],
+        ]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $A->cofactorMatrix();
+    }

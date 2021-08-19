@@ -1,0 +1,25 @@
+    /**
+     * SSreg - The Sum Squares of the regression (Explained sum of squares)
+     *
+     * The sum of the squares of the deviations of the predicted values from
+     * the mean value of a response variable, in a standard regression model.
+     * https://en.wikipedia.org/wiki/Explained_sum_of_squares
+     *
+     * SSreg = ∑(ŷᵢ - ȳ)²
+     * When a constant is fit to the regression, the average of y = average of ŷ.
+     *
+     * In the case where the constant is not fit, we use the sum of squares of the predicted value
+     * SSreg = ∑ŷᵢ²
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException
+     */
+
+    public function sumOfSquaresRegression(): float
+    {
+        if ($this->fit_constant == 1) {
+            return RandomVariable::sumOfSquaresDeviations($this->yHat());
+        }
+        return \array_sum(Single::square($this->reg_Yhat));
+    }

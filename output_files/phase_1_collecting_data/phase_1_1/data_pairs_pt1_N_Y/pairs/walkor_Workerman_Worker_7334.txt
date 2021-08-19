@@ -1,0 +1,14 @@
+    /**
+     * Lock.
+     *
+     * @return void
+     */
+
+    protected static function lock()
+    {
+        $fd = \fopen(static::$_startFile, 'r');
+        if ($fd && !flock($fd, LOCK_EX)) {
+            static::log('Workerman['.static::$_startFile.'] already running.');
+            exit;
+        }
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Create an Exception from a Record Validation.
+     */
+
+    public static function triggerOnValidation(string $name, array $record): self
+    {
+        $exception = new self('Record validation failed');
+        $exception->name = $name;
+        $exception->record = $record;
+
+        return $exception;
+    }

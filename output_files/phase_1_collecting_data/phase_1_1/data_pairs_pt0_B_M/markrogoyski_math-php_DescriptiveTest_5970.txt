@@ -1,0 +1,13 @@
+    /**
+     * @test   midhinge throws an Exception\BadDataException if numbers is empty
+     * @throws \Exception
+     */
+
+    public function testMidhingeEmptyList()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Descriptive::midhinge([]);
+    }

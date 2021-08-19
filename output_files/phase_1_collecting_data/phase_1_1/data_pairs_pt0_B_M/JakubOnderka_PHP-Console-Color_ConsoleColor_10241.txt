@@ -1,0 +1,8 @@
+    /**
+     * @param bool $forceStyle
+     */
+
+    public function setForceStyle($forceStyle)
+    {
+        $this->forceStyle = (bool) $forceStyle;
+    }

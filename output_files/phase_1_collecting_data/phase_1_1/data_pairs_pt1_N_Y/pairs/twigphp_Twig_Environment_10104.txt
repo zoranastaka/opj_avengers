@@ -1,0 +1,10 @@
+    /**
+     * @return TokenParserInterface[]
+     *
+     * @internal
+     */
+
+    public function getTokenParsers(): array
+    {
+        return $this->extensionSet->getTokenParsers();
+    }

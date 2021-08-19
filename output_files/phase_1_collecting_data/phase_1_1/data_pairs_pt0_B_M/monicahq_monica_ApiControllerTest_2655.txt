@@ -1,0 +1,18 @@
+    /** @test */
+
+    public function get_with_parameter_returns_the_parameter()
+    {
+        $apiController = new ApiController;
+
+        $this->assertEquals(
+            null,
+            $apiController->getWithParameter()
+        );
+
+        $apiController->setWithParameter('test');
+
+        $this->assertEquals(
+            'test',
+            $apiController->getWithParameter()
+        );
+    }

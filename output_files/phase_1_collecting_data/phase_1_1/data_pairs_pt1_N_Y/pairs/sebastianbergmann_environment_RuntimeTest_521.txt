@@ -1,0 +1,10 @@
+    /**
+     * @requires extension xdebug
+     */
+
+    public function testXdebugCanBeDetected(): void
+    {
+        $this->markTestSkippedWhenRunningOnPhpdbg();
+
+        $this->assertTrue($this->env->hasXdebug());
+    }

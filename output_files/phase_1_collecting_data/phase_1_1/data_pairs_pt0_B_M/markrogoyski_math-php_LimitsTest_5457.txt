@@ -1,0 +1,9 @@
+    /**
+     * @test Limits constant is correct format
+     */
+
+    public function testPoissonLimits()
+    {
+        $this->limitTest(Discrete\Poisson::PARAMETER_LIMITS);
+        $this->limitTest(Discrete\Poisson::SUPPORT_LIMITS);
+    }

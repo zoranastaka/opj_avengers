@@ -1,0 +1,17 @@
+    /**
+     * @test createZeroValue
+     */
+
+    public function testCreateZeroValue()
+    {
+        // Given
+        $zeroMatrix = ComplexMatrix::createZeroValue();
+
+        // And
+        $expected = [
+            [new Complex(0, 0)]
+        ];
+
+        // Then
+        $this->assertEquals($expected, $zeroMatrix->getMatrix());
+    }

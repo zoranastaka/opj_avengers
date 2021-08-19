@@ -1,0 +1,10 @@
+    /**
+     * Get default paper
+     *
+     * @return string
+     */
+
+    public static function getDefaultPaper()
+    {
+        return self::$defaultPaper;
+    }

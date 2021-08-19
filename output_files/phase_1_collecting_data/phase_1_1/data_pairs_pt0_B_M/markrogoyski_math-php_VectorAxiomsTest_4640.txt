@@ -1,0 +1,24 @@
+    /**
+     * @test Axiom: |projᵇA⊥ ⋅ perpᵇA| = |projᵇA| |perpᵇA|
+     * Absolute value of proj and perp dot product equals product of their lengths.
+     * @dataProvider dataProviderForProjPerp
+     */
+
+    public function testProjPerpPerpDotProductEqualsProductOfLengths(array $A, array $B)
+    {
+        // Given
+        $A = new Vector($A);
+        $B = new Vector($B);
+
+        // When
+        $projᵇA  = $A->projection($B);
+        $projᵇA⊥ = $A->projection($B)->perpendicular();
+        $perpᵇA  = $A->perp($B);
+
+        $projᵇA⊥⋅perpᵇA = \abs($projᵇA⊥->dotProduct($perpᵇA));
+        $│projᵇA│       = $projᵇA->length();
+        $│perpᵇA│       = $perpᵇA->length();
+
+        // Then
+        $this->assertEquals($projᵇA⊥⋅perpᵇA, $│projᵇA│ * $│perpᵇA│);
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @test         weightedCovariance throws a BadDataException if the counts of any of the arrays are different
+     * @dataProvider dataProviderForWeightedCovarianceException
+     * @param        array $X
+     * @param        array $Y
+     * @param        array $w
+     * @throws       Exception\BadDataException
+     */
+
+    public function testWeightedCovarianceException(array $X, array $Y, array $w)
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Correlation::weightedCovariance($X, $Y, $w);
+    }

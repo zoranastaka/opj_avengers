@@ -1,0 +1,22 @@
+    /**
+     * Return JS file inclusion directive(s) using the markup <script>
+     *
+     * @return string
+     */
+
+    public function getJsInclusionDirective()
+    {
+        $result = "<script type=\"text/javascript\">\n" . StaticContainer::get('Piwik\Translation\Translator')->getJavascriptTranslations() . "\n</script>";
+
+        if ($this->isMergedAssetsDisabled()) {
+            $this->getMergedCoreJSAsset()->delete();
+            $this->getMergedNonCoreJSAsset()->delete();
+
+            $result .= $this->getIndividualCoreAndNonCoreJsIncludes();
+        } else {
+            $result .= sprintf(self::JS_IMPORT_DIRECTIVE, self::GET_CORE_JS_MODULE_ACTION);
+            $result .= sprintf(self::JS_IMPORT_DIRECTIVE, self::GET_NON_CORE_JS_MODULE_ACTION);
+        }
+
+        return $result;
+    }

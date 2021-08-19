@@ -1,0 +1,15 @@
+    /**
+     * @test         standardDeviation
+     * @dataProvider dataProviderForStandardDeviation
+     * @param        array $angles
+     * @param        float $expected
+     */
+
+    public function testStandardDeviation(array $angles, float $expected)
+    {
+        // When
+        $sd = Circular::standardDeviation($angles);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $sd, 0.000001);
+    }

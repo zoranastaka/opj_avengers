@@ -1,0 +1,22 @@
+    /**
+     * @test         rowReductionToEchelonForm method of ref
+     * @dataProvider dataProviderForRowReductionToEchelonForm
+     * @param        array $A
+     * @param        array $R
+     * @throws       \Exception
+     */
+
+    public function testRowReductionToEchelonForm(array $A, array $R)
+    {
+        // Given
+        $A   = MatrixFactory::create($A);
+        $R   = MatrixFactory::create($R);
+
+        // When
+        [$ref, $swaps] = Reduction\RowEchelonForm::rowReductionToEchelonForm($A);
+        $ref = MatrixFactory::create($ref);
+
+        // Then
+        $this->assertEqualsWithDelta($R->getMatrix(), $ref->getMatrix(), 0.000001);
+        $this->assertTrue($ref->isRef());
+    }

@@ -1,0 +1,15 @@
+    /**
+     * Mean of the distribution
+     *
+     * μ = exp(μ + σ²/2)
+     *
+     * @return float
+     */
+
+    public function mean(): float
+    {
+        $μ = $this->μ;
+        $σ = $this->σ;
+
+        return \exp($μ + ($σ ** 2 / 2));
+    }

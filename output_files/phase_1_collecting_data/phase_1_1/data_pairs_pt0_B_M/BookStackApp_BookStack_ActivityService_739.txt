@@ -1,0 +1,10 @@
+    /**
+     * Add activity data to database for an entity.
+     */
+
+    public function addForEntity(Entity $entity, string $type)
+    {
+        $activity = $this->newActivityForUser($type);
+        $entity->activity()->save($activity);
+        $this->setNotification($type);
+    }

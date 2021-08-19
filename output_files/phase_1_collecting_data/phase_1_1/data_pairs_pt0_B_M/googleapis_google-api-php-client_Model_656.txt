@@ -1,0 +1,40 @@
+  /**
+   * Getter that handles passthrough access to the data array, and lazy object creation.
+   * @param string $key Property name.
+   * @return mixed The value if any, or null.
+   */
+
+  public function __get($key)
+  {
+    $keyType = $this->keyType($key);
+    $keyDataType = $this->dataType($key);
+    if ($keyType && !isset($this->processed[$key])) {
+      if (isset($this->modelData[$key])) {
+        $val = $this->modelData[$key];
+      } elseif ($keyDataType == 'array' || $keyDataType == 'map') {
+        $val = array();
+      } else {
+        $val = null;
+      }
+
+      if ($this->isAssociativeArray($val)) {
+        if ($keyDataType && 'map' == $keyDataType) {
+          foreach ($val as $arrayKey => $arrayItem) {
+              $this->modelData[$key][$arrayKey] =
+                new $keyType($arrayItem);
+          }
+        } else {
+          $this->modelData[$key] = new $keyType($val);
+        }
+      } else if (is_array($val)) {
+        $arrayObject = array();
+        foreach ($val as $arrayIndex => $arrayItem) {
+          $arrayObject[$arrayIndex] = new $keyType($arrayItem);
+        }
+        $this->modelData[$key] = $arrayObject;
+      }
+      $this->processed[$key] = true;
+    }
+
+    return isset($this->modelData[$key]) ? $this->modelData[$key] : null;
+  }

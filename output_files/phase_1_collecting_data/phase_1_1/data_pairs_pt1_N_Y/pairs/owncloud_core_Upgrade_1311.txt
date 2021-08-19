@@ -1,0 +1,6 @@
+	/**
+	 * @param IConfig $config
+	 * @param ILogger $logger
+	 */
+
+	public function __construct(IConfig $config, ILogger $logger, ICacheFactory $cacheFactory) {

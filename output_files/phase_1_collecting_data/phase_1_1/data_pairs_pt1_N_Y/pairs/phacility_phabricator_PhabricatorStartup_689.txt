@@ -1,0 +1,9 @@
+  /**
+   * Tear down rate limiting and allow limits to score the request.
+   *
+   * @param map<string, wild> Additional, freeform request state.
+   * @return void
+   * @task ratelimit
+   */
+
+  public static function disconnectRateLimits(array $request_state) {

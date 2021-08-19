@@ -1,0 +1,16 @@
+    /**
+     * @test         create ComplexMatrix
+     * @dataProvider dataProviderForComplexObjectMatrix
+     * @param        array $A
+     */
+
+    public function testCreateComplexObjectMatrix(array $A)
+    {
+        // When
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertInstanceOf(ComplexMatrix::class, $A);
+        $this->assertInstanceOf(ObjectMatrix::class, $A);
+        $this->assertInstanceOf(Matrix::class, $A);
+    }

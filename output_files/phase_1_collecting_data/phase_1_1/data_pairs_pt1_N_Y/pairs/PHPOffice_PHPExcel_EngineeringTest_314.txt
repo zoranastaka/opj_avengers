@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider providerIMSQRT
+     */
+
+    public function testIMSQRT()
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMSQRT'), $args);
+        $complexAssert = new complexAssert();
+        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+    }

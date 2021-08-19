@@ -1,0 +1,10 @@
+    /**
+     * Get Xs (x values of each point)
+     *
+     * @return array of x values
+     */
+
+    public function getXs(): array
+    {
+        return $this->xs;
+    }

@@ -1,0 +1,9 @@
+    /**
+     * @param int $itemId
+     * @return $this
+     */
+
+    public function setItemId($itemId)
+    {
+        return $this->setData('item_id', $itemId);
+    }

@@ -1,0 +1,21 @@
+    /**
+     * @test   choleskyDecomposition throws a MatrixException if the matrix is not positive definite
+     * @throws \Exception
+     */
+
+    public function testCholeskyDecompositionException()
+    {
+        // Given
+        $A = [
+            [1, 2, 3],
+            [2, 3, 4],
+            [3, 4, 5],
+        ];
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $L = $A->choleskyDecomposition();
+    }

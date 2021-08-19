@@ -1,0 +1,5 @@
+    /**
+     * Returns the integer representation of the UUID
+     */
+
+    public function getInteger(): IntegerObject;

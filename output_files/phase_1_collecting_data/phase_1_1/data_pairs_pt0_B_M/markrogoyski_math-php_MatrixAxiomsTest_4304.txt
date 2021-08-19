@@ -1,0 +1,17 @@
+    /**
+     * @test Axiom: Positive definiteness A is PD ⇒ A is PSD
+     * If A is positive definite, then A is also positive semidefinite.
+     * @dataProvider dataProviderForPositiveDefiniteMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testPositiveDefiniteIsAlsoPositiveSemidefinite(array $A)
+    {
+        // Given
+        $A  = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isPositiveDefinite());
+        $this->assertTrue($A->isPositiveSemidefinite());
+    }

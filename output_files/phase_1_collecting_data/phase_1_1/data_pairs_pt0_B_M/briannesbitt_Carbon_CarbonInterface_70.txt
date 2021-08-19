@@ -1,0 +1,7 @@
+    /**
+     * Get the first day of week
+     *
+     * @return int
+     */
+
+    public static function getWeekStartsAt();

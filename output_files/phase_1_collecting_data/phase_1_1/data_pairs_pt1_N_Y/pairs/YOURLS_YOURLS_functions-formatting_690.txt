@@ -1,0 +1,6 @@
+/**
+ * Check if a string seems to be UTF-8. Stolen from WP.
+ *
+ */
+
+function yourls_seems_utf8( $str ) {

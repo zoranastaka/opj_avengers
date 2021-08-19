@@ -1,0 +1,11 @@
+    /**
+     * Number of carburetors observations for all models
+     * ['Mazda RX4' => 4, 'Honda civic' => 2, ... ]
+     *
+     * @return number[]
+     */
+
+    public function getCarb(): array
+    {
+        return \array_column(self::DATA, 10);
+    }

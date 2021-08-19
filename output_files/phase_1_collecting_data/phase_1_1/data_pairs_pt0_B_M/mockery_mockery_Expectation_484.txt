@@ -1,0 +1,11 @@
+    /**
+     * Shorthand for setting minimum and maximum constraints on call counts
+     *
+     * @param int $minimum
+     * @param int $maximum
+     */
+
+    public function between($minimum, $maximum)
+    {
+        return $this->atLeast()->times($minimum)->atMost()->times($maximum);
+    }

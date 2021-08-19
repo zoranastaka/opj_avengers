@@ -1,0 +1,15 @@
+    /**
+     * Returns the headers, with original capitalizations.
+     *
+     * @return array An array of headers
+     */
+
+    public function allPreserveCase()
+    {
+        $headers = [];
+        foreach ($this->all() as $name => $value) {
+            $headers[$this->headerNames[$name] ?? $name] = $value;
+        }
+
+        return $headers;
+    }

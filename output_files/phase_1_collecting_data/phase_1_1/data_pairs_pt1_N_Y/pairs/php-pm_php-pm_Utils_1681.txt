@@ -1,0 +1,10 @@
+    /**
+     * Generates stronger session ids for session handling.
+     *
+     * @return string
+     */
+
+    public static function generateSessionId()
+    {
+        return \bin2hex(\random_bytes(32));
+    }

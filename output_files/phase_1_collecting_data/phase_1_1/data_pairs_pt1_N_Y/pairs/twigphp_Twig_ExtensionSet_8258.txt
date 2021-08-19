@@ -1,0 +1,12 @@
+    /**
+     * @return TokenParserInterface[]
+     */
+
+    public function getTokenParsers(): array
+    {
+        if (!$this->initialized) {
+            $this->initExtensions();
+        }
+
+        return $this->parsers;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * @group issue/17
+     */
+
+    public function testMockingDoesNotStubNonStubbedPropertiesOnPartials()
+    {
+        $m = mock(new MockeryTest_ExistingProperty());
+        $this->assertEquals('bar', $m->foo);
+        $this->assertArrayNotHasKey('foo', $m->mockery_getMockableProperties());
+    }

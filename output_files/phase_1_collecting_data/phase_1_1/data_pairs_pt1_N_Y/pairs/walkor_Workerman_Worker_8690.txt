@@ -1,0 +1,44 @@
+    /**
+     * Accept a connection.
+     *
+     * @param resource $socket
+     * @return void
+     */
+
+    public function acceptConnection($socket)
+    {
+        // Accept a connection on server socket.
+        \set_error_handler(function(){});
+        $new_socket = \stream_socket_accept($socket, 0, $remote_address);
+        \restore_error_handler();
+
+        // Thundering herd.
+        if (!$new_socket) {
+            return;
+        }
+
+        // TcpConnection.
+        $connection                         = new TcpConnection($new_socket, $remote_address);
+        $this->connections[$connection->id] = $connection;
+        $connection->worker                 = $this;
+        $connection->protocol               = $this->protocol;
+        $connection->transport              = $this->transport;
+        $connection->onMessage              = $this->onMessage;
+        $connection->onClose                = $this->onClose;
+        $connection->onError                = $this->onError;
+        $connection->onBufferDrain          = $this->onBufferDrain;
+        $connection->onBufferFull           = $this->onBufferFull;
+
+        // Try to emit onConnect callback.
+        if ($this->onConnect) {
+            try {
+                \call_user_func($this->onConnect, $connection);
+            } catch (\Exception $e) {
+                static::log($e);
+                exit(250);
+            } catch (\Error $e) {
+                static::log($e);
+                exit(250);
+            }
+        }
+    }

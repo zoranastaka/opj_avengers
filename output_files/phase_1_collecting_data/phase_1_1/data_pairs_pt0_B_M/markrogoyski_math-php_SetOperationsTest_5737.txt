@@ -1,0 +1,32 @@
+    /**
+     * When adding resources to a set, the key becomes to the resource ID.
+     * The resource is stored as is as the value.
+     */
+
+    public function testAddWithResources()
+    {
+        // Given
+        $set = new Set();
+        $fh  = fopen(__FILE__, 'r');
+
+        // When
+        $set->add($fh);
+        $set->add($fh); // Should only get added once
+
+        // Then
+        $this->assertEquals(1, count($set));
+        $this->assertEquals(1, count($set->asArray()));
+
+        $resources = 0;
+        foreach ($set as $key => $value) {
+            if (\is_resource($value)) {
+                $resources++;
+                $vector_key = 'Resource(' . \strval($value) . ')';
+                $this->assertEquals($vector_key, $key);
+                $this->assertEquals($fh, $value);
+            }
+        }
+
+        // There should have been one resource
+        $this->assertEquals(1, $resources);
+    }

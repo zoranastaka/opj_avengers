@@ -1,0 +1,10 @@
+    /**
+     * Get Plot Visible Only
+     *
+     * @return boolean
+     */
+
+    public function getPlotVisibleOnly()
+    {
+        return $this->plotVisibleOnly;
+    }

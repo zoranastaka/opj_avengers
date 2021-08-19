@@ -1,0 +1,15 @@
+	/**
+	 * Emmulate GNU diff's format.
+	 * Header: @@ -382,8 +481,9 @@
+	 * Indicies are printed as 1-based, not 0-based.
+	 * @return {string} The GNU diff string.
+	 */
+
+	function toString() {
+		if ($this->length1 === 0) {
+			$coords1 = $this->start1 . ',0';
+		} elseif ($this->length1 == 1) {
+			$coords1 = $this->start1 + 1;
+		} else {
+			$coords1 = ($this->start1 + 1) . ',' . $this->length1;
+		}

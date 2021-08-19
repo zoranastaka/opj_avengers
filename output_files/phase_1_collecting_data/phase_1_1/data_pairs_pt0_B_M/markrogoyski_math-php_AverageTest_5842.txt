@@ -1,0 +1,17 @@
+    /**
+     * @test         generalizedMean
+     * @dataProvider dataProviderForGeneralizedMean
+     * @param        array $numbers
+     * @param        float $p
+     * @param        float $expectedMean
+     * @throws       \Exception
+     */
+
+    public function testGeneralizedMean(array $numbers, float $p, float $expectedMean)
+    {
+        // When
+        $mean = Average::generalizedMean($numbers, $p);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedMean, $mean, 0.001);
+    }

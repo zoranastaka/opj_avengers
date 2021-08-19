@@ -1,0 +1,9 @@
+    /**
+     * Creates a function use builder.
+     *
+     * @param Node\Name|string $name Name of the function to alias
+     *
+     * @return Builder\Use_ The created use function builder
+     */
+
+    public function useFunction($name) : Builder\Use_ {

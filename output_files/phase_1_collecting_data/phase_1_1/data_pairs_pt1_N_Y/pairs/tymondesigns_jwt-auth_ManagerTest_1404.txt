@@ -1,0 +1,24 @@
+    /** @test */
+
+    public function it_should_encode_a_payload()
+    {
+        $claims = [
+            new Subject(1),
+            new Issuer('http://example.com'),
+            new Expiration($this->testNowTimestamp + 3600),
+            new NotBefore($this->testNowTimestamp),
+            new IssuedAt($this->testNowTimestamp),
+            new JwtId('foo'),
+        ];
+
+        $collection = Collection::make($claims);
+
+        $this->validator->shouldReceive('setRefreshFlow->check')->andReturn($collection);
+        $payload = new Payload($collection, $this->validator);
+
+        $this->jwt->shouldReceive('encode')->with($payload->toArray())->andReturn('foo.bar.baz');
+
+        $token = $this->manager->encode($payload);
+
+        $this->assertEquals($token, 'foo.bar.baz');
+    }

@@ -1,0 +1,27 @@
+    /**
+     * @test Axiom: (A + B)ᵀ = Aᵀ + Bᵀ
+     * Transpose of sum is the same as sum of transposes
+     *
+     * @dataProvider dataProviderForTwoSquareMatrices
+     * @param        array $A
+     * @param        array $B
+     * @throws       \Exception
+     */
+
+    public function testTransposeSumIsSameAsSumOfTransposes(array $A, array $B)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $B = MatrixFactory::create($B);
+
+        // When (A + B)ᵀ
+        $⟮A＋B⟯ᵀ = $A->add($B)->transpose();
+
+        // And Aᵀ + Bᵀ
+        $Aᵀ     = $A->transpose();
+        $Bᵀ     = $B->transpose();
+        $Aᵀ＋Bᵀ = $Aᵀ->add($Bᵀ);
+
+        // Then
+        $this->assertEquals($⟮A＋B⟯ᵀ->getMatrix(), $Aᵀ＋Bᵀ->getMatrix());
+    }

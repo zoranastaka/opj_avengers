@@ -1,0 +1,12 @@
+    /**
+     * Set the name of the language in this language.
+     *
+     * @param string $nativeName
+     */
+
+    public function setNativeName(string $nativeName): self
+    {
+        $this->nativeName = $nativeName;
+
+        return $this;
+    }

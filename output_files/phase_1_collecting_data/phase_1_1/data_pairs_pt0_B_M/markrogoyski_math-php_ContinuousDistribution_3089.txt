@@ -1,0 +1,7 @@
+    /**
+     * Mean average
+     *
+     * @return mixed
+     */
+
+    public function mean();

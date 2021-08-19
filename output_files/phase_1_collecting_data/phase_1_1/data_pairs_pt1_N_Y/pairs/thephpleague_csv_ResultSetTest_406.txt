@@ -1,0 +1,12 @@
+    /**
+     * @covers \League\Csv\Statement::offset
+     * @covers ::__construct
+     */
+
+    public function testSetOffset(): void
+    {
+        self::assertContains(
+            ['jane', 'doe', 'jane.doe@example.com'],
+            $this->stmt->offset(1)->process($this->csv)
+        );
+    }

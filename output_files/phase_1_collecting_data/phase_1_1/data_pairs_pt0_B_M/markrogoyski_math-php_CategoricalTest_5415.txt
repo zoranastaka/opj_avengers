@@ -1,0 +1,15 @@
+    /**
+     * @test         Constructor throws a BadParameterException if k is <= 0
+     * @dataProvider dataProviderForBadK
+     * @param        int $k
+     * @throws       \Exception
+     */
+
+    public function testBadK(int $k)
+    {
+        // Then
+        $this->expectException(Exception\BadParameterException::class);
+
+        // When
+        $categorical = new Categorical($k, []);
+    }

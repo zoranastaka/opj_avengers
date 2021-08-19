@@ -1,0 +1,15 @@
+    /**
+     * @dataProvider assertEqualsSucceedsProvider
+     */
+
+    public function testAssertEqualsSucceeds($expected, $actual): void
+    {
+        $exception = null;
+
+        try {
+            $this->comparator->assertEquals($expected, $actual);
+        } catch (ComparisonFailure $exception) {
+        }
+
+        $this->assertNull($exception, 'Unexpected ComparisonFailure');
+    }

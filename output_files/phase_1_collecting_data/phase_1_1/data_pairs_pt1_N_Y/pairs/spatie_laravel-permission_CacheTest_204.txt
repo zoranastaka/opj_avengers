@@ -1,0 +1,15 @@
+    /** @test */
+
+    public function user_creation_should_not_flush_the_cache()
+    {
+        $this->registrar->getPermissions();
+
+        User::create(['email' => 'new']);
+
+        $this->resetQueryCount();
+
+        $this->registrar->getPermissions();
+
+        // should all be in memory, so no init/load required
+        $this->assertQueryCount(0);
+    }

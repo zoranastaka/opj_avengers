@@ -1,0 +1,65 @@
+    /**
+    * It is preg_replace callback function that makes horizontal letter smushing
+    *
+    * @param array $r preg_replace matches array
+    *
+    * @return string
+    * @access private
+    */
+
+    function _rep($r)
+    {
+        if ($this->oldlayout & 1 && $r[1] == $r[2]) {
+            $this->smush_flag = 1;
+            return $r[1];
+        }
+
+        if ($this->oldlayout & 2) {
+            $symb = '|/\\[]{}()<>';
+
+            if ($r[1] == '_' && strpos($symb, $r[2]) !== false ||
+                $r[2] == '_' && strpos($symb, $r[1]) !== false) {
+                $this->smush_flag = 1;
+                return $r[1];
+            }
+        }
+
+        if ($this->oldlayout & 4) {
+            $classes = '|/\\[]{}()<>';
+
+            if (($left = strpos($classes, $r[1])) !== false) {
+                if (($right = strpos($classes, $r[2])) !== false) {
+                    $this->smush_flag = 1;
+                    return $right > $left ? $r[2] : $r[1];
+                }
+            }
+        }
+
+        if ($this->oldlayout & 8) {
+            $t = array('[' => ']', ']' => '[', '{' => '}', '}' => '{',
+            '(' => ')', ')' => '(');
+
+            if (isset($t[$r[2]]) && $r[1] == $t[$r[2]]) {
+                $this->smush_flag = 1;
+                return '|';
+            }
+        }
+
+        if ($this->oldlayout & 16) {
+            $t = array("/\\" => '|', "\\/" => 'Y', '><' => 'X');
+
+            if (isset($t[$r[1].$r[2]])) {
+                $this->smush_flag = 1;
+                return $t[$r[1].$r[2]];
+            }
+        }
+
+        if ($this->oldlayout & 32) {
+            if ($r[1] == $r[2] && $r[1] == $this->hardblank) {
+                $this->smush_flag = 1;
+                return $this->hardblank;
+            }
+        }
+
+        return $r[1]."\00".$r[2];
+    }

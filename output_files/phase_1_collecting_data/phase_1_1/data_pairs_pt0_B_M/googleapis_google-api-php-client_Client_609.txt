@@ -1,0 +1,12 @@
+  /**
+   * For backwards compatibility
+   * alias for fetchAccessTokenWithRefreshToken
+   *
+   * @param string $refreshToken
+   * @return array access token
+   */
+
+  public function refreshToken($refreshToken)
+  {
+    return $this->fetchAccessTokenWithRefreshToken($refreshToken);
+  }

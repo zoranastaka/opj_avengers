@@ -1,0 +1,12 @@
+    /**
+     * Associate $id_product to the current object.
+     *
+     * @param int $idProduct id of the product to associate
+     *
+     * @return bool true if success
+     */
+
+    public function attachProduct($idProduct)
+    {
+        return static::associateProductAttachment((int) $idProduct, (int) $this->id);
+    }

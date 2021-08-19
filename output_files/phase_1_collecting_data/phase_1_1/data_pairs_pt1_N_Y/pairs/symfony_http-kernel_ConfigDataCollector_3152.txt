@@ -1,0 +1,11 @@
+    /**
+     * Returns the minor Symfony version used (without patch numbers of extra
+     * suffix like "RC", "beta", etc.).
+     *
+     * @return string
+     */
+
+    public function getSymfonyMinorVersion()
+    {
+        return $this->data['symfony_minor_version'];
+    }

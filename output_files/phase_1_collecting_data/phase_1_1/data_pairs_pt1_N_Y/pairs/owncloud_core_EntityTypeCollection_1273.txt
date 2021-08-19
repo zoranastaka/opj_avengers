@@ -1,0 +1,8 @@
+	/**
+	 * Checks if a child-node with the specified name exists
+	 *
+	 * @param string $name
+	 * @return bool
+	 */
+
+	public function childExists($name) {

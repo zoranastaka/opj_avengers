@@ -1,0 +1,15 @@
+    /**
+     * @test         cosine distance exception for null vector
+     * @dataProvider dataProviderForCosineDistanceException
+     * @param        array $A
+     * @param        array $B
+     */
+
+    public function testCosineDistanceException(array $A, array $B)
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $distance = Distance::cosine($A, $B);
+    }

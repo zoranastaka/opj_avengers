@@ -1,0 +1,5 @@
+    /**
+     * @return DOMDocument|DOMNodeList
+     */
+
+    public function save() {

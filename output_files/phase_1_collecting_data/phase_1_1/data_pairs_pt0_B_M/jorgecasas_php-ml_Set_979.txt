@@ -1,0 +1,8 @@
+    /**
+     * @param string|int|float $element
+     */
+
+    public function contains($element): bool
+    {
+        return $this->containsAll([$element]);
+    }

@@ -1,0 +1,7 @@
+    /**
+     * Returns the command factory used by the client.
+     *
+     * @return FactoryInterface
+     */
+
+    public function getCommandFactory();

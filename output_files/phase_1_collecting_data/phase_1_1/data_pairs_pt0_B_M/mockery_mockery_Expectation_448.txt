@@ -1,0 +1,22 @@
+    /**
+     * Verify the current call, i.e. that the given arguments match those
+     * of this expectation
+     *
+     * @param array $args
+     * @return mixed
+     */
+
+    public function verifyCall(array $args)
+    {
+        $this->validateOrder();
+        $this->_actualCount++;
+        if (true === $this->_passthru) {
+            return $this->_mock->mockery_callSubjectMethod($this->_name, $args);
+        }
+
+        $return = $this->_getReturnValue($args);
+        $this->throwAsNecessary($return);
+        $this->_setValues();
+
+        return $return;
+    }

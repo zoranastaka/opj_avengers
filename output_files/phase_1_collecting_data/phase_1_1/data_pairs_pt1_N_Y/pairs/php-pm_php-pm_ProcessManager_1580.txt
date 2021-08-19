@@ -1,0 +1,8 @@
+    /**
+     * @param int $maxExecutionTime
+     */
+
+    public function setMaxExecutionTime($maxExecutionTime)
+    {
+        $this->maxExecutionTime = $maxExecutionTime;
+    }

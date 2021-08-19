@@ -1,0 +1,12 @@
+    /**
+     * @test 50 urbanPop observations
+     */
+
+    public function testNumberOfUrbanPops()
+    {
+        // When
+        $observations = $this->usArrests->getUrbanPop();
+
+        // Then
+        $this->assertCount(50, $observations);
+    }

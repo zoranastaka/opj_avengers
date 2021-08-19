@@ -1,0 +1,17 @@
+    /**
+     * Set default paper
+     *
+     * @param string $value
+     * @return bool
+     */
+
+    public static function setDefaultPaper($value)
+    {
+        if (is_string($value) && trim($value) !== '') {
+            self::$defaultPaper = $value;
+
+            return true;
+        }
+
+        return false;
+    }

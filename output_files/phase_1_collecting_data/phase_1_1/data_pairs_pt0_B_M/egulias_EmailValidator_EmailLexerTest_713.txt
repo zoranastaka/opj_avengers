@@ -1,0 +1,13 @@
+    /**
+     *  @dataProvider getTokens
+     *
+     */
+
+    public function testLexerTokens($str, $token)
+    {
+        $lexer = new EmailLexer();
+        $lexer->setInput($str);
+        $lexer->moveNext();
+        $lexer->moveNext();
+        $this->assertEquals($token, $lexer->token['type']);
+    }

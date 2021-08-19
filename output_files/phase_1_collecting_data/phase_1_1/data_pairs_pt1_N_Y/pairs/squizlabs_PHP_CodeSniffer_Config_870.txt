@@ -1,0 +1,104 @@
+    /**
+     * Processes a short (-e) command line argument.
+     *
+     * @param string $arg The command line argument.
+     * @param int    $pos The position of the argument on the command line.
+     *
+     * @return void
+     * @throws \PHP_CodeSniffer\Exceptions\DeepExitException
+     */
+
+    public function processShortArgument($arg, $pos)
+    {
+        switch ($arg) {
+        case 'h':
+        case '?':
+            ob_start();
+            $this->printUsage();
+            $output = ob_get_contents();
+            ob_end_clean();
+            throw new DeepExitException($output, 0);
+        case 'i' :
+            ob_start();
+            Util\Standards::printInstalledStandards();
+            $output = ob_get_contents();
+            ob_end_clean();
+            throw new DeepExitException($output, 0);
+        case 'v' :
+            if ($this->quiet === true) {
+                // Ignore when quiet mode is enabled.
+                break;
+            }
+
+            $this->verbosity++;
+            self::$overriddenDefaults['verbosity'] = true;
+            break;
+        case 'l' :
+            $this->local = true;
+            self::$overriddenDefaults['local'] = true;
+            break;
+        case 's' :
+            $this->showSources = true;
+            self::$overriddenDefaults['showSources'] = true;
+            break;
+        case 'a' :
+            $this->interactive = true;
+            self::$overriddenDefaults['interactive'] = true;
+            break;
+        case 'e':
+            $this->explain = true;
+            self::$overriddenDefaults['explain'] = true;
+            break;
+        case 'p' :
+            if ($this->quiet === true) {
+                // Ignore when quiet mode is enabled.
+                break;
+            }
+
+            $this->showProgress = true;
+            self::$overriddenDefaults['showProgress'] = true;
+            break;
+        case 'q' :
+            // Quiet mode disables a few other settings as well.
+            $this->quiet        = true;
+            $this->showProgress = false;
+            $this->verbosity    = 0;
+
+            self::$overriddenDefaults['quiet'] = true;
+            break;
+        case 'm' :
+            $this->recordErrors = false;
+            self::$overriddenDefaults['recordErrors'] = true;
+            break;
+        case 'd' :
+            $ini = explode('=', $this->cliArgs[($pos + 1)]);
+            $this->cliArgs[($pos + 1)] = '';
+            if (isset($ini[1]) === true) {
+                ini_set($ini[0], $ini[1]);
+            } else {
+                ini_set($ini[0], true);
+            }
+            break;
+        case 'n' :
+            if (isset(self::$overriddenDefaults['warningSeverity']) === false) {
+                $this->warningSeverity = 0;
+                self::$overriddenDefaults['warningSeverity'] = true;
+            }
+            break;
+        case 'w' :
+            if (isset(self::$overriddenDefaults['warningSeverity']) === false) {
+                $this->warningSeverity = $this->errorSeverity;
+                self::$overriddenDefaults['warningSeverity'] = true;
+            }
+            break;
+        default:
+            if ($this->dieOnUnknownArg === false) {
+                $unknown       = $this->unknown;
+                $unknown[]     = $arg;
+                $this->unknown = $unknown;
+            } else {
+                $this->processUnknownArgument('-'.$arg, $pos);
+            }
+        }//end switch
+
+    }//end processShortArgument()

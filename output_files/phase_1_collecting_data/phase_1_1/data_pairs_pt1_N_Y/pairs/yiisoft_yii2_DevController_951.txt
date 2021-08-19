@@ -1,0 +1,26 @@
+    /**
+     * Install all extensions and advanced + basic app.
+     */
+
+    public function actionAll()
+    {
+        if (!$this->confirm('Install all applications and all extensions now?')) {
+            return 1;
+        }
+
+        foreach ($this->extensions as $ext => $repo) {
+            $ret = $this->actionExt($ext);
+            if ($ret !== 0) {
+                return $ret;
+            }
+        }
+
+        foreach ($this->apps as $app => $repo) {
+            $ret = $this->actionApp($app);
+            if ($ret !== 0) {
+                return $ret;
+            }
+        }
+
+        return 0;
+    }

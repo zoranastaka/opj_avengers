@@ -1,0 +1,23 @@
+    /**
+     * @test Axiom: Positive definiteness A and B are PD ⇒ BAB is PD
+     * If A and B are positive definite then BAB is positive definite.
+     * @dataProvider dataProviderForTwoPositiveDefiniteMatrices
+     * @param        array $A
+     * @param        array $B
+     * @throws       \Exception
+     */
+
+    public function testPositiveDefiniteBABIsPositiveDefinite(array $A, array $B)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $B = MatrixFactory::create($B);
+
+        // When
+        $BAB = $B->multiply($A)->multiply($B);
+
+        // Then
+        $this->assertTrue($A->isPositiveDefinite());
+        $this->assertTrue($B->isPositiveDefinite());
+        $this->assertTrue($BAB->isPositiveDefinite());
+    }

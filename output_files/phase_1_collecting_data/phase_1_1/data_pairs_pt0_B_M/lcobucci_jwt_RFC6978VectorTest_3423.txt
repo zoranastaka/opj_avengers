@@ -1,0 +1,8 @@
+    /** @return mixed[] */
+
+    public function dataRFC6979(): iterable
+    {
+        yield from $this->sha256Data();
+        yield from $this->sha384Data();
+        yield from $this->sha512Data();
+    }

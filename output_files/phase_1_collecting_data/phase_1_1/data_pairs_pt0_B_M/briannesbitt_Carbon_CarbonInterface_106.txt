@@ -1,0 +1,13 @@
+    /**
+     * Determines if the instance is yesterday.
+     *
+     * @example
+     * ```
+     * Carbon::yesterday()->isYesterday(); // true
+     * Carbon::tomorrow()->isYesterday(); // false
+     * ```
+     *
+     * @return bool
+     */
+
+    public function isYesterday();

@@ -1,0 +1,9 @@
+// funkcija za brisanje zadatka
+
+function brisanje_zadatka($zadatak_id)
+{
+    $brisanje = $GLOBALS['con']->prepare(' delete from zadaci where zadatak_id = :zadatak_id ');
+    $brisanje->execute([
+                        'zadatak_id' => $zadatak_id
+                        ]);
+}

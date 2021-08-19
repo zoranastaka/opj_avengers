@@ -1,0 +1,8 @@
+    /**
+     * Closes the underlying connection and disconnects from the server.
+     */
+
+    public function disconnect()
+    {
+        $this->connection->disconnect();
+    }

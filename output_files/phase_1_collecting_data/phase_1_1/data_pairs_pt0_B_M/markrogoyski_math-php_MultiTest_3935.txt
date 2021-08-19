@@ -1,0 +1,16 @@
+    /**
+     * @test         subtract multiple arrays
+     * @dataProvider dataProviderForSubtractMulti
+     * @param        array $expected
+     * @param        array[] $arrays
+     * @throws       \Exception
+     */
+
+    public function testSubtractMulti(array $expected, array ...$arrays)
+    {
+        // When
+        $differences = Multi::subtract(...$arrays);
+
+        // Then
+        $this->assertEquals($expected, $differences);
+    }

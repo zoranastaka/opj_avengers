@@ -1,0 +1,10 @@
+    /**
+     * Get the current request instance.
+     *
+     * @return \Illuminate\Http\Request
+     */
+
+    public function getRequest()
+    {
+        return $this->request ?: Request::createFromGlobals();
+    }

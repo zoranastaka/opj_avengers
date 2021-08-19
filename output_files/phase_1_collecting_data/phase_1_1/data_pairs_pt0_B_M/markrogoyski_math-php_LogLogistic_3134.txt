@@ -1,0 +1,22 @@
+    /**
+     * Cumulative distribution function
+     *
+     *                   1
+     * F(x; α, β) = -----------
+     *              1 + (x/α)⁻ᵝ
+     *
+     * @param float $x (x > 0)
+     *
+     * @return float
+     */
+
+    public function cdf(float $x): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['x' => $x]);
+
+        $α = $this->α;
+        $β = $this->β;
+
+        $⟮x／α⟯⁻ᵝ = \pow($x / $α, -$β);
+        return 1 / (1 + $⟮x／α⟯⁻ᵝ);
+    }

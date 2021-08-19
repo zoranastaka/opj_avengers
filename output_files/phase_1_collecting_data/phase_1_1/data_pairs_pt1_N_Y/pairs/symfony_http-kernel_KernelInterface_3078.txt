@@ -1,0 +1,11 @@
+    /**
+     * Gets the cache directory.
+     *
+     * Since Symfony 5.2, the cache directory should be used for caches that are written at runtime.
+     * For caches and artifacts that can be warmed at compile-time and deployed as read-only,
+     * use the new "build directory" returned by the {@see getBuildDir()} method.
+     *
+     * @return string The cache directory
+     */
+
+    public function getCacheDir();

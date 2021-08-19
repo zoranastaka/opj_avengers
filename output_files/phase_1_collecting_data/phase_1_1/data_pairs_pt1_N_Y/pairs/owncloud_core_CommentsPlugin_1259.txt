@@ -1,0 +1,12 @@
+	/**
+	 * REPORT operations to look for comments
+	 *
+	 * @param string $reportName
+	 * @param [] $report
+	 * @param string $uri
+	 * @return bool
+	 * @throws NotFound
+	 * @throws ReportNotSupported
+	 */
+
+	public function onReport($reportName, $report, $uri) {

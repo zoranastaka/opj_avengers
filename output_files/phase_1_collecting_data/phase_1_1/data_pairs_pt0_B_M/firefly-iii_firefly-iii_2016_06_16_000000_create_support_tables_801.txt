@@ -1,0 +1,19 @@
+    /**
+     * Run the migrations.
+     *
+     * @SuppressWarnings(PHPMD.ShortMethodName)
+     */
+
+    public function up(): void
+    {
+        $this->createAccountTypeTable();
+        $this->createCurrencyTable();
+        $this->createTransactionTypeTable();
+        $this->createJobsTable();
+        $this->createPasswordTable();
+        $this->createPermissionsTable();
+        $this->createRolesTable();
+        $this->createPermissionRoleTable();
+        $this->createSessionsTable();
+        $this->createConfigurationTable();
+    }

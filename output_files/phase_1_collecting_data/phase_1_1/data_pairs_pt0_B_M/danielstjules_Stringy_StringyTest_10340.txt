@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider isBase64Provider()
+     */
+
+    public function testIsBase64($expected, $str)
+    {
+        $stringy = S::create($str);
+        $result = $stringy->isBase64();
+        $this->assertInternalType('boolean', $result);
+        $this->assertEquals($expected, $result);
+        $this->assertEquals($str, $stringy);
+    }

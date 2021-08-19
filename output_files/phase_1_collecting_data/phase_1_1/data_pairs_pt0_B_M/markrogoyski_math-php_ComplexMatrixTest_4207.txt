@@ -1,0 +1,26 @@
+    /**
+     * @test conjugateTranspose
+     */
+
+    public function testConjugateTranspose()
+    {
+        // Given
+        $A = [
+            [new Complex(1, 0), new Complex(-2, -1), new Complex(5, 0)],
+            [new Complex(1, 1), new Complex(0, 1), new Complex(4, -2)],
+        ];
+        $A = new ComplexMatrix($A);
+
+        // And
+        $expected = [
+            [new Complex(1, 0), new Complex(1, -1)],
+            [new Complex(-2, 1), new Complex(0, -1)],
+            [new Complex(5, 0), new Complex(4, 2)],
+        ];
+
+        // When
+        $Aᴴ = $A->conjugateTranspose();
+
+        // Then
+        $this->assertEquals($expected, $Aᴴ->getMatrix());
+    }

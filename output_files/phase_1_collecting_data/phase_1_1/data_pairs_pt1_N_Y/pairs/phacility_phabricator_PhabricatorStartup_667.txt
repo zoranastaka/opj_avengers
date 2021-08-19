@@ -1,0 +1,39 @@
+/**
+ * Handle request startup, before loading the environment or libraries. This
+ * class bootstraps the request state up to the point where we can enter
+ * Phabricator code.
+ *
+ * NOTE: This class MUST NOT have any dependencies. It runs before libraries
+ * load.
+ *
+ * Rate Limiting
+ * =============
+ *
+ * Phabricator limits the rate at which clients can request pages, and issues
+ * HTTP 429 "Too Many Requests" responses if clients request too many pages too
+ * quickly. Although this is not a complete defense against high-volume attacks,
+ * it can  protect an install against aggressive crawlers, security scanners,
+ * and some types of malicious activity.
+ *
+ * To perform rate limiting, each page increments a score counter for the
+ * requesting user's IP. The page can give the IP more points for an expensive
+ * request, or fewer for an authetnicated request.
+ *
+ * Score counters are kept in buckets, and writes move to a new bucket every
+ * minute. After a few minutes (defined by @{method:getRateLimitBucketCount}),
+ * the oldest bucket is discarded. This provides a simple mechanism for keeping
+ * track of scores without needing to store, access, or read very much data.
+ *
+ * Users are allowed to accumulate up to 1000 points per minute, averaged across
+ * all of the tracked buckets.
+ *
+ * @task info         Accessing Request Information
+ * @task hook         Startup Hooks
+ * @task apocalypse   In Case Of Apocalypse
+ * @task validation   Validation
+ * @task ratelimit    Rate Limiting
+ * @task phases       Startup Phase Timers
+ * @task request-path Request Path
+ */
+
+final class PhabricatorStartup {

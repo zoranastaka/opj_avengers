@@ -1,0 +1,10 @@
+    /**
+     * Bootstrap the module events.
+     *
+     * @return void
+     */
+
+    public function boot()
+    {
+        parent::boot('backend');
+    }

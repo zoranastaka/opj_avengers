@@ -1,0 +1,10 @@
+    /**
+     * Create a new constraint based on size
+     *
+     * @param Size $size
+     */
+
+    public function __construct(Size $size)
+    {
+        $this->size = $size;
+    }

@@ -1,0 +1,8 @@
+  /**
+   * Generate DKIM Canonicalization Body
+   *
+   * @access public
+   * @param string $body Message Body
+   */
+
+  public function DKIM_BodyC($body) {

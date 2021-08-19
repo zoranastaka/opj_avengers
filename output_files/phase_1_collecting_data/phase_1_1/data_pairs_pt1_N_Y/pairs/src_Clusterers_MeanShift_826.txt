@@ -1,0 +1,10 @@
+    /**
+     * Return the amount of centroid shift at each epoch of training.
+     *
+     * @return float[]|null
+     */
+
+    public function losses() : ?array
+    {
+        return $this->losses;
+    }

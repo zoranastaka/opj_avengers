@@ -1,0 +1,16 @@
+    /**
+     * @test         Axiom: rank(A) ≤ min(m, n)
+     *               The rank of a matrix is less than or equal to the minimum dimension of the matrix
+     * @dataProvider dataProviderForSingleMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testRankLessThanMinDimension(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertLessThanOrEqual(\min($A->getM(), $A->getN()), $A->rank());
+    }

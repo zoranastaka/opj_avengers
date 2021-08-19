@@ -1,0 +1,28 @@
+  /**
+   * Test fetching an access token with assertion credentials
+   * using "setAuthConfig" and "setSubject" but with user credentials
+   */
+
+  public function testBadSubjectThrowsException()
+  {
+    $this->checkServiceAccountCredentials();
+
+    $client = $this->getClient();
+    $client->useApplicationDefaultCredentials();
+    $client->setSubject('bad-subject');
+
+    $authHandler = Google_AuthHandler_AuthHandlerFactory::build();
+
+    // make this method public for testing purposes
+    $method = new ReflectionMethod($authHandler, 'createAuthHttp');
+    $method->setAccessible(true);
+    $authHttp = $method->invoke($authHandler, $client->getHttpClient());
+
+    try {
+      $token = $client->fetchAccessTokenWithAssertion($authHttp);
+      $this->fail('no exception thrown');
+    } catch (GuzzleHttp\Exception\ClientException $e) {
+      $response = $e->getResponse();
+      $this->assertContains('Invalid impersonation', (string) $response->getBody());
+    }
+  }

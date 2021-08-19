@@ -1,0 +1,11 @@
+    /**
+     * @test         isMesokurtic
+     * @dataProvider dataProviderForMesokurtic
+     * @param        array $data
+     * @throws       \Exception
+     */
+
+    public function testIsMesokurtic(array $data)
+    {
+        $this->assertTrue(RandomVariable::isMesokurtic($data, RandomVariable::SAMPLE_KURTOSIS));
+    }

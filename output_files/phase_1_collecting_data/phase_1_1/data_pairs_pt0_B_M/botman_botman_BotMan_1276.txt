@@ -1,0 +1,11 @@
+    /**
+     * Listening for location attachment.
+     *
+     * @param $callback
+     * @return Command
+     */
+
+    public function receivesLocation($callback)
+    {
+        return $this->hears(Location::PATTERN, $callback);
+    }

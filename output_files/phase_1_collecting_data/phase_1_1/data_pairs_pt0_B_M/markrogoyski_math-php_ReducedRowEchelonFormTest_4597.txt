@@ -1,0 +1,19 @@
+    /**
+     * @test         isRref on rref matrix should return true
+     * @dataProvider dataProviderForNonsingularMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testRrefIsRref(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $rref = $A->rref();
+
+        // Then
+        $this->assertTrue($rref->isRref());
+        $this->assertTrue($rref->isRef());
+    }

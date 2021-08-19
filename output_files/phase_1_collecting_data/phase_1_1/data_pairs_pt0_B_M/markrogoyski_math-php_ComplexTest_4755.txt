@@ -1,0 +1,22 @@
+    /**
+     * @test         polarForm returns the expected complex number
+     * @dataProvider dataProviderForPolarForm
+     * @param        number $r₁
+     * @param        number $i₁
+     * @param        number $r₂
+     * @param        number $i₂
+     */
+
+    public function testPolarForm($r₁, $i₁, $r₂, $i₂)
+    {
+        // Given
+        $c        = new Complex($r₁, $i₁);
+        $expected = new Complex($r₂, $i₂);
+
+        // When
+        $polar_form = $c->polarForm();
+
+        // Then
+        $this->assertEqualsWithDelta($expected->r, $polar_form->r, 0.00001);
+        $this->assertEqualsWithDelta($expected->i, $polar_form->i, 0.00001);
+    }

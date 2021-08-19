@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     *
+     * @return int|false
+     */
+
+    public function stream_tell()
+    {
+        return ftell($this->stream);
+    }

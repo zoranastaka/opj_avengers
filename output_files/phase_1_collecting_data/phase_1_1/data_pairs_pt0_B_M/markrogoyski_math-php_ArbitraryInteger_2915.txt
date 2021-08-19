@@ -1,0 +1,18 @@
+    /**
+     * Greater Than
+     *
+     * Test if one ArbitraryInteger is greater than another
+     *
+     * @param int|string|ArbitraryInteger $int
+     *
+     * @return bool
+     *
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function greaterThan($int): bool
+    {
+        $int = self::create($int);
+        return $int->lessThan($this);
+    }

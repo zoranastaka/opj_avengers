@@ -1,0 +1,15 @@
+    /**
+     * @covers ::textNeedsSplitting
+     */
+
+    public function testTextNeedsSplitting()
+    {
+        $templateProcessor = new TestableTemplateProcesor();
+
+        $this->assertFalse($templateProcessor->textNeedsSplitting('<w:r><w:rPr><w:b/><w:i/></w:rPr><w:t xml:space="preserve">${nothing-to-replace}</w:t></w:r>'));
+
+        $text = '<w:r><w:rPr><w:b/><w:i/></w:rPr><w:t xml:space="preserve">Hello ${firstname} ${lastname}</w:t></w:r>';
+        $this->assertTrue($templateProcessor->textNeedsSplitting($text));
+        $splitText = $templateProcessor->splitTextIntoTexts($text);
+        $this->assertFalse($templateProcessor->textNeedsSplitting($splitText));
+    }

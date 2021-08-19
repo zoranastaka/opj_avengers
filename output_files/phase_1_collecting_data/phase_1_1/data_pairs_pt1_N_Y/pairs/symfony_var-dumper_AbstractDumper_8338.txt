@@ -1,0 +1,10 @@
+    /**
+     * Generic line dumper callback.
+     */
+
+    protected function echoLine(string $line, int $depth, string $indentPad)
+    {
+        if (-1 !== $depth) {
+            fwrite($this->outputStream, str_repeat($indentPad, $depth).$line."\n");
+        }
+    }

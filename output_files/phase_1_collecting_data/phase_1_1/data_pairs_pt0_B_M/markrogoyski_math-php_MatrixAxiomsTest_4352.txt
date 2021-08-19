@@ -1,0 +1,39 @@
+    /**
+     * @test         Axiom: adj⟮B⟯adj⟮A⟯ = det⟮B⟯B⁻¹ det⟮A⟯A⁻¹ = det⟮AB⟯⟮AB⟯⁻¹
+     *               The adjugate of B times adjugate A equals the determinant of B times inverse of B times determinant of A times inverse of A
+     *               which equals the determinant of AB times the inverse of AB
+     * @dataProvider dataProviderForTwoNonsingularMatrices
+     * @param        array $A
+     * @param        array $B
+     * @throws       \Exception
+     */
+
+    public function testAdjugateBTimesAdjugateAEqualsDetBTimesInverseBTimesDetATimesInverseAEqualsDetABTimesInverseAB(array $A, array $B)
+    {
+        // Given
+        $A      = MatrixFactory::create($A);
+        $B      = MatrixFactory::create($B);
+        $A⁻¹    = $A->inverse();
+        $B⁻¹    = $B->inverse();
+        $AB     = $A->multiply($B);
+        $⟮AB⟯⁻¹  = $AB->inverse();
+        $adj⟮A⟯  = $A->adjugate();
+        $adj⟮B⟯  = $B->adjugate();
+        $det⟮A⟯  = $A->det();
+        $det⟮B⟯  = $B->det();
+        $det⟮AB⟯ = $AB->det();
+
+        // When
+        $det⟮A⟯A⁻¹ = $A⁻¹->scalarMultiply($det⟮A⟯);
+        $det⟮B⟯B⁻¹ = $B⁻¹->scalarMultiply($det⟮B⟯);
+
+        // And
+        $adj⟮B⟯adj⟮A⟯       = $adj⟮B⟯->multiply($adj⟮A⟯);
+        $det⟮B⟯B⁻¹det⟮A⟯A⁻¹ = $det⟮B⟯B⁻¹->multiply($det⟮A⟯A⁻¹);
+        $det⟮AB⟯⟮AB⟯⁻¹      = $⟮AB⟯⁻¹->scalarMultiply($det⟮AB⟯);
+
+        // Then
+        $this->assertEqualsWithDelta($adj⟮B⟯adj⟮A⟯, $det⟮B⟯B⁻¹det⟮A⟯A⁻¹, 0.001);
+        $this->assertEqualsWithDelta($det⟮B⟯B⁻¹det⟮A⟯A⁻¹, $det⟮AB⟯⟮AB⟯⁻¹, 0.001);
+        $this->assertEqualsWithDelta($adj⟮B⟯adj⟮A⟯, $det⟮AB⟯⟮AB⟯⁻¹, 0.001);
+    }

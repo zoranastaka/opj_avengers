@@ -1,0 +1,13 @@
+    /**
+     * Checks that argument object has specific state.
+     *
+     * @param string $methodName
+     * @param mixed  $value
+     *
+     * @return Token\ObjectStateToken
+     */
+
+    public static function which($methodName, $value)
+    {
+        return new Token\ObjectStateToken($methodName, $value);
+    }

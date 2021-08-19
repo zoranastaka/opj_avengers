@@ -1,0 +1,14 @@
+    /**
+     * Set a container.
+     *
+     * @param ContainerInterface $container
+     *
+     * @return self
+     */
+
+    public function setContainer(ContainerInterface $container) : ContainerAwareInterface
+    {
+        $this->container = $container;
+
+        return $this;
+    }

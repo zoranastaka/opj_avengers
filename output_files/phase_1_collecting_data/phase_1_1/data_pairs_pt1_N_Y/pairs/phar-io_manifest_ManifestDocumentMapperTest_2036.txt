@@ -1,0 +1,13 @@
+    /**
+     * @dataProvider dataProvider
+     *
+     * @param $expected
+     *
+     * @uses         \PharIo\Manifest\Application
+     * @uses         \PharIo\Manifest\ApplicationName
+     * @uses         \PharIo\Manifest\Library
+     * @uses         \PharIo\Manifest\Extension
+     * @uses         \PharIo\Manifest\ExtensionElement
+     */
+
+    public function testCanSerializeToString($expected): void {

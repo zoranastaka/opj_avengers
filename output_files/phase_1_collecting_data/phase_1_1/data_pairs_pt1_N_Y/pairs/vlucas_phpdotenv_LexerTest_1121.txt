@@ -1,0 +1,16 @@
+    /**
+     * @return array{string,string[]}[]
+     */
+
+    public function provideLexCases()
+    {
+        return [
+            ['', []],
+            ['FOO', ['FOO']],
+            ['FOO bar', ['FOO', ' ', 'bar']],
+            ['FOO\\n()ab', ['FOO', '\\', 'n()ab']],
+            ["FOO\n\n   A", ['FOO', "\n\n", '   ', 'A']],
+            ['"VA=L"', ['"', 'VA=L', '"']],
+            ['\' \'', ['\'', ' ', '\'']],
+        ];
+    }

@@ -1,0 +1,26 @@
+    /**
+     * draw an ellipse
+     * note that the part and filled ellipse are just special cases of this function
+     *
+     * draws an ellipse in the current line style
+     * centered at $x0,$y0, radii $r1,$r2
+     * if $r2 is not set, then a circle is drawn
+     * from $astart to $afinish, measured in degrees, running anti-clockwise from the right hand side of the ellipse.
+     * nSeg is not allowed to be less than 2, as this will simply draw a line (and will even draw a
+     * pretty crappy shape at 2, as we are approximating with bezier curves.
+     *
+     * @param $x0
+     * @param $y0
+     * @param $r1
+     * @param int $r2
+     * @param int $angle
+     * @param int $nSeg
+     * @param int $astart
+     * @param int $afinish
+     * @param bool $close
+     * @param bool $fill
+     * @param bool $stroke
+     * @param bool $incomplete
+     */
+
+    function ellipse(

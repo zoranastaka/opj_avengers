@@ -1,0 +1,7 @@
+	/**
+	 * Given an array of patches, return another array that is identical.
+	 * @param {Array.<patch_obj>} patches Array of patch objects.
+	 * @return {Array.<patch_obj>} Array of patch objects.
+	 */
+
+	function patch_deepCopy($patches) {

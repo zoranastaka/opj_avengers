@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function setId(string $id)
+    {
+        if ($this->storage->getId() !== $id) {
+            $this->storage->setId($id);
+        }
+    }

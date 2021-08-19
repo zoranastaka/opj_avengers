@@ -1,0 +1,24 @@
+	/**
+	 * Change stream metadata.
+	 *
+	 * @param string $path The file path or URL to set metadata. Note that in the case of a URL, it must be a :// delimited URL. Other URL forms are not supported.
+	 * @param int    $option STREAM_META_TOUCH, STREAM_META_OWNER_NAME, STREAM_META_OWNER, STREAM_META_GROUP_NAME, STREAM_META_GROUP, or STREAM_META_ACCESS.
+	 * @param mixed  $value Depends on $option.
+	 *
+	 * @return bool TRUE on success or FALSE on failure. If option is not implemented, FALSE should be returned.
+	 */
+
+	public function stream_metadata( $path, $option, $value ) {
+		switch ( $option ) {
+			case STREAM_META_TOUCH:
+				$value += array( null, null );
+				return $this->native( 'touch', $path, $value[0], $value[1] );
+			case STREAM_META_OWNER_NAME:
+			case STREAM_META_OWNER:
+				return $this->native( 'chown', $path, $value );
+			case STREAM_META_GROUP_NAME:
+			case STREAM_META_GROUP:
+				return $this->native( 'chgrp', $path, $value );
+			case STREAM_META_ACCESS:
+				return $this->native( 'chmod', $path, $value );
+		}

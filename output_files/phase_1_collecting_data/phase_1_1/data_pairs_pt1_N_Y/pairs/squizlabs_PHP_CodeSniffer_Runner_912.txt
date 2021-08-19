@@ -1,0 +1,26 @@
+    /**
+     * Converts all PHP errors into exceptions.
+     *
+     * This method forces a sniff to stop processing if it is not
+     * able to handle a specific piece of code, instead of continuing
+     * and potentially getting into a loop.
+     *
+     * @param int    $code    The level of error raised.
+     * @param string $message The error message.
+     * @param string $file    The path of the file that raised the error.
+     * @param int    $line    The line number the error was raised at.
+     *
+     * @return void
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException
+     */
+
+    public function handleErrors($code, $message, $file, $line)
+    {
+        if ((error_reporting() & $code) === 0) {
+            // This type of error is being muted.
+            return true;
+        }
+
+        throw new RuntimeException("$message in $file on line $line");
+
+    }//end handleErrors()

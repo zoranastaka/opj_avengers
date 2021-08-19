@@ -1,0 +1,12 @@
+    /**
+     * Replaces all occurrences of $search in $str by $replacement.
+     *
+     * @param  string $search      The needle to search for
+     * @param  string $replacement The string to replace with
+     * @return static Object with the resulting $str after the replacements
+     */
+
+    public function replace($search, $replacement)
+    {
+        return $this->regexReplace(preg_quote($search), $replacement);
+    }

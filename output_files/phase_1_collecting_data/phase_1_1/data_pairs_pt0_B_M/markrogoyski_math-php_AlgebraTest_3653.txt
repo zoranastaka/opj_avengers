@@ -1,0 +1,17 @@
+    /**
+     * @return array (a, b)
+     */
+
+    public function dataProviderForLinearNoRoot(): array
+    {
+        return [
+            [0, 0],
+            [0, 1],
+            [0, 5],
+            [0, -1],
+            [0, -5],
+            [-0, 1],
+            [0.0, 1],
+            [-0.0, 1],
+        ];
+    }

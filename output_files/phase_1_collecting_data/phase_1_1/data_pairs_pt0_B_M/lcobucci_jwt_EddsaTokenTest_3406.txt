@@ -1,0 +1,10 @@
+    /** @before */
+
+    public function createConfiguration(): void
+    {
+        $this->config = Configuration::forAsymmetricSigner(
+            new Eddsa(),
+            static::$eddsaKeys['private'],
+            static::$eddsaKeys['public1']
+        );
+    }

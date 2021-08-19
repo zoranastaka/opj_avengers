@@ -1,0 +1,8 @@
+    /**
+     * Returns the builder configured for this environment
+     */
+
+    public function getBuilder(): UuidBuilderInterface
+    {
+        return $this->builder;
+    }

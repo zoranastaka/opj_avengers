@@ -1,0 +1,18 @@
+    /**
+     * Conjugate Transpose - Aᴴ, also denoted as A*
+     *
+     * Take the transpose and then take the complex conjugate of each complex-number entry.
+     *
+     * https://en.wikipedia.org/wiki/Conjugate_transpose
+     *
+     * @return ComplexMatrix
+     */
+
+    public function conjugateTranspose(): Matrix
+    {
+        return $this->transpose()->map(
+            function (Complex $c) {
+                return $c->complexConjugate();
+            }
+        );
+    }

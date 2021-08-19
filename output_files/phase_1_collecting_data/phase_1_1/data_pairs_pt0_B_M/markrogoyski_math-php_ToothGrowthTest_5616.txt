@@ -1,0 +1,12 @@
+    /**
+     * @test 60 observations
+     */
+
+    public function testDataHas60Observations()
+    {
+        // When
+        $data = $this->toothGrowth->getData();
+
+        // Then
+        $this->assertCount(60, $data);
+    }

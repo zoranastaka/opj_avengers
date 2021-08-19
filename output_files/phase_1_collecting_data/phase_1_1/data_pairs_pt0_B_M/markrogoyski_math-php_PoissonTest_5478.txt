@@ -1,0 +1,19 @@
+    /**
+     * @test         pmf
+     * @dataProvider dataProviderForPmf
+     * @param        int $k
+     * @param        float $λ
+     * @param        float $expectedPmf
+     */
+
+    public function testPmf(int $k, float $λ, float $expectedPmf)
+    {
+        // Given
+        $poisson = new Poisson($λ);
+
+        // When
+        $pmf = $poisson->pmf($k);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedPmf, $pmf, 0.001);
+    }

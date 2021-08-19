@@ -1,0 +1,18 @@
+    /**
+     * @test         Degree
+     * @dataProvider dataProviderForGetDegree
+     * @param        array $coefficients
+     * @param        int $expected
+     */
+
+    public function testGetDegree(array $coefficients, int $expected)
+    {
+        // Given
+        $polynomial = new Polynomial($coefficients);
+
+        // When
+        $degree = $polynomial->getDegree();
+
+        // Then
+        $this->assertEquals($expected, $degree);
+    }

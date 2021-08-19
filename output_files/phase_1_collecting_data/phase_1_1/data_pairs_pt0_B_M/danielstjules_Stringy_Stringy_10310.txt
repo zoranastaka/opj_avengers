@@ -1,0 +1,13 @@
+    /**
+     * Returns a lowercase and trimmed string separated by underscores.
+     * Underscores are inserted before uppercase characters (with the exception
+     * of the first character of the string), and in place of spaces as well as
+     * dashes.
+     *
+     * @return static Object with an underscored $str
+     */
+
+    public function underscored()
+    {
+        return $this->delimit('_');
+    }

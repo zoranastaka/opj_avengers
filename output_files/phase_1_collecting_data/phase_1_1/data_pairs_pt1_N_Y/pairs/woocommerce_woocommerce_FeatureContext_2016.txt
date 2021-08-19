@@ -1,0 +1,8 @@
+	/**
+	 * @AfterSuite
+	 */
+
+	public static function afterSuite( SuiteEvent $event ) {
+		if ( self::$suite_cache_dir ) {
+			Process::create( Utils\esc_cmd( 'rm -r %s', self::$suite_cache_dir ), null, self::get_process_env_variables() )->run();
+		}

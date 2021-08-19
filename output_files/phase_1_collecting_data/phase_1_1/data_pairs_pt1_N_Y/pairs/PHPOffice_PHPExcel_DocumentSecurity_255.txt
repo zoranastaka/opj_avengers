@@ -1,0 +1,10 @@
+    /**
+     * Get LockStructure
+     *
+     * @return boolean
+     */
+
+    public function getLockStructure()
+    {
+        return $this->lockStructure;
+    }

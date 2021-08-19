@@ -1,0 +1,91 @@
+    /**
+     * Return filters for processing lines from safe universal phalcon.c
+     *
+     * @return array
+     */
+
+    protected function getFilters()
+    {
+        $result = [];
+
+        /*
+        // Explicit calls to zend_inline_hash_func()
+        $result[] = array(
+            'regexp' => '/(zend_inline_hash_func\(SS\("([^"]++)"\)\))/',
+            'func' => function ($line, $matches, $hashFunc) {
+                $hash = $hashFunc($matches[2]);
+                return str_replace($matches[1], $hash, $line);
+            }
+        );
+
+        // Pre-compute the hash key for isset using strings
+        $result[] = array(
+            'regexp' => '/zephir_array_isset_string\(([a-zA-Z0-9\_]+), SS\("([a-zA-Z\_\-]+)"\)\)/',
+            'func' => function ($line, $matches, $hashFunc) {
+                $hash = $hashFunc($matches[2]);
+                return str_replace($matches[0], 'zephir_array_isset_quick_string('.$matches[1].', SS("'.$matches[2].'"), '.$hash.')', $line);
+            }
+        );
+
+        // Pre-compute the hash key for reading elements using hashes
+        $result[] = array(
+            'regexp' => '/zephir_array_fetch_string\(\&([a-zA-Z0-9\_]+), ([a-zA-Z0-9\_]+), SL\("([a-zA-Z\_\-]+)"\), ([a-zA-Z0-9\_]+)\)/',
+            'func' => function ($line, $matches, $hashFunc) {
+                $hash = $hashFunc($matches[3]);
+                return str_replace($matches[0], 'zephir_array_fetch_quick_string(&'.$matches[1].', '.$matches[2].', SS("'.$matches[3].'"), '.$hash.', '.$matches[4].')', $line);
+            }
+        );
+
+        // Pre-compute hash for updating elements
+        $result[] = array(
+            'regexp' => '/zephir_array_update_string\(\&([a-zA-Z0-9\_]+), SL\("([a-zA-Z\_\-]+)"\), \&([a-zA-Z0-9\_]+), (.+)\)/',
+            'func' => function ($line, $matches, $hashFunc) {
+                $hash = $hashFunc($matches[2]);
+                return str_replace($matches[0], 'zephir_array_update_quick_string(&'.$matches[1].', SS("'.$matches[2].'"), '.$hash.', &'.$matches[3].', '.$matches[4].')', $line);
+            }
+        );
+
+        // Pre-compute hash key for method checking
+        $result[] = array(
+            'regexp' => '/zephir_method_exists_ex\(([a-zA-Z0-9\_]+), SS\("([a-zA-Z\_\-]+)"\)\)/',
+            'func' => function ($line, $matches, $hashFunc) {
+                $hash = $hashFunc($matches[2]);
+                return str_replace($matches[0], 'zephir_method_quick_exists_ex('.$matches[1].', SS("'.$matches[2].'"), '.$hash.')', $line);
+            }
+        );
+
+        // Pre-compute hash key for function checking
+        $result[] = array(
+            'regexp' => '/zephir_function_exists_ex\(SS\("([a-zA-Z\_\-]+)"\)\)/',
+            'func' => function ($line, $matches, $hashFunc) {
+                $hash = $hashFunc($matches[1]);
+                return str_replace($matches[0], 'zephir_function_quick_exists_ex(SS("'.$matches[1].'"), '.$hash.')', $line);
+            }
+        );
+
+        $result[] = array(
+            'regexp' => '/zephir_read_property_this\(&([a-zA-Z0-9\_]+), this_ptr, SL\("([a-zA-Z0-9\_]+)"\), PH_NOISY_CC\)/',
+            'func' => function ($line, $matches, $hashFunc) {
+                $hash = $hashFunc($matches[2]);
+                return str_replace($matches[0], 'zephir_read_property_this_quick(&'.$matches[1].', this_ptr, SL("'.$matches[2].'"), '.$hash.', PH_NOISY_CC)', $line);
+            }
+        );
+
+        $result[] = array(
+            'regexp' => '/zephir_update_property_this\(this_ptr, SL\("([a-zA-Z0-9\_]+)"\), ([a-zA-Z0-9\_]+)\)/',
+            'func' => function ($line, $matches, $hashFunc) {
+                $key = $hashFunc($matches[1]);
+                return str_replace($matches[0], 'zephir_update_property_this_quick(this_ptr, SL("'.$matches[1].'"), '.$matches[2].', '.$key.')', $line);
+            }
+        );
+
+        $result[] = array(
+            'regexp' => '/RETURN_MEMBER\(([a-zA-Z0-9\_]+), "([a-zA-Z0-9\_]+)"\)/',
+            'func' => function ($line, $matches, $hashFunc) {
+                $hash = $hashFunc($matches[2]);
+                return str_replace($matches[0], 'RETURN_MEMBER_QUICK('.$matches[1].', "'.$matches[2].'", '.$hash.')', $line);
+            }
+        );*/
+
+        return $result;
+    }

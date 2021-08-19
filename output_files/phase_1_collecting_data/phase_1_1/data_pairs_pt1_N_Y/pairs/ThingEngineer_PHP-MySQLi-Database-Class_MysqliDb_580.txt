@@ -1,0 +1,14 @@
+    /**
+     * Method returns mysql error
+     *
+     * @return string
+     * @throws Exception
+     */
+
+    public function getLastError()
+    {
+        if (!isset($this->_mysqli[$this->defConnectionName])) {
+            return "mysqli is null";
+        }
+        return trim($this->_stmtError . " " . $this->mysqli()->error);
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @test 150 species observations
+     */
+
+    public function testNumberOfSpecies()
+    {
+        // When
+        $observations = $this->iris->getSpecies();
+
+        // Then
+        $this->assertCount(150, $observations);
+    }

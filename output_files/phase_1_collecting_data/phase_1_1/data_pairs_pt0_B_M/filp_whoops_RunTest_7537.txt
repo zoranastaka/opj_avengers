@@ -1,0 +1,12 @@
+    /**
+     * @covers Whoops\Run::pushHandler
+     */
+
+    public function testPushInvalidHandler()
+    {
+        $run = $this->getRunInstance();
+
+        $this->expectExceptionOfType('InvalidArgumentException');
+
+        $run->pushHandler('actually turnip');
+    }

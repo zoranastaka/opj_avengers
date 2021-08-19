@@ -1,0 +1,19 @@
+    /**
+     * @test         Axiom: adj⟮I⟯ = I
+     *               The adjugate of identity matrix is identity matrix
+     * @dataProvider dataProviderForIdentityMatrix
+     * @param        array $I
+     * @throws       \Exception
+     */
+
+    public function testAdjugateOfIdenetityMatrixIsIdentity(array $I)
+    {
+        // Given
+        $I = MatrixFactory::create($I);
+
+        // When
+        $adj⟮I⟯ = $I->adjugate();
+
+        // Then
+        $this->assertEqualsWithDelta($adj⟮I⟯, $I, 0.00001);
+    }

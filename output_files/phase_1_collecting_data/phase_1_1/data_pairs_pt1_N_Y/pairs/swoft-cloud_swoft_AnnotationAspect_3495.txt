@@ -1,0 +1,9 @@
+/**
+ * Class AnnotationAspect
+ *
+ * @since 2.0
+ */
+
+class AnnotationAspect
+{
+}

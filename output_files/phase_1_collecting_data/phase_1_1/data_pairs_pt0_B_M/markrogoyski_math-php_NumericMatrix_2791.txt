@@ -1,0 +1,26 @@
+    /**
+     * LU Decomposition (Doolittle decomposition) with pivoting via permutation matrix
+     *
+     * A = LU(P)
+     *
+     * L: Lower triangular matrix--all entries above the main diagonal are zero.
+     *    The main diagonal will be all ones.
+     * U: Upper tirangular matrix--all entries below the main diagonal are zero.
+     * P: Permutation matrix--Identity matrix with possible rows interchanged.
+     *
+     * @return Decomposition\LU
+     *
+     * @throws Exception\MatrixException if matrix is not square
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\OutOfBoundsException
+     * @throws Exception\VectorException
+     */
+
+    public function luDecomposition(): Decomposition\LU
+    {
+        if (!$this->catalog->hasLuDecomposition()) {
+            $this->catalog->addLuDecomposition(Decomposition\LU::decompose($this));
+        }
+
+        return $this->catalog->getLuDecomposition();
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Class initialization
+     */
+
+    public function __construct(Canvas $canvas, Options $options)
+    {
+        $this->setCanvas($canvas);
+        $this->setOptions($options);
+        $this->loadFontFamilies();
+    }

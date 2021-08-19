@@ -1,0 +1,13 @@
+    /**
+     * @dataProvider provideOutputFetchingMethods
+     */
+
+    public function testGetOutputWhileDisabled($fetchMethod)
+    {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Output has been disabled.');
+        $p = $this->getProcessForCode('sleep(41);');
+        $p->disableOutput();
+        $p->start();
+        $p->{$fetchMethod}();
+    }

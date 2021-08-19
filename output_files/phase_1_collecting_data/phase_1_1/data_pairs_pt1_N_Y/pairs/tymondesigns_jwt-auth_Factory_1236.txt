@@ -1,0 +1,15 @@
+    /**
+     * Add a claim to the Payload.
+     *
+     * @param  string  $name
+     * @param  mixed  $value
+     *
+     * @return $this
+     */
+
+    protected function addClaim($name, $value)
+    {
+        $this->claims->put($name, $value);
+
+        return $this;
+    }

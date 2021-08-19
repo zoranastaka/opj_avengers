@@ -1,0 +1,12 @@
+    /**
+     * Checks that argument is exact value or object.
+     *
+     * @param mixed $value
+     *
+     * @return Token\ExactValueToken
+     */
+
+    public static function exact($value)
+    {
+        return new Token\ExactValueToken($value);
+    }

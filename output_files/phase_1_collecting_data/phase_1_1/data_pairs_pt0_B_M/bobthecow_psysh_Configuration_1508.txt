@@ -1,0 +1,22 @@
+    /**
+     * Get the appropriate Readline implementation class name.
+     *
+     * @see self::getReadline
+     *
+     * @return string
+     */
+
+    private function getReadlineClass()
+    {
+        if ($this->useReadline()) {
+            if (Readline\GNUReadline::isSupported()) {
+                return Readline\GNUReadline::class;
+            } elseif (Readline\Libedit::isSupported()) {
+                return Readline\Libedit::class;
+            } elseif (Readline\HoaConsole::isSupported()) {
+                return Readline\HoaConsole::class;
+            }
+        }
+
+        return Readline\Transient::class;
+    }

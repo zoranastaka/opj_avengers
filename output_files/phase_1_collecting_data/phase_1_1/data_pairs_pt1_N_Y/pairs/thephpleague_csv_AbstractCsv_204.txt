@@ -1,0 +1,13 @@
+    /**
+     * DEPRECATION WARNING! This method will be removed in the next major point release.
+     *
+     * @deprecated since version 9.1.0
+     * @see AbstractCsv::toString
+     *
+     * Retrieves the CSV content
+     */
+
+    public function __toString(): string
+    {
+        return $this->toString();
+    }

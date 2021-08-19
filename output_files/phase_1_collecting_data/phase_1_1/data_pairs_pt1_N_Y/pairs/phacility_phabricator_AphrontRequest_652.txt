@@ -1,0 +1,11 @@
+  /**
+   * Flatten an array of key-value pairs (possibly including arrays as values)
+   * into a list of key-value pairs suitable for submitting via HTTP request
+   * (with arrays flattened).
+   *
+   * @param   dict<string, wild>    Data to flatten.
+   * @return  dict<string, string>  Flat data suitable for inclusion in an HTTP
+   *                                request.
+   */
+
+  public static function flattenData(array $data) {

@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider getVersionRangesProvider
+     */
+
+    public function testGetVersionRanges($expected, $name)
+    {
+        $this->assertSame($expected, InstalledVersions::getVersionRanges($name));
+    }

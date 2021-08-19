@@ -1,0 +1,10 @@
+    /**
+     * Returns whether the argument is defined as "...$variadic".
+     *
+     * @return bool
+     */
+
+    public function isVariadic()
+    {
+        return $this->isVariadic;
+    }

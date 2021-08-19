@@ -1,0 +1,10 @@
+    /**
+     * Is response informative?
+     *
+     * @final
+     */
+
+    public function isInformational(): bool
+    {
+        return $this->statusCode >= 100 && $this->statusCode < 200;
+    }

@@ -1,0 +1,25 @@
+    /**
+     * Create the Vandermonde Matrix from a simple array.
+     *
+     * @param array $M (α₁, α₂, α₃ ⋯ αm)
+     * @param int   $n
+     *
+     * @return NumericMatrix
+     *
+     * @throws Exception\BadDataException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MathException
+     * @throws Exception\MatrixException
+     */
+
+    public static function vandermonde(array $M, int $n): NumericMatrix
+    {
+        $A = [];
+        foreach ($M as $row => $α) {
+            for ($i = 0; $i < $n; $i++) {
+                $A[$row][$i] = $α ** $i;
+            }
+        }
+
+        return self::createNumeric($A);
+    }

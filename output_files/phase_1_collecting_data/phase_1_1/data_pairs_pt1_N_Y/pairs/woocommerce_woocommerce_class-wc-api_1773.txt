@@ -1,0 +1,11 @@
+	/**
+	 * Get the version of the REST API package being ran. Since API package was merged into core, this now follows WC version.
+	 *
+	 * @since 3.7.0
+	 * @return string|null
+	 */
+
+	public function get_rest_api_package_version() {
+		if ( ! $this->is_rest_api_loaded() ) {
+			return null;
+		}

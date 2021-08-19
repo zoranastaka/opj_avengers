@@ -1,0 +1,25 @@
+    /**
+     * Starts fixing a new file.
+     *
+     * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being fixed.
+     *
+     * @return void
+     */
+
+    public function startFile(File $phpcsFile)
+    {
+        $this->currentFile = $phpcsFile;
+        $this->numFixes    = 0;
+        $this->fixedTokens = [];
+
+        $tokens       = $phpcsFile->getTokens();
+        $this->tokens = [];
+        foreach ($tokens as $index => $token) {
+            if (isset($token['orig_content']) === true) {
+                $this->tokens[$index] = $token['orig_content'];
+            } else {
+                $this->tokens[$index] = $token['content'];
+            }
+        }
+
+    }//end startFile()

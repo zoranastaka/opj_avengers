@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     *
+     * @return int|false
+     */
+
+    public function stream_write(string $data)
+    {
+        return fwrite($this->stream, $data);
+    }

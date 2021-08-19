@@ -1,0 +1,10 @@
+    /**
+     * Returns true if the response includes a Vary header.
+     *
+     * @final
+     */
+
+    public function hasVary(): bool
+    {
+        return null !== $this->headers->get('Vary');
+    }

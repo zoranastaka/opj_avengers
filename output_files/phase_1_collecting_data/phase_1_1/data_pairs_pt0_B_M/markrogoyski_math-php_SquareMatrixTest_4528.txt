@@ -1,0 +1,14 @@
+    /**
+     * @test         getMatrix returns the expected matrix.
+     * @dataProvider dataProviderForSquareMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testGetMatrix(array $A)
+    {
+        $S = new NumericSquareMatrix($A);
+        $M = new NumericMatrix($A);
+
+        $this->assertEquals($M->getMatrix(), $S->getMatrix());
+    }

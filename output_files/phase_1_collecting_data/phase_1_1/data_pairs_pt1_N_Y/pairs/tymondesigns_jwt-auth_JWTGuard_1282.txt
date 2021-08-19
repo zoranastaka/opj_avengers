@@ -1,0 +1,18 @@
+    /**
+     * Log the given User into the application.
+     *
+     * @param  mixed  $id
+     *
+     * @return bool
+     */
+
+    public function onceUsingId($id)
+    {
+        if ($user = $this->provider->retrieveById($id)) {
+            $this->setUser($user);
+
+            return true;
+        }
+
+        return false;
+    }

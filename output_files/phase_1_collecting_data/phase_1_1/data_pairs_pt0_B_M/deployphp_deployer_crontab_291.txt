@@ -1,0 +1,3 @@
+// Get path to bin
+
+set('bin/crontab', function () {

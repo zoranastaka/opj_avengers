@@ -1,0 +1,22 @@
+    /**
+     * Calculate the derivative of a polynomial and return it as a new polynomial
+     * Example: $polynomial = new Polynomial([1, -8, 12, 3]); // x³ - 8x² + 12x + 3
+     *          $derivative = $polynomial->differentiate();   // 3x² - 16x + 12
+     *
+     * @return Polynomial The derivative of our polynomial object, also a polynomial object
+     */
+
+    public function differentiate(): Polynomial
+    {
+        $derivativeCoefficients = []; // Start with empty set of coefficients
+
+        // Iterate over each coefficient (except the last), differentiating term-by-term
+        for ($i = 0; $i < $this->degree; $i++) {
+            $derivativeCoefficients[] = $this->coefficients[$i] * ($this->degree - $i);
+        }
+
+        // If the array of coefficients is empty, we are differentiating a constant. Return [0].
+        $derivativeCoefficients = ($derivativeCoefficients !== []) ? $derivativeCoefficients : [0];
+
+        return new Polynomial($derivativeCoefficients);
+    }

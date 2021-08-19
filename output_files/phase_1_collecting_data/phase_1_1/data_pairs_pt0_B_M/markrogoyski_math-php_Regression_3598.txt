@@ -1,0 +1,10 @@
+    /**
+     * Get sample size (number of points)
+     *
+     * @return int
+     */
+
+    public function getSampleSize(): int
+    {
+        return $this->n;
+    }

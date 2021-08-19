@@ -1,0 +1,16 @@
+    /**
+     * @test   populationVariance when the array is empty
+     * @throws \Exception
+     */
+
+    public function testPopulationVarianceExceptionWhenEmptyArray()
+    {
+        // Given
+        $numbers = [];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Descriptive::populationVariance($numbers);
+    }

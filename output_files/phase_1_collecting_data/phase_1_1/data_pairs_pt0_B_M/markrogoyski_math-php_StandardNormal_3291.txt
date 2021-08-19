@@ -1,0 +1,17 @@
+    /**
+     * Get Z score for confidence interval
+     *
+     * @param  string $cl confidence level
+     *
+     * @return float Z score
+     *
+     * @throws Exception\BadDataException
+     */
+
+    public static function getZScoreForConfidenceInterval(string $cl): float
+    {
+        if (!\array_key_exists($cl, self::Z_SCORES_FOR_CONFIDENCE_INTERVALS)) {
+            throw new Exception\BadDataException('Not a valid confidence level');
+        }
+        return self::Z_SCORES_FOR_CONFIDENCE_INTERVALS[$cl];
+    }

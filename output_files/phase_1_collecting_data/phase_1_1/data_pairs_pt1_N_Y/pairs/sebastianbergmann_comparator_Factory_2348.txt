@@ -1,0 +1,8 @@
+    /**
+     * Unregisters all non-default comparators.
+     */
+
+    public function reset()/*: void*/
+    {
+        $this->customComparators = [];
+    }

@@ -1,0 +1,20 @@
+    /**
+     * Returns address format by Country.
+     *
+     * @param int $idCountry Country ID
+     *
+     * @return string field Address format
+     */
+
+    public function getFormat($idCountry)
+    {
+        $out = $this->getFormatDB($idCountry);
+        if (empty($out)) {
+            $out = $this->getFormatDB(Configuration::get('PS_COUNTRY_DEFAULT'));
+        }
+        if (Country::isNeedDniByCountryId($idCountry) && false === strpos($out, 'dni')) {
+            $out .= AddressFormat::FORMAT_NEW_LINE . 'dni';
+        }
+
+        return $out;
+    }

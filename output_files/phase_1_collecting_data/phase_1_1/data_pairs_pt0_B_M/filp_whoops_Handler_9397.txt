@@ -1,0 +1,8 @@
+    /**
+     * @return \Throwable
+     */
+
+    protected function getException()
+    {
+        return $this->exception;
+    }

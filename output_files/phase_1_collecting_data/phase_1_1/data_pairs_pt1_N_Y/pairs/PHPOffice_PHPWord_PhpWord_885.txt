@@ -1,0 +1,13 @@
+    /**
+     * Get protection
+     *
+     * @return \PhpOffice\PhpWord\Metadata\Protection
+     * @since 0.12.0
+     * @deprecated Get the Document protection from PhpWord->getSettings()->getDocumentProtection();
+     * @codeCoverageIgnore
+     */
+
+    public function getProtection()
+    {
+        return $this->getSettings()->getDocumentProtection();
+    }

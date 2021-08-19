@@ -1,0 +1,18 @@
+    /**
+     * Call the fallback method.
+     */
+
+    protected function callFallbackMessage()
+    {
+        $messages = $this->getMessages();
+
+        if (! isset($messages[0])) {
+            return;
+        }
+
+        $this->message = $messages[0];
+
+        $this->fallbackMessage = $this->getCallable($this->fallbackMessage);
+
+        \call_user_func($this->fallbackMessage, $this);
+    }

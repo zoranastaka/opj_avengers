@@ -1,0 +1,28 @@
+    /**
+     * Method gets the mobile detection rules + utilities.
+     * The reason this is separate is because utilities rules
+     * don't necessary imply mobile. This method is used inside
+     * the new $detect->is('stuff') method.
+     *
+     * @deprecated since version 2.6.9
+     *
+     * @return array All the rules + extended.
+     */
+
+    public function getMobileDetectionRulesExtended()
+    {
+        static $rules;
+
+        if (!$rules) {
+            // Merge all rules together.
+            $rules = array_merge(
+                self::$phoneDevices,
+                self::$tabletDevices,
+                self::$operatingSystems,
+                self::$browsers,
+                self::$utilities
+            );
+        }
+
+        return $rules;
+    }

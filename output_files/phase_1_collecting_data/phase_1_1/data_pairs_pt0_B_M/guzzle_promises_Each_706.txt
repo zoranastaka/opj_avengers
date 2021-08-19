@@ -1,0 +1,17 @@
+    /**
+     * Like of, but only allows a certain number of outstanding promises at any
+     * given time.
+     *
+     * $concurrency may be an integer or a function that accepts the number of
+     * pending promises and returns a numeric concurrency limit value to allow
+     * for dynamic a concurrency size.
+     *
+     * @param mixed        $iterable
+     * @param int|callable $concurrency
+     * @param callable     $onFulfilled
+     * @param callable     $onRejected
+     *
+     * @return PromiseInterface
+     */
+
+    public static function ofLimit(

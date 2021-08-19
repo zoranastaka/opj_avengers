@@ -1,0 +1,5 @@
+    /**
+     * @param $elements
+     */
+
+    private function clearStackToTableContext($elements) {

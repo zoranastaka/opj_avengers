@@ -1,0 +1,15 @@
+    /**
+     * @test         degreesOfFreedom
+     * @dataProvider dataProviderForDF
+     * @param        array $points
+     * @param        int   $df
+     */
+
+    public function testDF(array $points, int $df)
+    {
+        // Given
+        $regression = new Linear($points);
+
+        // Then
+        $this->assertEqualsWithDelta($df, $regression->degreesOfFreedom(), .0000001);
+    }

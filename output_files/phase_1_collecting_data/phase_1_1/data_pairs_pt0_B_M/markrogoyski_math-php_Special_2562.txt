@@ -1,0 +1,24 @@
+    /**
+     * Logistic function (logistic sigmoid function)
+     * A logistic function or logistic curve is a common "S" shape (sigmoid curve).
+     * https://en.wikipedia.org/wiki/Logistic_function
+     *
+     *             L
+     * f(x) = -----------
+     *        1 + ℯ⁻ᵏ⁽ˣ⁻ˣ⁰⁾
+     *
+     *
+     * @param float $x₀ x-value of the sigmoid's midpoint
+     * @param float $L  the curve's maximum value
+     * @param float $k  the steepness of the curve
+     * @param float $x
+     *
+     * @return float
+     */
+
+    public static function logistic(float $x₀, float $L, float $k, float $x): float
+    {
+        $ℯ⁻ᵏ⁽ˣ⁻ˣ⁰⁾ = \exp(-$k * ($x - $x₀));
+
+        return $L / (1 + $ℯ⁻ᵏ⁽ˣ⁻ˣ⁰⁾);
+    }

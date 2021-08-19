@@ -1,0 +1,10 @@
+    /**
+     * Is the queue empty?
+     *
+     * @return bool
+     */
+
+    public function isEmpty()
+    {
+        return (0 === $this->count());
+    }

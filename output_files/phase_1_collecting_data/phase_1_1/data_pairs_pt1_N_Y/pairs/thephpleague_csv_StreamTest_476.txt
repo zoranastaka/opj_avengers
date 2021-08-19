@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function stream_seek(int $offset, int $whence): bool
+    {
+        fseek($this->stream, $whence);
+
+        return true;
+    }

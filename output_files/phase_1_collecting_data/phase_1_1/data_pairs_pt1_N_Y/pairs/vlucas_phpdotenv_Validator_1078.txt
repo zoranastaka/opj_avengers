@@ -1,0 +1,16 @@
+    /**
+     * Create a new validator instance.
+     *
+     * @param \Dotenv\Repository\RepositoryInterface $repository
+     * @param string[]                               $variables
+     *
+     * @throws \Dotenv\Exception\ValidationException
+     *
+     * @return void
+     */
+
+    public function __construct(RepositoryInterface $repository, array $variables)
+    {
+        $this->repository = $repository;
+        $this->variables = $variables;
+    }

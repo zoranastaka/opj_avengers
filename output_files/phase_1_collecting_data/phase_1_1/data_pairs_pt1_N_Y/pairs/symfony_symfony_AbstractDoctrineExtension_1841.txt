@@ -1,0 +1,23 @@
+    /**
+     * Search for a manager that is declared as 'auto_mapping' = true.
+     *
+     * @throws \LogicException
+     */
+
+    private function validateAutoMapping(array $managerConfigs): ?string
+    {
+        $autoMappedManager = null;
+        foreach ($managerConfigs as $name => $manager) {
+            if (!$manager['auto_mapping']) {
+                continue;
+            }
+
+            if (null !== $autoMappedManager) {
+                throw new \LogicException(sprintf('You cannot enable "auto_mapping" on more than one manager at the same time (found in "%s" and "%s"").', $autoMappedManager, $name));
+            }
+
+            $autoMappedManager = $name;
+        }
+
+        return $autoMappedManager;
+    }

@@ -1,0 +1,14 @@
+    /**
+     * Retrieve the cache lifetime (in seconds)
+     *
+     * @return int
+     */
+
+    public function getLifetime()
+    {
+        if ($this->lifetime === null) {
+            $this->lifetime = (int)($this->config->get('system.cache.lifetime') ?: 604800); // 1 week default
+        }
+
+        return $this->lifetime;
+    }

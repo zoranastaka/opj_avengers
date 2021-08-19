@@ -1,0 +1,10 @@
+	/**
+	 * Bulk action - Set Regular Prices.
+	 *
+	 * @param array $variations List of variations.
+	 * @param array $data Data to set.
+	 *
+	 * @used-by bulk_edit_variations
+	 */
+
+	private static function variation_bulk_action_variable_regular_price( $variations, $data ) {

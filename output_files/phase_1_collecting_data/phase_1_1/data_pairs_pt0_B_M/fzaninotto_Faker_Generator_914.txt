@@ -1,0 +1,10 @@
+    /**
+     * @param string $attribute
+     *
+     * @return mixed
+     */
+
+    public function __get($attribute)
+    {
+        return $this->format($attribute);
+    }

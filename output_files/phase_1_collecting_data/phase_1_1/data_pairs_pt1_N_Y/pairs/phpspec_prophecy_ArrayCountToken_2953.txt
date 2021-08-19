@@ -1,0 +1,12 @@
+    /**
+     * Scores 6 when argument has preset number of elements.
+     *
+     * @param $argument
+     *
+     * @return bool|int
+     */
+
+    public function scoreArgument($argument)
+    {
+        return $this->isCountable($argument) && $this->hasProperCount($argument) ? 6 : false;
+    }

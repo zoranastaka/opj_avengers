@@ -1,0 +1,11 @@
+    /**
+     * @codeCoverageIgnore
+     * Link to attachments
+     *
+     * @return HasMany
+     */
+
+    public function attachments(): HasMany
+    {
+        return $this->hasMany(Attachment::class);
+    }

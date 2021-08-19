@@ -1,0 +1,11 @@
+    /**
+     * @return array [lower, upper, μ, σ, probability]
+     */
+
+    public function dataProviderForOutside(): array
+    {
+        return [
+            [ 5, 7, 6, 2, 0.6170750774519740000000000 ],
+            [ -1.64485362695147, 1.64485362695147, 0, 1, 0.1 ],
+        ];
+    }

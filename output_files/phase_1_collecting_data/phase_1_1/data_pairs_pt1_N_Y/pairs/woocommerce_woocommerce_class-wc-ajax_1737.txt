@@ -1,0 +1,15 @@
+	/**
+	 * Bulk action - Toggle Enabled.
+	 *
+	 * @param array $variations List of variations.
+	 * @param array $data Data to set.
+	 *
+	 * @used-by bulk_edit_variations
+	 */
+
+	private static function variation_bulk_action_toggle_enabled( $variations, $data ) {
+		foreach ( $variations as $variation_id ) {
+			$variation = wc_get_product( $variation_id );
+			$variation->set_status( 'private' === $variation->get_status( 'edit' ) ? 'publish' : 'private' );
+			$variation->save();
+		}

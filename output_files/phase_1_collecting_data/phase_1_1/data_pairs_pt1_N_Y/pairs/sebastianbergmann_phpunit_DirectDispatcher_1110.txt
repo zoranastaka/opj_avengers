@@ -1,0 +1,29 @@
+    /**
+     * @throws UnknownEventTypeException
+     */
+
+    public function dispatch(Event $event): void
+    {
+        $eventClassName = $event::class;
+
+        if (!$this->typeMap->isKnownEventType($event)) {
+            throw new UnknownEventTypeException(
+                sprintf(
+                    'Unknown event type "%s"',
+                    $eventClassName
+                )
+            );
+        }
+
+        foreach ($this->tracers as $tracer) {
+            $tracer->trace($event);
+        }
+
+        if (!array_key_exists($eventClassName, $this->subscribers)) {
+            return;
+        }
+
+        foreach ($this->subscribers[$eventClassName] as $subscriber) {
+            $subscriber->notify($event);
+        }
+    }

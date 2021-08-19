@@ -1,0 +1,9 @@
+    /**
+     * Checks user authorization.
+     *
+     * @param array|\ArrayAccess $user Active user data
+     * @param \Cake\Http\ServerRequest $request Request instance.
+     * @return bool
+     */
+
+    abstract public function authorize($user, ServerRequest $request): bool;

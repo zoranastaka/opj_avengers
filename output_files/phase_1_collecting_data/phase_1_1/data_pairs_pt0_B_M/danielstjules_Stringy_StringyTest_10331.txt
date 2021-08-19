@@ -1,0 +1,5 @@
+    /**
+     * @dataProvider endsWithAnyProvider()
+     */
+
+    public function testEndsWithAny($expected, $str, $substrings,

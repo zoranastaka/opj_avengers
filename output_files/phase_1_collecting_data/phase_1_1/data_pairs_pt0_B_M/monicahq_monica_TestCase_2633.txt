@@ -1,0 +1,16 @@
+    /**
+     * Test that the response contains an ObjectDeleted response.
+     *
+     * @param TestResponse $response
+     * @param int $id
+     */
+
+    public function expectObjectDeleted(TestResponse $response, int $id)
+    {
+        $response->assertStatus(200);
+
+        $response->assertJson([
+            'deleted' => true,
+            'id' => $id,
+        ]);
+    }

@@ -1,0 +1,11 @@
+    /**
+     * R² - coefficient of determination
+     * Convenience wrapper for coefficientOfDetermination
+     *
+     * @return float
+     */
+
+    public function r2(): float
+    {
+        return $this->coefficientOfDetermination();
+    }

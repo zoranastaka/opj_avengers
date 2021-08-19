@@ -1,0 +1,15 @@
+    /**
+     * l₁-norm (|x|₁)
+     * Also known as Taxicab norm or Manhattan norm
+     *
+     * https://en.wikipedia.org/wiki/Norm_(mathematics)#Taxicab_norm_or_Manhattan_norm
+     *
+     * |x|₁ = ∑|xᵢ|
+     *
+     * @return number
+     */
+
+    public function l1Norm()
+    {
+        return \array_sum(Map\Single::abs($this->A));
+    }

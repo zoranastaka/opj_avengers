@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider dataProviderForShannonEntropy
+     */
+
+    public function testJointEntropy(array $p, $expected)
+    {
+        // When
+        $H = Entropy::jointEntropy($p);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $H, 0.001);
+    }

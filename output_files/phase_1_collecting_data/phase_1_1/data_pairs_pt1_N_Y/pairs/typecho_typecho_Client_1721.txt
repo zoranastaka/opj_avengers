@@ -1,0 +1,11 @@
+    /**
+     * 是否为错误
+     *
+     * @access public
+     * @return void
+     */
+
+    public function __isError()
+    {
+        return (is_object($this->error));
+    }

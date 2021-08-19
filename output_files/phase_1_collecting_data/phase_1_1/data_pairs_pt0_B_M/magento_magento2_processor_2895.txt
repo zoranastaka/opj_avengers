@@ -1,0 +1,16 @@
+    /**
+     * Get path to reports
+     *
+     * @param integer $reportDirNestingLevel
+     * @param string $reportId
+     * @return string
+     */
+
+    private function getReportPath(int $reportDirNestingLevel, string $reportId): string
+    {
+        $reportDirPath = $this->_reportDir;
+        for ($i = 0, $j = 0; $j < $reportDirNestingLevel; $i += 2, $j++) {
+            $reportDirPath .= $reportId[$i] . $reportId[$i + 1] . '/';
+        }
+        return $reportDirPath . $reportId;
+    }

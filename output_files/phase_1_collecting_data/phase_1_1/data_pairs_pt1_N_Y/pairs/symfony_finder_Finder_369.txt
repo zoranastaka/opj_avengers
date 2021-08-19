@@ -1,0 +1,17 @@
+    /**
+     * Filters the iterator with an anonymous function.
+     *
+     * The anonymous function receives a \SplFileInfo and must return false
+     * to remove files.
+     *
+     * @return $this
+     *
+     * @see CustomFilterIterator
+     */
+
+    public function filter(\Closure $closure)
+    {
+        $this->filters[] = $closure;
+
+        return $this;
+    }

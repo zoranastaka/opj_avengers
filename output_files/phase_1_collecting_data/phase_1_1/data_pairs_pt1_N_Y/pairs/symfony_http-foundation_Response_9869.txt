@@ -1,0 +1,12 @@
+    /**
+     * Sends content for the current web response.
+     *
+     * @return $this
+     */
+
+    public function sendContent()
+    {
+        echo $this->content;
+
+        return $this;
+    }

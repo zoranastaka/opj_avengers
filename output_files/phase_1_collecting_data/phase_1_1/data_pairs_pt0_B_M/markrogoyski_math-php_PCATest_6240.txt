@@ -1,0 +1,16 @@
+    /**
+     * @test         Construction
+     * @dataProvider dataProviderForConstructorParameters
+     * @param        bool $center
+     * @param        bool $scale
+     * @throws       Exception\MathException
+     */
+
+    public function testConstruction(bool $center, bool $scale)
+    {
+        // When
+        $pca = new PCA(self::$matrix, $center, $scale);
+
+        // Then
+        $this->assertInstanceOf(PCA::class, $pca);
+    }

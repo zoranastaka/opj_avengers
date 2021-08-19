@@ -1,0 +1,19 @@
+    /**
+     * @test         evaluate using default standard normal kernel function
+     * @dataProvider dataProviderForKernelDensity
+     * @param        array $data
+     * @param        float $x
+     * @param        float $expected
+     */
+
+    public function testDefaultKernelDensity(array $data, float $x, float $expected)
+    {
+        // Given
+        $KDE = new KernelDensityEstimation($data);
+
+        // When
+        $estimate = $KDE->evaluate($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $estimate, 0.0001);
+    }

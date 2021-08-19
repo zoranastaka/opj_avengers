@@ -1,0 +1,7 @@
+    /**
+     * Encodes to base64url
+     *
+     * @link http://tools.ietf.org/html/rfc4648#section-5
+     */
+
+    public function base64UrlEncode(string $data): string;

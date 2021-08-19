@@ -1,0 +1,10 @@
+    /**
+     * Gets the process timeout (max. runtime).
+     *
+     * @return float|null The timeout in seconds or null if it's disabled
+     */
+
+    public function getTimeout()
+    {
+        return $this->timeout;
+    }

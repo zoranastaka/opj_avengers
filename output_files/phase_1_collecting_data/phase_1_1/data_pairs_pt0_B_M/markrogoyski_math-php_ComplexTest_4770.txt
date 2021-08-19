@@ -1,0 +1,15 @@
+    /**
+     * @test inverse throws an Exception\BadDataException when value is 0 + 0i
+     */
+
+    public function testInverseException()
+    {
+        // Given
+        $complex = new Complex(0, 0);
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $complex->inverse();
+    }

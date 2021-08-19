@@ -1,0 +1,10 @@
+    /**
+     * Set the default scope for the authorization server.
+     *
+     * @param string $defaultScope
+     */
+
+    public function setDefaultScope($defaultScope)
+    {
+        $this->defaultScope = $defaultScope;
+    }

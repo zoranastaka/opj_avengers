@@ -1,0 +1,13 @@
+    /**
+     * @test         multiply multiple arrays
+     * @dataProvider dataProviderForMultiplyMulti
+     */
+
+    public function testMultiplyMulti(array $expected, array ...$arrays)
+    {
+        // When
+        $products = Multi::multiply(...$arrays);
+
+        // Then
+        $this->assertEquals($expected, $products);
+    }

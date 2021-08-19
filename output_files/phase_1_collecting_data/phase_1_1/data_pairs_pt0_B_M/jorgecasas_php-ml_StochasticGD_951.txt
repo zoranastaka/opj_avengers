@@ -1,0 +1,10 @@
+    /**
+     * @return $this
+     */
+
+    public function setLearningRate(float $learningRate)
+    {
+        $this->learningRate = $learningRate;
+
+        return $this;
+    }

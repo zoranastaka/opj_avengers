@@ -1,0 +1,21 @@
+    /**
+     * @test         checkZero
+     * @dataProvider dataProviderForcheckZero
+     * @param        float $value
+     * @param        float $result
+     * @throws       \Exception
+     */
+
+    public function testCheckZero(float $value, float $result)
+    {
+        // Given
+        $reflection = new \ReflectionClass('MathPHP\Finance');
+        $method     = $reflection->getMethod('checkZero');
+        $method->setAccessible(true);
+
+        // When
+        $checkedZero = $method->invokeArgs(null, [$value]);
+
+        // Then
+        $this->assertEquals($result, $checkedZero);
+    }

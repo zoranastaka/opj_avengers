@@ -1,0 +1,18 @@
+    /**
+     * @test Axiom: 1A = A
+     * Multiplying (scaling) by 1 does not change the vector
+     * @dataProvider dataProviderForSingleVector
+     */
+
+    public function testScalarMultiplyOneIdentity(array $A)
+    {
+        // Given
+        $A = new Vector($A);
+
+        // When
+        $１A = $A->scalarMultiply(1);
+
+        // Then
+        $this->assertEquals($A, $１A);
+        $this->assertEquals($A->getVector(), $１A->getVector());
+    }

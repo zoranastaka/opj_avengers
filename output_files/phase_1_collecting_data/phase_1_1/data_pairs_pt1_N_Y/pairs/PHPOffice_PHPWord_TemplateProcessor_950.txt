@@ -1,0 +1,13 @@
+    /**
+     * @param string $fileName
+     * @param string $xml
+     */
+
+    protected function savePartWithRels($fileName, $xml)
+    {
+        $this->zipClass->addFromString($fileName, $xml);
+        if (isset($this->tempDocumentRelations[$fileName])) {
+            $relsFileName = $this->getRelationsName($fileName);
+            $this->zipClass->addFromString($relsFileName, $this->tempDocumentRelations[$fileName]);
+        }
+    }

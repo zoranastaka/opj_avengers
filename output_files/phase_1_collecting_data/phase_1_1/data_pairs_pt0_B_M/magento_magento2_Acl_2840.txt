@@ -1,0 +1,13 @@
+    /**
+     * Add parent to role object
+     *
+     * @param \Zend_Acl_Role $role
+     * @param \Zend_Acl_Role $parent
+     * @return \Magento\Framework\Acl
+     */
+
+    public function addRoleParent($role, $parent)
+    {
+        $this->_getRoleRegistry()->addParent($role, $parent);
+        return $this;
+    }

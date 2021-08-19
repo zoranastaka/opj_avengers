@@ -1,0 +1,12 @@
+    /**
+     * Send the given command to the dispatcher for execution.
+     *
+     * @param object $command
+     *
+     * @return void
+     */
+
+    function execute($command)
+    {
+        return app(Dispatcher::class)->dispatchNow($command);
+    }

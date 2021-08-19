@@ -1,0 +1,10 @@
+    /**
+     * Get the properties array.
+     *
+     * @return array
+     */
+
+    public static function getProperties()
+    {
+        return self::$properties;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get process status.
+     *
+     * @return number
+     */
+
+    public static function getStatus()
+    {
+        return static::$_status;
+    }

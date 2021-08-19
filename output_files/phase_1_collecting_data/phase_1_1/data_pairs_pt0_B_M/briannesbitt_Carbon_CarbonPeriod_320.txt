@@ -1,0 +1,25 @@
+    /**
+     * Cast the current instance into the given class.
+     *
+     * @param string $className The $className::instance() method will be called to cast the current object.
+     *
+     * @return DatePeriod
+     */
+
+    public function cast(string $className)
+    {
+        if (!method_exists($className, 'instance')) {
+            if (is_a($className, DatePeriod::class, true)) {
+                return new $className(
+                    $this->getStartDate(),
+                    $this->getDateInterval(),
+                    $this->getEndDate() ? $this->getIncludedEndDate() : $this->getRecurrences(),
+                    $this->isStartExcluded() ? DatePeriod::EXCLUDE_START_DATE : 0
+                );
+            }
+
+            throw new InvalidCastException("$className has not the instance() method needed to cast the date.");
+        }
+
+        return $className::instance($this);
+    }

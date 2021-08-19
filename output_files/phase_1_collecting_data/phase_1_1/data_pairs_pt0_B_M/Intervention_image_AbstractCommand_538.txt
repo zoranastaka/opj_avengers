@@ -1,0 +1,10 @@
+    /**
+     * Returns output data of current command
+     *
+     * @return mixed
+     */
+
+    public function getOutput()
+    {
+        return $this->output ? $this->output : null;
+    }

@@ -1,0 +1,41 @@
+    /**
+     * Handles failed application bootstraps.
+     *
+     * @param int $port
+     */
+
+    protected function bootstrapFailed($port)
+    {
+        if ($this->isDebug()) {
+            $this->output->writeln('');
+
+            if ($this->status !== self::STATE_EMERGENCY) {
+                $this->status = self::STATE_EMERGENCY;
+
+                $this->output->writeln(
+                    \sprintf(
+                        '<error>Application bootstrap failed. We are entering emergency mode now. All offline. ' .
+                        'Waiting for file changes ...</error>'
+                    )
+                );
+            } else {
+                $this->output->writeln(
+                    \sprintf(
+                        '<error>Application bootstrap failed. We are still in emergency mode. All offline. ' .
+                        'Waiting for file changes ...</error>'
+                    )
+                );
+            }
+
+            $this->reloadSlaves(false);
+        } else {
+            $this->output->writeln(
+                \sprintf(
+                    '<error>Application bootstrap failed. Restarting worker #%d ...</error>',
+                    $port
+                )
+            );
+
+            $this->newSlaveInstance($port);
+        }
+    }

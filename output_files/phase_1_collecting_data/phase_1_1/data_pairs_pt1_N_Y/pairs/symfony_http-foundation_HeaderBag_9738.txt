@@ -1,0 +1,10 @@
+    /**
+     * Removes a Cache-Control directive.
+     */
+
+    public function removeCacheControlDirective(string $key)
+    {
+        unset($this->cacheControl[$key]);
+
+        $this->set('Cache-Control', $this->getCacheControlHeader());
+    }

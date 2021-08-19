@@ -1,0 +1,17 @@
+    /**
+     * @test         testTotient
+     * @dataProvider dataProviderForTotient
+     * @param        int $n
+     * @param        int $k
+     * @param        int $expected
+     * @throws       \Exception
+     */
+
+    public function testTotient(int $n, int $k, int $expected)
+    {
+        // When
+        $totient = Integer::totient($n, $k);
+
+        // Then
+        $this->assertEquals($expected, $totient);
+    }

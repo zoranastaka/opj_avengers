@@ -1,0 +1,9 @@
+    /**
+     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     */
+
+    public function testTypeStringFail()
+    {
+        $arg = new Argument($this->getMockedCommand([12]));
+        $arg->type('string');
+    }

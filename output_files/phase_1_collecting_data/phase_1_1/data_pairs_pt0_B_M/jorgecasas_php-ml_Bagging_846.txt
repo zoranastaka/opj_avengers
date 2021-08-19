@@ -1,0 +1,18 @@
+    /**
+     * @return mixed
+     */
+
+    protected function predictSample(array $sample)
+    {
+        $predictions = [];
+        foreach ($this->classifiers as $classifier) {
+            /** @var Classifier $classifier */
+            $predictions[] = $classifier->predict($sample);
+        }
+
+        $counts = array_count_values($predictions);
+        arsort($counts);
+        reset($counts);
+
+        return key($counts);
+    }

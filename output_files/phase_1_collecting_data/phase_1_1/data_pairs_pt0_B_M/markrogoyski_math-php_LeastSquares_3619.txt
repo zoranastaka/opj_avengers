@@ -1,0 +1,19 @@
+    /**
+     * Regression variance
+     *
+     * @param  float $x
+     *
+     * @return float
+     *
+     * @throws Exception\MatrixException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function regressionVariance(float $x): float
+    {
+        $X      = $this->createDesignMatrix($x);
+        $⟮XᵀX⟯⁻¹ = $this->⟮XᵀX⟯⁻¹;
+        $M      = $X->multiply($⟮XᵀX⟯⁻¹)->multiply($X->transpose());
+
+        return $M[0][0];
+    }

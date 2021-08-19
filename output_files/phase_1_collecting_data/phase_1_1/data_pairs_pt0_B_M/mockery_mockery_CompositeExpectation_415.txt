@@ -1,0 +1,10 @@
+    /**
+     * Mockery API alias to getMock
+     *
+     * @return \Mockery\LegacyMockInterface|\Mockery\MockInterface
+     */
+
+    public function mock()
+    {
+        return $this->getMock();
+    }

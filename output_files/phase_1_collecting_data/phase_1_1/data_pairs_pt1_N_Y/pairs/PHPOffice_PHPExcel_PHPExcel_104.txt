@@ -1,0 +1,12 @@
+    /**
+     * Get active sheet
+     *
+     * @return PHPExcel_Worksheet
+     *
+     * @throws PHPExcel_Exception
+     */
+
+    public function getActiveSheet()
+    {
+        return $this->getSheet($this->activeSheetIndex);
+    }

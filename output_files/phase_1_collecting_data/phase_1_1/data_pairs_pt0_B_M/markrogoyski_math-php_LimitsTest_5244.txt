@@ -1,0 +1,8 @@
+    /**
+     * @test Limits constant is correct format
+     */
+
+    public function testStudentTSupportLimits()
+    {
+        $this->limitTest(Continuous\StudentT::SUPPORT_LIMITS);
+    }

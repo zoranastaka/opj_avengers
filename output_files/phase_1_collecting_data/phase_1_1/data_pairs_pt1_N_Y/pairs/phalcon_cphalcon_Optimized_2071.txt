@@ -1,0 +1,18 @@
+    /**
+     * Copy all files from the original safe universal build directory
+     */
+
+    protected function copyFilesFromSourceBuildDir()
+    {
+        $files = glob($this->sourceBuildDir . '/*.*');
+        foreach ($files as $file) {
+            // phalcon.c is processed in a separate optimization func
+            if (basename($file) == 'phalcon.zep.c') {
+                continue;
+            }
+
+            foreach ($this->settings as $setting) {
+                copy($file, $setting['dir'] . '/' . basename($file));
+            }
+        }
+    }

@@ -1,0 +1,15 @@
+  /**
+   * Verify if $obj is an array.
+   * @throws \Google\Exception Thrown if $obj isn't an array.
+   * @param array $obj Items that should be validated.
+   * @param string $method Method expecting an array as an argument.
+   */
+
+  public function assertIsArray($obj, $method)
+  {
+    if ($obj && !is_array($obj)) {
+      throw new GoogleException(
+          "Incorrect parameter type passed to $method(). Expected an array."
+      );
+    }
+  }

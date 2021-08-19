@@ -1,0 +1,6 @@
+	// Getter iz privatnog polja.
+
+	public function __get( $index )
+	{
+		return $this->vars[$index];
+	}

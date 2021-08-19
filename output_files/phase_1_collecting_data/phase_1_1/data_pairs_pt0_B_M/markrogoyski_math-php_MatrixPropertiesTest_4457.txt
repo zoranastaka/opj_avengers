@@ -1,0 +1,15 @@
+    /**
+     * @test         isInvolutory returns true for a Involutory matrix
+     * @dataProvider dataProviderForInvolutoryMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsInvolutory(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isInvolutory());
+    }

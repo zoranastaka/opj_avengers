@@ -1,0 +1,12 @@
+    /**
+     * Sets PTY mode.
+     *
+     * @return $this
+     */
+
+    public function setPty(bool $bool)
+    {
+        $this->pty = $bool;
+
+        return $this;
+    }

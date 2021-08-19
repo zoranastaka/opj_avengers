@@ -1,0 +1,20 @@
+    /**
+     * Expected arguments for the expectation passed as an array or a closure that matches each passed argument on
+     * each function call.
+     *
+     * @param array|Closure $argsOrClosure
+     * @return self
+     */
+
+    public function withArgs($argsOrClosure)
+    {
+        if (is_array($argsOrClosure)) {
+            $this->withArgsInArray($argsOrClosure);
+        } elseif ($argsOrClosure instanceof Closure) {
+            $this->withArgsMatchedByClosure($argsOrClosure);
+        } else {
+            throw new \InvalidArgumentException(sprintf('Call to %s with an invalid argument (%s), only array and ' .
+                'closure are allowed', __METHOD__, $argsOrClosure));
+        }
+        return $this;
+    }

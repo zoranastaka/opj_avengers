@@ -1,0 +1,17 @@
+    /**
+     * Cleaned the layout set by the user.
+     */
+
+    public static function cleanOrderedAddress(&$orderedAddressField)
+    {
+        foreach ($orderedAddressField as &$line) {
+            $cleanedLine = '';
+            if (($keyList = preg_split(self::_CLEANING_REGEX_, $line, -1, PREG_SPLIT_NO_EMPTY))) {
+                foreach ($keyList as $key) {
+                    $cleanedLine .= $key . ' ';
+                }
+                $cleanedLine = trim($cleanedLine);
+                $line = $cleanedLine;
+            }
+        }
+    }

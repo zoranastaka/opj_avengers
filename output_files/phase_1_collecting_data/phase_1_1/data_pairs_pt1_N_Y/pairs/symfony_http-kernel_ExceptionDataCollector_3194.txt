@@ -1,0 +1,10 @@
+    /**
+     * Gets the exception trace.
+     *
+     * @return array The exception trace
+     */
+
+    public function getTrace()
+    {
+        return $this->data['exception']->getTrace();
+    }

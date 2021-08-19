@@ -1,0 +1,9 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    protected function configure()
+    {
+        $this->addOption('url', 'u', InputOption::VALUE_REQUIRED, '');
+        $this->addOption('shasum', 's', InputOption::VALUE_REQUIRED, '');
+    }

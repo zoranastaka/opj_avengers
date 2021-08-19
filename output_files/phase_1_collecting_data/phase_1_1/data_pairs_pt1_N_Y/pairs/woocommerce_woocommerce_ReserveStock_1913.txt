@@ -1,0 +1,5 @@
+	/**
+	 * Constructor
+	 */
+
+	public function __construct() {

@@ -1,0 +1,7 @@
+    /**
+     * Main loop.
+     *
+     * @return void
+     */
+
+    public function loop();

@@ -1,0 +1,21 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function scoreArgument($argument)
+    {
+        if (!$argument instanceof \Traversable && !is_array($argument)) {
+            return false;
+        }
+
+        $scores = array();
+        foreach ($argument as $key => $argumentEntry) {
+            $scores[] = $this->value->scoreArgument($argumentEntry);
+        }
+
+        if (empty($scores) || in_array(false, $scores, true)) {
+            return false;
+        }
+
+        return array_sum($scores) / count($scores);
+    }

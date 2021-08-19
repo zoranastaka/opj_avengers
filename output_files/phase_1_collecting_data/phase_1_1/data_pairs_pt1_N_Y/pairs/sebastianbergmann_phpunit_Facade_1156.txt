@@ -1,0 +1,12 @@
+    /**
+     * @throws EventFacadeIsSealedException
+     */
+
+    public static function registerTracer(Tracer\Tracer $tracer): void
+    {
+        if (self::$sealed) {
+            throw new EventFacadeIsSealedException;
+        }
+
+        self::dispatcher()->registerTracer($tracer);
+    }

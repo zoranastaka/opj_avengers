@@ -1,0 +1,17 @@
+    /**
+     * @test         weightedSampleVariance unbiased
+     * @dataProvider dataProviderForWeightedSampleVarianceUnbiased
+     * @param        array $numbers
+     * @param        array $weights
+     * @param        float $expectedVariance
+     * @throws       \Exception
+     */
+
+    public function testWeightedSampleVarianceUnbiased(array $numbers, array $weights, float $expectedVariance)
+    {
+        // When
+        $variance = Descriptive::weightedSampleVariance($numbers, $weights);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedVariance, $variance, 0.00001);
+    }

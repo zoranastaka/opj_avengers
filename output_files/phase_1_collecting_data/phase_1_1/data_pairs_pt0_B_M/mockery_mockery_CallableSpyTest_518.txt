@@ -1,0 +1,10 @@
+    /** @test */
+
+    public function it_verifies_the_closure_was_called()
+    {
+        $spy = spy(function () {});
+
+        $spy();
+
+        $spy->shouldHaveBeenCalled();
+    }

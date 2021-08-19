@@ -1,0 +1,16 @@
+    /**
+     * Uses \Laminas\ServiceManager\ServiceManager::get method to load different kind of services.
+     * Some services cannot be loaded via configuration like \Laminas\ServiceManager\Di\DiAbstractServiceFactory and
+     * should be initialized via corresponding factory.
+     *
+     * @param ServiceManager $serviceManager
+     * @param array $services
+     * @return void
+     */
+
+    private function loadServices(ServiceManager $serviceManager, array $services)
+    {
+        foreach ($services as $serviceName) {
+            $serviceManager->get($serviceName);
+        }
+    }

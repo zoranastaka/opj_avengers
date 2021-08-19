@@ -1,0 +1,21 @@
+    /**
+     * @test     leftShift
+     * @dataProvider dataProviderForLeftShift
+     * @param string $number
+     * @param int $bits
+     * @param string $expected
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function testLeftShift(string $number, int $bits, string $expected)
+    {
+        // Given
+        $int = new ArbitraryInteger($number);
+
+        // When
+        $shiftedInt = $int->leftShift($bits);
+
+        // Then
+        $this->assertEquals($expected, (string) $shiftedInt);
+    }

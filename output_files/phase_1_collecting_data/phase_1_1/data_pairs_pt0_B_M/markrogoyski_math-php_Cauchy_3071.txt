@@ -1,0 +1,10 @@
+    /**
+     * Median of the distribution
+     *
+     * @return float x₀
+     */
+
+    public function median(): float
+    {
+        return $this->x₀;
+    }

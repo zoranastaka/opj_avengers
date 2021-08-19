@@ -1,0 +1,10 @@
+    /**
+     * Returns current script name.
+     *
+     * @return string
+     */
+
+    public function getScriptName()
+    {
+        return $this->server->get('SCRIPT_NAME', $this->server->get('ORIG_SCRIPT_NAME', ''));
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Is the response OK?
+     *
+     * @final
+     */
+
+    public function isOk(): bool
+    {
+        return 200 === $this->statusCode;
+    }

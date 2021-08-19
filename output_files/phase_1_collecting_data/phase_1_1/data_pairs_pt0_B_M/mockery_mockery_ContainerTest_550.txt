@@ -1,0 +1,8 @@
+    /**
+     * @group issue/13
+     */
+
+    public function testCanMockClassWhereMethodHasReferencedParameter()
+    {
+        $this->assertInstanceOf(MockInterface::class, Mockery::mock(new MockeryTest_MethodParamRef()));
+    }

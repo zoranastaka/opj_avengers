@@ -1,0 +1,8 @@
+	/**
+	 * get the possible paths for a class
+	 *
+	 * @param string $class
+	 * @return array|bool an array of possible paths or false if the class is not part of ownCloud
+	 */
+
+	public function findClass($class) {

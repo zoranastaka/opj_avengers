@@ -1,0 +1,9 @@
+    /**
+     * Creates a constant use builder.
+     *
+     * @param Node\Name|string $name Name of the const to alias
+     *
+     * @return Builder\Use_ The created use const builder
+     */
+
+    public function useConst($name) : Builder\Use_ {

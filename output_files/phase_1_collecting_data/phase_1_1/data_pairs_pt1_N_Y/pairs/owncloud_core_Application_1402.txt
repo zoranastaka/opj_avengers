@@ -1,0 +1,3 @@
+		/** FIXME: Remove once OC_SubAdmin is non-static and mockable */
+
+		$container->registerService('IsSubAdmin', function (IContainer $c) {

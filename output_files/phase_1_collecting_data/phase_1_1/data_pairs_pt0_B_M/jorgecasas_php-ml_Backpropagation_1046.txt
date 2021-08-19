@@ -1,0 +1,27 @@
+    /**
+     * @param mixed $targetClass
+     */
+
+    public function backpropagate(array $layers, $targetClass): void
+    {
+        $layersNumber = count($layers);
+
+        // Backpropagation.
+        for ($i = $layersNumber; $i > 1; --$i) {
+            $this->sigmas = [];
+            foreach ($layers[$i - 1]->getNodes() as $key => $neuron) {
+                if ($neuron instanceof Neuron) {
+                    $sigma = $this->getSigma($neuron, $targetClass, $key, $i == $layersNumber);
+                    foreach ($neuron->getSynapses() as $synapse) {
+                        $synapse->changeWeight($this->learningRate * $sigma * $synapse->getNode()->getOutput());
+                    }
+                }
+            }
+
+            $this->prevSigmas = $this->sigmas;
+        }
+
+        // Clean some memory (also it helps make MLP persistency & children more maintainable).
+        $this->sigmas = [];
+        $this->prevSigmas = [];
+    }

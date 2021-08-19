@@ -1,0 +1,12 @@
+    /**
+     * @test 32 mpg observations
+     */
+
+    public function testNumberOfMpgs()
+    {
+        // When
+        $observations = $this->mtCars->getMpg();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

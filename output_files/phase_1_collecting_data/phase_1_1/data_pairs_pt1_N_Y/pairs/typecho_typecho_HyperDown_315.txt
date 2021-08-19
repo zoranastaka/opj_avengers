@@ -1,0 +1,18 @@
+    /**
+     * parseQuote
+     *
+     * @param array $lines
+     * @param mixed $value
+     * @param int $start
+     * @return string
+     */
+
+    private function parseQuote(array $lines, $value, $start)
+    {
+        foreach ($lines as &$line) {
+            $line = preg_replace("/^\s*> ?/", '', $line);
+        }
+        $str = implode("\n", $lines);
+
+        return preg_match("/^\s*$/", $str) ? '' : '<blockquote>' . $this->parse($str, true, $start) . '</blockquote>';
+    }

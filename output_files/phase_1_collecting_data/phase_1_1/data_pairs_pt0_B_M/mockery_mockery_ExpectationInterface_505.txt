@@ -1,0 +1,6 @@
+    /**
+     * @param mixed $args
+     * @return self
+     */
+
+    public function andReturn(...$args);

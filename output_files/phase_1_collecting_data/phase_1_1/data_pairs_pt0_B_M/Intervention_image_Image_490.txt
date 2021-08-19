@@ -1,0 +1,12 @@
+    /**
+     * Sets current image resource
+     *
+     * @param mixed $core
+     */
+
+    public function setCore($core)
+    {
+        $this->core = $core;
+
+        return $this;
+    }

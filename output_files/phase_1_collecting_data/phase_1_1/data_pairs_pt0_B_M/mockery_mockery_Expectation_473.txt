@@ -1,0 +1,11 @@
+    /**
+     * Return a self-returning black hole object.
+     *
+     * @return self
+     */
+
+    public function andReturnUndefined()
+    {
+        $this->andReturn(new \Mockery\Undefined());
+        return $this;
+    }

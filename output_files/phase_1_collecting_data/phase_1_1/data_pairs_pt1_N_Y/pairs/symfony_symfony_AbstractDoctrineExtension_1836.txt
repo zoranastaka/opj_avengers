@@ -1,0 +1,9 @@
+    /**
+     * Prefixes the relative dependency injection container path with the object manager prefix.
+     *
+     * @example $name is 'entity_manager' then the result would be 'doctrine.orm.entity_manager'
+     *
+     * @return string
+     */
+
+    abstract protected function getObjectManagerElementName(string $name);

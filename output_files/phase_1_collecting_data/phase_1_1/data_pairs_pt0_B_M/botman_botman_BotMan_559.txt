@@ -1,0 +1,19 @@
+    /**
+     * @param string $name
+     * @param array $arguments
+     * @return mixed
+     * @throws BadMethodCallException
+     */
+
+    public function __call($name, $arguments)
+    {
+        if (method_exists($this->getDriver(), $name)) {
+            // Add the current message to the passed arguments
+            $arguments[] = $this->getMessage();
+            $arguments[] = $this;
+
+            return \call_user_func_array([$this->getDriver(), $name], $arguments);
+        }
+
+        throw new BadMethodCallException('Method ['.$name.'] does not exist.');
+    }

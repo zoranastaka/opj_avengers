@@ -1,0 +1,16 @@
+    /**
+     * Converts the first character of the string to lower case.
+     *
+     * @return static Object with the first character of $str being lower case
+     */
+
+    public function lowerCaseFirst()
+    {
+        $first = \mb_substr($this->str, 0, 1, $this->encoding);
+        $rest = \mb_substr($this->str, 1, $this->length() - 1,
+            $this->encoding);
+
+        $str = \mb_strtolower($first, $this->encoding) . $rest;
+
+        return static::create($str, $this->encoding);
+    }

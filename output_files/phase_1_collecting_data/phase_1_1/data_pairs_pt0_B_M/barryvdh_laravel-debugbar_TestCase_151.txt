@@ -1,0 +1,12 @@
+    /**
+     * Get package aliases.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     *
+     * @return array
+     */
+
+    protected function getPackageAliases($app)
+    {
+        return ['Debugbar' => Facade::class];
+    }

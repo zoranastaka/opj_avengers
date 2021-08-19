@@ -1,0 +1,17 @@
+    /**
+     * @test Axiom: Ø ⊆ A
+     * The empty set is a subset of every set
+     * @dataProvider dataProviderForSingleSet
+     */
+
+    public function testEmptySetSubsetOfEverySet(Set $A)
+    {
+        // Given
+        $Ø = new Set();
+
+        // When
+        $isSubset = $Ø->isSubset($A);
+
+        // Then
+        $this->assertTrue($isSubset);
+    }

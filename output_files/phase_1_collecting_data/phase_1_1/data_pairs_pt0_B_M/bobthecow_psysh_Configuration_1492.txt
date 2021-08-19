@@ -1,0 +1,10 @@
+    /**
+     * Get the current data directory, if any is explicitly set.
+     *
+     * @return string
+     */
+
+    public function getDataDir()
+    {
+        return $this->dataDir;
+    }

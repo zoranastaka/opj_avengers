@@ -1,0 +1,10 @@
+    /**
+     * @throws PcovNotAvailableException
+     */
+
+    public function __construct(Filter $filter)
+    {
+        $this->ensurePcovIsAvailable();
+
+        $this->filter = $filter;
+    }

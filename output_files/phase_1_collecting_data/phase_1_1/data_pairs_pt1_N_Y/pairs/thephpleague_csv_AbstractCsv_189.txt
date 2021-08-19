@@ -1,0 +1,10 @@
+    /**
+     * Return a new instance from a SplFileObject.
+     *
+     * @return static
+     */
+
+    public static function createFromFileObject(SplFileObject $file)
+    {
+        return new static($file);
+    }

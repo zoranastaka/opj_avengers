@@ -1,0 +1,12 @@
+    /**
+     * Return instance of HASKEY matcher.
+     *
+     * @param mixed $key
+     *
+     * @return \Mockery\Matcher\HasKey
+     */
+
+    public static function hasKey($key)
+    {
+        return new \Mockery\Matcher\HasKey($key);
+    }

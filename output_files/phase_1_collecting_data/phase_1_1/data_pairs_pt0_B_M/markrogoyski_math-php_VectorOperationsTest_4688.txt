@@ -1,0 +1,18 @@
+    /**
+     * @test         max
+     * @dataProvider dataProviderForMax
+     * @param array  $A
+     * @param number $expected
+     */
+
+    public function testMax(array $A, $expected)
+    {
+        // Given
+        $A = new Vector($A);
+
+        // When
+        $max = $A->max();
+
+        // Then
+        $this->assertEquals($expected, $max);
+    }

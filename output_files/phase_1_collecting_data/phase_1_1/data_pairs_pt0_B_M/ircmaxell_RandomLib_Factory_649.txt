@@ -1,0 +1,14 @@
+    /**
+     * Load all core mixing strategies
+     *
+     * @return void
+     */
+
+    protected function loadMixers()
+    {
+        $this->loadFiles(
+            __DIR__ . '/Mixer',
+            __NAMESPACE__ . '\\Mixer\\',
+            array($this, 'registerMixer')
+        );
+    }

@@ -1,0 +1,6 @@
+            // Salje serveru start game i zapocinje animaciju
+
+            function emitStart() {
+                if ( !started ) {
+                    socket.emit('startgame');
+                }

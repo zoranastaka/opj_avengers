@@ -1,0 +1,5 @@
+    /**
+     * @dataProvider providerTestResizeBackgroundImage
+     */
+
+    public function testResizeBackgroundImage(

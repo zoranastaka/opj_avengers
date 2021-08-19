@@ -1,0 +1,22 @@
+    /**
+     * Read the dimensions of a matrix, and re-index it with straight numeric keys starting from row 0, column 0
+     *
+     * @param    mixed        &$matrix        matrix operand
+     * @return    array        An array comprising the number of rows, and number of columns
+     */
+
+    private static function getMatrixDimensions(&$matrix)
+    {
+        $matrixRows = count($matrix);
+        $matrixColumns = 0;
+        foreach ($matrix as $rowKey => $rowValue) {
+            $matrixColumns = max(count($rowValue), $matrixColumns);
+            if (!is_array($rowValue)) {
+                $matrix[$rowKey] = array($rowValue);
+            } else {
+                $matrix[$rowKey] = array_values($rowValue);
+            }
+        }
+        $matrix = array_values($matrix);
+        return array($matrixRows, $matrixColumns);
+    }

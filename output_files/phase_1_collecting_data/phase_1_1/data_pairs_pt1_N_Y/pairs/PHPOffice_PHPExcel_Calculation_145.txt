@@ -1,0 +1,8 @@
+    /**
+     * Enable calculation cache
+     */
+
+    public function enableCalculationCache()
+    {
+        $this->setCalculationCacheEnabled(true);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testPubSubLoopWithoutArgumentsReturnsPubSubConsumer(): void
+    {
+        $client = new Client();
+
+        $this->assertInstanceOf('Predis\PubSub\Consumer', $client->pubSubLoop());
+    }

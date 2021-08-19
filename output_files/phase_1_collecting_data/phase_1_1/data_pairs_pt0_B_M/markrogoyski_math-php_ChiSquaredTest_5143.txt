@@ -1,0 +1,18 @@
+    /**
+     * @test         variance
+     * @dataProvider dataProviderForVariance
+     * @param        float $k
+     * @param        float $expected
+     */
+
+    public function testVariance(float $k, float $expected)
+    {
+        // Given
+        $chiSquared = new ChiSquared($k);
+
+        // When
+        $variance = $chiSquared->variance();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $variance, 0.00000001);
+    }

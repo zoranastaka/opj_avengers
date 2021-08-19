@@ -1,0 +1,17 @@
+    /**
+     * Resolve hostname
+     *
+     * @return string
+     */
+
+    private function resolveHostName() : string
+    {
+        if (!empty($_SERVER['HTTP_HOST'])) {
+            $host = $_SERVER['HTTP_HOST'];
+        } elseif (!empty($_SERVER['SERVER_NAME'])) {
+            $host = $_SERVER['SERVER_NAME'];
+        } else {
+            $host = 'localhost';
+        }
+        return $host;
+    }

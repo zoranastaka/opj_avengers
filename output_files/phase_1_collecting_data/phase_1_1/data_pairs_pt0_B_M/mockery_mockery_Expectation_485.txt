@@ -1,0 +1,12 @@
+    /**
+     * Set the exception message
+     *
+     * @param string $message
+     * @return $this
+     */
+
+    public function because($message)
+    {
+        $this->_because = $message;
+        return $this;
+    }

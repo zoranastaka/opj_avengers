@@ -1,0 +1,18 @@
+    /**
+     * Calculates the minkowski distance between vectors
+     * https://en.wikipedia.org/wiki/Minkowski_distance
+     *
+     * (Σ|xᵢ - yᵢ|ᵖ)¹/ᵖ
+     *
+     * @param Vector $B
+     * @param int    $p
+     *
+     * @return float|int
+     *
+     * @throws Exception\BadDataException
+     */
+
+    public function minkowskiDistance(Vector $B, int $p): float
+    {
+        return Distance::minkowski($this->getVector(), $B->getVector(), $p);
+    }

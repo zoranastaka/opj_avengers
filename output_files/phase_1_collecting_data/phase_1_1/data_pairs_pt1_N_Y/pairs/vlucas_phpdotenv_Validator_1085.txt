@@ -1,0 +1,30 @@
+    /**
+     * Assert that the callback returns true for each variable.
+     *
+     * @param callable(?string):bool $callback
+     * @param string                 $message
+     *
+     * @throws \Dotenv\Exception\ValidationException
+     *
+     * @return \Dotenv\Validator
+     */
+
+    public function assert(callable $callback, string $message)
+    {
+        $failing = [];
+
+        foreach ($this->variables as $variable) {
+            if ($callback($this->repository->get($variable)) === false) {
+                $failing[] = \sprintf('%s %s', $variable, $message);
+            }
+        }
+
+        if (\count($failing) > 0) {
+            throw new ValidationException(\sprintf(
+                'One or more environment variables failed assertions: %s.',
+                \implode(', ', $failing)
+            ));
+        }
+
+        return $this;
+    }

@@ -1,0 +1,22 @@
+    /**
+     * Returns the pretty series label for a specific comparison based on the currently set comparison query parameters.
+     *
+     * @param int $labelSeriesIndex The index of the comparison. Comparison series order is determined by {@see self::getReportsToCompare()}.
+     */
+
+    public static function getPrettyComparisonLabelFromSeriesIndex($labelSeriesIndex)
+    {
+        $compareSegments = self::getCompareSegments();
+        $comparePeriods = self::getComparePeriods();
+        $compareDates = self::getCompareDates();
+
+        list($periodIndex, $segmentIndex) = self::getIndividualComparisonRowIndices(null, $labelSeriesIndex, count($compareSegments));
+
+        $segmentObj = new Segment($compareSegments[$segmentIndex], []);
+        $prettySegment = $segmentObj->getStoredSegmentName(false);
+
+        $prettyPeriod = Factory::build($comparePeriods[$periodIndex], $compareDates[$periodIndex])->getLocalizedLongString();
+        $prettyPeriod = ucfirst($prettyPeriod);
+
+        return self::getComparisonSeriesLabelSuffixFromParts($prettyPeriod, $prettySegment);
+    }

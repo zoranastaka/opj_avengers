@@ -1,0 +1,12 @@
+    /**
+     * @throws ExpressionErrorException
+     */
+
+    public function addFunction(XPathExpr $xpath, FunctionNode $function): XPathExpr
+    {
+        if (!isset($this->functionTranslators[$function->getName()])) {
+            throw new ExpressionErrorException(sprintf('Function "%s" not supported.', $function->getName()));
+        }
+
+        return $this->functionTranslators[$function->getName()]($xpath, $function);
+    }

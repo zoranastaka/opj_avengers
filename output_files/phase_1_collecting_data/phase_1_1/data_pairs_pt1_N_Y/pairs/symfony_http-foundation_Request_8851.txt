@@ -1,0 +1,17 @@
+    /**
+     * Gets the user info.
+     *
+     * @return string A user name and, optionally, scheme-specific information about how to gain authorization to access the server
+     */
+
+    public function getUserInfo()
+    {
+        $userinfo = $this->getUser();
+
+        $pass = $this->getPassword();
+        if ('' != $pass) {
+            $userinfo .= ":$pass";
+        }
+
+        return $userinfo;
+    }

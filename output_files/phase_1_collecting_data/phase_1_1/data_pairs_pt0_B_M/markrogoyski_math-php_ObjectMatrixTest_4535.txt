@@ -1,0 +1,14 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderDetException(): array
+    {
+        return [
+            [
+                [
+                    [new Polynomial([1, 2]), new Polynomial([2, 1])],
+                ],
+            ],
+        ];
+    }

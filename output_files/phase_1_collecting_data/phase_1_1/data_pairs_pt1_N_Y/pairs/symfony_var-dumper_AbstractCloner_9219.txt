@@ -1,0 +1,9 @@
+    /**
+     * Effectively clones the PHP variable.
+     *
+     * @param mixed $var Any PHP variable
+     *
+     * @return array The cloned variable represented in an array
+     */
+
+    abstract protected function doClone($var);

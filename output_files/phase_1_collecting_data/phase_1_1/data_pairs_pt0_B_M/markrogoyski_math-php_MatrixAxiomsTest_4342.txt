@@ -1,0 +1,21 @@
+    /**
+     * @test         Axiom: A = LLᵀ (Cholesky decomposition)
+     * @dataProvider dataProviderForPositiveDefiniteMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testCholeskyDecompositionLTimesLTransposeIsA(array $A)
+    {
+        // Given
+        $A        = MatrixFactory::create($A);
+        $cholesky = $A->choleskyDecomposition();
+        $L        = $cholesky->L;
+        $Lᵀ       = $cholesky->LT;
+
+        // When
+        $LLᵀ = $L->multiply($Lᵀ);
+
+        // Then
+        $this->assertEquals($A->getMatrix(), $LLᵀ->getMatrix());
+    }

@@ -1,0 +1,14 @@
+    /**
+     * Negate a matrix
+     * −A = −1A
+     *
+     * @return NumericMatrix
+     *
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function negate(): NumericMatrix
+    {
+        return $this->scalarMultiply(-1);
+    }

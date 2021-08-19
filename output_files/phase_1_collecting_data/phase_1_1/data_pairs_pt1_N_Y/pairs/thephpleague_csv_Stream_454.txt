@@ -1,0 +1,12 @@
+    /**
+     * Gets a line from file.
+     *
+     * @see http://php.net/manual/en/SplFileObject.fgets.php
+     *
+     * @return string|false
+     */
+
+    public function fgets()
+    {
+        return fgets($this->stream);
+    }

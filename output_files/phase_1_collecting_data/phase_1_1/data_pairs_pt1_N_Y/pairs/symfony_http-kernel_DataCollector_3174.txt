@@ -1,0 +1,7 @@
+    /**
+     * @internal to prevent implementing \Serializable
+     */
+
+    final protected function unserialize($data)
+    {
+    }

@@ -1,0 +1,8 @@
+	/**
+	 * The extension can check if a custom filter (given by a query string like filter=abc) is valid or not.
+	 *
+	 * @param string $filterValue
+	 * @return boolean
+	 */
+
+	public function isFilterValid($filterValue) {

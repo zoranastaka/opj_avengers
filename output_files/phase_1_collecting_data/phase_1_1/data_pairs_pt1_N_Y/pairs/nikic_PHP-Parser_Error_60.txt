@@ -1,0 +1,7 @@
+    /**
+     * Gets the line the error ends in.
+     *
+     * @return int Error end line
+     */
+
+    public function getEndLine() : int {

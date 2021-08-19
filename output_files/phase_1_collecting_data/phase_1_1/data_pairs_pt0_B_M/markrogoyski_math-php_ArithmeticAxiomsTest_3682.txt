@@ -1,0 +1,16 @@
+    /**
+     * @test Axiom: dr(n) < n ⇔ n ≥ 10
+     * The digital root of n is less than n if and only if the number is greater than or equal to 10.
+     */
+
+    public function testDigitalRootLessThanN()
+    {
+        // Given
+        for ($n = 10; $n <= 100; $n++) {
+            // When
+            $digitalRoot = Arithmetic::digitalRoot($n);
+
+            // Then
+            $this->assertLessThan($n, $digitalRoot);
+        }
+    }

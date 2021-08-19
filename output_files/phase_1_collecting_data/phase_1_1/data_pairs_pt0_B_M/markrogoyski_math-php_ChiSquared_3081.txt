@@ -1,0 +1,12 @@
+    /**
+     * Variance of the distribution
+     *
+     * var[X] = 2k
+     *
+     * @return float
+     */
+
+    public function variance(): float
+    {
+        return 2 * $this->k;
+    }

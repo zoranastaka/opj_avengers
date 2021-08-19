@@ -1,0 +1,15 @@
+	// --------------------------------------------------------------------
+
+	public function test_load_nonexistent()
+	{
+		// Test graceful fail of nonexistent file
+		$this->assertFalse($this->config->load('not_config_file', FALSE, TRUE));
+
+		// Test regular fail
+		$file = 'absentia';
+		$this->setExpectedException(
+			'RuntimeException',
+			'CI Error: The configuration file '.$file.'.php does not exist.'
+		);
+		$this->assertNull($this->config->load($file));
+	}

@@ -1,0 +1,21 @@
+    /**
+     * Embeds a file inside the PDF
+     *
+     * @param string $filepath path to the file to store inside the PDF
+     * @param string $embeddedFilename the filename displayed in the list of embedded files
+     * @param string $description a description in the list of embedded files
+     */
+
+    public function addEmbeddedFile(string $filepath, string $embeddedFilename, string $description): void
+    {
+        $this->numObj++;
+        $this->o_embedded_file_dictionary(
+            $this->numObj,
+            'new',
+            [
+                'filepath' => $filepath,
+                'filename' => $embeddedFilename,
+                'description' => $description
+            ]
+        );
+    }

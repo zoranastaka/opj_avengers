@@ -1,0 +1,14 @@
+    /**
+     * Add any custom claims.
+     *
+     * @param  array  $claims
+     *
+     * @return $this
+     */
+
+    public function claims(array $claims)
+    {
+        $this->jwt->claims($claims);
+
+        return $this;
+    }

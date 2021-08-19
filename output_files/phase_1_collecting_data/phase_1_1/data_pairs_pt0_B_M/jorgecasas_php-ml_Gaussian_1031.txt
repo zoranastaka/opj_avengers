@@ -1,0 +1,9 @@
+    /**
+     * @param float|int $value
+     * @param float|int $calculatedvalue
+     */
+
+    public function differentiate($value, $calculatedvalue): float
+    {
+        return -2 * $value * $calculatedvalue;
+    }

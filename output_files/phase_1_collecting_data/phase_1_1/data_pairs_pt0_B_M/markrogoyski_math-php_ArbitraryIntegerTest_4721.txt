@@ -1,0 +1,19 @@
+    /**
+     * @test         negate()
+     * @dataProvider dataProviderForNegate
+     * @param        string $int
+     * @param        string $expected
+     * @throws       \Exception
+     */
+
+    public function testNegate(string $int, string $expected)
+    {
+        // Given
+        $int = new ArbitraryInteger($int);
+
+        // When
+        $neg = $int->negate();
+
+        // Then
+        $this->assertEquals($expected, (string) $neg);
+    }

@@ -1,0 +1,7 @@
+/**
+ * @author Fabien Potencier <fabien@symfony.com>
+ */
+
+class Client extends HttpBrowser
+{
+}

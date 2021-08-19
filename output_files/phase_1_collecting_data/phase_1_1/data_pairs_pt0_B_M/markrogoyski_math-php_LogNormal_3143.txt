@@ -1,0 +1,25 @@
+    /**
+     * Inverse of CDF (quantile)
+     *
+     * exp(μ + σ * normal-inverse(p))
+     *
+     * @param float $p
+     *
+     * @return float
+     */
+
+    public function inverse(float $p): float
+    {
+        if ($p == 0) {
+            return 0;
+        }
+        if ($p == 1) {
+            return \INF;
+        }
+
+        $μ = $this->μ;
+        $σ = $this->σ;
+        $standard_normal = new StandardNormal();
+
+        return \exp($μ + $σ * $standard_normal->inverse($p));
+    }

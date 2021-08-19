@@ -1,0 +1,8 @@
+    /**
+     * {@inheritDoc}
+     */
+
+    public function validate($input): bool
+    {
+        return false;
+    }

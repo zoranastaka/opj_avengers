@@ -1,0 +1,14 @@
+    /** @test */
+
+    public function it_passes_driver_event_data()
+    {
+        $this->fakeDriver->hasMatchingEvent = new TestEvent([]);
+        $this->botman->on('test_event', function ($data, BotMan $bot) {
+            $this->assertSame([
+                'event' => 'test_event',
+                'data' => 'foo',
+            ], $data);
+        });
+
+        $this->botman->listen();
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Returns the help text for resolving the problem.
+     *
+     * @return string The help text
+     */
+
+    public function getHelpText()
+    {
+        return $this->helpText;
+    }

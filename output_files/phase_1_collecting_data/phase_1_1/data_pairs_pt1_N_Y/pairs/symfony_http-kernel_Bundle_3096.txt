@@ -1,0 +1,10 @@
+    /**
+     * Creates the bundle's container extension.
+     *
+     * @return ExtensionInterface|null
+     */
+
+    protected function createContainerExtension()
+    {
+        return class_exists($class = $this->getContainerExtensionClass()) ? new $class() : null;
+    }

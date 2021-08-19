@@ -1,0 +1,10 @@
+	/**
+	 * update the comment's message
+	 *
+	 * @param $propertyValue
+	 * @return bool
+	 * @throws BadRequest
+	 * @throws Forbidden
+	 */
+
+	public function updateComment($propertyValue) {

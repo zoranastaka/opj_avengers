@@ -1,0 +1,12 @@
+  /**
+   * Returns true if an inline attachment is present.
+   * @access public
+   * @return bool
+   */
+
+  public function InlineImageExists() {
+    foreach($this->attachment as $attachment) {
+      if ($attachment[6] == 'inline') {
+        return true;
+      }
+    }

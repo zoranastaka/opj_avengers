@@ -1,0 +1,18 @@
+            /**
+             * @param array $array
+             */
+
+            public function array(array $array)
+            {
+                Assert::assertEquals([
+                    'tconst',
+                    'titleType',
+                    'primaryTitle',
+                    'originalTitle',
+                    'isAdult',
+                    'startYear',
+                    'endYear',
+                    'runtimeMinutes',
+                    'genres',
+                ], $array[0]);
+            }

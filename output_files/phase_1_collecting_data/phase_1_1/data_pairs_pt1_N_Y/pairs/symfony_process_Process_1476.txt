@@ -1,0 +1,10 @@
+    /**
+     * Checks if the process has been started with no regard to the current state.
+     *
+     * @return bool true if status is ready, false otherwise
+     */
+
+    public function isStarted()
+    {
+        return self::STATUS_READY != $this->status;
+    }

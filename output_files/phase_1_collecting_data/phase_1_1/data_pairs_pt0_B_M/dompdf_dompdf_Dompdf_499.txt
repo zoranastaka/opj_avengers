@@ -1,0 +1,124 @@
+    /**
+     * Renders the HTML to PDF
+     */
+
+    public function render()
+    {
+        $this->setPhpConfig();
+        $options = $this->options;
+
+        $logOutputFile = $options->getLogOutputFile();
+        if ($logOutputFile) {
+            if (!file_exists($logOutputFile) && is_writable(dirname($logOutputFile))) {
+                touch($logOutputFile);
+            }
+
+            $this->startTime = microtime(true);
+            if (is_writable($logOutputFile)) {
+                ob_start();
+            }
+        }
+
+        $this->processHtml();
+
+        $this->css->apply_styles($this->tree);
+
+        // @page style rules : size, margins
+        $pageStyles = $this->css->get_page_styles();
+        $basePageStyle = $pageStyles["base"];
+        unset($pageStyles["base"]);
+
+        foreach ($pageStyles as $pageStyle) {
+            $pageStyle->inherit($basePageStyle);
+        }
+
+        $defaultOptionPaperSize = $this->getPaperSize($options->getDefaultPaperSize());
+        // If there is a CSS defined paper size compare to the paper size used to create the canvas to determine a
+        // recreation need
+        if (is_array($basePageStyle->size)) {
+            $basePageStyleSize = $basePageStyle->size;
+            $this->setPaper([0, 0, $basePageStyleSize[0], $basePageStyleSize[1]]);
+        }
+
+        $paperSize = $this->getPaperSize();
+        if (
+            $defaultOptionPaperSize[2] !== $paperSize[2] ||
+            $defaultOptionPaperSize[3] !== $paperSize[3] ||
+            $options->getDefaultPaperOrientation() !== $this->paperOrientation
+        ) {
+            $this->setCanvas(CanvasFactory::get_instance($this, $this->paperSize, $this->paperOrientation));
+            $this->fontMetrics->setCanvas($this->getCanvas());
+        }
+
+        $canvas = $this->getCanvas();
+
+        $root = null;
+
+        foreach ($this->tree->get_frames() as $frame) {
+            // Set up the root frame
+            if (is_null($root)) {
+                $root = Factory::decorate_root($this->tree->get_root(), $this);
+                continue;
+            }
+
+            // Create the appropriate decorators, reflowers & positioners.
+            Factory::decorate_frame($frame, $this, $root);
+        }
+
+        // Add meta information
+        $title = $this->dom->getElementsByTagName("title");
+        if ($title->length) {
+            $canvas->add_info("Title", trim($title->item(0)->nodeValue));
+        }
+
+        $metas = $this->dom->getElementsByTagName("meta");
+        $labels = [
+            "author" => "Author",
+            "keywords" => "Keywords",
+            "description" => "Subject",
+        ];
+        /** @var \DOMElement $meta */
+        foreach ($metas as $meta) {
+            $name = mb_strtolower($meta->getAttribute("name"));
+            $value = trim($meta->getAttribute("content"));
+
+            if (isset($labels[$name])) {
+                $canvas->add_info($labels[$name], $value);
+                continue;
+            }
+
+            if ($name === "dompdf.view" && $this->parseDefaultView($value)) {
+                $canvas->set_default_view($this->defaultView, $this->defaultViewOptions);
+            }
+        }
+
+        $root->set_containing_block(0, 0, $canvas->get_width(), $canvas->get_height());
+        $root->set_renderer(new Renderer($this));
+
+        // This is where the magic happens:
+        $root->reflow();
+
+        // Clean up cached images
+        Cache::clear();
+
+        global $_dompdf_warnings, $_dompdf_show_warnings;
+        if ($_dompdf_show_warnings && isset($_dompdf_warnings)) {
+            echo '<b>Dompdf Warnings</b><br><pre>';
+            foreach ($_dompdf_warnings as $msg) {
+                echo $msg . "\n";
+            }
+
+            if ($canvas instanceof CPDF) {
+                echo $canvas->get_cpdf()->messages;
+            }
+            echo '</pre>';
+            flush();
+        }
+
+        if ($logOutputFile && is_writable($logOutputFile)) {
+            $this->write_log();
+            ob_end_clean();
+        }
+
+        $this->restorePhpConfig();
+    }

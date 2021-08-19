@@ -1,0 +1,9 @@
+    /**
+     * Gets the line number the comment started on.
+     *
+     * @deprecated Use getStartLine() instead
+     *
+     * @return int Line number
+     */
+
+    public function getLine() : int {

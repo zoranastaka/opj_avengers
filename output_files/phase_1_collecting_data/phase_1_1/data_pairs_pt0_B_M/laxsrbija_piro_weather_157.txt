@@ -1,0 +1,4 @@
+	// Argument koji funkcija uzima može biti "force".
+	// U tom slucaju se vreme ažurira čak i kada je prošlo manje od 5 minuta od poslednje provere
+
+	function azurirajVreme($a) {

@@ -1,0 +1,30 @@
+    /**
+     * @test Axiom: A(B + C) = AB + AC
+     * Matrix multiplication is distributive
+     *
+     * @dataProvider dataProviderForMultiplicationIsDistributive
+     * @param        array $A
+     * @param        array $B
+     * @param        array $C
+     * @throws       \Exception
+     */
+
+    public function testMultiplicationIsDistributive(array $A, array $B, array $C)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $B = MatrixFactory::create($B);
+        $C = MatrixFactory::create($C);
+
+        // When A(B + C)
+        $⟮B＋C⟯  = $B->add($C);
+        $A⟮B＋C⟯ = $A->multiply($⟮B＋C⟯);
+
+        // And AB + AC
+        $AB     = $A->multiply($B);
+        $AC     = $A->multiply($C);
+        $AB＋AC = $AB->add($AC);
+
+        // Then
+        $this->assertEquals($A⟮B＋C⟯->getMatrix(), $AB＋AC->getMatrix());
+    }

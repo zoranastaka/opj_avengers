@@ -1,0 +1,13 @@
+    /**
+     * @test
+     * @throws \Exception
+     */
+
+    public function testGetOneSidedTValueFromConfidenceLevelExceptionBadDF()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        TDistribution::getOneSidedTValueFromConfidenceLevel(1234, 99);
+    }

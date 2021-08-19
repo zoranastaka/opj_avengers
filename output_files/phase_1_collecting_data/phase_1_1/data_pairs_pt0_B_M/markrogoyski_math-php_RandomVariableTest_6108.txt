@@ -1,0 +1,17 @@
+    /**
+     * @test         centralMoment
+     * @dataProvider dataProviderForCentralMoment
+     * @param        array $X
+     * @param        int   $n
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testCentralMoment(array $X, int $n, float $expected)
+    {
+        // When
+        $centralMoment = RandomVariable::centralMoment($X, $n);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $centralMoment, 0.0001);
+    }

@@ -1,0 +1,3 @@
+            //using `close` event since `end` is not fired for files
+
+            $body->on('close', function () use (&$size, $logFunction) {

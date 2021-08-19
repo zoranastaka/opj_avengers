@@ -1,0 +1,10 @@
+    /**
+     * Alias for getPivot
+     *
+     * @see getPivot
+     */
+
+    public function getDoublePivot(): array
+    {
+        return $this->getPivot();
+    }

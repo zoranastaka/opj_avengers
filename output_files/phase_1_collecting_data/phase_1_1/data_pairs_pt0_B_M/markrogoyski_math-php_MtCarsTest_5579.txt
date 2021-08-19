@@ -1,0 +1,15 @@
+    /**
+     * @test         Model data
+     * @dataProvider dataProviderForLabeledData
+     * @param        string $model
+     * @param        array  $expectedData
+     */
+
+    public function testGetModelData(string $model, array $expectedData)
+    {
+        // When
+        $data = $this->mtCars->getModelData($model);
+
+        // Then
+        $this->assertEquals($expectedData, $data);
+    }

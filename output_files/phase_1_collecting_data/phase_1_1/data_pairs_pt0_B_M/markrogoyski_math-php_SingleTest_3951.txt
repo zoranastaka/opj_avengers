@@ -1,0 +1,16 @@
+    /**
+     * @test         add
+     * @dataProvider dataProviderForAdd
+     * @param        array $xs
+     * @param        mixed $k
+     * @param        array $expected
+     */
+
+    public function testAdd(array $xs, $k, array $expected)
+    {
+        // When
+        $sums = Single::add($xs, $k);
+
+        // Then
+        $this->assertEquals($expected, $sums);
+    }

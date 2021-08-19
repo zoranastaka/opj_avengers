@@ -1,0 +1,11 @@
+    /**
+     * Returns the number of errors raised.
+     *
+     * @return int
+     */
+
+    public function getErrorCount()
+    {
+        return $this->errorCount;
+
+    }//end getErrorCount()

@@ -1,0 +1,10 @@
+    /**
+     * Cereal names
+     *
+     * @return string[]
+     */
+
+    public function getCereals(): array
+    {
+        return self::CEREALS;
+    }

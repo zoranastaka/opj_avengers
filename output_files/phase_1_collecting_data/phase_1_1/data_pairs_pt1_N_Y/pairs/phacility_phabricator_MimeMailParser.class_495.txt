@@ -1,0 +1,15 @@
+	/**
+	 * Retrieve a specific Email Header
+	 * @return String
+	 * @param $name String Header name
+	 */
+
+	public function getHeader($name) {
+		if (isset($this->parts[1])) {
+			$headers = $this->getPartHeaders($this->parts[1]);
+			if (isset($headers[$name])) {
+				return $headers[$name];
+			}
+		} else {
+			throw new Exception('MimeMailParser::setPath() or MimeMailParser::setText() must be called before retrieving email headers.');
+		}

@@ -1,0 +1,5 @@
+    /**
+     * @psalm-param trait-string $traitName
+     */
+
+    public function testMockObjectCreatedForTrait(string $traitName): void;

@@ -1,0 +1,19 @@
+    /**
+     * @test         Integration
+     * @dataProvider dataProviderForIntegrate
+     * @param        array $polynomial
+     * @param        array $expected_integral
+     */
+
+    public function testIntegration(array $polynomial, array $expected_integral)
+    {
+        // Given
+        $polynomial = new Polynomial($polynomial);
+        $expected   = new Polynomial($expected_integral);
+
+        // When
+        $integral = $polynomial->integrate();
+
+        // Then
+        $this->assertEquals($expected, $integral);
+    }

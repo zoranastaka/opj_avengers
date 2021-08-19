@@ -1,0 +1,24 @@
+    /**
+     * @covers ::parse
+     * @covers ::extractRecord
+     * @covers ::extractFieldContent
+     * @covers ::extractEnclosedFieldContent
+     */
+
+    public function testNoTrimmedSpaceWithNotEncloseField(): void
+    {
+        $source = <<<EOF
+Year,Make,Model,,Description,   Price
+1997,  Ford  ,E350  ,ac, abs, moon,   3000.00
+EOF;
+
+        $expected = [
+            ['Year', 'Make', 'Model', '', 'Description', '   Price'],
+            ['1997', '  Ford  ', 'E350  ', 'ac', ' abs', ' moon', '   3000.00'],
+        ];
+
+        $stream = Stream::createFromString($source);
+        foreach (EmptyEscapeParser::parse($stream) as $offset => $record) {
+            self::assertSame($expected[$offset], $record);
+        }
+    }

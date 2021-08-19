@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function setCacheFile(string $cacheFile): ConfigInterface
+    {
+        $this->cacheFile = $cacheFile;
+
+        return $this;
+    }

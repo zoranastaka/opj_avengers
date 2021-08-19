@@ -1,0 +1,8 @@
+    /**
+     * @param bool $readOnly
+     */
+
+    public function setReadOnly($readOnly)
+    {
+        $this->readOnly = (bool) $readOnly;
+    }

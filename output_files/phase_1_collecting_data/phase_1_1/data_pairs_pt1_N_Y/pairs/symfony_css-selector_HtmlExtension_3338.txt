@@ -1,0 +1,17 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getPseudoClassTranslators(): array
+    {
+        return [
+            'checked' => [$this, 'translateChecked'],
+            'link' => [$this, 'translateLink'],
+            'disabled' => [$this, 'translateDisabled'],
+            'enabled' => [$this, 'translateEnabled'],
+            'selected' => [$this, 'translateSelected'],
+            'invalid' => [$this, 'translateInvalid'],
+            'hover' => [$this, 'translateHover'],
+            'visited' => [$this, 'translateVisited'],
+        ];
+    }

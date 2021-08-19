@@ -1,0 +1,11 @@
+    /**
+     * Checks if given size fits into current size
+     *
+     * @param  Size   $size
+     * @return boolean
+     */
+
+    public function fitsInto(Size $size)
+    {
+        return ($this->width <= $size->width) && ($this->height <= $size->height);
+    }

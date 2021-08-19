@@ -1,0 +1,176 @@
+    /**
+     * @param $file
+     * @param $x
+     * @param $y
+     * @param $w
+     * @param $h
+     * @param $byte
+     */
+
+    protected function addImagePngAlpha($file, $x, $y, $w, $h, $byte)
+    {
+        // generate images
+        $img = imagecreatefrompng($file);
+
+        if ($img === false) {
+            return;
+        }
+
+        // FIXME The pixel transformation doesn't work well with 8bit PNGs
+        $eight_bit = ($byte & 4) !== 4;
+
+        $wpx = imagesx($img);
+        $hpx = imagesy($img);
+
+        imagesavealpha($img, false);
+
+        // create temp alpha file
+        $tempfile_alpha = @tempnam($this->tmp, "cpdf_img_");
+        @unlink($tempfile_alpha);
+        $tempfile_alpha = "$tempfile_alpha.png";
+
+        // create temp plain file
+        $tempfile_plain = @tempnam($this->tmp, "cpdf_img_");
+        @unlink($tempfile_plain);
+        $tempfile_plain = "$tempfile_plain.png";
+
+        $imgalpha = imagecreate($wpx, $hpx);
+        imagesavealpha($imgalpha, false);
+
+        // generate gray scale palette (0 -> 255)
+        for ($c = 0; $c < 256; ++$c) {
+            imagecolorallocate($imgalpha, $c, $c, $c);
+        }
+
+        // Use PECL gmagick + Graphics Magic to process transparent PNG images
+        if (extension_loaded("gmagick")) {
+            $gmagick = new \Gmagick($file);
+            $gmagick->setimageformat('png');
+
+            // Get opacity channel (negative of alpha channel)
+            $alpha_channel_neg = clone $gmagick;
+            $alpha_channel_neg->separateimagechannel(\Gmagick::CHANNEL_OPACITY);
+
+            // Negate opacity channel
+            $alpha_channel = new \Gmagick();
+            $alpha_channel->newimage($wpx, $hpx, "#FFFFFF", "png");
+            $alpha_channel->compositeimage($alpha_channel_neg, \Gmagick::COMPOSITE_DIFFERENCE, 0, 0);
+            $alpha_channel->separateimagechannel(\Gmagick::CHANNEL_RED);
+            $alpha_channel->writeimage($tempfile_alpha);
+
+            // Cast to 8bit+palette
+            $imgalpha_ = imagecreatefrompng($tempfile_alpha);
+            imagecopy($imgalpha, $imgalpha_, 0, 0, 0, 0, $wpx, $hpx);
+            imagedestroy($imgalpha_);
+            imagepng($imgalpha, $tempfile_alpha);
+
+            // Make opaque image
+            $color_channels = new \Gmagick();
+            $color_channels->newimage($wpx, $hpx, "#FFFFFF", "png");
+            $color_channels->compositeimage($gmagick, \Gmagick::COMPOSITE_COPYRED, 0, 0);
+            $color_channels->compositeimage($gmagick, \Gmagick::COMPOSITE_COPYGREEN, 0, 0);
+            $color_channels->compositeimage($gmagick, \Gmagick::COMPOSITE_COPYBLUE, 0, 0);
+            $color_channels->writeimage($tempfile_plain);
+
+            $imgplain = imagecreatefrompng($tempfile_plain);
+        }
+        // Use PECL imagick + ImageMagic to process transparent PNG images
+        elseif (extension_loaded("imagick")) {
+            // Native cloning was added to pecl-imagick in svn commit 263814
+            // the first version containing it was 3.0.1RC1
+            static $imagickClonable = null;
+            if ($imagickClonable === null) {
+                $imagickClonable = version_compare(\Imagick::IMAGICK_EXTVER, '3.0.1rc1') > 0;
+            }
+
+            $imagick = new \Imagick($file);
+            $imagick->setFormat('png');
+
+            // Get opacity channel (negative of alpha channel)
+            if ($imagick->getImageAlphaChannel() !== 0) {
+                $alpha_channel = $imagickClonable ? clone $imagick : $imagick->clone();
+                $alpha_channel->separateImageChannel(\Imagick::CHANNEL_ALPHA);
+                // Since ImageMagick7 negate invert transparency as default
+                if (\Imagick::getVersion()['versionNumber'] < 1800) {
+                    $alpha_channel->negateImage(true);
+                }
+                $alpha_channel->writeImage($tempfile_alpha);
+
+                // Cast to 8bit+palette
+                $imgalpha_ = imagecreatefrompng($tempfile_alpha);
+                imagecopy($imgalpha, $imgalpha_, 0, 0, 0, 0, $wpx, $hpx);
+                imagedestroy($imgalpha_);
+                imagepng($imgalpha, $tempfile_alpha);
+            } else {
+                $tempfile_alpha = null;
+            }
+
+            // Make opaque image
+            $color_channels = new \Imagick();
+            $color_channels->newImage($wpx, $hpx, "#FFFFFF", "png");
+            $color_channels->compositeImage($imagick, \Imagick::COMPOSITE_COPYRED, 0, 0);
+            $color_channels->compositeImage($imagick, \Imagick::COMPOSITE_COPYGREEN, 0, 0);
+            $color_channels->compositeImage($imagick, \Imagick::COMPOSITE_COPYBLUE, 0, 0);
+            $color_channels->writeImage($tempfile_plain);
+
+            $imgplain = imagecreatefrompng($tempfile_plain);
+        } else {
+            // allocated colors cache
+            $allocated_colors = [];
+
+            // extract alpha channel
+            for ($xpx = 0; $xpx < $wpx; ++$xpx) {
+                for ($ypx = 0; $ypx < $hpx; ++$ypx) {
+                    $color = imagecolorat($img, $xpx, $ypx);
+                    $col = imagecolorsforindex($img, $color);
+                    $alpha = $col['alpha'];
+
+                    if ($eight_bit) {
+                        // with gamma correction
+                        $gammacorr = 2.2;
+                        $pixel = pow((((127 - $alpha) * 255 / 127) / 255), $gammacorr) * 255;
+                    } else {
+                        // without gamma correction
+                        $pixel = (127 - $alpha) * 2;
+
+                        $key = $col['red'] . $col['green'] . $col['blue'];
+
+                        if (!isset($allocated_colors[$key])) {
+                            $pixel_img = imagecolorallocate($img, $col['red'], $col['green'], $col['blue']);
+                            $allocated_colors[$key] = $pixel_img;
+                        } else {
+                            $pixel_img = $allocated_colors[$key];
+                        }
+
+                        imagesetpixel($img, $xpx, $ypx, $pixel_img);
+                    }
+
+                    imagesetpixel($imgalpha, $xpx, $ypx, $pixel);
+                }
+            }
+
+            // extract image without alpha channel
+            $imgplain = imagecreatetruecolor($wpx, $hpx);
+            imagecopy($imgplain, $img, 0, 0, 0, 0, $wpx, $hpx);
+            imagedestroy($img);
+
+            imagepng($imgalpha, $tempfile_alpha);
+            imagepng($imgplain, $tempfile_plain);
+        }
+
+        // embed mask image
+        if ($tempfile_alpha) {
+            $this->addImagePng($imgalpha, $tempfile_alpha, $x, $y, $w, $h, true);
+            imagedestroy($imgalpha);
+        }
+
+        // embed image, masked with previously embedded mask
+        $this->addImagePng($imgplain, $tempfile_plain, $x, $y, $w, $h, false, ($tempfile_alpha !== null));
+        imagedestroy($imgplain);
+
+        // remove temp files
+        if ($tempfile_alpha) {
+            unlink($tempfile_alpha);
+        }
+        unlink($tempfile_plain);
+    }

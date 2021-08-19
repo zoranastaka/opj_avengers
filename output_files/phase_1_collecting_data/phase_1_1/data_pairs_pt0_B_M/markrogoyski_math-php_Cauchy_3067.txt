@@ -1,0 +1,24 @@
+    /**
+     * Probability density function
+     *
+     *                1
+     *    --------------------------
+     *       ┌        / x - x₀ \ ² ┐
+     *    πγ | 1  +  | ---------|  |
+     *       └        \    γ   /   ┘
+     *
+     * @param float $x
+     *
+     * @return float
+     */
+
+    public function pdf(float $x): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['x' => $x]);
+
+        $x₀ = $this->x₀;
+        $γ  = $this->γ;
+        $π  = \M_PI;
+
+        return 1 / ($π * $γ * (1 + (($x - $x₀) / $γ) ** 2));
+    }

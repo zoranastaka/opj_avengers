@@ -1,0 +1,18 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function process(ContainerBuilder $container)
+    {
+        $annotatedClasses = $this->kernel->getAnnotatedClassesToCompile();
+        foreach ($container->getExtensions() as $extension) {
+            if ($extension instanceof Extension) {
+                $annotatedClasses = array_merge($annotatedClasses, $extension->getAnnotatedClassesToCompile());
+            }
+        }
+
+        $existingClasses = $this->getClassesInComposerClassMaps();
+
+        $annotatedClasses = $container->getParameterBag()->resolveValue($annotatedClasses);
+        $this->kernel->setAnnotatedClassCache($this->expandClasses($annotatedClasses, $existingClasses));
+    }

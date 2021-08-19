@@ -1,0 +1,10 @@
+    /**
+     * Set the most recent return value.
+     *
+     * @param mixed $value
+     */
+
+    public function setReturnValue($value)
+    {
+        $this->returnValue = $value;
+    }

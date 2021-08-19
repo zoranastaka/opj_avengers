@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider checksumProvider
+     * @param $tcNo
+     * @param $checksum
+     */
+
+    public function testChecksum($tcNo, $checksum)
+    {
+        $this->assertEquals($checksum, TCNo::checksum($tcNo), $tcNo);
+    }

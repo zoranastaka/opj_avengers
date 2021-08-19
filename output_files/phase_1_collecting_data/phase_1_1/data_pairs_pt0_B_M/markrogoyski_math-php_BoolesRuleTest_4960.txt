@@ -1,0 +1,17 @@
+    /**
+     * @test   approximate exception when sub intervals are not a factor of four, or
+     *         equivalently, the number of points minus one is not a factor of four
+     * @throws \Exception
+     */
+
+    public function testSubIntervalsNotFactorFour()
+    {
+        // Given
+        $points = [[0,0], [4,4], [2,2], [6,6], [8,8], [10, 10]];
+
+        // Then
+        $this->expectException(\Exception::class);
+
+        // When
+        BoolesRule::approximate($points);
+    }

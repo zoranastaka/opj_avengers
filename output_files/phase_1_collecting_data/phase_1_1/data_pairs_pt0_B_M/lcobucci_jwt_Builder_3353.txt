@@ -1,0 +1,7 @@
+    /**
+     * Configures a header item
+     *
+     * @param mixed $value
+     */
+
+    public function withHeader(string $name, $value): Builder;

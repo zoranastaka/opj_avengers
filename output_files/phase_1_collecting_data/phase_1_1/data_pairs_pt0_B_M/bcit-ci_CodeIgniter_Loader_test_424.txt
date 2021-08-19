@@ -1,0 +1,16 @@
+	// --------------------------------------------------------------------
+
+	public function test_load_library_in_application_dir()
+	{
+		// Create library in VFS
+		$lib = 'super_test_library';
+		$class = ucfirst($lib);
+		$this->ci_vfs_create(ucfirst($lib), '<?php class '.$class.' { }', $this->ci_app_root, 'libraries');
+
+		// Load library
+		$this->assertInstanceOf('CI_Loader', $this->load->library($lib));
+
+		// Was the model class instantiated.
+		$this->assertTrue(class_exists($class), $class.' does not exist');
+		$this->assertAttributeInstanceOf($class, $lib, $this->ci_obj);
+	}

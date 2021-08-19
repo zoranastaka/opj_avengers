@@ -1,0 +1,21 @@
+    /**
+     * @internal
+     */
+
+    public function __sleep(): array
+    {
+        if (!$this->dataCount) {
+            $this->data = [];
+        }
+
+        if ($this->clonesCount !== $this->clonesIndex) {
+            return [];
+        }
+
+        $this->data[] = $this->fileLinkFormat;
+        $this->data[] = $this->charset;
+        $this->dataCount = 0;
+        $this->isCollected = true;
+
+        return parent::__sleep();
+    }

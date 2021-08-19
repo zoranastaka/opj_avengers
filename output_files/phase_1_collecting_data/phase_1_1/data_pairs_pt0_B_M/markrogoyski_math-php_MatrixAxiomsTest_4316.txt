@@ -1,0 +1,15 @@
+    /**
+     * @test Axiom: Zero matrix is diagonal
+     * @throws   \Exception
+     */
+
+    public function testZeroMatrixIsDiagonal()
+    {
+        foreach (\range(1, 20) as $m) {
+            // Given
+            $L = MatrixFactory::zero($m, $m);
+
+            // Then
+            $this->assertTrue($L->isDiagonal());
+        }
+    }

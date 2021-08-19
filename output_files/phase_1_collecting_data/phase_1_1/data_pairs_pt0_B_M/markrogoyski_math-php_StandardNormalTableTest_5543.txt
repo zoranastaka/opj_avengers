@@ -1,0 +1,13 @@
+    /**
+     * @test   confidence interval invalid exception
+     * @throws \Exception
+     */
+
+    public function testGetZScoreForConfidenceIntervalInvalidConfidenceLevel()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        StandardNormal::getZScoreForConfidenceInterval(12);
+    }

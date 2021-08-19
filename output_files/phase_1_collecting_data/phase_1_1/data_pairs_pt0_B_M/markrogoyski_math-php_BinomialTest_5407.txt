@@ -1,0 +1,20 @@
+    /**
+     * @test         pmf
+     * @dataProvider dataProviderForPmf
+     * @param        int $n
+     * @param        int $r
+     * @param        float $p
+     * @param        float $expectedPmf
+     */
+
+    public function testPmf(int $n, int $r, float $p, float $expectedPmf)
+    {
+        // Given
+        $binomial = new Binomial($n, $p);
+
+        // When
+        $pdf = $binomial->pmf($r);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedPmf, $pdf, 0.0000001);
+    }

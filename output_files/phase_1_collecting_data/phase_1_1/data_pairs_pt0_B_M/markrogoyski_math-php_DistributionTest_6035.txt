@@ -1,0 +1,20 @@
+    /**
+     * @test         fractionalRanking: Sum of all assigned ranks is ½n(n + 1)
+     * @dataProvider dataProviderForRankingWithoutTies
+     * @dataProvider dataProviderForFractionalRank
+     * @param        array $values
+     */
+
+    public function testFractionalRankingDistributionSumOfAllRanks(array $values)
+    {
+        // Given
+        $n = count($values);
+        $expectedSumOfAssignedRanks = ($n * ($n + 1)) / 2;
+
+        // When
+        $sampleRank = Distribution::fractionalRanking($values);
+
+        // Then
+        $sumOfAssignedRanks = \array_sum($sampleRank);
+        $this->assertEquals($expectedSumOfAssignedRanks, $sumOfAssignedRanks);
+    }

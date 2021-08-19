@@ -1,0 +1,20 @@
+    /**
+     * Compare 2 cells
+     *
+     * @param    PHPExcel_Cell    $a    Cell a
+     * @param    PHPExcel_Cell    $b    Cell b
+     * @return    int        Result of comparison (always -1 or 1, never zero!)
+     */
+
+    public static function compareCells(PHPExcel_Cell $a, PHPExcel_Cell $b)
+    {
+        if ($a->getRow() < $b->getRow()) {
+            return -1;
+        } elseif ($a->getRow() > $b->getRow()) {
+            return 1;
+        } elseif (self::columnIndexFromString($a->getColumn()) < self::columnIndexFromString($b->getColumn())) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }

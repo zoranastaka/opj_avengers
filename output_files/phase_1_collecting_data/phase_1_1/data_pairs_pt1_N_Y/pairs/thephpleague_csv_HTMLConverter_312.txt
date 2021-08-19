@@ -1,0 +1,26 @@
+    /**
+     * Creates a DOMElement representing a HTML table heading section.
+     */
+
+    protected function appendHeaderSection(string $node_name, array $record, DOMElement $table): void
+    {
+        if ([] === $record) {
+            return;
+        }
+
+        /** @var DOMDocument $ownerDocument */
+        $ownerDocument = $table->ownerDocument;
+        $node = $this->xml_converter
+            ->rootElement($node_name)
+            ->recordElement('tr')
+            ->fieldElement('th')
+            ->import([$record], $ownerDocument)
+        ;
+
+        /** @var DOMElement $element */
+        foreach ($node->getElementsByTagName('th') as $element) {
+            $element->setAttribute('scope', 'col');
+        }
+
+        $table->appendChild($node);
+    }

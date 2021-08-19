@@ -1,0 +1,10 @@
+	/**
+	 * Compute and return the score for a match with e errors and x location.
+	 * Accesses loc and pattern through being a closure.
+	 * @param {number} e Number of errors in match.
+	 * @param {number} x Location of match.
+	 * @return {number} Overall score for match (0.0 = good, 1.0 = bad).
+	 * @private
+	 */
+
+	function match_bitapScore($e, $x, $pattern, $loc) {

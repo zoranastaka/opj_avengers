@@ -1,0 +1,17 @@
+    /**
+     * @test         regularizedLowerIncompleteGamma
+     * @dataProvider dataProviderForRegularizedLowerIncompleteGamma
+     * @param        float $s
+     * @param        float $x
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testRegularizedLowerIncompleteGamma(float $s, float $x, float $expected)
+    {
+        // When
+        $gammainc = Special::regularizedLowerIncompleteGamma($s, $x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $gammainc, 0.00001);
+    }

@@ -1,0 +1,6 @@
+/**
+ * Get number of SQL queries performed
+ *
+ */
+
+function yourls_get_num_queries() {

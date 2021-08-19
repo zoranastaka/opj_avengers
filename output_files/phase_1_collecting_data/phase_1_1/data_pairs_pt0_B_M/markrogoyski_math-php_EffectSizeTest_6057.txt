@@ -1,0 +1,16 @@
+    /**
+     * @test         partialEtaSquared
+     * @dataProvider dataProviderForPartialEtaSquared
+     * @param        float $SSt
+     * @param        float $SSE
+     * @param        float $expected
+     */
+
+    public function testPartialEtaSquared(float $SSt, float $SSE, float $expected)
+    {
+        // When
+        $η²p = EffectSize::partialEtaSquared($SSt, $SSE);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $η²p, 0.000000001);
+    }

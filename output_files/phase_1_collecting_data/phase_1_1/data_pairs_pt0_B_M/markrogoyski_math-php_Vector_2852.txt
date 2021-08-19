@@ -1,0 +1,12 @@
+    /**
+     * Print the vector as a string
+     * Ex:
+     *  [1, 2, 3]
+     *
+     * @return string
+     */
+
+    public function __toString(): string
+    {
+        return '[' . \implode(', ', $this->A) . ']';
+    }

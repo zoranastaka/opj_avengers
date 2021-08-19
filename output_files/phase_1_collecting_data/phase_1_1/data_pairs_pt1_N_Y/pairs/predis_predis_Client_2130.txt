@@ -1,0 +1,11 @@
+    /**
+     * Closes the underlying connection and disconnects from the server.
+     *
+     * This is the same as `Client::disconnect()` as it does not actually send
+     * the `QUIT` command to Redis, but simply closes the connection.
+     */
+
+    public function quit()
+    {
+        $this->disconnect();
+    }

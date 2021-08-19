@@ -1,0 +1,10 @@
+    /**
+     * Return the training loss at each epoch.
+     *
+     * @return float[]|null
+     */
+
+    public function losses() : ?array
+    {
+        return $this->losses;
+    }

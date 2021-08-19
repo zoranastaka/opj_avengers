@@ -1,0 +1,7 @@
+    /** @test */
+
+    public function it_can_be_created()
+    {
+        $button = Button::create('text');
+        $this->assertSame('text', Arr::get($button->toArray(), 'text'));
+    }

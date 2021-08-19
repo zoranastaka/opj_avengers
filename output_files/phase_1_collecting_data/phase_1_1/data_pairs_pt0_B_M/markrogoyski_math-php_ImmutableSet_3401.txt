@@ -1,0 +1,10 @@
+    /**
+     * Cannot clear an immutable set
+     *
+     * @return Set (this set unchanged)
+     */
+
+    public function clear(): Set
+    {
+        return $this;
+    }

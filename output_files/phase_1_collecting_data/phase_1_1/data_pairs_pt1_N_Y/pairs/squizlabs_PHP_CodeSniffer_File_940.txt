@@ -1,0 +1,11 @@
+    /**
+     * Returns the warnings raised from processing this file.
+     *
+     * @return array
+     */
+
+    public function getWarnings()
+    {
+        return $this->warnings;
+
+    }//end getWarnings()

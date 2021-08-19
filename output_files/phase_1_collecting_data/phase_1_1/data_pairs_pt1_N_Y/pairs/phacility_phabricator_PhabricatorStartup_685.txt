@@ -1,0 +1,5 @@
+  /**
+   * @task request-path
+   */
+
+  public static function getRequestPath() {

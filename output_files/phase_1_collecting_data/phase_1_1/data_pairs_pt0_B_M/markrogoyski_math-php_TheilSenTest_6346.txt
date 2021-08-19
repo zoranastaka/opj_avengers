@@ -1,0 +1,14 @@
+    /**
+     * @test     getEquation - Equation matches pattern y = mx + b
+     * @dataProvider dataProviderForEquation
+     * @param        array $points
+     */
+
+    public function testGetEquation(array $points)
+    {
+        // Given
+        $regression = new TheilSen($points);
+
+        // Then
+        $this->assertRegExp('/^y = \d+[.]\d+x [+] \d+[.]\d+$/', $regression->getEquation());
+    }

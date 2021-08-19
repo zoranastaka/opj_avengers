@@ -1,0 +1,10 @@
+    /**
+     * Gets the exception message.
+     *
+     * @return string The exception message
+     */
+
+    public function getMessage()
+    {
+        return $this->data['exception']->getMessage();
+    }

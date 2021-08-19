@@ -1,0 +1,15 @@
+    /**
+     * @test         isNegativeDefinite returns true for a negative definite square matrix.
+     * @dataProvider dataProviderForNegativeDefiniteMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsNegativeDefinite(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isNegativeDefinite());
+    }

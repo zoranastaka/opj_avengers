@@ -1,0 +1,31 @@
+    /**
+     * Returns selected fields required for an address in an array according to a selection hash.
+     *
+     * @return array String values
+     */
+
+    public static function getValidateFields($className)
+    {
+        $propertyList = [];
+
+        if (class_exists($className)) {
+            $object = new $className();
+            $reflect = new ReflectionObject($object);
+
+            // Check if the property is accessible
+            $publicProperties = $reflect->getProperties(ReflectionProperty::IS_PUBLIC);
+            foreach ($publicProperties as $property) {
+                $propertyName = $property->getName();
+                if ((!in_array($propertyName, AddressFormat::$forbiddenPropertyList)) &&
+                        (!preg_match('#id|id_\w#', $propertyName))) {
+                    $propertyList[] = $propertyName;
+                }
+            }
+            unset(
+                $object,
+                $reflect
+            );
+        }
+
+        return $propertyList;
+    }

@@ -1,0 +1,28 @@
+    /**
+     * Runs this action with the specified parameters.
+     * This method is mainly invoked by the controller.
+     *
+     * @param array $params the parameters to be bound to the action's run() method.
+     * @return mixed the result of the action
+     * @throws InvalidConfigException if the action class does not have a run() method
+     */
+
+    public function runWithParams($params)
+    {
+        if (!method_exists($this, 'run')) {
+            throw new InvalidConfigException(get_class($this) . ' must define a "run()" method.');
+        }
+        $args = $this->controller->bindActionParams($this, $params);
+        Yii::debug('Running action: ' . get_class($this) . '::run(), invoked by '  . get_class($this->controller), __METHOD__);
+        if (Yii::$app->requestedParams === null) {
+            Yii::$app->requestedParams = $args;
+        }
+        if ($this->beforeRun()) {
+            $result = call_user_func_array([$this, 'run'], $args);
+            $this->afterRun();
+
+            return $result;
+        }
+
+        return null;
+    }

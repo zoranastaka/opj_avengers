@@ -1,0 +1,20 @@
+    /**
+     * @test         Interpolate
+     * @dataProvider dataProviderForPolynomialAgrees
+     * @param        int $x
+     * @param        int $expected
+     * @throws       \Exception
+     */
+
+    public function testPolynomialAgrees(int $x, int $expected)
+    {
+        // Given
+        $points   = [[0, 0], [1, 5], [3, 2], [7, 10], [10, -4]];
+        $roundoff = 0.0000001; // round off error
+
+        // When
+        $interpolated = NevillesMethod::interpolate($x, $points);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $interpolated, $roundoff);
+    }

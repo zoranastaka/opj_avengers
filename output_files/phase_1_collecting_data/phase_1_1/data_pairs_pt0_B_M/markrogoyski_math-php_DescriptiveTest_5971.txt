@@ -1,0 +1,16 @@
+    /**
+     * @test         coefficientOfVariation
+     * @dataProvider dataProviderForCoefficientOfVariation
+     * @param        array $numbers
+     * @param        float $expectedCv
+     * @throws       \Exception
+     */
+
+    public function testsCoefficientOfVariation(array $numbers, float $expectedCv)
+    {
+        // When
+        $cv = Descriptive::coefficientOfVariation($numbers);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedCv, $cv, 0.0001);
+    }

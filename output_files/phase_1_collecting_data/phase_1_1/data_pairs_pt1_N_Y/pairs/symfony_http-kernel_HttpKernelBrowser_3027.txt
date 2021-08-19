@@ -1,0 +1,16 @@
+    /**
+     * Makes a request.
+     *
+     * @return Response A Response instance
+     */
+
+    protected function doRequest($request)
+    {
+        $response = $this->kernel->handle($request, HttpKernelInterface::MAIN_REQUEST, $this->catchExceptions);
+
+        if ($this->kernel instanceof TerminableInterface) {
+            $this->kernel->terminate($request, $response);
+        }
+
+        return $response;
+    }

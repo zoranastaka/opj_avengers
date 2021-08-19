@@ -1,0 +1,16 @@
+    /**
+     * @test kullbackLeibler when probabilities do not add up to one
+     */
+
+    public function testKullbackLeiblerExceptionNotProbabilityDistributionThatAddsUpToOne()
+    {
+        // Given
+        $p = [0.2, 0.2, 0.1];
+        $q = [0.2, 0.4, 0.6];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Divergence::kullbackLeibler($p, $q);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Square matrix must be square
+     *
+     * @return bool
+     */
+
+    public function isSquare(): bool
+    {
+        return true;
+    }

@@ -1,0 +1,23 @@
+    /**
+     * @test Axiom: Positive definiteness A and B are PD ⇒ A + B is PD
+     * If A and B are positive definite then A + B is positive definite.
+     * @dataProvider dataProviderForTwoPositiveDefiniteMatrices
+     * @param        array $A
+     * @param        array $B
+     * @throws       \Exception
+     */
+
+    public function testPositiveDefiniteAPlusBIsPositiveDefinite(array $A, array $B)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $B = MatrixFactory::create($B);
+
+        // When
+        $A＋B = $A->add($B);
+
+        // Then
+        $this->assertTrue($A->isPositiveDefinite());
+        $this->assertTrue($B->isPositiveDefinite());
+        $this->assertTrue($A＋B->isPositiveDefinite());
+    }

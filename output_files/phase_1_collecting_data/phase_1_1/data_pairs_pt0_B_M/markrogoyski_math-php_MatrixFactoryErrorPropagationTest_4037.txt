@@ -1,0 +1,12 @@
+    /**
+     * @test cofactorMatrix propagates error tolerance to resultant matrix
+     */
+
+    public function testCofactorMatrix()
+    {
+        // When
+        $R = $this->A->cofactorMatrix();
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

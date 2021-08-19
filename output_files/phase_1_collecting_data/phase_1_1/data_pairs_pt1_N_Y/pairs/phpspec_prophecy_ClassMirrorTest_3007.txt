@@ -1,0 +1,13 @@
+    /**
+     * @test
+     */
+
+    public function it_doesnt_fail_to_typehint_nonexistent_FQCN()
+    {
+        $mirror = new ClassMirror();
+
+        $classNode = $mirror->reflect(new \ReflectionClass('Fixtures\Prophecy\OptionalDepsClass'), array());
+        $method = $classNode->getMethod('iHaveAStrangeTypeHintedArg');
+        $arguments = $method->getArguments();
+        $this->assertEquals(new ArgumentTypeNode('I\Simply\Am\Nonexistent'), $arguments[0]->getTypeNode());
+    }

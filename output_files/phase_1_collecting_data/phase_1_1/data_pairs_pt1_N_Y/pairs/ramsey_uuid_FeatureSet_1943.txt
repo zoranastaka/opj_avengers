@@ -1,0 +1,9 @@
+    /**
+     * Sets the node provider to use in this environment
+     */
+
+    public function setNodeProvider(NodeProviderInterface $nodeProvider): void
+    {
+        $this->nodeProvider = $nodeProvider;
+        $this->timeGenerator = $this->buildTimeGenerator($this->timeProvider);
+    }

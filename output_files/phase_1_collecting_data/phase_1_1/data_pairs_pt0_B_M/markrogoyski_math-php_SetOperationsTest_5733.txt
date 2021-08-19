@@ -1,0 +1,18 @@
+    /**
+     * @test
+     * @dataProvider dataProviderForAdd
+     */
+
+    public function testAddTwiceDoesNothing(array $A, $x, array $R)
+    {
+        // Given
+        $setA = new Set($A);
+        $setR = new Set($R);
+
+        // When
+        $setA->add($x);
+        $setA->add($x);
+
+        // Then
+        $this->assertEquals($setR, $setA);
+    }

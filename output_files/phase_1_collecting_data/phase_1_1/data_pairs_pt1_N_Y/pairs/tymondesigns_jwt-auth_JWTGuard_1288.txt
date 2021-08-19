@@ -1,0 +1,14 @@
+    /**
+     * Set the token ttl.
+     *
+     * @param  int  $ttl
+     *
+     * @return $this
+     */
+
+    public function setTTL($ttl)
+    {
+        $this->jwt->factory()->setTTL($ttl);
+
+        return $this;
+    }

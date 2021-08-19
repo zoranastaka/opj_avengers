@@ -1,0 +1,20 @@
+    /**
+     * @test  columnMultiply column greater than n
+     * @throws \Exception
+     */
+
+    public function testColumnMultiplyExceptionColumnGreaterThanN()
+    {
+        // Given
+        $A = MatrixFactory::create([
+            [1, 2, 3],
+            [2, 3, 4],
+            [3, 4, 5],
+        ]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $A->columnMultiply(4, 5);
+    }

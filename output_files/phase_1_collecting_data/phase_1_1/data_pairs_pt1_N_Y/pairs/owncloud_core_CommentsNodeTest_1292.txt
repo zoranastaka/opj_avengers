@@ -1,0 +1,6 @@
+	/**
+	 * @dataProvider readCommentProvider
+	 * @param $expected
+	 */
+
+	public function testGetPropertiesUnreadProperty($creationDT, $readDT, $expected) {

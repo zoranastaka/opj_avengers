@@ -1,0 +1,12 @@
+	/**
+	 * Is AJAX request?
+	 *
+	 * Test to see if a request contains the HTTP_X_REQUESTED_WITH header.
+	 *
+	 * @return 	bool
+	 */
+
+	public function is_ajax_request()
+	{
+		return ( ! empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest');
+	}

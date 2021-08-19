@@ -1,0 +1,18 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getPreconfiguredItem()
+    {
+        $customAttributeDataObject = $this->customAttributeDataObjectFactory->create()
+            ->setName('nameValue')
+            ->setCustomAttribute('custom_attribute_int', 1);
+
+        $item = $this->itemFactory->create()
+            ->setItemId(1)
+            ->setName('testProductAnyType')
+            ->setCustomAttribute('custom_attribute_data_object', $customAttributeDataObject)
+            ->setCustomAttribute('custom_attribute_string', 'someStringValue');
+
+        return $item;
+    }

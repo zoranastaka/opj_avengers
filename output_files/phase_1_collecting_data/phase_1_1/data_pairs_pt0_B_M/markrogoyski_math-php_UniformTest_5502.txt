@@ -1,0 +1,20 @@
+    /**
+     * @test         pmf returns the expected probability
+     * @dataProvider dataProviderForPmf
+     * @param        int   $a
+     * @param        int   $b
+     * @param        float $expectedPmf
+     * @throws       \Exception
+     */
+
+    public function testPmf(int $a, int $b, float $expectedPmf)
+    {
+        // Given
+        $uniform = new Uniform($a, $b);
+
+        // When
+        $pmf = $uniform->pmf();
+
+        // Then
+        $this->assertEqualsWithDelta($expectedPmf, $pmf, 0.001);
+    }

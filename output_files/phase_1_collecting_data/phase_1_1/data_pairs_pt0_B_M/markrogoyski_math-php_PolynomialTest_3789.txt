@@ -1,0 +1,19 @@
+    /**
+     * @test         roots NAN - Closed form solutions don't exist for degrees 5 or higher - no implementation
+     * @dataProvider dataProviderForRootsNAN
+     * @param        array $polynomialA
+     * @throws       \Exception
+     */
+
+    public function testRootsNAN(array $polynomialA)
+    {
+        // Given
+        $polynomialA = new Polynomial($polynomialA);
+
+        // When
+        $roots = $polynomialA->roots();
+
+        // Then
+        $this->assertCount(1, $roots);
+        $this->assertNan($roots[0]);
+    }

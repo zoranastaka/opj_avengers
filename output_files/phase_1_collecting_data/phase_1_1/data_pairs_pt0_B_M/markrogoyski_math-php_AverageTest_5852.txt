@@ -1,0 +1,17 @@
+    /**
+     * @test   generalizedMean with a p of three is the cubic mean
+     * @throws \Exception
+     */
+
+    public function testGeneralizedMeanPEqualsThreeIsCubicMean()
+    {
+        // Given
+        $numbers = [3, 6, 2, 9, 1, 7, 2];
+        $p       = 3;
+
+        // When
+        $mean = Average::generalizedMean($numbers, $p);
+
+        // Then
+        $this->assertEquals(Average::cubicMean($numbers), $mean);
+    }

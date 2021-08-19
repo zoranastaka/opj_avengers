@@ -1,0 +1,10 @@
+    /**
+     * Get horizontal text alignment
+     *
+     * @return string
+     */
+
+    public function getAlign()
+    {
+        return $this->align;
+    }

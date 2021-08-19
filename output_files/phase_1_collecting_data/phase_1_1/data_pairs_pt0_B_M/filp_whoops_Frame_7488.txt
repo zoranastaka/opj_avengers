@@ -1,0 +1,10 @@
+    /**
+     * Mark as an frame belonging to the application.
+     *
+     * @param boolean $application
+     */
+
+    public function setApplication($application)
+    {
+        $this->application = $application;
+    }

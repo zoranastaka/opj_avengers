@@ -1,0 +1,16 @@
+    /**
+     * @test euclidean error when vectors are of different sizes
+     */
+
+    public function testEuclideanErrorDifferentSizedVectors()
+    {
+        // Given
+        $x = [1, 2, 3];
+        $y = [1, 2];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $distance = Distance::euclidean($x, $y);
+    }

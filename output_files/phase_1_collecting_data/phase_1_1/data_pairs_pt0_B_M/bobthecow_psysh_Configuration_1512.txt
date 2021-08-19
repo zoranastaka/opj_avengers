@@ -1,0 +1,10 @@
+    /**
+     * Enable or disable Pcntl usage.
+     *
+     * @param bool $usePcntl
+     */
+
+    public function setUsePcntl($usePcntl)
+    {
+        $this->usePcntl = (bool) $usePcntl;
+    }

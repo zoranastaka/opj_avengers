@@ -1,0 +1,6 @@
+  /**
+   * This is more of an acceptance test case instead of a unit test. It verifies
+   * that the Celerity map is up-to-date.
+   */
+
+  public function testCelerityMaps() {

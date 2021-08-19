@@ -1,0 +1,10 @@
+    /**
+     * @covers ::getRecords
+     * @covers ::getIterator
+     */
+
+    public function testGetRecords(): void
+    {
+        $result = $this->stmt->process($this->csv);
+        self::assertEquals($result->getIterator(), $result->getRecords());
+    }

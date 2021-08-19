@@ -1,0 +1,14 @@
+    /**
+     * @test
+     * @depends builderCanGenerateAToken
+     */
+
+    public function signatureValidationShouldSucceedWhenKeyIsRight(Token $token): void
+    {
+        $constraint = new SignedWith(
+            $this->config->signer(),
+            $this->config->verificationKey()
+        );
+
+        self::assertTrue($this->config->validator()->validate($token, $constraint));
+    }

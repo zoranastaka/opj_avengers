@@ -1,0 +1,10 @@
+    /**
+     * @param Carrier $object
+     *
+     * @return int
+     */
+
+    protected function beforeDelete($object)
+    {
+        return $object->isUsed();
+    }

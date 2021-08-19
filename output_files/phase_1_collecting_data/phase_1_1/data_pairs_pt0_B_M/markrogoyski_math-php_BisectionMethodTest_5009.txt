@@ -1,0 +1,25 @@
+    /**
+     * @test   Solve more polynomials
+     * @throws \Exception
+     * Example from https://en.wikipedia.org/wiki/Bisection_method
+     */
+
+    public function testSolveXCubedSubtractXSubtractTwo()
+    {
+        // Given f(x) = x³ - x - 2
+        $func = function ($x) {
+            return $x ** 3 - $x - 2;
+        };
+        $tol = 0.001;
+
+        // And solving for f(x) = 0 where x is about 1.521 (Find the root 1.521)
+        $a        = 1;
+        $b        = 2;
+        $expected = 1.521;
+
+        // When
+        $x = BisectionMethod::solve($func, $a, $b, $tol);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $x, $tol);
+    }

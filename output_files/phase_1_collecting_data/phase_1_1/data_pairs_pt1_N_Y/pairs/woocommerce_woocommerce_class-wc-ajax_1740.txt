@@ -1,0 +1,10 @@
+	/**
+	 * Bulk action - Toggle Manage Stock Checkbox.
+	 *
+	 * @param array $variations List of variations.
+	 * @param array $data Data to set.
+	 *
+	 * @used-by bulk_edit_variations
+	 */
+
+	private static function variation_bulk_action_toggle_manage_stock( $variations, $data ) {

@@ -1,0 +1,23 @@
+    /**
+     * Get the default alphabet for a given number base
+     *
+     * @param int $base
+     *
+     * @return string offset
+     */
+
+    protected static function getDefaultAlphabet(int $base): string
+    {
+        switch ($base) {
+            case 2:
+            case 8:
+            case 10:
+                return '0';
+
+            case 16:
+                return '0123456789abcdef';
+
+            default:
+                return \chr(0);
+        }
+    }

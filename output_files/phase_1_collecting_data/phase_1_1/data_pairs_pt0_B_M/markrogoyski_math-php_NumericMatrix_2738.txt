@@ -1,0 +1,32 @@
+    /**
+     * Is the matrix upper bidiagonal?
+     *  - It is a square matrix
+     *  - Non-zero entries allowed along the main diagonal
+     *  - Non-zero entries allowed along the diagonal above the main diagonal
+     *  - All the other entries are zero
+     *
+     * https://en.wikipedia.org/wiki/Bidiagonal_matrix
+     *
+     * @return boolean true if upper bidiagonal; false otherwise
+     */
+
+    public function isUpperBidiagonal(): bool
+    {
+        if (!$this->isSquare() || !$this->isUpperTriangular()) {
+            return false;
+        }
+
+        $m = $this->m;
+        $n = $this->n;
+
+        // Elements above upper diagonal are zero
+        for ($i = 0; $i < $m; $i++) {
+            for ($j = $i + 2; $j < $n; $j++) {
+                if ($this->A[$i][$j] != 0) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }

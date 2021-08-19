@@ -1,0 +1,20 @@
+    /**
+     * @test         leverages
+     * @dataProvider dataProviderForLeverages
+     * @param        array $points
+     * @param        array $leverages
+     */
+
+    public function testLeverages(array $points, array $leverages)
+    {
+        // Given
+        $regression = new Linear($points);
+
+        // When
+        $test_leverages = $regression->leverages();
+
+        // Then
+        foreach ($leverages as $key => $value) {
+            $this->assertEqualsWithDelta($value, $test_leverages[$key], .0000001);
+        }
+    }

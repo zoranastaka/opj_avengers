@@ -1,0 +1,15 @@
+    /**
+     * @dataProvider invalidStyles
+     */
+
+    public function testSetFormatterStylesInvalid($styles, $option)
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid');
+        $this->expectExceptionMessage($option);
+
+        $config = $this->getConfig();
+        $config->setFormatterStyles($styles);
+
+        $this->fail();
+    }

@@ -1,0 +1,14 @@
+    /**
+     * @dataProvider verbosityInputStrings
+     */
+
+    public function testConfigurationFromInputVerbosityLevels($inputString, $verbosity)
+    {
+        $input = $this->getBoundStringInput($inputString);
+        $config = Configuration::fromInput($input);
+        $this->assertEquals($verbosity, $config->verbosity());
+
+        $input = $this->getUnboundStringInput($inputString);
+        $config = Configuration::fromInput($input);
+        $this->assertEquals($verbosity, $config->verbosity());
+    }

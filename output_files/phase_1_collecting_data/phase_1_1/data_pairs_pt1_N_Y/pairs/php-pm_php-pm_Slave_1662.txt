@@ -1,0 +1,10 @@
+    /**
+     * Get slave incoming connection
+     *
+     * @return ConnectionInterface|null slave connection
+     */
+
+    public function getConnection()
+    {
+        return $this->connection;
+    }

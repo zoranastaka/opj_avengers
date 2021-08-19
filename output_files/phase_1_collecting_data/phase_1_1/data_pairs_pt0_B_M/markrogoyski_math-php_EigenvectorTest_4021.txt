@@ -1,0 +1,18 @@
+    /**
+     * @test         eigenvectors throws a BadDataException when there is an incorrect eigenvalue provided
+     * @dataProvider dataProviderForEigenvectorNotAnEigenvector
+     * @param        array $A
+     * @param        array $B
+     */
+
+    public function testEigenvectorNotAnEigenvector(array $A, array $B)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Eigenvector::eigenvectors($A, $B);
+    }

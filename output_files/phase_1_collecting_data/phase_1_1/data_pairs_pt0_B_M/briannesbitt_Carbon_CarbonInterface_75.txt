@@ -1,0 +1,18 @@
+    /**
+     * Determines if the instance is greater (after) than or equal to another
+     *
+     * @example
+     * ```
+     * Carbon::parse('2018-07-25 12:45:16')->gte('2018-07-25 12:45:15'); // true
+     * Carbon::parse('2018-07-25 12:45:16')->gte('2018-07-25 12:45:16'); // true
+     * Carbon::parse('2018-07-25 12:45:16')->gte('2018-07-25 12:45:17'); // false
+     * ```
+     *
+     * @param \Carbon\Carbon|\DateTimeInterface|mixed $date
+     *
+     * @see greaterThanOrEqualTo()
+     *
+     * @return bool
+     */
+
+    public function gte($date): bool;

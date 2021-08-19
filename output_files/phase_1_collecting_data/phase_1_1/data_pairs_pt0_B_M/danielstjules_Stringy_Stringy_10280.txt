@@ -1,0 +1,11 @@
+    /**
+     * Returns true if the string contains only lower case chars, false
+     * otherwise.
+     *
+     * @return bool Whether or not $str contains only lower case characters
+     */
+
+    public function isLowerCase()
+    {
+        return $this->matchesPattern('^[[:lower:]]*$');
+    }

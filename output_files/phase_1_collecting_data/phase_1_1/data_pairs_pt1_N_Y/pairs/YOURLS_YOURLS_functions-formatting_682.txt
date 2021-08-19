@@ -1,0 +1,6 @@
+/**
+ * Return a unique(ish) hash for a string to be used as a valid HTML id
+ *
+ */
+
+function yourls_string2htmlid( $string ) {

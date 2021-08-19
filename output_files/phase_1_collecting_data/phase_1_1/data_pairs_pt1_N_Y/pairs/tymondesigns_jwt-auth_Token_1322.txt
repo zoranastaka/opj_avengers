@@ -1,0 +1,10 @@
+    /**
+     * Get the token.
+     *
+     * @return string
+     */
+
+    public function get()
+    {
+        return $this->value;
+    }

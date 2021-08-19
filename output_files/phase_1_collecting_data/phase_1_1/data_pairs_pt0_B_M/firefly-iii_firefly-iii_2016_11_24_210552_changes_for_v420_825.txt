@@ -1,0 +1,15 @@
+    /**
+     * Run the migrations.
+     *
+     * @SuppressWarnings(PHPMD.ShortMethodName)
+     */
+
+    public function up(): void
+    {
+        Schema::table(
+            'journal_meta',
+            static function (Blueprint $table) {
+                $table->softDeletes();
+            }
+        );
+    }

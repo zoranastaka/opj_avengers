@@ -1,0 +1,12 @@
+    /** @test */
+
+    public function it_flushes_the_cache_when_giving_a_permission_to_a_role()
+    {
+        $this->testUserRole->givePermissionTo($this->testUserPermission);
+
+        $this->resetQueryCount();
+
+        $this->registrar->getPermissions();
+
+        $this->assertQueryCount($this->cache_init_count + $this->cache_load_count + $this->cache_run_count);
+    }

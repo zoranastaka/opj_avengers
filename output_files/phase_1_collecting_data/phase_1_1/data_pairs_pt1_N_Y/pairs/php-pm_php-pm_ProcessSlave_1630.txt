@@ -1,0 +1,13 @@
+    /**
+     * Adds a file path to the watcher list queue which will be sent
+     * to the master process after each request.
+     *
+     * @param string $path
+     */
+
+    public function registerFile($path)
+    {
+        if ($this->isDebug()) {
+            $this->watchedFiles[] = $path;
+        }
+    }

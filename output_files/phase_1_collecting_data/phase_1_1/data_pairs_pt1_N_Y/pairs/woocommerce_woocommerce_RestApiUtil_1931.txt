@@ -1,0 +1,15 @@
+	/**
+	 * Calculate the "amount" parameter for the request based on the amounts found in line items.
+	 * This will ONLY be possible if ALL of the following is true:
+	 *
+	 * - "line_items" in the request is a non-empty array.
+	 * - All line items have a "refund_total" field with a numeric value.
+	 * - All values inside "refund_tax" in all line items are a numeric value.
+	 *
+	 * The request is assumed to be in internal format already.
+	 *
+	 * @param \WP_REST_Request $request The request to maybe calculate the total amount for.
+	 * @return number|null The calculated amount, or null if it can't be calculated.
+	 */
+
+	private static function calculate_refund_amount_from_line_items( $request ) {

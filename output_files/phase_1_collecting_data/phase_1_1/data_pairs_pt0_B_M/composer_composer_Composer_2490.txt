@@ -1,0 +1,8 @@
+    /**
+     * @return Loop
+     */
+
+    public function getLoop()
+    {
+        return $this->loop;
+    }

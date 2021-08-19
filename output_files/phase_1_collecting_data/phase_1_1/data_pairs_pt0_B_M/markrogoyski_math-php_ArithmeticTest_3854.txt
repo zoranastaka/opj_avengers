@@ -1,0 +1,33 @@
+    /**
+     * @test         Nested arithmetic
+     * @dataProvider dataProviderForNestedArithmetic
+     * @param        int $x
+     * @param        int $expected
+     */
+
+    public function testNestedArithmetic(int $x, int $expected)
+    {
+        // f(x) = x - 9
+        $f = function ($x) {
+            return $x - 9;
+        };
+
+        // g(x) = x + 2
+        $g = function ($x) {
+            return $x + 2;
+        };
+
+        // h(x) = x
+        $h = function ($x) {
+            return $x;
+        };
+
+        // Π(x) = $f(x) * ( g(x) + h(x) ) = (x - 9) * (2x + 2) = 2x² - 16x - 18
+        $multiplier = Arithmetic::multiply($f, Arithmetic::add($g, $h));
+
+        // When
+        $product = $multiplier($x);
+
+        // Then
+        $this->assertEquals($expected, $product);
+    }

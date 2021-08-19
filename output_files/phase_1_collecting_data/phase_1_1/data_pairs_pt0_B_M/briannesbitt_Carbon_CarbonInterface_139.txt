@@ -1,0 +1,13 @@
+    /**
+     * @deprecated To avoid conflict between different third-party libraries, static setters should not be used.
+     *             You should rather use the ->settings() method.
+     *             Or you can use method variants: addMonthsWithOverflow/addMonthsNoOverflow, same variants
+     *             are available for quarters, years, decade, centuries, millennia (singular and plural forms).
+     * @see settings
+     *
+     * Reset the month overflow behavior.
+     *
+     * @return void
+     */
+
+    public static function resetMonthsOverflow();

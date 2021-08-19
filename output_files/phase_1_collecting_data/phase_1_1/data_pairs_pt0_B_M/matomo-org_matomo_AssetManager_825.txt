@@ -1,0 +1,12 @@
+    /**
+     * Return individual JS file inclusion directive(s) using the markup <script>
+     *
+     * @return string
+     */
+
+    protected function getIndividualCoreAndNonCoreJsIncludes()
+    {
+        return
+            $this->getIndividualJsIncludesFromAssetFetcher($this->getCoreJScriptFetcher()) .
+            $this->getIndividualJsIncludesFromAssetFetcher($this->getNonCoreJScriptFetcher());
+    }

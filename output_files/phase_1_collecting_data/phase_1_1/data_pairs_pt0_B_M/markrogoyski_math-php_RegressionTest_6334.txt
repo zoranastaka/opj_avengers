@@ -1,0 +1,15 @@
+    /**
+     * @test         yHat
+     * @dataProvider dataProviderForYHat()
+     * @param        array $points
+     * @param        array $yhat
+     */
+
+    public function testYHat(array $points, array $yhat)
+    {
+        // Given
+        $regression = new Linear($points);
+
+        // Then
+        $this->assertEqualsWithDelta($yhat, $regression->yHat(), 0.01);
+    }

@@ -1,0 +1,8 @@
+    /**
+     * Mark the event as allowing a custom response code.
+     */
+
+    public function allowCustomResponseCode(): void
+    {
+        $this->allowCustomResponseCode = true;
+    }

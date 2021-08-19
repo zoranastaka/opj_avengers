@@ -1,0 +1,10 @@
+    /**
+     * Returns the number of attributes.
+     *
+     * @return int The number of attributes
+     */
+
+    public function count()
+    {
+        return \count($this->attributes);
+    }

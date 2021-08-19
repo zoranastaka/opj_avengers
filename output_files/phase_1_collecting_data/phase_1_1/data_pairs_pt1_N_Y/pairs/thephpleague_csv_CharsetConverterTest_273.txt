@@ -1,0 +1,10 @@
+    /**
+     * @covers ::onCreate
+     */
+
+    public function testOnCreateFailsWithWrongFiltername(): void
+    {
+        $converter = new CharsetConverter();
+        $converter->filtername = 'toto';
+        self::assertFalse($converter->onCreate());
+    }

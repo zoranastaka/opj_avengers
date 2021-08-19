@@ -1,0 +1,27 @@
+    /**
+     * skew
+     *
+     * @param float $angle_x
+     * @param float $angle_y
+     * @param float $x Origin abscissa
+     * @param float $y Origin ordinate
+     */
+
+    function skew($angle_x, $angle_y, $x, $y)
+    {
+        $y = $this->currentPageSize["height"] - $y;
+
+        $tan_x = tan(deg2rad($angle_x));
+        $tan_y = tan(deg2rad($angle_y));
+
+        $tm = [
+            1,
+            -$tan_y,
+            -$tan_x,
+            1,
+            $tan_x * $y,
+            $tan_y * $x,
+        ];
+
+        $this->transform($tm);
+    }

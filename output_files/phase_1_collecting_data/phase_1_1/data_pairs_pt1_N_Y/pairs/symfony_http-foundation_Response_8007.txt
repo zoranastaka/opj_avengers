@@ -1,0 +1,10 @@
+    /**
+     * Retrieves the status code for the current web response.
+     *
+     * @final
+     */
+
+    public function getStatusCode(): int
+    {
+        return $this->statusCode;
+    }

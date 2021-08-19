@@ -1,0 +1,13 @@
+    /**
+     * Clear the set. Removes all members.
+     * Results in an empty set.
+     *
+     * @return Set (this set)
+     */
+
+    public function clear(): Set
+    {
+        $this->A = [];
+
+        return $this;
+    }

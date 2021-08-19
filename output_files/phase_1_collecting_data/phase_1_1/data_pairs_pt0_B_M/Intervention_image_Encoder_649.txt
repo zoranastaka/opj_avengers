@@ -1,0 +1,24 @@
+    /**
+     * Processes and returns encoded image as JPEG string
+     *
+     * @return string
+     */
+
+    protected function processJpeg()
+    {
+        $format = 'jpeg';
+        $compression = \Imagick::COMPRESSION_JPEG;
+
+        $imagick = $this->image->getCore();
+        $imagick->setImageBackgroundColor('white');
+        $imagick->setBackgroundColor('white');
+        $imagick = $imagick->mergeImageLayers(\Imagick::LAYERMETHOD_MERGE);
+        $imagick->setFormat($format);
+        $imagick->setImageFormat($format);
+        $imagick->setCompression($compression);
+        $imagick->setImageCompression($compression);
+        $imagick->setCompressionQuality($this->quality);
+        $imagick->setImageCompressionQuality($this->quality);
+
+        return $imagick->getImagesBlob();
+    }

@@ -1,0 +1,20 @@
+    /**
+     * Subtraction
+     *
+     * @param Rational|int $r
+     *
+     * @return Rational
+     *
+     * @throws Exception\IncorrectTypeException if the argument is not numeric or Rational.
+     */
+
+    public function subtract($r): Rational
+    {
+        if (\is_int($r)) {
+            return $this->add(-1 * $r);
+        } elseif ($r instanceof Rational) {
+            return $this->add($r->multiply(-1));
+        } else {
+            throw new Exception\IncorrectTypeException('Argument must be an integer or RationalNumber');
+        }
+    }

@@ -1,0 +1,20 @@
+    /**
+     * Parses a received message. Redirects to the appropriate `command*` method.
+     *
+     * @param ConnectionInterface $conn
+     * @param string $data
+     *
+     * @throws \Exception when invalid 'cmd' in $data.
+     */
+
+    public function processMessage(ConnectionInterface $conn, $data)
+    {
+        $array = \json_decode($data, true);
+
+        $method = 'command' . \ucfirst($array['cmd']);
+        if (\is_callable([$this, $method])) {
+            $this->$method($array, $conn);
+        } else {
+            throw new \Exception(\sprintf('Command %s not found. Got %s', $method, $data));
+        }
+    }

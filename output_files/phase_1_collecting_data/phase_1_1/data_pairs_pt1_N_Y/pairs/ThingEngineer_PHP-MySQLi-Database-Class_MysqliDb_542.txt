@@ -1,0 +1,14 @@
+    /**
+     * A method to get mysqli object or create it in case needed
+     *
+     * @return mysqli
+     * @throws Exception
+     */
+
+    public function mysqli()
+    {
+        if (!isset($this->_mysqli[$this->defConnectionName])) {
+            $this->connect($this->defConnectionName);
+        }
+        return $this->_mysqli[$this->defConnectionName];
+    }

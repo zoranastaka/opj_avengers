@@ -1,0 +1,21 @@
+    /** @test */
+
+    public function activities_create_error_bad_account2()
+    {
+        $user = $this->signin();
+        $contact = factory(Contact::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $activityType = factory(ActivityType::class)->create();
+
+        $response = $this->json('POST', '/api/activities', [
+            'contacts' => [$contact->id],
+            'description' => 'the description',
+            'summary' => 'the activity',
+            'happened_at' => '2018-05-01',
+            'activity_type_id' => $activityType->id,
+        ]);
+
+        $this->expectNotFound($response);
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @test Axiom: A ∪ A = A
+     * A union A equals A
+     *
+     * @dataProvider dataProviderForSingleSet
+     * @param       Set $A
+     */
+
+    public function testAUnionAEqualsA(Set $A)
+    {
+        // Given
+        $A∪A = $A->union($A);
+
+        // Then
+        $this->assertEquals($A, $A∪A);
+        $this->assertEquals($A->asArray(), $A∪A->asArray());
+    }

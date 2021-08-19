@@ -1,0 +1,23 @@
+    /**
+     * Groups all targets into two groups: Targets equal to
+     * the given label and the others
+     *
+     * $targets is not passed by reference nor contains objects so this method
+     * changes will not affect the caller $targets array.
+     *
+     * @param mixed $label
+     *
+     * @return array Binarized targets and target's labels
+     */
+
+    private function binarizeTargets(array $targets, $label): array
+    {
+        $notLabel = "not_${label}";
+        foreach ($targets as $key => $target) {
+            $targets[$key] = $target == $label ? $label : $notLabel;
+        }
+
+        $labels = [$label, $notLabel];
+
+        return [$targets, $labels];
+    }

@@ -1,0 +1,21 @@
+    /**
+     * Set LimitIterator Offset.
+     *
+     * @throws Exception if the offset is lesser than 0
+     */
+
+    public function offset(int $offset): self
+    {
+        if (0 > $offset) {
+            throw InvalidArgument::dueToInvalidRecordOffset($offset, __METHOD__);
+        }
+
+        if ($offset === $this->offset) {
+            return $this;
+        }
+
+        $clone = clone $this;
+        $clone->offset = $offset;
+
+        return $clone;
+    }

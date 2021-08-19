@@ -1,0 +1,18 @@
+    /**
+     * Make a prediction based on the value of a terminal node in the tree.
+     *
+     * @param \Rubix\ML\Datasets\Dataset $dataset
+     * @throws \Rubix\ML\Exceptions\RuntimeException
+     * @return list<int|float>
+     */
+
+    public function predict(Dataset $dataset) : array
+    {
+        if ($this->bare() or !$this->featureCount) {
+            throw new RuntimeException('Estimator has not been trained.');
+        }
+
+        DatasetHasDimensionality::with($dataset, $this->featureCount)->check();
+
+        return array_map([$this, 'predictSample'], $dataset->samples());
+    }

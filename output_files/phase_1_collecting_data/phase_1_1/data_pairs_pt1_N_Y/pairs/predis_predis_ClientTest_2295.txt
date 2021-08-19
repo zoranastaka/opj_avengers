@@ -1,0 +1,23 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testGetClientByMethodSupportsSelectingConnectionByRole(): void
+    {
+        $connection = $this->getMockBuilder('Predis\Connection\ConnectionInterface')->getMock();
+
+        $aggregate = $this->getMockBuilder('Predis\Connection\AggregateConnectionInterface')
+            ->addMethods(array('getConnectionByRole'))
+            ->getMockForAbstractClass();
+        $aggregate
+            ->expects($this->once())
+            ->method('getConnectionByRole')
+            ->with('master')
+            ->willReturn($connection);
+
+        $client = new Client($aggregate);
+        $nodeClient = $client->getClientBy('role', 'master');
+
+        $this->assertSame($connection, $nodeClient->getConnection());
+        $this->assertSame($client->getOptions(), $nodeClient->getOptions());
+    }

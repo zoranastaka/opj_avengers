@@ -1,0 +1,10 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testSupportsSchemeRedis(): void
+    {
+        $connection = $this->createConnectionWithParams(array('scheme' => 'redis'));
+
+        $this->assertInstanceOf('Predis\Connection\NodeConnectionInterface', $connection);
+    }

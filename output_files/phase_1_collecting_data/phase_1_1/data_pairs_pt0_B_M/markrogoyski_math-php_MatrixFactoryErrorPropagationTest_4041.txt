@@ -1,0 +1,16 @@
+    /**
+     * @test rowAddScalar propagates error tolerance to resultant matrix
+     */
+
+    public function testRowAddScalar()
+    {
+        // Given
+        $m = 1;
+        $k = 2;
+
+        // When
+        $R = $this->A->rowAddScalar($m, $k);
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

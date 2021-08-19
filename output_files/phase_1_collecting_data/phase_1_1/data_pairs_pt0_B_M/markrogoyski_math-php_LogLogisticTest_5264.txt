@@ -1,0 +1,11 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForVarianceNan(): array
+    {
+        return [
+            [1, 1],
+            [2, 2],
+        ];
+    }

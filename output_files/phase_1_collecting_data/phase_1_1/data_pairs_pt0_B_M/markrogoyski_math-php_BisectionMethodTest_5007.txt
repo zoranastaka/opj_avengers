@@ -1,0 +1,24 @@
+    /**
+     * @test Solve f(x) = x⁴ + 8x³ -13x² -92x + 96
+     *       Polynomial has 4 roots: 3, 1, -8 and -4
+     *       Uses Polynomial object
+     * @dataProvider dataProviderForPolynomial
+     * @param        int $a
+     * @param        int $b
+     * @param        int $expected
+     * @throws       \Exception
+     */
+
+    public function testSolvePolynomialWithFourRootsUsingPolynomial(int $a, int $b, int $expected)
+    {
+        // Given f(x) = x⁴ + 8x³ -13x² -92x + 96
+        // This polynomial has 4 roots: 3, 1 ,-8 and -4
+        $polynomial = new Polynomial([1, 8, -13, -92, 96]);
+        $tol        = 0.00001;
+
+        // When
+        $x = BisectionMethod::solve($polynomial, $a, $b, $tol);
+
+        // The
+        $this->assertEqualsWithDelta($expected, $x, $tol);
+    }

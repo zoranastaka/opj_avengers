@@ -1,0 +1,8 @@
+/**
+ * @deprecated 1.5.0
+ */
+
+function checkImageUploadError($file)
+{
+    return ImageManager::getErrorFromCode($file['error']);
+}

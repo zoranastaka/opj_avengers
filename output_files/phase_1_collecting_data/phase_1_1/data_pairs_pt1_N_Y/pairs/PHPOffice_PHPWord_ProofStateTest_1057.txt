@@ -1,0 +1,11 @@
+    /**
+     * Test throws exception if wrong spelling proof state value given
+     *
+     * @expectedException \InvalidArgumentException
+     */
+
+    public function testWrongSpelling()
+    {
+        $pState = new ProofState();
+        $pState->setSpelling('Wrong');
+    }

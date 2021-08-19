@@ -1,0 +1,15 @@
+    /**
+     * @dataProvider prohibitedUrlProvider
+     *
+     * @param string $url
+     */
+
+    public function testProhibitedUrlsThrowException($url)
+    {
+        $this->setExpectedException(
+            'Composer\Downloader\TransportException',
+            'Your configuration does not allow connections to ' . $url
+        );
+        $config = new Config(false);
+        $config->prohibitUrlByConfig($url);
+    }

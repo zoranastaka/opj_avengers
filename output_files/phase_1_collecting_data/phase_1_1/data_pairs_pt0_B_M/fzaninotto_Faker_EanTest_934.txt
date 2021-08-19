@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider Ean8checksumProvider
+     */
+
+    public function testChecksumEan8($partial, $checksum)
+    {
+        $this->assertEquals($checksum, Ean::checksum($partial));
+    }

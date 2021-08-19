@@ -1,0 +1,12 @@
+    /**
+     * Return instance of CLOSURE matcher.
+     *
+     * @param mixed $closure
+     *
+     * @return \Mockery\Matcher\Closure
+     */
+
+    public static function on($closure)
+    {
+        return new \Mockery\Matcher\Closure($closure);
+    }

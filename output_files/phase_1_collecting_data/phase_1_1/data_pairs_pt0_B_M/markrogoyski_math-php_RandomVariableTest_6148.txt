@@ -1,0 +1,17 @@
+    /**
+     * @test   kurtosis error - unknown type
+     * @throws \Exception
+     */
+
+    public function testKurtosisTypeError()
+    {
+        // Given
+        $X    = [1, 2, 3, 2, 3, 1, 1, 2];
+        $type = 'unknownType';
+
+        // Then
+        $this->expectException(Exception\IncorrectTypeException::class);
+
+        // When
+        RandomVariable::kurtosis($X, $type);
+    }

@@ -1,0 +1,14 @@
+    /** @test */
+
+    public function it_can_sync_multiple_permissions()
+    {
+        $this->testUser->givePermissionTo('edit-news');
+
+        $this->testUser->syncPermissions('edit-articles', 'edit-blog');
+
+        $this->assertTrue($this->testUser->hasDirectPermission('edit-articles'));
+
+        $this->assertTrue($this->testUser->hasDirectPermission('edit-blog'));
+
+        $this->assertFalse($this->testUser->hasDirectPermission('edit-news'));
+    }

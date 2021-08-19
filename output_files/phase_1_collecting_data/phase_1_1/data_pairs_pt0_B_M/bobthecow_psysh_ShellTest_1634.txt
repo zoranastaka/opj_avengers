@@ -1,0 +1,15 @@
+    /**
+     * @dataProvider commandsToHas
+     */
+
+    public function testHasCommand($command, $has)
+    {
+        $shell = new Shell($this->getConfig());
+
+        // :-/
+        $refl = new \ReflectionClass(Shell::class);
+        $method = $refl->getMethod('hasCommand');
+        $method->setAccessible(true);
+
+        $this->assertEquals($method->invokeArgs($shell, [$command]), $has);
+    }

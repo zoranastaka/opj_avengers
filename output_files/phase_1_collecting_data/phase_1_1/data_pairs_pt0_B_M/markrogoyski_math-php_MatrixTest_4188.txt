@@ -1,0 +1,10 @@
+    /**
+     * @test   Implemented interfaces
+     * @throws \Exception
+     */
+
+    public function testInterfaces()
+    {
+        $this->assertInstanceOf(\ArrayAccess::class, $this->matrix);
+        $this->assertInstanceOf(\JsonSerializable::class, $this->matrix);
+    }

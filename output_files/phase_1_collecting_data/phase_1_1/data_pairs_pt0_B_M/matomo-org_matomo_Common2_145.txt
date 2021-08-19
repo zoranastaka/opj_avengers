@@ -1,0 +1,10 @@
+   /**
+    * Returns the string to indent the element
+    *
+    * @return   string
+    */
+
+    protected function getIndent()
+    {
+        return str_repeat(self::getOption('indent'), $this->getIndentLevel());
+    }

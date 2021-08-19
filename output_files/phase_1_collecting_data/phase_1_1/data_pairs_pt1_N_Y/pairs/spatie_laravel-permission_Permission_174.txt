@@ -1,0 +1,12 @@
+    /**
+     * Find a permission by its name.
+     *
+     * @param string $name
+     * @param string|null $guardName
+     *
+     * @throws \Spatie\Permission\Exceptions\PermissionDoesNotExist
+     *
+     * @return Permission
+     */
+
+    public static function findByName(string $name, $guardName): self;

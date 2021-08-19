@@ -1,0 +1,28 @@
+    /**
+     * The Design Matrix contains all the independent variables needed for the least squares regression
+     *
+     * https://en.wikipedia.org/wiki/Design_matrix
+     *
+     * @param mixed $xs
+     *
+     * @return NumericMatrix (Vandermonde)
+     *
+     * @throws Exception\BadDataException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MathException
+     * @throws Exception\MatrixException
+     */
+
+    public function createDesignMatrix($xs): NumericMatrix
+    {
+        if (\is_int($xs) || \is_float($xs)) {
+            $xs = [$xs];
+        }
+
+        $X = MatrixFactory::vandermonde($xs, $this->p + 1);
+        if ($this->fit_constant == 0) {
+            $X = $X->columnExclude(0);
+        }
+
+        return $X;
+    }

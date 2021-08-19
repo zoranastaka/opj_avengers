@@ -1,0 +1,22 @@
+    /**
+     * Cumulative distribution function
+     *
+     * 0      for k < 0
+     * 1 - p  for 0 ≤ k < 1
+     * 1      for k ≥ 1
+     *
+     * @param  int $k number of successes  k ∈ {0, 1}
+     *
+     * @return float
+     */
+
+    public function cdf(int $k): float
+    {
+        if ($k < 0) {
+            return 0;
+        }
+        if ($k < 1) {
+            return 1 - $this->p;
+        }
+        return 1;
+    }

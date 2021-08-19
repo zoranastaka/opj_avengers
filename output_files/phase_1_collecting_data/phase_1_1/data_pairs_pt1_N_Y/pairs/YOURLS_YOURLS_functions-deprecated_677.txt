@@ -1,0 +1,8 @@
+/**
+ * Make sure a integer is safe
+ *
+ * Note: this function is dumb and dumbly named since it does not intval(). DO NOT USE.
+ *
+ */
+
+function yourls_intval( $int ) {

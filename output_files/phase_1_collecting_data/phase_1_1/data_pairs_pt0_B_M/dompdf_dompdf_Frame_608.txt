@@ -1,0 +1,14 @@
+    /**
+     * @return bool
+     */
+
+    public function is_pre()
+    {
+        if (isset($this->_is_cache["pre"])) {
+            return $this->_is_cache["pre"];
+        }
+
+        $white_space = $this->get_style()->white_space;
+
+        return $this->_is_cache["pre"] = in_array($white_space, ["pre", "pre-wrap"]);
+    }

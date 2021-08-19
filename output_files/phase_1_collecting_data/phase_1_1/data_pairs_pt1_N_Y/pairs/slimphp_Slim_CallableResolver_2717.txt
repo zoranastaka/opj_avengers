@@ -1,0 +1,10 @@
+    /**
+     * @param mixed $toResolve
+     *
+     * @return bool
+     */
+
+    private function isMiddleware($toResolve): bool
+    {
+        return $toResolve instanceof MiddlewareInterface;
+    }

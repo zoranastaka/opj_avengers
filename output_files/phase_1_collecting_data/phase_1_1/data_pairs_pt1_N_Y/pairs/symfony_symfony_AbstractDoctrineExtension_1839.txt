@@ -1,0 +1,7 @@
+    /**
+     * Extension used by the mapping files.
+     *
+     * @return string
+     */
+
+    abstract protected function getMappingResourceExtension();

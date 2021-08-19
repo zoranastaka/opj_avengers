@@ -1,0 +1,8 @@
+    /**
+     * Returns the filter object used.
+     */
+
+    public function filter(): Filter
+    {
+        return $this->filter;
+    }

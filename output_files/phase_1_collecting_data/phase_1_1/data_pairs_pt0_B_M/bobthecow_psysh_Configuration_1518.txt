@@ -1,0 +1,13 @@
+    /**
+     * Enable or disable Unicode in PsySH specific output.
+     *
+     * Note that this does not disable Unicode output in general, it just makes
+     * it so PsySH won't output any itself.
+     *
+     * @param bool $useUnicode
+     */
+
+    public function setUseUnicode($useUnicode)
+    {
+        $this->useUnicode = (bool) $useUnicode;
+    }

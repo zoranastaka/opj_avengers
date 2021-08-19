@@ -1,0 +1,10 @@
+    /**
+     * @beforeClass
+     *
+     * @return void
+     */
+
+    public static function setFolder()
+    {
+        self::$folder = \dirname(__DIR__).'/fixtures/env';
+    }

@@ -1,0 +1,13 @@
+    /**
+     * Capitalizes the first word of the string, replaces underscores with
+     * spaces, and strips '_id'.
+     *
+     * @return static Object with a humanized $str
+     */
+
+    public function humanize()
+    {
+        $str = str_replace(['_id', '_'], ['', ' '], $this->str);
+
+        return static::create($str, $this->encoding)->trim()->upperCaseFirst();
+    }

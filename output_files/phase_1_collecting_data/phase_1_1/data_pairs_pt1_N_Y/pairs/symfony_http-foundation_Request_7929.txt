@@ -1,0 +1,10 @@
+    /**
+     * Gets the request's scheme.
+     *
+     * @return string
+     */
+
+    public function getScheme()
+    {
+        return $this->isSecure() ? 'https' : 'http';
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Adds new headers the current HTTP headers set.
+     */
+
+    public function add(array $headers)
+    {
+        foreach ($headers as $key => $values) {
+            $this->set($key, $values);
+        }
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Return the first date in the date period.
+     *
+     * @return CarbonInterface|null
+     */
+
+    public function first()
+    {
+        return ($this->toArray() ?: [])[0] ?? null;
+    }

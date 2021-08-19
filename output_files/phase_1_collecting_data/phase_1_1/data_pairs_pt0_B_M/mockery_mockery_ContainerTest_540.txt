@@ -1,0 +1,9 @@
+    /**
+     * @group partial
+     */
+
+    public function testThrowsExceptionIfClassOrInterfaceForPartialMockDoesNotExist()
+    {
+        $this->expectException(\Mockery\Exception::class);
+        $m = mock('MockeryTest_PartialNormalClassXYZ[foo]');
+    }

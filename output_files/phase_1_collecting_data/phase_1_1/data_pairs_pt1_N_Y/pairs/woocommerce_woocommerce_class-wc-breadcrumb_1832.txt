@@ -1,0 +1,5 @@
+	/**
+	 * Add crumbs for taxonomies
+	 */
+
+	protected function add_crumbs_tax() {

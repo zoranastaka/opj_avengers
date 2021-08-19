@@ -1,0 +1,15 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForNonRefactorableNumbers(): array
+    {
+        return [
+            [-1],
+            [0],
+            [3],
+            [10],
+            [13],
+            [17],
+        ];
+    }

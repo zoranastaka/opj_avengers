@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider alphaToNumberProvider
+     */
+
+    public function testAlphaToNumber($letter, $number)
+    {
+        $this->assertEquals($number, Iban::alphaToNumber($letter), $letter);
+    }

@@ -1,0 +1,18 @@
+    /**
+     * Ensures that the string ends with $substring. If it doesn't, it's
+     * appended.
+     *
+     * @param  string $substring The substring to add if not present
+     * @return static Object with its $str suffixed by the $substring
+     */
+
+    public function ensureRight($substring)
+    {
+        $stringy = static::create($this->str, $this->encoding);
+
+        if (!$stringy->endsWith($substring)) {
+            $stringy->str .= $substring;
+        }
+
+        return $stringy;
+    }

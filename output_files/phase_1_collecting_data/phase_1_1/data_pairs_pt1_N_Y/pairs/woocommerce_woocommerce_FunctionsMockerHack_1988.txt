@@ -1,0 +1,7 @@
+	/**
+	 * FunctionsMockerHack constructor.
+	 *
+	 * @param array $mockable_functions An array containing the names of the functions that will become mockable.
+	 */
+
+	private function __construct( $mockable_functions ) {

@@ -1,0 +1,8 @@
+    /**
+     * @see ObjectModel::getFieldsRequiredDB();
+     */
+
+    public function getFieldsRequiredDB()
+    {
+        return parent::getCachedFieldsRequiredDatabase();
+    }

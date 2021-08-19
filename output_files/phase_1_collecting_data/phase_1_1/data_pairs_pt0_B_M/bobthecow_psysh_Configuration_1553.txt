@@ -1,0 +1,10 @@
+    /**
+     * Get the current color mode.
+     *
+     * @return string
+     */
+
+    public function colorMode()
+    {
+        return $this->colorMode;
+    }

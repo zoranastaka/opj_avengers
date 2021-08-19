@@ -1,0 +1,23 @@
+    /**
+     * @test         negate returns the expected complex number with signs negated
+     * @dataProvider dataProviderForNegate
+     * @param        number $r₁
+     * @param        number $i₁
+     * @param        number $r₂
+     * @param        number $i₂
+     */
+
+    public function testNegate($r₁, $i₁, $r₂, $i₂)
+    {
+        // Given
+        $c        = new Complex($r₁, $i₁);
+        $expected = new Complex($r₂, $i₂);
+
+        // When
+        $negated = $c->negate();
+
+        // Then
+        $this->assertTrue($negated->equals($expected));
+        $this->assertEquals($expected->r, $negated->r);
+        $this->assertEquals($expected->i, $negated->i);
+    }

@@ -1,0 +1,13 @@
+    /**
+     * Returns the value from keyVal(), without reset.
+     *
+     * @return string
+     */
+
+    private function value()
+    {
+        $keyVal = $this->keyVal();
+
+        /** @var string */
+        return \reset($keyVal);
+    }

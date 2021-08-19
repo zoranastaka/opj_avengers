@@ -1,0 +1,24 @@
+    /**
+     * Calculates the regression parameters.
+     *
+     * @throws \MathPHP\Exception\BadDataException
+     * @throws \MathPHP\Exception\IncorrectTypeException
+     * @throws \MathPHP\Exception\MatrixException
+     * @throws \MathPHP\Exception\MathException
+     */
+
+    public function calculate(): void
+    {
+        $v = $this->v;
+        $w = $this->w;
+
+        $x’ = Single::subtract($this->xs, $v);
+        $y’ = Single::subtract($this->ys, $w);
+
+        $parameters = $this->leastSquares($y’, $x’, 1, 0)->getColumn(0);
+
+        $m = $parameters[0];
+        $b = $this->w - $m * $this->v;
+
+        $this->parameters = [$b, $m];
+    }

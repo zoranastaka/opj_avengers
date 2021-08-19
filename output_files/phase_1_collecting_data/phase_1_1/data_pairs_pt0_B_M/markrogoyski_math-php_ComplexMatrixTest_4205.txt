@@ -1,0 +1,18 @@
+    /**
+     * @test Constructor exception when non complex number provided
+     */
+
+    public function testConstructorException()
+    {
+        // Given
+        $A = [
+            [new Complex(2, 1), new Complex(2, 1)],
+            [new Complex(2, 1), new ArbitraryInteger(4)],
+        ];
+
+        // Then
+        $this->expectException(Exception\IncorrectTypeException::class);
+
+        // When
+        $A = new ComplexMatrix($A);
+    }

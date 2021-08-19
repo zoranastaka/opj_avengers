@@ -1,0 +1,17 @@
+    /**
+     * Clones the current request.
+     *
+     * Note that the session is not cloned as duplicated requests
+     * are most of the time sub-requests of the main one.
+     */
+
+    public function __clone()
+    {
+        $this->query = clone $this->query;
+        $this->request = clone $this->request;
+        $this->attributes = clone $this->attributes;
+        $this->cookies = clone $this->cookies;
+        $this->files = clone $this->files;
+        $this->server = clone $this->server;
+        $this->headers = clone $this->headers;
+    }

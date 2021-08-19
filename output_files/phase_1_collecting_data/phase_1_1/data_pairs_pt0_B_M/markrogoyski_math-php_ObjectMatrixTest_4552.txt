@@ -1,0 +1,18 @@
+    /**
+     * @test         trace
+     * @dataProvider dataProviderForTrace
+     * @param        array            $A
+     * @param        ObjectArithmetic $tr
+     */
+
+    public function testTrace(array $A, ObjectArithmetic $tr)
+    {
+        // Given
+        $A = new ObjectMatrix($A);
+
+        // When
+        $trace = $A->trace();
+
+        // Then
+        $this->assertEquals($tr, $trace);
+    }

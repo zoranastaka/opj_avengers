@@ -1,0 +1,8 @@
+    /**
+     * Returns the error list.
+     */
+
+    public function getErrorList()
+    {
+        return $this->_errorFormatList;
+    }

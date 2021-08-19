@@ -1,0 +1,8 @@
+    /**
+     * @psalm-pure
+     */
+
+    public function fromBytes(string $bytes): UuidInterface
+    {
+        return $this->codec->decodeBytes($bytes);
+    }

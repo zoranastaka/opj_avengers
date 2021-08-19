@@ -1,0 +1,21 @@
+    /**
+     * Return the width of the margin box of the frame, in pt.  Meaningless
+     * unless the width has been calculated properly.
+     *
+     * @return float
+     */
+
+    public function get_margin_width()
+    {
+        $style = $this->_style;
+
+        return (float)$style->length_in_pt([
+            $style->width,
+            $style->margin_left,
+            $style->margin_right,
+            $style->border_left_width,
+            $style->border_right_width,
+            $style->padding_left,
+            $style->padding_right
+        ], $this->_containing_block["w"]);
+    }

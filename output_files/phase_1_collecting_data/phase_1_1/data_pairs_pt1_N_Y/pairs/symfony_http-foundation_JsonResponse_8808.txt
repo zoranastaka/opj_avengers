@@ -1,0 +1,12 @@
+    /**
+     * Sets a raw string containing a JSON document to be sent.
+     *
+     * @return $this
+     */
+
+    public function setJson(string $json)
+    {
+        $this->data = $json;
+
+        return $this->update();
+    }

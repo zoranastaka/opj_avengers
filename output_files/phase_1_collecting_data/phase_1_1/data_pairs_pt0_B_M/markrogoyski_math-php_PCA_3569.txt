@@ -1,0 +1,18 @@
+    /**
+     * Get the cumulative R²
+     *
+     * @return float[]
+     */
+
+    public function getCumR2(): array
+    {
+        $result = [];
+        $sum    = 0;
+
+        foreach ($this->getR2() as $R²value) {
+            $sum += $R²value;
+            $result[] = $sum;
+        }
+
+        return $result;
+    }

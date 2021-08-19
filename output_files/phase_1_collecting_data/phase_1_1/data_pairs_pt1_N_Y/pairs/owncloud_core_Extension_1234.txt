@@ -1,0 +1,17 @@
+	/**
+	 * @param string $text
+	 * @param IL10N $l
+	 * @param array $params
+	 * @return bool|string
+	 */
+
+	protected function translateLong($text, IL10N $l, array $params) {
+		switch ($text) {
+			case self::ADD_COMMENT_SUBJECT:
+				if ($this->authorIsCurrentUser($params[0])) {
+					return (string) $l->t('You commented on %2$s', $params);
+				}
+				return (string) $l->t('%1$s commented on %2$s', $params);
+			case self::ADD_COMMENT_MESSAGE:
+				return $this->convertParameterToComment($params[0]);
+		}

@@ -1,0 +1,10 @@
+    /**
+     * Get Keywords
+     *
+     * @return string
+     */
+
+    public function getKeywords()
+    {
+        return $this->keywords;
+    }

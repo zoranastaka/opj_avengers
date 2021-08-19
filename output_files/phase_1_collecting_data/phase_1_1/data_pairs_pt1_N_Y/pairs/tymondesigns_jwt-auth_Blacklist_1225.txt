@@ -1,0 +1,12 @@
+    /**
+     * Remove all tokens from the blacklist.
+     *
+     * @return bool
+     */
+
+    public function clear()
+    {
+        $this->storage->flush();
+
+        return true;
+    }

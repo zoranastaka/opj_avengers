@@ -1,0 +1,12 @@
+    /**
+     * Validate the Claim within a refresh context.
+     *
+     * @param  int  $refreshTTL
+     *
+     * @return bool
+     */
+
+    public function validateRefresh($refreshTTL)
+    {
+        return $this->getValue();
+    }

@@ -1,0 +1,19 @@
+    /**
+     * @test         likelihoodRatio
+     * @dataProvider dataProviderForLikelihoodRatio
+     * @param        int   $a
+     * @param        int   $b
+     * @param        int   $c
+     * @param        int   $d
+     * @param        array $expected
+     */
+
+    public function testLikelihoodRatio(int $a, int $b, int $c, int $d, array $expected)
+    {
+        // When
+        $likelihoodRatio = Experiment::likelihoodRatio($a, $b, $c, $d);
+
+        // Then
+        $this->assertEqualsWithDelta($expected['LL+'], $likelihoodRatio['LL+'], 0.001);
+        $this->assertEqualsWithDelta($expected['LL-'], $likelihoodRatio['LL-'], 0.001);
+    }

@@ -1,0 +1,21 @@
+    /**
+     * Check if the merged file directory exists and is writable.
+     *
+     * @return string The directory location
+     * @throws Exception if directory is not writable.
+     */
+
+    public function getAssetDirectory()
+    {
+        $mergedFileDirectory = StaticContainer::get('path.tmp') . '/assets';
+
+        if (!is_dir($mergedFileDirectory)) {
+            Filesystem::mkdir($mergedFileDirectory);
+        }
+
+        if (!is_writable($mergedFileDirectory)) {
+            throw new Exception("Directory " . $mergedFileDirectory . " has to be writable.");
+        }
+
+        return $mergedFileDirectory;
+    }

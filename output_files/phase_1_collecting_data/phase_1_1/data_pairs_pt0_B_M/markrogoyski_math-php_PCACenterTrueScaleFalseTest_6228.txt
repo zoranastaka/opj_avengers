@@ -1,0 +1,46 @@
+    /**
+     * @test The class returns the correct loadings
+     *
+     * R code for expected values:
+     *   model$loadings
+     *
+     * @throws \Exception
+     */
+
+    public function testLoadings()
+    {
+        // Given
+        $expected = [
+            [-0.038118360,  0.009186679,  0.98365680,  0.040854772, -0.09376515, -0.133111460,  0.0361602003, -2.292248e-02, -0.029482354],
+            [ 0.012035198, -0.003372536, -0.06344057, -0.236548841,  0.22554404, -0.822715264, -0.4045222924,  1.914389e-01, -0.108839579],
+            [ 0.899573033,  0.435385992,  0.03123388, -0.005079093, -0.01053658,  0.007340014, -0.0009963135,  6.285318e-04,  0.006305575],
+            [ 0.434787255, -0.899322036,  0.02541113,  0.035168110,  0.01667875,  0.001658475,  0.0026203774, -4.804737e-05, -0.003098007],
+            [-0.002660085, -0.003900050,  0.03953535, -0.057314901, -0.13086355,  0.237708227, -0.0334089045,  9.408348e-01, -0.187651070],
+            [ 0.006239435,  0.004860835, -0.08487901,  0.133441861, -0.24405170, -0.126208722,  0.2228246459, -1.633642e-01, -0.907247320],
+            [-0.006671307,  0.025010854, -0.07050906,  0.910589254, -0.20719280, -0.202621340, -0.2172666165,  1.036007e-01,  0.152523736],
+            [-0.002604770, -0.011272257,  0.04811434, -0.130320795, -0.27275503,  0.350400573, -0.8450418392, -2.005106e-01, -0.170562485],
+            [ 0.005766046, -0.027779493, -0.10353404, -0.271781001, -0.86367709, -0.262858319,  0.1515876824, -5.449811e-03,  0.276712312],
+        ];
+
+        // And since each column could be multiplied by -1, we will compare the two and adjust.
+        $loadings   = self::$pca->getLoadings();
+        $load_array = $loadings->getMatrix();
+
+        // Get an array that's roughly ones and negative ones.
+        $quotiant = Multi::divide($expected[1], $load_array[1]);
+
+        // Convert to exactly one or negative one. Cannot be zero.
+        $signum = \array_map(
+            function ($x) {
+                return $x <=> 0;
+            },
+            $quotiant
+        );
+        $sign_change = MatrixFactory::diagonal($signum);
+
+        // Multiplying a sign change matrix on the right changes column signs.
+        $sign_adjusted = $loadings->multiply($sign_change);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $sign_adjusted->getMatrix(), .00001);
+    }

@@ -1,0 +1,9 @@
+    /**
+     * Gets the Bundle directory path.
+     *
+     * The path should always be returned as a Unix path (with /).
+     *
+     * @return string The Bundle absolute path
+     */
+
+    public function getPath();

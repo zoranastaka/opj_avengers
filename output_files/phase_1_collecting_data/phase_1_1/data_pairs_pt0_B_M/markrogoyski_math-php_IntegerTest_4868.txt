@@ -1,0 +1,16 @@
+    /**
+     * @test         primeFactorization returns an array of the prime factors of an integer n.
+     * @dataProvider dataProviderForPrimeFactorization
+     * @param        int   $n
+     * @param        array $expected_actors
+     * @throws       \Exception
+     */
+
+    public function testPrimeFactorization(int $n, array $expected_actors)
+    {
+        // When
+        $factors = Integer::primeFactorization($n);
+
+        // Then
+        $this->assertEquals($expected_actors, $factors);
+    }

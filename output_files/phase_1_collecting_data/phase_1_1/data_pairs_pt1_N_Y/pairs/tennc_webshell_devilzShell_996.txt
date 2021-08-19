@@ -1,0 +1,6 @@
+//################# FUNCTION GOES HERE #######################==============================================]
+
+function xclean($text){
+	if (get_magic_quotes_gpc()) {
+		 $text = stripslashes($text);
+	}

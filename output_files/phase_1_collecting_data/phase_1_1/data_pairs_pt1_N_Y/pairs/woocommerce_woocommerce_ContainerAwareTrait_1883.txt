@@ -1,0 +1,15 @@
+    /**
+     * Set a container.
+     *
+     * @param Container $container
+     *
+     * @return self
+     */
+
+    public function setLeagueContainer(Container $container) : ContainerAwareInterface
+    {
+        $this->container = $container;
+        $this->leagueContainer = $container;
+
+        return $this;
+    }

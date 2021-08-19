@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getFunctionTranslators(): array
+    {
+        return [];
+    }

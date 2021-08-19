@@ -1,0 +1,46 @@
+    /**
+     * Data provider.
+     *
+     * @see testIgnoreSelected()
+     *
+     * @return array
+     */
+
+    public function dataIgnoreSelected()
+    {
+        return [
+            'no suppression'                              => [
+                'before'           => '',
+                'expectedErrors'   => 2,
+                'expectedWarnings' => 2,
+            ],
+
+            // With suppression.
+            'ignore: single sniff'                        => [
+                'before'           => '// phpcs:ignore Generic.Commenting.Todo',
+                'expectedErrors'   => 2,
+                'expectedWarnings' => 1,
+            ],
+            'ignore: multiple sniffs'                     => [
+                'before'           => '// phpcs:ignore Generic.Commenting.Todo,Generic.PHP.LowerCaseConstant',
+                'expectedErrors'   => 1,
+                'expectedWarnings' => 1,
+            ],
+            'disable: single sniff; ignore: single sniff' => [
+                'before'           => '// phpcs:disable Generic.Commenting.Todo'.PHP_EOL.'// phpcs:ignore Generic.PHP.LowerCaseConstant',
+                'expectedErrors'   => 1,
+                'expectedWarnings' => 0,
+            ],
+            'ignore: category of sniffs'                  => [
+                'before'           => '# phpcs:ignore Generic.Commenting',
+                'expectedErrors'   => 2,
+                'expectedWarnings' => 1,
+            ],
+            'ignore: whole standard'                      => [
+                'before'           => '// phpcs:ignore Generic',
+                'expectedErrors'   => 1,
+                'expectedWarnings' => 1,
+            ],
+        ];
+
+    }//end dataIgnoreSelected()

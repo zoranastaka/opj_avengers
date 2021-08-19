@@ -1,0 +1,10 @@
+    /**
+     * Get LockWindows
+     *
+     * @return boolean
+     */
+
+    public function getLockWindows()
+    {
+        return $this->lockWindows;
+    }

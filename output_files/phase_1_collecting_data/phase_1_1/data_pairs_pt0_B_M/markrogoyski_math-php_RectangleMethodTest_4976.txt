@@ -1,0 +1,35 @@
+    /**
+     * @test   approximate using callback
+     * @throws \Exception
+     *
+     * f(x)                            = -x² + 2x + 1
+     * Antiderivative F(x)             = -(1/3)x³ + x² + x
+     * Indefinite integral over [0, 3] = F(3) - F(0) = 3
+     *
+     * h₁, h₂, ... denotes the size on interval 1, 2, ...
+     * ζ₁, ζ₂, ... denotes the max of the second derivative of f(x) on
+     *             interval 1, 2, ...
+     * f'(x)  = -2x + 2
+     * f''(x) = -2
+     * ζ      = |f''(x)| = 2
+     * Error  = Sum(ζ₁h₁³ + ζ₂h₂³ + ...) = 2 * Sum(h₁³ + h₂³ + ...)
+     */
+
+    public function testApproximateUsingCallback()
+    {
+        // Given -x² + 2x + 1
+        $func = function ($x) {
+            return -$x ** 2 + 2 * $x + 1;
+        };
+        $start    = 0;
+        $end      = 3;
+        $n        = 4;
+        $tol      = 6;
+        $expected = 3;
+
+        // When
+        $x = RectangleMethod::approximate($func, $start, $end, $n);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $x, $tol);
+    }

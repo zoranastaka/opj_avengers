@@ -1,0 +1,12 @@
+  /**
+   * Set the API format version.
+   *
+   * `true` will use V2, which may return more useful error messages.
+   *
+   * @param bool $value
+   */
+
+  public function setApiFormatV2($value)
+  {
+    $this->config['api_format_v2'] = (bool) $value;
+  }

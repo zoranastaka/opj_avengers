@@ -1,0 +1,28 @@
+    /**
+     * Scalar matrix division
+     *
+     * @param  float $λ
+     *
+     * @return NumericMatrix
+     *
+     * @throws Exception\BadParameterException if λ is not a number
+     * @throws Exception\BadParameterException if λ is 0
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function scalarDivide(float $λ): NumericMatrix
+    {
+        if ($λ == 0) {
+            throw new Exception\BadParameterException('Parameter λ cannot equal 0');
+        }
+
+        $R = [];
+
+        for ($i = 0; $i < $this->m; $i++) {
+            for ($j = 0; $j < $this->n; $j++) {
+                $R[$i][$j] = $this->A[$i][$j] / $λ;
+            }
+        }
+
+        return MatrixFactory::createNumeric($R, $this->ε);
+    }

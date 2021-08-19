@@ -1,0 +1,13 @@
+    /**
+     * Returns values that are considered as "undefined"
+     *
+     * @return mixed[][]
+     */
+
+    public function providerForUndefined(): array
+    {
+        return [
+            [null],
+            [''],
+        ];
+    }

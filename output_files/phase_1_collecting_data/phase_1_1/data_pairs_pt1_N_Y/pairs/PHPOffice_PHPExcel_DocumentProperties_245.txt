@@ -1,0 +1,10 @@
+    /**
+     * Get Manager
+     *
+     * @return string
+     */
+
+    public function getManager()
+    {
+        return $this->manager;
+    }

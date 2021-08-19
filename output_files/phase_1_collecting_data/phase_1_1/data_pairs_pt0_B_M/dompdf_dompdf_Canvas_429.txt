@@ -1,0 +1,5 @@
+    /**
+     * @return Dompdf
+     */
+
+    function get_dompdf();

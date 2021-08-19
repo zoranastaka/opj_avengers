@@ -1,0 +1,12 @@
+    /**
+     * @test 32 vs observations
+     */
+
+    public function testNumberOfVss()
+    {
+        // When
+        $observations = $this->mtCars->getVs();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

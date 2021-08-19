@@ -1,0 +1,18 @@
+    /*
+     * Comments
+     */
+
+    public function testComment()
+    {
+        $this->compare(
+            <<<EOL
+<?php
+/* Ahoj */
+EOL
+            ,
+            <<<EOL
+<token_default><?php</token_default>
+<token_comment>/* Ahoj */</token_comment>
+EOL
+        );
+    }

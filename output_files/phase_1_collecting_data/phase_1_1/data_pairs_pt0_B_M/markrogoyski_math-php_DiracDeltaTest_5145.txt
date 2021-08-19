@@ -1,0 +1,18 @@
+    /**
+     * @test         pdf
+     * @dataProvider dataProviderForPdf
+     * @param        float $x
+     * @param        float $expectedPdf
+     */
+
+    public function testPdf(float $x, float $expectedPdf)
+    {
+        // Given
+        $dirac = new DiracDelta();
+
+        // When
+        $pdf = $dirac->pdf($x);
+
+        // Then
+        $this->assertEquals($expectedPdf, $pdf);
+    }

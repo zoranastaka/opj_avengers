@@ -1,0 +1,8 @@
+    /** @test */
+
+    public function it_can_only_assign_roles_from_the_correct_guard()
+    {
+        $this->expectException(RoleDoesNotExist::class);
+
+        $this->testUser->assignRole('testAdminRole');
+    }

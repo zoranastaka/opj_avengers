@@ -1,0 +1,8 @@
+    /**
+     * Creates the union of A and B.
+     */
+
+    public static function union(self $a, self $b): self
+    {
+        return new self(array_merge($a->toArray(), $b->toArray()));
+    }

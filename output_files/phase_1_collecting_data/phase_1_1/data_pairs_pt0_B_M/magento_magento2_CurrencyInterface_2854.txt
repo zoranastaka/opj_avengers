@@ -1,0 +1,7 @@
+    /**
+     * Returns the set cache
+     *
+     * @return \Zend_Cache_Core The set cache
+     */
+
+    public static function getCache();

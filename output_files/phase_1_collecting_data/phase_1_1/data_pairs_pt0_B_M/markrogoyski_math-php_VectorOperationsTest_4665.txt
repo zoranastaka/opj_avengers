@@ -1,0 +1,17 @@
+    /**
+     * @test         cross product exception - wrong size
+     * @dataProvider dataProviderForCrossProductExceptionWrongSize
+     */
+
+    public function testCrossProductExceptionWrongSize(array $A, array $B)
+    {
+        // Given
+        $A = new Vector($A);
+        $B = new Vector($B);
+
+        // Then
+        $this->expectException(Exception\VectorException::class);
+
+        // When
+        $A->crossProduct($B);
+    }

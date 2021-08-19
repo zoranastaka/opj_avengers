@@ -1,0 +1,15 @@
+    /**
+     * @return array [n, ses]
+     */
+
+    public function dataProviderForSes(): array
+    {
+        return [
+            [5, 0.913],
+            [10, 0.687],
+            [20, 0.512],
+            [100, 0.241],
+            [1000, 0.077],
+            [10000, 0.024],
+        ];
+    }

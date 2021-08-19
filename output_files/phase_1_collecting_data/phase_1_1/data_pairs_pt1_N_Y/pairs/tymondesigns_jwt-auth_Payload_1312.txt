@@ -1,0 +1,10 @@
+    /**
+     * Get the array of claims.
+     *
+     * @return array
+     */
+
+    public function toArray()
+    {
+        return $this->claims->toPlainArray();
+    }

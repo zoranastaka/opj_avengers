@@ -1,0 +1,40 @@
+/**
+ * @return Cpanel
+ * @throws Exception\Exception
+ */
+
+function getCpanel()
+{
+    $config = get('cpanel', []);
+    $allowInStage = $config['allowInStage'];
+    $stage = Context::get()->getInput()->getArgument('stage');
+
+    if (!class_exists('\Gufy\CpanelPhp\Cpanel')) {
+        throw new \RuntimeException("<comment>Please install php package</comment> <info>gufy/cpanel-php</info> <comment>to use CPanel API</comment>");
+    }
+
+    if (!in_array($stage, $allowInStage)) {
+        throw new \RuntimeException(sprintf("Since it creates addon domains and databases, CPanel recipe is available only in the %s environments", implode($allowInStage)));
+    }
+
+
+    if (!is_array($config) ||
+        !isset($config['host']) ||
+        !isset($config['port']) ||
+        !isset($config['username']) ||
+        !isset($config['token']) ||
+        !isset($config['user']) ) {
+        throw new \RuntimeException("<comment>Please configure CPanel config:</comment> <info>set('cpanel', array('host' => 'xxx.xxx.xxx.xxx:', 'port' => 2087 , 'username' => 'root', 'token' => 'asdfasdf', 'cpaneluser' => 'guy'));</info>");
+    }
+
+    $cpanel = new Cpanel([
+        'host'        =>  'https://' . $config['host'] . ':' . $config['port'],
+        'username'    =>  $config['username'],
+        'auth_type'   =>  $config['auth_type'],
+        'password'    =>  $config['token'],
+    ]);
+
+    $cpanel->setTimeout($config['timeout']);
+
+    return $cpanel;
+}

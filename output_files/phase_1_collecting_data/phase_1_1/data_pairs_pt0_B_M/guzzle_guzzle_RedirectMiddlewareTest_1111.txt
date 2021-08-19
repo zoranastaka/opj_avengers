@@ -1,0 +1,37 @@
+    /**
+     * @return array
+     */
+
+    public function modifyRequestFollowRequyestMethodAndBodyProvider()
+    {
+        return [
+            'DELETE' => [
+                'request' => new Request('DELETE', 'http://example.com/'),
+                'expectedFollowRequestMethod' => 'GET',
+            ],
+            'GET' => [
+                'request' => new Request('GET', 'http://example.com/'),
+                'expectedFollowRequestMethod' => 'GET',
+            ],
+            'HEAD' => [
+                'request' => new Request('HEAD', 'http://example.com/'),
+                'expectedFollowRequestMethod' => 'HEAD',
+            ],
+            'OPTIONS' => [
+                'request' => new Request('OPTIONS', 'http://example.com/'),
+                'expectedFollowRequestMethod' => 'OPTIONS',
+            ],
+            'PATCH' => [
+                'request' => new Request('PATCH', 'http://example.com/'),
+                'expectedFollowRequestMethod' => 'GET',
+            ],
+            'POST' => [
+                'request' => new Request('POST', 'http://example.com/'),
+                'expectedFollowRequestMethod' => 'GET',
+            ],
+            'PUT' => [
+                'request' => new Request('PUT', 'http://example.com/'),
+                'expectedFollowRequestMethod' => 'GET',
+            ],
+        ];
+    }

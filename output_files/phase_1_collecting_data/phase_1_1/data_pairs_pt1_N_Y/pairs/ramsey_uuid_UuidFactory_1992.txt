@@ -1,0 +1,10 @@
+    /**
+     * @psalm-pure
+     */
+
+    public function fromString(string $uuid): UuidInterface
+    {
+        $uuid = strtolower($uuid);
+
+        return $this->codec->decode($uuid);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Alias for getBrowsers() method.
+     *
+     * @return array List of user agents.
+     */
+
+    public static function getUserAgents()
+    {
+        return self::getBrowsers();
+    }

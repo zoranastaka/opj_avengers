@@ -1,0 +1,14 @@
+    /**
+     * @test Axiom: Scalar multiple of a skew-symmetric matrix is skew-symmetric
+     * @dataProvider dataProviderForSkewSymmetricMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testScalarMultipleOfSkewSymmetricMatrixIsSkewSymmetric(array $A)
+    {
+        $A = MatrixFactory::create($A);
+
+        $B = $A->scalarMultiply(6);
+        $this->assertTrue($B->isSkewSymmetric());
+    }

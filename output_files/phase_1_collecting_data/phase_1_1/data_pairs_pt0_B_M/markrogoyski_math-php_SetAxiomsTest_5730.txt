@@ -1,0 +1,18 @@
+    /**
+     * @test Axiom: |A × B| - |A| * |B|
+     * The cardinality (count) of the cartesian product is the product of the cardinality of A and B
+     *
+     * @dataProvider dataProviderForTwoSets
+     * @param        Set $A
+     * @param        Set $B
+     */
+
+    public function testCardinalityOfCartesianProduct(Set $A, Set $B)
+    {
+        // Given
+        $A×B = $A->cartesianProduct($B);
+
+        // Then
+        $this->assertEquals(count($A) * count($B), count($A×B));
+        $this->assertEquals(count($A->asArray()) * count($B->asArray()), count($A×B->asArray()));
+    }

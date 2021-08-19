@@ -1,0 +1,17 @@
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+
+    public function down()
+    {
+        if (Schema::hasColumn('gateways', 'payment_library_id')) {
+            Schema::table('gateways', function ($table) {
+                $table->dropForeign('gateways_payment_library_id_foreign');
+                $table->dropColumn('payment_library_id');
+            });
+        }
+
+        Schema::dropIfExists('payment_libraries');
+    }

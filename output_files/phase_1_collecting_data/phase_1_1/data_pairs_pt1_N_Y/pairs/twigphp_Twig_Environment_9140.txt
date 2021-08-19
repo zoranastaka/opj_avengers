@@ -1,0 +1,9 @@
+    /**
+     * Enables the strict_variables option.
+     */
+
+    public function enableStrictVariables()
+    {
+        $this->strictVariables = true;
+        $this->updateOptionsHash();
+    }

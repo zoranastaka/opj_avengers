@@ -1,0 +1,22 @@
+    /**
+     * @test Axiom: tr(A) = tr(Aᵀ)
+     * Trace is the same as the trace of the transpose
+     *
+     * @dataProvider dataProviderForSquareMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testTraceIsSameAsTraceOfTranspose(array $A)
+    {
+        // Given
+        $A  = MatrixFactory::create($A);
+
+        // When
+        $Aᵀ = $A->transpose();
+        $tr⟮A⟯  = $A->trace();
+        $tr⟮Aᵀ⟯ = $Aᵀ->trace();
+
+        // Then
+        $this->assertEquals($tr⟮A⟯, $tr⟮Aᵀ⟯);
+    }

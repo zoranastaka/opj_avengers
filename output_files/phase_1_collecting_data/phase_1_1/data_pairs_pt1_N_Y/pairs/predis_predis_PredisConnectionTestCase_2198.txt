@@ -1,0 +1,10 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testSupportsSchemeUnix(): void
+    {
+        $connection = $this->createConnectionWithParams(array('scheme' => 'unix'));
+
+        $this->assertInstanceOf('Predis\Connection\NodeConnectionInterface', $connection);
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Test calling undefined method
+     *
+     * @expectedException \BadMethodCallException
+     * @expectedExceptionMessage is not defined
+     */
+
+    public function testCallUndefinedMethod()
+    {
+        $phpWord = new PhpWord();
+        $phpWord->undefinedMethod();
+    }

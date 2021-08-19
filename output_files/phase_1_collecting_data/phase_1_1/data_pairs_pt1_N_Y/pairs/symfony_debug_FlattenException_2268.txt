@@ -1,0 +1,10 @@
+    /**
+     * @return $this
+     */
+
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }

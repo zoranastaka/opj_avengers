@@ -1,0 +1,7 @@
+	/**
+	 * Returns an array with all the child nodes
+	 *
+	 * @return \Sabre\DAV\INode[]
+	 */
+
+	public function getChildren() {

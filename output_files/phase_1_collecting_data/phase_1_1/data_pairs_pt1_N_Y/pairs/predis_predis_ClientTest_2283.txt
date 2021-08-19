@@ -1,0 +1,21 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testCallingRedisCommandThrowsExceptionOnServerError(): void
+    {
+        $this->expectException('Predis\Response\ServerException');
+        $this->expectExceptionMessage('Operation against a key holding the wrong kind of value');
+
+        $expectedResponse = new Response\Error('ERR Operation against a key holding the wrong kind of value');
+
+        $connection = $this->getMockBuilder('Predis\Connection\ConnectionInterface')->getMock();
+        $connection
+            ->expects($this->once())
+            ->method('executeCommand')
+            ->with($this->isRedisCommand('PING'))
+            ->willReturn($expectedResponse);
+
+        $client = new Client($connection);
+        $client->ping();
+    }

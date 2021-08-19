@@ -1,0 +1,7 @@
+    /**
+     * Returns the string standard representation of the UUID
+     *
+     * @psalm-return non-empty-string
+     */
+
+    public function toString(): string;

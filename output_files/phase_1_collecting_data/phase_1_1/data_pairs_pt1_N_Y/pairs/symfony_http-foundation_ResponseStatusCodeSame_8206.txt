@@ -1,0 +1,10 @@
+    /**
+     * @param Response $response
+     *
+     * {@inheritdoc}
+     */
+
+    protected function additionalFailureDescription($response): string
+    {
+        return (string) $response;
+    }

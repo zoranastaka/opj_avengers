@@ -1,0 +1,15 @@
+    /**
+     * parseSh
+     *
+     * @param array $lines
+     * @param int $num
+     * @param int $start
+     * @param int $end
+     * @return string
+     */
+
+    private function parseSh(array $lines, $num, $start, $end)
+    {
+        $line = $this->markLine($start, $end) . $this->parseInline(trim($lines[0], '# '));
+        return preg_match("/^\s*$/", $line) ? '' : "<h{$num}>{$line}</h{$num}>";
+    }

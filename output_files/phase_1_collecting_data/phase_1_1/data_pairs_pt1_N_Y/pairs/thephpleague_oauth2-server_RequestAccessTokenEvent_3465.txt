@@ -1,0 +1,10 @@
+    /**
+     * @param string                 $name
+     * @param ServerRequestInterface $request
+     */
+
+    public function __construct($name, ServerRequestInterface $request, AccessTokenEntityInterface $accessToken)
+    {
+        parent::__construct($name, $request);
+        $this->accessToken = $accessToken;
+    }

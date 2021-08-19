@@ -1,0 +1,42 @@
+	// --------------------------------------------------------------------
+
+	public function test_packages()
+	{
+		// Create model in VFS package path
+		$dir = 'third-party';
+		$lib = 'unit_test_package';
+		$class = ucfirst($lib);
+		$this->ci_vfs_create(ucfirst($lib), '<?php class '.$class.' { }', $this->ci_app_root, array($dir, 'libraries'));
+
+		// Get paths
+		$paths = $this->load->get_package_paths(TRUE);
+
+		// Test failed load without path
+		$this->setExpectedException(
+			'RuntimeException',
+			'CI Error: Unable to load the requested class: '.ucfirst($lib)
+		);
+		$this->load->library($lib);
+
+		// Add path and verify
+		$path = APPPATH.$dir.'/';
+		$this->assertInstanceOf('CI_Loader', $this->load->add_package_path($path));
+		$this->assertContains($path, $this->load->get_package_paths(TRUE));
+
+		// Test successful load
+		$this->assertInstanceOf('CI_Loader', $this->load->library($lib));
+		$this->assertTrue(class_exists($class), $class.' does not exist');
+
+		// Add another path
+		$path2 = APPPATH.'another/';
+		$this->assertInstanceOf('CI_Loader', $this->load->add_package_path($path2));
+		$this->assertContains($path2, $this->load->get_package_paths(TRUE));
+
+		// Remove last path
+		$this->assertInstanceOf('CI_Loader', $this->load->remove_package_path());
+		$this->assertNotContains($path2, $this->load->get_package_paths(TRUE));
+
+		// Remove path and verify restored paths
+		$this->assertInstanceOf('CI_Loader', $this->load->remove_package_path($path));
+		$this->assertEquals($paths, $this->load->get_package_paths(TRUE));
+	}

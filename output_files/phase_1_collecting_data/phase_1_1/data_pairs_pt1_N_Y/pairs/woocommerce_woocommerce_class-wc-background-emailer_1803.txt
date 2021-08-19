@@ -1,0 +1,7 @@
+	/**
+	 * Finishes replying to the client, but keeps the process running for further (async) code execution.
+	 *
+	 * @see https://core.trac.wordpress.org/ticket/41358 .
+	 */
+
+	protected function close_http_connection() {

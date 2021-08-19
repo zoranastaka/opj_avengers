@@ -1,0 +1,79 @@
+    /**
+     * Two-sample t-test (Welch's test) from summary data
+     * Test the means of two samples.
+     * https://en.wikipedia.org/wiki/Student%27s_t-test
+     *
+     *        μ₁ - μ₂
+     * t = --------------
+     *        _________
+     *       /σ₁²   σ₂²
+     *      / --- + ---
+     *     √   n₁    n₂
+     *
+     *
+     *         / σ₁²   σ₂² \²
+     *        | --- + ---  |
+     *         \ n₁    n₂  /
+     * ν =  -------------------
+     *      (σ₁²/n₁)²  (σ₂²/n₂)²
+     *      -------- + --------
+     *       n₁ - 1     n₂ - 1
+     *
+     * where
+     *  μ₁ is sample mean 1
+     *  μ₂ is sample mean 2
+     *  σ₁ is standard deviation of sample mean 1
+     *  σ₂ is standard deviation of sample mean 2
+     *  n₁ is sample size of mean 1
+     *  n₂ is sample size of mean 2
+     *  t  is test statistic
+     *  ν  is degrees of freedom
+     *
+     * p1 = CDF above
+     * p2 = CDF outside
+     *
+     * @param float $μ₁ Sample mean of population 1
+     * @param float $μ₂ Sample mean of population 2
+     * @param int   $n₁ Sample size of population 1
+     * @param int   $n₂ Sample size of population 1
+     * @param float $σ₁ Standard deviation of sample mean 1
+     * @param float $σ₂ Standard deviation of sample mean 2
+     *
+     * @return array [
+     *   t     => t score
+     *   df    => degrees of freedom
+     *   p1    => one-tailed p value
+     *   p2    => two-tailed p value
+     *   mean1 => mean of sample set 1
+     *   mean2 => mean of sample set 2
+     *   sd1   => standard deviation of sample set 1
+     *   sd2   => standard deviation of sample set 2
+     * ]
+     */
+
+    public static function tTestTwoSampleFromSummaryData(float $μ₁, float $μ₂, int $n₁, int $n₂, float $σ₁, float $σ₂): array
+    {
+        // Calculate t score (test statistic)
+        $t = ($μ₁ - $μ₂) / \sqrt((($σ₁ ** 2) / $n₁) + (($σ₂ ** 2) / $n₂));
+
+        // Degrees of freedom
+        $ν = ((($σ₁ ** 2) / $n₁) + (($σ₂ ** 2) / $n₂)) ** 2
+            /
+            (((($σ₁ ** 2) / $n₁) ** 2 / ($n₁ - 1)) + ((($σ₂ ** 2) / $n₂) ** 2 / ($n₂ - 1)));
+
+        // One- and two-tailed P values
+        $studentT = new StudentT($ν);
+        $p1 = $studentT->above(\abs($t));
+        $p2 = $studentT->outside(-\abs($t), \abs($t));
+
+        return [
+            't'  => $t,
+            'df' => $ν,
+            'p1' => $p1,
+            'p2' => $p2,
+            'mean1' => $μ₁,
+            'mean2' => $μ₂,
+            'sd1'   => $σ₁,
+            'sd2'   => $σ₂,
+        ];
+    }

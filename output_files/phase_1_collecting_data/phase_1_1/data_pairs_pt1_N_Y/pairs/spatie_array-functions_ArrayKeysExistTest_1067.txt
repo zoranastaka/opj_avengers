@@ -1,0 +1,8 @@
+    /**
+     * @test
+     */
+
+    public function it_returns_true_when_all_array_keys_exist()
+    {
+        $this->assertTrue(array_keys_exist(['a', 'b'], ['a' => 'foo', 'b' => 'bar', 'c' => 'baz']));
+    }

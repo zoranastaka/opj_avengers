@@ -1,0 +1,16 @@
+    /**
+     * @test         modifiedCompetitionRanking
+     * @dataProvider dataProviderForRankingWithoutTies
+     * @dataProvider dataProviderForModifiedCompetitionRanking
+     * @param        array $values
+     * @param        array $expected
+     */
+
+    public function testModifiedCompetitionRanking(array $values, array $expected)
+    {
+        // When
+        $ranking = Distribution::modifiedCompetitionRanking($values);
+
+        // Then
+        $this->assertEquals($expected, $ranking);
+    }

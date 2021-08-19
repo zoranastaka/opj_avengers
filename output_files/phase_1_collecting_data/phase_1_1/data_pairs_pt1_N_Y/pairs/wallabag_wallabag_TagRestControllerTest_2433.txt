@@ -1,0 +1,44 @@
+    /**
+     * @dataProvider dataForDeletingTagByLabel
+     */
+
+    public function testDeleteTagByLabel($useQueryString)
+    {
+        $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
+        $entry = $this->client->getContainer()
+            ->get('doctrine.orm.entity_manager')
+            ->getRepository('WallabagCoreBundle:Entry')
+            ->findOneWithTags($this->user->getId());
+
+        $entry = $entry[0];
+
+        $tag = new Tag();
+        $tag->setLabel('Awesome tag for test');
+        $em->persist($tag);
+
+        $entry->addTag($tag);
+
+        $em->persist($entry);
+        $em->flush();
+
+        if ($useQueryString) {
+            $this->client->request('DELETE', '/api/tag/label.json?tag=' . $tag->getLabel());
+        } else {
+            $this->client->request('DELETE', '/api/tag/label.json', ['tag' => $tag->getLabel()]);
+        }
+
+        $this->assertSame(200, $this->client->getResponse()->getStatusCode());
+
+        $content = json_decode($this->client->getResponse()->getContent(), true);
+
+        $this->assertArrayHasKey('label', $content);
+        $this->assertSame($tag->getLabel(), $content['label']);
+        $this->assertSame($tag->getSlug(), $content['slug']);
+
+        $entries = $this->client->getContainer()
+            ->get('doctrine.orm.entity_manager')
+            ->getRepository('WallabagCoreBundle:Entry')
+            ->findAllByTagId($this->user->getId(), $tag->getId());
+
+        $this->assertCount(0, $entries);
+    }

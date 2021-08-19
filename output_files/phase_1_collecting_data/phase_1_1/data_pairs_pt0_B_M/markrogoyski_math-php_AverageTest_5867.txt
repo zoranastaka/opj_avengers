@@ -1,0 +1,16 @@
+    /**
+     * @test         logarithmicMean
+     * @dataProvider dataProviderForArithmeticLogarithmicMean
+     * @param        float $x
+     * @param        float $y
+     * @param        float $expectedMean
+     */
+
+    public function testLogarithmicMean(float $x, float $y, float $expectedMean)
+    {
+        // When
+        $mean = Average::logarithmicMean($x, $y);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedMean, $mean, 0.01);
+    }

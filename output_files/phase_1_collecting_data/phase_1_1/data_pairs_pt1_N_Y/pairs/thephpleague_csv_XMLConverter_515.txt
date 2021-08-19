@@ -1,0 +1,10 @@
+    /**
+     * Filter XML element name.
+     *
+     * @throws DOMException If the Element name is invalid
+     */
+
+    protected function filterElementName(string $value): string
+    {
+        return (new DOMElement($value))->tagName;
+    }

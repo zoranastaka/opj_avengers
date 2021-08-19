@@ -1,0 +1,8 @@
+    /**
+     * Returns the UUID builder used by this factory
+     */
+
+    public function getUuidBuilder(): UuidBuilderInterface
+    {
+        return $this->uuidBuilder;
+    }

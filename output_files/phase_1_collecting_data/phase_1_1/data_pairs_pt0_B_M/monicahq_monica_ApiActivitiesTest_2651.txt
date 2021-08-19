@@ -1,0 +1,12 @@
+    /** @test */
+
+    public function activities_delete_error()
+    {
+        $this->signin();
+
+        $response = $this->json('DELETE', '/api/activities/0');
+
+        $this->expectDataError($response, [
+            'The selected activity id is invalid.',
+        ]);
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @test VectorException
+     */
+
+    public function testVectorException()
+    {
+        // Given
+        $e = new Exception\VectorException('message');
+
+        // Then
+        $this->assertInstanceOf(Exception\MathException::class, $e);
+    }

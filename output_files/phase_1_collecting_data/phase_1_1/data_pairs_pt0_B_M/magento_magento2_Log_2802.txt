@@ -1,0 +1,10 @@
+    /**
+     * Get last viewed product version
+     *
+     * @return string
+     */
+
+    public function getLastViewVersion() : ?string
+    {
+        return $this->getData('last_viewed_in_version');
+    }

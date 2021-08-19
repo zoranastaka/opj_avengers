@@ -1,0 +1,19 @@
+    /**
+     * Filter function to access internal integer font values
+     *
+     * @return int
+     */
+
+    private function getInternalFont()
+    {
+        $internalfont = is_null($this->file) ? 1 : $this->file;
+        $internalfont = is_numeric($internalfont) ? $internalfont : false;
+
+        if ( ! in_array($internalfont, [1, 2, 3, 4, 5])) {
+            throw new NotSupportedException(
+                sprintf('Internal GD font (%s) not available. Use only 1-5.', $internalfont)
+            );
+        }
+
+        return intval($internalfont);
+    }

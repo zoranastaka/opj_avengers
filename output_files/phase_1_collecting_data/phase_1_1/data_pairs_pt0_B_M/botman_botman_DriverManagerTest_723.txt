@@ -1,0 +1,7 @@
+    /** @test */
+
+    public function it_can_be_created()
+    {
+        $driverManager = new DriverManager([], new Curl());
+        $this->assertInstanceOf(DriverManager::class, $driverManager);
+    }

@@ -1,0 +1,21 @@
+    /**
+     * @test         getParameters
+     * @dataProvider dataProviderForParameters
+     * @param        array $points
+     * @param        array $force_point
+     * @param        float $m
+     * @param        float $b
+     */
+
+    public function testGetParameters(array $points, array $force_point, float $m, float $b)
+    {
+        // Given
+        $regression = new LinearThroughPoint($points, $force_point);
+
+        // When
+        $parameters = $regression->getParameters();
+
+        // Then
+        $this->assertEqualsWithDelta($m, $parameters['m'], 0.0001);
+        $this->assertEqualsWithDelta($b, $parameters['b'], 0.0001);
+    }

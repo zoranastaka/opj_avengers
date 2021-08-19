@@ -1,0 +1,36 @@
+    /**
+     * Return a list of liable class of the className.
+     *
+     * @param string $className
+     *
+     * @return array
+     */
+
+    public static function getLiableClass($className)
+    {
+        $objectList = [];
+
+        if (class_exists($className)) {
+            $object = new $className();
+            $reflect = new ReflectionObject($object);
+
+            // Get all the name object liable to the Address class
+            $publicProperties = $reflect->getProperties(ReflectionProperty::IS_PUBLIC);
+            foreach ($publicProperties as $property) {
+                $propertyName = $property->getName();
+                if (preg_match('#id_\w#', $propertyName) && strlen($propertyName) > 3) {
+                    $nameObject = ucfirst(substr($propertyName, 3));
+                    if (!in_array($nameObject, self::$forbiddenClassList) &&
+                            class_exists($nameObject)) {
+                        $objectList[$nameObject] = new $nameObject();
+                    }
+                }
+            }
+            unset(
+                $object,
+                $reflect
+            );
+        }
+
+        return $objectList;
+    }

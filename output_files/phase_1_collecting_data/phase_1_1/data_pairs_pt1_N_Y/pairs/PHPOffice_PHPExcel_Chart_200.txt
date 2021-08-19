@@ -1,0 +1,10 @@
+    /**
+     * Get X-Axis Label
+     *
+     * @return PHPExcel_Chart_Title
+     */
+
+    public function getXAxisLabel()
+    {
+        return $this->xAxisLabel;
+    }

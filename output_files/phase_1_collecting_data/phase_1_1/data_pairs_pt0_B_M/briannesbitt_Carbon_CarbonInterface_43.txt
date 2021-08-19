@@ -1,0 +1,12 @@
+    /**
+     * Resets the date to end of the year and time to 23:59:59.999999
+     *
+     * @example
+     * ```
+     * echo Carbon::parse('2018-07-25 12:45:16')->endOfYear();
+     * ```
+     *
+     * @return static
+     */
+
+    public function endOfYear();

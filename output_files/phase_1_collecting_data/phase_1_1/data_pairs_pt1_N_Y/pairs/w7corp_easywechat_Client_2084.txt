@@ -1,0 +1,15 @@
+    /**
+     * Sign the params.
+     *
+     * @param string $ticket
+     * @param string $nonce
+     * @param int    $timestamp
+     * @param string $url
+     *
+     * @return string
+     */
+
+    public function getTicketSignature($ticket, $nonce, $timestamp, $url): string
+    {
+        return sha1(sprintf('jsapi_ticket=%s&noncestr=%s&timestamp=%s&url=%s', $ticket, $nonce, $timestamp, $url));
+    }

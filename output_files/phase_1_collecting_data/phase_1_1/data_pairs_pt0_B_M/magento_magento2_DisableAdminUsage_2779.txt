@@ -1,0 +1,10 @@
+    /**
+     * DisableAdminUsage constructor.
+     *
+     * @param Action\Context $context
+     * @param ProductMetadataInterface $productMetadata
+     * @param NotificationLogger $notificationLogger
+     * @param Factory $configFactory
+     */
+
+    public function __construct(

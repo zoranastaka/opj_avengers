@@ -1,0 +1,7 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function uninstall(Composer $composer, IOInterface $io)
+    {
+    }

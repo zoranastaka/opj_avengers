@@ -1,0 +1,17 @@
+    /**
+     * @test   weighted mean when the input array is empty
+     * @throws \Exception
+     */
+
+    public function testWeightedMeanExceptionWhenEmptyArray()
+    {
+        // Given
+        $numbers = [];
+        $weights = [];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Average::weightedMean($numbers, $weights);
+    }

@@ -1,0 +1,6 @@
+/**
+ * Echo the tbody end tag
+ *
+ */
+
+function yourls_table_tbody_end() {

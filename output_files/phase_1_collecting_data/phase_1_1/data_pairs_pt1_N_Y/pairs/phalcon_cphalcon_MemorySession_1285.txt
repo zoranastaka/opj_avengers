@@ -1,0 +1,8 @@
+    /**
+     * Registers a handler with the session
+     */
+
+    public function registerHandler(SessionHandlerInterface $handler): bool
+    {
+        // TODO: Implement registerHandler() method.
+    }

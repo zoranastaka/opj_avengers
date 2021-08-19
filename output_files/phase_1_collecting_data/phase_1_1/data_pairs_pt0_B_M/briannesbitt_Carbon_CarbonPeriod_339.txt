@@ -1,0 +1,11 @@
+    /**
+     * Return true if now is between start date (included) and end date (excluded).
+     * (Rather start/end are included by options is ignored.)
+     *
+     * @return bool
+     */
+
+    public function isInProgress(): bool
+    {
+        return $this->isStarted() && !$this->isEnded();
+    }

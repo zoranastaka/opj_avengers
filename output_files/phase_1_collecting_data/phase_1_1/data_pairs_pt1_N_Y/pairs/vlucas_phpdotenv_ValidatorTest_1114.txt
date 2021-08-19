@@ -1,0 +1,10 @@
+    /**
+     * @doesNotPerformAssertions
+     */
+
+    public function testIfPresentIntegerNonExist()
+    {
+        $dotenv = Dotenv::createImmutable(self::$folder, 'integers.env');
+        $dotenv->load();
+        $dotenv->ifPresent(['VAR_DOES_NOT_EXIST_234782462764'])->isInteger();
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @internal
+     */
+
+    public function getTokenParser(string $name): ?TokenParserInterface
+    {
+        return $this->extensionSet->getTokenParser($name);
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @test         smoothness parameter OutOfBoundsException
+     * @dataProvider dataProviderForSmoothnessParameterOutOfBoundsException
+     * @param        array $points
+     * @param        float $α
+     * @param        float $λ
+     * @throws       \Exception
+     */
+
+    public function testSmoothnessParameterOutOfBoundsException(array $points, float $α, float $λ)
+    {
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        $loess = new LOESS($points, $α, $λ);
+    }

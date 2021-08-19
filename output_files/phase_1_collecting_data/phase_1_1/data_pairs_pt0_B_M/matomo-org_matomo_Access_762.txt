@@ -1,0 +1,19 @@
+    /**
+     * Returns an array of ID sites for which the user has at least a VIEW access.
+     * Which means VIEW OR WRITE or ADMIN or SUPERUSER.
+     *
+     * @return array  Example if the user is ADMIN for 4
+     *                and has VIEW access for 1 and 7, it returns array(1, 4, 7);
+     */
+
+    public function getSitesIdWithAtLeastViewAccess()
+    {
+        $this->loadSitesIfNeeded();
+
+        return array_unique(array_merge(
+                $this->idsitesByAccess['view'],
+                $this->idsitesByAccess['write'],
+                $this->idsitesByAccess['admin'],
+                $this->idsitesByAccess['superuser'])
+        );
+    }

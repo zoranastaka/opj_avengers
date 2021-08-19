@@ -1,0 +1,15 @@
+    /**
+     * @test         factors returns the expected factors of an integer.
+     * @dataProvider dataProviderForFactors
+     * @param        int $x
+     * @param        array $expected_factors
+     */
+
+    public function testFactors(int $x, array $expected_factors)
+    {
+        // When
+        $factors = Algebra::factors($x);
+
+        // Then
+        $this->assertEquals($expected_factors, $factors);
+    }

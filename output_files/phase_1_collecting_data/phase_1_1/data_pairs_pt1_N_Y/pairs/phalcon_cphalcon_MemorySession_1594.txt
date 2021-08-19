@@ -1,0 +1,8 @@
+    /**
+     * Alias: Sets a session variable in an application context
+     */
+
+    public function __set(string $index, $value)
+    {
+        $this->set($index, $value);
+    }

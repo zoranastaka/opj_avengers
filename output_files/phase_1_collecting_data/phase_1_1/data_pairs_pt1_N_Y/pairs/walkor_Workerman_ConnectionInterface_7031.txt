@@ -1,0 +1,7 @@
+    /**
+     * Get remote port.
+     *
+     * @return int
+     */
+
+    abstract public function getRemotePort();

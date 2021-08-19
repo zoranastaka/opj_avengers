@@ -1,0 +1,9 @@
+    /**
+     * @covers ::__construct
+     */
+
+    public function testCreateStreamWithInvalidParameter(): void
+    {
+        $this->expectException(TypeError::class);
+        new Stream(__DIR__.'/../test_files/foo.csv');
+    }

@@ -1,0 +1,13 @@
+    /**
+     * update packages
+     *
+     * @param  bool      $update
+     * @return Installer
+     */
+
+    public function setUpdate($update)
+    {
+        $this->update = (bool) $update;
+
+        return $this;
+    }

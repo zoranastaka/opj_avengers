@@ -1,0 +1,3 @@
+        // Security
+
+        Route::name('security.')->group(function () {

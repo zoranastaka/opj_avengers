@@ -1,0 +1,37 @@
+    /**
+     * return the height in units of the current font in the given size
+     *
+     * @param $size
+     * @return float|int
+     */
+
+    function getFontHeight($size)
+    {
+        if (!$this->numFonts) {
+            $this->selectFont($this->defaultFont);
+        }
+
+        $font = $this->fonts[$this->currentFont];
+
+        // for the current font, and the given size, what is the height of the font in user units
+        if (isset($font['Ascender']) && isset($font['Descender'])) {
+            $h = $font['Ascender'] - $font['Descender'];
+        } else {
+            $h = $font['FontBBox'][3] - $font['FontBBox'][1];
+        }
+
+        // have to adjust by a font offset for Windows fonts.  unfortunately it looks like
+        // the bounding box calculations are wrong and I don't know why.
+        if (isset($font['FontHeightOffset'])) {
+            // For CourierNew from Windows this needs to be -646 to match the
+            // Adobe native Courier font.
+            //
+            // For FreeMono from GNU this needs to be -337 to match the
+            // Courier font.
+            //
+            // Both have been added manually to the .afm and .ufm files.
+            $h += (int)$font['FontHeightOffset'];
+        }
+
+        return $size * $h / 1000;
+    }

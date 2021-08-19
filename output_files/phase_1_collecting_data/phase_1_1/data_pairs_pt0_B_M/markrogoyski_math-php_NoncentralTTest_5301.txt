@@ -1,0 +1,12 @@
+    /**
+     * @return array [ν, μ]
+     */
+
+    public function dataProviderForMeanNan(): array
+    {
+        return [
+            [1, 1],
+            [1, 2],
+            [1, -1],
+        ];
+    }

@@ -1,0 +1,10 @@
+    /**
+     * @before
+     *
+     * @return void
+     */
+
+    public function refreshKeyVal()
+    {
+        $this->keyVal(true);
+    }

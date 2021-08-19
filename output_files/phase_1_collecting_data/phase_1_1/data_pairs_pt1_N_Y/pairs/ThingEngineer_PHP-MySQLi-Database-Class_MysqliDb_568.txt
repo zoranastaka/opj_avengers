@@ -1,0 +1,26 @@
+    /**
+     * Abstraction method that will build an JOIN part of the query
+     *
+     * @return void
+     */
+
+    protected function _buildJoinOld()
+    {
+        if (empty($this->_join)) {
+            return;
+        }
+
+        foreach ($this->_join as $data) {
+            list ($joinType, $joinTable, $joinCondition) = $data;
+
+            if (is_object($joinTable)) {
+                $joinStr = $this->_buildPair("", $joinTable);
+            } else {
+                $joinStr = $joinTable;
+            }
+
+            $this->_query .= " " . $joinType . " JOIN " . $joinStr .
+                (false !== stripos($joinCondition, 'using') ? " " : " on ")
+                . $joinCondition;
+        }
+    }

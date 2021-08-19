@@ -1,0 +1,18 @@
+    /**
+     * @see https://tools.ietf.org/html/rfc6979#appendix-A.2.5
+     * @see https://tools.ietf.org/html/rfc6979#appendix-A.2.6
+     * @see https://tools.ietf.org/html/rfc6979#appendix-A.2.7
+     *
+     * @test
+     * @dataProvider dataRFC6979
+     *
+     * @covers \Lcobucci\JWT\Signer\Key\InMemory
+     * @covers \Lcobucci\JWT\Signer\Ecdsa
+     * @covers \Lcobucci\JWT\Signer\Ecdsa\MultibyteStringConverter
+     * @covers \Lcobucci\JWT\Signer\Ecdsa\Sha256
+     * @covers \Lcobucci\JWT\Signer\Ecdsa\Sha384
+     * @covers \Lcobucci\JWT\Signer\Ecdsa\Sha512
+     * @covers \Lcobucci\JWT\Signer\OpenSSL
+     */
+
+    public function theVectorsFromRFC6978CanBeVerified(

@@ -1,0 +1,12 @@
+    /**
+     * @test 32 carb observations
+     */
+
+    public function testNumberOfCarbs()
+    {
+        // When
+        $observations = $this->mtCars->getCarb();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

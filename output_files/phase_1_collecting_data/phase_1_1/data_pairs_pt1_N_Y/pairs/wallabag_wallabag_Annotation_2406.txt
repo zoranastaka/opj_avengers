@@ -1,0 +1,14 @@
+    /**
+     * Set quote.
+     *
+     * @param string $quote
+     *
+     * @return Annotation
+     */
+
+    public function setQuote($quote)
+    {
+        $this->quote = $quote;
+
+        return $this;
+    }

@@ -1,0 +1,23 @@
+    /**
+     * Calculates new beta (β) for given set of solutions by using
+     * Fletcher–Reeves method.
+     *
+     * β = ||f(x(k+1))||²  ∕  ||f(x(k))||²
+     *
+     * See:
+     *  R. Fletcher and C. M. Reeves, "Function minimization by conjugate gradients", Comput. J. 7 (1964), 149–154.
+     */
+
+    protected function getBeta(array $newTheta): float
+    {
+        $gNew = $this->gradient($newTheta);
+        $gOld = $this->gradient($this->theta);
+        $dNew = 0;
+        $dOld = 1e-100;
+        for ($i = 0; $i <= $this->dimensions; ++$i) {
+            $dNew += $gNew[$i] ** 2;
+            $dOld += $gOld[$i] ** 2;
+        }
+
+        return $dNew / $dOld;
+    }

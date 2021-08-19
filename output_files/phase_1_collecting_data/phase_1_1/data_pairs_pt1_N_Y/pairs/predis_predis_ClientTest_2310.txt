@@ -1,0 +1,36 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testClientResendScriptCommandUsingEvalOnNoScriptErrors(): void
+    {
+        $luaScriptBody = 'return redis.call(\'exists\', KEYS[1])';
+
+        $command = $this->getMockForAbstractClass('Predis\Command\ScriptCommand', array(), '', true, true, true, array('parseResponse'));
+        $command
+            ->expects($this->once())
+            ->method('getScript')
+            ->willReturn($luaScriptBody);
+        $command
+            ->expects($this->once())
+            ->method('parseResponse')
+            ->with('OK')
+            ->willReturn(true);
+
+        $connection = $this->getMockBuilder('Predis\Connection\NodeConnectionInterface')->getMock();
+        $connection
+            ->expects($this->exactly(2))
+            ->method('executeCommand')
+            ->withConsecutive(
+                array($command),
+                array($this->isRedisCommand('EVAL', array($luaScriptBody)))
+            )
+            ->willReturnOnConsecutiveCalls(
+                new Response\Error('NOSCRIPT'),
+                'OK'
+            );
+
+        $client = new Client($connection);
+
+        $this->assertTrue($client->executeCommand($command));
+    }

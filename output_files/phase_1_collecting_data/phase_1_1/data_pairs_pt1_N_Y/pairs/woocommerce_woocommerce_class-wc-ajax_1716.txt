@@ -1,0 +1,7 @@
+	/**
+	 * Remove coupon from an order via ajax.
+	 *
+	 * @throws Exception If order or coupon is invalid.
+	 */
+
+	public static function remove_order_coupon() {

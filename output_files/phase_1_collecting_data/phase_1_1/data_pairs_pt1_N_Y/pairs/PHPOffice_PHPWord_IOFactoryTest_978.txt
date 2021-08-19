@@ -1,0 +1,11 @@
+    /**
+     * Create existing writer
+     */
+
+    public function testExistingWriterCanBeCreated()
+    {
+        $this->assertInstanceOf(
+            'PhpOffice\\PhpWord\\Writer\\Word2007',
+            IOFactory::createWriter(new PhpWord(), 'Word2007')
+        );
+    }

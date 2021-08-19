@@ -1,0 +1,10 @@
+    /**
+     * Creates a new Finder.
+     *
+     * @return static
+     */
+
+    public static function create()
+    {
+        return new static();
+    }

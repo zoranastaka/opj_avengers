@@ -1,0 +1,12 @@
+    /**
+     * @group connected
+     */
+
+    public function testConnectForcesConnection(): void
+    {
+        $connection = $this->createConnection();
+
+        $this->assertFalse($connection->isConnected());
+        $connection->connect();
+        $this->assertTrue($connection->isConnected());
+    }

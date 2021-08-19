@@ -1,0 +1,20 @@
+    /** @test */
+
+    public function it_can_assign_same_callback_for_events()
+    {
+        $called = 0;
+        $this->fakeDriver->hasMatchingEvent = new TestEvent([]);
+        $this->botman->on(['test_event', 'test_event_two'], function ($data, BotMan $bot) use (&$called) {
+            $called++;
+        });
+
+        $this->botman->listen();
+
+        $this->assertEquals(1, $called);
+
+        $this->fakeDriver->hasMatchingEvent = new TestEventTwo([]);
+
+        $this->botman->listen();
+
+        $this->assertEquals(2, $called);
+    }

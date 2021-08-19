@@ -1,0 +1,15 @@
+    /**
+     * @test         cubicNumber produces the expected sequence
+     * @dataProvider dataProviderForCubicNumber
+     * @param        int   $n
+     * @param        array $expected
+     */
+
+    public function testCubicNumber(int $n, array $expected)
+    {
+        // When
+        $cubes = Basic::cubicNumber($n);
+
+        // Then
+        $this->assertEquals($expected, $cubes);
+    }

@@ -1,0 +1,20 @@
+    /**
+     * @test Axiom: Product of two polynomials is a polynomial
+     * @dataProvider dataProviderForTwoPolynomials
+     * @param        array $a
+     * @param        array $b
+     * @throws       \Exception
+     */
+
+    public function testArithmeticMultiplicationProperty(array $a, array $b)
+    {
+        // Given
+        $a = new Polynomial($a);
+        $b = new Polynomial($b);
+
+        // When
+        $ab = $a->multiply($b);
+
+        // Then
+        $this->assertInstanceOf(Polynomial::class, $ab);
+    }

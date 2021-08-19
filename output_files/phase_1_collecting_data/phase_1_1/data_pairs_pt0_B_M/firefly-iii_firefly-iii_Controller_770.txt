@@ -1,0 +1,23 @@
+    /**
+     * Method to help build URI's.
+     *
+     * @return string
+     */
+
+    final protected function buildParams(): string
+    {
+        $return = '?';
+        $params = [];
+        foreach ($this->parameters as $key => $value) {
+            if ('page' === $key) {
+                continue;
+            }
+            if ($value instanceof Carbon) {
+                $params[$key] = $value->format('Y-m-d');
+                continue;
+            }
+            $params[$key] = $value;
+        }
+
+        return $return . http_build_query($params);
+    }

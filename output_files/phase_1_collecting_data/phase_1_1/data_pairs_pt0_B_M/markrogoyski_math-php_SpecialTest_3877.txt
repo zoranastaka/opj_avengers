@@ -1,0 +1,17 @@
+    /**
+     * @test         errorFunction returns the expected value
+     * @dataProvider dataProviderForErrorFunction
+     * @param        float $x
+     * @param        float $expected
+     */
+
+    public function testErrorFunction(float $x, float $expected)
+    {
+        // When
+        $errorFunction = Special::errorFunction($x);
+        $erf           = Special::erf($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $errorFunction, 0.0001);
+        $this->assertEqualsWithDelta($expected, $erf, 0.0001);
+    }

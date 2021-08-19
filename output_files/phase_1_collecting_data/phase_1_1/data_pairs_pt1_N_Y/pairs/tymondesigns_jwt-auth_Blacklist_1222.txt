@@ -1,0 +1,14 @@
+    /**
+     * Add the token (jti claim) to the blacklist indefinitely.
+     *
+     * @param  \Tymon\JWTAuth\Payload  $payload
+     *
+     * @return bool
+     */
+
+    public function addForever(Payload $payload)
+    {
+        $this->storage->forever($this->getKey($payload), 'forever');
+
+        return true;
+    }

@@ -1,0 +1,7 @@
+    // every minute that passes adds an extra 100ms to the wait time. so 5 minutes results in 500ms extra, 20mins results in 2s extra.
+
+    private function getTimeToWaitBeforeNextCheck($elapsed)
+    {
+        $minutes = floor($elapsed / 60);
+        return self::BASE_WAIT_TIME + $minutes * 100000; // 100 * 1000 = 100ms
+    }

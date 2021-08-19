@@ -1,0 +1,15 @@
+    /**
+     * @covers ::triggerOnValidation
+     * @covers ::getName
+     * @covers ::getRecord
+     */
+
+    public function testTriggerOnValidation(): void
+    {
+        $record = ['jane', 'doe', 'jane.doe@example.com'];
+        $exception = CannotInsertRecord::triggerOnValidation('foo bar', $record);
+
+        self::assertSame($record, $exception->getRecord());
+        self::assertSame('foo bar', $exception->getName());
+        self::assertSame('Record validation failed', $exception->getMessage());
+    }

@@ -1,0 +1,5 @@
+	/**
+	 * Static-only class.
+	 */
+
+	private function __construct() {}

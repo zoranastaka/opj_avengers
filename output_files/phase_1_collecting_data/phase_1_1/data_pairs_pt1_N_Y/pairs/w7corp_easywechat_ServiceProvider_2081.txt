@@ -1,0 +1,16 @@
+/**
+ * Class ServiceProvider.
+ */
+
+class ServiceProvider implements ServiceProviderInterface
+{
+    /**
+     * {@inheritdoc}.
+     */
+    public function register(Container $app)
+    {
+        $app['content_security'] = function ($app) {
+            return new Client($app);
+        };
+    }
+}

@@ -1,0 +1,11 @@
+    /**
+     * @param \Ratchet\ConnectionInterface $context
+     * @param string                       $data Data stream to buffer
+     * @return \Psr\Http\Message\RequestInterface
+     * @throws \OverflowException If the message buffer has become too large
+     */
+
+    public function onMessage(ConnectionInterface $context, $data) {
+        if (!isset($context->httpBuffer)) {
+            $context->httpBuffer = '';
+        }

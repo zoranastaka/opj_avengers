@@ -1,0 +1,15 @@
+    /**
+     * @test det exception - not square
+     */
+
+    public function testDetExceptionNotSquareMatrix()
+    {
+        // Given
+        $A = MatrixFactory::create([[1, 2, 3]]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $A->det();
+    }

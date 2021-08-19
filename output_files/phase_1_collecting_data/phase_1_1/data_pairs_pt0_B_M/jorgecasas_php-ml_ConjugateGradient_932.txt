@@ -1,0 +1,10 @@
+    /**
+     * Returns the value of f(x) for given solution
+     */
+
+    protected function cost(array $theta): float
+    {
+        [$cost] = parent::gradient($theta);
+
+        return array_sum($cost) / (int) $this->sampleCount;
+    }

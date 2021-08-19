@@ -1,0 +1,10 @@
+    /**
+     * Get Y-Axis Label
+     *
+     * @return PHPExcel_Chart_Title
+     */
+
+    public function getYAxisLabel()
+    {
+        return $this->yAxisLabel;
+    }

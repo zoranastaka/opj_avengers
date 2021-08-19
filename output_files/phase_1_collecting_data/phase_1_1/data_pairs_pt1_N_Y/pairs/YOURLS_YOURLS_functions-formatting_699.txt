@@ -1,0 +1,11 @@
+/**
+ * Check if a string seems to be urlencoded
+ *
+ * We use rawurlencode instead of urlencode to avoid messing with '+'
+ *
+ * @since 1.7
+ * @param string $string
+ * @return bool
+ */
+
+function yourls_is_rawurlencoded( $string ) {

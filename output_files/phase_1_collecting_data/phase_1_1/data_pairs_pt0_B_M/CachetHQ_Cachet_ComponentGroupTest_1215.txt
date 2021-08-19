@@ -1,0 +1,18 @@
+    /**
+     * Create a component group.
+     *
+     * Also attaches a creator if any given as a parameter or exists in the test class.
+     *
+     * @param string $name
+     * @param string $visible
+     *
+     * @return $this
+     */
+
+    protected function createComponentGroup($name, $visible)
+    {
+        factory(ComponentGroup::class)
+            ->create(['name' => $name, 'visible' => $visible]);
+
+        return $this;
+    }

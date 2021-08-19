@@ -1,0 +1,11 @@
+    /**
+     * Returns the number of fixed errors/warnings.
+     *
+     * @return int
+     */
+
+    public function getFixedCount()
+    {
+        return $this->fixedCount;
+
+    }//end getFixedCount()

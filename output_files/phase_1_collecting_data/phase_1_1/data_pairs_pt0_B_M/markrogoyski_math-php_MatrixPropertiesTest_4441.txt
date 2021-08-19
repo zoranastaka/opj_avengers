@@ -1,0 +1,14 @@
+    /**
+     * @test         isTriangular returns true for a lower triangular matrix
+     * @dataProvider dataProviderForLowerTriangularMatrix
+     * @param        array $L
+     * @throws       \Exception
+     */
+
+    public function testIsTriangularForLowerTriangular(array $L)
+    {
+        // Given
+        $L = MatrixFactory::create($L);
+
+        $this->assertTrue($L->isTriangular());
+    }

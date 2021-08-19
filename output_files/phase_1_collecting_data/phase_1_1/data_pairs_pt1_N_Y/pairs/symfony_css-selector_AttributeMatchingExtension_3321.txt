@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getName(): string
+    {
+        return 'attribute-matching';
+    }

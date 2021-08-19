@@ -1,0 +1,19 @@
+    /**
+     * @test         mean
+     * @dataProvider dataProviderForMean
+     * @param        int   $r
+     * @param        float $p
+     * @param        float $μ
+     */
+
+    public function testMean(int $r, float $p, float $μ)
+    {
+        // Given
+        $pascal = new Pascal($r, $p);
+
+        // When
+        $mean = $pascal->mean();
+
+        // Then
+        $this->assertEqualsWithDelta($μ, $mean, 0.00000001);
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @deprecated
+     */
+
+    public static function getRuntimeDir()
+    {
+        return (new self())->runtimeDir();
+    }

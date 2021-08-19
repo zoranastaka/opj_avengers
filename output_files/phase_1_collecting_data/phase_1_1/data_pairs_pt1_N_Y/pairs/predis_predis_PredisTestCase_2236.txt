@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    protected function setUp(): void
+    {
+        $this->checkRequiredRedisServerVersion();
+    }

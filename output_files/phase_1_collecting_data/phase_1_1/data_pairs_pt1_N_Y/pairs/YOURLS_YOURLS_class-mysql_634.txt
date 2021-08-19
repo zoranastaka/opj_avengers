@@ -1,0 +1,15 @@
+/**
+ * Helper function : set instance of DB, or unset it
+ *
+ * Instead of:
+ *     global $ydb;
+ *     $ydb = stuff
+ * Prefer :
+ *     yourls_set_db( stuff )
+ * (This is mostly used in the test suite)
+ *
+ * @since 1.7.10
+ * @param  mixed $db    Either a \YOURLS\Database\YDB instance, or anything. If null, the function will unset $ydb
+ */
+
+function yourls_set_db($db) {

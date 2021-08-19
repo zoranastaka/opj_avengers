@@ -1,0 +1,16 @@
+    /**
+     * Set details of the external library for rendering PDF files
+     *
+     * @param string $libraryName
+     * @param string $libraryBaseDir
+     * @return bool Success or failure
+     */
+
+    public static function setPdfRenderer($libraryName, $libraryBaseDir)
+    {
+        if (!self::setPdfRendererName($libraryName)) {
+            return false;
+        }
+
+        return self::setPdfRendererPath($libraryBaseDir);
+    }

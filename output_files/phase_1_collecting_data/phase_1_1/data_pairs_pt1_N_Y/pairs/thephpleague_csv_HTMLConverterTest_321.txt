@@ -1,0 +1,10 @@
+    /**
+     * @covers ::__construct
+     * @covers ::table
+     */
+
+    public function testTableTriggersException(): void
+    {
+        $this->expectException(DOMException::class);
+        HTMLConverter::create()->table('table-csv-data', 'te st');
+    }

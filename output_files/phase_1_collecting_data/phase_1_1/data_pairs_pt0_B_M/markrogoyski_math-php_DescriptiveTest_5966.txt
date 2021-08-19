@@ -1,0 +1,17 @@
+    /**
+     * @test   percentile throws an Exception\OutOfBoundsException if P is < 0
+     * @throws \Exception
+     */
+
+    public function testPercentileOutOfLowerBoundsP()
+    {
+        // Given
+        $numbers = [1, 2, 3];
+        $P       = -4;
+
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Descriptive::percentile($numbers, $P);
+    }

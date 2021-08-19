@@ -1,0 +1,10 @@
+	/**
+	 * Enable the code hacker.
+	 */
+
+	public static function enable() {
+		if ( ! self::$enabled ) {
+			stream_wrapper_unregister( self::PROTOCOL );
+			stream_wrapper_register( self::PROTOCOL, __CLASS__ );
+			self::$enabled = true;
+		}

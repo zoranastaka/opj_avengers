@@ -1,0 +1,25 @@
+    /**
+     * @return array [values, frequencies]
+     */
+
+    public function dataProviderForCumulativeRelativeFrequency(): array
+    {
+        return [
+            [
+                [ 'A', 'A', 'B', 'B', 'B', 'B', 'C', 'C', 'D', 'F' ],
+                [ 'A' => 0.2, 'B' => 0.6, 'C' => 0.8, 'D' => 0.9, 'F' => 1 ],
+            ],
+            [
+                [ 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+                [ 1 => 0.16129032, 2 => 0.25806452, 3 => 0.5483871, 4 => 1 ],
+            ],
+            [
+                [ 'yes', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'no' ],
+                [ 'yes' => 0.6, 'no' => 1 ],
+            ],
+            [
+                [ 'agree', 'disagree', 'agree', 'agree', 'no opinion', 'agree', 'disagree' ],
+                [ 'agree' => 0.57142857, 'disagree' => 0.85714286, 'no opinion' => 1 ],
+            ],
+        ];
+    }

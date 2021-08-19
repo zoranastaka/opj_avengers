@@ -1,0 +1,11 @@
+    /**
+     * Add a cellXf to the workbook
+     *
+     * @param PHPExcel_Style $style
+     */
+
+    public function addCellXf(PHPExcel_Style $style)
+    {
+        $this->cellXfCollection[] = $style;
+        $style->setIndex(count($this->cellXfCollection) - 1);
+    }

@@ -1,0 +1,17 @@
+    /**
+     * Marks the response as "public".
+     *
+     * It makes the response eligible for serving other clients.
+     *
+     * @return $this
+     *
+     * @final
+     */
+
+    public function setPublic(): object
+    {
+        $this->headers->addCacheControlDirective('public');
+        $this->headers->removeCacheControlDirective('private');
+
+        return $this;
+    }

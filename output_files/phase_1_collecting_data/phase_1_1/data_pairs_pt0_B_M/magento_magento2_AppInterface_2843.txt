@@ -1,0 +1,7 @@
+    /**
+     * Launch application
+     *
+     * @return \Magento\Framework\App\ResponseInterface
+     */
+
+    public function launch();

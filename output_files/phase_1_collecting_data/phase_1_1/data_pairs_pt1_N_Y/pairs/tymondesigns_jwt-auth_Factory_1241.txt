@@ -1,0 +1,14 @@
+    /**
+     * Set the default claims to be added to the Payload.
+     *
+     * @param  array  $claims
+     *
+     * @return $this
+     */
+
+    public function setDefaultClaims(array $claims)
+    {
+        $this->defaultClaims = $claims;
+
+        return $this;
+    }

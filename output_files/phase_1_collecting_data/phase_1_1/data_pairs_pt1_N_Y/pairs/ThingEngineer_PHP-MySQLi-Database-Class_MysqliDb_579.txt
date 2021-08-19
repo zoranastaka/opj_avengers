@@ -1,0 +1,10 @@
+    /**
+     * Method returns last executed query
+     *
+     * @return string
+     */
+
+    public function getLastQuery()
+    {
+        return $this->_lastQuery;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get all loaded random number sources
+     *
+     * @return array An array of sources
+     */
+
+    public function getSources()
+    {
+        return $this->sources;
+    }

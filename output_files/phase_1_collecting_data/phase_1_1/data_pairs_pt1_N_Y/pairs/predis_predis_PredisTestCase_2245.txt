@@ -1,0 +1,34 @@
+    /**
+     * Ensures the current Redis server matches version requirements for tests.
+     *
+     * Requirements are retrieved from the @requiresRedisVersion annotation that
+     * decorates test methods while the version of the Redis server used to run
+     * integration tests is retrieved directly from the server by using `INFO`.
+     *
+     * @throws \PHPUnit\Framework\SkippedTestError When the required Redis server version is not met
+     */
+
+    protected function checkRequiredRedisServerVersion(): void
+    {
+        if (!$requiredVersion = $this->getRequiredRedisServerVersion()) {
+            return;
+        }
+
+        $requiredVersion = explode(' ', $requiredVersion, 2);
+
+        if (count($requiredVersion) === 1) {
+            $reqOperator = '>=';
+            $reqVersion = $requiredVersion[0];
+        } else {
+            $reqOperator = $requiredVersion[0];
+            $reqVersion = $requiredVersion[1];
+        }
+
+        if (!$this->isRedisServerVersion($reqOperator, $reqVersion)) {
+            $serverVersion = $this->getRedisServerVersion();
+
+            $this->markTestSkipped(
+                "Test requires a Redis server instance $reqOperator $reqVersion but target server is $serverVersion"
+            );
+        }
+    }

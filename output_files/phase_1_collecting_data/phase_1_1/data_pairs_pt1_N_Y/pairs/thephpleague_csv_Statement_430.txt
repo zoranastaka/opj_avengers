@@ -1,0 +1,11 @@
+    /**
+     * Set the Iterator filter method.
+     */
+
+    public function where(callable $where): self
+    {
+        $clone = clone $this;
+        $clone->where[] = $where;
+
+        return $clone;
+    }

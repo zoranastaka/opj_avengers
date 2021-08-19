@@ -1,0 +1,12 @@
+    /**
+     * @group connected
+     */
+
+    public function testGetResourceForcesConnection(): void
+    {
+        $connection = $this->createConnection();
+
+        $this->assertFalse($connection->isConnected());
+        $this->assertIsResource($connection->getResource());
+        $this->assertTrue($connection->isConnected());
+    }

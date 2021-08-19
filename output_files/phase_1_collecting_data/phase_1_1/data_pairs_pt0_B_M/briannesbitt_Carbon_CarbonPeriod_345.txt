@@ -1,0 +1,22 @@
+    /**
+     * Create a filter tuple from raw parameters.
+     *
+     * Will create an automatic filter callback for one of Carbon's is* methods.
+     *
+     * @param array $parameters
+     *
+     * @return array
+     */
+
+    protected function createFilterTuple(array $parameters)
+    {
+        $method = array_shift($parameters);
+
+        if (!$this->isCarbonPredicateMethod($method)) {
+            return [$method, array_shift($parameters)];
+        }
+
+        return [function ($date) use ($method, $parameters) {
+            return ([$date, $method])(...$parameters);
+        }, $method];
+    }

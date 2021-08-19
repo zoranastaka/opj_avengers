@@ -1,0 +1,14 @@
+    /**
+     * @dataProvider             getMacroDefinitionDoesNotSupportNonConstantDefaultValues
+     */
+
+    public function testMacroDefinitionDoesNotSupportNonConstantDefaultValues($template)
+    {
+        $this->expectException(SyntaxError::class);
+        $this->expectExceptionMessage('A default value for an argument must be a constant (a boolean, a string, a number, or an array) in "index" at line 1');
+
+        $env = new Environment($this->createMock(LoaderInterface::class), ['cache' => false, 'autoescape' => false]);
+        $parser = new Parser($env);
+
+        $parser->parse($env->tokenize(new Source($template, 'index')));
+    }

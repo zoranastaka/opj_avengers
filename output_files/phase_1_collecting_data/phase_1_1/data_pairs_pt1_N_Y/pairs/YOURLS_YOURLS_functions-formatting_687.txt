@@ -1,0 +1,6 @@
+/**
+ * Sanitize a date for SQL search. Return false if malformed input.
+ *
+ */
+
+function yourls_sanitize_date_for_sql( $date ) {

@@ -1,0 +1,25 @@
+    /**
+     * Cumulative distribution function
+     *
+     *             / b \ᵃ
+     * D(x) = 1 - |  -  | for x ≥ b
+     *             \ x /
+     *
+     * D(x) = 0           for x < b
+     *
+     * @param  float $x
+     *
+     * @return float
+     */
+
+    public function cdf(float $x): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['x' => $x]);
+
+        $a = $this->a;
+        $b = $this->b;
+        if ($x < $b) {
+            return 0;
+        }
+        return 1 - \pow($b / $x, $a);
+    }

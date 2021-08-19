@@ -1,0 +1,12 @@
+    /**
+     * ReducedRowEchelonForm constructor
+     *
+     * @param array $A
+     *
+     * @throws Exception\BadDataException
+     */
+
+    public function __construct(array $A)
+    {
+        parent::__construct($A);
+    }

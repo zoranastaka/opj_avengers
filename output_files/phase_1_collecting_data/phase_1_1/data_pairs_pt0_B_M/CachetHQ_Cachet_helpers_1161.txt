@@ -1,0 +1,14 @@
+    /**
+     * Formats a date with the user timezone and the selected format.
+     *
+     * @param string $date
+     *
+     * @return \Jenssegers\Date\Date
+     */
+
+    function formatted_date($date)
+    {
+        $dateFormat = Config::get('setting.date_format', 'jS F Y');
+
+        return (new Date($date))->format($dateFormat);
+    }

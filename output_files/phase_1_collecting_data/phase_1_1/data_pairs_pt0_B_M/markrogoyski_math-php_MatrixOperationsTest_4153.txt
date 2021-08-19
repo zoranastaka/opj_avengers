@@ -1,0 +1,20 @@
+    /**
+     * @test         transpose
+     * @dataProvider dataProviderForTranspose
+     * @param        array $A
+     * @param        array $R
+     * @throws       \Exception
+     */
+
+    public function testTranspose(array $A, array $R)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $R = MatrixFactory::create($R);
+
+        // When
+        $Aᵀ = $A->transpose();
+
+        // Then
+        $this->assertEquals($R->getMatrix(), $Aᵀ->getMatrix());
+    }

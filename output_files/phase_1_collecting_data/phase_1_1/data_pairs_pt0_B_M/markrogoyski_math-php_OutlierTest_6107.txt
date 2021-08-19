@@ -1,0 +1,12 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForInvalidTails(): array
+    {
+        return [
+            ['zero'],
+            ['three'],
+            ['ten'],
+        ];
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Validate the Claim within a Payload context.
+     *
+     * @return bool
+     */
+
+    public function validatePayload()
+    {
+        return $this->getValue();
+    }

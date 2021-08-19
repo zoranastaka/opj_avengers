@@ -1,0 +1,10 @@
+    /**
+     * Gets the environment variables.
+     *
+     * @return array The current environment variables
+     */
+
+    public function getEnv()
+    {
+        return $this->env;
+    }

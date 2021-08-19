@@ -1,0 +1,6 @@
+    /**
+     * @param Logger $viewerLogger
+     * @param CacheInterface $cacheStorage
+     */
+
+    public function __construct(

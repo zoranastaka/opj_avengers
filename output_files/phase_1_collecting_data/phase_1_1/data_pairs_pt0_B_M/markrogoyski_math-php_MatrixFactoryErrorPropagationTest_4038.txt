@@ -1,0 +1,16 @@
+    /**
+     * @test rowMultiply propagates error tolerance to resultant matrix
+     */
+
+    public function testRowMultiply()
+    {
+        // Given
+        $m = 1;
+        $k = 2;
+
+        // When
+        $R = $this->A->rowMultiply($m, $k);
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

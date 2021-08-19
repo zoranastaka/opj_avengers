@@ -1,0 +1,10 @@
+    /**
+     * Min of all the elements
+     *
+     * @return number
+     */
+
+    public function min()
+    {
+        return \min($this->A);
+    }

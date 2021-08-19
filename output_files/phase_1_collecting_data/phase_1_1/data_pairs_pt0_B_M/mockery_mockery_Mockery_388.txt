@@ -1,0 +1,12 @@
+    /**
+     * Return instance of DUCKTYPE matcher.
+     *
+     * @param array ...$args
+     *
+     * @return \Mockery\Matcher\Ducktype
+     */
+
+    public static function ducktype(...$args)
+    {
+        return new \Mockery\Matcher\Ducktype($args);
+    }

@@ -1,0 +1,10 @@
+	/**
+	 * AvatarManager constructor.
+	 *
+	 * @param IUserManager $userManager
+	 * @param IRootFolder $rootFolder
+	 * @param IL10N $l
+	 * @param ILogger $logger
+	 */
+
+	public function __construct(

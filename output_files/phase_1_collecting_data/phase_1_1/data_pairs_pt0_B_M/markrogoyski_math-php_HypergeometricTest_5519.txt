@@ -1,0 +1,11 @@
+    /**
+     * @test         pmf
+     * @dataProvider dataProviderForPmfExceptions
+     */
+
+    public function testPmfException($ks)
+    {
+        $this->expectException(Exception\BadDataException::class);
+        $dist = new Hypergeometric([10, 10, 10]);
+        $prob = $dist->pmf($ks);
+    }

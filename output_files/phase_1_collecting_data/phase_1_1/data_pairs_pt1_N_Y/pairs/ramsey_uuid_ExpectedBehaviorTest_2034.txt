@@ -1,0 +1,22 @@
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+
+    public function testUsingDegradedFeatures()
+    {
+        $numberConverter = new DegradedNumberConverter();
+        $builder = new DegradedUuidBuilder($numberConverter);
+
+        $factory = new UuidFactory();
+        $factory->setNumberConverter($numberConverter);
+        $factory->setUuidBuilder($builder);
+
+        Uuid::setFactory($factory);
+
+        $uuid = Uuid::uuid1();
+
+        $this->assertInstanceOf('Ramsey\Uuid\UuidInterface', $uuid);
+        $this->assertInstanceOf('Ramsey\Uuid\DegradedUuid', $uuid);
+        $this->assertInstanceOf('Ramsey\Uuid\Converter\Number\DegradedNumberConverter', $uuid->getNumberConverter());
+    }

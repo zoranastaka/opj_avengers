@@ -1,0 +1,17 @@
+    /**
+     * @test         add two arrays
+     * @dataProvider dataProviderForAddTwoArrays
+     * @param        array $xs
+     * @param        array $ys
+     * @param        array $expected
+     * @throws       \Exception
+     */
+
+    public function testAddTwoArrays(array $xs, array $ys, array $expected)
+    {
+        // When
+        $sums = Multi::add($xs, $ys);
+
+        // Then
+        $this->assertEquals($expected, $sums);
+    }

@@ -1,0 +1,28 @@
+    /**
+     * @test Axiom: RREF of A augmented with B provides a solution to Ax = b
+     *
+     * @dataProvider dataProviderForSolve
+     * @param        array $A
+     * @param        array $b
+     * @param        array $expected
+     * @throws       \Exception
+     */
+
+    public function testSolveRref(array $A, array $b, array $expected)
+    {
+        // Given
+        $A        = MatrixFactory::create($A);
+        $b        = new Vector($b);
+        $expected = new Vector($expected);
+
+        // And
+        $QR = $A->qrDecomposition();
+
+        // When RREF
+        $Ab   = $A->augment($b->asColumnMatrix());
+        $rref = $Ab->rref();
+        $x    = new Vector(\array_column($rref->getMatrix(), $rref->getN() - 1));
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $x, 0.001);
+    }

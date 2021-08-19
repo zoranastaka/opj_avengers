@@ -1,0 +1,16 @@
+    /**
+     * @test   exchange exception - n less than zero
+     * @throws \Exception
+     */
+
+    public function testExchangeExceptionNLessThanZero()
+    {
+        // When
+        $n = -1;
+
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        MatrixFactory::exchange($n);
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Return instance of NOTANYOF matcher.
+     *
+     * @param array ...$args
+     *
+     * @return \Mockery\Matcher\NotAnyOf
+     */
+
+    public static function notAnyOf(...$args)
+    {
+        return new \Mockery\Matcher\NotAnyOf($args);
+    }

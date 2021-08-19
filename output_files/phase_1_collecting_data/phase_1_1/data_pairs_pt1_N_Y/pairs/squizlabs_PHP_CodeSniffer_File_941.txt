@@ -1,0 +1,11 @@
+    /**
+     * Returns the metrics found while processing this file.
+     *
+     * @return array
+     */
+
+    public function getMetrics()
+    {
+        return $this->metrics;
+
+    }//end getMetrics()

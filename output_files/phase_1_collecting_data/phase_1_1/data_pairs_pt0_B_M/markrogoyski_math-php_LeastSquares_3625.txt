@@ -1,0 +1,15 @@
+    /**
+     * R² - coefficient of determination
+     *
+     * Indicates the proportion of the variance in the dependent variable
+     * that is predictable from the independent variable.
+     * Range of 0 - 1. Close to 1 means the regression line is a good fit
+     * https://en.wikipedia.org/wiki/Coefficient_of_determination
+     *
+     * @return float
+     */
+
+    public function coefficientOfDetermination(): float
+    {
+        return $this->sumOfSquaresRegression() / ($this->sumOfSquaresRegression() + $this->sumOfSquaresResidual());
+    }

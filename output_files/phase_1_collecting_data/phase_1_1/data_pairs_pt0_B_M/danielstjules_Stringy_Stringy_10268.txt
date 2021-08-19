@@ -1,0 +1,18 @@
+    /**
+     * Returns the first $n characters of the string.
+     *
+     * @param  int    $n Number of characters to retrieve from the start
+     * @return static Object with its $str being the first $n chars
+     */
+
+    public function first($n)
+    {
+        $stringy = static::create($this->str, $this->encoding);
+
+        if ($n < 0) {
+            $stringy->str = '';
+            return $stringy;
+        }
+
+        return $stringy->substr(0, $n);
+    }

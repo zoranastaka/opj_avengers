@@ -1,0 +1,10 @@
+    /**
+     * Checks whether support for the _method request parameter is enabled.
+     *
+     * @return bool True when the _method request parameter is enabled, false otherwise
+     */
+
+    public static function getHttpMethodParameterOverride()
+    {
+        return self::$httpMethodParameterOverride;
+    }

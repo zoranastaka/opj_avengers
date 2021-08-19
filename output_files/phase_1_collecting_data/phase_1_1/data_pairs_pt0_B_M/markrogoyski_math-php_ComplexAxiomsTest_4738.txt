@@ -1,0 +1,26 @@
+    /**
+     * @test Axiom: zw = wz
+     * Commutativity of multiplication.
+     * @dataProvider dataProviderForTwoComplexNumbers
+     * @param        int $r₁
+     * @param        int $i₁
+     * @param        int $r₂
+     * @param        int $i₂
+     * @throws       \Exception
+     */
+
+    public function testCommutativityOfMultiplication(int $r₁, int $i₁, int $r₂, int $i₂)
+    {
+        // Given
+        $z = new Complex($r₁, $i₁);
+        $w = new Complex($r₂, $i₂);
+
+        // When
+        $zw = $z->multiply($w);
+        $wz = $w->multiply($z);
+
+        $this->assertTrue($zw->equals($wz));
+        $this->assertTrue($wz->equals($zw));
+        $this->assertEquals($zw->r, $wz->r);
+        $this->assertEquals($zw->i, $wz->i);
+    }

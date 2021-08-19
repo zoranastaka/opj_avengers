@@ -1,0 +1,14 @@
+    /**
+     * Set the refresh time limit.
+     *
+     * @param  int  $ttl
+     *
+     * @return $this
+     */
+
+    public function setRefreshTTL($ttl)
+    {
+        $this->refreshTTL = (int) $ttl;
+
+        return $this;
+    }

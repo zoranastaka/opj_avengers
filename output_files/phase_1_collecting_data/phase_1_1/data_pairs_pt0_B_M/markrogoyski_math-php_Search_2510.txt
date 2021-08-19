@@ -1,0 +1,34 @@
+    /**
+     * NanArgMax
+     * Find the array index of the maximum value, ignoring NANs
+     *
+     * In case of the maximum value appearing multiple times, the index of the first occurrence is returned.
+     *
+     * Inspired by and similar to Python NumPy's nanargmax
+     *
+     * @param float[]|int[] $values
+     *
+     * @return int Index of the first occurrence of the maximum value
+     *
+     * @throws Exception\BadDataException if the array of values is empty
+     * @throws Exception\BadDataException if the array only contains NANs
+     */
+
+    public static function nanArgMax(array $values): int
+    {
+        if (empty($values)) {
+            throw new Exception\BadDataException('Cannot find the argMax of an empty array');
+        }
+
+        $valuesWithoutNans = \array_filter(
+            $values,
+            function ($value) {
+                return !\is_nan($value);
+            }
+        );
+        if (\count($valuesWithoutNans) === 0) {
+            throw new Exception\BadDataException('Array of all NANs has no nanArgMax');
+        }
+
+        return self::baseArgMax($valuesWithoutNans);
+    }

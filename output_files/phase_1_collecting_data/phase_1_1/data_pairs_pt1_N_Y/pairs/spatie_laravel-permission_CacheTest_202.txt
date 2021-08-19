@@ -1,0 +1,15 @@
+    /** @test */
+
+    public function it_flushes_the_cache_when_updating_a_role()
+    {
+        $role = app(Role::class)->create(['name' => 'new']);
+
+        $role->name = 'other name';
+        $role->save();
+
+        $this->resetQueryCount();
+
+        $this->registrar->getPermissions();
+
+        $this->assertQueryCount($this->cache_init_count + $this->cache_load_count + $this->cache_run_count);
+    }

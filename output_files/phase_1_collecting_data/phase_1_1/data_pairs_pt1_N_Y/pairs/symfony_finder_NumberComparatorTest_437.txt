@@ -1,0 +1,16 @@
+    /**
+     * @dataProvider getTestData
+     */
+
+    public function testTest($test, $match, $noMatch)
+    {
+        $c = new NumberComparator($test);
+
+        foreach ($match as $m) {
+            $this->assertTrue($c->test($m), '->test() tests a string against the expression');
+        }
+
+        foreach ($noMatch as $m) {
+            $this->assertFalse($c->test($m), '->test() tests a string against the expression');
+        }
+    }

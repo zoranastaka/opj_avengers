@@ -1,0 +1,9 @@
+    /**
+     * @param string $fileName
+     * @return UIAsset
+     */
+
+    private function getMergedUIAsset($fileName)
+    {
+        return new OnDiskUIAsset($this->getAssetDirectory(), $fileName);
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @param int $batchSize
+     * @param \Rubix\ML\NeuralNet\Optimizers\Optimizer|null $optimizer
+     * @param float $alpha
+     * @param int $epochs
+     * @param float $minChange
+     * @param int $window
+     * @param \Rubix\ML\NeuralNet\CostFunctions\RegressionLoss|null $costFn
+     * @throws \Rubix\ML\Exceptions\InvalidArgumentException
+     */
+
+    public function __construct(

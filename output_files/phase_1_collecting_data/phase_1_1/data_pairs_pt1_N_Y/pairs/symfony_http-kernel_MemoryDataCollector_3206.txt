@@ -1,0 +1,8 @@
+    /**
+     * Updates the memory usage data.
+     */
+
+    public function updateMemoryUsage()
+    {
+        $this->data['memory'] = memory_get_peak_usage(true);
+    }

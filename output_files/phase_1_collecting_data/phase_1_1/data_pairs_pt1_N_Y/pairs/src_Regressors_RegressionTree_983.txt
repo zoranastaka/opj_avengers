@@ -1,0 +1,15 @@
+    /**
+     * Return the data types that the estimator is compatible with.
+     *
+     * @internal
+     *
+     * @return list<\Rubix\ML\DataType>
+     */
+
+    public function compatibility() : array
+    {
+        return [
+            DataType::categorical(),
+            DataType::continuous(),
+        ];
+    }

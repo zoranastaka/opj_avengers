@@ -1,0 +1,7 @@
+/**
+ * @task data     Accessing Request Data
+ * @task cookie   Managing Cookies
+ * @task cluster  Working With a Phabricator Cluster
+ */
+
+final class AphrontRequest extends Phobject {

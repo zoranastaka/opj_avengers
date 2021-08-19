@@ -1,0 +1,13 @@
+    /**
+     * @param Style $style
+     */
+
+    public function set_style(Style $style)
+    {
+        if (is_null($this->_style)) {
+            $this->_original_style = clone $style;
+        }
+
+        //$style->set_frame($this);
+        $this->_style = $style;
+    }

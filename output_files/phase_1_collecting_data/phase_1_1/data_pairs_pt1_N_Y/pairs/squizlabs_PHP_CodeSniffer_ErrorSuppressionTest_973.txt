@@ -1,0 +1,134 @@
+    /**
+     * Data provider.
+     *
+     * @see testEnableSelected()
+     *
+     * @return array
+     */
+
+    public function dataEnableSelected()
+    {
+        return [
+            'disable/enable: a single sniff'                                                                                => [
+                'code'             => '
+                    // phpcs:disable Generic.Commenting.Todo
+                    $var = FALSE;
+                    //TODO: write some code
+                    // phpcs:enable Generic.Commenting.Todo
+                    //TODO: write some code',
+                'expectedErrors'   => 1,
+                'expectedWarnings' => 1,
+            ],
+            'disable/enable: multiple sniffs'                                                                               => [
+                'code'             => '
+                    // phpcs:disable Generic.Commenting.Todo,Generic.PHP.LowerCaseConstant
+                    $var = FALSE;
+                    //TODO: write some code
+                    // phpcs:enable Generic.Commenting.Todo,Generic.PHP.LowerCaseConstant
+                    //TODO: write some code
+                    $var = FALSE;',
+                'expectedErrors'   => 1,
+                'expectedWarnings' => 1,
+            ],
+            'disable: multiple sniffs; enable: one'                                                                         => [
+                'code'             => '
+                    # phpcs:disable Generic.Commenting.Todo,Generic.PHP.LowerCaseConstant
+                    $var = FALSE;
+                    //TODO: write some code
+                    # phpcs:enable Generic.Commenting.Todo
+                    //TODO: write some code
+                    $var = FALSE;',
+                'expectedErrors'   => 0,
+                'expectedWarnings' => 1,
+            ],
+            'disable/enable: complete category'                                                                             => [
+                'code'             => '
+                    // phpcs:disable Generic.Commenting
+                    $var = FALSE;
+                    //TODO: write some code
+                    // phpcs:enable Generic.Commenting
+                    //TODO: write some code',
+                'expectedErrors'   => 1,
+                'expectedWarnings' => 1,
+            ],
+            'disable/enable: whole standard'                                                                                => [
+                'code'             => '
+                    // phpcs:disable Generic
+                    $var = FALSE;
+                    //TODO: write some code
+                    // phpcs:enable Generic
+                    //TODO: write some code',
+                'expectedErrors'   => 0,
+                'expectedWarnings' => 1,
+            ],
+            'disable: whole standard; enable: category from the standard'                                                   => [
+                'code'             => '
+                    // phpcs:disable Generic
+                    $var = FALSE;
+                    //TODO: write some code
+                    // phpcs:enable Generic.Commenting
+                    //TODO: write some code',
+                'expectedErrors'   => 0,
+                'expectedWarnings' => 1,
+            ],
+            'disable: a category; enable: the whole standard containing the category'                                       => [
+                'code'             => '
+                    # phpcs:disable Generic.Commenting
+                    $var = FALSE;
+                    //TODO: write some code
+                    # phpcs:enable Generic
+                    //TODO: write some code',
+                'expectedErrors'   => 1,
+                'expectedWarnings' => 1,
+            ],
+            'disable: single sniff; enable: the category containing the sniff'                                              => [
+                'code'             => '
+                    // phpcs:disable Generic.Commenting.Todo
+                    $var = FALSE;
+                    //TODO: write some code
+                    // phpcs:enable Generic.Commenting
+                    //TODO: write some code',
+                'expectedErrors'   => 1,
+                'expectedWarnings' => 1,
+            ],
+            'disable: whole standard; enable: single sniff from the standard'                                               => [
+                'code'             => '
+                    // phpcs:disable Generic
+                    $var = FALSE;
+                    //TODO: write some code
+                    // phpcs:enable Generic.Commenting.Todo
+                    //TODO: write some code',
+                'expectedErrors'   => 0,
+                'expectedWarnings' => 1,
+            ],
+            'disable: whole standard; enable: single sniff from the standard; disable: that same sniff; enable: everything' => [
+                'code'             => '
+                    // phpcs:disable Generic
+                    $var = FALSE;
+                    //TODO: write some code
+                    // phpcs:enable Generic.Commenting.Todo
+                    //TODO: write some code
+                    // phpcs:disable Generic.Commenting.Todo
+                    //TODO: write some code
+                    // phpcs:enable
+                    //TODO: write some code',
+                'expectedErrors'   => 0,
+                'expectedWarnings' => 2,
+            ],
+            'disable: whole standard; enable: single sniff from the standard; enable: other sniff from the standard'        => [
+                'code'             => '
+                    // phpcs:disable Generic
+                    $var = FALSE;
+                    //TODO: write some code
+                    // phpcs:enable Generic.Commenting.Todo
+                    //TODO: write some code
+                    $var = FALSE;
+                    // phpcs:enable Generic.PHP.LowerCaseConstant
+                    //TODO: write some code
+                    $var = FALSE;',
+                'expectedErrors'   => 1,
+                'expectedWarnings' => 2,
+            ],
+        ];
+
+    }//end dataEnableSelected()

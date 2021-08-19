@@ -1,0 +1,7 @@
+    /**
+     * Returns whether or not the stream is seekable.
+     *
+     * @return bool
+     */
+
+    public function isSeekable();

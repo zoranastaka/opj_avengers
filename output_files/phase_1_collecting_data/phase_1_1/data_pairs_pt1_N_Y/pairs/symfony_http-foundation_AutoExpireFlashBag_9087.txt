@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function setAll(array $messages)
+    {
+        $this->flashes['new'] = $messages;
+    }

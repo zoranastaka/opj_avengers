@@ -1,0 +1,12 @@
+    /**
+     * Creates a UUID from the string standard representation
+     *
+     * @param string $uuid A hexadecimal string
+     *
+     * @return UuidInterface A UuidInterface instance created from a hexadecimal
+     *     string representation
+     *
+     * @psalm-pure
+     */
+
+    public function fromString(string $uuid): UuidInterface;

@@ -1,0 +1,17 @@
+    /**
+     * Returns true when Zend OPcache is loaded, enabled,
+     * and is configured to discard comments.
+     */
+
+    public function discardsComments(): bool
+    {
+        if (!$this->isOpcacheActive()) {
+            return false;
+        }
+
+        if (ini_get('opcache.save_comments') !== '0') {
+            return false;
+        }
+
+        return true;
+    }

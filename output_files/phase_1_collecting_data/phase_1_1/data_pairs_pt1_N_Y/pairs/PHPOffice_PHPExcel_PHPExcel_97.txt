@@ -1,0 +1,10 @@
+    /**
+     * Code to execute when this worksheet is unset()
+     *
+     */
+
+    public function __destruct()
+    {
+        $this->calculationEngine = null;
+        $this->disconnectWorksheets();
+    }

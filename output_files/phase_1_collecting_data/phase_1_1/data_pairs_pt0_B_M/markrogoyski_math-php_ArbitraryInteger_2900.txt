@@ -1,0 +1,13 @@
+    /**
+     * String representation - Display the number in base 10
+     *
+     * @return string
+     *
+     * @throws Exception\BadParameterException
+     */
+
+    public function __toString(): string
+    {
+        $sign = $this->isPositive ? '' : '-';
+        return $sign . BaseEncoderDecoder::toBase($this, 10);
+    }

@@ -1,0 +1,14 @@
+    /**
+     * Read and load environment file(s).
+     *
+     * @throws \Dotenv\Exception\InvalidPathException|\Dotenv\Exception\InvalidEncodingException|\Dotenv\Exception\InvalidFileException
+     *
+     * @return array<string,string|null>
+     */
+
+    public function load()
+    {
+        $entries = $this->parser->parse($this->store->read());
+
+        return $this->loader->load($this->repository, $entries);
+    }

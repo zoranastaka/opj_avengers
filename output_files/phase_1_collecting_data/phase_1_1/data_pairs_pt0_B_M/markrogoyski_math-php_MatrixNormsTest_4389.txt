@@ -1,0 +1,16 @@
+    /**
+     * @test         oneNorm
+     * @dataProvider dataProviderForOneNorm
+     */
+
+    public function testOneNorm(array $A, $expected)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $norm = $A->oneNorm();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $norm, 0.0001);
+    }

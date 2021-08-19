@@ -1,0 +1,27 @@
+// funkcija za tvorbu izbornika
+
+function izbornik()
+{
+
+        if(isset($_COOKIE['user_id']))
+        {
+            $pages = array
+            (
+                'index.php'           => 'Liste',
+                'log_out.php'         => 'Odjava'
+            );
+        }else
+        {
+            $pages = array
+            (
+                'index.php'     => 'Liste',
+                'register.php'  => 'Registracija',
+                'login.php'     => 'Prijava',
+            );
+        };
+
+        foreach ($pages as $address => $name)
+        {
+            echo '<li><a href="' . $address . '">' . $name . '</a></li>';
+        };
+};

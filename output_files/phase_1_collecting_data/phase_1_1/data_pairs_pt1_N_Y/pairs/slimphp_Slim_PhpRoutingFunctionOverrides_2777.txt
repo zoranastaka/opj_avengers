@@ -1,0 +1,14 @@
+/**
+ * Is a path writable
+ *
+ * @param $path
+ * @return bool
+ */
+
+function is_writable($path)
+{
+    if (stripos($path, 'non-writable-directory') !== false) {
+        return false;
+    }
+    return true;
+}

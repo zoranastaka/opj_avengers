@@ -1,0 +1,10 @@
+    /**
+     * Verify service webhook URLs.
+     *
+     * @return bool
+     */
+
+    protected function verifyServices()
+    {
+        return DriverManager::verifyServices($this->config);
+    }

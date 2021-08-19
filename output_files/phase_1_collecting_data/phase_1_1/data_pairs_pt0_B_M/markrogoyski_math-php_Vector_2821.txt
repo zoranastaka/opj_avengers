@@ -1,0 +1,18 @@
+    /**
+     * Get a specific value at position i
+     *
+     * @param  int $i index
+     *
+     * @return number
+     *
+     * @throws Exception\VectorException
+     */
+
+    public function get(int $i)
+    {
+        if ($i >= $this->n) {
+            throw new Exception\VectorException("Element $i does not exist");
+        }
+
+        return $this->A[$i];
+    }

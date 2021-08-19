@@ -1,0 +1,10 @@
+    /**
+     * Returns current color as ImagickPixel
+     *
+     * @return \ImagickPixel
+     */
+
+    public function getPixel()
+    {
+        return $this->pixel;
+    }

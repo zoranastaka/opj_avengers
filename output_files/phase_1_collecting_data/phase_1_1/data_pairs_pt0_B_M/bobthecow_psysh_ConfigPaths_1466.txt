@@ -1,0 +1,29 @@
+    /**
+     * Get the current home config directory.
+     *
+     * Returns the highest precedence home config directory which actually
+     * exists. If none of them exists, returns the highest precedence home
+     * config directory (`%APPDATA%/PsySH` on Windows, `~/.config/psysh`
+     * everywhere else).
+     *
+     * @see self::homeConfigDir
+     *
+     * @return string
+     */
+
+    public function currentConfigDir()
+    {
+        if ($this->configDir !== null) {
+            return $this->configDir;
+        }
+
+        $configDirs = $this->allDirNames([$this->homeConfigDir()]);
+
+        foreach ($configDirs as $configDir) {
+            if (@\is_dir($configDir)) {
+                return $configDir;
+            }
+        }
+
+        return $configDirs[0];
+    }

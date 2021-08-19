@@ -1,0 +1,7 @@
+	/**
+	 * Is stock reservation enabled?
+	 *
+	 * @return boolean
+	 */
+
+	protected function is_enabled() {

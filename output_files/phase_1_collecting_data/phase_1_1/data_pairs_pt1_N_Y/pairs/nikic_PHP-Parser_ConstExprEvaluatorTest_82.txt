@@ -1,0 +1,5 @@
+    /**
+     * @dataProvider provideTestEvaluateSilently
+     */
+
+    public function testEvaluateSilently($expr, $exception, $msg) {

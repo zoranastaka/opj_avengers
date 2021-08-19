@@ -1,0 +1,29 @@
+    /**
+     * @covers Whoops\Handler\PlainTextHandler::loggerOnly
+     */
+
+    public function testLoggerOnly()
+    {
+        $handler = $this->getHandler();
+
+        $this->assertEquals($handler, $handler->loggerOnly(true));
+        $this->assertTrue($handler->loggerOnly());
+
+        $handler->loggerOnly(false);
+        $this->assertFalse($handler->loggerOnly());
+
+        $handler->loggerOnly(null);
+        $this->assertEquals(null, $handler->loggerOnly());
+
+        $handler->loggerOnly(1);
+        $this->assertTrue($handler->loggerOnly());
+
+        $handler->loggerOnly(0);
+        $this->assertFalse($handler->loggerOnly());
+
+        $handler->loggerOnly('');
+        $this->assertFalse($handler->loggerOnly());
+
+        $handler->loggerOnly('false');
+        $this->assertTrue($handler->loggerOnly());
+    }

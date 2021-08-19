@@ -1,0 +1,14 @@
+    /**
+     * @return array [n]
+     */
+
+    public function dataProviderForSekException(): array
+    {
+        return [
+            [-1],
+            [0],
+            [1],
+            [2],
+            [3],
+        ];
+    }

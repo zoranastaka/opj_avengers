@@ -1,0 +1,5 @@
+    /**
+     * Returns extension name.
+     */
+
+    public function getName(): string;

@@ -1,0 +1,10 @@
+    /**
+     * Return flag indicating whether mocking non-existent methods allowed
+     *
+     * @return bool
+     */
+
+    public function mockingNonExistentMethodsAllowed()
+    {
+        return $this->_allowMockingNonExistentMethod;
+    }

@@ -1,0 +1,7 @@
+    /**
+     * Returns the PDF's width in points
+     *
+     * @return float
+     */
+
+    function get_width();

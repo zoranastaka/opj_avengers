@@ -1,0 +1,8 @@
+    /**
+     * @param $columns
+     */
+
+    public function set_columns($columns)
+    {
+        $this->_columns = $columns;
+    }

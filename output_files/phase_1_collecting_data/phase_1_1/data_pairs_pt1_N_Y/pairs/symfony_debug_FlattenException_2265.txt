@@ -1,0 +1,10 @@
+    /**
+     * @return $this
+     */
+
+    public function setStatusCode($code)
+    {
+        $this->statusCode = $code;
+
+        return $this;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * @test
+     * @group issue/346
+     */
+
+    public function canMockInternalClassesThatImplementSerializable()
+    {
+        $mock = mock("ArrayObject");
+        $this->assertInstanceOf("Serializable", $mock);
+    }

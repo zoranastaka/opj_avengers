@@ -1,0 +1,21 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testRawCommandNeverThrowsExceptions(): void
+    {
+        $message = 'ERR Mock error response';
+        $response = new Response\Error($message);
+
+        $connection = $this->getMockBuilder('Predis\Connection\ConnectionInterface')->getMock();
+        $connection
+            ->expects($this->once())
+            ->method('executeCommand')
+            ->with($this->isRedisCommand('PING'))
+            ->willReturn($response);
+
+        $client = new Client($connection, array('exceptions' => true));
+
+        $this->assertSame($message, $client->executeRaw(array('PING'), $error));
+        $this->assertTrue($error);
+    }

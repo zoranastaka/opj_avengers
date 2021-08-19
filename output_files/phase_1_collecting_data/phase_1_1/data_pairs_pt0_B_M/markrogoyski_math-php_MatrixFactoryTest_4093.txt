@@ -1,0 +1,24 @@
+    /**
+     * @test   Creating a random matrix of a specific size
+     * @throws \Exception
+     */
+
+    public function testRandomMatrix()
+    {
+        // Given
+        for ($m = 1; $m < 5; $m++) {
+            for ($n = 1; $n < 5; $n++) {
+                // When
+                $A = MatrixFactory::random($m, $n);
+
+                // Then
+                $this->assertEquals($m, $A->getM());
+                $this->assertEquals($n, $A->getN());
+
+                // And
+                $A->walk(function ($element) {
+                    $this->assertTrue(\is_int($element));
+                });
+            }
+        }
+    }

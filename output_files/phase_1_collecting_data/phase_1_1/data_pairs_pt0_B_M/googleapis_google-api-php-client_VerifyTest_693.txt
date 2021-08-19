@@ -1,0 +1,37 @@
+  /**
+   * Most of the logic for ID token validation is in AuthTest -
+   * this is just a general check to ensure we verify a valid
+   * id token if one exists.
+   */
+
+  public function testValidateIdToken()
+  {
+    $this->checkToken();
+
+    $jwt = $this->getJwtService();
+    $client = $this->getClient();
+    $http = $client->getHttpClient();
+    $token = $client->getAccessToken();
+    if ($client->isAccessTokenExpired()) {
+      $token = $client->fetchAccessTokenWithRefreshToken();
+    }
+    $segments = explode('.', $token['id_token']);
+    $this->assertCount(3, $segments);
+    // Extract the client ID in this case as it wont be set on the test client.
+    $data = json_decode($jwt->urlSafeB64Decode($segments[1]));
+    $verify = new Google_AccessToken_Verify($http);
+    $payload = $verify->verifyIdToken($token['id_token'], $data->aud);
+    $this->assertArrayHasKey('sub', $payload);
+    $this->assertGreaterThan(0, strlen($payload['sub']));
+
+    // TODO: Need to be smart about testing/disabling the
+    // caching for this test to make sense. Not sure how to do that
+    // at the moment.
+    $client = $this->getClient();
+    $http = $client->getHttpClient();
+    $data = json_decode($jwt->urlSafeB64Decode($segments[1]));
+    $verify = new Google_AccessToken_Verify($http);
+    $payload = $verify->verifyIdToken($token['id_token'], $data->aud);
+    $this->assertArrayHasKey('sub', $payload);
+    $this->assertGreaterThan(0, strlen($payload['sub']));
+  }

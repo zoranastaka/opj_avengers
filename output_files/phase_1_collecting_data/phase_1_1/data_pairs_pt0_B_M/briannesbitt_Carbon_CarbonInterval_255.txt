@@ -1,0 +1,10 @@
+    /**
+     * Convert overflowed values into bigger units.
+     *
+     * @return $this
+     */
+
+    public function cascade()
+    {
+        return $this->doCascade(false);
+    }

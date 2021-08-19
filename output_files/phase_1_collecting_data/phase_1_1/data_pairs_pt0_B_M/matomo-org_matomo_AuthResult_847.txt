@@ -1,0 +1,10 @@
+    /**
+     * Returns true if this result was successfully authentication.
+     *
+     * @return bool
+     */
+
+    public function wasAuthenticationSuccessful()
+    {
+        return $this->code > self::FAILURE;
+    }

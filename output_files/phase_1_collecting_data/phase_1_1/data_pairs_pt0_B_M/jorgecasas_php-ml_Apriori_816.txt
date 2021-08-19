@@ -1,0 +1,11 @@
+    /**
+     * Returns true if subset is a (proper) subset of set by its items string representation.
+     *
+     * @param mixed[] $set
+     * @param mixed[] $subset
+     */
+
+    private function subset(array $set, array $subset): bool
+    {
+        return count(array_diff($subset, array_intersect($subset, $set))) === 0;
+    }

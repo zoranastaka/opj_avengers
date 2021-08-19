@@ -1,0 +1,17 @@
+    /**
+     * @test         populationCovariance
+     * @dataProvider dataProviderForPopulationCovariance
+     * @param        array $X
+     * @param        array $Y
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testPopulationCovariance(array $X, array $Y, float $expected)
+    {
+        // When
+        $covariance = Correlation::populationCovariance($X, $Y);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $covariance, 0.01);
+    }

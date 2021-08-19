@@ -1,0 +1,13 @@
+    /**
+     * Create a very old date representing start of time.
+     *
+     * @return static
+     */
+
+    public static function startOfTime(): self
+    {
+        $date = static::parse('0001-01-01')->years(self::getStartOfTimeYear());
+        $date->startOfTime = true;
+
+        return $date;
+    }

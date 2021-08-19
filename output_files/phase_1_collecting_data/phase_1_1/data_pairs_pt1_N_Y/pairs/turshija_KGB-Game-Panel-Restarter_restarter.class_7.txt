@@ -1,0 +1,5 @@
+	/*
+	 * Metoda ocisti output buffer, a zatim ispise gresku
+	 */
+
+	function izbaciGresku($tekst) {

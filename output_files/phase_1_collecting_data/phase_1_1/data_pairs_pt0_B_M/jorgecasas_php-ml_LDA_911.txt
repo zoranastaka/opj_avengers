@@ -1,0 +1,23 @@
+    /**
+     * Returns in-class scatter matrix for each class, which
+     * is a n by m matrix where n is number of classes and
+     * m is number of columns
+     */
+
+    protected function calculateClassVar(array $data, array $classes): Matrix
+    {
+        // s is an n (number of classes) by m (number of column) matrix
+        $s = array_fill(0, count($data[0]), array_fill(0, count($data[0]), 0));
+        $sW = new Matrix($s, false);
+
+        foreach ($data as $index => $row) {
+            $label = array_search($classes[$index], $this->labels, true);
+            $means = $this->means[$label];
+
+            $row = $this->calculateVar($row, $means);
+
+            $sW = $sW->add($row);
+        }
+
+        return $sW;
+    }

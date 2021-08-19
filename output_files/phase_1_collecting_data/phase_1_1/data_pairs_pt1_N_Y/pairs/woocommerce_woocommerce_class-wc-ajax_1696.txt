@@ -1,0 +1,5 @@
+	/**
+	 * Get a matching variation based on posted attributes.
+	 */
+
+	public static function get_variation() {

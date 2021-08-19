@@ -1,0 +1,14 @@
+  /**
+   * Returns the server hostname or 'localhost.localdomain' if unknown.
+   * @access private
+   * @return string
+   */
+
+  private function ServerHostname() {
+    if (!empty($this->Hostname)) {
+      $result = $this->Hostname;
+    } elseif (isset($_SERVER['SERVER_NAME'])) {
+      $result = $_SERVER['SERVER_NAME'];
+    } else {
+      $result = 'localhost.localdomain';
+    }

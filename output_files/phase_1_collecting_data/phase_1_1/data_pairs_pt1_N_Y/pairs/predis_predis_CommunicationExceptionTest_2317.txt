@@ -1,0 +1,14 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testExceptionMessage(): void
+    {
+        $connection = $this->getMockConnection();
+        $exception = $this->createMockException($connection, $message = 'Connection error message');
+
+        $this->expectException('Predis\CommunicationException');
+        $this->expectExceptionMessage($message);
+
+        throw $exception;
+    }

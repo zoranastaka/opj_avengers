@@ -1,0 +1,18 @@
+    /**
+     * CategoryController constructor.
+     */
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->middleware(
+            function ($request, $next) {
+                /** @var User $user */
+                $user             = auth()->user();
+                $this->repository = app(CategoryRepositoryInterface::class);
+                $this->repository->setUser($user);
+
+                return $next($request);
+            }
+        );
+    }

@@ -1,0 +1,20 @@
+    /**
+     * @test   getColumn returns the expected column as an array
+     * @throws \Exception
+     */
+
+    public function testGetColumn()
+    {
+        // Given
+        $A = [
+            [1, 2, 3],
+            [2, 3, 4],
+            [4, 5, 6],
+        ];
+        $matrix = MatrixFactory::create($A);
+
+        // Then
+        $this->assertEquals([1, 2, 4], $matrix->getColumn(0));
+        $this->assertEquals([2, 3, 5], $matrix->getColumn(1));
+        $this->assertEquals([3, 4, 6], $matrix->getColumn(2));
+    }

@@ -1,0 +1,24 @@
+    /**
+     * Aliquot sum
+     * The aliquot sum of a positive integer is the sum of all proper divisors of n,
+     * that is, the sum of its positive divisors excluding the number itself
+     *
+     * Notation:
+     * s(n)
+     *
+     * Formula:
+     * σ(n) − n
+     *
+     * @see    https://en.wikipedia.org/wiki/Aliquot_sum
+     *
+     * @param  int $n
+     *
+     * @return int aliquot sum of n
+     *
+     * @throws Exception\OutOfBoundsException if n is < 1.
+     */
+
+    public static function aliquotSum(int $n): int
+    {
+        return self::sumOfDivisors($n) - $n;
+    }

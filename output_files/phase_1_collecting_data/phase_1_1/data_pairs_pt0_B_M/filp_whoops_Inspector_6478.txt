@@ -1,0 +1,8 @@
+    /**
+     * @return string
+     */
+
+    public function getExceptionMessage()
+    {
+        return $this->extractDocrefUrl($this->exception->getMessage())['message'];
+    }

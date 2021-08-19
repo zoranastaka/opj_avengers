@@ -1,0 +1,17 @@
+    /**
+     * Return the data types that the estimator is compatible with.
+     *
+     * @internal
+     *
+     * @return list<\Rubix\ML\DataType>
+     */
+
+    public function compatibility() : array
+    {
+        $compatibility = array_intersect(
+            $this->booster->compatibility(),
+            $this->base->compatibility()
+        );
+
+        return array_values($compatibility);
+    }

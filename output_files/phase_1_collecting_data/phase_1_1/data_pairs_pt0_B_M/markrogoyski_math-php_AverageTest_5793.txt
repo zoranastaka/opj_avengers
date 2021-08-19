@@ -1,0 +1,16 @@
+    /**
+     * @test   mean when the input array is empty
+     * @throws \Exception
+     */
+
+    public function testMeanExceptionWhenEmptyArray()
+    {
+        // Given
+        $numbers = [];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Average::mean($numbers);
+    }

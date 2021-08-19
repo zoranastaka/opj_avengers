@@ -1,0 +1,17 @@
+    /**
+     * @test   lehmerMean with a p of zero is the harmonic mean
+     * @throws \Exception
+     */
+
+    public function testLehmerMeanPEqualsZeroIsHarmonicMean()
+    {
+        // Given
+        $numbers = [ 3, 6, 2, 9, 1, 7, 2];
+        $p       = 0;
+
+        // When
+        $mean = Average::lehmerMean($numbers, $p);
+
+        // Then
+        $this->assertEquals(Average::harmonicMean($numbers), $mean);
+    }

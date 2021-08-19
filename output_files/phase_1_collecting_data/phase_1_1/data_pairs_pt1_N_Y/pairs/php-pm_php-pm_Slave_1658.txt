@@ -1,0 +1,13 @@
+    /**
+     * Close slave
+     *
+     * Closed slaves don't accept connections anymore and are awaiting termination.
+     * Closing is unconditional and does not verify slave status before closing.
+     *
+     * @return void
+     */
+
+    public function close()
+    {
+        $this->status = self::CLOSED;
+    }

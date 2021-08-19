@@ -1,0 +1,26 @@
+    /**
+     * Casts a resource to an array representation.
+     *
+     * @param bool $isNested True if the object is nested in the dumped structure
+     *
+     * @return array The resource casted as array
+     */
+
+    protected function castResource(Stub $stub, bool $isNested)
+    {
+        $a = [];
+        $res = $stub->value;
+        $type = $stub->class;
+
+        try {
+            if (!empty($this->casters[':'.$type])) {
+                foreach ($this->casters[':'.$type] as $callback) {
+                    $a = $callback($res, $a, $stub, $isNested, $this->filter);
+                }
+            }
+        } catch (\Exception $e) {
+            $a = [(Stub::TYPE_OBJECT === $stub->type ? Caster::PREFIX_VIRTUAL : '').'⚠' => new ThrowingCasterException($e)] + $a;
+        }
+
+        return $a;
+    }

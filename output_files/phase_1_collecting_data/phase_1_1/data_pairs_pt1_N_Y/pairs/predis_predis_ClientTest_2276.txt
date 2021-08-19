@@ -1,0 +1,14 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testIsConnectedChecksConnectionState(): void
+    {
+        $connection = $this->getMockBuilder('Predis\Connection\ConnectionInterface')->getMock();
+        $connection
+            ->expects($this->once())
+            ->method('isConnected');
+
+        $client = new Client($connection);
+        $client->isConnected();
+    }

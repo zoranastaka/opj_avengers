@@ -1,0 +1,15 @@
+    /**
+     * @test         triangularNumber
+     * @dataProvider dataProviderForTriangularNumber
+     * @param        int $n
+     * @param        array $expected_triangular
+     */
+
+    public function testTriangularNumber(int $n, array $expected_triangular)
+    {
+        // When
+        $triangular = Advanced::triangularNumber($n);
+
+        // Then
+        $this->assertEquals($expected_triangular, $triangular);
+    }

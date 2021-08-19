@@ -1,0 +1,16 @@
+    /**
+     * @test         lcm returns the least-common multiple of two integers.
+     * @dataProvider dataProviderForLcm
+     * @param        int $a
+     * @param        int $b
+     * @param        int $expected_lcm
+     */
+
+    public function testLCM(int $a, int $b, int $expected_lcm)
+    {
+        // When
+        $lcm = Algebra::lcm($a, $b);
+
+        // Then
+        $this->assertEquals($expected_lcm, $lcm);
+    }

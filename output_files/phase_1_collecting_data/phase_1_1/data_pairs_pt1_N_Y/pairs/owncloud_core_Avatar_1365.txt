@@ -1,0 +1,5 @@
+/**
+ * This class gets and sets users avatars.
+ */
+
+class Avatar implements IAvatar {

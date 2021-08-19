@@ -1,0 +1,7 @@
+	/**
+	 * Take a list of patches and return a textual representation.
+	 * @param {Array.<patch_obj>} patches Array of patch objects.
+	 * @return {string} Text representation of patches.
+	 */
+
+	function patch_toText($patches) {

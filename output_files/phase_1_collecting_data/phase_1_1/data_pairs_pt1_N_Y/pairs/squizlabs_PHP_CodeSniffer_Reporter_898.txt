@@ -1,0 +1,65 @@
+    /**
+     * Generates and prints a single final report.
+     *
+     * @param string $report The report type to print.
+     *
+     * @return void
+     */
+
+    public function printReport($report)
+    {
+        $reportClass = $this->reports[$report]['class'];
+        $reportFile  = $this->reports[$report]['output'];
+
+        if ($reportFile !== null) {
+            $filename = $reportFile;
+            $toScreen = false;
+        } else {
+            if (isset($this->tmpFiles[$report]) === true) {
+                $filename = $this->tmpFiles[$report];
+            } else {
+                $filename = null;
+            }
+
+            $toScreen = true;
+        }
+
+        $reportCache = '';
+        if ($filename !== null) {
+            $reportCache = file_get_contents($filename);
+        }
+
+        ob_start();
+        $reportClass->generate(
+            $reportCache,
+            $this->totalFiles,
+            $this->totalErrors,
+            $this->totalWarnings,
+            $this->totalFixable,
+            $this->config->showSources,
+            $this->config->reportWidth,
+            $this->config->interactive,
+            $toScreen
+        );
+        $generatedReport = ob_get_contents();
+        ob_end_clean();
+
+        if ($this->config->colors !== true || $reportFile !== null) {
+            $generatedReport = preg_replace('`\033\[[0-9;]+m`', '', $generatedReport);
+        }
+
+        if ($reportFile !== null) {
+            if (PHP_CODESNIFFER_VERBOSITY > 0) {
+                echo $generatedReport;
+            }
+
+            file_put_contents($reportFile, $generatedReport.PHP_EOL);
+        } else {
+            echo $generatedReport;
+            if ($filename !== null && file_exists($filename) === true) {
+                unlink($filename);
+                unset($this->tmpFiles[$report]);
+            }
+        }
+
+    }//end printReport()

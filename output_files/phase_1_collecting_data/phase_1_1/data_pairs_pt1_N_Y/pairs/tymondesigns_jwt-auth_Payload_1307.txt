@@ -1,0 +1,10 @@
+    /**
+     * Get the array of claim instances.
+     *
+     * @return \Tymon\JWTAuth\Claims\Collection
+     */
+
+    public function getClaims()
+    {
+        return $this->claims;
+    }

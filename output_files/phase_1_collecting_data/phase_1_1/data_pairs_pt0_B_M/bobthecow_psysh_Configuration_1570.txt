@@ -1,0 +1,28 @@
+    /**
+     * Set the shell output verbosity.
+     *
+     * Accepts OutputInterface verbosity constants.
+     *
+     * @param string $verbosity
+     */
+
+    public function setVerbosity($verbosity)
+    {
+        $validVerbosityLevels = [
+            self::VERBOSITY_QUIET,
+            self::VERBOSITY_NORMAL,
+            self::VERBOSITY_VERBOSE,
+            self::VERBOSITY_VERY_VERBOSE,
+            self::VERBOSITY_DEBUG,
+        ];
+
+        if (!\in_array($verbosity, $validVerbosityLevels)) {
+            throw new \InvalidArgumentException('Invalid verbosity level: '.$verbosity);
+        }
+
+        $this->verbosity = $verbosity;
+
+        if (isset($this->output)) {
+            $this->output->setVerbosity($this->getOutputVerbosity());
+        }
+    }

@@ -1,0 +1,9 @@
+    /**
+     * Diagonal matrix must be symmetric
+     * @inheritDoc
+     */
+
+    public function isSymmetric(): bool
+    {
+        return true;
+    }

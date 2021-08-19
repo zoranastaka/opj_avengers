@@ -1,0 +1,13 @@
+    /**
+     * @return array [SSt, dft, SST, MSE, expected]
+     */
+
+    public function dataProviderForOmegaSquared(): array
+    {
+        return [
+            // Test data: http://www.uccs.edu/lbecker/glm_effectsize.html
+            [24, 1, 610, 18.333, 0.00901910292791],
+            [112, 2, 610, 18.333, 0.11989502381699],
+            [144, 2, 610, 18.333, 0.17082343279758],
+        ];
+    }

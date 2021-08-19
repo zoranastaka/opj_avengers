@@ -1,0 +1,12 @@
+    /**
+     * @test MathException
+     */
+
+    public function testMathException()
+    {
+        // Given
+        $e = new Exception\MathException('message');
+
+        // Then
+        $this->assertInstanceOf(\Exception::class, $e);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get quote.
+     *
+     * @return string
+     */
+
+    public function getQuote()
+    {
+        return $this->quote;
+    }

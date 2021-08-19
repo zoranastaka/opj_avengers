@@ -1,0 +1,8 @@
+    /**
+     * @param $payload
+     */
+
+    public function __construct($payload)
+    {
+        //
+    }

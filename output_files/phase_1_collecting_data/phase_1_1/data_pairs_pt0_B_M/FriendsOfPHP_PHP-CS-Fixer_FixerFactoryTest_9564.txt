@@ -1,0 +1,21 @@
+    /**
+     * @covers \PhpCsFixer\FixerFactory::getFixers
+     */
+
+    public function testThatFixersAreSorted(): void
+    {
+        $factory = new FixerFactory();
+        $fxs = [
+            $this->createFixerDouble('f1', 0),
+            $this->createFixerDouble('f2', -10),
+            $this->createFixerDouble('f3', 10),
+            $this->createFixerDouble('f4', -10),
+        ];
+
+        foreach ($fxs as $fx) {
+            $factory->registerFixer($fx, false);
+        }
+
+        // There are no rules that forces $fxs[1] to be prioritized before $fxs[3]. We should not test against that
+        static::assertSame([$fxs[2], $fxs[0]], \array_slice($factory->getFixers(), 0, 2));
+    }

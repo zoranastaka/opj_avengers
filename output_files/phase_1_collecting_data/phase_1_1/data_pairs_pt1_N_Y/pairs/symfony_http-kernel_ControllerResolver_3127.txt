@@ -1,0 +1,10 @@
+    /**
+     * Returns an instantiated controller.
+     *
+     * @return object
+     */
+
+    protected function instantiateController(string $class)
+    {
+        return new $class();
+    }

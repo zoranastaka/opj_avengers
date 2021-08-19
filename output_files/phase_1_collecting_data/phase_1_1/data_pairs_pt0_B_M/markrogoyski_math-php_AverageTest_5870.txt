@@ -1,0 +1,11 @@
+    /**
+     * @return array [A, B, H]
+     */
+
+    public function dataProviderForHeronianMean(): array
+    {
+        return [
+            [ 4, 5, 4.490711985 ],
+            [ 12, 50, 28.8316324759 ],
+        ];
+    }

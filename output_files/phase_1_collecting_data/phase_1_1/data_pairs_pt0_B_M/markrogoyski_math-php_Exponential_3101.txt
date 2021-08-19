@@ -1,0 +1,21 @@
+    /**
+     * Cumulative distribution function
+     *
+     * f(x;λ) = 1 − ℯ^⁻λx  x ≥ 0
+     *        = 0          x < 0
+     *
+     * @param float $x the random variable
+     *
+     * @return float
+     */
+
+    public function cdf(float $x): float
+    {
+        if ($x < 0) {
+            return 0;
+        }
+
+        $λ = $this->λ;
+
+        return 1 - \exp(-$λ * $x);
+    }

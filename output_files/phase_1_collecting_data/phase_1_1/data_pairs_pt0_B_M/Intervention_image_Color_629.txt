@@ -1,0 +1,14 @@
+    /**
+     * Initiates color object from given string
+     *
+     * @param  string $value
+     *
+     * @return \Intervention\Image\AbstractColor
+     */
+
+    public function initFromString($value)
+    {
+        if ($color = $this->rgbaFromString($value)) {
+            $this->setPixel($color[0], $color[1], $color[2], $color[3]);
+        }
+    }

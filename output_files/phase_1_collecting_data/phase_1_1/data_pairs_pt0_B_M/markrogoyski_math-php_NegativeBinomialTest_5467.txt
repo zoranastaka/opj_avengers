@@ -1,0 +1,10 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForVariance(): array
+    {
+        return [
+            [4, 0.05, 0.22160664819945],
+        ];
+    }

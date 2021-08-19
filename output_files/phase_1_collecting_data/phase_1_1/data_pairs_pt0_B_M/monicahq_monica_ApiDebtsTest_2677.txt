@@ -1,0 +1,10 @@
+    /** @test */
+
+    public function it_cant_delete_a_debt_with_an_invalid_id()
+    {
+        $user = $this->signin();
+
+        $response = $this->json('DELETE', '/api/debts/0');
+
+        $this->expectNotFound($response);
+    }

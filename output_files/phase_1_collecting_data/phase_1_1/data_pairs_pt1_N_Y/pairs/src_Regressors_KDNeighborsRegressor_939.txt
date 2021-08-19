@@ -1,0 +1,10 @@
+    /**
+     * Return the base k-d tree instance.
+     *
+     * @return \Rubix\ML\Graph\Trees\Spatial
+     */
+
+    public function tree() : Spatial
+    {
+        return $this->tree;
+    }

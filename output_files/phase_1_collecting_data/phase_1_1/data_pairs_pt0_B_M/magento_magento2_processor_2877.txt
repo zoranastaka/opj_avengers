@@ -1,0 +1,13 @@
+    /**
+     * Process 404 error
+     *
+     * @return \Magento\Framework\App\Response\Http
+     */
+
+    public function process404()
+    {
+        $this->pageTitle = 'Error 404: Not Found';
+        $this->_response->setHttpResponseCode(404);
+        $this->_response->setBody($this->_renderPage('404.phtml'));
+        return $this->_response;
+    }

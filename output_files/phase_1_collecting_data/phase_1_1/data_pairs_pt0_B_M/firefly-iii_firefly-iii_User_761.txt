@@ -1,0 +1,11 @@
+    /**
+     * @codeCoverageIgnore
+     * Link to rules.
+     *
+     * @return HasMany
+     */
+
+    public function rules(): HasMany
+    {
+        return $this->hasMany(Rule::class);
+    }

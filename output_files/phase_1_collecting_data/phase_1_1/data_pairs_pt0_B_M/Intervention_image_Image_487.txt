@@ -1,0 +1,10 @@
+    /**
+     * Returns current image driver
+     *
+     * @return \Intervention\Image\AbstractDriver
+     */
+
+    public function getDriver()
+    {
+        return $this->driver;
+    }

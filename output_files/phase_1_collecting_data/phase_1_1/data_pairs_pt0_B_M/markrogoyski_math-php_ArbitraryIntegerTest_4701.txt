@@ -1,0 +1,23 @@
+    /**
+     * @test         String representation
+     * @dataProvider dataProviderForIntToString
+     * @dataProvider dataProviderForStringIntToString
+     * @dataProvider dataProviderForBinaryToString
+     * @dataProvider dataProviderForHexToString
+     * @dataProvider dataProviderForOctalToString
+     * @param        mixed $int
+     * @param        string $expected
+     * @throws       \Exception
+     */
+
+    public function testStringToString($int, string $expected)
+    {
+        // Given
+        $obj = new ArbitraryInteger($int);
+
+        // When
+        $stringRepresentation = (string) $obj;
+
+        // Then
+        $this->assertSame($expected, $stringRepresentation);
+    }

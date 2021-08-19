@@ -1,0 +1,39 @@
+    /** @test */
+
+    public function it_picks_up_conversations_with_patterns()
+    {
+        $GLOBALS['answer'] = '';
+        $GLOBALS['called'] = false;
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'Hi Julia',
+        ]);
+
+        $botman->hears('Hi Julia', function ($botman) {
+            $conversation = new TestConversation();
+            $botman->storeConversation($conversation, [
+                [
+                    'pattern' => 'Call me {name}',
+                    'callback' => function ($answer, $name) use (&$called) {
+                        $GLOBALS['answer'] = $name;
+                        $GLOBALS['called'] = true;
+                    },
+                ],
+            ]);
+        });
+        $botman->listen();
+
+        /*
+         * Now that the first message is saved, fake a reply
+         */
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'call me Heisenberg',
+        ]);
+        $botman->listen();
+
+        $this->assertSame('Heisenberg', $GLOBALS['answer']);
+        $this->assertTrue($GLOBALS['called']);
+    }

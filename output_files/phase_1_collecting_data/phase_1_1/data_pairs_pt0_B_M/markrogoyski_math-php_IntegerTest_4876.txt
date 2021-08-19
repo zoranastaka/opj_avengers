@@ -1,0 +1,14 @@
+    /**
+     * @test         isOdd returns true for an odd number
+     * @dataProvider dataProviderForOddNumbers
+     * @param        int $x
+     */
+
+    public function testIsOdd(int $x)
+    {
+        // When
+        $isOdd = Integer::isOdd($x);
+
+        // Then
+        $this->assertTrue($isOdd);
+    }

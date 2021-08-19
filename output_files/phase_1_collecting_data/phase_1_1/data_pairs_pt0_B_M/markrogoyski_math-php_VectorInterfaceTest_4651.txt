@@ -1,0 +1,12 @@
+    /**
+     * @test ArrayAccess interface
+     */
+
+    public function testArrayAccessInterfaceOffsetSet()
+    {
+        // Then
+        $this->expectException(Exception\VectorException::class);
+
+        // When
+        $this->V[0] = 1;
+    }

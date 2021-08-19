@@ -1,0 +1,19 @@
+    /**
+     * @test leadingPrincipalMinor throws an OutOfBoundsException when k is > n.
+     */
+
+    public function testLeadingPrincipalMinorExceptionKGreaterThanN()
+    {
+        // Given
+        $A = MatrixFactory::create([
+            [1, 2, 3],
+            [2, 3, 4],
+            [3, 4, 5],
+        ]);
+
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        $R = $A->leadingPrincipalMinor($A->getN() + 1);
+    }

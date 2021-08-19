@@ -1,0 +1,20 @@
+    /**
+     * Validate the file listings in the package.xml file.
+     *
+     * @return void
+     */
+
+    public function validate()
+    {
+        $exitCode = 0;
+        if ($this->checkContents() !== true) {
+            $exitCode = 1;
+        }
+
+        if ($this->checkPHPRelease() !== true) {
+            $exitCode = 1;
+        }
+
+        exit($exitCode);
+
+    }//end validate()

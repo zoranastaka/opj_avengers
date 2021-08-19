@@ -1,0 +1,14 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function remove(string $name)
+    {
+        $retval = null;
+        if (\array_key_exists($name, $this->attributes)) {
+            $retval = $this->attributes[$name];
+            unset($this->attributes[$name]);
+        }
+
+        return $retval;
+    }

@@ -1,0 +1,30 @@
+    /**
+     * @return array (model, data)
+     */
+
+    public function dataProviderForLabeledData(): array
+    {
+        return [
+            [
+                0,
+                [
+                    'weight' => 4.17,
+                    'group'  => 'ctrl',
+                ]
+            ],
+            [
+                14,
+                [
+                    'weight' => 5.87,
+                    'group'  => 'trt1',
+                ]
+            ],
+            [
+                29,
+                [
+                    'weight' => 5.26,
+                    'group'  => 'trt2',
+                ]
+            ],
+        ];
+    }

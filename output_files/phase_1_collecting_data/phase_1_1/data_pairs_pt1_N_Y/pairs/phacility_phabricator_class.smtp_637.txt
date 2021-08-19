@@ -1,0 +1,18 @@
+  /**
+   * Starts a mail transaction from the email address specified in
+   * $from. Returns true if successful or false otherwise. If True
+   * the mail transaction is started and then one or more Recipient
+   * commands may be called followed by a Data command. This command
+   * will send the message to the users terminal if they are logged
+   * in and send them an email.
+   *
+   * Implements rfc 821: SAML <SP> FROM:<reverse-path> <CRLF>
+   *
+   * SMTP CODE SUCCESS: 250
+   * SMTP CODE SUCCESS: 552,451,452
+   * SMTP CODE SUCCESS: 500,501,502,421
+   * @access public
+   * @return bool
+   */
+
+  public function SendAndMail($from) {

@@ -1,0 +1,10 @@
+    /**
+     * Asserts that a variable is of a Stringy instance.
+     *
+     * @param mixed $actual
+     */
+
+    public function assertStringy($actual)
+    {
+        $this->assertInstanceOf('Stringy\Stringy', $actual);
+    }

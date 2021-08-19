@@ -1,0 +1,12 @@
+    /**
+     * Set the Shell backreference and add any new commands to the Shell.
+     *
+     * @param Shell $shell
+     */
+
+    public function setShell(Shell $shell)
+    {
+        $this->shell = $shell;
+        $this->doAddCommands();
+        $this->doAddMatchers();
+    }

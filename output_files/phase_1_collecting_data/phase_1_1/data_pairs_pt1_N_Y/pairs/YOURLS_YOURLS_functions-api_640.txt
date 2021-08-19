@@ -1,0 +1,8 @@
+/**
+ * API function wrapper: return version numbers
+ *
+ * @since 1.6
+ * @return array Result of API call
+ */
+
+function yourls_api_action_version() {

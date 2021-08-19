@@ -1,0 +1,10 @@
+    /**
+     * Get WorkbookPassword (hashed)
+     *
+     * @return string
+     */
+
+    public function getWorkbookPassword()
+    {
+        return $this->workbookPassword;
+    }

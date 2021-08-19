@@ -1,0 +1,10 @@
+    /**
+     * Indicates that this expectation is never expected to be called
+     *
+     * @return self
+     */
+
+    public function never()
+    {
+        return $this->times(0);
+    }

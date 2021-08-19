@@ -1,0 +1,9 @@
+    /*
+     * Subtract one objects from another
+     *
+     * @param mixed $object_or_scalar the value to be subtracted
+     *
+     * @return ObjectArithmetic result.
+     */
+
+    public function subtract($object_or_scalar);

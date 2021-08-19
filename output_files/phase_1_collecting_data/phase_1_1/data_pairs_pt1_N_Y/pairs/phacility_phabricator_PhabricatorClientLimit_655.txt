@@ -1,0 +1,9 @@
+  /**
+   * Get the number of seconds for each rate bucket.
+   *
+   * For example, a value of 60 will create one-minute buckets.
+   *
+   * @return int Number of seconds per bucket.
+   */
+
+  abstract protected function getBucketDuration();

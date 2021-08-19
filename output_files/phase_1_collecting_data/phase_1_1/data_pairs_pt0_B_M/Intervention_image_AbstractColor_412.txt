@@ -1,0 +1,7 @@
+    /**
+     * Calculates RGBA in string format of current color instance
+     *
+     * @return string
+     */
+
+    abstract public function getRgba();

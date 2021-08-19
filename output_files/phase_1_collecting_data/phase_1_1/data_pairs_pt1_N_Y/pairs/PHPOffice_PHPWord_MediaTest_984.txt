@@ -1,0 +1,8 @@
+    /**
+     * Get section media elements
+     */
+
+    public function testGetSectionMediaElementsWithNull()
+    {
+        $this->assertEquals(array(), Media::getElements('section'));
+    }

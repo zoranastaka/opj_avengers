@@ -1,0 +1,10 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testSupportsSchemeTls(): void
+    {
+        $connection = $this->createConnectionWithParams(array('scheme' => 'tls'));
+
+        $this->assertInstanceOf('Predis\Connection\NodeConnectionInterface', $connection);
+    }

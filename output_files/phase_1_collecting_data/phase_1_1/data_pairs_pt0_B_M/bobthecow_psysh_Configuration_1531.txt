@@ -1,0 +1,33 @@
+    /**
+     * Get a Shell Output service instance.
+     *
+     * If none has been explicitly provided, this will create a new instance
+     * with the configured verbosity and output pager supplied by self::getPager
+     *
+     * @see self::verbosity
+     * @see self::getPager
+     *
+     * @return ShellOutput
+     */
+
+    public function getOutput()
+    {
+        if (!isset($this->output)) {
+            $this->setOutput(new ShellOutput(
+                $this->getOutputVerbosity(),
+                null,
+                null,
+                $this->getPager()
+            ));
+
+            // This is racy because `getOutputDecorated` needs access to the
+            // output stream to figure out if it's piped or not, so create it
+            // first, then update after we have a stream.
+            $decorated = $this->getOutputDecorated();
+            if ($decorated !== null) {
+                $this->output->setDecorated($decorated);
+            }
+        }
+
+        return $this->output;
+    }

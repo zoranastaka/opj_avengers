@@ -1,0 +1,8 @@
+    /**
+     * Converts the UUID to a string for JSON serialization
+     */
+
+    public function jsonSerialize(): string
+    {
+        return $this->toString();
+    }

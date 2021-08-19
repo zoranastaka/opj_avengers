@@ -1,0 +1,16 @@
+    /**
+     * @return $this
+     */
+
+    public function registerExtension(Extension\ExtensionInterface $extension): self
+    {
+        $this->extensions[$extension->getName()] = $extension;
+
+        $this->nodeTranslators = array_merge($this->nodeTranslators, $extension->getNodeTranslators());
+        $this->combinationTranslators = array_merge($this->combinationTranslators, $extension->getCombinationTranslators());
+        $this->functionTranslators = array_merge($this->functionTranslators, $extension->getFunctionTranslators());
+        $this->pseudoClassTranslators = array_merge($this->pseudoClassTranslators, $extension->getPseudoClassTranslators());
+        $this->attributeMatchingTranslators = array_merge($this->attributeMatchingTranslators, $extension->getAttributeMatchingTranslators());
+
+        return $this;
+    }

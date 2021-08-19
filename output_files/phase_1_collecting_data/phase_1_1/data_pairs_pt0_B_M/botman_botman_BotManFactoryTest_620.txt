@@ -1,0 +1,6 @@
+    /** @test */
+
+    public function it_can_create_botman_instances()
+    {
+        $this->assertInstanceOf(BotMan::class, BotManFactory::create([]));
+    }

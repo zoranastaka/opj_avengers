@@ -1,0 +1,8 @@
+    /**
+     * @return \Dotenv\Repository\Adapter\AdapterInterface
+     */
+
+    private static function createAdapter()
+    {
+        return ArrayAdapter::create()->get();
+    }

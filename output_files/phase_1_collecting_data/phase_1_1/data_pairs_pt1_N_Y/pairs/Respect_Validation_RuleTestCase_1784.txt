@@ -1,0 +1,12 @@
+    /**
+     * Data providers for valid results.
+     *
+     * It returns an array of arrays. Each array contains an instance of Validatable
+     * as the first element and an input in which the validation SHOULD pass.
+     *
+     * @api
+     *
+     * @return mixed[][]
+     */
+
+    abstract public function providerForValidInput(): array;

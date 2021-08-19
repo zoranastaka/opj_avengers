@@ -1,0 +1,10 @@
+    /**
+     * Returns true if the current user is logged in as the Super User
+     *
+     * @return bool
+     */
+
+    public function hasSuperUserAccess()
+    {
+        return $this->hasSuperUserAccess;
+    }

@@ -1,0 +1,29 @@
+    /**
+     * Probability density function
+     *
+     *                     ₓ
+     *          1         ⁻-
+     * pdf = ------ xᵏ⁻¹ e θ
+     *       Γ(k)θᵏ
+     *
+     * @param float $x percentile      x > 0
+     *
+     * @return float
+     */
+
+    public function pdf(float $x): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['x' => $x]);
+
+        $k = $this->k;
+        $θ = $this->θ;
+
+        $Γ⟮k⟯   = Special::Γ($k);
+        $θᵏ    = $θ ** $k;
+        $Γ⟮k⟯θᵏ = $Γ⟮k⟯ * $θᵏ;
+
+        $xᵏ⁻¹ = $x ** ($k - 1);
+        $e    = \M_E ** (-$x / $θ);
+
+        return ($xᵏ⁻¹ * $e) / $Γ⟮k⟯θᵏ;
+    }

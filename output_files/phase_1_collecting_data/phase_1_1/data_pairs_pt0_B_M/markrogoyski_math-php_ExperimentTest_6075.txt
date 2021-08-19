@@ -1,0 +1,16 @@
+    /**
+     * @return array [a, b, c, d, or]
+     */
+
+    public function dataProviderForOddsRatio(): array
+    {
+        return [
+            [20, 80, 1, 99, ['OR' => 24.7500, 'ci_lower_bound' => 3.2509, 'ci_upper_bound' => 188.4303, 'p' => 0.0019]],
+            [100, 200, 20, 400, ['OR' => 10.0000, 'ci_lower_bound' => 6.0096, 'ci_upper_bound' => 16.6400, 'p' => 0.0001]],
+            [43, 26, 54, 654, ['OR' => 20.0299, 'ci_lower_bound' => 11.4361, 'ci_upper_bound' => 35.0817, 'p' => 0.0001]],
+            [53, 58, 11, 40, ['OR' => 3.3229, 'ci_lower_bound' => 1.5475, 'ci_upper_bound' => 7.1351, 'p' => 0.0021]],
+            [59, 33, 17, 44, ['OR' => 4.6275, 'ci_lower_bound' => 2.2901, 'ci_upper_bound' => 9.3505, 'p' => 0.0001]],
+            [28, 129, 4, 133, ['OR' => 7.2171, 'ci_lower_bound' => 2.4624, 'ci_upper_bound' => 21.1522, 'p' => 0.0003]],
+            [1000, 49000, 100, 49900, ['OR' => 10.1837, 'ci_lower_bound' => 8.2883, 'ci_upper_bound' => 12.5125, 'p' => 0.0001]],
+        ];
+    }

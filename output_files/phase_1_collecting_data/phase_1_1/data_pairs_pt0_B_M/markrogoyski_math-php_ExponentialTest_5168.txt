@@ -1,0 +1,19 @@
+    /**
+     * @test         inverse throws OutOfBounds exceptions for bad p values
+     * @dataProvider dataProviderForInverseOutOfBoundsP
+     * @param        float $p
+     * @throws       \Exception
+     */
+
+    public function testInverseOutOfBoundsException(float $p)
+    {
+        // Given
+        $λ           = 1;
+        $exponential = new Exponential($λ);
+
+        // Then
+        $this->expectException(OutOfBoundsException::class);
+
+        // When
+        $exponential->inverse($p);
+    }

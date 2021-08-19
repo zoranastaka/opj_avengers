@@ -1,0 +1,10 @@
+    /**
+     * @test
+     */
+
+    public function scores_10_for_matching_callables() {
+        $callable = function() {};
+
+        $exactValueToken = new ExactValueToken($callable);
+        self::assertEquals(10, $exactValueToken->scoreArgument($callable));
+    }

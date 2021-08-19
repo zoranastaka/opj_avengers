@@ -1,0 +1,10 @@
+    /**
+     * Tooth length observations
+     *
+     * @return number[]
+     */
+
+    public function getLen(): array
+    {
+        return \array_column(self::DATA, 0);
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider tidyProvider()
+     */
+
+    public function testTidy($expected, $str)
+    {
+        $stringy = S::create($str);
+        $result = $stringy->tidy();
+        $this->assertStringy($result);
+        $this->assertEquals($expected, $result);
+        $this->assertEquals($str, $stringy);
+    }

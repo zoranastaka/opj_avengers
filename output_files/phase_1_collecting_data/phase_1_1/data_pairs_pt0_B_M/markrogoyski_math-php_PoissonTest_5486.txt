@@ -1,0 +1,18 @@
+    /**
+     * @test         mode
+     * @dataProvider dataProviderForMode
+     * @param        float $λ
+     * @param        array $expected
+     */
+
+    public function testMode(float $λ, array $expected)
+    {
+        // Given
+        $poisson = new Poisson($λ);
+
+        // When
+        $mode = $poisson->mode();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $mode, 0.000001);
+    }

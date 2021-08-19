@@ -1,0 +1,8 @@
+    /**
+     * @deprecated
+     */
+
+    public function load_font_families()
+    {
+        $this->loadFontFamilies();
+    }

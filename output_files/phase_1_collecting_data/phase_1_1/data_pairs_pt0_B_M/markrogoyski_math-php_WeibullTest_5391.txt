@@ -1,0 +1,19 @@
+    /**
+     * @test         mode
+     * @dataProvider dataProviderForMode
+     * @param        float $k
+     * @param        float $λ
+     * @param        float $μ
+     */
+
+    public function testMode(float $k, float $λ, float $μ)
+    {
+        // Given
+        $weibull = new Weibull($k, $λ);
+
+        // When
+        $mode = $weibull->mode();
+
+        // Then
+        $this->assertEqualsWithDelta($μ, $mode, 0.0001);
+    }

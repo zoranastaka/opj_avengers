@@ -1,0 +1,10 @@
+    /**
+     * @deprecated Call `setUseTabCompletion` instead
+     *
+     * @param bool $useTabCompletion
+     */
+
+    public function setTabCompletion($useTabCompletion)
+    {
+        $this->setUseTabCompletion($useTabCompletion);
+    }

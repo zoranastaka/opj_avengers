@@ -1,0 +1,8 @@
+    /**
+     * {@inheritDoc}
+     */
+
+    protected static function getFacadeAccessor()
+    {
+        return LaravelDebugbar::class;
+    }

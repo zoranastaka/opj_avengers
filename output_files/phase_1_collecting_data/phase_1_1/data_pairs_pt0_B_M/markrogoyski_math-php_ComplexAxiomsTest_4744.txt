@@ -1,0 +1,21 @@
+    /**
+     * @test Axiom: (∀a)(∃b) a + b = 0
+     * Additive inverse.
+     * @dataProvider dataProviderForOneComplexNumber
+     * @param        int $r
+     * @param        int $i
+     * @throws       \Exception
+     */
+
+    public function testAdditiveInverse(int $r, int $i)
+    {
+        // Given
+        $a = new Complex($r, $i);
+        $b = new Complex(-$r, -$i);
+
+        // When
+        $a＋b = $a->add($b);
+
+        $this->assertEquals(0, $a＋b->r);
+        $this->assertEquals(0, $a＋b->i);
+    }

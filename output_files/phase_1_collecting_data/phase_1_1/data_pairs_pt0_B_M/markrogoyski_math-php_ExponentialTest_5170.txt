@@ -1,0 +1,19 @@
+    /**
+     * @test rand
+     */
+
+    public function testRand()
+    {
+        foreach (\range(1, 4) as $λ) {
+            foreach (\range(1, 20) as $_) {
+                // Given
+                $exponential = new Exponential($λ);
+
+                // When
+                $random = $exponential->rand();
+
+                // Then
+                $this->assertTrue(\is_numeric($random));
+            }
+        }
+    }

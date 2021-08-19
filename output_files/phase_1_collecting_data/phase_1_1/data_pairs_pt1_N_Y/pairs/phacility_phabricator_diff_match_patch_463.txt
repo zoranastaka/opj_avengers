@@ -1,0 +1,6 @@
+	/**
+	 * Reduce the number of edits by eliminating operationally trivial equalities.
+	 * @param {Array.<Array.<number|string>>} diffs Array of diff tuples.
+	 */
+
+	function diff_cleanupEfficiency(&$diffs) {

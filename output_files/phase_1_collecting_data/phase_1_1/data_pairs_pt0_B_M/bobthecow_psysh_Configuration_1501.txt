@@ -1,0 +1,17 @@
+    /**
+     * Get a temporary file of type $type for process $pid.
+     *
+     * The file will be created inside the current temporary directory.
+     *
+     * @see self::getRuntimeDir
+     *
+     * @param string $type
+     * @param int    $pid
+     *
+     * @return string Temporary file name
+     */
+
+    public function getTempFile($type, $pid)
+    {
+        return \tempnam($this->getRuntimeDir(), $type.'_'.$pid.'_');
+    }

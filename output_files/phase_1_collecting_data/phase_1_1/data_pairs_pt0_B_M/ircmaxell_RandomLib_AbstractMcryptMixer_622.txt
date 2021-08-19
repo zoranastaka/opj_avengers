@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    protected function mixParts1($part1, $part2)
+    {
+        return $this->encryptBlock($part1, $part2);
+    }

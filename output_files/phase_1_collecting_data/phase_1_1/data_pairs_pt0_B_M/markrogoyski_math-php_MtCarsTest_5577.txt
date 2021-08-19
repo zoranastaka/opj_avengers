@@ -1,0 +1,16 @@
+    /**
+     * @test Model names
+     */
+
+    public function testModelNames()
+    {
+        // Given
+        $sampleOfModelNames = ['Mazda RX4', 'Honda Civic', 'Toyota Corolla', 'Volvo 142E'];
+        $models             = $this->mtCars->getModels();
+
+        // When
+        foreach ($sampleOfModelNames as $model) {
+            // Then
+            $this->assertTrue(\in_array($model, $models));
+        }
+    }

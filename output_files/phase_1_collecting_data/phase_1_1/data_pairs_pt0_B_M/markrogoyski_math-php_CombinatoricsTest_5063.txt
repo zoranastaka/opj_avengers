@@ -1,0 +1,22 @@
+    /**
+     * @return array [x, n, fallingFactorial]
+     */
+
+    public function dataProviderForFallingFactorial(): array
+    {
+        return [
+            [5, 0, 1],
+            [5, 1, 5],
+            [5, 2, 20],
+            [5, 3, 60],
+            [5, 4, 120],
+            [5, 5, 120],
+            [5, 6, 0],
+            [4, 3, 24],
+            [4, 4, 24],
+            [4, 5, 0],
+            [8, 5, 6720],
+            [3, 5, 0],
+            [2, 6, 0],
+        ];
+    }

@@ -1,0 +1,14 @@
+	/**
+	 * Register the function mocks to use.
+	 *
+	 * @param array $mocks An associative array where keys are function names and values are function replacement callbacks.
+	 *
+	 * @throws \Exception Invalid parameter.
+	 */
+
+	public function register_function_mocks( array $mocks ) {
+		foreach ( $mocks as $function_name => $mock ) {
+			if ( ! is_string( $function_name ) || ! is_callable( $mock ) ) {
+				throw new \Exception( 'MockableLegacyProxy::register_function_mocks: The supplied mocks array must have function names as keys and function replacement callbacks as values.' );
+			}
+		}

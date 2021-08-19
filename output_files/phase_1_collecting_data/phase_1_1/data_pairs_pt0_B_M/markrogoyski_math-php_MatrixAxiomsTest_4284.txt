@@ -1,0 +1,26 @@
+    /**
+     * @test Axiom: A is invertible symmetric, A⁻¹ is symmetric
+     * If A is an invertible symmetric matrix, the inverse of A is also symmetric
+     * @dataProvider dataProviderForSymmetricMatrix
+     * @param        array $M
+     * @throws       \Exception
+     */
+
+    public function testMatrixIsInvertibleSymmetricThenInverseIsSymmetric(array $M)
+    {
+        // Given
+        $A   = MatrixFactory::create($M);
+
+        if ($A->isInvertible() && $A->isSymmetric()) {
+            // When
+            $A⁻¹ = $A->inverse();
+            $A⁻¹ = $A⁻¹->map(
+                function ($x) {
+                    return \round($x, 5); // Floating point adjustment
+                }
+            );
+
+            // Theb
+            $this->assertTrue($A⁻¹->isSymmetric());
+        }
+    }

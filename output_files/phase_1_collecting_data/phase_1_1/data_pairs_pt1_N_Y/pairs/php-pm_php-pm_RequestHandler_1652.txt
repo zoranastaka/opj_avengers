@@ -1,0 +1,27 @@
+    /**
+     * Replaces or injects header
+     *
+     * @param string   $header
+     * @param string[] $headersToReplace
+     *
+     * @return string
+     */
+
+    protected function replaceHeader($header, $headersToReplace)
+    {
+        $result = $header;
+
+        foreach ($headersToReplace as $key => $value) {
+            if (false !== $headerPosition = \stripos($result, $key . ':')) {
+                // check how long the header is
+                $length = \strpos(\substr($header, $headerPosition), "\r\n");
+                $result = \substr_replace($result, "$key: $value", $headerPosition, $length);
+            } else {
+                // $key is not in header yet, add it at the end
+                $end = \strpos($result, "\r\n\r\n");
+                $result = \substr_replace($result, "\r\n$key: $value", $end, 0);
+            }
+        }
+
+        return $result;
+    }

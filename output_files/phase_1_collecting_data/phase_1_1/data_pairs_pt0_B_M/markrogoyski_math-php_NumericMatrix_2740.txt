@@ -1,0 +1,16 @@
+    /**
+     * Is the matrix bidiagonal?
+     *  - It is a square matrix
+     *  - Non-zero entries along the main diagonal
+     *  - Non-zero entries along either the diagonal above or the diagonal below the main diagonal
+     *  - All the other entries are zero
+     *
+     * https://en.wikipedia.org/wiki/Bidiagonal_matrix
+     *
+     * @return boolean true if bidiagonal; false otherwise
+     */
+
+    public function isBidiagonal(): bool
+    {
+        return ($this->isUpperBidiagonal() || $this->isLowerBidiagonal());
+    }

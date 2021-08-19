@@ -1,0 +1,14 @@
+    /**
+     * Modify to end of current second, microseconds become 999999
+     *
+     * @example
+     * ```
+     * echo Carbon::parse('2018-07-25 12:45:16.334455')
+     *   ->endOfSecond()
+     *   ->format('H:i:s.u');
+     * ```
+     *
+     * @return static
+     */
+
+    public function endOfSecond();

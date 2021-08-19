@@ -1,0 +1,34 @@
+    /**
+     * Calculate the mode average of a list of numbers
+     * If multiple modes (bimodal, trimodal, etc.), all modes will be returned.
+     * Always returns an array, even if only one mode.
+     *
+     * @param float[] $numbers
+     *
+     * @return float[] of mode(s)
+     *
+     * @throws Exception\BadDataException if the input array of numbers is empty
+     */
+
+    public static function mode(array $numbers): array
+    {
+        if (empty($numbers)) {
+            throw new Exception\BadDataException('Cannot find the mode of an empty list of numbers');
+        }
+
+        // Count how many times each number occurs.
+        // Determine the max any number occurs.
+        // Find all numbers that occur max times.
+        $number_strings = \array_map('\strval', $numbers);
+        $number_counts  = \array_count_values($number_strings);
+        $max            = \max($number_counts);
+        $modes          = array();
+        foreach ($number_counts as $number => $count) {
+            if ($count === $max) {
+                $modes[] = $number;
+            }
+        }
+
+        // Cast back to numbers
+        return \array_map('\floatval', $modes);
+    }

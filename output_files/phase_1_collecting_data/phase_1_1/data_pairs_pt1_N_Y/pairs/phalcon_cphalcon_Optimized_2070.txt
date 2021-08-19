@@ -1,0 +1,10 @@
+    /**
+     * Delete all files in target directories
+     */
+
+    public function cleanBuildDirectories()
+    {
+        foreach ($this->settings as $setting) {
+            Util::cleanDirectory($setting['dir']);
+        }
+    }

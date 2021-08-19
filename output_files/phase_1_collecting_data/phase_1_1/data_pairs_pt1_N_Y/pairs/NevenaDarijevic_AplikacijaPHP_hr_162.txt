@@ -1,0 +1,3 @@
+    //da li vec postoji u bazi, jer ako postoji, necemo ponovo izvrsiti insert
+
+    public function postoji_u_bazi($username){

@@ -1,0 +1,9 @@
+    /**
+     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     */
+
+    public function testMaxFail()
+    {
+        $arg = new Argument($this->getMockedCommand([25]));
+        $arg->max(10);
+    }

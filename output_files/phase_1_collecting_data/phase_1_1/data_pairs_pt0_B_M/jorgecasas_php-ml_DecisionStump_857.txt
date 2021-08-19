@@ -1,0 +1,18 @@
+    /**
+     * Returns the probability of the sample of belonging to the given label
+     *
+     * Probability of a sample is calculated as the proportion of the label
+     * within the labels of the training samples in the decision node
+     *
+     * @param mixed $label
+     */
+
+    protected function predictProbability(array $sample, $label): float
+    {
+        $predicted = $this->predictSampleBinary($sample);
+        if ((string) $predicted == (string) $label) {
+            return $this->prob[$label];
+        }
+
+        return 0.0;
+    }

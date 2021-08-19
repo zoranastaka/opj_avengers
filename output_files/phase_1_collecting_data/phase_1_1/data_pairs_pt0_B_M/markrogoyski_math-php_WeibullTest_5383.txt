@@ -1,0 +1,19 @@
+    /**
+     * @dataProvider dataProviderForInverse
+     * @param float $p
+     * @param float $k
+     * @param float $λ
+     * @param float $expected_inverse
+     */
+
+    public function testInverse(float $p, float $k, float $λ, float $expected_inverse)
+    {
+        // Given
+        $weibull =  new Weibull($k, $λ);
+
+        // When
+        $inverse = $weibull->inverse($p);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_inverse, $inverse, 0.000001);
+    }

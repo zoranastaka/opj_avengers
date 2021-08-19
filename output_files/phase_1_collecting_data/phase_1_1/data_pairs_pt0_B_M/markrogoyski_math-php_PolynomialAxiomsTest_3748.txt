@@ -1,0 +1,25 @@
+    /**
+     * @test Axiom: (a + b) ✕ c = a ✕ c + b ✕ c
+     * Distributive law.
+     * @dataProvider dataProviderForThreePolynomials
+     * @param        array $a
+     * @param        array $b
+     * @param        array $c
+     * @throws       \Exception
+     */
+
+    public function testDistributiveLaw2(array $a, array $b, array $c)
+    {
+        // Given
+        $a = new Polynomial($a);
+        $b = new Polynomial($b);
+        $c = new Polynomial($c);
+
+        // When
+        $⟮a ＋ b⟯c   = ($a->add($b))->multiply($c);
+        $⟮ac⟯ ＋ ⟮bc⟯ = ($a->multiply($c))->add($b->multiply($c));
+
+        // Then
+        $this->assertEquals($⟮a ＋ b⟯c->getDegree(), $⟮ac⟯ ＋ ⟮bc⟯->getDegree());
+        $this->assertEquals($⟮a ＋ b⟯c->getCoefficients(), $⟮ac⟯ ＋ ⟮bc⟯->getCoefficients());
+    }

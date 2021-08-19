@@ -1,0 +1,14 @@
+    /**
+     * @test         isBidiagonal returns false for a non bidiagonal matrix
+     * @dataProvider dataProviderForNotBidiagonalMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsNotBidiagonal(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        $this->assertFalse($A->isBidiagonal());
+    }

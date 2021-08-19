@@ -1,0 +1,11 @@
+    /**
+     * Replaces tokens ('{{ tokenName }}') with the result from the token method call
+     *
+     * @param  string $string String that needs to bet parsed
+     * @return string
+     */
+
+    public function parse($string)
+    {
+        return preg_replace_callback('/\{\{\s?(\w+)\s?\}\}/u', array($this, 'callFormatWithMatches'), $string);
+    }

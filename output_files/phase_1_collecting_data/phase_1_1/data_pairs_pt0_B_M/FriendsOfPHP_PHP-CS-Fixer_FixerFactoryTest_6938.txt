@@ -1,0 +1,11 @@
+    /**
+     * @covers \PhpCsFixer\FixerFactory::registerBuiltInFixers
+     */
+
+    public function testRegisterBuiltInFixers(): void
+    {
+        $factory = new FixerFactory();
+        $factory->registerBuiltInFixers();
+
+        static::assertGreaterThan(0, \count($factory->getFixers()));
+    }

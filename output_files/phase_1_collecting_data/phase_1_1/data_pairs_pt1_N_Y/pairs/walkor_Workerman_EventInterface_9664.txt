@@ -1,0 +1,7 @@
+    /**
+     * Destroy loop.
+     *
+     * @return mixed
+     */
+
+    public function destroy();

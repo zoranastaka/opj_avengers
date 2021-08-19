@@ -1,0 +1,10 @@
+    /**
+     * @param string $fontname
+     * @param mixed $entry
+     * @deprecated
+     */
+
+    public function set_font_family($fontname, $entry)
+    {
+        $this->setFontFamily($fontname, $entry);
+    }

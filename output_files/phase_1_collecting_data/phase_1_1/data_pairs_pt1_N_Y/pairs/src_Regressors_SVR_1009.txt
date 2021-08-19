@@ -1,0 +1,25 @@
+    /**
+     * Train the learner with a dataset.
+     *
+     * @param \Rubix\ML\Datasets\Labeled $dataset
+     */
+
+    public function train(Dataset $dataset) : void
+    {
+        SpecificationChain::with([
+            new DatasetIsLabeled($dataset),
+            new DatasetIsNotEmpty($dataset),
+            new SamplesAreCompatibleWithEstimator($dataset, $this),
+            new LabelsAreCompatibleWithLearner($dataset, $this),
+        ])->check();
+
+        $labels = $dataset->labels();
+
+        $data = [];
+
+        foreach ($dataset->samples() as $i => $sample) {
+            $data[] = array_merge([$labels[$i]], $sample);
+        }
+
+        $this->model = $this->svm->train($data);
+    }

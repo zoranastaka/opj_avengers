@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider provideEscapeArgument
+     */
+
+    public function testEscapeArgument($arg)
+    {
+        $p = new Process([self::$phpBin, '-r', 'echo $argv[1];', $arg]);
+        $p->run();
+
+        $this->assertSame((string) $arg, $p->getOutput());
+    }

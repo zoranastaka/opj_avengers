@@ -1,0 +1,11 @@
+    /**
+     * Make predictions from a dataset.
+     *
+     * @param \Rubix\ML\Datasets\Dataset $dataset
+     * @return list<int|float>
+     */
+
+    public function predict(Dataset $dataset) : array
+    {
+        return array_map([$this, 'predictSample'], $dataset->samples());
+    }

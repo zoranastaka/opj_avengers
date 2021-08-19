@@ -1,0 +1,10 @@
+    /**
+     * Returns whether this is only an optional recommendation and not a mandatory requirement.
+     *
+     * @return bool true if optional, false if mandatory
+     */
+
+    public function isOptional()
+    {
+        return $this->optional;
+    }

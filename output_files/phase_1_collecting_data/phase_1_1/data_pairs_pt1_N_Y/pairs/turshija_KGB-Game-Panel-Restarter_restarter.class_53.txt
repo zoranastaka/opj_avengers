@@ -1,0 +1,5 @@
+	/*
+	 * Sigurnosna metoda, iz IP adrese izbaci sve sto nije broj, tacka ili dvotacka
+	 */
+
+	function ocistiIP($ip) {

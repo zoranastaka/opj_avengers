@@ -1,0 +1,17 @@
+    /**
+     * @test   truncatedMean trim percent is less than zero
+     * @throws \Exception
+     */
+
+    public function testTruncatedMeanExceptionLessThanZeroTrimPercent()
+    {
+        // Given
+        $numbers      = [1, 2, 3];
+        $trim_percent = -4;
+
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Average::truncatedMean($numbers, $trim_percent);
+    }

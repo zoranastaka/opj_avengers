@@ -1,0 +1,12 @@
+    /**
+     * Validate params property.
+     */
+
+    protected function isValidParams(array $params): bool
+    {
+        static $mode_list = [STREAM_FILTER_READ => 1, STREAM_FILTER_WRITE => 1];
+
+        return isset($params['enclosure'], $params['escape'], $params['mode'], $mode_list[$params['mode']])
+            && 1 == strlen($params['enclosure'])
+            && 1 == strlen($params['escape']);
+    }

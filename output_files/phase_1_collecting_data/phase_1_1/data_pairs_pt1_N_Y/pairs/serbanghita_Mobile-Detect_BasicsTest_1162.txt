@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider quickHeadersData
+     * @param $headers
+     */
+
+    public function testQuickHeaders($headers)
+    {
+        $md = new Mobile_Detect($headers);
+        $this->assertTrue($md->checkHttpHeadersForMobile());
+    }

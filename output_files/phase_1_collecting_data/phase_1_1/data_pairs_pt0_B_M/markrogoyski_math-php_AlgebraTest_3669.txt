@@ -1,0 +1,12 @@
+    /**
+     * @return array [a, b, c, d, roots]
+     */
+
+    public function dataProviderForCubicOneRealRootWithComplex(): array
+    {
+        return [
+            // D > 0: one root is real, 2 are complex conjugates.
+            [1, 0, 1, 0, [0, ['r' => 0, 'i' => -1], ['r' => 0, 'i' => 1]]],
+            [1, -1, 1, -1, [1, ['r' => 0, 'i' => -1], ['r' => 0, 'i' => 1]]],
+        ];
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @return \XdgBaseDir\Xdg
+     */
+
+    public function getXdg()
+    {
+        return new \XdgBaseDir\Xdg();
+    }

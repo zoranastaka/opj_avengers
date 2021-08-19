@@ -1,0 +1,19 @@
+    /**
+     * WIP : preprocessing to remove all the unused whitespace
+     */
+
+    protected function ws_trim()
+    {
+        if ($this->ws_keep()) {
+            return;
+        }
+
+        if (self::$_ws_state === self::WS_SPACE) {
+            $node = $this->_node;
+
+            if ($node->nodeName === "#text" && !empty($node->nodeValue)) {
+                $node->nodeValue = preg_replace("/[ \t\r\n\f]+/u", " ", trim($node->nodeValue));
+                self::$_ws_state = self::WS_TEXT;
+            }
+        }
+    }

@@ -1,0 +1,14 @@
+    /**
+     * @psalm-param class-string $testClassName
+     */
+
+    public function testPreConditionFinished(string $testClassName, Code\ClassMethod ...$calledMethods): void
+    {
+        $this->dispatcher->dispatch(
+            new Test\PreConditionFinished(
+                $this->telemetryInfo(),
+                $testClassName,
+                ...$calledMethods
+            )
+        );
+    }

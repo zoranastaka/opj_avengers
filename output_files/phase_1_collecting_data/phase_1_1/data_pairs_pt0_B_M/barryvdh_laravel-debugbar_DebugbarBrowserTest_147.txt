@@ -1,0 +1,12 @@
+    /**
+     * @param Router $router
+     */
+
+    protected function addApiRoutes(Router $router)
+    {
+        $router->get('api/ping', [
+            'uses' => function () {
+                return response()->json(['status' => 'pong']);
+            }
+        ]);
+    }

@@ -1,0 +1,7 @@
+    /**
+     * Must return the Authentication module's name, e.g., `"Login"`.
+     *
+     * @return string
+     */
+
+    public function getName();

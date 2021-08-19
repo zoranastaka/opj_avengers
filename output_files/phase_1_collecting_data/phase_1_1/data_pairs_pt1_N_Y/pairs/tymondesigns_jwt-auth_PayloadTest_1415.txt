@@ -1,0 +1,9 @@
+    /** @test */
+
+    public function it_should_throw_an_exception_when_trying_to_remove_a_key_from_the_payload()
+    {
+        $this->expectException(PayloadException::class);
+        $this->expectExceptionMessage('The payload is immutable');
+
+        unset($this->payload['foo']);
+    }

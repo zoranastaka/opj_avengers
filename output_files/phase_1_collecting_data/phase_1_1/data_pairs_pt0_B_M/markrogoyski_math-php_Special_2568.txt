@@ -1,0 +1,19 @@
+    /**
+     * Upper Incomplete Gamma Function - Γ(s,x)
+     * https://en.wikipedia.org/wiki/Incomplete_gamma_function
+     *
+     * @param float $s shape parameter > 0
+     * @param float $x lower limit of integration
+     *
+     * @return float
+     *
+     * @throws Exception\OutOfBoundsException if s is ≤ 0
+     */
+
+    public static function upperIncompleteGamma(float $s, float $x): float
+    {
+        if ($s <= 0) {
+            throw new Exception\OutOfBoundsException("S must be > 0. S = $s");
+        }
+        return self::gamma($s) - self::lowerIncompleteGamma($s, $x);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Set the Psy Shell readline service.
+     *
+     * @param Readline\Readline $readline
+     */
+
+    public function setReadline(Readline\Readline $readline)
+    {
+        $this->readline = $readline;
+    }

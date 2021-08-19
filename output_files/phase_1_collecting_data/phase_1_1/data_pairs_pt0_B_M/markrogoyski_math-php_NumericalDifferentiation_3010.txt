@@ -1,0 +1,32 @@
+    /**
+     * Validate that there are a set number of input arrays (points), that each point array
+     * has precisely two numbers, and that no two points share the same first number
+     * (x-component)
+     *
+     * @param  array $points Array of arrays (points)
+     * @param  int   $degree The number of input arrays
+     *
+     * @throws Exception\BadDataException if there are not enough input arrays
+     * @throws Exception\BadDataException if any point does not contain two numbers
+     * @throws Exception\BadDataException if two points share the same first number (x-component)
+     */
+
+    public static function validate(array $points, int $degree)
+    {
+        if (\count($points) != $degree) {
+            throw new Exception\BadDataException("You need to have $degree sets of coordinates (arrays) for this technique");
+        }
+
+        $x_coordinates = [];
+        foreach ($points as $point) {
+            if (\count($point) !== 2) {
+                throw new Exception\BadDataException('Each array needs to have have precisely two numbers, an x- and y-component');
+            }
+
+            $x_component = $point[self::X];
+            if (\in_array($x_component, $x_coordinates)) {
+                throw new Exception\BadDataException('Not a function. Your input array contains more than one coordinate with the same x-component.');
+            }
+            $x_coordinates[] = $x_component;
+        }
+    }

@@ -1,0 +1,12 @@
+    /**
+     * This is useful for fluently combining matchers that must both pass.
+     * For example:
+     * <pre>
+     *   assertThat($string, both(containsString("a"))->andAlso(containsString("b")));
+     * </pre>
+     */
+
+    function both(\Hamcrest\Matcher $matcher)
+    {
+        return \Hamcrest\Core\CombinableMatcher::both($matcher);
+    }

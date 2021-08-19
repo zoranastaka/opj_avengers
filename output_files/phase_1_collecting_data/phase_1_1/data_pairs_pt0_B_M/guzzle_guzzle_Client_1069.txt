@@ -1,0 +1,21 @@
+    /**
+     * Transfers the given request and applies request options.
+     *
+     * The URI of the request is not modified and the request options are used
+     * as-is without merging in default options.
+     *
+     * @param array $options See \GuzzleHttp\RequestOptions.
+     */
+
+    private function transfer(RequestInterface $request, array $options): PromiseInterface
+    {
+        $request = $this->applyOptions($request, $options);
+        /** @var HandlerStack $handler */
+        $handler = $options['handler'];
+
+        try {
+            return P\Create::promiseFor($handler($request, $options));
+        } catch (\Exception $e) {
+            return P\Create::rejectionFor($e);
+        }
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @test   percentile throws an Exception\OutOfBoundsException if P is > 100
+     * @throws \Exception
+     */
+
+    public function testPercentileOutOfUpperBoundsP()
+    {
+        // Given
+        $numbers = [1, 2, 3];
+        $P       = 101;
+
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Descriptive::percentile($numbers, $P);
+    }

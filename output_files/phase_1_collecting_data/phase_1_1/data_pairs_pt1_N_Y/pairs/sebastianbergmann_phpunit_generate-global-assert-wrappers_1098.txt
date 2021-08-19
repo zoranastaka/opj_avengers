@@ -1,0 +1,9 @@
+    /**
+     * Returns a matcher that matches when the method is executed
+     * zero or more times.
+     */
+
+    function any(): AnyInvokedCountMatcher
+    {
+        return new AnyInvokedCountMatcher;
+    }

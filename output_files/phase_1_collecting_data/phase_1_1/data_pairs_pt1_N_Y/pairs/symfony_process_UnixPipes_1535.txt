@@ -1,0 +1,38 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getDescriptors(): array
+    {
+        if (!$this->haveReadSupport) {
+            $nullstream = fopen('/dev/null', 'c');
+
+            return [
+                ['pipe', 'r'],
+                $nullstream,
+                $nullstream,
+            ];
+        }
+
+        if ($this->ttyMode) {
+            return [
+                ['file', '/dev/tty', 'r'],
+                ['file', '/dev/tty', 'w'],
+                ['file', '/dev/tty', 'w'],
+            ];
+        }
+
+        if ($this->ptyMode && Process::isPtySupported()) {
+            return [
+                ['pty'],
+                ['pty'],
+                ['pty'],
+            ];
+        }
+
+        return [
+            ['pipe', 'r'],
+            ['pipe', 'w'], // stdout
+            ['pipe', 'w'], // stderr
+        ];
+    }

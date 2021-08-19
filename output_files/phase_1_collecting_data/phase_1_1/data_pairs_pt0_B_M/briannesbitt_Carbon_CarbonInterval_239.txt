@@ -1,0 +1,19 @@
+    /**
+     * Returns interval values as an array where key are the unit names and values the counts.
+     *
+     * @return int[]
+     */
+
+    public function toArray()
+    {
+        return [
+            'years' => $this->years,
+            'months' => $this->months,
+            'weeks' => $this->weeks,
+            'days' => $this->daysExcludeWeeks,
+            'hours' => $this->hours,
+            'minutes' => $this->minutes,
+            'seconds' => $this->seconds,
+            'microseconds' => $this->microseconds,
+        ];
+    }

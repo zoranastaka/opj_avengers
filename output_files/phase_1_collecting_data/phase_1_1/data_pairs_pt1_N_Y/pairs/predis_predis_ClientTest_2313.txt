@@ -1,0 +1,25 @@
+    /**
+     * Returns an URI string representation of the specified connection parameters.
+     *
+     * @param array $parameters Array of connection parameters.
+     *
+     * @return string URI string.
+     */
+
+    protected function getParametersString(array $parameters): string
+    {
+        $defaults = $this->getDefaultParametersArray();
+
+        $scheme = isset($parameters['scheme']) ? $parameters['scheme'] : $defaults['scheme'];
+        $host = isset($parameters['host']) ? $parameters['host'] : $defaults['host'];
+        $port = isset($parameters['port']) ? $parameters['port'] : $defaults['port'];
+
+        unset($parameters['scheme'], $parameters['host'], $parameters['port']);
+        $uriString = "$scheme://$host:$port/?";
+
+        foreach ($parameters as $k => $v) {
+            $uriString .= "$k=$v&";
+        }
+
+        return $uriString;
+    }

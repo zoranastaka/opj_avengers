@@ -1,0 +1,12 @@
+    /**
+     * @test Interfaces
+     */
+
+    public function testObjectArithmeticInterface()
+    {
+        // Given
+        $c = new Complex(1, 2);
+
+        // Then
+        $this->assertInstanceOf(ObjectArithmetic::class, $c);
+    }

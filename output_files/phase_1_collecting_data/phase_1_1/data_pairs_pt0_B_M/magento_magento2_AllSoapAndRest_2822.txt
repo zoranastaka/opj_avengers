@@ -1,0 +1,11 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function items()
+    {
+        $result1 = $this->itemFactory->create()->setItemId(1)->setName('testProduct1');
+        $result2 = $this->itemFactory->create()->setItemId(2)->setName('testProduct2');
+
+        return [$result1, $result2];
+    }

@@ -1,0 +1,9 @@
+    /**
+     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     */
+
+    public function testTypeClosureFail()
+    {
+        $arg = new Argument($this->getMockedCommand(['foo']));
+        $arg->type('closure');
+    }

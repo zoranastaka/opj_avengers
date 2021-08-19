@@ -1,0 +1,7 @@
+    /**
+     * Return code challenge method.
+     *
+     * @return string
+     */
+
+    public function getMethod();

@@ -1,0 +1,11 @@
+    /**
+     * Set the "remember me" token value.
+     *
+     * @param  string  $value
+     * @return void
+     */
+
+    public function setRememberToken($value)
+    {
+        $this->attributes[$this->getRememberTokenName()] = $value;
+    }

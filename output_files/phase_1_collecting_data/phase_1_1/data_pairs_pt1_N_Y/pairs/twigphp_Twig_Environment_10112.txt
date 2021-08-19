@@ -1,0 +1,16 @@
+    /**
+     * Gets registered functions.
+     *
+     * Be warned that this method cannot return functions defined with registerUndefinedFunctionCallback.
+     *
+     * @return TwigFunction[]
+     *
+     * @see registerUndefinedFunctionCallback
+     *
+     * @internal
+     */
+
+    public function getFunctions(): array
+    {
+        return $this->extensionSet->getFunctions();
+    }

@@ -1,0 +1,10 @@
+    /**
+     * The degrees of freedom of the regression
+     *
+     * @return float
+     */
+
+    public function degreesOfFreedom(): float
+    {
+        return $this->ν;
+    }

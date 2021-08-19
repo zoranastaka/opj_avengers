@@ -1,0 +1,10 @@
+    /**
+     * Execute the console command.
+     *
+     * @return void
+     */
+
+    public function handle(): void
+    {
+        $this->line(config('monica.app_version'));
+    }

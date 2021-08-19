@@ -1,0 +1,8 @@
+    /**
+     * @param int $limitConcurrentRequests
+     */
+
+    public function setLimitConcurrentRequests($limitConcurrentRequests)
+    {
+        $this->limitConcurrentRequests = $limitConcurrentRequests;
+    }

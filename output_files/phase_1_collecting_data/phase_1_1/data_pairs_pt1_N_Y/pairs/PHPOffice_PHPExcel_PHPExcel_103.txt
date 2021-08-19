@@ -1,0 +1,10 @@
+    /**
+     * Set security
+     *
+     * @param PHPExcel_DocumentSecurity    $pValue
+     */
+
+    public function setSecurity(PHPExcel_DocumentSecurity $pValue)
+    {
+        $this->security = $pValue;
+    }

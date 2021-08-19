@@ -1,0 +1,10 @@
+    /**
+     * Get Grav version.
+     *
+     * @return string
+     */
+
+    public function getVersion(): string
+    {
+        return GRAV_VERSION;
+    }

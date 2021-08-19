@@ -1,0 +1,9 @@
+    /**
+     * @param string $name
+     * @return bool
+     */
+
+    public function hasTheme($name)
+    {
+        return isset($this->themes[$name]);
+    }

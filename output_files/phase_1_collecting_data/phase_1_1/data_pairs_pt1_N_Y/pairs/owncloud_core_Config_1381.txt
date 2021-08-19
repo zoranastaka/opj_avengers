@@ -1,0 +1,8 @@
+	/**
+	 * Sets the value and writes it to config.php if required
+	 *
+	 * @param string $key key
+	 * @param mixed $value value
+	 */
+
+	public function setValue($key, $value) {

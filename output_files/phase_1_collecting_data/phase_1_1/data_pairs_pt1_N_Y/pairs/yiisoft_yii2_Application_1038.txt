@@ -1,0 +1,9 @@
+    /**
+     * Returns the view object.
+     * @return View|\yii\web\View the view application component that is used to render various view files.
+     */
+
+    public function getView()
+    {
+        return $this->get('view');
+    }

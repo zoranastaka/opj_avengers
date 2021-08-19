@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     *
+     * @return string|false
+     */
+
+    public function stream_read(int $count)
+    {
+        return fread($this->stream, $count);
+    }

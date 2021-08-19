@@ -1,0 +1,10 @@
+    /**
+     * Is the response forbidden?
+     *
+     * @final
+     */
+
+    public function isForbidden(): bool
+    {
+        return 403 === $this->statusCode;
+    }

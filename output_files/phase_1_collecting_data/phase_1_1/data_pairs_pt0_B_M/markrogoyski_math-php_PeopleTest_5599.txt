@@ -1,0 +1,12 @@
+    /**
+     * @test 32 weight observations
+     */
+
+    public function testNumberOfWeight()
+    {
+        // When
+        $observations = $this->people->getWeight();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

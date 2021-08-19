@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider providerDELTA
+     */
+
+    public function testDELTA()
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','DELTA'), $args);
+        $this->assertEquals($expectedResult, $result, null);
+    }

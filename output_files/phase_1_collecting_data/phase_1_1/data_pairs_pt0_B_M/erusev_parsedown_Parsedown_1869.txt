@@ -1,0 +1,7 @@
+    # ~
+
+    protected function unmarkedText($text)
+    {
+        $Inline = $this->inlineText($text);
+        return $this->element($Inline['element']);
+    }

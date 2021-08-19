@@ -1,0 +1,8 @@
+    /**
+     * @return MiddlewareDispatcherInterface
+     */
+
+    public function getMiddlewareDispatcher(): MiddlewareDispatcherInterface
+    {
+        return $this->middlewareDispatcher;
+    }

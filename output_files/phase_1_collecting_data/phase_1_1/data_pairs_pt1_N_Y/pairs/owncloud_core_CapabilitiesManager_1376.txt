@@ -1,0 +1,8 @@
+	/**
+	 * Get an array of al the capabilities that are registered at this manager
+	 *
+	 * @throws \InvalidArgumentException
+	 * @return array
+	 */
+
+	public function getCapabilities() {

@@ -1,0 +1,11 @@
+    /**
+     * Sets current image driver
+     * @param AbstractDriver $driver
+     */
+
+    public function setDriver(AbstractDriver $driver)
+    {
+        $this->driver = $driver;
+
+        return $this;
+    }

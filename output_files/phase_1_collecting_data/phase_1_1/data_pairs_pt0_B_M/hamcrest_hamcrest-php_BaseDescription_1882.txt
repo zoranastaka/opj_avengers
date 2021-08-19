@@ -1,0 +1,30 @@
+    // -- Private Methods
+
+    private function _toPhpSyntax($value)
+    {
+        $str = '"';
+        for ($i = 0, $len = strlen($value); $i < $len; ++$i) {
+            switch ($value[$i]) {
+                case '"':
+                    $str .= '\\"';
+                    break;
+
+                case "\t":
+                    $str .= '\\t';
+                    break;
+
+                case "\r":
+                    $str .= '\\r';
+                    break;
+
+                case "\n":
+                    $str .= '\\n';
+                    break;
+
+                default:
+                    $str .= $value[$i];
+            }
+        }
+        $str .= '"';
+        $this->append($str);
+    }

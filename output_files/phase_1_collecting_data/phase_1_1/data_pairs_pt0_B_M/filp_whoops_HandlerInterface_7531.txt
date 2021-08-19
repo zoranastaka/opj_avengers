@@ -1,0 +1,6 @@
+    /**
+     * @param  RunInterface  $run
+     * @return void
+     */
+
+    public function setRun(RunInterface $run);

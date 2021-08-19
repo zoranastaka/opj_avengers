@@ -1,0 +1,12 @@
+    /**
+     * @test adjugate propagates error tolerance to resultant matrix
+     */
+
+    public function testAdjugate()
+    {
+        // When
+        $R = $this->A->adjugate();
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

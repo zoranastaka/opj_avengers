@@ -1,0 +1,12 @@
+    /**
+     * Go go gadget closure.
+     *
+     * @return mixed
+     */
+
+    public function execute()
+    {
+        $closure = $this->closure;
+
+        return $closure();
+    }

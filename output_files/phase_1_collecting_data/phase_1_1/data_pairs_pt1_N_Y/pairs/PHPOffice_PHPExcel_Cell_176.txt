@@ -1,0 +1,15 @@
+    /**
+     *    Does this cell contain a Hyperlink?
+     *
+     *    @return boolean
+     *    @throws    PHPExcel_Exception
+     */
+
+    public function hasHyperlink()
+    {
+        if (!isset($this->parent)) {
+            throw new PHPExcel_Exception('Cannot check for hyperlink when cell is not bound to a worksheet');
+        }
+
+        return $this->getWorksheet()->hyperlinkExists($this->getCoordinate());
+    }

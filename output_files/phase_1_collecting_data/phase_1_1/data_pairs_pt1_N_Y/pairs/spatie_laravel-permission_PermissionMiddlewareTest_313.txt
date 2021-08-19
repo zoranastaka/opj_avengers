@@ -1,0 +1,18 @@
+    /** @test */
+
+    public function a_user_can_access_a_route_protected_by_this_permission_middleware_if_have_one_of_the_permissions()
+    {
+        Auth::login($this->testUser);
+
+        $this->testUser->givePermissionTo('edit-articles');
+
+        $this->assertEquals(
+            200,
+            $this->runMiddleware($this->permissionMiddleware, 'edit-news|edit-articles')
+        );
+
+        $this->assertEquals(
+            200,
+            $this->runMiddleware($this->permissionMiddleware, ['edit-news', 'edit-articles'])
+        );
+    }

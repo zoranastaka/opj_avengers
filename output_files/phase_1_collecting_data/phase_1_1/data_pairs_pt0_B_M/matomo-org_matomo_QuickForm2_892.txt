@@ -1,0 +1,17 @@
+   /**
+    * Renders the form using the given renderer
+    *
+    * @param    HTML_QuickForm2_Renderer    Renderer instance
+    * @return   HTML_QuickForm2_Renderer
+    */
+
+    public function render(HTML_QuickForm2_Renderer $renderer)
+    {
+        $renderer->startForm($this);
+        $renderer->getJavascriptBuilder()->startForm($this);
+        foreach ($this as $element) {
+            $element->render($renderer);
+        }
+        $renderer->finishForm($this);
+        return $renderer;
+    }

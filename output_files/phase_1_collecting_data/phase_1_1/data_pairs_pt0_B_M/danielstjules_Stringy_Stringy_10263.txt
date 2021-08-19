@@ -1,0 +1,10 @@
+    /**
+     * Returns the length of the string, implementing the countable interface.
+     *
+     * @return int The number of characters in the string, given the encoding
+     */
+
+    public function count()
+    {
+        return $this->length();
+    }

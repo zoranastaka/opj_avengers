@@ -1,0 +1,14 @@
+    /**
+     * @covers ::__construct
+     * @covers ::__invoke
+     * @covers \League\Csv\CannotInsertRecord
+     */
+
+    public function testColumnsCount(): void
+    {
+        $this->expectException(CannotInsertRecord::class);
+
+        $this->csv->addValidator(new ColumnConsistency(3), 'consistency');
+        $this->csv->insertOne(['john', 'doe', 'john.doe@example.com']);
+        $this->csv->insertOne(['jane', 'jane.doe@example.com']);
+    }

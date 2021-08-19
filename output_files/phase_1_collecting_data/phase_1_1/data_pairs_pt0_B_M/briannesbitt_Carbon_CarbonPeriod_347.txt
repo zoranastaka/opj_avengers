@@ -1,0 +1,19 @@
+    /**
+     * Recurrences filter callback (limits number of recurrences).
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     *
+     * @param \Carbon\Carbon $current
+     * @param int            $key
+     *
+     * @return bool|string
+     */
+
+    protected function filterRecurrences($current, $key)
+    {
+        if ($key < $this->recurrences) {
+            return true;
+        }
+
+        return static::END_ITERATION;
+    }

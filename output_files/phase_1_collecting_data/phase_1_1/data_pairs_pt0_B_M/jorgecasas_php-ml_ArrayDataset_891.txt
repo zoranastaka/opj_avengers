@@ -1,0 +1,10 @@
+    /**
+     * @param int[] $columns
+     */
+
+    public function removeColumns(array $columns): void
+    {
+        foreach ($this->samples as &$sample) {
+            $this->removeColumnsFromSample($sample, $columns);
+        }
+    }

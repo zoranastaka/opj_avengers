@@ -1,0 +1,15 @@
+    /**
+     * Bootstrap the application events.
+     *
+     * @return void
+     */
+
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../../config/config.php' => config_path('image.php')
+        ]);
+
+        // setup intervention/imagecache if package is installed
+        $this->cacheIsInstalled() ? $this->bootstrapImageCache() : null;
+    }

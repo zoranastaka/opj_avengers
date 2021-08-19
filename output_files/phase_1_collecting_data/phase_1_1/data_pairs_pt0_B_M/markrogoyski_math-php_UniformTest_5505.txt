@@ -1,0 +1,20 @@
+    /**
+     * @test         cdf returns the expected cumulative probability
+     * @dataProvider dataProviderForCdf
+     * @param        int   $a
+     * @param        int   $b
+     * @param        float $expectedCdf
+     * @throws       \Exception
+     */
+
+    public function testCdf(int $a, int $b, $k, float $expectedCdf)
+    {
+        // Given
+        $uniform = new Uniform($a, $b);
+
+        // When
+        $cdf = $uniform->cdf($k);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedCdf, $cdf, 0.001);
+    }

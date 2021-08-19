@@ -1,0 +1,15 @@
+    /**
+     * @test Empty data throws an Exception
+     */
+
+    public function testEmptyData()
+    {
+        // Given
+        $data = [];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $KDE = new KernelDensityEstimation([]);
+    }

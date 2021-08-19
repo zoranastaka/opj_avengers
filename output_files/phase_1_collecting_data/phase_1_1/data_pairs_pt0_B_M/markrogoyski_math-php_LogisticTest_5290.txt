@@ -1,0 +1,13 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForVariance(): array
+    {
+        return [
+            [0, 1, 3.28986813369645],
+            [0, 2, 13.15947253478581],
+            [0, 3, 29.60881320326808],
+            [5, 4, 52.63789013914325],
+        ];
+    }

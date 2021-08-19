@@ -1,0 +1,16 @@
+    /**
+     * @test   approximate error when there are not even even number of subintervals, or equivalently, there are not an add number of points
+     * @throws \Exception
+     */
+
+    public function testApproximateErrorSubintervalsNotEven()
+    {
+        // Given
+        $points = [[0,0], [4,4], [2,2], [6,6], [8,8]];
+
+        // Then
+        $this->expectException(\Exception::class);
+
+        // When
+        SimpsonsThreeEighthsRule::approximate($points);
+    }

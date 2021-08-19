@@ -1,0 +1,11 @@
+    /**
+     * @expectedException InvalidArgumentException
+     */
+
+    public function testCheckAllAreMatchersFailsForPrimitive()
+    {
+        \Hamcrest\Util::checkAllAreMatchers(array(
+            new \Hamcrest\Text\MatchesPattern('/fo+/'),
+            'foo',
+        ));
+    }

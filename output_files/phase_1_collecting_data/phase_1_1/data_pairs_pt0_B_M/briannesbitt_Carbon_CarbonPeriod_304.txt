@@ -1,0 +1,16 @@
+    /**
+     * Return the start if it's included by option, else return the start + 1 period interval.
+     *
+     * @return CarbonInterface
+     */
+
+    public function getIncludedStartDate()
+    {
+        $start = $this->getStartDate();
+
+        if ($this->isStartExcluded()) {
+            return $start->add($this->getDateInterval());
+        }
+
+        return $start;
+    }

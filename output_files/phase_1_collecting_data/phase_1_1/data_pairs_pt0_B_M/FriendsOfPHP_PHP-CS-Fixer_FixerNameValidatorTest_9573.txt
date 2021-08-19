@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider provideIsValidCases
+     */
+
+    public function testIsValid(string $name, bool $isCustom, bool $isValid): void
+    {
+        $validator = new FixerNameValidator();
+
+        static::assertSame($isValid, $validator->isValid($name, $isCustom));
+    }

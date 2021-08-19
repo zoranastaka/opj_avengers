@@ -1,0 +1,12 @@
+    /**
+     * Validate the claim in a standalone Claim context.
+     *
+     * @param  mixed  $value
+     *
+     * @return bool
+     */
+
+    public function validateCreate($value)
+    {
+        return $value;
+    }

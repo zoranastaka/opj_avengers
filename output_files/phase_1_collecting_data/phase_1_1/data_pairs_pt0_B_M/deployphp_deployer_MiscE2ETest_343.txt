@@ -1,0 +1,20 @@
+    /**
+     * @group e2e
+     */
+
+    public function testSudoWithPasswordEnteredInteractively(): void
+    {
+        // We're adding this to inputs, to have it passed with via the STDIN
+        $this->tester->setInputs(['deployer']);
+
+        $this->tester->run([
+            '-f' => self::RECIPE,
+            'test:misc:sudo-write-user',
+            'all',
+        ]);
+
+        $display = trim($this->tester->getDisplay());
+
+        self::assertEquals(0, $this->tester->getStatusCode(), $display);
+        self::assertStringContainsString('Current user is: root', $display);
+    }

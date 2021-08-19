@@ -1,0 +1,13 @@
+	/**
+	 * Clear Cached Variables
+	 *
+	 * Clears the cached variables.
+	 *
+	 * @return	CI_Loader
+	 */
+
+	public function clear_vars()
+	{
+		$this->_ci_cached_vars = array();
+		return $this;
+	}

@@ -1,0 +1,13 @@
+    /**
+     * Complementary error function (erfc)
+     * Convenience method for complementaryErrorFunction
+     *
+     * @param  float $x
+     *
+     * @return float
+     */
+
+    public static function erfc(float $x): float
+    {
+        return 1 - self::erf($x);
+    }

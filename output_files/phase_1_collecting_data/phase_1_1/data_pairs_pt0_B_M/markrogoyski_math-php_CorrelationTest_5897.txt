@@ -1,0 +1,13 @@
+    /**
+     * @test     sampleCovariance when X and Y have different counts
+     * @throws   \Exception
+     */
+
+    public function testSampleCovarianceExceptionWhenXAndYHaveDifferentCounts()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Correlation::sampleCovariance([ 1, 2 ], [ 2, 3, 4 ]);
+    }

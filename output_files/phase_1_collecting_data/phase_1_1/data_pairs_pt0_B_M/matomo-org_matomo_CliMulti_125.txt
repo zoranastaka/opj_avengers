@@ -1,0 +1,8 @@
+    /**
+     * @param $limit int Maximum count of requests to issue in parallel
+     */
+
+    public function setConcurrentProcessesLimit($limit)
+    {
+        $this->concurrentProcessesLimit = $limit;
+    }

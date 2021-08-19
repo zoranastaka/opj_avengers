@@ -1,0 +1,18 @@
+    /**
+     * @test         eigenvector using closedFormPolynomialRootMethod returns the expected eigenvalues
+     * @dataProvider dataProviderForEigenvector
+     * @param        array $A
+     * @param        array $S
+     */
+
+    public function testEigenvectorsUsingClosedFormPolynomialRootMethodFromMatrix(array $A, array $S)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $eigenvectors = $A->eigenvectors();
+
+        // Then
+        $this->assertEqualsWithDelta($S, $eigenvectors->getMatrix(), 0.0001);
+    }

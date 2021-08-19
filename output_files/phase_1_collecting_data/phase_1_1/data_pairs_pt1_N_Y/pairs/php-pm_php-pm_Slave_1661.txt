@@ -1,0 +1,10 @@
+    /**
+     * Get slave port
+     *
+     * @return int port
+     */
+
+    public function getPort()
+    {
+        return $this->port;
+    }

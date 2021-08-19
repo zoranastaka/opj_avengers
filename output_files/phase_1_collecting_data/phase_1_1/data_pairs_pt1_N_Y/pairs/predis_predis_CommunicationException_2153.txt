@@ -1,0 +1,10 @@
+    /**
+     * Gets the connection that generated the exception.
+     *
+     * @return NodeConnectionInterface
+     */
+
+    public function getConnection()
+    {
+        return $this->connection;
+    }

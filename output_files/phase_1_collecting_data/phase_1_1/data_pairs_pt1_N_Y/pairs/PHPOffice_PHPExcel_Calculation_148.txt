@@ -1,0 +1,12 @@
+    /**
+     * Clear calculation cache for a specified worksheet
+     *
+     * @param string $worksheetName
+     */
+
+    public function clearCalculationCacheForWorksheet($worksheetName)
+    {
+        if (isset($this->calculationCache[$worksheetName])) {
+            unset($this->calculationCache[$worksheetName]);
+        }
+    }

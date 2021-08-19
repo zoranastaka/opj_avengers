@@ -1,0 +1,22 @@
+    /**
+     * @test         Addition
+     * @dataProvider dataProviderForAddition
+     * @param        array $polynomialA
+     * @param        array $polynomialB
+     * @param        array $expected_sum
+     * @throws       \Exception
+     */
+
+    public function testAddition(array $polynomialA, array $polynomialB, array $expected_sum)
+    {
+        // Given
+        $polynomialA  = new Polynomial($polynomialA);
+        $polynomialB  = new Polynomial($polynomialB);
+        $expected     = new Polynomial($expected_sum);
+
+        // When
+        $sum = $polynomialA->add($polynomialB);
+
+        // Then
+        $this->assertEquals($expected, $sum);
+    }

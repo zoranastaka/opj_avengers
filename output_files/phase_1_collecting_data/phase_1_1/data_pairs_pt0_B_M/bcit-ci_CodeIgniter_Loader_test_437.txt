@@ -1,0 +1,10 @@
+	// --------------------------------------------------------------------
+
+	public function test_non_existent_helper()
+	{
+		$this->setExpectedException(
+			'RuntimeException',
+			'CI Error: Unable to load the requested file: helpers/bad_helper.php'
+		);
+		$this->load->helper('bad');
+	}

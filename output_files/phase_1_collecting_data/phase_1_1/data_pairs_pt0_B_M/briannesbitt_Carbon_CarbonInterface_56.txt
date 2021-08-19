@@ -1,0 +1,7 @@
+    /**
+     * List of replacements from date() format to isoFormat().
+     *
+     * @return array
+     */
+
+    public static function getFormatsToIsoReplacements();

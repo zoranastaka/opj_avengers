@@ -1,0 +1,14 @@
+    /**
+     * Sets the default view
+     *
+     * @param string $defaultView The default document view
+     * @param array $options The view's options
+     * @return $this
+     */
+
+    public function setDefaultView($defaultView, $options)
+    {
+        $this->defaultView = $defaultView;
+        $this->defaultViewOptions = $options;
+        return $this;
+    }

@@ -1,0 +1,5 @@
+    /**
+     * Returns if the token is allowed to be used by the audience
+     */
+
+    public function isPermittedFor(string $audience): bool;

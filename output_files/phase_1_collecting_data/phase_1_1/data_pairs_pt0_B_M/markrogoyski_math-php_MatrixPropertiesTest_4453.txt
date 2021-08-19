@@ -1,0 +1,15 @@
+/**
+     * @test         isIdempotent returns true for an Idempotent matrix
+     * @dataProvider dataProviderForIdempotentMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsIdempotent(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isIdempotent());
+    }

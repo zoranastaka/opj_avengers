@@ -1,0 +1,10 @@
+/**
+ * Display the language attributes for the HTML tag.
+ *
+ * Builds up a set of html attributes containing the text direction and language
+ * information for the page. Stolen from WP.
+ *
+ * @since 1.6
+ */
+
+function yourls_html_language_attributes() {

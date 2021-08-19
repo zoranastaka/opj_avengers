@@ -1,0 +1,17 @@
+    /**
+     * @covers ::isInputBOMIncluded
+     * @covers ::includeInputBOM
+     * @covers ::skipInputBOM
+     */
+
+    public function testBOMStripping(): void
+    {
+        $reader = Reader::createFromString();
+        self::assertFalse($reader->isInputBOMIncluded());
+
+        $reader->includeInputBOM();
+        self::assertTrue($reader->isInputBOMIncluded());
+
+        $reader->skipInputBOM();
+        self::assertFalse($reader->isInputBOMIncluded());
+    }

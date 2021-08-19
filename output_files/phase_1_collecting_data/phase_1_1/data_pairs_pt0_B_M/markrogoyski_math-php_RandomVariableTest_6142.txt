@@ -1,0 +1,15 @@
+    /**
+     * @test         populationKurtosis error when fewer than four numbers
+     * @dataProvider dataProviderForPopulationKurtosisErrorFewerThanFourNumbers
+     * @param        array $X
+     * @throws       \Exception
+     */
+
+    public function testPopulationKurtosisErrorFewerThanFourNumbers(array $X)
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $kurtosis = RandomVariable::populationKurtosis($X);
+    }

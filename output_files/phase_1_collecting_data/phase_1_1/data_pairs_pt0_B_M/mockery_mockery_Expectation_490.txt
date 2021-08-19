@@ -1,0 +1,10 @@
+    /**
+     * Return the parent mock of the expectation
+     *
+     * @return \Mockery\LegacyMockInterface|\Mockery\MockInterface
+     */
+
+    public function getMock()
+    {
+        return $this->_mock;
+    }

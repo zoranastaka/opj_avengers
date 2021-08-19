@@ -1,0 +1,16 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function tokenize(string $text): array
+    {
+        $words = [];
+        preg_match_all('/\w\w+/u', $text, $words);
+
+        $nGrams = [];
+        foreach ($words[0] as $word) {
+            $this->generateNGrams($word, $nGrams);
+        }
+
+        return $nGrams;
+    }

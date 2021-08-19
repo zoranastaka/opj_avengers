@@ -1,0 +1,20 @@
+    /**
+     * @param object $event
+     * @return object
+     */
+
+    public function dispatchEvent($event)
+    {
+        /** @var EventDispatcherInterface $events */
+        $events = $this['events'];
+        $eventName = get_class($event);
+
+        $timestamp = microtime(true);
+        $event = $events->dispatch($event);
+
+        /** @var Debugger $debugger */
+        $debugger = $this['debugger'];
+        $debugger->addEvent($eventName, $event, $events, $timestamp);
+
+        return $event;
+    }

@@ -1,0 +1,20 @@
+    /**
+     * @test         tProbability
+     * @dataProvider dataProviderForTProbability
+     * @param        array $points
+     * @param        float $beta0
+     * @param        float $beta1
+     */
+
+    public function testTProbability(array $points, float $beta0, float $beta1)
+    {
+        // Given
+        $regression = new Linear($points);
+
+        // When
+        $Tprob = $regression->tProbability();
+
+        // Then
+        $this->assertEqualsWithDelta($beta0, $Tprob['m'], .0000001);
+        $this->assertEqualsWithDelta($beta1, $Tprob['b'], .0000001);
+    }

@@ -1,0 +1,21 @@
+    /**
+     * Add all PHP_CodeSniffer test suites into a single test suite.
+     *
+     * @return \PHPUnit\Framework\TestSuite
+     */
+
+    public static function suite()
+    {
+        $GLOBALS['PHP_CODESNIFFER_STANDARD_DIRS'] = [];
+        $GLOBALS['PHP_CODESNIFFER_TEST_DIRS']     = [];
+
+        // Use a special PHP_CodeSniffer test suite so that we can
+        // unset our autoload function after the run.
+        $suite = new TestSuite('PHP CodeSniffer');
+
+        $suite->addTest(Core\AllTests::suite());
+        $suite->addTest(Standards\AllSniffs::suite());
+
+        return $suite;
+
+    }//end suite()

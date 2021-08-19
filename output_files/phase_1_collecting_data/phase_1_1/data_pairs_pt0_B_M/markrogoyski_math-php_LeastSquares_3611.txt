@@ -1,0 +1,28 @@
+    /**
+     * SSres - The Sum Squares of the residuals (RSS - Residual sum of squares)
+     *
+     * The sum of the squares of residuals (deviations predicted from actual
+     * empirical values of data). It is a measure of the discrepancy between
+     * the data and an estimation model.
+     * https://en.wikipedia.org/wiki/Residual_sum_of_squares
+     *
+     * SSres = ∑(yᵢ - f(xᵢ))²
+     *       = ∑(yᵢ - ŷᵢ)²
+     *
+     *  where yᵢ is an observed value
+     *        ŷᵢ is a value predicted by the regression model
+     *
+     * @return float
+     */
+
+    public function sumOfSquaresResidual(): float
+    {
+        $Ŷ = $this->reg_Yhat;
+        return \array_sum(\array_map(
+            function ($yᵢ, $ŷᵢ) {
+                return ($yᵢ - $ŷᵢ) ** 2;
+            },
+            $this->reg_ys,
+            $Ŷ
+        ));
+    }

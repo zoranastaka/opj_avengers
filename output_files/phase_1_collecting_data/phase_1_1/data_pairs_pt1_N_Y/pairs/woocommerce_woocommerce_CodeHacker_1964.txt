@@ -1,0 +1,9 @@
+	/**
+	 * Read from stream.
+	 *
+	 * @param int $count How many bytes of data from the current position should be returned.
+	 *
+	 * @return false|string If there are less than count bytes available, return as many as are available. If no more data is available, return either FALSE or an empty string.
+	 */
+
+	public function stream_read( $count ) {

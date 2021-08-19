@@ -1,0 +1,21 @@
+    /**
+     * Set all scope variables.
+     *
+     * This method does *not* set any of the magic variables: $_, $_e, $__out,
+     * $__class, $__file, etc.
+     *
+     * @param array $vars
+     */
+
+    public function setAll(array $vars)
+    {
+        foreach (self::$specialNames as $key) {
+            unset($vars[$key]);
+        }
+
+        foreach (self::$commandScopeNames as $key) {
+            unset($vars[$key]);
+        }
+
+        $this->scopeVariables = $vars;
+    }

@@ -1,0 +1,13 @@
+    /** @test */
+
+    public function it_calls_driver_events_without_closure()
+    {
+        $this->fakeDriver->hasMatchingEvent = new TestEvent([]);
+        $this->botman->on('test_event', '\BotMan\BotMan\Tests\TestEventClass@event');
+        $this->botman->listen();
+
+        $this->assertSame([
+            'event' => 'test_event',
+            'data' => 'foo',
+        ], $_SERVER['event_payload']);
+    }

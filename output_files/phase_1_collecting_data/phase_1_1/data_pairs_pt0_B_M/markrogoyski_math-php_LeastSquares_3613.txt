@@ -1,0 +1,17 @@
+    /**
+     * Mean square regression
+     * MSR = SSᵣ / p
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException
+     */
+
+    public function meanSquareRegression(): float
+    {
+        $p   = $this->p;
+        $SSᵣ = $this->sumOfSquaresRegression();
+        $MSR = $SSᵣ / $p;
+
+        return $MSR;
+    }

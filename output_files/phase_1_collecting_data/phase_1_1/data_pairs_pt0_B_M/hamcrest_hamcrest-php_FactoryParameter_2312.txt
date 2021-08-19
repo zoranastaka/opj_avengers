@@ -1,0 +1,10 @@
+    /**
+     * Compute the invocation code.
+     *
+     * @return string
+     */
+
+    public function getInvocation()
+    {
+        return sprintf('$%s', $this->reflector->getName());
+    }

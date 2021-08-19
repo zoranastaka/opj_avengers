@@ -1,0 +1,16 @@
+    /**
+     * close an object
+     */
+
+    function closeObject()
+    {
+        // close the object, as long as there was one open in the first place, which will be indicated by
+        // an objectId on the stack.
+        if ($this->nStack > 0) {
+            $this->currentContents = $this->stack[$this->nStack]['c'];
+            $this->currentPage = $this->stack[$this->nStack]['p'];
+            $this->nStack--;
+            // easier to probably not worry about removing the old entries, they will be overwritten
+            // if there are new ones.
+        }
+    }

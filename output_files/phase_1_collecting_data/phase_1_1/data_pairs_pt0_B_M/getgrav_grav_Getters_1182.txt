@@ -1,0 +1,11 @@
+    /**
+     * Magic method to determine if the attribute is set
+     *
+     * @param  int|string $offset Medium name value
+     * @return boolean         True if the value is set
+     */
+
+    public function __isset($offset)
+    {
+        return $this->offsetExists($offset);
+    }

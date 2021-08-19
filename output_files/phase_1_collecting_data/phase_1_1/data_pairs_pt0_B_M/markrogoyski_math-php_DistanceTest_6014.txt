@@ -1,0 +1,15 @@
+    /**
+     * @test         cosineSimilarity exception for null vector
+     * @dataProvider dataProviderForCosineSimilarityException
+     * @param        array $A
+     * @param        array $B
+     */
+
+    public function testCosineSimilarityException(array $A, array $B)
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $distance = Distance::cosineSimilarity($A, $B);
+    }

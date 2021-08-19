@@ -1,0 +1,7 @@
+    /** @test */
+
+    public function it_can_have_an_image_url()
+    {
+        $button = Button::create('text')->image('http://foobar.com/image.png');
+        $this->assertSame('http://foobar.com/image.png', Arr::get($button->toArray(), 'image_url'));
+    }

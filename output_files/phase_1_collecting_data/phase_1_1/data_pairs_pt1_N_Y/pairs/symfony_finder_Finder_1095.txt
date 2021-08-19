@@ -1,0 +1,20 @@
+    /**
+     * Forces the finder to ignore version control directories.
+     *
+     * This option is enabled by default.
+     *
+     * @return $this
+     *
+     * @see ExcludeDirectoryFilterIterator
+     */
+
+    public function ignoreVCS(bool $ignoreVCS)
+    {
+        if ($ignoreVCS) {
+            $this->ignore |= static::IGNORE_VCS_FILES;
+        } else {
+            $this->ignore &= ~static::IGNORE_VCS_FILES;
+        }
+
+        return $this;
+    }

@@ -1,0 +1,16 @@
+    /**
+     * Check whether a given backtrace frame is a call to Psy\debug.
+     *
+     * @param array $stackFrame
+     *
+     * @return bool
+     */
+
+    private static function isDebugCall(array $stackFrame)
+    {
+        $class = isset($stackFrame['class']) ? $stackFrame['class'] : null;
+        $function = isset($stackFrame['function']) ? $stackFrame['function'] : null;
+
+        return ($class === null && $function === 'Psy\\debug') ||
+            ($class === Shell::class && $function === 'debug');
+    }

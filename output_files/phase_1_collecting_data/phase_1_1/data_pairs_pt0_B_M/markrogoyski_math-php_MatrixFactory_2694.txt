@@ -1,0 +1,29 @@
+    /**
+     * Downshift permutation matrix
+     * Pushes the components of a vector down one notch with wraparound
+     *
+     *       [0, 0, 0, 1] [x₁]   [x₄]
+     *       [1, 0, 0, 0] [x₂]   [x₁]
+     * D₄x = [0, 1, 0, 0] [x₃] = [x₂]
+     *       [0, 0, 1, 0] [x₄]   [x₃]
+     *
+     * @param  int $n
+     *
+     * @return NumericSquareMatrix
+     *
+     * @throws Exception\BadDataException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MathException
+     * @throws Exception\MatrixException
+     * @throws Exception\OutOfBoundsException if n < 0
+     */
+
+    public static function downshiftPermutation(int $n): NumericSquareMatrix
+    {
+        $I = self::identity($n)->getMatrix();
+
+        $bottom_row = \array_pop($I);
+        \array_unshift($I, $bottom_row);
+
+        return new NumericSquareMatrix($I);
+    }

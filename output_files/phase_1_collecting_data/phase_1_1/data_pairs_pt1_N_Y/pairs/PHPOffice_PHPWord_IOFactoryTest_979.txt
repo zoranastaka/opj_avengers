@@ -1,0 +1,10 @@
+    /**
+     * Create non-existing writer
+     *
+     * @expectedException \PhpOffice\PhpWord\Exception\Exception
+     */
+
+    public function testNonexistentWriterCanNotBeCreated()
+    {
+        IOFactory::createWriter(new PhpWord(), 'Word2006');
+    }

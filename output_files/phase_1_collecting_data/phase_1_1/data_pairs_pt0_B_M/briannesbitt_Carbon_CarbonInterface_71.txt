@@ -1,0 +1,7 @@
+    /**
+     * Get weekend days
+     *
+     * @return array
+     */
+
+    public static function getWeekendDays();

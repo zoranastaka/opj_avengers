@@ -1,0 +1,18 @@
+    /**
+     * Remove from pool
+     *
+     * @param Slave $slave
+     *
+     * @return void
+     */
+
+    public function remove(Slave $slave)
+    {
+        $port = $slave->getPort();
+
+        // validate existence
+        $this->getByPort($port);
+
+        // remove
+        unset($this->slaves[$port]);
+    }

@@ -1,0 +1,14 @@
+    /**
+     * common code used by the two JPEG adding functions
+     * @param $data
+     * @param $imgname
+     * @param $imageWidth
+     * @param $imageHeight
+     * @param $x
+     * @param $y
+     * @param int $w
+     * @param int $h
+     * @param int $channels
+     */
+
+    private function addJpegImage_common(

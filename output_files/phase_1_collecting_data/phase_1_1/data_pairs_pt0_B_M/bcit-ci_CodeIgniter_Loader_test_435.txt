@@ -1,0 +1,17 @@
+	// --------------------------------------------------------------------
+
+	public function test_clear_vars()
+	{
+		$key1 = 'foo';
+		$val1 = 'bar';
+		$key2 = 'boo';
+		$val2 = 'hoo';
+		$this->assertInstanceOf('CI_Loader', $this->load->vars(array($key1 => $val1)));
+		$this->assertInstanceOf('CI_Loader', $this->load->vars($key2, $val2));
+		$this->assertEquals($val1, $this->load->get_var($key1));
+		$this->assertEquals(array($key1 => $val1, $key2 => $val2), $this->load->get_vars());
+
+		$this->assertInstanceOf('CI_Loader', $this->load->clear_vars());
+		$this->assertEquals('', $this->load->get_var($key1));
+		$this->assertEquals('', $this->load->get_var($key2));
+	}

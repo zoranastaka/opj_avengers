@@ -1,0 +1,14 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function options($actionID)
+    {
+        $options = parent::options($actionID);
+        if (\in_array($actionID, ['ext', 'app', 'all'], true)) {
+            $options[] = 'useHttp';
+            $options[] = 'composerNoProgress';
+        }
+
+        return $options;
+    }

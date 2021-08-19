@@ -1,0 +1,11 @@
+    /** @test */
+
+    public function it_should_get_a_claim_value()
+    {
+        $payload = Mockery::mock(Payload::class);
+        $payload->shouldReceive('get')->once()->with('sub')->andReturn(1);
+
+        $this->manager->shouldReceive('decode')->once()->andReturn($payload);
+
+        $this->assertSame($this->jwtAuth->setToken('foo.bar.baz')->getClaim('sub'), 1);
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @test 32 iq observations
+     */
+
+    public function testNumberOfIq()
+    {
+        // When
+        $observations = $this->people->getIq();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

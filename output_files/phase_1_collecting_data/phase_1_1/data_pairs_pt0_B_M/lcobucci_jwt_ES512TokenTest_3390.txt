@@ -1,0 +1,18 @@
+    /**
+     * @test
+     * @depends builderCanGenerateAToken
+     */
+
+    public function signatureAssertionShouldRaiseExceptionWhenAlgorithmIsDifferent(Token $token): void
+    {
+        $this->expectException(RequiredConstraintsViolated::class);
+        $this->expectExceptionMessage('The token violates some mandatory constraints');
+
+        $this->config->validator()->assert(
+            $token,
+            new SignedWith(
+                Sha256::create(),
+                self::$ecdsaKeys['public_ec512']
+            )
+        );
+    }

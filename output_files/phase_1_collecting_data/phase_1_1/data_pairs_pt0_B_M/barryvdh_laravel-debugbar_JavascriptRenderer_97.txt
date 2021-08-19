@@ -1,0 +1,20 @@
+    /**
+     * Get the last modified time of any assets.
+     *
+     * @param string $type 'js' or 'css'
+     * @return int
+     */
+
+    protected function getModifiedTime($type)
+    {
+        $files = $this->getAssets($type);
+
+        $latest = 0;
+        foreach ($files as $file) {
+            $mtime = filemtime($file);
+            if ($mtime > $latest) {
+                $latest = $mtime;
+            }
+        }
+        return $latest;
+    }

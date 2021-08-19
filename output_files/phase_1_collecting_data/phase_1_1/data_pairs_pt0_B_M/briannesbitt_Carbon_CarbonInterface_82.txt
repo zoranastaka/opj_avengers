@@ -1,0 +1,8 @@
+    /**
+     * Determine if there is a valid test instance set. A valid test instance
+     * is anything that is not null.
+     *
+     * @return bool true if there is a test instance, otherwise false
+     */
+
+    public static function hasTestNow();

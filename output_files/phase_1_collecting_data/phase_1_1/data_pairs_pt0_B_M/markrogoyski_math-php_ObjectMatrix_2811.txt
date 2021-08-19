@@ -1,0 +1,23 @@
+    /**
+     * {@inheritDoc}
+     *
+     * @return number
+     *
+     * @throws Exception\MatrixException if the matrix is not a square matrix
+     */
+
+    public function trace()
+    {
+        if (!$this->isSquare()) {
+            throw new Exception\MatrixException('trace only works on a square matrix');
+        }
+
+        $m    = $this->m;
+        $tr⟮A⟯ = $this->getObjectType()::createZeroValue();
+
+        for ($i = 0; $i < $m; $i++) {
+            $tr⟮A⟯ = $tr⟮A⟯->add($this->A[$i][$i]);
+        }
+
+        return $tr⟮A⟯;
+    }

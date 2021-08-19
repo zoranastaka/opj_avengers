@@ -1,0 +1,19 @@
+    /**
+     * @test submatrix propagates error tolerance to resultant matrix
+     */
+
+    public function testSubmatrix()
+    {
+        // Given
+        $B = MatrixFactory::createNumeric([
+            [3],
+        ]);
+        $m = 1;
+        $n = 1;
+
+        // When
+        $R = $this->A->insert($B, $m, $n);
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

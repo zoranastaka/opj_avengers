@@ -1,0 +1,7 @@
+    /**
+     * Gets the current container.
+     *
+     * @return ContainerInterface
+     */
+
+    public function getContainer();

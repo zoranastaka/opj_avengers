@@ -1,0 +1,10 @@
+    /**
+     * Verify the code challenge.
+     *
+     * @param string $codeVerifier
+     * @param string $codeChallenge
+     *
+     * @return bool
+     */
+
+    public function verifyCodeChallenge($codeVerifier, $codeChallenge);

@@ -1,0 +1,47 @@
+    /**
+     * @test
+     */
+
+    function it_changes_argument_names_if_they_are_varying()
+    {
+        // Use test doubles in this test, as arguments named ... in the Reflection API can only happen for internal classes
+        $class = $this->prophesize('ReflectionClass');
+        $method = $this->prophesize('ReflectionMethod');
+        $parameter = $this->prophesize('ReflectionParameter');
+
+        $class->getName()->willReturn('Custom\ClassName');
+        $class->isInterface()->willReturn(false);
+        $class->isFinal()->willReturn(false);
+        $class->getMethods(\ReflectionMethod::IS_PUBLIC)->willReturn(array($method));
+        $class->getMethods(\ReflectionMethod::IS_ABSTRACT)->willReturn(array());
+
+        $method->getParameters()->willReturn(array($parameter));
+        $method->getName()->willReturn('methodName');
+        $method->isFinal()->willReturn(false);
+        $method->isProtected()->willReturn(false);
+        $method->isStatic()->willReturn(false);
+        $method->returnsReference()->willReturn(false);
+        $method->hasReturnType()->willReturn(false);
+
+        $parameter->getName()->willReturn('...');
+        $parameter->isDefaultValueAvailable()->willReturn(true);
+        $parameter->getDefaultValue()->willReturn(null);
+        $parameter->isPassedByReference()->willReturn(false);
+        $parameter->allowsNull()->willReturn(true);
+        $parameter->getClass()->willReturn($class);
+        $parameter->getType()->willReturn(null);
+        $parameter->hasType()->willReturn(false);
+        $parameter->isVariadic()->willReturn(false);
+        $parameter->getDeclaringClass()->willReturn($class);
+
+        $mirror = new ClassMirror();
+
+        $classNode = $mirror->reflect($class->reveal(), array());
+
+        $methodNodes = $classNode->getMethods();
+
+        $argumentNodes = $methodNodes['methodName']->getArguments();
+        $argumentNode = $argumentNodes[0];
+
+        $this->assertEquals('__dot_dot_dot__', $argumentNode->getName());
+    }

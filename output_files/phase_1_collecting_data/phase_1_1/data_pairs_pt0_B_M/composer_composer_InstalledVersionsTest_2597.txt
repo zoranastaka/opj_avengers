@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider getReferenceProvider
+     */
+
+    public function testGetReference($expected, $name)
+    {
+        $this->assertSame($expected, InstalledVersions::getReference($name));
+    }

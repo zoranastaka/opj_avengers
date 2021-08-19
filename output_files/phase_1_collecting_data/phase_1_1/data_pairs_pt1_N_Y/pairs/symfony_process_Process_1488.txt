@@ -1,0 +1,10 @@
+    /**
+     * Checks if the TTY mode is enabled.
+     *
+     * @return bool true if the TTY mode is enabled, false otherwise
+     */
+
+    public function isTty()
+    {
+        return $this->tty;
+    }

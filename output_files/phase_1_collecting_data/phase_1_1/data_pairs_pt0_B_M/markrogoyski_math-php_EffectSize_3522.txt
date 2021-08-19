@@ -1,0 +1,30 @@
+    /**
+     * Cohen's ƒ²
+     *
+     * One of several effect size measures to use in the context of an F-test
+     * for ANOVA or multiple regression. Its amount of bias (overestimation of
+     * the effect size for the ANOVA) depends on the bias of its underlying
+     * measurement of variance explained (R², η², ω²)
+     * https://en.wikipedia.org/wiki/Effect_size#Cohen.27s_.C6.922
+     *
+     *        R²
+     * ƒ² = ------
+     *      1 - R²
+     *
+     *        η²
+     * ƒ² = ------
+     *      1 - η²
+     *
+     *        ω²
+     * ƒ² = ------
+     *      1 - ω²
+     *
+     * @param float $measure_of_variance_explained (R², η², ω²)
+     *
+     * @return float
+     */
+
+    public static function cohensF(float $measure_of_variance_explained): float
+    {
+        return $measure_of_variance_explained / (1 - $measure_of_variance_explained);
+    }

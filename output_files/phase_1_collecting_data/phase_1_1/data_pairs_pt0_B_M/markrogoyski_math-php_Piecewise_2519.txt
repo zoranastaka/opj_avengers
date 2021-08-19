@@ -1,0 +1,3 @@
+        // Sort intervals such that start of intervals is increasing
+
+        \usort($intervals, function ($a, $b) {

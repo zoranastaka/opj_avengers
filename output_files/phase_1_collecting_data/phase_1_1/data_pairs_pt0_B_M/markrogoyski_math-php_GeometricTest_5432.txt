@@ -1,0 +1,18 @@
+    /**
+     * @test         median
+     * @dataProvider dataProviderForMedian
+     * @param        float $p
+     * @param        float $expected
+     */
+
+    public function testMedian(float $p, float $expected)
+    {
+        // Given
+        $geometric = new Geometric($p);
+
+        // When
+        $median = $geometric->median();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $median, 0.000001);
+    }

@@ -1,0 +1,5 @@
+    /**
+     * Returns a DCE Security generator configured for this environment
+     */
+
+    private function buildDceSecurityGenerator(

@@ -1,0 +1,16 @@
+    /**
+     * @test         cofactor
+     * @dataProvider dataProviderForCofactor
+     */
+
+    public function testCofactor(array $A, int $mᵢ, int $nⱼ, $Cᵢⱼ)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $cofactor = $A->cofactor($mᵢ, $nⱼ);
+
+        // Then
+        $this->assertEquals($Cᵢⱼ, $cofactor);
+    }

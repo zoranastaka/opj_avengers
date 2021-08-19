@@ -1,0 +1,16 @@
+    /**
+     * @param \GrahamCampbell\ResultType\Result<\Dotenv\Parser\Entry,string> $result
+     * @param string                                                         $name
+     *
+     * @return void
+     */
+
+    private function checkEmptyResult(Result $result, string $name)
+    {
+        self::assertTrue($result->success()->isDefined());
+
+        $entry = $result->success()->get();
+        self::assertInstanceOf(Entry::class, $entry);
+        self::assertSame('FOO', $entry->getName());
+        self::assertFalse($entry->getValue()->isDefined());
+    }

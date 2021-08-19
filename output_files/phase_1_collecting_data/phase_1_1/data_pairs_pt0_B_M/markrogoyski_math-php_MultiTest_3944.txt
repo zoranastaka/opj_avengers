@@ -1,0 +1,17 @@
+    /**
+     * @test   array lengths are not equal exception
+     * @throws \Exception
+     */
+
+    public function testCheckArrayLengthsException()
+    {
+        // Given
+        $xs = [1, 2, 3];
+        $ys = [1, 2];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Multi::add($xs, $ys);
+    }

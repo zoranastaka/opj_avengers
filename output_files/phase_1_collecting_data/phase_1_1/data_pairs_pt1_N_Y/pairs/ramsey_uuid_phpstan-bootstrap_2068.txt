@@ -1,0 +1,9 @@
+    /**
+     * @param string $uuid
+     * @return string
+     */
+
+    function uuid_parse($uuid)
+    {
+        return \Ramsey\Uuid\Uuid::fromString($uuid)->getBytes();
+    }

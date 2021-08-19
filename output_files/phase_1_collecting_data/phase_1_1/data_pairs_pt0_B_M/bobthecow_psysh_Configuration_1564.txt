@@ -1,0 +1,10 @@
+    /**
+     * Get the prompt.
+     *
+     * @return string
+     */
+
+    public function getPrompt()
+    {
+        return $this->prompt;
+    }

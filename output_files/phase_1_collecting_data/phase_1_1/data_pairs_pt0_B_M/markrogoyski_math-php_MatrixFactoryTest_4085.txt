@@ -1,0 +1,17 @@
+    /**
+     * @test   zero with row less than one
+     * @throws \Exception
+     */
+
+    public function testZeroExceptionRowsLessThanOne()
+    {
+        // Given
+        $m = 0;
+        $n = 2;
+
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        MatrixFactory::zero($m, $n);
+    }

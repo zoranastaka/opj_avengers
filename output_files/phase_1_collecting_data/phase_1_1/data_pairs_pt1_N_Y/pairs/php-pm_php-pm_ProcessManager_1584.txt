@@ -1,0 +1,8 @@
+    /**
+     * @param int $ttl
+     */
+
+    public function setTtl($ttl)
+    {
+        $this->ttl = $ttl;
+    }

@@ -1,0 +1,27 @@
+    /**
+     * Cumulative distribution function
+     *
+     * Fᵥ,ᵤ(x) = Fᵥ,ᵤ(x),      if x ≥ 0
+     *         = 1 - Fᵥ,₋ᵤ(x)  if x < 0
+     *
+     * @param float $x
+     *
+     * @return float
+     */
+
+    public function cdf(float $x): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['x' => $x]);
+
+        $ν = $this->ν;
+        $μ = $this->μ;
+
+        if ($μ == 0) {
+            $studentT = new StudentT($ν);
+            return $studentT->cdf($x);
+        }
+        if ($x >= 0) {
+            return $this->f($x, $ν, $μ);
+        }
+        return 1 - $this->f($x, $ν, -$μ);
+    }

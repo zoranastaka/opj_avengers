@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider userAgentProvider
+     * @param $headers
+     * @param $expectedUserAgent
+     */
+
+    public function testGetUserAgent($headers, $expectedUserAgent)
+    {
+        $md = new Mobile_Detect($headers);
+        $md->setUserAgent();
+        $this->assertSame($expectedUserAgent, $md->getUserAgent());
+    }

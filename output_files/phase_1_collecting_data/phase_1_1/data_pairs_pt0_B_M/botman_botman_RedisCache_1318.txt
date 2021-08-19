@@ -1,0 +1,18 @@
+    /**
+     * Store an item in the cache.
+     *
+     * @param  string $key
+     * @param  mixed $value
+     * @param  \DateTime|int $minutes
+     * @return void
+     */
+
+    public function put($key, $value, $minutes)
+    {
+        if ($minutes instanceof \Datetime) {
+            $seconds = $minutes->getTimestamp() - time();
+        } else {
+            $seconds = $minutes * 60;
+        }
+        $this->redis->setex($this->decorateKey($key), $seconds, $value);
+    }

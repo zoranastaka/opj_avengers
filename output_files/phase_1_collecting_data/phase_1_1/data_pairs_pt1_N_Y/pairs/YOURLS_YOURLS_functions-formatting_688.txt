@@ -1,0 +1,13 @@
+/**
+ * Sanitize a version number (1.4.1-whatever-RC1 -> 1.4.1)
+ *
+ * The regexp searches for the first digits, then a period, then more digits and periods, and discards
+ * all the rest.
+ * For instance, 'mysql-5.5-beta' and '5.5-RC1' return '5.5'
+ *
+ * @since 1.4.1
+ * @param  string $version  Version number
+ * @return string           Sanitized version number
+ */
+
+function yourls_sanitize_version( $version ) {

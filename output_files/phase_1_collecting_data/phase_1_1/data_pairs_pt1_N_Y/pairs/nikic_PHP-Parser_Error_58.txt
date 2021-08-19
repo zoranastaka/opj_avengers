@@ -1,0 +1,7 @@
+    /**
+     * Gets the error message
+     *
+     * @return string Error message
+     */
+
+    public function getRawMessage() : string {

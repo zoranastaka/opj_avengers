@@ -1,0 +1,15 @@
+    /**
+     * Add an element to the set
+     * Does nothing if element already exists in the set.
+     *
+     * @param mixed $x
+     *
+     * @return Set (this set)
+     */
+
+    public function add($x): Set
+    {
+        $this->A[$this->getKey($x)] = $x;
+
+        return $this;
+    }

@@ -1,0 +1,24 @@
+    /**
+     * Set the flush threshold.
+     *
+     * @param ?int $threshold
+     *
+     * @throws InvalidArgument if the threshold is a integer lesser than 1
+     */
+
+    public function setFlushThreshold(?int $threshold): self
+    {
+        if ($threshold === $this->flush_threshold) {
+            return $this;
+        }
+
+        if (null !== $threshold && 1 > $threshold) {
+            throw InvalidArgument::dueToInvalidThreshold($threshold, __METHOD__);
+        }
+
+        $this->flush_threshold = $threshold;
+        $this->flush_counter = 0;
+        $this->document->fflush();
+
+        return $this;
+    }

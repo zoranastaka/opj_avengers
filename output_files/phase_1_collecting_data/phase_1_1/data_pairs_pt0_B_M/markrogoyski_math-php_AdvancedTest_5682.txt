@@ -1,0 +1,15 @@
+    /**
+     * @test         primesUpTo returns an array of all prime numbers up to n.
+     * @dataProvider dataProviderForPimesUpTo
+     * @param        int   $n
+     * @param        array $expected_primes
+     */
+
+    public function testPrimesUpTo(int $n, array $expected_primes)
+    {
+        // When
+        $primes = Advanced::primesUpTo($n);
+
+        // Then
+        $this->assertEquals($expected_primes, $primes);
+    }

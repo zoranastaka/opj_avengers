@@ -1,0 +1,14 @@
+    /**
+     * Get the Presenter service.
+     *
+     * @return Presenter
+     */
+
+    public function getPresenter()
+    {
+        if (!isset($this->presenter)) {
+            $this->presenter = new Presenter($this->getOutput()->getFormatter(), $this->forceArrayIndexes());
+        }
+
+        return $this->presenter;
+    }

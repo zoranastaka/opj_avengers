@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function setHideProgress(bool $hideProgress): ConfigInterface
+    {
+        $this->hideProgress = $hideProgress;
+
+        return $this;
+    }

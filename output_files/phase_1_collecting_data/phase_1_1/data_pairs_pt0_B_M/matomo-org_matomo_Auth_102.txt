@@ -1,0 +1,7 @@
+    /**
+     * Sets the login name to authenticate with.
+     *
+     * @param string $login The username.
+     */
+
+    public function setLogin($login);

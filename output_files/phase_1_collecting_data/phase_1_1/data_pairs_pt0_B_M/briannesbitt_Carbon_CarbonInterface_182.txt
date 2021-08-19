@@ -1,0 +1,12 @@
+    /**
+     * Format the instance as ATOM
+     *
+     * @example
+     * ```
+     * echo Carbon::now()->toAtomString();
+     * ```
+     *
+     * @return string
+     */
+
+    public function toAtomString();

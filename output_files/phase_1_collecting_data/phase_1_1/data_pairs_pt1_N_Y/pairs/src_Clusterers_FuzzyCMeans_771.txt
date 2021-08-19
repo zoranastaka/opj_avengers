@@ -1,0 +1,18 @@
+    /**
+     * Make predictions from a dataset.
+     *
+     * @param \Rubix\ML\Datasets\Dataset $dataset
+     * @throws \Rubix\ML\Exceptions\RuntimeException
+     * @return list<int>
+     */
+
+    public function predict(Dataset $dataset) : array
+    {
+        if (empty($this->centroids)) {
+            throw new RuntimeException('Estimator has not been trained.');
+        }
+
+        DatasetHasDimensionality::with($dataset, count(current($this->centroids)))->check();
+
+        return array_map([$this, 'predictSample'], $dataset->samples());
+    }

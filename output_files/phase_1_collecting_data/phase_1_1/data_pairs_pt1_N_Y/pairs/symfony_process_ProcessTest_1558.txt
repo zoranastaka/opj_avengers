@@ -1,0 +1,18 @@
+    /**
+     * tests results from sub processes.
+     *
+     * @dataProvider pipesCodeProvider
+     */
+
+    public function testProcessPipes($code, $size)
+    {
+        $expected = str_repeat(str_repeat('*', 1024), $size).'!';
+        $expectedLength = (1024 * $size) + 1;
+
+        $p = $this->getProcessForCode($code);
+        $p->setInput($expected);
+        $p->run();
+
+        $this->assertEquals($expectedLength, \strlen($p->getOutput()));
+        $this->assertEquals($expectedLength, \strlen($p->getErrorOutput()));
+    }

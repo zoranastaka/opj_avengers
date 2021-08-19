@@ -1,0 +1,10 @@
+    /**
+     * Adds a requirement collection to the current set of requirements.
+     *
+     * @param RequirementCollection $collection A RequirementCollection instance
+     */
+
+    public function addCollection(RequirementCollection $collection)
+    {
+        $this->requirements = array_merge($this->requirements, $collection->all());
+    }

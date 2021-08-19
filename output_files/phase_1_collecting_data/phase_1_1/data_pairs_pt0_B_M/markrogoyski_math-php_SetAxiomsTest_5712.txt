@@ -1,0 +1,18 @@
+    /**
+     * @test Axiom: A ∪ (A ∩ B) = A
+     * Union absorbtion law
+     *
+     * @dataProvider dataProviderForTwoSets
+     * @param        Set $A
+     * @param        Set $B
+     */
+
+    public function testUnionAbsorbtion(Set $A, Set $B)
+    {
+        // Given
+        $A∪⟮B∩C⟯ = $A->union($A->intersect($B));
+
+        // Then
+        $this->assertEquals($A, $A∪⟮B∩C⟯);
+        $this->assertEquals($A->asArray(), $A∪⟮B∩C⟯->asArray());
+    }

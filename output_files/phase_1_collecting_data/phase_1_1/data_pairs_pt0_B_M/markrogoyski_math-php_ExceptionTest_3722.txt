@@ -1,0 +1,12 @@
+    /**
+     * @test DivisionByZeroException
+     */
+
+    public function testDivisionByZeroException()
+    {
+        // Given
+        $e = new Exception\DivisionByZeroException('message');
+
+        // Then
+        $this->assertInstanceOf(Exception\MathException::class, $e);
+    }

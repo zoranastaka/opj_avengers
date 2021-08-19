@@ -1,0 +1,23 @@
+    /**
+     * Helper function to add variables into bind parameters array and will return
+     * its SQL part of the query according to operator in ' $operator ?' or
+     * ' $operator ($subquery) ' formats
+     *
+     * @param string $operator
+     * @param mixed  $value Variable with values
+     *
+     * @return string
+     */
+
+    protected function _buildPair($operator, $value)
+    {
+        if (!is_object($value)) {
+            $this->_bindParam($value);
+            return ' ' . $operator . ' ? ';
+        }
+
+        $subQuery = $value->getSubQuery();
+        $this->_bindParams($subQuery['params']);
+
+        return " " . $operator . " (" . $subQuery['query'] . ") " . $subQuery['alias'];
+    }

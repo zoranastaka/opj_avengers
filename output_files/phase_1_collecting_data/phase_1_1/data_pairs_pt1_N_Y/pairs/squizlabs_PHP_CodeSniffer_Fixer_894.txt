@@ -1,0 +1,15 @@
+    /**
+     * Adds content to the start of a token's current content.
+     *
+     * @param int    $stackPtr The position of the token in the token stack.
+     * @param string $content  The content to add.
+     *
+     * @return bool If the change was accepted.
+     */
+
+    public function addContentBefore($stackPtr, $content)
+    {
+        $current = $this->getTokenContent($stackPtr);
+        return $this->replaceToken($stackPtr, $content.$current);
+
+    }//end addContentBefore()

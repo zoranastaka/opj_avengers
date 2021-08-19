@@ -1,0 +1,8 @@
+    /**
+     * Returns the current newline sequence characters.
+     */
+
+    public function getNewline(): string
+    {
+        return $this->newline;
+    }

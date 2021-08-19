@@ -1,0 +1,7 @@
+    /**
+     * Gets the comment text.
+     *
+     * @return string The comment text (including comment delimiters like /*)
+     */
+
+    public function __toString() : string {

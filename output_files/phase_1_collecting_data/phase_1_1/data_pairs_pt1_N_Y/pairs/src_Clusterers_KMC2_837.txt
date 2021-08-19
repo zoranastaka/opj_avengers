@@ -1,0 +1,10 @@
+    /**
+     * Return the string representation of the object.
+     *
+     * @return string
+     */
+
+    public function __toString() : string
+    {
+        return "KMC2 (m: {$this->m}, kernel: {$this->kernel})";
+    }

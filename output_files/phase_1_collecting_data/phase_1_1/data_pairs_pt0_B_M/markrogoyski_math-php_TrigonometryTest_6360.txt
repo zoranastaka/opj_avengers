@@ -1,0 +1,15 @@
+    /**
+     * @test         unitCircle returns points on a unit circle.
+     * @dataProvider dataProviderForUnitCircle
+     * @param        int   $points
+     * @param        array $expected
+     */
+
+    public function testUnitCircle(int $points, array $expected)
+    {
+        // When
+        $unitCircle = Trigonometry::unitCircle($points);
+
+        // Then
+        $this->assertEquals($expected, $unitCircle);
+    }

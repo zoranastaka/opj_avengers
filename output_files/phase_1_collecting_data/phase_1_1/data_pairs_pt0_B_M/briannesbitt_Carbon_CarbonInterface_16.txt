@@ -1,0 +1,7 @@
+    /**
+     * Returns the list of properties to dump on serialize() called on.
+     *
+     * @return array
+     */
+
+    public function __sleep();

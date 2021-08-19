@@ -1,0 +1,21 @@
+  /**
+   * create a default google auth object
+   */
+
+  protected function createOAuth2Service()
+  {
+    $auth = new OAuth2(
+        [
+          'clientId'          => $this->getClientId(),
+          'clientSecret'      => $this->getClientSecret(),
+          'authorizationUri'   => self::OAUTH2_AUTH_URL,
+          'tokenCredentialUri' => self::OAUTH2_TOKEN_URI,
+          'redirectUri'       => $this->getRedirectUri(),
+          'issuer'            => $this->config['client_id'],
+          'signingKey'        => $this->config['signing_key'],
+          'signingAlgorithm'  => $this->config['signing_algorithm'],
+        ]
+    );
+
+    return $auth;
+  }

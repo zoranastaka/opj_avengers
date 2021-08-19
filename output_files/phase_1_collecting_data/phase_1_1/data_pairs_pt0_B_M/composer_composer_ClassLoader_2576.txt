@@ -1,0 +1,10 @@
+    /**
+     * Should class lookup fail if not found in the current class map?
+     *
+     * @return bool
+     */
+
+    public function isClassMapAuthoritative()
+    {
+        return $this->classMapAuthoritative;
+    }

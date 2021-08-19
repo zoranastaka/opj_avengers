@@ -1,0 +1,12 @@
+    /**
+     * Gets the orphaned events.
+     *
+     * @return array An array of orphaned events
+     *
+     * @see TraceableEventDispatcher
+     */
+
+    public function getOrphanedEvents()
+    {
+        return $this->data['orphaned_events'];
+    }

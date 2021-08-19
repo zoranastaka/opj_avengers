@@ -1,0 +1,7 @@
+  /**
+   * Assembles message header.
+   * @access public
+   * @return string The assembled header
+   */
+
+  public function CreateHeader() {

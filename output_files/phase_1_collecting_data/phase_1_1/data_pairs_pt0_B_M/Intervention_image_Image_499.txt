@@ -1,0 +1,10 @@
+    /**
+     * Alias of getHeight
+     *
+     * @return int
+     */
+
+    public function height()
+    {
+        return $this->getHeight();
+    }

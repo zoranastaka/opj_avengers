@@ -1,0 +1,13 @@
+    /**
+     * @param int|string $offset
+     */
+
+    public function offsetUnset($offset)
+    {
+        if ($this->gettersVariable) {
+            $var = $this->gettersVariable;
+            unset($this->{$var}[$offset]);
+        } else {
+            unset($this->{$offset});
+        }
+    }

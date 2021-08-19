@@ -1,0 +1,19 @@
+    /**
+     * @return object
+     */
+
+    private function givenImport()
+    {
+        return new class implements ToModel
+        {
+            /**
+             * @param array $row
+             *
+             * @return Model|null
+             */
+            public function model(array $row)
+            {
+                return new User([]);
+            }
+        };
+    }

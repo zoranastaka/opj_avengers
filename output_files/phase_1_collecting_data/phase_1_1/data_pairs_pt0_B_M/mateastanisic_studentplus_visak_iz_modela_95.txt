@@ -1,0 +1,3 @@
+	//vraća status trenutno logiranog studenta u ponudi s idom $id_offer
+
+	function get_status(){

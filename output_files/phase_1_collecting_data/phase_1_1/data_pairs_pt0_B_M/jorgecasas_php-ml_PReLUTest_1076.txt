@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider preluProvider
+     *
+     * @param float|int $value
+     */
+
+    public function testPReLUActivationFunction(float $beta, float $expected, $value): void
+    {
+        $prelu = new PReLU($beta);
+
+        self::assertEqualsWithDelta($expected, $prelu->compute($value), 0.001);
+    }

@@ -1,0 +1,3 @@
+	//dodaj file u bazu
+
+	function upload_file(){

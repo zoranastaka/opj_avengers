@@ -1,0 +1,17 @@
+    /**
+     * @test         insert returns the expected value
+     * @dataProvider dataProviderForInsert
+     */
+
+    public function testInsert(array $A, array $B, int $m, int $n, $expected)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $B = MatrixFactory::create($B);
+
+        // When
+        $matrixWithInsertion = $A->insert($B, $m, $n);
+
+        // Then
+        $this->assertEquals($expected, $matrixWithInsertion->getMatrix());
+    }

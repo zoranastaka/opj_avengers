@@ -1,0 +1,12 @@
+    /**
+     * Implementation of \ArrayAccess::offsetExists()
+     *
+     * @param string $offset
+     * @return bool
+     * @link http://www.php.net/manual/en/arrayaccess.offsetexists.php
+     */
+
+    public function offsetExists($offset)
+    {
+        return isset($this->_data[$offset]) || array_key_exists($offset, $this->_data);
+    }

@@ -1,0 +1,19 @@
+    /**
+     * Debugger constructor.
+     */
+
+    public function __construct()
+    {
+        static::$instance = $this;
+
+        $this->currentTime = microtime(true);
+
+        if (!defined('GRAV_REQUEST_TIME')) {
+            define('GRAV_REQUEST_TIME', $this->currentTime);
+        }
+
+        $this->requestTime = $_SERVER['REQUEST_TIME_FLOAT'] ?? GRAV_REQUEST_TIME;
+
+        // Set deprecation collector.
+        $this->setErrorHandler();
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @param mixed $offset
+     */
+
+    public function offsetExists($offset): bool
+    {
+        return isset($this->coordinates[$offset]);
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @test Limits constant is correct format
+     */
+
+    public function testCauchyParameterLimits()
+    {
+        $this->limitTest(Continuous\Cauchy::PARAMETER_LIMITS);
+    }

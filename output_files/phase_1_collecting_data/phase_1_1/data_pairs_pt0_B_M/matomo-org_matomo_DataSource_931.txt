@@ -1,0 +1,10 @@
+   /**
+    * Returns value for the element with the given name
+    *
+    * If data source doesn't have a requested value it should return null
+    *
+    * @param    string  Element's name
+    * @return   mixed   Element's value
+    */
+
+    public function getValue($name);

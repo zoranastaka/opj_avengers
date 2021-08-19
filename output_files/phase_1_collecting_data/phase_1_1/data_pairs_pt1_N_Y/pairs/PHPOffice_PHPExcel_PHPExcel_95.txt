@@ -1,0 +1,11 @@
+    /**
+     * Check if a sheet with a specified code name already exists
+     *
+     * @param string $pSheetCodeName  Name of the worksheet to check
+     * @return boolean
+     */
+
+    public function sheetCodeNameExists($pSheetCodeName)
+    {
+        return ($this->getSheetByCodeName($pSheetCodeName) !== null);
+    }

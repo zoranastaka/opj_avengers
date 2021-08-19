@@ -1,0 +1,81 @@
+    /**
+     * @param $text
+     * @return mixed
+     */
+
+    public function parseInlineCallback($text)
+    {
+        $self = $this;
+
+        $text = preg_replace_callback(
+            "/(\*{3})(.+?)\\1/",
+            function ($matches) use ($self) {
+                return  '<strong><em>' .
+                    $self->parseInlineCallback($matches[2]) .
+                    '</em></strong>';
+            },
+            $text
+        );
+
+        $text = preg_replace_callback(
+            "/(\*{2})(.+?)\\1/",
+            function ($matches) use ($self) {
+                return  '<strong>' .
+                    $self->parseInlineCallback($matches[2]) .
+                    '</strong>';
+            },
+            $text
+        );
+
+        $text = preg_replace_callback(
+            "/(\*)(.+?)\\1/",
+            function ($matches) use ($self) {
+                return  '<em>' .
+                    $self->parseInlineCallback($matches[2]) .
+                    '</em>';
+            },
+            $text
+        );
+
+        $text = preg_replace_callback(
+            "/(\s+|^)(_{3})(.+?)\\2(\s+|$)/",
+            function ($matches) use ($self) {
+                return  $matches[1] . '<strong><em>' .
+                    $self->parseInlineCallback($matches[3]) .
+                    '</em></strong>' . $matches[4];
+            },
+            $text
+        );
+
+        $text = preg_replace_callback(
+            "/(\s+|^)(_{2})(.+?)\\2(\s+|$)/",
+            function ($matches) use ($self) {
+                return  $matches[1] . '<strong>' .
+                    $self->parseInlineCallback($matches[3]) .
+                    '</strong>' . $matches[4];
+            },
+            $text
+        );
+
+        $text = preg_replace_callback(
+            "/(\s+|^)(_)(.+?)\\2(\s+|$)/",
+            function ($matches) use ($self) {
+                return  $matches[1] . '<em>' .
+                    $self->parseInlineCallback($matches[3]) .
+                    '</em>' . $matches[4];
+            },
+            $text
+        );
+
+        $text = preg_replace_callback(
+            "/(~{2})(.+?)\\1/",
+            function ($matches) use ($self) {
+                return  '<del>' .
+                    $self->parseInlineCallback($matches[2]) .
+                    '</del>';
+            },
+            $text
+        );
+
+        return $text;
+    }

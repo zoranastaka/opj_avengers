@@ -1,0 +1,15 @@
+    /**
+     * @test         sumOfSquaresRegression
+     * @dataProvider dataProviderForSumOfSquaresRegression
+     * @param        array $points
+     * @param        float $SSreg
+     */
+
+    public function testSumOfSquaresRegression(array $points, float $SSreg)
+    {
+        // Given
+        $regression = new Linear($points);
+
+        // Then
+        $this->assertEqualsWithDelta($SSreg, $regression->sumOfSquaresRegression(), 0.00001);
+    }

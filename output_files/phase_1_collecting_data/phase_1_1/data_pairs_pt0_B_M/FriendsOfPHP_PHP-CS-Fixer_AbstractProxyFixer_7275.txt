@@ -1,0 +1,14 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function isRisky(): bool
+    {
+        foreach ($this->proxyFixers as $fixer) {
+            if ($fixer->isRisky()) {
+                return true;
+            }
+        }
+
+        return false;
+    }

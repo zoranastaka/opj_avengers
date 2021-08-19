@@ -1,0 +1,16 @@
+    /**
+     * Raw data with each observation labeled
+     * [['len' => 4.2, 'supp' => 'VC', 'dose' => 0.5], ... ]
+     *
+     * @return number[]
+     */
+
+    public function getLabeledData(): array
+    {
+        return \array_map(
+            function (array $data) {
+                return \array_combine(self::LABELS, $data);
+            },
+            self::DATA
+        );
+    }

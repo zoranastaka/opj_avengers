@@ -1,0 +1,10 @@
+    /**
+     * Returns the length of the string. An alias for PHP's mb_strlen() function.
+     *
+     * @return int The number of characters in $str given the encoding
+     */
+
+    public function length()
+    {
+        return \mb_strlen($this->str, $this->encoding);
+    }

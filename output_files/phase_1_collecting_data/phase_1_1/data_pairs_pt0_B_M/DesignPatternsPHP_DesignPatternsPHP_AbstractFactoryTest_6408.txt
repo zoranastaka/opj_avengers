@@ -1,0 +1,9 @@
+    /**
+     * @dataProvider provideFactory
+     */
+
+    public function testCanCreateCsvWriterOnUnix(WriterFactory $writerFactory)
+    {
+        $this->assertInstanceOf(JsonWriter::class, $writerFactory->createJsonWriter());
+        $this->assertInstanceOf(CsvWriter::class, $writerFactory->createCsvWriter());
+    }

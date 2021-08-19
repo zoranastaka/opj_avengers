@@ -1,0 +1,6 @@
+	// --------------------------------------------------------------------
+
+	public function test_set_cookie()
+	{
+		$this->markTestSkipped('TODO: Find a way to test HTTP headers');
+	}

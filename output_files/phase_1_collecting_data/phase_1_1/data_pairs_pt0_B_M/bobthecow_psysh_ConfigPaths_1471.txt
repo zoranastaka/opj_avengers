@@ -1,0 +1,12 @@
+    /**
+     * Find real data files in config directories.
+     *
+     * @param string[] $names Config file names
+     *
+     * @return string[]
+     */
+
+    public function dataFiles(array $names)
+    {
+        return $this->allRealFiles($this->dataDirs(), $names);
+    }

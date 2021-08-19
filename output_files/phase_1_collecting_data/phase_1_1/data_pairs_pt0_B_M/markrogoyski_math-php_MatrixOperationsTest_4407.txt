@@ -1,0 +1,17 @@
+    /**
+     * @test         meanDeviation
+     * @dataProvider dataProviderForMeanDeviation
+     */
+
+    public function testMeanDeviation(array $A, array $B)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $B = MatrixFactory::create($B);
+
+        // When
+        $meanDeviation = $A->meanDeviation();
+
+        // Then
+        $this->assertEquals($B, $meanDeviation);
+    }

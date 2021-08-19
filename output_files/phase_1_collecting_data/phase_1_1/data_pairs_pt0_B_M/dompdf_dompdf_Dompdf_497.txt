@@ -1,0 +1,10 @@
+    /**
+     * @param string $value
+     * @return bool
+     * @deprecated
+     */
+
+    public function parse_default_view($value)
+    {
+        return $this->parseDefaultView($value);
+    }

@@ -1,0 +1,8 @@
+    /**
+     * Sets the request format.
+     */
+
+    public function setRequestFormat(?string $format)
+    {
+        $this->format = $format;
+    }

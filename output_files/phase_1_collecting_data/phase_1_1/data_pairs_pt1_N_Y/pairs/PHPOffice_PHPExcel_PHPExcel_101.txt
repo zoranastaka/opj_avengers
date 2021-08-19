@@ -1,0 +1,10 @@
+    /**
+     * Set properties
+     *
+     * @param PHPExcel_DocumentProperties    $pValue
+     */
+
+    public function setProperties(PHPExcel_DocumentProperties $pValue)
+    {
+        $this->properties = $pValue;
+    }

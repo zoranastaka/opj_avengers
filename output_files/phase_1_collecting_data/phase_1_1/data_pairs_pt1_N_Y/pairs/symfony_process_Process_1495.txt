@@ -1,0 +1,10 @@
+    /**
+     * Gets the Process input.
+     *
+     * @return resource|string|\Iterator|null The Process input
+     */
+
+    public function getInput()
+    {
+        return $this->input;
+    }

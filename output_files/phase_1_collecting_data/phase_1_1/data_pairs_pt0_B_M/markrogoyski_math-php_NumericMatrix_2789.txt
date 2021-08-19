@@ -1,0 +1,19 @@
+    /**
+     * Row echelon form - REF
+     *
+     * @return Reduction\RowEchelonForm
+     *
+     * @throws Exception\BadDataException
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MatrixException
+     */
+
+    public function ref(): Reduction\RowEchelonForm
+    {
+        if (!$this->catalog->hasRowEchelonForm()) {
+            $this->catalog->addRowEchelonForm(Reduction\RowEchelonForm::reduce($this));
+        }
+
+        return $this->catalog->getRowEchelonForm();
+    }

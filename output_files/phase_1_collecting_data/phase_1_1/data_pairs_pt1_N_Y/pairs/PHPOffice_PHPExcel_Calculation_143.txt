@@ -1,0 +1,11 @@
+    /**
+     * Return the Array Return Type (Array or Value of first element in the array)
+     *
+     * @access    public
+     * @return     string        $returnType            Array return type
+     */
+
+    public static function getArrayReturnType()
+    {
+        return self::$returnArrayAsType;
+    }

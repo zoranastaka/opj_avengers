@@ -1,0 +1,13 @@
+    /**
+     * @return array [N, K, n, mode]
+     */
+
+    public function dataProviderForMode(): array
+    {
+        return [
+            [50, 5, 10, [1, 1]],
+            [100, 80, 50, [40, 40]],
+            [48, 6, 15, [2, 2]],
+            [100, 30, 20, [6, 6]],
+        ];
+    }

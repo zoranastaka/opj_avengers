@@ -1,0 +1,5 @@
+/**
+ * Exception for when the user hit ctrl-c
+ */
+
+class InterruptedException extends \Exception {

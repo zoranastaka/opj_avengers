@@ -1,0 +1,8 @@
+	/**
+	 * Invalidate cache group.
+	 *
+	 * @param string $group Group of cache to clear.
+	 * @since 3.9.0
+	 */
+
+	public static function invalidate_cache_group( $group ) {

@@ -1,0 +1,15 @@
+    /**
+     * @test geometricMean when the input array is empty
+     */
+
+    public function testGeometricMeanExceptionWhenEmptyArray()
+    {
+        // Given
+        $numbers = [];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Average::geometricMean($numbers);
+    }

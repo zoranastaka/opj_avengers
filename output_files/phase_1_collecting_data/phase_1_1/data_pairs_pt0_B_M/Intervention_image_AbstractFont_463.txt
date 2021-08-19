@@ -1,0 +1,13 @@
+    /**
+     * Set rotation angle of text
+     *
+     * @param  int $angle
+     * @return void
+     */
+
+    public function angle($angle)
+    {
+        $this->angle = $angle;
+
+        return $this;
+    }

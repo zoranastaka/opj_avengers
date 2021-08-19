@@ -1,0 +1,11 @@
+    /**
+     * Constructor
+     *
+     * @param float $p success probability  0 < p < 1
+     */
+
+    public function __construct(float $p)
+    {
+        $q = 1 - $p;
+        parent::__construct($p, $q);
+    }

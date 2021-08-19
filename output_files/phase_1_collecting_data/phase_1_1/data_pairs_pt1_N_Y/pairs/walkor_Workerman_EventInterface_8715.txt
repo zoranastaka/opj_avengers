@@ -1,0 +1,7 @@
+    /**
+     * Get Timer count.
+     *
+     * @return mixed
+     */
+
+    public function getTimerCount();

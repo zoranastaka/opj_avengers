@@ -1,0 +1,12 @@
+    /**
+     * Output only. Recall (True Positive Rate) for the given confidence
+     * threshold.
+     *
+     * Generated from protobuf field <code>float recall = 2;</code>
+     * @return float
+     */
+
+    public function getRecall()
+    {
+        return $this->recall;
+    }

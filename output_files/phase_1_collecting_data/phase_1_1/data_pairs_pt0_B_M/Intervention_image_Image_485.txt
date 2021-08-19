@@ -1,0 +1,14 @@
+    /**
+     * Magic method to catch all image calls
+     * usually any AbstractCommand
+     *
+     * @param  string $name
+     * @param  Array  $arguments
+     * @return mixed
+     */
+
+    public function __call($name, $arguments)
+    {
+        $command = $this->driver->executeCommand($this, $name, $arguments);
+        return $command->hasOutput() ? $command->getOutput() : $this;
+    }

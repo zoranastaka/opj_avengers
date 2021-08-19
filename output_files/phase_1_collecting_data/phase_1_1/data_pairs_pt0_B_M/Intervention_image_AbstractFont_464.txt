@@ -1,0 +1,10 @@
+    /**
+     * Get rotation angle of text
+     *
+     * @return int
+     */
+
+    public function getAngle()
+    {
+        return $this->angle;
+    }

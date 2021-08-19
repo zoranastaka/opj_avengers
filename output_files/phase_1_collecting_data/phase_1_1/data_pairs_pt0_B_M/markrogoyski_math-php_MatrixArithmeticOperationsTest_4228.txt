@@ -1,0 +1,18 @@
+    /**
+     * @test         kroneckerProduct
+     * @dataProvider dataProviderForKroneckerProduct
+     */
+
+    public function testKroneckerProduct(array $A, array $B, array $expected)
+    {
+        // Given
+        $A        = new NumericMatrix($A);
+        $B        = new NumericMatrix($B);
+        $expected = new NumericMatrix($expected);
+
+        // When
+        $A⊗B = $A->kroneckerProduct($B);
+
+        // Then
+        $this->assertEquals($expected->getMatrix(), $A⊗B->getMatrix());
+    }

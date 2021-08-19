@@ -1,0 +1,10 @@
+    /**
+     * Return the current cache storage method
+     *
+     * @return string|null
+     **/
+
+    public static function getCacheStorageMethod()
+    {
+        return self::$cacheStorageMethod;
+    }

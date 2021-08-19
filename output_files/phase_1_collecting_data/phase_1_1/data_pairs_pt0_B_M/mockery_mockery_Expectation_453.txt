@@ -1,0 +1,10 @@
+    /**
+     * Check if there is a constraint on call count
+     *
+     * @return bool
+     */
+
+    public function isCallCountConstrained()
+    {
+        return (count($this->_countValidators) > 0);
+    }

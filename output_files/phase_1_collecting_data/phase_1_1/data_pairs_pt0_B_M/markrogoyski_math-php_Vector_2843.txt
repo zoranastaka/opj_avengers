@@ -1,0 +1,21 @@
+    /**
+     * Normalize (Â)
+     * The normalized vector Â is a vector in the same direction of A
+     * but with a norm (length) of 1. It is a unit vector.
+     * http://mathworld.wolfram.com/NormalizedVector.html
+     *
+     *      A
+     * Â ≡ ---
+     *     |A|
+     *
+     *  where |A| is the l²-norm (|A|₂)
+     *
+     * @return Vector
+     */
+
+    public function normalize(): Vector
+    {
+        $│A│ = $this->l2Norm();
+
+        return $this->scalarDivide($│A│);
+    }

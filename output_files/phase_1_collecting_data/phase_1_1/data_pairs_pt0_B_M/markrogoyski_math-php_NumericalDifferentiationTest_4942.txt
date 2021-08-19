@@ -1,0 +1,16 @@
+    /**
+     * @test   isSpacingConstant when there is not constant spacing between points
+     * @throws \Exception
+     */
+
+    public function testSpacingNonConstant()
+    {
+        // Given
+        $sortedPoints = [[0,0], [3,3], [2,2]];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        NumericalDifferentiation::isSpacingConstant($sortedPoints);
+    }

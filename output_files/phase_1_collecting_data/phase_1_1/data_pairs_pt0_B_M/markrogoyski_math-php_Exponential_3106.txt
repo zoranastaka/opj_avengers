@@ -1,0 +1,14 @@
+    /**
+     * Variance of the distribution
+     *
+     *           1
+     * var[X] = --
+     *          λ²
+     *
+     * @return float
+     */
+
+    public function variance(): float
+    {
+        return 1 / ($this->λ ** 2);
+    }

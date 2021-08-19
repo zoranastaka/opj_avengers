@@ -1,0 +1,21 @@
+    /**
+     * Retrieve annotations for an entry.
+     *
+     * @see Wallabag\ApiBundle\Controller\WallabagRestController
+     *
+     * @return JsonResponse
+     */
+
+    public function getAnnotationsAction(Entry $entry)
+    {
+        $annotationRows = $this
+            ->getDoctrine()
+            ->getRepository('WallabagAnnotationBundle:Annotation')
+            ->findAnnotationsByPageId($entry->getId(), $this->getUser()->getId());
+        $total = \count($annotationRows);
+        $annotations = ['total' => $total, 'rows' => $annotationRows];
+
+        $json = $this->get('jms_serializer')->serialize($annotations, 'json');
+
+        return (new JsonResponse())->setJson($json);
+    }

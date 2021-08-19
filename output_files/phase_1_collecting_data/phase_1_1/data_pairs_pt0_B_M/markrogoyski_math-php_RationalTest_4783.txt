@@ -1,0 +1,20 @@
+    /**
+     * @test         abs returns the correct number
+     * @dataProvider dataProviderForAbs
+     * @param        number $w
+     * @param        number $n
+     * @param        number $d
+     * @param        array $result
+     */
+
+    public function testAbs($w, $n, $d, array $result)
+    {
+        // Given
+        $number = new Rational($w, $n, $d);
+
+        // When
+        $result_rn = new Rational(...$result);
+
+        // Then
+        $this->assertTrue($number->abs()->equals($result_rn));
+    }

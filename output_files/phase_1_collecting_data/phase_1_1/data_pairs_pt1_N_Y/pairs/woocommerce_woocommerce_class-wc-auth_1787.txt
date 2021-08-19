@@ -1,0 +1,8 @@
+	/**
+	 * Decode and format a URL.
+	 *
+	 * @param  string $url URL.
+	 * @return string
+	 */
+
+	protected function get_formatted_url( $url ) {

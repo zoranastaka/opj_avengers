@@ -1,0 +1,10 @@
+    /**
+     * @inheritdoc
+     */
+
+    public function has(string $index): bool
+    {
+        return isset(
+            $this->memory[$this->prepareIndex($index)]
+        );
+    }

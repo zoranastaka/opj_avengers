@@ -1,0 +1,6 @@
+    /** @before */
+
+    public function createConfiguration(): void
+    {
+        $this->config = Configuration::forUnsecuredSigner();
+    }

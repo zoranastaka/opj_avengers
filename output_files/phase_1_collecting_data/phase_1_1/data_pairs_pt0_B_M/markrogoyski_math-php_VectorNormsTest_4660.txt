@@ -1,0 +1,16 @@
+    /**
+     * @test         max norm
+     * @dataProvider dataProviderForMaxNorm
+     */
+
+    public function testMaxNorm(array $A, $expected)
+    {
+        // Given
+        $A = new Vector($A);
+
+        // When
+        $maxnorm = $A->maxNorm();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $maxnorm, 0.0001);
+    }

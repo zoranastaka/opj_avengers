@@ -1,0 +1,17 @@
+    /**
+     * Test sending multiple messages with separate connections.
+     */
+
+    public function testMultipleSend()
+    {
+        $this->Mail->Body = 'Sending two messages without keepalive';
+        $this->buildBody();
+        $subject = $this->Mail->Subject;
+
+        $this->Mail->Subject = $subject . ': SMTP 1';
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+
+        $this->Mail->Subject = $subject . ': SMTP 2';
+        $this->Mail->Sender = 'blah@example.com';
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+    }

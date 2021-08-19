@@ -1,0 +1,19 @@
+    /**
+     * Calculates net output of the network as a float value for the given input
+     *
+     * @return int|float
+     */
+
+    protected function output(array $sample)
+    {
+        $sum = 0;
+        foreach ($this->weights as $index => $w) {
+            if ($index == 0) {
+                $sum += $w;
+            } else {
+                $sum += $w * $sample[$index - 1];
+            }
+        }
+
+        return $sum;
+    }

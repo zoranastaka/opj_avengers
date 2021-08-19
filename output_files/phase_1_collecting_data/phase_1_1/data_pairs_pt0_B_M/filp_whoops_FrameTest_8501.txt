@@ -1,0 +1,11 @@
+    /**
+     * @covers Whoops\Exception\Frame::getClass
+     */
+
+    public function testGetClass()
+    {
+        $data  = $this->getFrameData();
+        $frame = $this->getFrameInstance($data);
+
+        $this->assertEquals($frame->getClass(), $data['class']);
+    }

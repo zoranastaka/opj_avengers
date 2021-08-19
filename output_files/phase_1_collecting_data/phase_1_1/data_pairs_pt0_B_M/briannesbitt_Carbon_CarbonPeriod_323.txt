@@ -1,0 +1,10 @@
+    /**
+     * Count dates in the date period.
+     *
+     * @return int
+     */
+
+    public function count()
+    {
+        return \count($this->toArray());
+    }

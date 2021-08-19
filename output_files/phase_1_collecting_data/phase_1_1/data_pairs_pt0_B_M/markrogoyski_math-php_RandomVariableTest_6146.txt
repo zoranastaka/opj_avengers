@@ -1,0 +1,16 @@
+    /**
+     * @test         kurtosis default type is poluation skewness
+     * @dataProvider dataProviderForPopulationKurtosis
+     * @param        array $X
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testSkewnessDefaultTypeIsPopulationKurtosis(array $X, float $expected)
+    {
+        // When
+        $kurtosis = RandomVariable::kurtosis($X);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $kurtosis, 0.000001);
+    }

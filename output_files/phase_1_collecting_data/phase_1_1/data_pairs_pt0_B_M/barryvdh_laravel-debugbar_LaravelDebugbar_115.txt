@@ -1,0 +1,19 @@
+    /**
+     * Utility function to measure the execution of a Closure
+     *
+     * @param string $label
+     * @param \Closure $closure
+     * @return mixed
+     */
+
+    public function measure($label, \Closure $closure)
+    {
+        if ($this->hasCollector('time')) {
+            /** @var \DebugBar\DataCollector\TimeDataCollector $collector */
+            $collector = $this->getCollector('time');
+            $result = $collector->measure($label, $closure);
+        } else {
+            $result = $closure();
+        }
+        return $result;
+    }

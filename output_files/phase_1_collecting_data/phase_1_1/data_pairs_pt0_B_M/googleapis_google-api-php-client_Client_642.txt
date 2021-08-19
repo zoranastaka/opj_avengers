@@ -1,0 +1,12 @@
+  /**
+   * @return OAuth2 implementation
+   */
+
+  public function getOAuth2Service()
+  {
+    if (!isset($this->auth)) {
+      $this->auth = $this->createOAuth2Service();
+    }
+
+    return $this->auth;
+  }

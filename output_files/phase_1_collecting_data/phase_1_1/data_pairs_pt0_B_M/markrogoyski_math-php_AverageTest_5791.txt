@@ -1,0 +1,16 @@
+    /**
+     * @test         mean
+     * @dataProvider dataProviderForMean
+     * @param        array $numbers
+     * @param        float $expectedMean
+     * @throws       \Exception
+     */
+
+    public function testMean(array $numbers, float $expectedMean)
+    {
+        // When
+        $mean = Average::mean($numbers);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedMean, $mean, 0.01);
+    }

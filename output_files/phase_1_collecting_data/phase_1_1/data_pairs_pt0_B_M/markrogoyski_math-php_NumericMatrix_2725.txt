@@ -1,0 +1,38 @@
+    /**
+     * Is the matrix negative definite?
+     *  - It is square and symmetric.
+     *  - All principal minors have nonzero determinants and alternate in signs, starting with det(A₁) < 0
+     *
+     * http://mathworld.wolfram.com/NegativeDefiniteMatrix.html
+     *
+     * @return boolean true if negative definite; false otherwise
+     *
+     * @throws Exception\MatrixException
+     * @throws Exception\OutOfBoundsException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\BadParameterException
+     */
+
+    public function isNegativeDefinite(): bool
+    {
+        if (!$this->isSymmetric()) {
+            return false;
+        }
+
+        for ($i = 1; $i <= $this->n; $i++) {
+            switch ($i % 2) {
+                case 1:
+                    if ($this->leadingPrincipalMinor($i)->det() >= 0) {
+                        return false;
+                    }
+                    break;
+                case 0:
+                    if ($this->leadingPrincipalMinor($i)->det() <= 0) {
+                        return false;
+                    }
+                    break;
+            }
+        }
+
+        return true;
+    }

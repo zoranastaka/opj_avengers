@@ -1,0 +1,9 @@
+  /**
+   * Set the application name, this is included in the User-Agent HTTP header.
+   * @param string $applicationName
+   */
+
+  public function setApplicationName($applicationName)
+  {
+    $this->config['application_name'] = $applicationName;
+  }

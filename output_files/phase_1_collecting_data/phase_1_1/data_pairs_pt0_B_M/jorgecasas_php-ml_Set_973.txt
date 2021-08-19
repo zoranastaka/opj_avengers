@@ -1,0 +1,18 @@
+    /**
+     * Creates the Cartesian product of A and B.
+     *
+     * @return Set[]
+     */
+
+    public static function cartesian(self $a, self $b): array
+    {
+        $cartesian = [];
+
+        foreach ($a as $multiplier) {
+            foreach ($b as $multiplicand) {
+                $cartesian[] = new self(array_merge([$multiplicand], [$multiplier]));
+            }
+        }
+
+        return $cartesian;
+    }

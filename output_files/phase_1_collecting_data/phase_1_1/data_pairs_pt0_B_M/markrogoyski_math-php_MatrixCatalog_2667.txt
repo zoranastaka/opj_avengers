@@ -1,0 +1,8 @@
+    /**
+     * @param Reduction\RowEchelonForm $REF
+     */
+
+    public function addRowEchelonForm(Reduction\RowEchelonForm $REF): void
+    {
+        $this->REF = $REF;
+    }

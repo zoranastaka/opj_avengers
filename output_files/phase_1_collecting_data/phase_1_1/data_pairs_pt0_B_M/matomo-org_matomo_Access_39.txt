@@ -1,0 +1,23 @@
+    /**
+     * This method checks that the user has VIEW or ADMIN access for the given list of websites.
+     * If the user doesn't have VIEW or ADMIN access for at least one website of the list, we throw an exception.
+     *
+     * @param int|array|string $idSites List of ID sites to check (integer, array of integers, string comma separated list of integers)
+     * @throws \Piwik\NoAccessException  If for any of the websites the user doesn't have an VIEW or ADMIN access
+     */
+
+    public function checkUserHasViewAccess($idSites)
+    {
+        if ($this->hasSuperUserAccess()) {
+            return;
+        }
+
+        $idSites = $this->getIdSites($idSites);
+        $idSitesAccessible = $this->getSitesIdWithAtLeastViewAccess();
+
+        foreach ($idSites as $idsite) {
+            if (!in_array($idsite, $idSitesAccessible)) {
+                $this->throwNoAccessException(Piwik::translate('General_ExceptionPrivilegeAccessWebsite', array("'view'", $idsite)));
+            }
+        }
+    }

@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function setIndent(string $indent): ConfigInterface
+    {
+        $this->indent = $indent;
+
+        return $this;
+    }

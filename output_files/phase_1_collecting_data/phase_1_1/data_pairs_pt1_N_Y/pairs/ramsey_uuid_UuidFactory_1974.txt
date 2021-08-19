@@ -1,0 +1,8 @@
+    /**
+     * Returns the codec used by this factory
+     */
+
+    public function getCodec(): CodecInterface
+    {
+        return $this->codec;
+    }

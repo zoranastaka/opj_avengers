@@ -1,0 +1,21 @@
+    /**
+     * @test         Axiom: Nilpotent matrix - tr(Aᵏ) = 0 for all k > 0
+     * @dataProvider dataProviderForNilpotentMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testNilpotentTraceIsZero(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        foreach (\range(1, 5) as $_) {
+            // When
+            $A     = $A->multiply($A);
+            $trace = $A->trace();
+
+            // Then
+            $this->assertEquals(0, $trace);
+        }
+    }

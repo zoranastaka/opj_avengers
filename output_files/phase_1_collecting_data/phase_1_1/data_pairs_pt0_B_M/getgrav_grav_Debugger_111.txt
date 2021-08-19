@@ -1,0 +1,10 @@
+    /**
+     * @return void
+     */
+
+    public function setErrorHandler()
+    {
+        $this->errorHandler = set_error_handler(
+            [$this, 'deprecatedErrorHandler']
+        );
+    }

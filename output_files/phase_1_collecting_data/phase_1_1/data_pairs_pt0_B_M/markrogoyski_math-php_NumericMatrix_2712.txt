@@ -1,0 +1,18 @@
+    /**
+     * Constructor
+     *
+     * @param array[] $A of arrays $A m x n matrix
+     *
+     * @throws Exception\BadDataException if any rows have a different column count
+     */
+
+    public function __construct(array $A)
+    {
+        $this->A       = $A;
+        $this->m       = \count($A);
+        $this->n       = $this->m > 0 ? \count($A[0]) : 0;
+        $this->ε       = self::ε;
+        $this->catalog = new MatrixCatalog();
+
+        $this->validateMatrixDimensions();
+    }

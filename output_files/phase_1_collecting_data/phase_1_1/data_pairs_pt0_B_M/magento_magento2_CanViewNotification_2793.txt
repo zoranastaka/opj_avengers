@@ -1,0 +1,10 @@
+    /**
+     * Get condition name
+     *
+     * @return string
+     */
+
+    public function getName(): string
+    {
+        return self::$conditionName;
+    }

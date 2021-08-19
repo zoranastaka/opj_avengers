@@ -1,0 +1,6 @@
+//Upload Drupal 7 files folder
+
+task('drupal:upload_files', function () {
+    if (askConfirmation('Are you sure?')) {
+        upload('sites/{{drupal_site}}/files', '{{deploy_path}}/shared/sites/{{drupal_site}}/files');
+    }

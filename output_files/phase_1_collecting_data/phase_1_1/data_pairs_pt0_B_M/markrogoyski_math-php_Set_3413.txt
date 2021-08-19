@@ -1,0 +1,17 @@
+    /**
+     * Disjoint
+     * Does the set have no elements in common with the other set?
+     *
+     * Example of disjoint sets:
+     *  A = {1, 2, 3}
+     *  B = {4, 5, 6}
+     *
+     * @param  Set $other
+     *
+     * @return boolean
+     */
+
+    public function isDisjoint(Set $other): bool
+    {
+        return empty(\array_intersect_key($this->A, $other->asArray()));
+    }

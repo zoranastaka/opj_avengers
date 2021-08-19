@@ -1,0 +1,12 @@
+    /**
+     * Constructor
+     *
+     * @param number $r Real part
+     * @param number $i Imaginary part
+     */
+
+    public function __construct($r, $i)
+    {
+        $this->r = $r;
+        $this->i = $i;
+    }

@@ -1,0 +1,9 @@
+    /** @test */
+
+    public function allowsSetsUpMethodStub()
+    {
+        $stub = m::mock();
+        $stub->allows()->foo(123)->andReturns(456);
+
+        $this->assertEquals(456, $stub->foo(123));
+    }

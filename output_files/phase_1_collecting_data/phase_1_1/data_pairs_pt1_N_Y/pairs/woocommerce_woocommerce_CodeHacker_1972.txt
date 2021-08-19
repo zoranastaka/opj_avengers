@@ -1,0 +1,9 @@
+	/**
+	 * Executes a native PHP function.
+	 *
+	 * @param string $func Name of the function to execute. Pass the arguments for the PHP function after this one.
+	 *
+	 * @return mixed Return value from the native PHP function.
+	 */
+
+	private function native( $func ) {

@@ -1,0 +1,13 @@
+    /**
+     * Generator source code, from which Phalcon extension can be built
+     */
+
+    public function run()
+    {
+        echo 'Generating safe build... ';
+
+        Util::cleanDirectory($this->outputDir);
+        $this->generateFiles();
+
+        echo "OK\n";
+    }

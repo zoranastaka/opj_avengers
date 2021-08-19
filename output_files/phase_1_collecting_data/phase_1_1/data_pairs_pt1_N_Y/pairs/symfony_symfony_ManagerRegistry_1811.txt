@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     *
+     * @return object
+     */
+
+    protected function getService($name)
+    {
+        return $this->container->get($name);
+    }

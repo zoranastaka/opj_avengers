@@ -1,0 +1,8 @@
+    /**
+     * Is the value an object?
+     */
+
+    function anObject()
+    {
+        return \Hamcrest\Type\IsObject::objectValue();
+    }

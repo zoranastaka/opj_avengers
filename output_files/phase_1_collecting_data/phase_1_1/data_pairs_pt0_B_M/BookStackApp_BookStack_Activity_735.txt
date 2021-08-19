@@ -1,0 +1,8 @@
+    /**
+     * Get the user this activity relates to.
+     */
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }

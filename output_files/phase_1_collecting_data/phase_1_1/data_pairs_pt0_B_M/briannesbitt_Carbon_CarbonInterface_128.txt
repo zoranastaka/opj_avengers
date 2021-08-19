@@ -1,0 +1,7 @@
+    /**
+     * Returns a present instance in the same timezone.
+     *
+     * @return static
+     */
+
+    public function nowWithSameTz();

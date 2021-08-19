@@ -1,0 +1,13 @@
+    /**
+     * @test         multiply two arrays
+     * @dataProvider dataProviderForMultiplyTwoArrays
+     */
+
+    public function testMultiplyTwoArrays(array $xs, array $ys, array $expected)
+    {
+        // When
+        $products = Multi::multiply($xs, $ys);
+
+        // Then
+        $this->assertEquals($expected, $products);
+    }

@@ -1,0 +1,15 @@
+    /**
+     * Mean of squares for error
+     * MSE = SSₑ / ν
+     *
+     * @return float
+     */
+
+    public function meanSquareResidual(): float
+    {
+        $ν   = $this->ν;
+        $SSₑ = $this->sumOfSquaresResidual();
+        $MSE = $SSₑ / $ν;
+
+        return $MSE;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Check whether this PHP instance has Readline available.
+     *
+     * @return bool True if Readline is available
+     */
+
+    public function hasReadline()
+    {
+        return $this->hasReadline;
+    }

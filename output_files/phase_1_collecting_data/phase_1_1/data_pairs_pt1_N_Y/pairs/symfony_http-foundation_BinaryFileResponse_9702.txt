@@ -1,0 +1,30 @@
+    /**
+     * Sends the file.
+     *
+     * {@inheritdoc}
+     */
+
+    public function sendContent()
+    {
+        if (!$this->isSuccessful()) {
+            return parent::sendContent();
+        }
+
+        if (0 === $this->maxlen) {
+            return $this;
+        }
+
+        $out = fopen('php://output', 'w');
+        $file = fopen($this->file->getPathname(), 'r');
+
+        stream_copy_to_stream($file, $out, $this->maxlen, $this->offset);
+
+        fclose($out);
+        fclose($file);
+
+        if ($this->deleteFileAfterSend && is_file($this->file->getPathname())) {
+            unlink($this->file->getPathname());
+        }
+
+        return $this;
+    }

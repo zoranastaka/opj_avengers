@@ -1,0 +1,9 @@
+    /**
+     * return the validator name.
+     *
+     */
+
+    public function getName(): string
+    {
+        return $this->name;
+    }

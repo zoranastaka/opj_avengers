@@ -1,0 +1,18 @@
+    /**
+     * @test
+     * @dataProvider dataProviderForSingleSet
+     */
+
+    public function testClear(array $members)
+    {
+        // Given
+        $set  = new Set($members);
+
+        // When
+        $set->clear();
+
+        // Then
+        $this->assertTrue($set->isEmpty());
+        $this->assertEmpty($set->asArray());
+        $this->assertEquals($set, new Set());
+    }

@@ -1,0 +1,98 @@
+/**
+ * Class ChangesForV431.
+ *
+ * @codeCoverageIgnore
+ */
+
+class ChangesForV431 extends Migration
+{
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        // reinstate "repeats" and "repeat_freq".
+        Schema::table(
+            'budget_limits',
+            static function (Blueprint $table) {
+                $table->string('repeat_freq', 30)->nullable();
+            }
+        );
+        Schema::table(
+            'budget_limits',
+            static function (Blueprint $table) {
+                $table->boolean('repeats')->default(0);
+            }
+        );
+
+        // change field "start_date" to "startdate"
+        Schema::table(
+            'budget_limits',
+            static function (Blueprint $table) {
+                $table->renameColumn('start_date', 'startdate');
+            }
+        );
+
+        // remove date field "end_date"
+        Schema::table(
+            'budget_limits',
+            static function (Blueprint $table) {
+                $table->dropColumn('end_date');
+            }
+        );
+        // remove decimal places
+        Schema::table(
+            'transaction_currencies',
+            static function (Blueprint $table) {
+                $table->dropColumn('decimal_places');
+            }
+        );
+    }
+
+    /**
+     * Run the migrations.
+     *
+     * @SuppressWarnings(PHPMD.ShortMethodName)
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
+    public function up(): void
+    {
+        // add decimal places to "transaction currencies".
+        Schema::table(
+            'transaction_currencies',
+            static function (Blueprint $table) {
+                $table->smallInteger('decimal_places', false, true)->default(2);
+            }
+        );
+
+        // change field "startdate" to "start_date"
+        Schema::table(
+            'budget_limits',
+            static function (Blueprint $table) {
+                $table->renameColumn('startdate', 'start_date');
+            }
+        );
+
+        // add date field "end_date" after "start_date"
+        Schema::table(
+            'budget_limits',
+            static function (Blueprint $table) {
+                $table->date('end_date')->nullable()->after('start_date');
+            }
+        );
+
+        // drop "repeats" and "repeat_freq".
+        Schema::table(
+            'budget_limits',
+            static function (Blueprint $table) {
+                $table->dropColumn('repeats');
+            }
+        );
+        Schema::table(
+            'budget_limits',
+            static function (Blueprint $table) {
+                $table->dropColumn('repeat_freq');
+            }
+        );
+    }
+}

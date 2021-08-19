@@ -1,0 +1,21 @@
+    /**
+     * @test   submatrix exception - wrong row order
+     * @throws \Exception
+     */
+
+    public function testSubMatrixWrongRowOrder()
+    {
+        // Given
+        $A = MatrixFactory::create([
+            [1, 2, 3],
+            [2, 3, 4],
+            [3, 4, 5],
+        ]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+        $this->expectExceptionMessage('Ending row must be greater than beginning row');
+
+        // When
+        $A->submatrix(2, 0, 1, 2);
+    }

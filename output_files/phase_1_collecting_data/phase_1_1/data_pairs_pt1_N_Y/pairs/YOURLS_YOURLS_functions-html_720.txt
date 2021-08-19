@@ -1,0 +1,7 @@
+/**
+ * Display a notice if there is a newer version of YOURLS available
+ *
+ * @since 1.7
+ */
+
+function yourls_new_core_version_notice() {

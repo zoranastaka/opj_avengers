@@ -1,0 +1,10 @@
+    /**
+     * Create new magento acl instance
+     *
+     * @return \Magento\Framework\Acl
+     */
+
+    public function create()
+    {
+        return $this->_objectManager->create(Acl::class);
+    }

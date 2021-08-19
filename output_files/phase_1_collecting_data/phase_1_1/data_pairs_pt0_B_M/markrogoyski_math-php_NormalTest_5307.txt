@@ -1,0 +1,21 @@
+    /**
+     * @test         between
+     * @dataProvider dataProviderForBetween
+     * @param        float $lower
+     * @param        float $upper
+     * @param        float $μ
+     * @param        float $σ
+     * @param        float $probability
+     */
+
+    public function testBetween(float $lower, float $upper, float $μ, float $σ, float $probability)
+    {
+        // Given
+        $normal = new Normal($μ, $σ);
+
+        // When
+        $between = $normal->between($lower, $upper);
+
+        // Then
+        $this->assertEqualsWithDelta($probability, $between, 0.00001);
+    }

@@ -1,0 +1,11 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testExceptionClass(): void
+    {
+        $exception = new ClientException();
+
+        $this->assertInstanceOf('Predis\ClientException', $exception);
+        $this->assertInstanceOf('Predis\PredisException', $exception);
+    }

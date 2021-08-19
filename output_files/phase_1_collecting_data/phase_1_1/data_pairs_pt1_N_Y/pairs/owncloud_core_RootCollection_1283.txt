@@ -1,0 +1,7 @@
+	/**
+	 * Returns the last modification time, as a unix timestamp
+	 *
+	 * @return int
+	 */
+
+	public function getLastModified() {

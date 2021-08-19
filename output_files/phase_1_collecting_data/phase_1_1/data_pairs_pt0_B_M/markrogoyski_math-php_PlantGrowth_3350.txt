@@ -1,0 +1,16 @@
+    /**
+     * Raw data with each observation labeled
+     * [['weight' => 4.17, 'group' => 'ctrl'], ['weight' => 5.58, 'group' => 'ctrl'], ... ]
+     *
+     * @return number[]
+     */
+
+    public function getLabeledData(): array
+    {
+        return \array_map(
+            function (array $data) {
+                return \array_combine(self::LABELS, $data);
+            },
+            self::DATA
+        );
+    }

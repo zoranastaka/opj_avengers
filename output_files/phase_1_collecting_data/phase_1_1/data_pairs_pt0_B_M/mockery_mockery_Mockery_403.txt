@@ -1,0 +1,66 @@
+    /**
+     * Sets up expectations on the members of the CompositeExpectation and
+     * builds up any demeter chain that was passed to shouldReceive.
+     *
+     * @param \Mockery\LegacyMockInterface $mock
+     * @param string $arg
+     * @param callable $add
+     * @throws Mockery\Exception
+     * @return \Mockery\ExpectationInterface
+     */
+
+    protected static function buildDemeterChain(\Mockery\LegacyMockInterface $mock, $arg, $add)
+    {
+        /** @var Mockery\Container $container */
+        $container = $mock->mockery_getContainer();
+        $methodNames = explode('->', $arg);
+        reset($methodNames);
+
+        if (!\Mockery::getConfiguration()->mockingNonExistentMethodsAllowed()
+            && !$mock->mockery_isAnonymous()
+            && !in_array(current($methodNames), $mock->mockery_getMockableMethods())
+        ) {
+            throw new \Mockery\Exception(
+                'Mockery\'s configuration currently forbids mocking the method '
+                . current($methodNames) . ' as it does not exist on the class or object '
+                . 'being mocked'
+            );
+        }
+
+        /** @var ExpectationInterface|null $expectations */
+        $expectations = null;
+
+        /** @var Callable $nextExp */
+        $nextExp = function ($method) use ($add) {
+            return $add($method);
+        };
+
+        $parent = get_class($mock);
+
+        while (true) {
+            $method = array_shift($methodNames);
+            $expectations = $mock->mockery_getExpectationsFor($method);
+
+            if (is_null($expectations) || self::noMoreElementsInChain($methodNames)) {
+                $expectations = $nextExp($method);
+                if (self::noMoreElementsInChain($methodNames)) {
+                    break;
+                }
+
+                $mock = self::getNewDemeterMock($container, $parent, $method, $expectations);
+            } else {
+                $demeterMockKey = $container->getKeyOfDemeterMockFor($method, $parent);
+                if ($demeterMockKey) {
+                    $mock = self::getExistingDemeterMock($container, $demeterMockKey);
+                }
+            }
+
+            $parent .= '->' . $method;
+
+            $nextExp = function ($n) use ($mock) {
+                return $mock->shouldReceive($n);
+            };
+        }
+
+        return $expectations;
+    }

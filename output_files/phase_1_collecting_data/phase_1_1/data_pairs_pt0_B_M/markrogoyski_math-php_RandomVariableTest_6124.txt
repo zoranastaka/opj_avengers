@@ -1,0 +1,13 @@
+    /**
+     * @test   alternativeSkewness error when array is empty
+     * @throws \Exception
+     */
+
+    public function testAlternativeSkewnessErrorWhenEmptyArray()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        RandomVariable::alternativeSkewness(array());
+    }

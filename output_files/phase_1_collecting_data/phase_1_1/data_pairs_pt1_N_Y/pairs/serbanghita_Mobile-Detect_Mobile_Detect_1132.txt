@@ -1,0 +1,10 @@
+    /**
+     * Retrieves the HTTP headers.
+     *
+     * @return array
+     */
+
+    public function getHttpHeaders()
+    {
+        return $this->httpHeaders;
+    }

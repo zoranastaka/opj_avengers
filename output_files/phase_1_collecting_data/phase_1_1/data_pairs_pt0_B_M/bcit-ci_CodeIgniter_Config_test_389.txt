@@ -1,0 +1,10 @@
+	// --------------------------------------------------------------------
+
+	public function test_slash_item()
+	{
+		// Bad Config value
+		$this->assertNull($this->config->slash_item('no_good_item'));
+
+		$this->assertEquals($this->cfg['base_url'], $this->config->slash_item('base_url'));
+		$this->assertEquals($this->cfg['subclass_prefix'].'/', $this->config->slash_item('subclass_prefix'));
+	}

@@ -1,0 +1,16 @@
+    /**
+     * Sets the response's time-to-live for private/client caches in seconds.
+     *
+     * This method adjusts the Cache-Control/max-age directive.
+     *
+     * @return $this
+     *
+     * @final
+     */
+
+    public function setClientTtl(int $seconds): object
+    {
+        $this->setMaxAge($this->getAge() + $seconds);
+
+        return $this;
+    }

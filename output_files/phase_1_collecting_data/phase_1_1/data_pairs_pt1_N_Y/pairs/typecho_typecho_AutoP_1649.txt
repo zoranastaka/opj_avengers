@@ -1,0 +1,22 @@
+    /**
+     * 用段落方法处理换行
+     * 
+     * @access private
+     * @param string $text
+     * @return string
+     */
+
+    private function cutByBlock($text)
+    {
+        $space = "( |　)";
+        $text = str_replace("\r\n", "\n", trim($text));
+        $text = preg_replace("/{$space}*\n{$space}*/is", "\n", $text);
+        $text = preg_replace("/\s*<p:([0-9]{4})\/>\s*/is", "</p><p:\\1/><p>", $text);
+        $text = preg_replace("/\n{2,}/", "</p><p>", $text);
+        $text = nl2br($text);
+        $text = preg_replace("/(<p>)?\s*<p:([0-9]{4})\/>\s*(<\/p>)?/is", "<p:\\2/>", $text);
+        $text = preg_replace("/<p>{$space}*<\/p>/is", '', $text);
+        $text = preg_replace("/\s*<p>\s*$/is", '', $text);
+        $text = preg_replace("/^\s*<\/p>\s*/is", '', $text);
+        return $text;
+    }

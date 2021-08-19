@@ -1,0 +1,15 @@
+    /**
+     * @test         isHermitian returns true for hermitian matrices.
+     * @dataProvider dataProviderForSymmetricMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsHermitian(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isHermitian());
+    }

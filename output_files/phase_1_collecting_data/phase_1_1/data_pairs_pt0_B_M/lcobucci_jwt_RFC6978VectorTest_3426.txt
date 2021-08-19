@@ -1,0 +1,34 @@
+    /** @return mixed[] */
+
+    public function sha512Data(): iterable
+    {
+        $signer = Sha512::create();
+        $key    = InMemory::plainText(
+            '-----BEGIN PUBLIC KEY-----' . PHP_EOL
+            . 'MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBiUVQ0HhZMuAOqiO2lPIT+MMSH4bc' . PHP_EOL
+            . 'l6BOWnFn205bzTcRI9RuRdtrXVNwp/IPtjMVXTj/oW0r12HcrEdLmi9QI6QASTEB' . PHP_EOL
+            . 'yWLNTS/d94IoXmRYQTnC+RtH+H/4I1TWYw90aiig2yV0G1s0qCgAiyKswj+ST6r7' . PHP_EOL
+            . '1NM/gepmlW3+qiv9/PU=' . PHP_EOL
+            . '-----END PUBLIC KEY-----'
+        );
+
+        yield 'SHA-512 (sample)' => [
+            $signer,
+            $key,
+            'sample',
+            '00C328FAFCBD79DD77850370C46325D987CB525569FB63C5D3BC53950E6D4C5F174E25A1EE9017B5D450606ADD152B534931D7D4E8'
+            . '455CC91F9B15BF05EC36E377FA',
+            '00617CCE7CF5064806C467F678D3B4080D6F1CC50AF26CA209417308281B68AF282623EAA63E5B5C0723D8B8C37FF0777B1A20F8CC'
+            . 'B1DCCC43997F1EE0E44DA4A67A',
+        ];
+
+        yield 'SHA-512 (test)' => [
+            $signer,
+            $key,
+            'test',
+            '013E99020ABF5CEE7525D16B69B229652AB6BDF2AFFCAEF38773B4B7D08725F10CDB93482FDCC54EDCEE91ECA4166B2A7C6265EF0C'
+            . 'E2BD7051B7CEF945BABD47EE6D',
+            '01FBD0013C674AA79CB39849527916CE301C66EA7CE8B80682786AD60F98F7E78A19CA69EFF5C57400E3B3A0AD66CE0978214D13BA'
+            . 'F4E9AC60752F7B155E2DE4DCE3',
+        ];
+    }

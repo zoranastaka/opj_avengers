@@ -1,0 +1,12 @@
+    /**
+     * @throws ExpressionErrorException
+     */
+
+    public function translateNthLastOfType(XPathExpr $xpath, FunctionNode $function): XPathExpr
+    {
+        if ('*' === $xpath->getElement()) {
+            throw new ExpressionErrorException('"*:nth-of-type()" is not implemented.');
+        }
+
+        return $this->translateNthChild($xpath, $function, true, false);
+    }

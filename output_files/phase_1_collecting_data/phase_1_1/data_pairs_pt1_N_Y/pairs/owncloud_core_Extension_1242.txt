@@ -1,0 +1,16 @@
+	/**
+	 * @param string $parameter
+	 * @return string
+	 */
+
+	protected function convertParameterToComment($parameter) {
+		if (\preg_match('/^\<parameter\>(\d*)\<\/parameter\>$/', $parameter, $matches)) {
+			try {
+				$comment = $this->commentsManager->get((int) $matches[1]);
+				$message = $comment->getMessage();
+				$message = \str_replace("\n", '<br />', \str_replace(['<', '>'], ['&lt;', '&gt;'], $message));
+				return $message;
+			} catch (NotFoundException $e) {
+				return '';
+			}
+		}

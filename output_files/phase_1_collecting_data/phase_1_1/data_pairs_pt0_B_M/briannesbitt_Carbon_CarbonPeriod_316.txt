@@ -1,0 +1,37 @@
+    /**
+     * Rewind to the start date.
+     *
+     * Iterating over a date in the UTC timezone avoids bug during backward DST change.
+     *
+     * @see https://bugs.php.net/bug.php?id=72255
+     * @see https://bugs.php.net/bug.php?id=74274
+     * @see https://wiki.php.net/rfc/datetime_and_daylight_saving_time
+     *
+     * @throws RuntimeException
+     *
+     * @return void
+     */
+
+    public function rewind()
+    {
+        $this->key = 0;
+        $this->current = ([$this->dateClass, 'make'])($this->startDate);
+        $settings = $this->getSettings();
+
+        if ($this->hasLocalTranslator()) {
+            $settings['locale'] = $this->getTranslatorLocale();
+        }
+
+        $this->current->settings($settings);
+        $this->timezone = static::intervalHasTime($this->dateInterval) ? $this->current->getTimezone() : null;
+
+        if ($this->timezone) {
+            $this->current = $this->current->utc();
+        }
+
+        $this->validationResult = null;
+
+        if ($this->isStartExcluded() || $this->validateCurrentDate() === false) {
+            $this->incrementCurrentDateUntilValid();
+        }
+    }

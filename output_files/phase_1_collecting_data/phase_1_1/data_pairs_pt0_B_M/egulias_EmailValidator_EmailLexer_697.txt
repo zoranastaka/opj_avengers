@@ -1,0 +1,10 @@
+    /**
+     * getPrevious
+     *
+     * @return array
+     */
+
+    public function getPrevious()
+    {
+        return $this->previous;
+    }

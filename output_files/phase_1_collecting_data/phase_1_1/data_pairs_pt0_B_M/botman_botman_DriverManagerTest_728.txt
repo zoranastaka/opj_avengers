@@ -1,0 +1,7 @@
+    /** @test */
+
+    public function it_loads_drivers_extensions()
+    {
+        DriverManager::loadDriver(TestDriver::class);
+        $this->assertTrue($_SERVER['loadedTestDriver']);
+    }

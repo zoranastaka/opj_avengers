@@ -1,0 +1,5 @@
+	/*
+	 * Metoda poziva parsiranje, i vraca listu servera u nizu
+	 */
+
+	function getServers() {

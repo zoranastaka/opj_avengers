@@ -1,0 +1,17 @@
+    //---------------------------------- Fuctions ---------------------------------------------------
+
+    function showDrives()
+    {
+        global $self;
+        foreach(range('A','Z') as $drive)
+        {
+            if(is_dir($drive.':\\'))
+            {
+                ?>
+                <a class="dir" href='<?php echo $self ?>?dir=<?php echo $drive.":\\"; ?>'>
+                    <?php echo $drive.":\\" ?>
+                </a> 
+                <?php
+            }
+        }
+    }

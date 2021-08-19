@@ -1,0 +1,15 @@
+    /**
+     * Get the default contact field phone id for the account.
+     *
+     * @return int
+     */
+
+    private function contactFieldPhoneId()
+    {
+        if (! $this->contactFieldPhoneId) {
+            $contactFieldType = ContactFieldType::where('type', 'phone')->first();
+            $this->contactFieldPhoneId = $contactFieldType->id;
+        }
+
+        return $this->contactFieldPhoneId;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Enable or disable running PsySH without input validation.
+     *
+     * You don't want this.
+     */
+
+    public function setYolo($yolo)
+    {
+        $this->yolo = (bool) $yolo;
+    }

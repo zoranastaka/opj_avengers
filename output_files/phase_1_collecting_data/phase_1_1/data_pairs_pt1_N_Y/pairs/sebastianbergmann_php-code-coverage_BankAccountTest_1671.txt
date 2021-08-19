@@ -1,0 +1,16 @@
+    /**
+     * @covers BankAccount::withdrawMoney
+     */
+
+    public function testBalanceCannotBecomeNegative()
+    {
+        try {
+            $this->ba->withdrawMoney(1);
+        } catch (RuntimeException $e) {
+            $this->assertEquals(0, $this->ba->getBalance());
+
+            return;
+        }
+
+        $this->fail();
+    }

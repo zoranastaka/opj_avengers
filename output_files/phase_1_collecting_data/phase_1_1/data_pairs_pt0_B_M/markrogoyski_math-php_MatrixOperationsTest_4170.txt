@@ -1,0 +1,21 @@
+    /**
+     * @test   submatrix exception - bad row
+     * @throws \Exception
+     */
+
+    public function testSubmatrixExceptionBadRow()
+    {
+        // Given
+        $A = MatrixFactory::create([
+            [1, 2, 3],
+            [2, 3, 4],
+            [3, 4, 5],
+        ]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+        $this->expectExceptionMessage('Specified Matrix row does not exist');
+
+        // When
+        $A->submatrix(0, 0, 4, 1);
+    }

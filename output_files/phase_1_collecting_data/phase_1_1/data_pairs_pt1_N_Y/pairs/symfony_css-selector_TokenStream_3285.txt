@@ -1,0 +1,13 @@
+    /**
+     * Returns peeked token.
+     */
+
+    public function getPeek(): Token
+    {
+        if (!$this->peeking) {
+            $this->peeked = $this->getNext();
+            $this->peeking = true;
+        }
+
+        return $this->peeked;
+    }

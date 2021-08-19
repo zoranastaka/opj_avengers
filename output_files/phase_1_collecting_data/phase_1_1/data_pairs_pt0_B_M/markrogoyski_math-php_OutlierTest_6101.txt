@@ -1,0 +1,20 @@
+    /**
+     * @test         Critical value for two-sided test
+     * @dataProvider dataProviderForCriticalValueOneSided
+     * @param        float $𝛼
+     * @param        int   $n
+     * @param        float $expectedCriticalValue
+     * @throws       Exception\BadParameterException
+     */
+
+    public function testCriticalGrubsOneSided(float $𝛼, int $n, float $expectedCriticalValue)
+    {
+        // Given
+        $oneSided = Outlier::ONE_SIDED;
+
+        // When
+        $criticalValue = Outlier::grubbsCriticalValue($𝛼, $n, $oneSided);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedCriticalValue, $criticalValue, 0.001);
+    }

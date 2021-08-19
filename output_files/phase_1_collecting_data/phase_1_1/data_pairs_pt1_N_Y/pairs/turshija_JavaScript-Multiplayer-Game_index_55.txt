@@ -1,0 +1,8 @@
+            // Funkcija se poziva svakih X frejmova (frameRate), iz igraca izvadi samo 
+            // Y koordinatu i brzinu po Y i posalje (da ne salje ceo niz)
+
+            function sendPlayerCoords(playerName, player) {
+                var pp = {
+                    y: player.y,
+                    velY: player.velY
+                }

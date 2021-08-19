@@ -1,0 +1,18 @@
+    /**
+     * @test   weightedMovingAverage weights differ from n
+     * @throws \Exception
+     */
+
+    public function testWeightedMovingAverageExceptionWeightsDifferFromN()
+    {
+        // Given
+        $numbers = [1, 2, 3, 4, 5, 6];
+        $n       = 3;
+        $weights = [1, 2];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Average::weightedMovingAverage($numbers, $n, $weights);
+    }

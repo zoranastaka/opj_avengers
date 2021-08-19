@@ -1,0 +1,22 @@
+    /**
+     * Execute a given function on each date of the period and yield the result of this function.
+     *
+     * @example
+     * ```
+     * $period = Carbon::create('2020-11-29')->daysUntil('2020-12-24');
+     * echo implode("\n", iterator_to_array($period->map(function (Carbon $date) {
+     *   return $date->diffInDays('2020-12-25').' days before Christmas!';
+     * })));
+     * ```
+     *
+     * @param callable $callback
+     *
+     * @return \Generator
+     */
+
+    public function map(callable $callback)
+    {
+        foreach ($this as $date) {
+            yield $callback($date);
+        }
+    }

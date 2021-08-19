@@ -1,0 +1,8 @@
+    /**
+     * Reads given string into color object
+     *
+     * @param  string $value
+     * @return AbstractColor
+     */
+
+    abstract public function parseColor($value);

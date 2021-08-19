@@ -1,0 +1,10 @@
+    /**
+     * 获取Widget_Security对象
+     *
+     * @return Widget_Security
+     */
+
+    public static function security()
+    {
+        return Typecho_Widget::widget('Widget_Security');
+    }

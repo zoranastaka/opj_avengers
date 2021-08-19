@@ -1,0 +1,19 @@
+    /**
+     * Gets the Session.
+     *
+     * @return SessionInterface The session
+     */
+
+    public function getSession()
+    {
+        $session = $this->session;
+        if (!$session instanceof SessionInterface && null !== $session) {
+            $this->setSession($session = $session());
+        }
+
+        if (null === $session) {
+            throw new SessionNotFoundException('Session has not been set.');
+        }
+
+        return $session;
+    }

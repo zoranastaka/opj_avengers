@@ -1,0 +1,13 @@
+    /**
+     * @return array [p]
+     */
+
+    public function dataProviderForInverseOutOfBoundsP(): array
+    {
+        return [
+            [-1],
+            [-0.01],
+            [1.01],
+            [2],
+        ];
+    }

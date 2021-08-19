@@ -1,0 +1,14 @@
+    /**
+     * Check if all requirements are available
+     *
+     * @return void
+     */
+
+    private function checkRequirements()
+    {
+        if ( ! function_exists('finfo_buffer')) {
+            throw new MissingDependencyException(
+                "PHP Fileinfo extension must be installed/enabled to use Intervention Image."
+            );
+        }
+    }

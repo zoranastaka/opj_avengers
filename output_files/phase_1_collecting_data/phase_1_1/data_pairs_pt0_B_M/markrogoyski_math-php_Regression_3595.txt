@@ -1,0 +1,10 @@
+    /**
+     * Get points
+     *
+     * @return array
+     */
+
+    public function getPoints(): array
+    {
+        return $this->points;
+    }

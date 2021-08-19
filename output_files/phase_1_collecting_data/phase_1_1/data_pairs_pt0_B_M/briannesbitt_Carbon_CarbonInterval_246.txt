@@ -1,0 +1,16 @@
+    /**
+     * Add given parameters to the current interval.
+     *
+     * @param int $years
+     * @param int $months
+     * @param int|float $weeks
+     * @param int|float $days
+     * @param int|float $hours
+     * @param int|float $minutes
+     * @param int|float $seconds
+     * @param int|float $microseconds
+     *
+     * @return $this
+     */
+
+    public function minus(

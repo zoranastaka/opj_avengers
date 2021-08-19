@@ -1,0 +1,11 @@
+    /**
+     * Set current line color
+     *
+     * @param  string $color
+     * @return void
+     */
+
+    public function color($color)
+    {
+        $this->color = $color;
+    }

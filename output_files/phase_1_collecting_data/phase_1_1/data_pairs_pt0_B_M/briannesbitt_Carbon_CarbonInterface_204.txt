@@ -1,0 +1,9 @@
+    /**
+     * Returns the alternative number for a given integer if available in the current locale.
+     *
+     * @param int $number
+     *
+     * @return string
+     */
+
+    public function translateNumber(int $number): string;

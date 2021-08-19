@@ -1,0 +1,10 @@
+    /**
+     * Automatically sets the Last-Modified header according the file modification date.
+     */
+
+    public function setAutoLastModified()
+    {
+        $this->setLastModified(\DateTime::createFromFormat('U', $this->file->getMTime()));
+
+        return $this;
+    }

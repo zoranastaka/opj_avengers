@@ -1,0 +1,38 @@
+    /**
+     * Test that using a single line ignore does not interfere with other suppressions.
+     *
+     * @param string $before Annotation to place before the code.
+     * @param string $after  Annotation to place after the code.
+     *
+     * @dataProvider dataNestedSuppressLine
+     * @covers       PHP_CodeSniffer\Tokenizers\Tokenizer::createPositionMap
+     *
+     * @return void
+     */
+
+    public function testNestedSuppressLine($before, $after)
+    {
+        static $config, $ruleset;
+
+        if (isset($config, $ruleset) === false) {
+            $config            = new Config();
+            $config->standards = ['Generic'];
+            $config->sniffs    = ['Generic.PHP.LowerCaseConstant'];
+
+            $ruleset = new Ruleset($config);
+        }
+
+        $content = <<<EOD
+<?php
+$before
+\$var = FALSE;
+\$var = TRUE;
+$after
+EOD;
+        $file    = new DummyFile($content, $ruleset, $config);
+        $file->process();
+
+        $this->assertSame(0, $file->getErrorCount());
+        $this->assertCount(0, $file->getErrors());
+
+    }//end testNestedSuppressLine()

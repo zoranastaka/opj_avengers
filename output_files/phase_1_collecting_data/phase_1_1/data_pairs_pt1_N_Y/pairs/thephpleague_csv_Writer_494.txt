@@ -1,0 +1,10 @@
+    /**
+     * Adds a record formatter.
+     */
+
+    public function addFormatter(callable $formatter): self
+    {
+        $this->formatters[] = $formatter;
+
+        return $this;
+    }

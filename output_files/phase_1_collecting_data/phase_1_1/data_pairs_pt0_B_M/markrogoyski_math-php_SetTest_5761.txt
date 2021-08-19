@@ -1,0 +1,18 @@
+    /**
+     * @test         asArray
+     * @dataProvider dataProviderForAsArray
+     * @param        array $members
+     * @param        array $expected
+     */
+
+    public function testAsArray(array $members, array $expected)
+    {
+        // Given
+        $set = new Set($members);
+
+        // When
+        $array = $set->asArray();
+
+        // Then
+        $this->assertEquals($expected, $array);
+    }

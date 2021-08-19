@@ -1,0 +1,19 @@
+    /**
+     * Converts field names for setters and getters
+     *
+     * $this->setMyField($value) === $this->setData('my_field', $value)
+     * Uses cache to eliminate unnecessary preg_replace
+     *
+     * @param string $name
+     * @return string
+     */
+
+    protected function _underscore($name)
+    {
+        if (isset(self::$_underscoreCache[$name])) {
+            return self::$_underscoreCache[$name];
+        }
+        $result = strtolower(trim(preg_replace('/([A-Z]|[0-9]+)/', "_$1", $name), '_'));
+        self::$_underscoreCache[$name] = $result;
+        return $result;
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @test         The constructor throws the proper exceptions
+     * @dataProvider dataProviderConstructorException
+     * @param array  $A
+     * @param string $exception
+     */
+
+    public function testMatrixConstructorException(array $A, string $exception)
+    {
+        // Then
+        $this->expectException($exception);
+
+        // When
+        $A = new ObjectSquareMatrix($A);
+    }

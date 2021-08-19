@@ -1,0 +1,5 @@
+    /**
+     * @return mixed
+     */
+
+    public function predict(array $samples);

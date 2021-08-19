@@ -1,0 +1,10 @@
+    /**
+     * Removes the first handler.
+     *
+     * @return void
+     */
+
+    public function removeFirstHandler()
+    {
+        array_pop($this->handlerStack);
+    }

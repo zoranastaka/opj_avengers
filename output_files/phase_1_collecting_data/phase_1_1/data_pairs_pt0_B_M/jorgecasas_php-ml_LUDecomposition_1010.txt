@@ -1,0 +1,47 @@
+    /**
+     * Solve A*X = B
+     *
+     * @param Matrix $B A Matrix with as many rows as A and any number of columns.
+     *
+     * @return array X so that L*U*X = B(piv,:)
+     *
+     * @throws MatrixException
+     */
+
+    public function solve(Matrix $B): array
+    {
+        if ($B->getRows() != $this->m) {
+            throw new MatrixException('Matrix is not square matrix');
+        }
+
+        if (!$this->isNonsingular()) {
+            throw new MatrixException('Matrix is singular');
+        }
+
+        // Copy right hand side with pivoting
+        $nx = $B->getColumns();
+        $X = $this->getSubMatrix($B->toArray(), $this->piv, 0, $nx - 1);
+        // Solve L*Y = B(piv,:)
+        for ($k = 0; $k < $this->n; ++$k) {
+            for ($i = $k + 1; $i < $this->n; ++$i) {
+                for ($j = 0; $j < $nx; ++$j) {
+                    $X[$i][$j] -= $X[$k][$j] * $this->LU[$i][$k];
+                }
+            }
+        }
+
+        // Solve U*X = Y;
+        for ($k = $this->n - 1; $k >= 0; --$k) {
+            for ($j = 0; $j < $nx; ++$j) {
+                $X[$k][$j] /= $this->LU[$k][$k];
+            }
+
+            for ($i = 0; $i < $k; ++$i) {
+                for ($j = 0; $j < $nx; ++$j) {
+                    $X[$i][$j] -= $X[$k][$j] * $this->LU[$i][$k];
+                }
+            }
+        }
+
+        return $X;
+    }

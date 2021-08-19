@@ -1,0 +1,12 @@
+    /**
+     * Enable or disable warnings on multiple configuration or data files.
+     *
+     * @see self::warnOnMultipleConfigs()
+     *
+     * @param bool $warnOnMultipleConfigs
+     */
+
+    public function setWarnOnMultipleConfigs($warnOnMultipleConfigs)
+    {
+        $this->warnOnMultipleConfigs = (bool) $warnOnMultipleConfigs;
+    }

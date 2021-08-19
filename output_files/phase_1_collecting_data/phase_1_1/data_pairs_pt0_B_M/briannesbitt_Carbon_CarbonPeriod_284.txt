@@ -1,0 +1,77 @@
+    /**
+     * CarbonPeriod constructor.
+     *
+     * @SuppressWarnings(PHPMD.ElseExpression)
+     *
+     * @throws InvalidArgumentException
+     */
+
+    public function __construct(...$arguments)
+    {
+        // Parse and assign arguments one by one. First argument may be an ISO 8601 spec,
+        // which will be first parsed into parts and then processed the same way.
+
+        $argumentsCount = \count($arguments);
+
+        if ($argumentsCount && static::isIso8601($iso = $arguments[0])) {
+            array_splice($arguments, 0, 1, static::parseIso8601($iso));
+        }
+
+        if ($argumentsCount === 1) {
+            if ($arguments[0] instanceof DatePeriod) {
+                $arguments = [
+                    $arguments[0]->start,
+                    $arguments[0]->end ?: ($arguments[0]->recurrences - 1),
+                    $arguments[0]->interval,
+                    $arguments[0]->include_start_date ? 0 : static::EXCLUDE_START_DATE,
+                ];
+            } elseif ($arguments[0] instanceof self) {
+                $arguments = [
+                    $arguments[0]->getStartDate(),
+                    $arguments[0]->getEndDate() ?: $arguments[0]->getRecurrences(),
+                    $arguments[0]->getDateInterval(),
+                    $arguments[0]->getOptions(),
+                ];
+            }
+        }
+
+        foreach ($arguments as $argument) {
+            if ($this->dateInterval === null &&
+                (
+                    \is_string($argument) && preg_match(
+                        '/^(-?\d(\d(?![\/-])|[^\d\/-]([\/-])?)*|P[T0-9].*|(?:\h*\d+(?:\.\d+)?\h*[a-z]+)+)$/i',
+                        $argument
+                    ) ||
+                    $argument instanceof DateInterval ||
+                    $argument instanceof Closure
+                ) &&
+                $parsed = @CarbonInterval::make($argument)
+            ) {
+                $this->setDateInterval($parsed);
+            } elseif ($this->startDate === null && $parsed = Carbon::make($argument)) {
+                $this->setStartDate($parsed);
+            } elseif ($this->endDate === null && $parsed = Carbon::make($argument)) {
+                $this->setEndDate($parsed);
+            } elseif ($this->recurrences === null && $this->endDate === null && is_numeric($argument)) {
+                $this->setRecurrences($argument);
+            } elseif ($this->options === null && (\is_int($argument) || $argument === null)) {
+                $this->setOptions($argument);
+            } else {
+                throw new InvalidPeriodParameterException('Invalid constructor parameters.');
+            }
+        }
+
+        if ($this->startDate === null) {
+            $this->setStartDate(Carbon::now());
+        }
+
+        if ($this->dateInterval === null) {
+            $this->setDateInterval(CarbonInterval::day());
+
+            $this->isDefaultInterval = true;
+        }
+
+        if ($this->options === null) {
+            $this->setOptions(0);
+        }
+    }

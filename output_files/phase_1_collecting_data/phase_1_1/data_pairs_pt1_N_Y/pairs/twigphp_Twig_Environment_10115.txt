@@ -1,0 +1,8 @@
+    /**
+     * @internal
+     */
+
+    public function getUnaryOperators(): array
+    {
+        return $this->extensionSet->getUnaryOperators();
+    }

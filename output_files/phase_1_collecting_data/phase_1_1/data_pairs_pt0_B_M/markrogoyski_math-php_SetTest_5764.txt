@@ -1,0 +1,18 @@
+    /**
+     * @test         isEmpty
+     * @dataProvider dataProviderForSingleSet
+     * @param        array $members
+     */
+
+    public function testIsEmpty(array $members)
+    {
+        // Given
+        $set               = new Set($members);
+        $expectedEmptiness = empty($members);
+
+        // when
+        $isEmpty = $set->isEmpty();
+
+        // Then
+        $this->assertEquals($expectedEmptiness, $isEmpty);
+    }

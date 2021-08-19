@@ -1,0 +1,14 @@
+    /**
+     * Get the service name of the metadata chain driver that the mappings
+     * should be registered with.
+     *
+     * @return string The name of the chain driver service
+     *
+     * @throws InvalidArgumentException if non of the managerParameters has a
+     *                                  non-empty value
+     */
+
+    protected function getChainDriverServiceName(ContainerBuilder $container)
+    {
+        return sprintf($this->driverPattern, $this->getManagerName($container));
+    }

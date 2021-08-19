@@ -1,0 +1,10 @@
+    /**
+     * Get properties
+     *
+     * @return PHPExcel_DocumentProperties
+     */
+
+    public function getProperties()
+    {
+        return $this->properties;
+    }

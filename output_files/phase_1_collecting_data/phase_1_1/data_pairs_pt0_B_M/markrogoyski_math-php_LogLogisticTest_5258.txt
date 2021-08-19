@@ -1,0 +1,18 @@
+    /**
+     * @test         median
+     * @dataProvider dataProviderForMean
+     * @param        float $α
+     * @param        float $β
+     */
+
+    public function testMedian(float $α, float $β)
+    {
+        // Given
+        $logLogistic = new LogLogistic($α, $β);
+
+        // When
+        $median = $logLogistic->median();
+
+        // Then
+        $this->assertEqualsWithDelta($α, $median, 0.00001);
+    }

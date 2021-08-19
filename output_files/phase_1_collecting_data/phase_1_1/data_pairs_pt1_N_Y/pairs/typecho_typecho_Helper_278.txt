@@ -1,0 +1,12 @@
+    /**
+     * 获取面板url
+     *
+     * @access public
+     * @param string $fileName
+     * @return string
+     */
+
+    public static function url($fileName)
+    {
+        return Typecho_Common::url('extending.php?panel=' . (trim($fileName, '/')), self::options()->adminUrl);
+    }

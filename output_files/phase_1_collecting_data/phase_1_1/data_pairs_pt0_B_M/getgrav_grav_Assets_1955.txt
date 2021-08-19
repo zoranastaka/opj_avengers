@@ -1,0 +1,10 @@
+    /**
+     * Add an Inline CSS asset or a collection of assets.
+     *
+     * @return $this
+     */
+
+    public function addInlineCss($asset)
+    {
+        return $this->addType($this::CSS_COLLECTION, $this::INLINE_CSS_TYPE, $asset, $this->unifyLegacyArguments(func_get_args(), $this::INLINE_CSS_TYPE));
+    }

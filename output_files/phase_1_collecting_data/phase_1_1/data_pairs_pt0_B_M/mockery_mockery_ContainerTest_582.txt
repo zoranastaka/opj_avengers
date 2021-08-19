@@ -1,0 +1,13 @@
+    /**
+     * @test
+     * @group issue/294
+     */
+
+    public function testThrowsWhenNamedMockClassExistsAndIsNotMockery()
+    {
+        $builder = new MockConfigurationBuilder();
+        $builder->setName("DateTime");
+        $this->expectException(\Mockery\Exception\RuntimeException::class);
+        $this->expectExceptionMessage('Could not load mock DateTime, class already exists');
+        $mock = mock($builder);
+    }

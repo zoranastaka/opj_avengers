@@ -1,0 +1,10 @@
+    /**
+     * Gets the annotated classes to cache.
+     *
+     * @return array An array of classes
+     */
+
+    public function getAnnotatedClassesToCompile()
+    {
+        return $this->annotatedClasses;
+    }

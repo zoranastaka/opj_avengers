@@ -1,0 +1,19 @@
+    /**
+     * @test         pmf
+     * @dataProvider dataProviderForPMF
+     * @param        int $k
+     * @param        float $p
+     * @param        float $expectedPmf
+     */
+
+    public function testPmf(int $k, float $p, float $expectedPmf)
+    {
+        // Given
+        $bernoulli = new Bernoulli($p);
+
+        // When
+        $pmf = $bernoulli->pmf($k);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedPmf, $pmf, 0.000001);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Sets output data of current command
+     *
+     * @param mixed $value
+     */
+
+    public function setOutput($value)
+    {
+        $this->output = $value;
+    }

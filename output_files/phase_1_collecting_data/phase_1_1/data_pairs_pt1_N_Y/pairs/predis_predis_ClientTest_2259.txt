@@ -1,0 +1,17 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testConstructorWithArrayOfArrayArgumentAndClusterOption(): void
+    {
+        $arg1 = array(
+            array('host' => 'localhost', 'port' => 7000),
+            array('host' => 'localhost', 'port' => 7001),
+        );
+
+        $client = new Client($arg1, array(
+            'aggregate' => $this->getAggregateInitializer($arg1),
+        ));
+
+        $this->assertInstanceOf('Predis\Connection\AggregateConnectionInterface', $client->getConnection());
+    }

@@ -1,0 +1,50 @@
+    /**
+     * draw a clipping rounded rectangle, all the elements added after this will be clipped
+     *
+     * @param $x1
+     * @param $y1
+     * @param $w
+     * @param $h
+     * @param $rTL
+     * @param $rTR
+     * @param $rBR
+     * @param $rBL
+     */
+
+    function clippingRectangleRounded($x1, $y1, $w, $h, $rTL, $rTR, $rBR, $rBL)
+    {
+        $this->save();
+
+        // start: top edge, left end
+        $this->addContent(sprintf("\n%.3F %.3F m ", $x1, $y1 - $rTL + $h));
+
+        // line: bottom edge, left end
+        $this->addContent(sprintf("\n%.3F %.3F l ", $x1, $y1 + $rBL));
+
+        // curve: bottom-left corner
+        $this->ellipse($x1 + $rBL, $y1 + $rBL, $rBL, 0, 0, 8, 180, 270, false, false, false, true);
+
+        // line: right edge, bottom end
+        $this->addContent(sprintf("\n%.3F %.3F l ", $x1 + $w - $rBR, $y1));
+
+        // curve: bottom-right corner
+        $this->ellipse($x1 + $w - $rBR, $y1 + $rBR, $rBR, 0, 0, 8, 270, 360, false, false, false, true);
+
+        // line: right edge, top end
+        $this->addContent(sprintf("\n%.3F %.3F l ", $x1 + $w, $y1 + $h - $rTR));
+
+        // curve: bottom-right corner
+        $this->ellipse($x1 + $w - $rTR, $y1 + $h - $rTR, $rTR, 0, 0, 8, 0, 90, false, false, false, true);
+
+        // line: bottom edge, right end
+        $this->addContent(sprintf("\n%.3F %.3F l ", $x1 + $rTL, $y1 + $h));
+
+        // curve: top-right corner
+        $this->ellipse($x1 + $rTL, $y1 + $h - $rTL, $rTL, 0, 0, 8, 90, 180, false, false, false, true);
+
+        // line: top edge, left end
+        $this->addContent(sprintf("\n%.3F %.3F l ", $x1 + $rBL, $y1));
+
+        // Close & clip
+        $this->addContent(" W n");
+    }

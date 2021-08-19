@@ -1,0 +1,8 @@
+    /**
+     * @return Style
+     */
+
+    public function get_original_style()
+    {
+        return $this->_original_style;
+    }

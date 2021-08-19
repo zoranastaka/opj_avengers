@@ -1,0 +1,17 @@
+    /**
+     * Output only. The precision when only considering the label that has the
+     * highest prediction score and not below the confidence threshold for each
+     * example.
+     *
+     * Generated from protobuf field <code>float precision_at1 = 6;</code>
+     * @param float $var
+     * @return $this
+     */
+
+    public function setPrecisionAt1($var)
+    {
+        GPBUtil::checkFloat($var);
+        $this->precision_at1 = $var;
+
+        return $this;
+    }

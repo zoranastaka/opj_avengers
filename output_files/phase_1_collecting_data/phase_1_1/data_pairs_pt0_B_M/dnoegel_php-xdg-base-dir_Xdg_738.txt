@@ -1,0 +1,11 @@
+    /**
+     * @return string
+     */
+
+    public function getHomeCacheDir()
+    {
+        $path = getenv('XDG_CACHE_HOME') ?: $this->getHomeDir() . DIRECTORY_SEPARATOR . '.cache';
+
+        return $path;
+
+    }

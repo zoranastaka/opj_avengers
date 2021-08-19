@@ -1,0 +1,16 @@
+    /**
+     * @test         aliquotSum returns the sum of all proper divisors of n
+     * @dataProvider dataProviderForAliquotSums
+     * @param        int   $n
+     * @param        int   $expected
+     * @throws       \Exception
+     */
+
+    public function testAliquotSum(int $n, int $expected)
+    {
+        // When
+        $actual = Integer::aliquotSum($n);
+
+        // Then
+        $this->assertEquals($expected, $actual);
+    }

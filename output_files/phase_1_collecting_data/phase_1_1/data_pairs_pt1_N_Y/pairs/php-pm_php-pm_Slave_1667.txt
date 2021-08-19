@@ -1,0 +1,8 @@
+    /**
+     * @param int $usedMemory
+     */
+
+    public function setUsedMemory($usedMemory)
+    {
+        $this->usedMemory = $usedMemory;
+    }

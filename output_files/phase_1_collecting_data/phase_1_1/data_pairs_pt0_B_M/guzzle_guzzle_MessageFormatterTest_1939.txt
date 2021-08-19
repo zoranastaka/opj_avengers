@@ -1,0 +1,9 @@
+    /**
+     * @dataProvider formatProvider
+     */
+
+    public function testFormatsMessages(string $template, array $args, $result)
+    {
+        $f = new MessageFormatter($template);
+        self::assertSame((string) $result, $f->format(...$args));
+    }

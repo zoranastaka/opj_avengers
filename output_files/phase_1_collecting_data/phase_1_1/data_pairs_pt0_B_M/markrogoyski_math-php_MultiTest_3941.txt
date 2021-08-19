@@ -1,0 +1,16 @@
+    /**
+     * @test         max multiple arrays
+     * @dataProvider dataProviderForMaxMulti
+     * @param        array $expected
+     * @param        array[] $arrays
+     * @throws       \Exception
+     */
+
+    public function testMaxMulti(array $expected, array ...$arrays)
+    {
+        // When
+        $maxes = Multi::max(...$arrays);
+
+        // Then
+        $this->assertEquals($expected, $maxes);
+    }

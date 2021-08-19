@@ -1,0 +1,14 @@
+    /**
+     * DEPRECATION WARNING! This method will be removed in the next major point release.
+     *
+     * @deprecated since version 9.7.0
+     * @see AbstractCsv::supportsStreamFilterOnRead
+     * @see AbstractCsv::supportsStreamFilterOnWrite
+     *
+     * Tells whether the stream filter capabilities can be used.
+     */
+
+    public function supportsStreamFilter(): bool
+    {
+        return $this->document instanceof Stream;
+    }

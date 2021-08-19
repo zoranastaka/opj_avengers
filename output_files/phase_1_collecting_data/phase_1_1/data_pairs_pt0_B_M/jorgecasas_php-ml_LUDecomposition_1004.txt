@@ -1,0 +1,74 @@
+    /**
+     * Constructs Structure to access L, U and piv.
+     *
+     * @param Matrix $A Rectangular matrix
+     *
+     * @throws MatrixException
+     */
+
+    public function __construct(Matrix $A)
+    {
+        if ($A->getRows() !== $A->getColumns()) {
+            throw new MatrixException('Matrix is not square matrix');
+        }
+
+        // Use a "left-looking", dot-product, Crout/Doolittle algorithm.
+        $this->LU = $A->toArray();
+        $this->m = $A->getRows();
+        $this->n = $A->getColumns();
+        for ($i = 0; $i < $this->m; ++$i) {
+            $this->piv[$i] = $i;
+        }
+
+        $this->pivsign = 1;
+        $LUcolj = [];
+
+        // Outer loop.
+        for ($j = 0; $j < $this->n; ++$j) {
+            // Make a copy of the j-th column to localize references.
+            for ($i = 0; $i < $this->m; ++$i) {
+                $LUcolj[$i] = &$this->LU[$i][$j];
+            }
+
+            // Apply previous transformations.
+            for ($i = 0; $i < $this->m; ++$i) {
+                $LUrowi = $this->LU[$i];
+                // Most of the time is spent in the following dot product.
+                $kmax = min($i, $j);
+                $s = 0.0;
+                for ($k = 0; $k < $kmax; ++$k) {
+                    $s += $LUrowi[$k] * $LUcolj[$k];
+                }
+
+                $LUrowi[$j] = $LUcolj[$i] -= $s;
+            }
+
+            // Find pivot and exchange if necessary.
+            $p = $j;
+            for ($i = $j + 1; $i < $this->m; ++$i) {
+                if (abs($LUcolj[$i] ?? 0) > abs($LUcolj[$p] ?? 0)) {
+                    $p = $i;
+                }
+            }
+
+            if ($p != $j) {
+                for ($k = 0; $k < $this->n; ++$k) {
+                    $t = $this->LU[$p][$k];
+                    $this->LU[$p][$k] = $this->LU[$j][$k];
+                    $this->LU[$j][$k] = $t;
+                }
+
+                $k = $this->piv[$p];
+                $this->piv[$p] = $this->piv[$j];
+                $this->piv[$j] = $k;
+                $this->pivsign *= -1;
+            }
+
+            // Compute multipliers.
+            if (($j < $this->m) && ($this->LU[$j][$j] != 0.0)) {
+                for ($i = $j + 1; $i < $this->m; ++$i) {
+                    $this->LU[$i][$j] /= $this->LU[$j][$j];
+                }
+            }
+        }
+    }

@@ -1,0 +1,9 @@
+    /**
+     * Returns the mailer component.
+     * @return \yii\mail\MailerInterface the mailer application component.
+     */
+
+    public function getMailer()
+    {
+        return $this->get('mailer');
+    }

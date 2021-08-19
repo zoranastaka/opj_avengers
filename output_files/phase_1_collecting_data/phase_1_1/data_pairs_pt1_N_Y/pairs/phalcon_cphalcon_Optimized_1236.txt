@@ -1,0 +1,23 @@
+    /**
+     * Pass line through filters and add the processed result to platform builds
+     *
+     * @param string $line
+     * @param array $result
+     */
+
+    protected function filterLine($line, &$result)
+    {
+        /** @var callable|null $func */
+        $func = null;
+        foreach ($this->filters as $filter) {
+            if (!preg_match($filter['regexp'], $line, $matches)) {
+                continue;
+            }
+            $func = $filter['func'];
+            break; // We don't expect more than one replacement to be made on the same line
+        }
+
+        foreach ($this->settings as $platform => $setting) {
+            $result[$platform] .= $func ? $func($line, $matches, $setting['hashFunc']) : $line;
+        }
+    }

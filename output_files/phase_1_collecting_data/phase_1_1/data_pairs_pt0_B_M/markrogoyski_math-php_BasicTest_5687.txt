@@ -1,0 +1,15 @@
+    /**
+     * @test         squareNumber produces the expected sequence
+     * @dataProvider dataProviderForSquareNumber
+     * @param        int   $n
+     * @param        array $expected
+     */
+
+    public function testSquareNumber(int $n, array $expected)
+    {
+        // When
+        $squares = Basic::squareNumber($n);
+
+        // Then
+        $this->assertEquals($expected, $squares);
+    }

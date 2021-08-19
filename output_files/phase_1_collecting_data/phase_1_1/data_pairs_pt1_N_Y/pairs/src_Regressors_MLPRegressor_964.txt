@@ -1,0 +1,10 @@
+    /**
+     * Return the underlying neural network instance or null if not trained.
+     *
+     * @return \Rubix\ML\NeuralNet\FeedForward|null
+     */
+
+    public function network() : ?FeedForward
+    {
+        return $this->network;
+    }

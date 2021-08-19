@@ -1,0 +1,14 @@
+  /**
+   * Set the prompt hint. Valid values are none, consent and select_account.
+   * If no value is specified and the user has not previously authorized
+   * access, then the user is shown a consent screen.
+   * @param $prompt string
+   *  {@code "none"} Do not display any authentication or consent screens. Must not be specified with other values.
+   *  {@code "consent"} Prompt the user for consent.
+   *  {@code "select_account"} Prompt the user to select an account.
+   */
+
+  public function setPrompt($prompt)
+  {
+    $this->config['prompt'] = $prompt;
+  }

@@ -1,0 +1,16 @@
+    /**
+     * @test         totient throws an OutOfBoundsException if n is < 1 or k is < 1.
+     * @dataProvider dataProviderForTotientOutOfBoundsException
+     * @param        int $n
+     * @param        int $k
+     * @throws       \Exception
+     */
+
+    public function testTotientOutOfBoundsException(int $n, int $k)
+    {
+        // When
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // Then
+        Integer::totient($n, $k);
+    }

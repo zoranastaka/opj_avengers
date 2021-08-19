@@ -1,0 +1,17 @@
+    /**
+     * Returns the list of plugins that archive the given reports.
+     *
+     * @param array $archiveNames
+     * @return array
+     */
+
+    private function getRequestedPlugins($archiveNames)
+    {
+        $result = array();
+
+        foreach ($archiveNames as $name) {
+            $result[] = self::getPluginForReport($name);
+        }
+
+        return array_unique($result);
+    }

@@ -1,0 +1,43 @@
+/**
+ * Test class for PhpOffice\PhpWord\ComplexType\ProofState
+ *
+ * @coversDefaultClass \PhpOffice\PhpWord\ComplexType\ProofState
+ */
+
+class ProofStateTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Tests the getters and setters
+     */
+    public function testGetSet()
+    {
+        $pState = new ProofState();
+        $pState->setGrammar(ProofState::CLEAN);
+        $pState->setSpelling(ProofState::DIRTY);
+
+        $this->assertEquals(ProofState::CLEAN, $pState->getGrammar());
+        $this->assertEquals(ProofState::DIRTY, $pState->getSpelling());
+    }
+
+    /**
+     * Test throws exception if wrong grammar proof state value given
+     *
+     * @expectedException \InvalidArgumentException
+     */
+    public function testWrongGrammar()
+    {
+        $pState = new ProofState();
+        $pState->setGrammar('Wrong');
+    }
+
+    /**
+     * Test throws exception if wrong spelling proof state value given
+     *
+     * @expectedException \InvalidArgumentException
+     */
+    public function testWrongSpelling()
+    {
+        $pState = new ProofState();
+        $pState->setSpelling('Wrong');
+    }
+}

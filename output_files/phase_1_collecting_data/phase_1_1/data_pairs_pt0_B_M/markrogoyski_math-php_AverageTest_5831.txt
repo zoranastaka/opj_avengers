@@ -1,0 +1,14 @@
+    /**
+     * @test   cubicMean
+     * @dataProvider dataProviderForCubicMean
+     * @throws \Exception
+     */
+
+    public function testCubicMean(array $numbers, float $expectedMean)
+    {
+        // When
+        $mean = Average::cubicMean($numbers);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedMean, $mean, 0.001);
+    }

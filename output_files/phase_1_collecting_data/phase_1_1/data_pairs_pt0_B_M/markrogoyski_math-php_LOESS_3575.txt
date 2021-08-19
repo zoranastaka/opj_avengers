@@ -1,0 +1,37 @@
+    /**
+     * Evaluate for x
+     * Use the smoothness parameter α to determine the subset of data to consider for
+     * local regression. Perform a weighted least squares regression and evaluate x.
+     *
+     * @param  float $x
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MathException
+     * @throws Exception\MatrixException
+     * @throws Exception\OutOfBoundsException
+     * @throws Exception\VectorException
+     */
+
+    public function evaluate(float $x): float
+    {
+        $α = $this->α;
+        $λ = $this->λ;
+
+        // The number of points considered in the local regression
+        $Δx    = Single::abs(Single::subtract($this->xs, $x));
+        $αᵗʰΔx = Average::kthSmallest($Δx, $this->number_of_points - 1);
+        $arg   = Single::min(Single::divide($Δx, $αᵗʰΔx * \max($α, 1)), 1);
+
+        // Kernel function: tricube = (1-arg³)³
+        $tricube = Single::cube(Single::multiply(Single::subtract(Single::cube($arg), 1), -1));
+        $weights = $tricube;
+
+        // Local Regression Parameters
+        $parameters = $this->leastSquares($this->ys, $this->xs, $weights, $λ);
+        $X          = MatrixFactory::vandermonde([$x], $λ + 1);
+
+        return $X->multiply($parameters)[0][0];
+    }

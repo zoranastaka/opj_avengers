@@ -1,0 +1,11 @@
+    /** @test */
+
+    public function it_throws_if_it_was_called_with_the_args_we_were_not_expecting()
+    {
+        $spy = spy(function () {});
+
+        $spy(123);
+
+        $this->expectException(InvalidCountException::class);
+        $spy->shouldNotHaveBeenCalled([123]);
+    }

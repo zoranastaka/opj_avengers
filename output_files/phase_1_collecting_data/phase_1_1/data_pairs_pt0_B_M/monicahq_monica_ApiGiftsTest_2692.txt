@@ -1,0 +1,32 @@
+    /** @test */
+
+    public function gifts_delete()
+    {
+        $user = $this->signin();
+        $contact = factory(Contact::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+        $gift = factory(Gift::class)->create([
+            'account_id' => $user->account_id,
+            'contact_id' => $contact->id,
+        ]);
+        $this->assertDatabaseHas('gifts', [
+            'account_id' => $user->account_id,
+            'contact_id' => $contact->id,
+            'id' => $gift->id,
+        ]);
+
+        $response = $this->json('DELETE', '/api/gifts/'.$gift->id);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'deleted' => true,
+            'id' => $gift->id,
+        ]);
+
+        $this->assertDatabaseMissing('gifts', [
+            'account_id' => $user->account_id,
+            'contact_id' => $contact->id,
+            'id' => $gift->id,
+        ]);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get Rich text comment
+     *
+     * @return PHPExcel_RichText
+     */
+
+    public function getText()
+    {
+        return $this->text;
+    }

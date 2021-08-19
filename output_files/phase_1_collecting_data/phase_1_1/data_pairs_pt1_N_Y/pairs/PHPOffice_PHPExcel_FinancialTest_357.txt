@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider providerISPMT
+     */
+
+    public function testISPMT()
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','ISPMT'), $args);
+        $this->assertEquals($expectedResult, $result, null, 1E-8);
+    }

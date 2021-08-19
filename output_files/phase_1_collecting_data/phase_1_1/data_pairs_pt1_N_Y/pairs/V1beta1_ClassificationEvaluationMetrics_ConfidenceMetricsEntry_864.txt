@@ -1,0 +1,11 @@
+    /**
+     * Output only. The harmonic mean of [recall_at1][google.cloud.automl.v1beta1.ClassificationEvaluationMetrics.ConfidenceMetricsEntry.recall_at1] and [precision_at1][google.cloud.automl.v1beta1.ClassificationEvaluationMetrics.ConfidenceMetricsEntry.precision_at1].
+     *
+     * Generated from protobuf field <code>float f1_score_at1 = 7;</code>
+     * @return float
+     */
+
+    public function getF1ScoreAt1()
+    {
+        return $this->f1_score_at1;
+    }

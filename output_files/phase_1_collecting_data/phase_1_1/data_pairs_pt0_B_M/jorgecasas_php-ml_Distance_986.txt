@@ -1,0 +1,14 @@
+    /**
+     * @throws InvalidArgumentException
+     */
+
+    public function distance(array $a, array $b): float
+    {
+        $distance = 0;
+
+        foreach ($this->deltas($a, $b) as $delta) {
+            $distance += $delta ** $this->norm;
+        }
+
+        return $distance ** (1 / $this->norm);
+    }

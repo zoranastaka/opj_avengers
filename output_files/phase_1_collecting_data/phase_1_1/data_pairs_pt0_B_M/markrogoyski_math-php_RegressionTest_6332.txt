@@ -1,0 +1,15 @@
+    /**
+     * @test         sumOfSquaresTotal
+     * @dataProvider dataProviderForSumOfSquaresTotal
+     * @param        array $points
+     * @param        float $SUStot
+     */
+
+    public function testSumOfSquaresTotal(array $points, float $SUStot)
+    {
+        // Given
+        $regression = new Linear($points);
+
+        // Then
+        $this->assertEqualsWithDelta($SUStot, $regression->sumOfSquaresTotal(), 0.0001);
+    }

@@ -1,0 +1,9 @@
+    /**
+     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     */
+
+    public function testTypeDigitFailBool()
+    {
+        $arg = new Argument($this->getMockedCommand([true]));
+        $arg->type('digit');
+    }

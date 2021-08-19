@@ -1,0 +1,11 @@
+    /**
+     * Returns the array containing the raw frame data from which
+     * this Frame object was built
+     *
+     * @return array
+     */
+
+    public function getRawFrame()
+    {
+        return $this->frame;
+    }

@@ -1,0 +1,10 @@
+   /**
+    * Returns whether to send form id with GET and POST parameters
+    *
+    * @return   boolean
+    */
+
+    public function propagateId()
+    {
+        return $this->propagate;
+    }

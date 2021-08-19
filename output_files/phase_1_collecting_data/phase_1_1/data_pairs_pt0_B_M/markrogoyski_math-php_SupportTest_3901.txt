@@ -1,0 +1,16 @@
+    /**
+     * @test         checkLimits on lower limit
+     * @dataProvider dataProviderForCheckLimitsLowerLimit
+     * @param        array $limits
+     * @param        array $params
+     * @throws       \Exception
+     */
+
+    public function testCheckLimitsLowerLimit(array $limits, array $params)
+    {
+        // When
+        $withinLimits = Support::checkLimits($limits, $params);
+
+        // Then
+        $this->assertTrue($withinLimits);
+    }

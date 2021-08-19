@@ -1,0 +1,47 @@
+    /**
+     * Init All worker instances.
+     *
+     * @return void
+     */
+
+    protected static function initWorkers()
+    {
+        if (static::$_OS !== \OS_TYPE_LINUX) {
+            return;
+        }
+        static::$_statisticsFile = __DIR__ . '/../workerman-' .posix_getpid().'.status';
+        foreach (static::$_workers as $worker) {
+            // Worker name.
+            if (empty($worker->name)) {
+                $worker->name = 'none';
+            }
+
+            // Get unix user of the worker process.
+            if (empty($worker->user)) {
+                $worker->user = static::getCurrentUser();
+            } else {
+                if (\posix_getuid() !== 0 && $worker->user !== static::getCurrentUser()) {
+                    static::log('Warning: You must have the root privileges to change uid and gid.');
+                }
+            }
+
+            // Socket name.
+            $worker->socket = $worker->getSocketName();
+
+            // Status name.
+            $worker->status = '<g> [OK] </g>';
+
+            // Get column mapping for UI
+            foreach(static::getUiColumns() as $column_name => $prop){
+                !isset($worker->{$prop}) && $worker->{$prop} = 'NNNN';
+                $prop_length = \strlen($worker->{$prop});
+                $key = '_max' . \ucfirst(\strtolower($column_name)) . 'NameLength';
+                static::$$key = \max(static::$$key, $prop_length);
+            }
+
+            // Listen.
+            if (!$worker->reusePort) {
+                $worker->listen();
+            }
+        }
+    }

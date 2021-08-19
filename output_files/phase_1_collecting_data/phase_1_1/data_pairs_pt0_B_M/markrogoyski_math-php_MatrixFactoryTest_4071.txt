@@ -1,0 +1,16 @@
+    /**
+     * @test   check params exception for empty array
+     * @throws \Exception
+     */
+
+    public function testCheckParamsExceptionEmptyArray()
+    {
+        // Given
+        $A = [];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $M = MatrixFactory::create($A);
+    }

@@ -1,0 +1,22 @@
+    /**
+     * @dataProvider pipesCodeProvider
+     */
+
+    public function testSetStreamAsInput($code, $size)
+    {
+        $expected = str_repeat(str_repeat('*', 1024), $size).'!';
+        $expectedLength = (1024 * $size) + 1;
+
+        $stream = fopen('php://temporary', 'w+');
+        fwrite($stream, $expected);
+        rewind($stream);
+
+        $p = $this->getProcessForCode($code);
+        $p->setInput($stream);
+        $p->run();
+
+        fclose($stream);
+
+        $this->assertEquals($expectedLength, \strlen($p->getOutput()));
+        $this->assertEquals($expectedLength, \strlen($p->getErrorOutput()));
+    }

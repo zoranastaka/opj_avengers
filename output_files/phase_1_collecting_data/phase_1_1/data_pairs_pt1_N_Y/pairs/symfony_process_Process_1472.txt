@@ -1,0 +1,21 @@
+    /**
+     * Returns the number of the signal that caused the child process to terminate its execution.
+     *
+     * It is only meaningful if hasBeenSignaled() returns true.
+     *
+     * @return int
+     *
+     * @throws RuntimeException In case --enable-sigchild is activated
+     * @throws LogicException   In case the process is not terminated
+     */
+
+    public function getTermSignal()
+    {
+        $this->requireProcessIsTerminated(__FUNCTION__);
+
+        if ($this->isSigchildEnabled() && -1 === $this->processInformation['termsig']) {
+            throw new RuntimeException('This PHP has been compiled with --enable-sigchild. Term signal can not be retrieved.');
+        }
+
+        return $this->processInformation['termsig'];
+    }

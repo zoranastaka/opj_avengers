@@ -1,0 +1,20 @@
+    /**
+     * @test         inverse of cdf is x
+     * @dataProvider dataProviderForInverse
+     * @param        float $λ
+     * @param        float $p
+     * @param        float $expectedInverse
+     * @throws       \Exception
+     */
+
+    public function testInverse(float $λ, float $p, float $expectedInverse)
+    {
+        // Given
+        $exponential = new Exponential($λ);
+
+        // When
+        $inverse = $exponential->inverse($p);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedInverse, $inverse, 0.00001);
+    }

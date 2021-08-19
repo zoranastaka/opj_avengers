@@ -1,0 +1,12 @@
+    /**
+     * Set the container.
+     *
+     * @param \Mockery\Container $container
+     *
+     * @return \Mockery\Container
+     */
+
+    public static function setContainer(Mockery\Container $container)
+    {
+        return self::$_container = $container;
+    }

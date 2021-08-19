@@ -1,0 +1,11 @@
+    /**
+     * Set expectation that any arguments are acceptable
+     *
+     * @return self
+     */
+
+    public function withAnyArgs()
+    {
+        $this->_expectedArgs = [new AnyArgs()];
+        return $this;
+    }

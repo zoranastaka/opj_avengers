@@ -1,0 +1,10 @@
+    /**
+     * Create non-existing reader
+     *
+     * @expectedException \PhpOffice\PhpWord\Exception\Exception
+     */
+
+    public function testNonexistentReaderCanNotBeCreated()
+    {
+        IOFactory::createReader('Word2006');
+    }

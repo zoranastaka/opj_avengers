@@ -1,0 +1,28 @@
+    /**
+     * @test         cubic returns the expected roots when D > 0: one root is real, 2 are complex conjugates.
+     * @dataProvider dataProviderForCubicOneRealRootWithComplex
+     * @param        int   $a
+     * @param        int   $b
+     * @param        int   $c
+     * @param        int   $d
+     * @param        array $roots
+     * @throws       \Exception
+     */
+
+    public function testCubicOneRealRootWithComplex(int $a, int $b, int $c, int $d, array $roots)
+    {
+        // Given
+        $real_root = $roots[0];
+        $complex0 = new Number\Complex($roots[1]['r'], $roots[1]['i']);
+        $complex1 = new Number\Complex($roots[2]['r'], $roots[2]['i']);
+
+        // When
+        [$z₁, $z₂, $z₃] = Algebra::cubic($a, $b, $c, $d, true);
+
+        // Then
+        $this->assertEqualsWithDelta($real_root, $z₁, 0.00000001);
+        $this->assertInstanceOf(Number\Complex::class, $z₂);
+        $this->assertInstanceOf(Number\Complex::class, $z₃);
+        $this->assertTrue($z₂->equals($complex0), "Expecting $complex0 but saw $z₂");
+        $this->assertTrue($z₃->equals($complex1), "Expecting $complex1 but saw $z₃");
+    }

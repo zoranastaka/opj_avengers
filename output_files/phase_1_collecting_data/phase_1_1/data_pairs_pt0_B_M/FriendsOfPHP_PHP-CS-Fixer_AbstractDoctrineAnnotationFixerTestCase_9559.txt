@@ -1,0 +1,30 @@
+    /**
+     * @param array<array<string>> $commentCases
+     */
+
+    protected function createTestCases(array $commentCases): array
+    {
+        $cases = [];
+        foreach ($commentCases as $commentCase) {
+            $cases[] = [
+                $this->withClassDocBlock($commentCase[0]),
+                isset($commentCase[1]) ? $this->withClassDocBlock($commentCase[1]) : null,
+            ];
+
+            $cases[] = [
+                $this->withPropertyDocBlock($commentCase[0]),
+                isset($commentCase[1]) ? $this->withPropertyDocBlock($commentCase[1]) : null,
+            ];
+
+            $cases[] = [
+                $this->withMethodDocBlock($commentCase[0]),
+                isset($commentCase[1]) ? $this->withMethodDocBlock($commentCase[1]) : null,
+            ];
+
+            $cases[] = [
+                $this->withWrongElementDocBlock($commentCase[0]),
+            ];
+        }
+
+        return $cases;
+    }

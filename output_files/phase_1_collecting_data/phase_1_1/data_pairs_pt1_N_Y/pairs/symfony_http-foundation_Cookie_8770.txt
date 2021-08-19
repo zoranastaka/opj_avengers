@@ -1,0 +1,10 @@
+    /**
+     * Whether this cookie is about to be cleared.
+     *
+     * @return bool
+     */
+
+    public function isCleared()
+    {
+        return 0 !== $this->expire && $this->expire < time();
+    }

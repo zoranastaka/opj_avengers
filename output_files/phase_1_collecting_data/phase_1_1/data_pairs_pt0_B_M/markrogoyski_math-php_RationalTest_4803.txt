@@ -1,0 +1,21 @@
+    /**
+     * @test         pow returns the correct number
+     * @dataProvider dataProviderForPow
+     * @param        array $rn
+     * @param        int   $int
+     * @param        array $result
+     * @throws       \Exception
+     */
+
+    public function testPow(array $rn, int $int, array $result)
+    {
+        // Given
+        $rational_number = new Rational(...$rn);
+        $result_rn       = new Rational(...$result);
+
+        // When
+        $powResult = $rational_number->pow($int);
+
+        // Then
+        $this->assertTrue($powResult->equals($result_rn));
+    }

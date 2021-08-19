@@ -1,0 +1,12 @@
+    /**
+     * Listening for contact attachment.
+     *
+     * @param $callback
+     *
+     * @return Command
+     */
+
+    public function receivesContact($callback)
+    {
+        return $this->hears(Contact::PATTERN, $callback);
+    }

@@ -1,0 +1,18 @@
+    /**
+     * @test         Householder transformation creates a matrix with a determinant that is -1
+     * @dataProvider dataProviderForHouseholder
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testHouseholderTransformMatrixDeterminant(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $H = Householder::transform($A);
+
+        // Then
+        $this->assertEqualsWithDelta(-1, $H->det(), 0.000001);
+    }

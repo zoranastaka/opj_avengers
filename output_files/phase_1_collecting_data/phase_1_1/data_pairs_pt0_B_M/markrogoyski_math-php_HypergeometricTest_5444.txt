@@ -1,0 +1,20 @@
+    /**
+     * @test         mode
+     * @dataProvider dataProviderForMode
+     * @param  int   $N population size
+     * @param  int   $K number of success states in the population
+     * @param  int   $n number of draws
+     * @param  array $expectedMode
+     */
+
+    public function testMode(int $N, int $K, int $n, array $expectedMode)
+    {
+        // Given
+        $hypergeometric = new Hypergeometric($N, $K, $n);
+
+        // When
+        $mode = $hypergeometric->mode();
+
+        // Then
+        $this->assertEqualsWithDelta($expectedMode, $mode, 0.0000001);
+    }

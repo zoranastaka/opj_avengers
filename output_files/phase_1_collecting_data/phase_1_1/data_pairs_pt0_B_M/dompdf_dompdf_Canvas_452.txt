@@ -1,0 +1,7 @@
+    /**
+     * @param string $script
+     *
+     * @return void
+     */
+
+    function javascript($script);

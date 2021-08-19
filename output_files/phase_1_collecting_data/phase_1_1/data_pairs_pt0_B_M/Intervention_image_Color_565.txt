@@ -1,0 +1,29 @@
+    /**
+     * Initiates color object from given array
+     *
+     * @param  array $value
+     * @return \Intervention\Image\AbstractColor
+     */
+
+    public function initFromArray($array)
+    {
+        $array = array_values($array);
+
+        if (count($array) == 4) {
+
+            // color array with alpha value
+            list($r, $g, $b, $a) = $array;
+            $this->a = $this->alpha2gd($a);
+
+        } elseif (count($array) == 3) {
+
+            // color array without alpha value
+            list($r, $g, $b) = $array;
+            $this->a = 0;
+
+        }
+
+        $this->r = $r;
+        $this->g = $g;
+        $this->b = $b;
+    }

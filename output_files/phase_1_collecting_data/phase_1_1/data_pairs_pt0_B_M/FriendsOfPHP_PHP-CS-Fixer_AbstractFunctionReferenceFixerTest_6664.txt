@@ -1,0 +1,7 @@
+    /**
+     * @param null|int[] $expected
+     *
+     * @dataProvider provideAbstractFunctionReferenceFixerCases
+     */
+
+    public function testAbstractFunctionReferenceFixer(

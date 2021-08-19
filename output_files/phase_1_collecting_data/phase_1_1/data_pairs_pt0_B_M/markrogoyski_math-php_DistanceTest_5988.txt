@@ -1,0 +1,16 @@
+    /**
+     * @test hellinger when the probabilities do not add up to one
+     */
+
+    public function testHellingerDistanceExceptionNotProbabilityDistributionThatAddsUpToOne()
+    {
+        // Given
+        $p = [0.2, 0.2, 0.1];
+        $q = [0.2, 0.4, 0.6];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Distance::hellinger($p, $q);
+    }

@@ -1,0 +1,8 @@
+	/**
+	 * Generate a unique ID for the fee being added.
+	 *
+	 * @param string $fee Fee object.
+	 * @return string fee key.
+	 */
+
+	private function generate_id( $fee ) {

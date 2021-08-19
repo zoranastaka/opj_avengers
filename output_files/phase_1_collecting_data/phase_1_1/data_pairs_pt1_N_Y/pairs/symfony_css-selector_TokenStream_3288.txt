@@ -1,0 +1,22 @@
+    /**
+     * Returns nex identifier or star delimiter token.
+     *
+     * @return string|null The identifier token value or null if star found
+     *
+     * @throws SyntaxErrorException If next token is not an identifier or a star delimiter
+     */
+
+    public function getNextIdentifierOrStar(): ?string
+    {
+        $next = $this->getNext();
+
+        if ($next->isIdentifier()) {
+            return $next->getValue();
+        }
+
+        if ($next->isDelimiter(['*'])) {
+            return null;
+        }
+
+        throw SyntaxErrorException::unexpectedToken('identifier or "*"', $next);
+    }

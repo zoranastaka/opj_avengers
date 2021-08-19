@@ -1,0 +1,8 @@
+    /**
+     * Creates the intersection of A and B.
+     */
+
+    public static function intersection(self $a, self $b): self
+    {
+        return new self(array_intersect($a->toArray(), $b->toArray()));
+    }

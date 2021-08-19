@@ -1,0 +1,19 @@
+    /**
+     * @param string $line
+     * @return string
+     */
+
+    protected function fixParamTypes($line)
+    {
+        return preg_replace_callback('~@(param|return) ([\w\\|]+)~i', function ($matches) {
+            $types = explode('|', $matches[2]);
+            foreach ($types as $i => $type) {
+                switch ($type) {
+                    case 'integer': $types[$i] = 'int'; break;
+                    case 'boolean': $types[$i] = 'bool'; break;
+                }
+            }
+
+            return '@' . $matches[1] . ' ' . implode('|', $types);
+        }, $line);
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @testCase mean is always 0
+     */
+
+    public function testMean()
+    {
+        // Given
+        $diracDelta = new DiracDelta();
+
+        foreach (\range(-10, 10, 0.5) as $_) {
+            // When
+            $mean = $diracDelta->mean();
+
+            // Then
+            $this->assertEquals(0, $mean);
+        }
+    }

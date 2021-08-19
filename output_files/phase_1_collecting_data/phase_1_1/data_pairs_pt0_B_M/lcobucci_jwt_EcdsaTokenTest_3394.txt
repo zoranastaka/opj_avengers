@@ -1,0 +1,10 @@
+    /** @before */
+
+    public function createConfiguration(): void
+    {
+        $this->config = Configuration::forAsymmetricSigner(
+            Sha256::create(),
+            static::$ecdsaKeys['private'],
+            static::$ecdsaKeys['public1']
+        );
+    }

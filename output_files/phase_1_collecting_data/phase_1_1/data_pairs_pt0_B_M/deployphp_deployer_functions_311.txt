@@ -1,0 +1,35 @@
+/**
+ * @return Host|Host[]|ObjectProxy
+ */
+
+function host(string ...$hostname)
+{
+    $deployer = Deployer::get();
+    $aliases = Range::expand($hostname);
+
+    foreach ($aliases as $alias) {
+        if ($deployer->hosts->has($alias)) {
+            $host = $deployer->hosts->get($alias);
+            throw new \InvalidArgumentException(
+                "Host \"$host\" already exists.\n" .
+                "If you want to override configuration options, get host with <fg=yellow>getHost</> function.\n" .
+                "\n" .
+                "    <fg=yellow>getHost</>(<fg=green>'{$alias}'</>);" .
+                "\n"
+            );
+        }
+    }
+
+    if (count($aliases) === 1) {
+        $host = new Host($aliases[0]);
+        $deployer->hosts->set($aliases[0], $host);
+        return $host;
+    } else {
+        $hosts = array_map(function ($hostname) use ($deployer): Host {
+            $host = new Host($hostname);
+            $deployer->hosts->set($hostname, $host);
+            return $host;
+        }, $aliases);
+        return new ObjectProxy($hosts);
+    }
+}

@@ -1,0 +1,19 @@
+    /**
+     * @test
+     */
+
+    public function can_assert_against_a_fake_stored_export()
+    {
+        ExcelFacade::fake();
+
+        $response = ExcelFacade::store($this->givenExport(), 'stored-filename.csv', 's3');
+
+        $this->assertTrue($response);
+
+        ExcelFacade::assertStored('stored-filename.csv', 's3');
+        ExcelFacade::assertStored('stored-filename.csv', 's3', function (FromCollection $export) {
+            return $export->collection()->contains('foo');
+        });
+        ExcelFacade::matchByRegex();
+        ExcelFacade::assertStored('/\w{6}-\w{8}\.csv/', 's3');
+    }

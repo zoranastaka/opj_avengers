@@ -1,0 +1,10 @@
+    /**
+     * Returns encoded image data in string conversion
+     *
+     * @return string
+     */
+
+    public function __toString()
+    {
+        return $this->encoded;
+    }

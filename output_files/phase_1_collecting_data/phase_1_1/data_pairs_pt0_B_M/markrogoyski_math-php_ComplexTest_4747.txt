@@ -1,0 +1,15 @@
+    /**
+     * @test __get returns r and i
+     */
+
+    public function testGet()
+    {
+        // Given
+        $r       = 1;
+        $i       = 2;
+        $complex = new Complex($r, $i);
+
+        // Then
+        $this->assertEquals($r, $complex->r);
+        $this->assertEquals($i, $complex->i);
+    }

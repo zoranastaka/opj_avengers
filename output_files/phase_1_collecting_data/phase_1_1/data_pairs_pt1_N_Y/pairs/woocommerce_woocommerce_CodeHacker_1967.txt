@@ -1,0 +1,7 @@
+	/**
+	 * Retrieve the current position of a stream.
+	 *
+	 * @return false|int The current position of the stream.
+	 */
+
+	public function stream_tell() {

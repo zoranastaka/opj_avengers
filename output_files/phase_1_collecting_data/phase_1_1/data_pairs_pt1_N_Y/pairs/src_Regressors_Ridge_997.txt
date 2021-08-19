@@ -1,0 +1,10 @@
+    /**
+     * Return the weights of features in the decision function.
+     *
+     * @return (int|float)[]|null
+     */
+
+    public function coefficients() : ?array
+    {
+        return $this->coefficients ? $this->coefficients->asArray() : null;
+    }

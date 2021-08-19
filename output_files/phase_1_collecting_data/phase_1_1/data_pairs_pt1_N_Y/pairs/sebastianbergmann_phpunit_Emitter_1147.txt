@@ -1,0 +1,5 @@
+    /**
+     * @psalm-param class-string $className
+     */
+
+    public function testMockObjectCreated(string $className): void;

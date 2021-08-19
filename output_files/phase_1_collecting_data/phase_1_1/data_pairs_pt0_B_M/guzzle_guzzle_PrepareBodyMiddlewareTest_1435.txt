@@ -1,0 +1,26 @@
+    /**
+     * @dataProvider expectProvider
+     */
+
+    public function testAddsExpect($value, $result)
+    {
+        $bd = Psr7\Utils::streamFor(\fopen(__DIR__ . '/../composer.json', 'r'));
+
+        $h = new MockHandler([
+            static function (RequestInterface $request) use ($result) {
+                self::assertSame($result, $request->getHeader('Expect'));
+                return new Response(200);
+            }
+        ]);
+
+        $m = Middleware::prepareBody();
+        $stack = new HandlerStack($h);
+        $stack->push($m);
+        $comp = $stack->resolve();
+        $p = $comp(new Request('PUT', 'http://www.google.com', [], $bd), [
+            'expect' => $value
+        ]);
+        self::assertInstanceOf(PromiseInterface::class, $p);
+        $response = $p->wait();
+        self::assertSame(200, $response->getStatusCode());
+    }

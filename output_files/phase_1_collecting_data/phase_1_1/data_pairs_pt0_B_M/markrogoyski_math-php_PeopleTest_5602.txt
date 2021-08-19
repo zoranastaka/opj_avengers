@@ -1,0 +1,12 @@
+    /**
+     * @test 32 age observations
+     */
+
+    public function testNumberOfAge()
+    {
+        // When
+        $observations = $this->people->getAge();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

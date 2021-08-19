@@ -1,0 +1,12 @@
+    /**
+     * Add support for deep cloning
+     *
+     * @return void
+     */
+
+    public function __clone()
+    {
+        if (null !== $this->queue) {
+            $this->queue = clone $this->queue;
+        }
+    }

@@ -1,0 +1,25 @@
+    /**
+     * Tests against the target.
+     *
+     * @param mixed $test A test value
+     *
+     * @return bool
+     */
+
+    public function test($test)
+    {
+        switch ($this->operator) {
+            case '>':
+                return $test > $this->target;
+            case '>=':
+                return $test >= $this->target;
+            case '<':
+                return $test < $this->target;
+            case '<=':
+                return $test <= $this->target;
+            case '!=':
+                return $test != $this->target;
+        }
+
+        return $test == $this->target;
+    }

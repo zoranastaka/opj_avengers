@@ -1,0 +1,17 @@
+    /**
+     * @group connected
+     * @group slow
+     */
+
+    public function testThrowsExceptionOnReadWriteTimeout(): void
+    {
+        $this->expectException('Predis\Connection\ConnectionException');
+
+        $commands = $this->getCommandFactory();
+
+        $connection = $this->createConnectionWithParams(array(
+            'read_write_timeout' => 0.5,
+        ), true);
+
+        $connection->executeCommand($commands->create('brpop', array('foo', 3)));
+    }

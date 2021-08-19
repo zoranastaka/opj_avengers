@@ -1,0 +1,7 @@
+    /**
+     * Checks if debug mode is enabled.
+     *
+     * @return bool true if debug mode is enabled, false otherwise
+     */
+
+    public function isDebug();

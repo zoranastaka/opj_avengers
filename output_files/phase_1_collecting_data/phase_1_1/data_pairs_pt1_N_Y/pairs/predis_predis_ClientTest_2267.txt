@@ -1,0 +1,22 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testConstructorWithCallableConnectionInitializerThrowsExceptionOnInvalidReturnType(): void
+    {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Callable parameters must return a valid connection');
+
+        $wrongType = $this->getMockBuilder('stdClass')->getMock();
+
+        $callable = $this->getMockBuilder('stdClass')
+            ->addMethods(array('__invoke'))
+            ->getMock();
+        $callable
+            ->expects($this->once())
+            ->method('__invoke')
+            ->with($this->isInstanceOf('Predis\Configuration\OptionsInterface'))
+            ->willReturn($wrongType);
+
+        new Client($callable);
+    }

@@ -1,0 +1,13 @@
+    /**
+     * @covers \League\Csv\InvalidArgument::dueToStreamFilterNotFound
+     * @covers ::appendFilter
+     */
+
+    public function testAppendStreamFilterThrowsException(): void
+    {
+        $filtername = 'foo.bar';
+        $this->expectException(InvalidArgument::class);
+        $this->expectExceptionMessage('unable to locate filter `'.$filtername.'`');
+        $stream = Stream::createFromPath('php://temp', 'r+');
+        $stream->appendFilter($filtername, STREAM_FILTER_READ);
+    }

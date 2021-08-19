@@ -1,0 +1,17 @@
+    /**
+     * This method allows you to specify multiple (method chaining optional) GROUP BY statements for SQL queries.
+     *
+     * @uses $MySqliDb->groupBy('name');
+     *
+     * @param string $groupByField The name of the database field.
+     *
+     * @return MysqliDb
+     */
+
+    public function groupBy($groupByField)
+    {
+        $groupByField = preg_replace("/[^-a-z0-9\.\(\),_\* <>=!]+/i", '', $groupByField);
+
+        $this->_groupBy[] = $groupByField;
+        return $this;
+    }

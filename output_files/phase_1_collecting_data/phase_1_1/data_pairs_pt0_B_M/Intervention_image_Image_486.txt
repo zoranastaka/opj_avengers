@@ -1,0 +1,11 @@
+    /**
+     * Runs a given filter on current image
+     *
+     * @param  FiltersFilterInterface $filter
+     * @return \Intervention\Image\Image
+     */
+
+    public function filter(Filters\FilterInterface $filter)
+    {
+        return $filter->applyFilter($this);
+    }

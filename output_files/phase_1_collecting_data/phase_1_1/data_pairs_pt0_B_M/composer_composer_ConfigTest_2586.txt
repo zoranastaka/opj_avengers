@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider allowedUrlProvider
+     * @doesNotPerformAssertions
+     *
+     * @param string $url
+     */
+
+    public function testAllowedUrlsPass($url)
+    {
+        $config = new Config(false);
+        $config->prohibitUrlByConfig($url);
+    }

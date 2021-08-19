@@ -1,0 +1,12 @@
+    /**
+     * Returns true if $argument has expected number of elements
+     *
+     * @param array|\Countable $argument
+     *
+     * @return bool
+     */
+
+    private function hasProperCount($argument)
+    {
+        return $this->count === count($argument);
+    }

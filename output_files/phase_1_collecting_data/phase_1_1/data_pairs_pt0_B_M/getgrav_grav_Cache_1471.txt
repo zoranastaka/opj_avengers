@@ -1,0 +1,12 @@
+    /**
+     * Setter method to set key (Advanced)
+     *
+     * @param string $key
+     * @return void
+     */
+
+    public function setKey($key)
+    {
+        $this->key = $key;
+        $this->driver->setNamespace($this->key);
+    }

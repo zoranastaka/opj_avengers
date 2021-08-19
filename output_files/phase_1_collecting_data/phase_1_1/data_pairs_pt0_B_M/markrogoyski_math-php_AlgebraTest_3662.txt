@@ -1,0 +1,17 @@
+    /**
+     * @test         discriminant returns the expected value.
+     * @dataProvider dataProviderForDiscriminant
+     * @param        float $a
+     * @param        float $b
+     * @param        float $c
+     * @param        float $expected_discriminant
+     */
+
+    public function testDiscriminant(float $a, float $b, float $c, float $expected_discriminant)
+    {
+        // When
+        $discriminant = Algebra::discriminant($a, $b, $c);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_discriminant, $discriminant, 0.00000001);
+    }

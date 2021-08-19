@@ -1,0 +1,12 @@
+    /**
+     * Reverses the sorting.
+     *
+     * @return $this
+     */
+
+    public function reverseSorting()
+    {
+        $this->reverseSorting = true;
+
+        return $this;
+    }

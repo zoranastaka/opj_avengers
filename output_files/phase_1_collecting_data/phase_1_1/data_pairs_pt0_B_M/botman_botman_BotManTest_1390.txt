@@ -1,0 +1,16 @@
+    /** @test */
+
+    public function it_allows_regular_expressions_with_range_quantifier()
+    {
+        $called = false;
+
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'look at order #123456789',
+        ]);
+
+        $botman->hears('.*?#(\d{8,9})\b.*', function ($bot, $orderId) use (&$called) {
+            $called = true;
+            $this->assertSame('123456789', $orderId);
+        });

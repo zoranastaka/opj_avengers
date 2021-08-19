@@ -1,0 +1,16 @@
+    /**
+     * @covers \PhpCsFixer\FixerFactory::registerFixer
+     */
+
+    public function testRegisterFixerWithOccupiedName(): void
+    {
+        $this->expectException(\UnexpectedValueException::class);
+        $this->expectExceptionMessage('Fixer named "non_unique_name" is already registered.');
+
+        $factory = new FixerFactory();
+
+        $f1 = $this->createFixerDouble('non_unique_name');
+        $f2 = $this->createFixerDouble('non_unique_name');
+        $factory->registerFixer($f1, false);
+        $factory->registerFixer($f2, false);
+    }

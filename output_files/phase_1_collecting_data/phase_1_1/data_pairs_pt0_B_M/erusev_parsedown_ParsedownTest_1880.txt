@@ -1,0 +1,10 @@
+    /**
+     * @return Parsedown
+     */
+
+    protected function initParsedown()
+    {
+        $Parsedown = new TestParsedown();
+
+        return $Parsedown;
+    }

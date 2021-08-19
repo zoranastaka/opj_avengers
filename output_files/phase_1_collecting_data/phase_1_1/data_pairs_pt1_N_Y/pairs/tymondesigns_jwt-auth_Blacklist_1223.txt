@@ -1,0 +1,20 @@
+    /**
+     * Determine whether the token has been blacklisted.
+     *
+     * @param  \Tymon\JWTAuth\Payload  $payload
+     *
+     * @return bool
+     */
+
+    public function has(Payload $payload)
+    {
+        $val = $this->storage->get($this->getKey($payload));
+
+        // exit early if the token was blacklisted forever,
+        if ($val === 'forever') {
+            return true;
+        }
+
+        // check whether the expiry + grace has past
+        return ! empty($val) && ! Utils::isFuture($val['valid_until']);
+    }

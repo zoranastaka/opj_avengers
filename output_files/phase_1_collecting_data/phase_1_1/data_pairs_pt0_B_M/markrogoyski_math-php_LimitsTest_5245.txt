@@ -1,0 +1,8 @@
+    /**
+     * @test Limits constant is correct format
+     */
+
+    public function testUniformParameterLimits()
+    {
+        $this->limitTest(Continuous\Uniform::PARAMETER_LIMITS);
+    }

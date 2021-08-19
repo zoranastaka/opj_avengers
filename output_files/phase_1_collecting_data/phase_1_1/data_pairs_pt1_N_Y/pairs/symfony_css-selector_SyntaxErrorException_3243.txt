@@ -1,0 +1,8 @@
+    /**
+     * @return self
+     */
+
+    public static function unexpectedToken(string $expectedValue, Token $foundToken)
+    {
+        return new self(sprintf('Expected %s, but %s found.', $expectedValue, $foundToken));
+    }

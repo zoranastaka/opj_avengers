@@ -1,0 +1,11 @@
+    /**
+     * Add meta information to the PDF after rendering
+     */
+
+    public function add_info($label, $value)
+    {
+        $canvas = $this->getCanvas();
+        if (!is_null($canvas)) {
+            $canvas->add_info($label, $value);
+        }
+    }

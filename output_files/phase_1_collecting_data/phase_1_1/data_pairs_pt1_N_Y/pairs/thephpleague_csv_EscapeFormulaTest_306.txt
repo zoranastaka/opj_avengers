@@ -1,0 +1,13 @@
+    /**
+     * @covers ::__construct
+     * @covers ::getSpecialCharacters
+     * @covers ::filterSpecialCharacters
+     */
+
+    public function testGetSpecialChars(): void
+    {
+        $formatter = new EscapeFormula();
+        self::assertNotContains('i', $formatter->getSpecialCharacters());
+        $formatterBis = new EscapeFormula("\t", ['i']);
+        self::assertContains('i', $formatterBis->getSpecialCharacters());
+    }

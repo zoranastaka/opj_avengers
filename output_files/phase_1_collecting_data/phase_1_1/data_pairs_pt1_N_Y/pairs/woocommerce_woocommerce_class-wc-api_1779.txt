@@ -1,0 +1,7 @@
+	/**
+	 * Register WC settings from WP-API to the REST API.
+	 *
+	 * @since  3.0.0
+	 */
+
+	public function register_wp_admin_settings() {

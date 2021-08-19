@@ -1,0 +1,25 @@
+    /**
+     * Fetch item from WeChat server.
+     *
+     * @param string $mediaId
+     *
+     * @return \EasyWeChat\Kernel\Http\StreamResponse|\Psr\Http\Message\ResponseInterface|\EasyWeChat\Kernel\Support\Collection|array|object|string
+     *
+     * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+
+    public function get(string $mediaId)
+    {
+        $response = $this->requestRaw('media/get', 'GET', [
+            'query' => [
+                'media_id' => $mediaId,
+            ],
+        ]);
+
+        if (false !== stripos($response->getHeaderLine('Content-disposition'), 'attachment')) {
+            return StreamResponse::buildFromPsrResponse($response);
+        }
+
+        return $this->castResponseToType($response, $this->app['config']->get('response_type'));
+    }

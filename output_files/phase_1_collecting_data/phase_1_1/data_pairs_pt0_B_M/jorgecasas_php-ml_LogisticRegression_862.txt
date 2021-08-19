@@ -1,0 +1,32 @@
+    /**
+     * Adapts the weights with respect to given samples and targets
+     * by use of selected solver
+     *
+     * @throws \Exception
+     */
+
+    protected function runTraining(array $samples, array $targets): void
+    {
+        $callback = $this->getCostFunction();
+
+        switch ($this->trainingType) {
+            case self::BATCH_TRAINING:
+                $this->runGradientDescent($samples, $targets, $callback, true);
+
+                return;
+
+            case self::ONLINE_TRAINING:
+                $this->runGradientDescent($samples, $targets, $callback, false);
+
+                return;
+
+            case self::CONJUGATE_GRAD_TRAINING:
+                $this->runConjugateGradient($samples, $targets, $callback);
+
+                return;
+
+            default:
+                // Not reached
+                throw new Exception(sprintf('Logistic regression has invalid training type: %d.', $this->trainingType));
+        }
+    }

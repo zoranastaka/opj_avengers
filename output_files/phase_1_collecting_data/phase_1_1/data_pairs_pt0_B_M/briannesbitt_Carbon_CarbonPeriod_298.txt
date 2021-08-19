@@ -1,0 +1,10 @@
+    /**
+     * Get the underlying date interval.
+     *
+     * @return CarbonInterval
+     */
+
+    public function getDateInterval()
+    {
+        return $this->dateInterval->copy();
+    }

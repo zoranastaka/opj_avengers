@@ -1,0 +1,24 @@
+    /**
+     * @test         subtract returns the correct number
+     * @dataProvider dataProviderForSubtract
+     * @param        array $rn1
+     * @param        array $rn2
+     * @param        array $expected
+     * @throws       \Exception
+     */
+
+    public function testSubtract(array $rn1, array $rn2, array $expected)
+    {
+        // Given
+        $rational_number_1 = new Rational($rn1[0], $rn1[1], $rn1[2]);
+        $rational_number_2 = new Rational($rn2[0], $rn2[1], $rn2[2]);
+        $expected_rn       = new Rational(...$expected);
+
+        // When
+        $subtraction_result = $rational_number_1->subtract($rational_number_2);
+
+        // Then
+        $this->assertTrue($subtraction_result->equals($expected_rn));
+        $this->assertSame($expected_rn->__toString(), $subtraction_result->__toString());
+        $this->assertSame($expected_rn->toFloat(), $subtraction_result->toFloat());
+    }

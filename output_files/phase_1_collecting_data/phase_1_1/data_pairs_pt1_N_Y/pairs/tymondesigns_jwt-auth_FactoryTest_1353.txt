@@ -1,0 +1,8 @@
+    /** @test */
+
+    public function it_should_set_the_default_claims()
+    {
+        $this->factory->setDefaultClaims(['sub', 'iat']);
+
+        $this->assertSame($this->factory->getDefaultClaims(), ['sub', 'iat']);
+    }

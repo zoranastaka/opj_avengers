@@ -1,0 +1,55 @@
+    /**
+     * Pivotize creates the permutation matrix P for the LU decomposition using partial pivoting.
+     * The permutation matrix is an identity matrix with rows possibly interchanged.
+     *
+     * The product PA results in a new matrix whose rows consist of the rows of A
+     * but no rearranged in the order specified by the permutation matrix P.
+     *
+     * Example:
+     *
+     *     [α₁₁ α₁₂ α₁₃]
+     * A = [α₂₁ α₂₂ α₂₃]
+     *     [α₃₁ α₃₂ α₃₃]
+     *
+     *     [0 1 0]
+     * P = [1 0 0]
+     *     [0 0 1]
+     *
+     *      [α₂₁ α₂₂ α₂₃] \ rows
+     * PA = [α₁₁ α₁₂ α₁₃] / interchanged
+     *      [α₃₁ α₃₂ α₃₃]
+     *
+     * @return NumericMatrix
+     *
+     * @throws Exception\BadDataException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MathException
+     * @throws Exception\MatrixException
+     * @throws Exception\OutOfBoundsException
+     */
+
+    protected static function pivotize(NumericMatrix $A): NumericMatrix
+    {
+        $n = $A->getN();
+        $P = MatrixFactory::identity($n);
+
+        // Set initial column max to diagonal element Aᵢᵢ
+        for ($i = 0; $i < $n; $i++) {
+            $max = $A[$i][$i];
+            $row = $i;
+
+            // Check for column element below Aᵢᵢ that is bigger
+            for ($j = $i; $j < $n; $j++) {
+                if ($A[$j][$i] > $max) {
+                    $max = $A[$j][$i];
+                    $row = $j;
+                }
+            }
+
+            // Swap rows if a larger column element below Aᵢᵢ was found
+            if ($i != $row) {
+                $P = $P->rowInterchange($i, $row);
+            }
+        }
+        return $P;
+    }

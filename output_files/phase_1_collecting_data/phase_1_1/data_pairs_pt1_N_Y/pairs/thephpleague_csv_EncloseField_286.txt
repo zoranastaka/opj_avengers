@@ -1,0 +1,25 @@
+    /**
+     * Static method to add the stream filter to a {@link Writer} object.
+     *
+     * @throws InvalidArgumentException if the sequence is malformed
+     * @throws Exception
+     */
+
+    public static function addTo(Writer $csv, string $sequence): Writer
+    {
+        self::register();
+
+        if (!self::isValidSequence($sequence)) {
+            throw new InvalidArgumentException('The sequence must contain at least one character to force enclosure');
+        }
+
+        $formatter = function (array $record) use ($sequence): array {
+            return array_map(function (?string $value) use ($sequence): string {
+                return $sequence.$value;
+            }, $record);
+        };
+
+        return $csv
+            ->addFormatter($formatter)
+            ->addStreamFilter(self::FILTERNAME, ['sequence' => $sequence]);
+    }

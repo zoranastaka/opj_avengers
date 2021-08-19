@@ -1,0 +1,19 @@
+    /**
+     * AccountController constructor.
+     */
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->middleware(
+            function ($request, $next) {
+                /** @var User $user */
+                $user             = auth()->user();
+                $this->repository = app(AccountRepositoryInterface::class);
+                $this->repository->setUser($user);
+
+                return $next($request);
+            }
+        );
+        $this->balanceTypes = [AccountType::ASSET, AccountType::LOAN, AccountType::DEBT, AccountType::MORTGAGE,];
+    }

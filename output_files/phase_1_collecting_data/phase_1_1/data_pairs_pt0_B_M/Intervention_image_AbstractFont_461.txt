@@ -1,0 +1,13 @@
+    /**
+     * Set color of text to be written
+     *
+     * @param  mixed $color
+     * @return void
+     */
+
+    public function color($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }

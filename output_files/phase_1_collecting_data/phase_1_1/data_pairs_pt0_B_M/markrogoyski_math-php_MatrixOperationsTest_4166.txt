@@ -1,0 +1,19 @@
+    /**
+     * @test minor exception - bad column
+     */
+
+    public function testMinorExceptionBadColumn()
+    {
+        // Given
+        $A = MatrixFactory::create([
+            [1, 2, 3],
+            [2, 3, 4],
+            [3, 4, 5],
+        ]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $A->minor(1, 4);
+    }

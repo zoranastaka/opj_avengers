@@ -1,0 +1,12 @@
+    /**
+     * Set the public key
+     *
+     * @param CryptKey $key
+     */
+
+    public function setPublicKey(CryptKey $key)
+    {
+        $this->publicKey = $key;
+
+        $this->initJwtConfiguration();
+    }

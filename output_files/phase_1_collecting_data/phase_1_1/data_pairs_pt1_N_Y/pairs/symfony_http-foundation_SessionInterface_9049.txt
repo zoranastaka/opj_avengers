@@ -1,0 +1,7 @@
+    /**
+     * Sets an attribute.
+     *
+     * @param mixed $value
+     */
+
+    public function set(string $name, $value);

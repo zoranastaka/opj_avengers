@@ -1,0 +1,37 @@
+    /**
+     * @return bool
+     */
+
+    public function handle()
+    {
+        if (Utils::isNinjaProd()) {
+            $this->info('Unable to run in production');
+            return false;
+        }
+
+        $this->info(date('r').' Running CreateTestData...');
+        $this->count = $this->argument('count');
+
+        if ($database = $this->option('database')) {
+            config(['database.default' => $database]);
+        }
+
+        if (filter_var($this->argument('create_account'), FILTER_VALIDATE_BOOLEAN)) {
+            $this->info('Creating new account...');
+            $account = $this->accountRepo->create(
+                $this->faker->firstName,
+                $this->faker->lastName,
+                $this->faker->safeEmail
+            );
+            Auth::login($account->users[0]);
+        } else {
+            $this->info('Using first account...');
+            Auth::loginUsingId(1);
+        }
+
+        $this->createClients();
+        $this->createVendors();
+        $this->createOtherObjects();
+
+        $this->info('Done');
+    }

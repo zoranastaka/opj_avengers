@@ -1,0 +1,5 @@
+  /**
+   * @task data
+   */
+
+  public function getExists($name) {

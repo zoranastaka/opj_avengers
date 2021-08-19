@@ -1,0 +1,13 @@
+    /**
+     * Sets the hasher implementation.
+     *
+     * @param  \Illuminate\Contracts\Hashing\Hasher  $hasher
+     * @return $this
+     */
+
+    public function setHasher(HasherContract $hasher)
+    {
+        $this->hasher = $hasher;
+
+        return $this;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get document properties object
+     *
+     * @return \PhpOffice\PhpWord\Metadata\DocInfo
+     */
+
+    public function getDocInfo()
+    {
+        return $this->metadata['DocInfo'];
+    }

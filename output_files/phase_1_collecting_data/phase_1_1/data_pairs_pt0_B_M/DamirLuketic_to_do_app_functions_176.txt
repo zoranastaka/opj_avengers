@@ -1,0 +1,16 @@
+// funkcija za pravljenje nove liste
+
+function napravi_to_do($naziv, $korisnik_id)
+{
+    $napravi = $GLOBALS['con']->prepare(' insert into to_do (korisnik_id, naziv, datum_unosa) values 
+                                        (:korisnik_id, :naziv, current_date())
+                                      ');
+     $napravi->execute([
+                    ':korisnik_id' => $korisnik_id,
+                    ':naziv'    => $naziv,
+                    ]);
+
+    $id_nove_liste = $GLOBALS['con']->lastInsertId();
+
+    return header('location: lista.php?to_do_id=' . $id_nove_liste);
+}

@@ -1,0 +1,5 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public static function getLastErrors();

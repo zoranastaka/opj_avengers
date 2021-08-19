@@ -1,0 +1,11 @@
+    /**
+     * Get unix user of current porcess.
+     *
+     * @return string
+     */
+
+    protected static function getCurrentUser()
+    {
+        $user_info = \posix_getpwuid(\posix_getuid());
+        return $user_info['name'];
+    }

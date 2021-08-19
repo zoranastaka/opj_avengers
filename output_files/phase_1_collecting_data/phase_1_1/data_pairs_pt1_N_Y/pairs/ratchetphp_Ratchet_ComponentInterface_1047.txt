@@ -1,0 +1,7 @@
+    /**
+     * When a new connection is opened it will be passed to this method
+     * @param  ConnectionInterface $conn The socket/connection that just connected to your application
+     * @throws \Exception
+     */
+
+    function onOpen(ConnectionInterface $conn);

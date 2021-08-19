@@ -1,0 +1,18 @@
+    /**
+     * @test         median
+     * @dataProvider dataProviderForMedian
+     * @param        float $k
+     * @param        float $expected
+     */
+
+    public function testMedian(float $k, float $expected)
+    {
+        // Given
+        $chiSquared = new ChiSquared($k);
+
+        // When
+        $median = $chiSquared->median();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $median, 0.00000001);
+    }

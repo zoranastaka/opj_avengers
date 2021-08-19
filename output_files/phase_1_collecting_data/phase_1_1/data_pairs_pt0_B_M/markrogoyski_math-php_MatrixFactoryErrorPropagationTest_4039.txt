@@ -1,0 +1,16 @@
+    /**
+     * @test rowDivide propagates error tolerance to resultant matrix
+     */
+
+    public function testRowDivide()
+    {
+        // Given
+        $m = 1;
+        $k = 2;
+
+        // When
+        $R = $this->A->rowDivide($m, $k);
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

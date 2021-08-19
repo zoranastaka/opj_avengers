@@ -1,0 +1,66 @@
+    /**
+     * Get the desired verbosity from the given input.
+     *
+     * This is a bit more complext than the other options parsers. It handles `--quiet` and
+     * `--verbose`, along with their short aliases, and fancy things like `-vvv`.
+     *
+     * @return string|null configuration constant, or null if no verbosity option is specified
+     */
+
+    private static function getVerbosityFromInput(InputInterface $input)
+    {
+        // --quiet wins!
+        if (self::getOptionFromInput($input, ['quiet'], ['-q'])) {
+            return self::VERBOSITY_QUIET;
+        }
+
+        // Best case, input is properly bound and validated.
+        //
+        // Note that if the `--verbose` option is incorrectly defined as `VALUE_NONE` rather than
+        // `VALUE_OPTIONAL` (as it is in Symfony Console by default) it doesn't actually work with
+        // multiple verbosity levels as it claims.
+        //
+        // We can detect this by checking whether the the value === true, and fall back to unbound
+        // parsing for this option.
+        if ($input->hasOption('verbose') && $input->getOption('verbose') !== true) {
+            switch ($input->getOption('verbose')) {
+                case '-1':
+                    return self::VERBOSITY_QUIET;
+                case '0': // explicitly normal, overrides config file default
+                    return self::VERBOSITY_NORMAL;
+                case '1':
+                case null: // `--verbose` and `-v`
+                    return self::VERBOSITY_VERBOSE;
+                case '2':
+                case 'v': // `-vv`
+                    return self::VERBOSITY_VERY_VERBOSE;
+                case '3':
+                case 'vv': // `-vvv`
+                    return self::VERBOSITY_DEBUG;
+                default: // implicitly normal, config file default wins
+                    return;
+            }
+        }
+
+        // quiet and normal have to come before verbose, because it eats everything else.
+        if ($input->hasParameterOption('--verbose=-1', true) || $input->getParameterOption('--verbose', false, true) === '-1') {
+            return self::VERBOSITY_QUIET;
+        }
+
+        if ($input->hasParameterOption('--verbose=0', true) || $input->getParameterOption('--verbose', false, true) === '0') {
+            return self::VERBOSITY_NORMAL;
+        }
+
+        // `-vvv`, `-vv` and `-v` have to come in descending length order, because `hasParameterOption` matches prefixes.
+        if ($input->hasParameterOption('-vvv', true) || $input->hasParameterOption('--verbose=3', true) || $input->getParameterOption('--verbose', false, true) === '3') {
+            return self::VERBOSITY_DEBUG;
+        }
+
+        if ($input->hasParameterOption('-vv', true) || $input->hasParameterOption('--verbose=2', true) || $input->getParameterOption('--verbose', false, true) === '2') {
+            return self::VERBOSITY_VERY_VERBOSE;
+        }
+
+        if ($input->hasParameterOption('-v', true) || $input->hasParameterOption('--verbose=1', true) || $input->hasParameterOption('--verbose', true)) {
+            return self::VERBOSITY_VERBOSE;
+        }
+    }

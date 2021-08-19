@@ -1,0 +1,8 @@
+    /**
+     * @param boolean $logging
+     */
+
+    public function setLogging($logging)
+    {
+        $this->logging = $logging;
+    }

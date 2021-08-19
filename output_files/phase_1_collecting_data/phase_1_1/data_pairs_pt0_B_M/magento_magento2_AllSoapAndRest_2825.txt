@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function itemAnyType(Item $item)
+    {
+        return $item;
+    }

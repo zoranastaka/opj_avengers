@@ -1,0 +1,10 @@
+    /**
+     * Get the Blacklist instance.
+     *
+     * @return \Tymon\JWTAuth\Blacklist
+     */
+
+    public function getBlacklist()
+    {
+        return $this->blacklist;
+    }

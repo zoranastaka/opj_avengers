@@ -1,0 +1,18 @@
+    /**
+     * @test
+     * @dataProvider dataProviderForAdd
+     */
+
+    public function testAdd(array $A, $x, array $R)
+    {
+        // Given
+        $setA = new Set($A);
+        $setR = new Set($R);
+
+        // When
+        $setA->add($x);
+
+        // Then
+        $this->assertEquals($setR, $setA);
+        $this->assertEquals($setR->asArray(), $setA->asArray());
+    }

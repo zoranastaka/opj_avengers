@@ -1,0 +1,10 @@
+    /**
+     * Get the config path
+     *
+     * @return string
+     */
+
+    protected function getConfigPath()
+    {
+        return base_path('config/debugbar.php');
+    }

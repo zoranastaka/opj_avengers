@@ -1,0 +1,20 @@
+    /**
+     * @covers Whoops\Handler\PlainTextHandler::setTraceFunctionArgsOutputLimit
+     * @covers Whoops\Handler\PlainTextHandler::getTraceFunctionArgsOutputLimit
+     */
+
+    public function testGetSetTraceFunctionArgsOutputLimit()
+    {
+        $addTraceFunctionArgsToOutput = 10240;
+
+        $handler = $this->getHandler();
+
+        $handler->setTraceFunctionArgsOutputLimit($addTraceFunctionArgsToOutput);
+        $this->assertEquals($addTraceFunctionArgsToOutput, $handler->getTraceFunctionArgsOutputLimit());
+
+        $handler->setTraceFunctionArgsOutputLimit('1024kB');
+        $this->assertEquals(1024, $handler->getTraceFunctionArgsOutputLimit());
+
+        $handler->setTraceFunctionArgsOutputLimit('true');
+        $this->assertEquals(0, $handler->getTraceFunctionArgsOutputLimit());
+    }

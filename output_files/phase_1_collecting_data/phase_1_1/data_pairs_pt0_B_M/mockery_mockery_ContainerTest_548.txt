@@ -1,0 +1,10 @@
+    /**
+     * @group issue/18
+     */
+
+    public function testCanMockClassUsingMagicCallMethodsInPlaceOfNormalMethods()
+    {
+        $m = Mockery::mock('Gateway');
+        $m->shouldReceive('iDoSomethingReallyCoolHere');
+        $m->iDoSomethingReallyCoolHere();
+    }

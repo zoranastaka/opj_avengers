@@ -1,0 +1,6 @@
+/**
+ * @param $service
+ * @return string
+ */
+
+function resolveService($service) {

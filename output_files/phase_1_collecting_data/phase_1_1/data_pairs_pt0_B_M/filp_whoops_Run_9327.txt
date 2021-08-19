@@ -1,0 +1,25 @@
+    /**
+     * Registers this instance as an error handler.
+     *
+     * @return Run
+     */
+
+    public function register()
+    {
+        if (!$this->isRegistered) {
+            // Workaround PHP bug 42098
+            // https://bugs.php.net/bug.php?id=42098
+            class_exists("\\Whoops\\Exception\\ErrorException");
+            class_exists("\\Whoops\\Exception\\FrameCollection");
+            class_exists("\\Whoops\\Exception\\Frame");
+            class_exists("\\Whoops\\Exception\\Inspector");
+
+            $this->system->setErrorHandler([$this, self::ERROR_HANDLER]);
+            $this->system->setExceptionHandler([$this, self::EXCEPTION_HANDLER]);
+            $this->system->registerShutdownFunction([$this, self::SHUTDOWN_HANDLER]);
+
+            $this->isRegistered = true;
+        }
+
+        return $this;
+    }

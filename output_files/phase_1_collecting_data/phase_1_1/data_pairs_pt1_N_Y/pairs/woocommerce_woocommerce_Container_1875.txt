@@ -1,0 +1,26 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function has($id) : bool
+    {
+        if ($this->definitions->has($id)) {
+            return true;
+        }
+
+        if ($this->definitions->hasTag($id)) {
+            return true;
+        }
+
+        if ($this->providers->provides($id)) {
+            return true;
+        }
+
+        foreach ($this->delegates as $delegate) {
+            if ($delegate->has($id)) {
+                return true;
+            }
+        }
+
+        return false;
+    }

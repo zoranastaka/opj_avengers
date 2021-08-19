@@ -1,0 +1,10 @@
+    /**
+     * Get the Payload Factory.
+     *
+     * @return \Tymon\JWTAuth\Factory
+     */
+
+    public function factory()
+    {
+        return $this->manager->getPayloadFactory();
+    }

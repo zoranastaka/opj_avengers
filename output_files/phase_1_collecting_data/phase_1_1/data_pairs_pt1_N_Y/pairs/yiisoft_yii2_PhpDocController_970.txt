@@ -1,0 +1,13 @@
+    /**
+     * Generate a hash value (message digest)
+     * @param string $string message to be hashed.
+     * @return string calculated message digest.
+     */
+
+    private function hash($string)
+    {
+        if (!function_exists('hash')) {
+            return sha1($string);
+        }
+        return hash('sha256', $string);
+    }

@@ -1,0 +1,7 @@
+    /**
+     * Shutdowns the kernel.
+     *
+     * This method is mainly useful when doing functional testing.
+     */
+
+    public function shutdown();

@@ -1,0 +1,15 @@
+    /** @test */
+
+    public function builderShouldRaiseExceptionWhenKeyIsNotRsaCompatible(): void
+    {
+        $builder = $this->config->builder();
+
+        $this->expectException(InvalidKeyProvided::class);
+        $this->expectExceptionMessage('This key is not compatible with this signer');
+
+        $builder->identifiedBy('1')
+                ->permittedFor('http://client.abc.com')
+                ->issuedBy('http://api.abc.com')
+                ->withClaim('user', ['name' => 'testing', 'email' => 'testing@abc.com'])
+                ->getToken($this->config->signer(), static::$ecdsaKeys['private']);
+    }

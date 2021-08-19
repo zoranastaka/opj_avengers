@@ -1,0 +1,3 @@
+                // todo: connection has to be null-checked, because of race conditions with many workers. fixed in #366
+
+                $connection->on('close', function () use ($onSlaveClosed, $slave) {

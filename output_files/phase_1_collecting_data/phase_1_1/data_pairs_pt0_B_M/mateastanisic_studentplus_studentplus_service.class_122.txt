@@ -1,0 +1,8 @@
+	//vraća sve ponude tvrtke s poslanim oib-om (tj dohvati sve ponude neke tvrtke)
+
+	function get_offers_by_oib($oib){
+		try{
+			$db = DB::getConnection();
+			$st = $db->prepare( 'SELECT * FROM studentplus_offers WHERE oib=:oib ORDER BY id' );
+			$st->execute( array('oib' => $oib ));
+		}

@@ -1,0 +1,10 @@
+    /**
+     * Returns the item index.
+     *
+     * @return int
+     */
+
+    public function getIndex()
+    {
+        return $this->index;
+    }

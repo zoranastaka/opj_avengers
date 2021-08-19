@@ -1,0 +1,16 @@
+    /**
+     * Aggregates the DataTable\Map into the destination $aggregated
+     * @param $map
+     * @param $aggregated
+     */
+
+    protected function aggregatedDataTableMapsAsOne(Map $map, DataTable $aggregated)
+    {
+        foreach ($map->getDataTables() as $tableToAggregate) {
+            if ($tableToAggregate instanceof Map) {
+                $this->aggregatedDataTableMapsAsOne($tableToAggregate, $aggregated);
+            } else {
+                $aggregated->addDataTable($tableToAggregate);
+            }
+        }
+    }

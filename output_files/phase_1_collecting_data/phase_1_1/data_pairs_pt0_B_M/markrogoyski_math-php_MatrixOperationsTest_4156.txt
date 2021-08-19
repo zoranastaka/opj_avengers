@@ -1,0 +1,17 @@
+    /**
+     * @test         minorMatrix
+     * @dataProvider dataProviderForMinorMatrix
+     */
+
+    public function testMinorMatrix(array $A, int $mᵢ, int $nⱼ, array $Mᵢⱼ)
+    {
+        // Given
+        $A   = MatrixFactory::create($A);
+        $Mᵢⱼ = MatrixFactory::create($Mᵢⱼ);
+
+        // When
+        $minor = $A->minorMatrix($mᵢ, $nⱼ);
+
+        // Then
+        $this->assertEquals($Mᵢⱼ, $minor);
+    }

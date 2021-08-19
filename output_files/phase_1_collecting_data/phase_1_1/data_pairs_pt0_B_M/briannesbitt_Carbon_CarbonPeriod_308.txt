@@ -1,0 +1,10 @@
+    /**
+     * Get filters stack.
+     *
+     * @return array
+     */
+
+    public function getFilters()
+    {
+        return $this->filters;
+    }

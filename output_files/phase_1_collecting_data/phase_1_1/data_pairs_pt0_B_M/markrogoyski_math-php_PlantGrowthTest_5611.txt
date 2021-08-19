@@ -1,0 +1,14 @@
+    /**
+     * @test 2 variables
+     */
+
+    public function testDataHas2Variables()
+    {
+        // When
+        $data = $this->plantGrowth->getData();
+
+        // Then
+        foreach ($data as $observation) {
+            $this->assertCount(2, $observation);
+        }
+    }

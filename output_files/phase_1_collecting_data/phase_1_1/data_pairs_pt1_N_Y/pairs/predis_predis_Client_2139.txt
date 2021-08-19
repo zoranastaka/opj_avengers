@@ -1,0 +1,10 @@
+    /**
+     * Creates a new monitor consumer and returns it.
+     *
+     * @return MonitorConsumer
+     */
+
+    public function monitor()
+    {
+        return new MonitorConsumer($this);
+    }

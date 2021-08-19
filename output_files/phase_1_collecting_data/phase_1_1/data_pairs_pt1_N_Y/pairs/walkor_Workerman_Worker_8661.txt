@@ -1,0 +1,7 @@
+    /**
+     * Get start files for windows.
+     *
+     * @return array
+     */
+
+    public static function getStartFilesForWindows() {

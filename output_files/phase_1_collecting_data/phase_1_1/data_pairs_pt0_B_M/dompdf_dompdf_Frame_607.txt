@@ -1,0 +1,11 @@
+    /**
+     * @return bool
+     */
+
+    public function is_in_flow()
+    {
+        if (isset($this->_is_cache["in_flow"])) {
+            return $this->_is_cache["in_flow"];
+        }
+        return $this->_is_cache["in_flow"] = !($this->get_style()->float !== "none" || $this->is_absolute());
+    }

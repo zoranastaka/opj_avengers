@@ -1,0 +1,17 @@
+    /**
+     * @covers Whoops\Run::handleException
+     * @covers Whoops\Run::writeToOutput
+     */
+
+    public function testOutputIsNotSent()
+    {
+        $run = $this->getRunInstance();
+        $run->writeToOutput(false);
+        $run->pushHandler(function () {
+            echo "hello there";
+        });
+
+        ob_start();
+        $this->assertEquals("hello there", $run->handleException(new RuntimeException()));
+        $this->assertEquals("", ob_get_clean());
+    }

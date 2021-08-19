@@ -1,0 +1,26 @@
+    /**
+     * @runInSeparateProcess
+     * @covers ::output
+     */
+
+    public function testOutputDoesNotStripBOM(): void
+    {
+        $raw_csv = Reader::BOM_UTF8."john,doe,john.doe@example.com\njane,doe,jane.doe@example.com\n";
+        $csv = Reader::createFromString($raw_csv);
+        $csv->setOutputBOM(Reader::BOM_UTF16_BE);
+        ob_start();
+        $csv->output();
+        /** @var string $result */
+        $result = ob_get_clean();
+        self::assertStringNotContainsString(Reader::BOM_UTF8, $result);
+        self::assertStringContainsString(Reader::BOM_UTF16_BE, $result);
+
+        $csv->includeInputBOM();
+        ob_start();
+        $csv->output();
+        /** @var string $result */
+        $result = ob_get_clean();
+        self::assertStringContainsString(Reader::BOM_UTF16_BE, $result);
+        self::assertStringContainsString(Reader::BOM_UTF8, $result);
+        self::assertTrue(0 === strpos($result, Reader::BOM_UTF16_BE.Reader::BOM_UTF8));
+    }

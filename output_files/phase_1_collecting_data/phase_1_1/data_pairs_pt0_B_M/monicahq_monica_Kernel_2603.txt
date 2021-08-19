@@ -1,0 +1,15 @@
+    /**
+     * Define a new schedule command with a frequency.
+     */
+
+    private function scheduleCommand(Schedule $schedule, string $command, $frequency)
+    {
+        $schedule->command($command)->when(function () use ($command, $frequency) {
+            $event = CronEvent::command($command); // @codeCoverageIgnore
+            if ($frequency) { // @codeCoverageIgnore
+                $event = $event->$frequency(); // @codeCoverageIgnore
+            }
+
+            return $event->isDue(); // @codeCoverageIgnore
+        });
+    }

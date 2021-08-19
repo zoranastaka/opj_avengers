@@ -1,0 +1,10 @@
+    /**
+     * Returns true if the parameter is defined.
+     *
+     * @return bool true if the parameter exists, false otherwise
+     */
+
+    public function has(string $key)
+    {
+        return \array_key_exists($key, $this->parameters);
+    }

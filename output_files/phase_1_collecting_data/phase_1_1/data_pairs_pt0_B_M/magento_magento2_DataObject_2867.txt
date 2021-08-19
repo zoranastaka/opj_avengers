@@ -1,0 +1,13 @@
+    /**
+     * Checks whether the object is empty
+     *
+     * @return bool
+     */
+
+    public function isEmpty()
+    {
+        if (empty($this->_data)) {
+            return true;
+        }
+        return false;
+    }

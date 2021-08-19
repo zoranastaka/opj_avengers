@@ -1,0 +1,33 @@
+	// --------------------------------------------------------------------
+
+	public function test_model_subdir()
+	{
+		// Make sure base class is loaded - we'll test _ci_include later
+		$this->ci_core_class('model');
+
+		// Create modelin VFS
+		$model = 'Test_sub_model';
+		$base = 'CI_Model';
+		$subdir = 'cars';
+		$this->ci_vfs_create($model, '<?php class '.$model.' extends '.$base.' { }', $this->ci_app_root,
+			array('models', $subdir));
+
+		// Load model
+		$name = 'testors';
+		$this->assertInstanceOf('CI_Loader', $this->load->model($subdir.'/'.$model, $name));
+
+		// Was the model class instantiated?
+		$this->assertTrue(class_exists($model));
+		$this->assertObjectHasAttribute($name, $this->ci_obj);
+		$this->assertAttributeInstanceOf($base, $name, $this->ci_obj);
+		$this->assertAttributeInstanceOf($model, $name, $this->ci_obj);
+
+		// Test name conflict
+		$obj = 'conflict';
+		$this->ci_obj->$obj = new stdClass();
+		$this->setExpectedException(
+			'RuntimeException',
+			'The model name you are loading is the name of a resource that is already being used: '.$obj
+		);
+		$this->load->model('not_real', $obj);
+	}

@@ -1,0 +1,10 @@
+    /**
+     * @test         __construct
+     * @dataProvider dataProviderForConstructorExceptions
+     */
+
+    public function testConstructorException($quantities)
+    {
+        $this->expectException(Exception\BadDataException::class);
+        $dist = new Hypergeometric($quantities);
+    }

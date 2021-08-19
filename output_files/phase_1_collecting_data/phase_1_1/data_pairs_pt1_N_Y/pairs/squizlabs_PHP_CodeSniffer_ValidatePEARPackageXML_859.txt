@@ -1,0 +1,56 @@
+    /**
+     * Validate the file listings in the <contents> tag.
+     *
+     * @return bool
+     */
+
+    protected function checkContents()
+    {
+        echo PHP_EOL.'Checking Contents tag'.PHP_EOL;
+        echo '====================='.PHP_EOL;
+
+        $valid = true;
+
+        /*
+         * - Check that every file that is mentioned in the `<content>` tag exists in the repo.
+         * - Check that the "role" value is valid.
+         * - Check that the "baseinstalldir" value is valid.
+         */
+
+        $valid = $this->walkDirTag($this->packageXML->contents);
+        if ($valid === true) {
+            echo "Existing listings in the Contents tag are valid.".PHP_EOL;
+        }
+
+        /*
+         * Verify that all files in the `src` and the `tests` directories are listed in the `<contents>` tag.
+         */
+
+        $srcFiles   = (new FileList(
+            $this->projectRoot.'src/',
+            $this->projectRoot,
+            '`\.(css|fixed|inc|js|php|xml)$`Di'
+        ))->getList();
+        $testsFiles = (new FileList(
+            $this->projectRoot.'tests/',
+            $this->projectRoot,
+            '`\.(css|inc|js|php|xml)$`Di'
+        ))->getList();
+        $files      = array_merge($srcFiles, $testsFiles);
+
+        foreach ($files as $file) {
+            if (isset($this->listedContents[$file]) === true) {
+                continue;
+            }
+
+            echo "- File '{$file}' is missing from Contents tag.".PHP_EOL;
+            $valid = false;
+        }
+
+        if ($valid === true) {
+            echo "No missing files in the Contents tag.".PHP_EOL;
+        }
+
+        return $valid;
+
+    }//end checkContents()

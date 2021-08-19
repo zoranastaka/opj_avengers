@@ -1,0 +1,12 @@
+    /**
+     * @param object $listener
+     */
+
+    private function getMethod($listener, string $event): string
+    {
+        if (!method_exists($listener, $event) && method_exists($listener, '__invoke')) {
+            return '__invoke';
+        }
+
+        return $event;
+    }

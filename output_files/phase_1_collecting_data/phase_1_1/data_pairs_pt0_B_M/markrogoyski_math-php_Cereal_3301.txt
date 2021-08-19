@@ -1,0 +1,11 @@
+    /**
+     * Raw data without labels
+     * [[18373, 41.61500, 6.565000, ... ], [18536, 41.40500, 6.545000, ... ], ... ]
+     *
+     * @return number[][]
+     */
+
+    public function getYData(): array
+    {
+        return \array_values(self::Y_DATA);
+    }

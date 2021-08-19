@@ -1,0 +1,3 @@
+	// Vraća trenutnu temperaturu
+
+	function getTemp() {

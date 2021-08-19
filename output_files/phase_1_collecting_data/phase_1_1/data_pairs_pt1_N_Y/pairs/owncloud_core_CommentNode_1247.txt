@@ -1,0 +1,7 @@
+	/**
+	 * Deleted the current node
+	 *
+	 * @return void
+	 */
+
+	public function delete() {

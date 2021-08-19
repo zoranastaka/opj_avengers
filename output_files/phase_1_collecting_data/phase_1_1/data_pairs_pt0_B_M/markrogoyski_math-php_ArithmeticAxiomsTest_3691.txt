@@ -1,0 +1,24 @@
+    /**
+     * @test Axiom Distributive: ab mod n = [(a mod n)(b mod n)] mod n
+     * https://en.wikipedia.org/wiki/Modulo_operation#Properties_(identities)
+     */
+
+    public function testModuloDistributiveMultiplicationProperty()
+    {
+        // Given
+        foreach (\range(-5, 5) as $a) {
+            foreach (\range(-5, 5) as $b) {
+                foreach (\range(-6, 6) as $n) {
+                    // When
+                    $ab mod n = Arithmetic::modulo($a * $b, $n);
+                    $⟦⟮a mod n⟯⟮b mod n⟧⟯ mod n = Arithmetic::modulo(
+                        Arithmetic::modulo($a, $n) * Arithmetic::modulo($b, $n),
+                        $n
+                    );
+
+                    // Then
+                    $this->assertEquals($ab mod n, $⟦⟮a mod n⟯⟮b mod n⟧⟯ mod n);
+                }
+            }
+        }
+    }

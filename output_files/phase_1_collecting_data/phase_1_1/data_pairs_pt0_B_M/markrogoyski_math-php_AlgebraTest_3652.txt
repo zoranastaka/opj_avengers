@@ -1,0 +1,15 @@
+    /**
+     * @test         linear returns the no root when a = 0
+     * @dataProvider dataProviderForLinearNoRoot
+     * @param        float $a
+     * @param        float $b
+     */
+
+    public function testLinearNoRoot(float $a, float $b)
+    {
+        // When
+        $root = Algebra::linear($a, $b);
+
+        // Then
+        $this->assertNull($root);
+    }

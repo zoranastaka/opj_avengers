@@ -1,0 +1,13 @@
+    /**
+     * Limits the number of elements per depth level.
+     *
+     * @return static
+     */
+
+    public function withMaxItemsPerDepth(int $maxItemsPerDepth)
+    {
+        $data = clone $this;
+        $data->maxItemsPerDepth = (int) $maxItemsPerDepth;
+
+        return $data;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get the grace period.
+     *
+     * @return int
+     */
+
+    public function getGracePeriod()
+    {
+        return $this->gracePeriod;
+    }

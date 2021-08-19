@@ -1,0 +1,10 @@
+    /**
+     * @param Request $request
+     *
+     * {@inheritdoc}
+     */
+
+    protected function failureDescription($request): string
+    {
+        return 'the Request '.$this->toString();
+    }

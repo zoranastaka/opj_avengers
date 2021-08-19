@@ -1,0 +1,32 @@
+    /**
+     * For udp package.
+     *
+     * @param resource $socket
+     * @return bool
+     */
+
+    public function baseRead($socket)
+    {
+        $recv_buffer = \stream_socket_recvfrom($socket, Worker::MAX_UDP_PACKAGE_SIZE, 0, $remote_address);
+        if (false === $recv_buffer || empty($remote_address)) {
+            return false;
+        }
+        
+        if ($this->onMessage) {
+            if ($this->protocol) {
+                $parser      = $this->protocol;
+                $recv_buffer = $parser::decode($recv_buffer, $this);
+            }
+            ++ConnectionInterface::$statistics['total_request'];
+            try {
+                \call_user_func($this->onMessage, $this, $recv_buffer);
+            } catch (\Exception $e) {
+                Worker::log($e);
+                exit(250);
+            } catch (\Error $e) {
+                Worker::log($e);
+                exit(250);
+            }
+        }
+        return true;
+    }

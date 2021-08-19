@@ -1,0 +1,9 @@
+    /**
+     * Checks if macro is registered globally or locally.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+
+    public function hasLocalMacro($name);

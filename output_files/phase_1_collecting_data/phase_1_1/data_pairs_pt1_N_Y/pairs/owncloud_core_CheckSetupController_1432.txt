@@ -1,0 +1,5 @@
+	/**
+	 * @return bool
+	 */
+
+	protected function isEndOfLive() {

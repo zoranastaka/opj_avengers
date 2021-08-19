@@ -1,0 +1,10 @@
+    /**
+     * Getter method to get the cache key
+     *
+     * @return string
+     */
+
+    public function getKey()
+    {
+        return $this->key;
+    }

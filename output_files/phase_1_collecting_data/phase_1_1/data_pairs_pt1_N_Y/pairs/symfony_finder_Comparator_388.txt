@@ -1,0 +1,18 @@
+    /**
+     * Sets the comparison operator.
+     *
+     * @throws \InvalidArgumentException
+     */
+
+    public function setOperator(string $operator)
+    {
+        if ('' === $operator) {
+            $operator = '==';
+        }
+
+        if (!\in_array($operator, ['>', '<', '>=', '<=', '==', '!='])) {
+            throw new \InvalidArgumentException(sprintf('Invalid operator "%s".', $operator));
+        }
+
+        $this->operator = $operator;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Decoder object transforms to string source data
+     *
+     * @return string
+     */
+
+    public function __toString()
+    {
+        return (string) $this->data;
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForMultipleSums(): array
+    {
+        return [
+            'Σ(0) = 480'    => [0, 480],
+            'Σ(5) = 1555'   => [5, 1555],
+            'Σ(-5) = -3845' => [-5, -3845],
+        ];
+    }

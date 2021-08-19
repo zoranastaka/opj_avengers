@@ -1,0 +1,17 @@
+    /**
+     * @return FromCollection
+     */
+
+    private function givenExport()
+    {
+        return new class implements FromCollection
+        {
+            /**
+             * @return Collection
+             */
+            public function collection()
+            {
+                return collect(['foo', 'bar']);
+            }
+        };
+    }

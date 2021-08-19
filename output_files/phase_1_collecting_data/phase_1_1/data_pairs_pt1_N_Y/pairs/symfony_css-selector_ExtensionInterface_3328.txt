@@ -1,0 +1,7 @@
+    /**
+     * Returns pseudo-class translators.
+     *
+     * @return callable[]
+     */
+
+    public function getPseudoClassTranslators(): array;

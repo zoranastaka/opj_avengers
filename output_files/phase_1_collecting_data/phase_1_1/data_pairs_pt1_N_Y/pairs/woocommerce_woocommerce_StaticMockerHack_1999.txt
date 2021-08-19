@@ -1,0 +1,9 @@
+	/**
+	 * Register method mocks.
+	 *
+	 * @param array $mocks Mocks as an associative array of class name => associative array of method name => mock method with the same arguments as the original method.
+	 *
+	 * @throws \Exception Invalid input.
+	 */
+
+	public function register_method_mocks( $mocks ) {

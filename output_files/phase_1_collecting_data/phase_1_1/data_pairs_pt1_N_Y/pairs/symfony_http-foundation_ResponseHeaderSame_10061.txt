@@ -1,0 +1,10 @@
+    /**
+     * @param Response $response
+     *
+     * {@inheritdoc}
+     */
+
+    protected function matches($response): bool
+    {
+        return $this->expectedValue === $response->headers->get($this->headerName, null);
+    }

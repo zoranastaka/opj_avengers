@@ -1,0 +1,10 @@
+    /**
+     * Returns the authentication result code.
+     *
+     * @return int
+     */
+
+    public function getCode()
+    {
+        return $this->code;
+    }

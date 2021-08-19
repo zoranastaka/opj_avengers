@@ -1,0 +1,17 @@
+    /**
+     * @test   exception
+     * @throws Exception\BadDataException
+     */
+
+    public function testChiSquaredException()
+    {
+        // Given
+        $df = 88474;
+        $p  = 0.44;
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        ChiSquared::getChiSquareValue($df, $p);
+    }

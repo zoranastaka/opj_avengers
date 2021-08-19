@@ -1,0 +1,18 @@
+    /**
+     * @test
+     */
+
+    public function can_import_a_simple_xlsx_file_to_collection()
+    {
+        $import = new class
+        {
+            use Importable;
+        };
+
+        $this->assertEquals(new Collection([
+            new Collection([
+                new Collection(['test', 'test']),
+                new Collection(['test', 'test']),
+            ]),
+        ]), $import->toCollection('import.xlsx'));
+    }

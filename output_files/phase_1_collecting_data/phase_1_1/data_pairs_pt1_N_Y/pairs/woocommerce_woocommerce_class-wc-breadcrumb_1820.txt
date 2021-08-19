@@ -1,0 +1,5 @@
+	/**
+	 * Prepend the shop page to shop breadcrumbs.
+	 */
+
+	protected function prepend_shop_page() {

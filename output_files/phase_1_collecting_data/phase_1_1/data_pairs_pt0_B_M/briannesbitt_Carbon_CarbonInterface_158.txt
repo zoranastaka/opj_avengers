@@ -1,0 +1,10 @@
+    /**
+     * @deprecated To avoid conflict between different third-party libraries, static setters should not be used.
+     *             You should rather use UTF-8 language packages on every machine.
+     *
+     * Set if UTF8 will be used for localized date/time.
+     *
+     * @param bool $utf8
+     */
+
+    public static function setUtf8($utf8);

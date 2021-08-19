@@ -1,0 +1,12 @@
+    /**
+     * Evaluates to true if any key in an array matches the given matcher.
+     *
+     * @param mixed $key as a {@link Hamcrest\Matcher} or a value.
+     *
+     * @return \Hamcrest\Arrays\IsArrayContainingKey
+     */
+
+    function hasKeyInArray($key)
+    {
+        return \Hamcrest\Arrays\IsArrayContainingKey::hasKeyInArray($key);
+    }

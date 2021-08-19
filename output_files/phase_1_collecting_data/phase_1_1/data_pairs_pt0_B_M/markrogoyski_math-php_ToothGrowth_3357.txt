@@ -1,0 +1,10 @@
+    /**
+     * Supplement type (VC or OJ) observations
+     *
+     * @return string[]
+     */
+
+    public function getSupp(): array
+    {
+        return \array_column(self::DATA, 0);
+    }

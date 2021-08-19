@@ -1,0 +1,29 @@
+    /**
+     * Is the matrix lower triangular?
+     *  - It is a square matrix
+     *  - All the entries above the main diagonal are zero
+     *
+     * https://en.wikipedia.org/wiki/Triangular_matrix
+     *
+     * @return boolean true if lower triangular; false otherwise
+     */
+
+    public function isLowerTriangular(): bool
+    {
+        if (!$this->isSquare()) {
+            return false;
+        }
+
+        $m = $this->m;
+        $n = $this->n;
+
+        for ($i = 0; $i < $m; $i++) {
+            for ($j = $i + 1; $j < $n; $j++) {
+                if (!Support::isZero($this->A[$i][$j])) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }

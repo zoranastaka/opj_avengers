@@ -1,0 +1,9 @@
+	/**
+	 * POST operation on Comments collections
+	 *
+	 * @param RequestInterface $request request object
+	 * @param ResponseInterface $response response object
+	 * @return null|false
+	 */
+
+	public function httpPost(RequestInterface $request, ResponseInterface $response) {

@@ -1,0 +1,5 @@
+	/**
+	 * Attachment trail.
+	 */
+
+	protected function add_crumbs_attachment() {

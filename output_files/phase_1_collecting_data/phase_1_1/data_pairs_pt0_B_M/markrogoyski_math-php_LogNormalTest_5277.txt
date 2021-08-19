@@ -1,0 +1,20 @@
+    /**
+     * @test         inverse
+     * @dataProvider dataProviderForInverse
+     * @param        float $p
+     * @param        float $μ
+     * @param        float $σ
+     * @param        float $expected_inverse
+     */
+
+    public function testInverse(float $p, float $μ, float $σ, float $expected_inverse)
+    {
+        // Given
+        $log_normal = new LogNormal($μ, $σ);
+
+        // When
+        $inverse = $log_normal->inverse($p);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_inverse, $inverse, 0.001);
+    }

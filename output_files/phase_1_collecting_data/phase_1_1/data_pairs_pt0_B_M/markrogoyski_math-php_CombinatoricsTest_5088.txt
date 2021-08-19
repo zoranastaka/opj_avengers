@@ -1,0 +1,13 @@
+    /**
+     * @test   centralBinomialCoefficient n less than zero
+     * @throws \Exception
+     */
+
+    public function testCentralBinomialCoefficientExceptionNLessThanZero()
+    {
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Combinatorics::centralBinomialCoefficient(-1);
+    }

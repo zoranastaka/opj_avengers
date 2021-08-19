@@ -1,0 +1,22 @@
+    /**
+     * @test         Multiplication
+     * @dataProvider dataProviderForMultiplication
+     * @param        array $polynomialA
+     * @param        array $polynomialB
+     * @param        array $expected_product
+     * @throws       \Exception
+     */
+
+    public function testMultiplication(array $polynomialA, array $polynomialB, array $expected_product)
+    {
+        // Given
+        $polynomialA = new Polynomial($polynomialA);
+        $polynomialB = new Polynomial($polynomialB);
+        $expected    = new Polynomial($expected_product);
+
+        // When
+        $product = $polynomialA->multiply($polynomialB);
+
+        // Then
+        $this->assertEquals($expected, $product);
+    }

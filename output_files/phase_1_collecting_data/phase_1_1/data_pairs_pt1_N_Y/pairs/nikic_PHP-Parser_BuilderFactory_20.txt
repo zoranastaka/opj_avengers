@@ -1,0 +1,9 @@
+    /**
+     * Creates node a for a literal value.
+     *
+     * @param Expr|bool|null|int|float|string|array $value $value
+     *
+     * @return Expr
+     */
+
+    public function val($value) : Expr {

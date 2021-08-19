@@ -1,0 +1,14 @@
+    /**
+     * @test
+     */
+
+    public function can_queue_an_import()
+    {
+        $import = new QueuedImport();
+
+        $chain = $import->queue('import-batches.xlsx')->chain([
+            new AfterQueueImportJob(5000),
+        ]);
+
+        $this->assertInstanceOf(PendingDispatch::class, $chain);
+    }

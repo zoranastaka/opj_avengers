@@ -1,0 +1,12 @@
+    /********************************************************************************
+     * Getter methods
+     *******************************************************************************/
+
+    public function testGetContainer()
+    {
+        $responseFactoryProphecy = $this->prophesize(ResponseFactoryInterface::class);
+        $containerProphecy = $this->prophesize(ContainerInterface::class);
+        $app = new App($responseFactoryProphecy->reveal(), $containerProphecy->reveal());
+
+        $this->assertSame($containerProphecy->reveal(), $app->getContainer());
+    }

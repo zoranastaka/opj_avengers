@@ -1,0 +1,17 @@
+    /**
+     * Get a list of all widgetizable widgets.
+     *
+     * @param int $idSite
+     * @return array
+     */
+
+    public function getWidgetMetadata($idSite)
+    {
+        Piwik::checkUserHasViewAccess($idSite);
+
+        $widgetsList  = WidgetsList::get();
+        $categoryList = CategoryList::get();
+        $metadata     = new WidgetMetadata();
+
+        return $metadata->getWidgetMetadata($categoryList, $widgetsList);
+    }

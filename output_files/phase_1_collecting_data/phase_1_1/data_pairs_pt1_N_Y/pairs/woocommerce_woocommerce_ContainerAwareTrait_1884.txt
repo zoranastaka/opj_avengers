@@ -1,0 +1,14 @@
+    /**
+     * Get the container.
+     *
+     * @return Container
+     */
+
+    public function getLeagueContainer() : Container
+    {
+        if ($this->leagueContainer instanceof Container) {
+            return $this->leagueContainer;
+        }
+
+        throw new ContainerException('No container implementation has been set.');
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @param mixed $object
+     */
+
+    public function set(string $name, $object)
+    {
+        $this->values[$name] = $object;
+    }

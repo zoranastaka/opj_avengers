@@ -1,0 +1,11 @@
+    /**
+     * @codeCoverageIgnore
+     * Link to preferences.
+     *
+     * @return HasMany
+     */
+
+    public function preferences(): HasMany
+    {
+        return $this->hasMany(Preference::class);
+    }

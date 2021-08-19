@@ -1,0 +1,18 @@
+    /**
+     * Set command-scope magic variables: $__class, $__file, etc.
+     *
+     * @param array $commandScopeVariables
+     */
+
+    public function setCommandScopeVariables(array $commandScopeVariables)
+    {
+        $vars = [];
+        foreach ($commandScopeVariables as $key => $value) {
+            // kind of type check
+            if (\is_scalar($value) && \in_array($key, self::$commandScopeNames)) {
+                $vars[$key] = $value;
+            }
+        }
+
+        $this->commandScopeVariables = $vars;
+    }

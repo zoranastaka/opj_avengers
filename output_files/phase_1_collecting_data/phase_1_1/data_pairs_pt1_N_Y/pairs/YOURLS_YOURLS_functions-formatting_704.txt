@@ -1,0 +1,9 @@
+/**
+ * Return a date() format for a full date + time, filtered
+ *
+ * @since 1.7.10
+ * @param  string $format  Date format string
+ * @return string          Date format string
+ */
+
+function yourls_get_datetime_format( $format ) {

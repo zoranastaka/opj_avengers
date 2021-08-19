@@ -1,0 +1,12 @@
+    /**
+     * Throws an exception if the user is not the SuperUser
+     *
+     * @throws \Piwik\NoAccessException
+     */
+
+    public function checkUserHasSuperUserAccess()
+    {
+        if (!$this->hasSuperUserAccess()) {
+            $this->throwNoAccessException(Piwik::translate('General_ExceptionPrivilege', array("'superuser'")));
+        }
+    }

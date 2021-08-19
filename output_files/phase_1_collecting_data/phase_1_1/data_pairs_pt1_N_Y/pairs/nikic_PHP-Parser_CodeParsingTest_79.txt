@@ -1,0 +1,3 @@
+    // Must be public for updateTests.php
+
+    public function getParseOutput(Parser $parser, $code, array $modes) {

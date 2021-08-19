@@ -1,0 +1,12 @@
+    /**
+     * Normalizes strings to Identifier.
+     *
+     * @param string|Identifier $name The identifier to normalize
+     *
+     * @return Identifier The normalized identifier
+     */
+
+    public static function normalizeIdentifier($name) : Identifier {
+        if ($name instanceof Identifier) {
+            return $name;
+        }

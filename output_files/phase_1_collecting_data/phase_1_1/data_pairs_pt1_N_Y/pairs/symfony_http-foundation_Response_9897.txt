@@ -1,0 +1,10 @@
+    /**
+     * Returns the literal value of the ETag HTTP header.
+     *
+     * @final
+     */
+
+    public function getEtag(): ?string
+    {
+        return $this->headers->get('ETag');
+    }

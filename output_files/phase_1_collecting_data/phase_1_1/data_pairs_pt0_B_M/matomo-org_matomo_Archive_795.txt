@@ -1,0 +1,33 @@
+    /**
+     * Returns the name of the plugin that archives a given report.
+     *
+     * @param string $report Archive data name, eg, `'nb_visits'`, `'DevicesDetection_...'`, etc.
+     * @return string Plugin name.
+     * @throws \Exception If a plugin cannot be found or if the plugin for the report isn't
+     *                    activated.
+     */
+
+    public static function getPluginForReport($report)
+    {
+        // Core metrics are always processed in Core, for the requested date/period/segment
+        if (in_array($report, Metrics::getVisitsMetricNames())) {
+            $report = 'VisitsSummary_CoreMetrics';
+        } // Goal_* metrics are processed by the Goals plugin (HACK)
+        elseif (strpos($report, 'Goal_') === 0) {
+            $report = 'Goals_Metrics';
+        } elseif (
+            strrpos($report, '_returning') === strlen($report) - strlen('_returning') ||
+            strrpos($report, '_new') === strlen($report) - strlen('_new')
+        ) { // HACK
+            $report = 'VisitFrequency_Metrics';
+        }
+
+        $plugin = substr($report, 0, strpos($report, '_'));
+        if (empty($plugin)
+            || !\Piwik\Plugin\Manager::getInstance()->isPluginActivated($plugin)
+        ) {
+            throw new \Exception("Error: The report '$report' was requested but it is not available at this stage."
+                               . " (Plugin '$plugin' is not activated.)");
+        }
+        return $plugin;
+    }

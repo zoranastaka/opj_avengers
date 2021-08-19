@@ -1,0 +1,22 @@
+    /**
+     * Calculate the amount of centroid shift from the previous epoch.
+     *
+     * @param array[] $current
+     * @param array[] $previous
+     * @return float
+     */
+
+    protected function shift(array $current, array $previous) : float
+    {
+        $shift = 0.0;
+
+        foreach ($current as $cluster => $centroid) {
+            $prevCentroid = $previous[$cluster];
+
+            foreach ($centroid as $column => $mean) {
+                $shift += abs($prevCentroid[$column] - $mean);
+            }
+        }
+
+        return $shift;
+    }

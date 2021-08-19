@@ -1,0 +1,9 @@
+    /**
+     * @param string $fontname
+     * @param mixed $entry
+     */
+
+    public function setFontFamily($fontname, $entry)
+    {
+        $this->fontLookup[mb_strtolower($fontname)] = $entry;
+    }

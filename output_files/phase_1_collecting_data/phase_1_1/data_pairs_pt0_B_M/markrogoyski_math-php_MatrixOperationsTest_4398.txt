@@ -1,0 +1,16 @@
+    /**
+     * @test         inverse exception - not square
+     * @dataProvider dataProviderForInverseExceptionNotSquare
+     */
+
+    public function testInverseExceptionNotSquare(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $A->inverse();
+    }

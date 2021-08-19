@@ -1,0 +1,17 @@
+    /**
+     * @test   Bad values - there are two point arrays, but values have one dimension
+     * @throws BadDataException
+     */
+
+    public function testBadValuesException()
+    {
+        // Given
+        $points = [[0], [1]];
+        $values = [0];
+
+        // Then
+        $this->expectException(BadDataException::class);
+
+        // When
+        $rgi = new RegularGridInterpolator($points, $values);
+    }

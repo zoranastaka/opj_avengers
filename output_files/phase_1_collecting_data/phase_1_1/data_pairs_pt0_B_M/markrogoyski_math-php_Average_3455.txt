@@ -1,0 +1,16 @@
+    /**
+     * Power mean (generalized mean)
+     * Convenience method for generalizedMean
+     *
+     * @param  float[] $numbers
+     * @param  float $p
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException if the input array of numbers is empty
+     */
+
+    public static function powerMean(array $numbers, float $p): float
+    {
+        return self::generalizedMean($numbers, $p);
+    }

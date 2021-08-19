@@ -1,0 +1,11 @@
+    /**
+     * As documented in Middleware::history parameter phpdoc.
+     */
+
+    public function testNullContainerException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        $nullContainer = null;
+        Middleware::history($nullContainer);
+    }

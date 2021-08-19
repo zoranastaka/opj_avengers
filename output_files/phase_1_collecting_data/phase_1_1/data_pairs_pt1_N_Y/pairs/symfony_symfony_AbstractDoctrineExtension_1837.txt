@@ -1,0 +1,9 @@
+    /**
+     * Noun that describes the mapped objects such as Entity or Document.
+     *
+     * Will be used for autodetection of persistent objects directory.
+     *
+     * @return string
+     */
+
+    abstract protected function getMappingObjectDefaultName();

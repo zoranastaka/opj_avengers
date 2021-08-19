@@ -1,0 +1,5 @@
+/**
+ * Prints success message
+ */
+
+task('deploy:success', function () {

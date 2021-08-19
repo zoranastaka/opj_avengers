@@ -1,0 +1,12 @@
+  /**
+   * @return ClientInterface
+   */
+
+  public function getHttpClient()
+  {
+    if (null === $this->http) {
+      $this->http = $this->createDefaultHttpClient();
+    }
+
+    return $this->http;
+  }

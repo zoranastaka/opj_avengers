@@ -1,0 +1,8 @@
+    /**
+     * @param SpreadsheetCell $cell
+     */
+
+    public function __construct(SpreadsheetCell $cell)
+    {
+        $this->cell = $cell;
+    }

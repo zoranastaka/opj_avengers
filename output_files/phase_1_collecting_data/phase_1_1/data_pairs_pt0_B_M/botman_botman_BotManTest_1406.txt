@@ -1,0 +1,23 @@
+    /** @test */
+
+    public function it_can_match_grouped_middleware_commands()
+    {
+        $called = false;
+
+        $botman = $this->getBot([
+            'event' => [
+                'user' => 'U0X12345',
+                'text' => 'bar',
+            ],
+        ]);
+
+        $botman->group(['middleware' => new TestNoMatchMiddleware()], function ($botman) use (&$called) {
+            $botman->hears('bar', function ($bot) use (&$called) {
+                $called = true;
+            });
+        });
+
+        $botman->listen();
+
+        $this->assertFalse($called);
+    }

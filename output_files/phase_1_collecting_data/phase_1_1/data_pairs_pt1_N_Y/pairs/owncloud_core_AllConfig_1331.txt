@@ -1,0 +1,8 @@
+	/**
+	 * AllConfig constructor.
+	 *
+	 * @param SystemConfig $systemConfig
+	 * @param EventDispatcher|null $eventDispatcher
+	 */
+
+	public function __construct(SystemConfig $systemConfig, EventDispatcher $eventDispatcher) {

@@ -1,0 +1,9 @@
+    /**
+     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     */
+
+    public function testRequiredFail()
+    {
+        $arg = new Argument($this->getMockedCommand([]));
+        $arg->required();
+    }

@@ -1,0 +1,6 @@
+	// Settter koji omogućava dodavanje novih podataka u registry (tj. u gornje privatno polje)
+
+	public function __set( $index, $value )
+	{
+		$this->vars[$index] = $value;
+	}

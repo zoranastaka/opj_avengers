@@ -1,0 +1,29 @@
+    /**
+     * Compute the type code for the paramater.
+     *
+     * @return string
+     */
+
+    private function getTypeCode()
+    {
+        // Handle PHP 5 separately
+        if (PHP_VERSION_ID < 70000) {
+            if ($this->reflector->isArray()) {
+                return 'array';
+            }
+
+            $class = $this->reflector->getClass();
+
+            return $class ? sprintf('\\%s ', $class->getName()) : '';
+        }
+
+        if (!$this->reflector->hasType()) {
+            return '';
+        }
+
+        $type = $this->reflector->getType();
+        $name = self::getQualifiedName($type);
+
+        // PHP 7.1+ supports nullable types via a leading question mark
+        return (PHP_VERSION_ID >= 70100 && $type->allowsNull()) ? sprintf('?%s ', $name) : sprintf('%s ', $name);
+    }

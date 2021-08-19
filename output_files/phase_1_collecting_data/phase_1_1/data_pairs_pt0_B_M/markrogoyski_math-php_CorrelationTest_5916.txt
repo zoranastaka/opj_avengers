@@ -1,0 +1,17 @@
+    /**
+     * @test         confidenceEllipse
+     * @dataProvider dataProviderForEllipse
+     * @param        array $data
+     * @param        float $sd
+     * @param        array $results
+     * @throws       \Exception
+     */
+
+    public function testEllipse(array $data, float $sd, array $results)
+    {
+        // When
+        $calc = Correlation::confidenceEllipse(\array_column($data, 0), \array_column($data, 1), $sd);
+
+        // Then
+        $this->assertEqualsWithDelta($results, $calc, 0.0001);
+    }

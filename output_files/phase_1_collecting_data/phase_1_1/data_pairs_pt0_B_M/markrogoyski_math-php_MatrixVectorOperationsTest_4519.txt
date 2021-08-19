@@ -1,0 +1,20 @@
+    /**
+     * @test         rowMeans
+     * @dataProvider dataProviderForRowMeans
+     * @param        array $A
+     * @param        array $expected
+     * @throws       \Exception
+     */
+
+    public function testRowMeans(array $A, array $expected)
+    {
+        // Given
+        $A        = MatrixFactory::create($A);
+        $expected = new Vector($expected);
+
+        // When
+        $R = $A->rowMeans();
+
+        // Then
+        $this->assertEquals($expected, $R);
+    }

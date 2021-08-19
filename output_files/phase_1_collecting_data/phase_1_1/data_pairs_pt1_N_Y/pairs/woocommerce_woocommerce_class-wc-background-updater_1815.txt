@@ -1,0 +1,7 @@
+	/**
+	 * See if the batch limit has been exceeded.
+	 *
+	 * @return bool
+	 */
+
+	public function is_memory_exceeded() {

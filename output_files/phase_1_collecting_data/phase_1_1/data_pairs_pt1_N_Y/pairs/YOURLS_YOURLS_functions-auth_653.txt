@@ -1,0 +1,12 @@
+/**
+ * Check if a user's password is hashed with PHPASS.
+ *
+ * Check if a user password is 'phpass:[lots of chars]'.
+ * TODO: deprecate this when/if we have proper user management with password hashes stored in the DB
+ *
+ * @since 1.7
+ * @param string $user user login
+ * @return bool true if password hashed with PHPASS, otherwise false
+ */
+
+function yourls_has_phpass_password( $user ) {

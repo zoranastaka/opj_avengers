@@ -1,0 +1,13 @@
+    /**
+     * Sets the validator to use for this factory
+     *
+     * @param ValidatorInterface $validator A validator to use for validating
+     *     whether a string is a valid UUID
+     */
+
+    public function setValidator(ValidatorInterface $validator): void
+    {
+        $this->isDefaultFeatureSet = false;
+
+        $this->validator = $validator;
+    }

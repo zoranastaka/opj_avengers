@@ -1,0 +1,6 @@
+	/**
+	 * Compute the number of bits in an int.
+	 * The normal answer for JavaScript is 32.
+	 * @return {number} Max bits
+
+	function getMaxBits() {

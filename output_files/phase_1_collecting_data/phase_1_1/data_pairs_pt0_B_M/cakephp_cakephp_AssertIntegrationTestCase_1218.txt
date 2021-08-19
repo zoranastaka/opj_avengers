@@ -1,0 +1,13 @@
+    /**
+     * testBadAssertNoRedirect
+     *
+     * @return void
+     */
+
+    public function testBadAssertNoRedirect()
+    {
+        $this->_response = new Response();
+        $this->_response = $this->_response->withLocation('http://localhost/tasks/index');
+
+        $this->assertNoRedirect();
+    }

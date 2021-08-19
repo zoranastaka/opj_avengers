@@ -1,0 +1,60 @@
+    /**
+     * Attachment naming test.
+     */
+
+    public function testAttachmentNaming()
+    {
+        $this->Mail->Body = 'Attachments.';
+        $this->Mail->Subject .= ': Attachments';
+        $this->Mail->isHTML(true);
+        $this->Mail->CharSet = 'UTF-8';
+        $this->Mail->addAttachment(
+            realpath($this->INCLUDE_DIR . '/examples/images/phpmailer_mini.png'),
+            'phpmailer_mini.png";.jpg'
+        );
+        $this->Mail->addAttachment(
+            realpath($this->INCLUDE_DIR . '/examples/images/phpmailer.png'),
+            'phpmailer.png'
+        );
+        $this->Mail->addAttachment(
+            realpath($this->INCLUDE_DIR . '/examples/images/PHPMailer card logo.png'),
+            'PHPMailer card logo.png'
+        );
+        $this->Mail->addAttachment(
+            realpath($this->INCLUDE_DIR . '/examples/images/phpmailer_mini.png'),
+            'phpmailer_mini.png\\\";.jpg'
+        );
+        $this->buildBody();
+        $this->Mail->preSend();
+        $message = $this->Mail->getSentMIMEMessage();
+        self::assertStringContainsString(
+            'Content-Type: image/png; name="phpmailer_mini.png\";.jpg"',
+            $message,
+            'Name containing double quote should be escaped in Content-Type'
+        );
+        self::assertStringContainsString(
+            'Content-Disposition: attachment; filename="phpmailer_mini.png\";.jpg"',
+            $message,
+            'Filename containing double quote should be escaped in Content-Disposition'
+        );
+        self::assertStringContainsString(
+            'Content-Type: image/png; name=phpmailer.png',
+            $message,
+            'Name without special chars should not be quoted in Content-Type'
+        );
+        self::assertStringContainsString(
+            'Content-Disposition: attachment; filename=phpmailer.png',
+            $message,
+            'Filename without special chars should not be quoted in Content-Disposition'
+        );
+        self::assertStringContainsString(
+            'Content-Type: image/png; name="PHPMailer card logo.png"',
+            $message,
+            'Name with spaces should be quoted in Content-Type'
+        );
+        self::assertStringContainsString(
+            'Content-Disposition: attachment; filename="PHPMailer card logo.png"',
+            $message,
+            'Filename with spaces should be quoted in Content-Disposition'
+        );
+    }

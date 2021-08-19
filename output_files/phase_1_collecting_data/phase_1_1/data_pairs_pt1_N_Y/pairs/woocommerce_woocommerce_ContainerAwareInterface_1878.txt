@@ -1,0 +1,7 @@
+    /**
+     * Get the container
+     *
+     * @return ContainerInterface
+     */
+
+    public function getContainer() : ContainerInterface;

@@ -1,0 +1,21 @@
+    /**
+     * @test         getNumerator
+     * @dataProvider dataProviderForData
+     * @param        int $w
+     * @param        int $n
+     * @param        int $d
+     * @param        int $_
+     * @param        int $expectedNumerator
+     */
+
+    public function testGetNumerator($w, $n, $d, $_, $expectedNumerator)
+    {
+        // Given
+        $number = new Rational($w, $n, $d);
+
+        // When
+        $numerator = $number->getNumerator();
+
+        // Then
+        $this->assertSame($expectedNumerator, $numerator);
+    }

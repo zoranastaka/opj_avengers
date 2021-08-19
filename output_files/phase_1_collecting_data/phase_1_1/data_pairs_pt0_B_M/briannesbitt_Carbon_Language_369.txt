@@ -1,0 +1,10 @@
+    /**
+     * Returns the variant code such as cyrl/latn.
+     *
+     * @return string|null
+     */
+
+    public function getVariant(): ?string
+    {
+        return $this->variant;
+    }

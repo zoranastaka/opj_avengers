@@ -1,0 +1,8 @@
+    /**
+     * Element-wise <b>subtraction</b> of two vectors of the same size
+     */
+
+    public static function sub(array $m1, array $m2): array
+    {
+        return self::add($m1, $m2, -1);
+    }

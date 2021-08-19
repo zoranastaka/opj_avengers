@@ -1,0 +1,18 @@
+    /**
+     * @return array (matrix, eigenvalues, dominant eigenvalue)
+     */
+
+    public function dataProviderForSymmetricEigenvalueEdgeCases(): array
+    {
+        return [
+            [
+                [
+                    [0, 0, 0],
+                    [0, 0, 0],
+                    [0, 0, 0],
+                ],
+                [0, 0, 0],
+                0,
+            ],
+        ];
+    }

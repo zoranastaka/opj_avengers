@@ -1,0 +1,10 @@
+    /**
+     * Get the current height
+     *
+     * @return int
+     */
+
+    public function getHeight()
+    {
+        return $this->height;
+    }

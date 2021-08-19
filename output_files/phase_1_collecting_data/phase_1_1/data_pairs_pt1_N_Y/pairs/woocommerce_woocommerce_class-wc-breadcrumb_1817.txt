@@ -1,0 +1,5 @@
+	/**
+	 * Reset crumbs.
+	 */
+
+	public function reset() {

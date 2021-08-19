@@ -1,0 +1,10 @@
+    /**
+     * Gets an HTTP kernel from the container.
+     *
+     * @return HttpKernelInterface
+     */
+
+    protected function getHttpKernel()
+    {
+        return $this->container->get('http_kernel');
+    }

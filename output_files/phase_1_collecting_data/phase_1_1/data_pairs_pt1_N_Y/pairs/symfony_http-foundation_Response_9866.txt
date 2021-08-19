@@ -1,0 +1,8 @@
+    /**
+     * Clones the current Response instance.
+     */
+
+    public function __clone()
+    {
+        $this->headers = clone $this->headers;
+    }

@@ -1,0 +1,11 @@
+    /**
+     * Set autoload root path.
+     *
+     * @param string $root_path
+     * @return void
+     */
+
+    public static function setRootPath($root_path)
+    {
+        self::$_autoloadRootPath = $root_path;
+    }

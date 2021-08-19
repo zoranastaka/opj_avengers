@@ -1,0 +1,10 @@
+    /**
+     * @return $this
+     */
+
+    public function setPrevious(self $previous)
+    {
+        $this->previous = $previous;
+
+        return $this;
+    }

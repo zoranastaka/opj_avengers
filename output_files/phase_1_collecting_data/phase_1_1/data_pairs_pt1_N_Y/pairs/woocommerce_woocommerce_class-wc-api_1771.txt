@@ -1,0 +1,5 @@
+/**
+ * WC_API class.
+ */
+
+class WC_API extends WC_Legacy_API {

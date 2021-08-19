@@ -1,0 +1,9 @@
+    /**
+     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     */
+
+    public function testTypeNumericFail()
+    {
+        $arg = new Argument($this->getMockedCommand(['foo']));
+        $arg->type('numeric');
+    }

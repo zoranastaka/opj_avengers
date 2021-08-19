@@ -1,0 +1,10 @@
+    /**
+     * Check if the current position is valid.
+     *
+     * @return bool
+     */
+
+    public function valid()
+    {
+        return $this->validateCurrentDate() === true;
+    }

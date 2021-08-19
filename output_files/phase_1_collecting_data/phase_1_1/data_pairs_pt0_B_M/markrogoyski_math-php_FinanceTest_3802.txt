@@ -1,0 +1,19 @@
+    /**
+     * @test         ipmt not a number
+     * @dataProvider dataProviderForIpmtNan
+     * @param        float $rate
+     * @param        int   $period
+     * @param        int   $periods
+     * @param        float $pv
+     * @param        float $fv
+     * @param        bool  $beginning
+     */
+
+    public function testIpmtNan(float $rate, int $period, int $periods, float $pv, float $fv, bool $beginning)
+    {
+        // When
+        $ipmt = Finance::ipmt($rate, $period, $periods, $pv, $fv, $beginning);
+
+        // Then
+        $this->assertNan($ipmt);
+    }

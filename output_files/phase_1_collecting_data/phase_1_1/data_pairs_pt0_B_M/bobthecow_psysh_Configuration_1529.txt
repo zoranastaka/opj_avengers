@@ -1,0 +1,10 @@
+    /**
+     * @deprecated Call `useTabCompletion` instead
+     *
+     * @return bool
+     */
+
+    public function getTabCompletion()
+    {
+        return $this->useTabCompletion();
+    }

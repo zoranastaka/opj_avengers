@@ -1,0 +1,15 @@
+    /**
+     * Retrieve the filename sent by the client.
+     *
+     * Do not trust the value returned by this method. A client could send
+     * a malicious filename with the intention to corrupt or hack your
+     * application.
+     *
+     * Implementations SHOULD return the value stored in the "name" key of
+     * the file in the $_FILES array.
+     *
+     * @return string|null The filename sent by the client or null if none
+     *     was provided.
+     */
+
+    public function getClientFilename();

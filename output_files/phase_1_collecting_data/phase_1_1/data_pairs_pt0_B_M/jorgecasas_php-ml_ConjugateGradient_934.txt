@@ -1,0 +1,11 @@
+    /**
+     * Calculates new set of solutions with given alpha (for each θ(k)) and
+     * gradient direction.
+     *
+     * θ(k+1) = θ(k) + α.d
+     */
+
+    protected function getNewTheta(float $alpha, array $d): array
+    {
+        return MP::add($this->theta, MP::muls($d, $alpha));
+    }

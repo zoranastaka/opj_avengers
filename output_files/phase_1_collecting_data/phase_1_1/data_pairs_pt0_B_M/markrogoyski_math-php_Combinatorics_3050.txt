@@ -1,0 +1,33 @@
+    /**
+     * Falling Factorial
+     * Also known as descending factorial, falling sequential product, lower factorial.
+     * https://en.wikipedia.org/wiki/Falling_and_rising_factorials
+     *
+     * x₍ᵢ₎ = x * (x - 1) * (x - 2) ... (x - i + 1)
+     *
+     * @param  float $x
+     * @param  int   $n
+     *
+     * @return float
+     *
+     * @throws Exception\OutOfBoundsException if n < 0
+     */
+
+    public static function fallingFactorial(float $x, int $n): float
+    {
+        if ($n < 0) {
+            throw new Exception\OutOfBoundsException('Cannot compute falling factorial of a negative number.');
+        }
+
+        if ($n > $x) {
+            return 0;
+        }
+
+        $fact = 1;
+        while ($n > 0) {
+            $fact *= $x - $n + 1;
+            $n--;
+        }
+
+        return $fact;
+    }

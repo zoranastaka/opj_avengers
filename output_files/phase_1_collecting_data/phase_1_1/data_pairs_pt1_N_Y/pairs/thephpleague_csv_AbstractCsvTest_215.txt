@@ -1,0 +1,19 @@
+    /**
+     * @covers ::createFromFileObject
+     * @covers ::__construct
+     */
+
+    public function testCreateFromFileObjectPreserveFileObjectCsvControls(): void
+    {
+        $delimiter = "\t";
+        $enclosure = '?';
+        $escape = '^';
+        $file = new SplTempFileObject();
+        $file->setCsvControl($delimiter, $enclosure, $escape);
+        $obj = Reader::createFromFileObject($file);
+        self::assertSame($delimiter, $obj->getDelimiter());
+        self::assertSame($enclosure, $obj->getEnclosure());
+        if (3 === count($file->getCsvControl())) {
+            self::assertSame($escape, $obj->getEscape());
+        }
+    }

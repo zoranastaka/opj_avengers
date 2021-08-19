@@ -1,0 +1,9 @@
+    /** @test */
+
+    public function a_guest_cannot_access_a_route_protected_by_the_permission_middleware()
+    {
+        $this->assertEquals(
+            403,
+            $this->runMiddleware($this->permissionMiddleware, 'edit-articles')
+        );
+    }

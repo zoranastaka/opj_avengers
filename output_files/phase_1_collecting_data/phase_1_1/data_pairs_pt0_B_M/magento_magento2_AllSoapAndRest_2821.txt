@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function item($itemId)
+    {
+        return $this->itemFactory->create()->setItemId($itemId)->setName('testProduct1');
+    }

@@ -1,0 +1,18 @@
+    /**
+     * Predict a single sample and return the result.
+     *
+     * @internal
+     *
+     * @param list<int|float> $sample
+     * @throws \Rubix\ML\Exceptions\RuntimeException
+     * @return int|float
+     */
+
+    public function predictSample(array $sample)
+    {
+        if (!$this->model) {
+            throw new RuntimeException('Estimator has not been trained.');
+        }
+
+        return $this->model->predict($sample);
+    }

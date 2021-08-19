@@ -1,0 +1,19 @@
+    /**
+     * @test         isMember
+     * @dataProvider dataProviderForSingleSetAtLeastOneMember
+     * @param        array $members
+     */
+
+    public function testIsMember(array $members)
+    {
+        // Given
+        $set = new Set($members);
+
+        foreach ($members as $member) {
+            // When
+            $isMember = $set->isMember($member);
+
+            // Then
+            $this->assertTrue($isMember);
+        }
+    }

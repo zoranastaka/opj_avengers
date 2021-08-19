@@ -1,0 +1,37 @@
+    /**
+     * Format type and details of an operand for display in the log (based on operand type)
+     *
+     * @param    mixed        $value    First matrix operand
+     * @return    mixed
+     */
+
+    private function showTypeDetails($value)
+    {
+        if ($this->_debugLog->getWriteDebugLog()) {
+            $testArray = PHPExcel_Calculation_Functions::flattenArray($value);
+            if (count($testArray) == 1) {
+                $value = array_pop($testArray);
+            }
+
+            if ($value === null) {
+                return 'a NULL value';
+            } elseif (is_float($value)) {
+                $typeString = 'a floating point number';
+            } elseif (is_int($value)) {
+                $typeString = 'an integer number';
+            } elseif (is_bool($value)) {
+                $typeString = 'a boolean';
+            } elseif (is_array($value)) {
+                $typeString = 'a matrix';
+            } else {
+                if ($value == '') {
+                    return 'an empty string';
+                } elseif ($value{0} == '#') {
+                    return 'a '.$value.' error';
+                } else {
+                    $typeString = 'a string';
+                }
+            }
+            return $typeString.' with a value of '.$this->showValue($value);
+        }
+    }

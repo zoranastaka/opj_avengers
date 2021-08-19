@@ -1,0 +1,27 @@
+    /**
+     * Dumps children of hash structures.
+     *
+     * @return int The final number of removed items
+     */
+
+    private function dumpChildren(DumperInterface $dumper, Cursor $parentCursor, array &$refs, array $children, int $hashCut, int $hashType, bool $dumpKeys): int
+    {
+        $cursor = clone $parentCursor;
+        ++$cursor->depth;
+        $cursor->hashType = $hashType;
+        $cursor->hashIndex = 0;
+        $cursor->hashLength = \count($children);
+        $cursor->hashCut = $hashCut;
+        foreach ($children as $key => $child) {
+            $cursor->hashKeyIsBinary = isset($key[0]) && !preg_match('//u', $key);
+            $cursor->hashKey = $dumpKeys ? $key : null;
+            $this->dumpItem($dumper, $cursor, $refs, $child);
+            if (++$cursor->hashIndex === $this->maxItemsPerDepth || $cursor->stop) {
+                $parentCursor->stop = true;
+
+                return $hashCut >= 0 ? $hashCut + $cursor->hashLength - $cursor->hashIndex : $hashCut;
+            }
+        }
+
+        return $hashCut;
+    }

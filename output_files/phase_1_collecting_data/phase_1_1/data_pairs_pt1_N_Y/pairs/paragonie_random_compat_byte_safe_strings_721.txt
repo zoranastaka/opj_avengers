@@ -1,0 +1,21 @@
+        /**
+         * strlen() implementation that isn't brittle to mbstring.func_overload
+         *
+         * This version just used the default strlen()
+         *
+         * @param string $binary_string
+         *
+         * @throws TypeError
+         *
+         * @return int
+         */
+
+        function RandomCompat_strlen($binary_string)
+        {
+            if (!is_string($binary_string)) {
+                throw new TypeError(
+                    'RandomCompat_strlen() expects a string'
+                );
+            }
+            return (int) strlen($binary_string);
+        }

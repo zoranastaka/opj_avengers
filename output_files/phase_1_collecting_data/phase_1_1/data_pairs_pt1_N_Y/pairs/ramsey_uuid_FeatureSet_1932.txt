@@ -1,0 +1,8 @@
+    /**
+     * Returns the codec configured for this environment
+     */
+
+    public function getCodec(): CodecInterface
+    {
+        return $this->codec;
+    }

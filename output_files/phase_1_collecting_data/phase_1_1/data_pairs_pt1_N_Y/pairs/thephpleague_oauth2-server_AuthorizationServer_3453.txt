@@ -1,0 +1,20 @@
+    /**
+     * Validate an authorization request
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @throws OAuthServerException
+     *
+     * @return AuthorizationRequest
+     */
+
+    public function validateAuthorizationRequest(ServerRequestInterface $request)
+    {
+        foreach ($this->enabledGrantTypes as $grantType) {
+            if ($grantType->canRespondToAuthorizationRequest($request)) {
+                return $grantType->validateAuthorizationRequest($request);
+            }
+        }
+
+        throw OAuthServerException::unsupportedGrantType();
+    }

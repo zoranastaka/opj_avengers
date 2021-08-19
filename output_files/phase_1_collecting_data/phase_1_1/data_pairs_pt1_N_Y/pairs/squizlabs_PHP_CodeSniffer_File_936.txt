@@ -1,0 +1,11 @@
+    /**
+     * Returns the number of fixable errors/warnings raised.
+     *
+     * @return int
+     */
+
+    public function getFixableCount()
+    {
+        return $this->fixableCount;
+
+    }//end getFixableCount()

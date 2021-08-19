@@ -1,0 +1,13 @@
+    /**
+     * Check whether to use raw output.
+     *
+     * This is set by the --raw-output (-r) flag, and really only makes sense
+     * when non-interactive, e.g. executing stdin.
+     *
+     * @return bool true if raw output is enabled
+     */
+
+    public function rawOutput()
+    {
+        return $this->rawOutput;
+    }

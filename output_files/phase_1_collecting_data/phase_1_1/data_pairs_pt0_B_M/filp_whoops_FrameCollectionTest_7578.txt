@@ -1,0 +1,15 @@
+    /**
+     * @covers Whoops\Exception\FrameCollection::serialize
+     * @covers Whoops\Exception\FrameCollection::unserialize
+     */
+
+    public function testCollectionIsSerializable()
+    {
+        $frames           = $this->getFrameCollectionInstance();
+        $serializedFrames = serialize($frames);
+        $newFrames        = unserialize($serializedFrames);
+
+        foreach ($newFrames as $frame) {
+            $this->assertInstanceOf('Whoops\\Exception\\Frame', $frame);
+        }
+    }

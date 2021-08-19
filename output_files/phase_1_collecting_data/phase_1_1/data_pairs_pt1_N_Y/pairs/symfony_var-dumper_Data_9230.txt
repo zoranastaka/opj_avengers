@@ -1,0 +1,8 @@
+    /**
+     * @return bool
+     */
+
+    public function offsetExists($key)
+    {
+        return $this->__isset($key);
+    }

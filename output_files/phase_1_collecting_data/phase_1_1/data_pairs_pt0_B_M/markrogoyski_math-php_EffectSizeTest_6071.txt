@@ -1,0 +1,12 @@
+    /**
+     * @return array [μ₁, μ₂, s₂, expected]
+     */
+
+    public function dataProviderForGlassDelta(): array
+    {
+        return [
+            [40, 57.727272727273, 30.763910379179, -0.57623600],
+            [3, 4, 1.5811388300842, -0.63245553],
+            [3, 3, 1.5, 0],
+        ];
+    }

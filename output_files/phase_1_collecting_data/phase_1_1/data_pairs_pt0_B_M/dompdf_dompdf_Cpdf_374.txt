@@ -1,0 +1,15 @@
+    /**
+     * return a storable representation of a specific object
+     *
+     * @param $id
+     * @return string|null
+     */
+
+    function serializeObject($id)
+    {
+        if (array_key_exists($id, $this->objects)) {
+            return serialize($this->objects[$id]);
+        }
+
+        return null;
+    }

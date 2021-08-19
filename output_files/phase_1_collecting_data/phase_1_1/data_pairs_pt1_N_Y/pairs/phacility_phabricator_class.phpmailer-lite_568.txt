@@ -1,0 +1,10 @@
+  /**
+   * Create the DKIM header, body, as new header
+   *
+   * @access public
+   * @param string $headers_line Header lines
+   * @param string $subject Subject
+   * @param string $body Body
+   */
+
+  public function DKIM_Add($headers_line,$subject,$body) {

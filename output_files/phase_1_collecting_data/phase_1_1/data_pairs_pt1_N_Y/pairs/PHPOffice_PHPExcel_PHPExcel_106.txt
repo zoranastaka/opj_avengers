@@ -1,0 +1,10 @@
+    /**
+     * Get all sheets
+     *
+     * @return PHPExcel_Worksheet[]
+     */
+
+    public function getAllSheets()
+    {
+        return $this->workSheetCollection;
+    }

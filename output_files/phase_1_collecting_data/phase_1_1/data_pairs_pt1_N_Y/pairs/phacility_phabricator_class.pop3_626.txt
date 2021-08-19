@@ -1,0 +1,10 @@
+  /**
+   * Takes over from PHP for the socket warning handler
+   * @access private
+   * @param integer $errno
+   * @param string $errstr
+   * @param string $errfile
+   * @param integer $errline
+   */
+
+  private function catchWarning ($errno, $errstr, $errfile, $errline) {

@@ -1,0 +1,11 @@
+    /**
+     * Returns the character at $index, with indexes starting at 0.
+     *
+     * @param  int    $index Position of the character
+     * @return static The character at $index
+     */
+
+    public function at($index)
+    {
+        return $this->substr($index, 1);
+    }

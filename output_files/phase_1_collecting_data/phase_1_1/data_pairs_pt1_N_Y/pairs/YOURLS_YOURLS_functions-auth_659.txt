@@ -1,0 +1,6 @@
+/**
+ * Set user name
+ *
+ */
+
+function yourls_set_user( $user ) {

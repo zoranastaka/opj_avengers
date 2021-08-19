@@ -1,0 +1,10 @@
+    /**
+     * Gets the PHP version.
+     *
+     * @return string The PHP version
+     */
+
+    public function getPhpVersion()
+    {
+        return $this->data['php_version'];
+    }

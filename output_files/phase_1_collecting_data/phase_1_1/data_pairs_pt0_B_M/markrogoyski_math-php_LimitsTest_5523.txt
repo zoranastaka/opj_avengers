@@ -1,0 +1,14 @@
+    /**
+     * Limits should look like:
+     *  (a,b)
+     *  [a,b)
+     *  (a,b]
+     *  [a,b]
+     */
+
+    private function limitTest(array $limits)
+    {
+        foreach ($limits as $parameter => $limit) {
+            $this->assertRegExp('/^ ([[(]) (.+) , (.+?) ([])]) $/x', $limit);
+        }
+    }

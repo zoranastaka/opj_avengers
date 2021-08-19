@@ -1,0 +1,23 @@
+    /**
+     * Provide `configDir`, `dataDir` and `runtimeDir` overrides.
+     *
+     * If a key is set but empty, the override will be removed. If it is not set
+     * at all, any existing override will persist.
+     *
+     * @param string[] $overrides Directory overrides
+     */
+
+    public function overrideDirs($overrides)
+    {
+        if (\array_key_exists('configDir', $overrides)) {
+            $this->configDir = $overrides['configDir'] ?: null;
+        }
+
+        if (\array_key_exists('dataDir', $overrides)) {
+            $this->dataDir = $overrides['dataDir'] ?: null;
+        }
+
+        if (\array_key_exists('runtimeDir', $overrides)) {
+            $this->runtimeDir = $overrides['runtimeDir'] ?: null;
+        }
+    }

@@ -1,0 +1,30 @@
+    /**
+     * Is the matrix symmetric?
+     * Does A = Aᵀ
+     * aᵢⱼ = aⱼᵢ
+     *
+     * Algorithm: Iterate on the upper triangular half and compare with corresponding
+     * values on the lower triangular half. Skips the diagonal as it is symmetric with itself.
+     *
+     * @return bool true if symmetric; false otherwise.
+     *
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MatrixException
+     */
+
+    public function isSymmetric(): bool
+    {
+        if (!$this->isSquare()) {
+            return false;
+        }
+
+        for ($i = 0; $i < $this->m - 1; $i++) {
+            for ($j = $i + 1; $j < $this->n; $j++) {
+                if (Support::isNotEqual($this->A[$i][$j], $this->A[$j][$i], $this->ε)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }

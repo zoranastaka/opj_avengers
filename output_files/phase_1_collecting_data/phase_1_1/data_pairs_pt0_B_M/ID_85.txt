@@ -1,0 +1,11 @@
+    /**
+     * @test
+     */
+
+    public function givenIdnAddress_addReplyTo_returns_true()
+    {
+        if (file_exists($this->INCLUDE_DIR . '/test/fakefunctions.php')) {
+            include $this->INCLUDE_DIR . '/test/fakefunctions.php';
+            $this->assertTrue($this->Mail->addReplyTo('test@françois.ch'));
+        }
+    }

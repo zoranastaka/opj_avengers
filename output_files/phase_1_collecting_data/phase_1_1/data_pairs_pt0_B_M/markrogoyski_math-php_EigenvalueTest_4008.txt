@@ -1,0 +1,18 @@
+    /**
+     * @test         JacobiMethod throws a BadDataException if the matrix is not the correct size.
+     * @dataProvider dataProviderForSymmetricException
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testJacobiExceptionMatrixNotCorrectSize(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Eigenvalue::jacobiMethod($A);
+    }

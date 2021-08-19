@@ -1,0 +1,20 @@
+    /**
+     * @test         inverse of cdf is x
+     * @dataProvider dataProviderForCdf
+     * @param        float $x
+     * @param        float $μ
+     * @param        float $s
+     */
+
+    public function testInverseOfCdf(float $x, float $μ, float $s)
+    {
+        // Given
+        $logistic = new Logistic($μ, $s);
+        $cdf      = $logistic->cdf($x);
+
+        // When
+        $inverse_of_cdf = $logistic->inverse($cdf);
+
+        // Then
+        $this->assertEqualsWithDelta($x, $inverse_of_cdf, 0.000001);
+    }

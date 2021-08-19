@@ -1,0 +1,15 @@
+    /**
+     * @test         isSingular returns true for a singular matrix.
+     * @dataProvider dataProviderForSingularMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsSingular(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isSingular());
+    }

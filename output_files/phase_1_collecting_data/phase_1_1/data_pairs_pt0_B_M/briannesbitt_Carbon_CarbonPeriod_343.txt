@@ -1,0 +1,15 @@
+    /**
+     * Return true if the given period either follows or is followed by the current one.
+     *
+     * @see follows()
+     * @see isFollowedBy()
+     *
+     * @param \Carbon\CarbonPeriod|\DatePeriod|string $period
+     *
+     * @return bool
+     */
+
+    public function isConsecutiveWith($period, ...$arguments): bool
+    {
+        return $this->follows($period, ...$arguments) || $this->isFollowedBy($period, ...$arguments);
+    }

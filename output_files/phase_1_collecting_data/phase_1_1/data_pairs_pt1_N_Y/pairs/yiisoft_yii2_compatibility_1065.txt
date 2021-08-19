@@ -1,0 +1,8 @@
+            /**
+             * @param string $exception
+             */
+
+            public function expectException($exception)
+            {
+                $this->setExpectedException($exception);
+            }

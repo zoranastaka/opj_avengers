@@ -1,0 +1,8 @@
+    /**
+     * @return int|null
+     */
+
+    public function getLine()
+    {
+        return isset($this->frame['line']) ? $this->frame['line'] : null;
+    }

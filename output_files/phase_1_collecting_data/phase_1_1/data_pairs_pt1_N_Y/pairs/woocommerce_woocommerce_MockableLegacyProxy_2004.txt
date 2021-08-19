@@ -1,0 +1,11 @@
+/**
+ * Mockable version of LegacyProxy.
+ *
+ * This version contains methods that allow to easily mock any standalone function or static class method,
+ * as well as mocking the instantiation of legacy classes, within unit tests.
+ * By default, and unless any mock is registered, this class acts exactly as LegacyProxy does.
+ *
+ * @package Automattic\WooCommerce\Testing\Tools\DependencyManagement
+ */
+
+class MockableLegacyProxy extends \Automattic\WooCommerce\Proxies\LegacyProxy {

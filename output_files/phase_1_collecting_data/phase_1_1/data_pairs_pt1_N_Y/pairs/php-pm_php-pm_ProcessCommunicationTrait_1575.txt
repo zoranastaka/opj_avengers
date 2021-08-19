@@ -1,0 +1,8 @@
+    /**
+     * @param string $socketPath
+     */
+
+    public function setSocketPath($socketPath)
+    {
+        $this->socketPath = $socketPath;
+    }

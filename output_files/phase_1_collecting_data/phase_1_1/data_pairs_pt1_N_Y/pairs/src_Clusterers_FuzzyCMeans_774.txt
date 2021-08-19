@@ -1,0 +1,27 @@
+    /**
+     * Return the membership of a sample to each of the c centroids.
+     *
+     * @param list<int|float> $sample
+     * @return float[]
+     */
+
+    protected function probaSample(array $sample) : array
+    {
+        $distances = $dist = [];
+
+        foreach ($this->centroids as $centroid) {
+            $distances[] = $this->kernel->compute($sample, $centroid) ?: EPSILON;
+        }
+
+        foreach ($distances as $distanceA) {
+            $sigma = 0.0;
+
+            foreach ($distances as $distanceB) {
+                $sigma += ($distanceA / $distanceB) ** $this->rho;
+            }
+
+            $dist[] = 1.0 / $sigma;
+        }
+
+        return $dist;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Change the value of config/admin/usage/enabled
+     */
+
+    private function enableAdminUsage()
+    {
+        $configModel = $this->configFactory->create();
+        $configModel->setDataByPath('admin/usage/enabled', 1);
+        $configModel->save();
+    }

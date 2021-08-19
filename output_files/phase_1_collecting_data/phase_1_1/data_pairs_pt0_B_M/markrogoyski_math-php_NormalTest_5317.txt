@@ -1,0 +1,19 @@
+    /**
+     * @test         variance
+     * @dataProvider dataProviderForVariance
+     * @param        float $μ
+     * @param        float $σ
+     * @param        float $expected
+     */
+
+    public function testVariance(float $μ, float $σ, float $expected)
+    {
+        // Given
+        $normal = new Normal($μ, $σ);
+
+        // When
+        $variance = $normal->variance();
+
+        // Then
+        $this->assertEquals($expected, $variance);
+    }

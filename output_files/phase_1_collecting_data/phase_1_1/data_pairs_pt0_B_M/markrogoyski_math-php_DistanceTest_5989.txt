@@ -1,0 +1,16 @@
+    /**
+     * @test         jensenShannon
+     * @dataProvider dataProviderForJensenShannon
+     * @param        array $p
+     * @param        array $q
+     * @param        float $expected
+     */
+
+    public function testJensenShannon(array $p, array $q, float $expected)
+    {
+        // When
+        $BD = Distance::jensenShannon($p, $q);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $BD, 0.0001);
+    }

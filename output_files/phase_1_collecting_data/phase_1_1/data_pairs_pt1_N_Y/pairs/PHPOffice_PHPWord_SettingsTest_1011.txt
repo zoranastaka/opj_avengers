@@ -1,0 +1,10 @@
+    /**
+     * Test set/get outputEscapingEnabled option
+     */
+
+    public function testSetGetOutputEscapingEnabled()
+    {
+        $this->assertFalse(Settings::isOutputEscapingEnabled());
+        Settings::setOutputEscapingEnabled(true);
+        $this->assertTrue(Settings::isOutputEscapingEnabled());
+    }

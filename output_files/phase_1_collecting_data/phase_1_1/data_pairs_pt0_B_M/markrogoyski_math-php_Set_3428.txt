@@ -1,0 +1,9 @@
+    /**
+     * Rewind (Iterator interface)
+     */
+
+    public function rewind()
+    {
+        $this->iterator_keys     = \array_keys($this->A);
+        $this->iterator_position = \array_shift($this->iterator_keys);
+    }

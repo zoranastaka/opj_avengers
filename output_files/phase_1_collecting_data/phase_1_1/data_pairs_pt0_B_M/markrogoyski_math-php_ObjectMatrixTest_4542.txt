@@ -1,0 +1,23 @@
+    /**
+     * @test         multiply
+     * @dataProvider dataProviderMul
+     * @param        array $A
+     * @param        array $B
+     * @param        array $expected
+     */
+
+    public function testMul(array $A, array $B, array $expected)
+    {
+        // Given
+        $A = new ObjectMatrix($A);
+        $B = new ObjectMatrix($B);
+
+        // And
+        $expected = matrixFactory::create($expected);
+
+        // When
+        $sum = $A->multiply($B);
+
+        // Then
+        $this->assertEquals($expected, $sum);
+    }

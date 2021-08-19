@@ -1,0 +1,32 @@
+    /**
+     * Get the current PsySH config file.
+     *
+     * If a `configFile` option was passed to the Configuration constructor,
+     * this file will be returned. If not, all possible config directories will
+     * be searched, and the first `config.php` or `rc.php` file which exists
+     * will be returned.
+     *
+     * If you're trying to decide where to put your config file, pick
+     *
+     *     ~/.config/psysh/config.php
+     *
+     * @return string
+     */
+
+    public function getConfigFile()
+    {
+        if (isset($this->configFile)) {
+            return $this->configFile;
+        }
+
+        $files = $this->configPaths->configFiles(['config.php', 'rc.php']);
+
+        if (!empty($files)) {
+            if ($this->warnOnMultipleConfigs && \count($files) > 1) {
+                $msg = \sprintf('Multiple configuration files found: %s. Using %s', \implode(', ', $files), $files[0]);
+                \trigger_error($msg, \E_USER_NOTICE);
+            }
+
+            return $files[0];
+        }
+    }

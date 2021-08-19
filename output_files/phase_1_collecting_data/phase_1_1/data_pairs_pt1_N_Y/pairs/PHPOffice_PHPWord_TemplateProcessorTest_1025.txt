@@ -1,0 +1,13 @@
+    /**
+     * Construct test
+     *
+     * @covers ::__construct
+     * @test
+     */
+
+    public function testTheConstruct()
+    {
+        $object = new TemplateProcessor(__DIR__ . '/_files/templates/blank.docx');
+        $this->assertInstanceOf('PhpOffice\\PhpWord\\TemplateProcessor', $object);
+        $this->assertEquals(array(), $object->getVariables());
+    }

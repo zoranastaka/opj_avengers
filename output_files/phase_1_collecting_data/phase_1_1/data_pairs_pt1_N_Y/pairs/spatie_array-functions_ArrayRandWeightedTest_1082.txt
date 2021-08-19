@@ -1,0 +1,8 @@
+    /**
+     * @test
+     */
+
+    public function it_retrieves_a_value_from_the_array()
+    {
+        $this->assertContains(array_rand_weighted($this->testArray), array_keys($this->testArray));
+    }

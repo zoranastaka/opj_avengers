@@ -1,0 +1,19 @@
+    /**
+     * Set the OutputPager service.
+     *
+     * If a string is supplied, a ProcOutputPager will be used which shells out
+     * to the specified command.
+     *
+     * @throws \InvalidArgumentException if $pager is not a string or OutputPager instance
+     *
+     * @param string|OutputPager $pager
+     */
+
+    public function setPager($pager)
+    {
+        if ($pager && !\is_string($pager) && !$pager instanceof OutputPager) {
+            throw new \InvalidArgumentException('Unexpected pager instance');
+        }
+
+        $this->pager = $pager;
+    }

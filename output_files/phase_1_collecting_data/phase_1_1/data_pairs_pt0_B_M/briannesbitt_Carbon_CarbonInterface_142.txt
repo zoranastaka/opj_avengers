@@ -1,0 +1,7 @@
+    /**
+     * The number of seconds since midnight.
+     *
+     * @return int
+     */
+
+    public function secondsSinceMidnight();

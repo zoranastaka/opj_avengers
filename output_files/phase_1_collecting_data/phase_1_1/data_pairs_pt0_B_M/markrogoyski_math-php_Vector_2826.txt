@@ -1,0 +1,10 @@
+    /**
+     * Max of all the elements
+     *
+     * @return number
+     */
+
+    public function max()
+    {
+        return \max($this->A);
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Output only. The number of model created labels that match a ground truth
+     * label.
+     *
+     * Generated from protobuf field <code>int64 true_positive_count = 10;</code>
+     * @return int|string
+     */
+
+    public function getTruePositiveCount()
+    {
+        return $this->true_positive_count;
+    }

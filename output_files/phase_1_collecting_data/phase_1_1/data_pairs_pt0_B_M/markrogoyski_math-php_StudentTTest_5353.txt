@@ -1,0 +1,19 @@
+    /**
+     * @test         cdf
+     * @dataProvider dataProviderForCdf
+     * @param        float $t
+     * @param        float $ν
+     * @param        float $expected
+     */
+
+    public function testCdf(float $t, float $ν, float $expected)
+    {
+        // Given
+        $studentT = new StudentT($ν);
+
+        // When
+        $cdf = $studentT->cdf($t);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $cdf, 0.0000001);
+    }

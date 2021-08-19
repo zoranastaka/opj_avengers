@@ -1,0 +1,13 @@
+	/**
+	 * Checks tags for invalid versions
+	 */
+
+	private function checkInvalidVersions($text) {
+		foreach (self::INVALID_VERSIONS as $ver) {
+			if (\preg_match('/' . \preg_quote('@since') . '\s*' . \preg_quote($ver) . '/', $text) === 1) {
+				return $ver;
+			}
+			if (\preg_match('/' . \preg_quote('@deprecated') . '\s*' . \preg_quote($ver) . '/', $text) === 1) {
+				return $ver;
+			}
+		}

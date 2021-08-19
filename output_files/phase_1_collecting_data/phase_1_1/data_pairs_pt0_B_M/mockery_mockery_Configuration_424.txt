@@ -1,0 +1,8 @@
+    /**
+     * Returns the quick definitions configuration
+     */
+
+    public function getQuickDefinitions(): QuickDefinitionsConfiguration
+    {
+        return $this->_quickDefinitionsConfiguration;
+    }

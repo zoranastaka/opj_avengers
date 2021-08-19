@@ -1,0 +1,12 @@
+    /**
+     * @param mixed $value exact value or token
+     */
+
+    public function __construct($value)
+    {
+        if (!$value instanceof TokenInterface) {
+            $value = new ExactValueToken($value);
+        }
+
+        $this->value = $value;
+    }

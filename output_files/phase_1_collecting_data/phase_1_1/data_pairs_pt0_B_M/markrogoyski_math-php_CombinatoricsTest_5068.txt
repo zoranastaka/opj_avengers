@@ -1,0 +1,16 @@
+    /**
+     * @test         permutations
+     * @dataProvider dataProviderForFactorialPermutations
+     * @param        int   $n
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testPermutations(int $n, float $expected)
+    {
+        // When
+        $permutations = Combinatorics::permutations($n);
+
+        // Then
+        $this->assertEquals($expected, $permutations);
+    }

@@ -1,0 +1,10 @@
+/**
+ * Have headers been sent?
+ *
+ * @return false
+ */
+
+function headers_sent()
+{
+    return false;
+}

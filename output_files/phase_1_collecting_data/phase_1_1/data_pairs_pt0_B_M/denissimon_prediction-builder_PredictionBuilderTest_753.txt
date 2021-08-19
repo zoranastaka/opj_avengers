@@ -1,0 +1,5 @@
+    /**
+     * @dataProvider getResultData
+     */
+
+    public function testGetResult($x, $data, $expected_result) {

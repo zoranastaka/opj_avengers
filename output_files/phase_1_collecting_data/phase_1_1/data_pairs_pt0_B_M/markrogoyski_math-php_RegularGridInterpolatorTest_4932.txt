@@ -1,0 +1,92 @@
+    /**
+     * Test fixture - Create a 4-D grid of 3 points in each dimension
+     *
+     * Based off of Python SciPy unit test fixture
+     * def _get_sample_4d(self):
+     *     # create a 4-D grid of 3 points in each dimension
+     *     points = [(0., .5, 1.)] * 4
+     *     values = np.asarray([0., .5, 1.])
+     *     values0 = values[:, np.newaxis, np.newaxis, np.newaxis]
+     *     values1 = values[np.newaxis, :, np.newaxis, np.newaxis]
+     *     values2 = values[np.newaxis, np.newaxis, :, np.newaxis]
+     *     values3 = values[np.newaxis, np.newaxis, np.newaxis, :]
+     *     values = (values0 + values1 * 10 + values2 * 100 + values3 * 1000)
+     *     return points, values
+     *
+     * PHP code to generate data would look like:
+     * $points = [[0.0, 0.5, 1.0], [0.0, 0.5, 1.0], [0.0, 0.5, 1.0], [0.0, 0.5, 1.0]];
+     * $values = [];
+     * $v = [0, 0.5, 1.];
+     * for ($x = 0; $x < 3; $x++) {
+     *     for ($y = 0; $y < 3; $y++) {
+     *         for ($z = 0; $z < 3; $z++) {
+     *             for ($m = 0; $m < 3; $m++) {
+     *                 $values[$x][$y][$z][$m] = $v[$x] + $v[$y] * 10 + $v[$z] * 100 + +$v[$m] * 1000;
+     *             }
+     *         }
+     *     }
+     * }
+     * return [$points, $values];
+     *
+     * @return array (points, values)
+     */
+
+    private function getSample4d(): array
+    {
+        $points = [[0.0, 0.5, 1.0], [0.0, 0.5, 1.0], [0.0, 0.5, 1.0], [0.0, 0.5, 1.0]];
+        $values = [
+            [
+                [
+                    [0.0000e+00, 5.0000e+02, 1.0000e+03],
+                    [5.0000e+01, 5.5000e+02, 1.0500e+03],
+                    [1.0000e+02, 6.0000e+02, 1.1000e+03]
+                ],
+                [
+                    [5.0000e+00, 5.0500e+02, 1.0050e+03],
+                    [5.5000e+01, 5.5500e+02, 1.0550e+03],
+                    [1.0500e+02, 6.0500e+02, 1.1050e+03]
+                ],
+                [
+                    [1.0000e+01, 5.1000e+02, 1.0100e+03],
+                    [6.0000e+01, 5.6000e+02, 1.0600e+03],
+                    [1.1000e+02, 6.1000e+02, 1.1100e+03]
+                ]
+            ],
+            [
+                [
+                    [5.0000e-01, 5.0050e+02, 1.0005e+03],
+                    [5.0500e+01, 5.5050e+02, 1.0505e+03],
+                    [1.0050e+02, 6.0050e+02, 1.1005e+03]
+                ],
+                [
+                    [5.5000e+00, 5.0550e+02, 1.0055e+03],
+                    [5.5500e+01, 5.5550e+02, 1.0555e+03],
+                    [1.0550e+02, 6.0550e+02, 1.1055e+03]
+                ],
+                [
+                    [1.0500e+01, 5.1050e+02, 1.0105e+03],
+                    [6.0500e+01, 5.6050e+02, 1.0605e+03],
+                    [1.1050e+02, 6.1050e+02, 1.1105e+03]
+                ]
+            ],
+            [
+                [
+                    [1.0000e+00, 5.0100e+02, 1.0010e+03],
+                    [5.1000e+01, 5.5100e+02, 1.0510e+03],
+                    [1.0100e+02, 6.0100e+02, 1.1010e+03]
+                ],
+                [
+                    [6.0000e+00, 5.0600e+02, 1.0060e+03],
+                    [5.6000e+01, 5.5600e+02, 1.0560e+03],
+                    [1.0600e+02, 6.0600e+02, 1.1060e+03]
+                ],
+                [
+                    [1.1000e+01, 5.1100e+02, 1.0110e+03],
+                    [6.1000e+01, 5.6100e+02, 1.0610e+03],
+                    [1.1100e+02, 6.1100e+02, 1.1110e+03]
+                ]
+            ]
+        ];
+
+        return [$points, $values];
+    }

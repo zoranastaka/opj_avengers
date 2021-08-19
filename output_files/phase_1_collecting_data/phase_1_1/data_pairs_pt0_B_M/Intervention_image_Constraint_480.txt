@@ -1,0 +1,10 @@
+    /**
+     * Fixes possibility to size up in current constraint
+     *
+     * @return void
+     */
+
+    public function upsize()
+    {
+        $this->fix(self::UPSIZE);
+    }

@@ -1,0 +1,30 @@
+    /**
+     * Rising Factorial
+     * Also known as Pochhammer function, Pochhammer polynomial, ascending factorial,
+     * rising sequential product, upper factorial.
+     * https://en.wikipedia.org/wiki/Falling_and_rising_factorials
+     *
+     * x⁽ⁿ⁾ = x * (x + 1) * (x + 2) ... (x + n - 1)
+     *
+     * @param  float $x
+     * @param  int   $n
+     *
+     * @return float
+     *
+     * @throws Exception\OutOfBoundsException if n < 0
+     */
+
+    public static function risingFactorial(float $x, int $n): float
+    {
+        if ($n < 0) {
+            throw new Exception\OutOfBoundsException('Cannot compute rising factorial of a negative number.');
+        }
+
+        $fact = 1;
+        while ($n > 0) {
+            $fact *= $x + $n - 1;
+            $n--;
+        }
+
+        return $fact;
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @test 32 drat observations
+     */
+
+    public function testNumberOfDrats()
+    {
+        // When
+        $observations = $this->mtCars->getDrat();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

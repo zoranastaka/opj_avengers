@@ -1,0 +1,23 @@
+    /**
+     * @test         Compute the inverse before trying to solve
+     * @dataProvider dataProviderForSolve
+     * @param        array $A
+     * @param        array $b
+     * @param        array $expected
+     * @throws       \Exception
+     */
+
+    public function testSolveInverse(array $A, array $b, array $expected)
+    {
+        // Given
+        $A        = MatrixFactory::create($A);
+        $b        = new Vector($b);
+        $expected = new Vector($expected);
+
+        // When
+        $A->inverse();
+        $x = $A->solve($b);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $x, 0.00001);
+    }

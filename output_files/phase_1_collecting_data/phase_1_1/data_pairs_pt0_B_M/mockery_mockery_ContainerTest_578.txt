@@ -1,0 +1,11 @@
+    /** @group issue/175 */
+
+    public function testExistingStaticMethodMocking()
+    {
+        $mock = mock('MockeryTest_PartialStatic[mockMe]');
+
+        $mock->shouldReceive('mockMe')->with(5)->andReturn(10);
+
+        $this->assertEquals(10, $mock::mockMe(5));
+        $this->assertEquals(3, $mock::keepMe(3));
+    }

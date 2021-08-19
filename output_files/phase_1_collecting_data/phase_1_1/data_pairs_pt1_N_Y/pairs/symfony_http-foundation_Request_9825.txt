@@ -1,0 +1,12 @@
+    /**
+     * Checks whether or not the method is safe.
+     *
+     * @see https://tools.ietf.org/html/rfc7231#section-4.2.1
+     *
+     * @return bool
+     */
+
+    public function isMethodSafe()
+    {
+        return \in_array($this->getMethod(), ['GET', 'HEAD', 'OPTIONS', 'TRACE']);
+    }

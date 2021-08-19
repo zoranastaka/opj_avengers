@@ -1,0 +1,3 @@
+            // Laravel
+
+            $this->app->booted(function ($app) {

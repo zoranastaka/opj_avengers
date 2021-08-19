@@ -1,0 +1,10 @@
+    /**
+     * Gets the HTTP protocol version.
+     *
+     * @final
+     */
+
+    public function getProtocolVersion(): string
+    {
+        return $this->version;
+    }

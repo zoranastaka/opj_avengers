@@ -1,0 +1,10 @@
+    /**
+     * Alias for authenticate().
+     *
+     * @return \Tymon\JWTAuth\Contracts\JWTSubject|false
+     */
+
+    public function toUser()
+    {
+        return $this->authenticate();
+    }

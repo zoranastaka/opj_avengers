@@ -1,0 +1,8 @@
+    /**
+     * Returns the directory used to store test fixtures.
+     */
+
+    public function getFixtureDirectory(): string
+    {
+        return (string) realpath(__DIR__ . '/../fixtures');
+    }

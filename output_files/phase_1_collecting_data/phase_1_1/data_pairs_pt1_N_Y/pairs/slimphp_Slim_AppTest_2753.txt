@@ -1,0 +1,14 @@
+    /********************************************************************************
+     * Route Patterns
+     *******************************************************************************/
+
+    public function routePatternsProvider()
+    {
+        return [
+            [''], // Empty Route
+            ['/'], // Single Slash Route
+            ['foo'], // Route That Does Not Start With A Slash
+            ['/foo'], // Route That Does Not End In A Slash
+            ['/foo/'], // Route That Ends In A Slash
+        ];
+    }

@@ -1,0 +1,25 @@
+    /**
+     * Returns the output incrementally.
+     *
+     * In comparison with the getOutput method which always return the whole
+     * output, this one returns the new output since the last call.
+     *
+     * @return string The process output since the last call
+     *
+     * @throws LogicException in case the output has been disabled
+     * @throws LogicException In case the process is not started
+     */
+
+    public function getIncrementalOutput()
+    {
+        $this->readPipesForOutput(__FUNCTION__);
+
+        $latest = stream_get_contents($this->stdout, -1, $this->incrementalOutputOffset);
+        $this->incrementalOutputOffset = ftell($this->stdout);
+
+        if (false === $latest) {
+            return '';
+        }
+
+        return $latest;
+    }

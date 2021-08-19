@@ -1,0 +1,8 @@
+    /**
+     * Tests of the value is identical to $value as tested by the "===" operator.
+     */
+
+    function identicalTo($value)
+    {
+        return \Hamcrest\Core\IsIdentical::identicalTo($value);
+    }

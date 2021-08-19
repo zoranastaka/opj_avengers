@@ -1,0 +1,13 @@
+    /**
+     * @requires extension idn
+     */
+
+    public function testExceptionOnInvalidIdn()
+    {
+        $mockHandler = new MockHandler([new Response()]);
+        $client = new Client(['handler' => $mockHandler]);
+
+        $this->expectException(\GuzzleHttp\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('IDN conversion failed');
+        $client->request('GET', 'https://-яндекс.рф/images', ['idn_conversion' => true]);
+    }

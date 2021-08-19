@@ -1,0 +1,14 @@
+    /**
+     * @covers ::convert
+     * @covers ::inputEncoding
+     */
+
+    public function testCharsetConverterConvertsAnIterator(): void
+    {
+        $expected = new ArrayIterator(['Batman', 'Superman', 'Anaïs']);
+        $converter = (new CharsetConverter())
+            ->inputEncoding('iso-8859-15')
+            ->outputEncoding('utf-8')
+        ;
+        self::assertInstanceOf(Iterator::class, $converter->convert($expected));
+    }

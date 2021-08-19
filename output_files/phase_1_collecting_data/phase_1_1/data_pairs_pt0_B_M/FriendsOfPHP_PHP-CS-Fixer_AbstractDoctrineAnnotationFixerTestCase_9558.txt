@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider provideInvalidConfigurationCases
+     */
+
+    public function testConfigureWithInvalidConfiguration(array $configuration): void
+    {
+        $this->expectException(\PhpCsFixer\ConfigurationException\InvalidFixerConfigurationException::class);
+
+        $this->fixer->configure($configuration);
+    }

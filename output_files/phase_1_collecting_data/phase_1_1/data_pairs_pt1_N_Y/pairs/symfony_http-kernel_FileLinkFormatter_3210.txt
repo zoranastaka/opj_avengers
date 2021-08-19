@@ -1,0 +1,10 @@
+    /**
+     * @internal
+     */
+
+    public function __sleep(): array
+    {
+        $this->fileLinkFormat = $this->getFileLinkFormat();
+
+        return ['fileLinkFormat'];
+    }

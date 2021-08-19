@@ -1,0 +1,24 @@
+    /**
+     * @test Axiom: (A ⊗ B) ⊗ C = A ⊗ (B ⊗ C)
+     * Kronecker product associative
+     * @dataProvider dataProviderForThreeMatrices
+     * @param        array $A
+     * @param        array $B
+     * @param        array $C
+     * @throws       \Exception
+     */
+
+    public function testKroneckerProductAssociativity(array $A, array $B, array $C)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $B = MatrixFactory::create($B);
+        $C = MatrixFactory::create($C);
+
+        // When
+        $⟮A⊗B⟯⊗C = $A->kroneckerProduct($B)->kroneckerProduct($C);
+        $A⊗⟮B⊗C⟯ = $A->kroneckerProduct($B->kroneckerProduct($C));
+
+        // Then
+        $this->assertEquals($⟮A⊗B⟯⊗C->getMatrix(), $A⊗⟮B⊗C⟯->getMatrix());
+    }

@@ -1,0 +1,13 @@
+    /**
+     * @dataProvider data
+     * @param $id
+     * @param $section
+     * @param $markdown
+     * @param $expectedHtml
+     */
+
+    public function testExample($id, $section, $markdown, $expectedHtml)
+    {
+        $actualHtml = $this->parsedown->text($markdown);
+        $this->assertEquals($expectedHtml, $actualHtml);
+    }

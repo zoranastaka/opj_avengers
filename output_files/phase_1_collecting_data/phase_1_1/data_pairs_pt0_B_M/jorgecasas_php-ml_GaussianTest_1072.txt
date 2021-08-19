@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider gaussianProvider
+     *
+     * @param float|int $value
+     */
+
+    public function testGaussianActivationFunction(float $expected, $value): void
+    {
+        $gaussian = new Gaussian();
+
+        self::assertEqualsWithDelta($expected, $gaussian->compute($value), 0.001);
+    }

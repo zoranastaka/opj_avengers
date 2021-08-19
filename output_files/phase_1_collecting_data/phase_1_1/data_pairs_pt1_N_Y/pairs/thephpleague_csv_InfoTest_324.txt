@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider ByteSequenceMatchProvider
+     *
+     * @param ?string $method_expected
+     */
+
+    public function testByteSequenceMatch(string $str, string $expected, ?string $method_expected): void
+    {
+        self::assertSame($expected, bom_match($str));
+        self::assertSame($method_expected, Info::fetchBOMSequence($str));
+    }

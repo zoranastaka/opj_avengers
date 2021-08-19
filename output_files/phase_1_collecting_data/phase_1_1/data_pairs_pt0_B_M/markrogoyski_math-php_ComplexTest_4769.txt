@@ -1,0 +1,21 @@
+    /**
+     * @test         inverse returns the expected complex number
+     * @dataProvider dataProviderForInverse
+     * @param        number $r
+     * @param        number $i
+     * @param        number $expected_r
+     * @param        number $expected_i
+     */
+
+    public function testInverse($r, $i, $expected_r, $expected_i)
+    {
+        // Given
+        $c = new Complex($r, $i);
+
+        // When
+        $inverse = $c->inverse();
+
+        // Then
+        $this->assertEquals($expected_r, $inverse->r);
+        $this->assertEquals($expected_i, $inverse->i);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Handle TokenDeleteEvent event.
+     *
+     * @param SyncToken $token
+     */
+
+    private function handleTokenDelete($token)
+    {
+        $this->info('Delete token '.$token->id.' - User '.$token->user_id.' - Type '.$token->name.' - timestamp '.$token->timestamp);
+    }

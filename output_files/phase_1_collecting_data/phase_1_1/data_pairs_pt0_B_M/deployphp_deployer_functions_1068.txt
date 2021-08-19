@@ -1,0 +1,12 @@
+/**
+ * @throws RunException
+ */
+
+function commandSupportsOption(string $command, string $option): bool
+{
+    $man = run("(man $command 2>&1 || $command -h 2>&1 || $command --help 2>&1) | grep -- $option || true");
+    if (empty($man)) {
+        return false;
+    }
+    return str_contains($man, $option);
+}

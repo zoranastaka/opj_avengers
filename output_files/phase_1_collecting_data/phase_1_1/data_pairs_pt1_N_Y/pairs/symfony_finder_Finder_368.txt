@@ -1,0 +1,18 @@
+    /**
+     * Sorts files and directories by the last modified time.
+     *
+     * This is the last time the actual contents of the file were last modified.
+     *
+     * This can be slow as all the matching files and directories must be retrieved for comparison.
+     *
+     * @return $this
+     *
+     * @see SortableIterator
+     */
+
+    public function sortByModifiedTime()
+    {
+        $this->sort = Iterator\SortableIterator::SORT_BY_MODIFIED_TIME;
+
+        return $this;
+    }

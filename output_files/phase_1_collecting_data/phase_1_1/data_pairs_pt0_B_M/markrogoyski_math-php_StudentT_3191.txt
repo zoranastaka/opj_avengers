@@ -1,0 +1,12 @@
+    /**
+     * Median of the distribution
+     *
+     * μ = 0
+     *
+     * @return float
+     */
+
+    public function median(): float
+    {
+        return 0;
+    }

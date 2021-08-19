@@ -1,0 +1,5 @@
+	/**
+	 * @test
+	 */
+
+	public function scores_10_for_objects_with_same_fields() {

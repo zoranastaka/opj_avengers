@@ -1,0 +1,9 @@
+    /**
+     * @covers ::fetchOne
+     */
+
+    public function testFetchOneTriggersException(): void
+    {
+        $this->expectException(InvalidArgument::class);
+        $this->stmt->process($this->csv)->fetchOne(-5);
+    }

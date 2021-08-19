@@ -1,0 +1,11 @@
+    /**
+     * V/S observations for all models
+     * ['Mazda RX4' => 0, 'Honda civic' => 1, ... ]
+     *
+     * @return number[]
+     */
+
+    public function getVs(): array
+    {
+        return \array_column(self::DATA, 7);
+    }

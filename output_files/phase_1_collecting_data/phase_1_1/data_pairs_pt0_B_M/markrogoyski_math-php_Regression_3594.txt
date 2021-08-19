@@ -1,0 +1,9 @@
+    /**
+     * Evaluate the regression equation at x
+     *
+     * @param float $x
+     *
+     * @return float
+     */
+
+    abstract public function evaluate(float $x): float;

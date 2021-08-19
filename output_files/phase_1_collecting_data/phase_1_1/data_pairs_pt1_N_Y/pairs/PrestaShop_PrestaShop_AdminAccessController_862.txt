@@ -1,0 +1,14 @@
+    /**
+     * @param array $a module data
+     * @param array $b module data
+     *
+     * @return int
+     */
+
+    protected function sortModuleByName($a, $b)
+    {
+        $moduleAName = isset($a['name']) ? $a['name'] : null;
+        $moduleBName = isset($b['name']) ? $b['name'] : null;
+
+        return strnatcmp($moduleAName, $moduleBName);
+    }

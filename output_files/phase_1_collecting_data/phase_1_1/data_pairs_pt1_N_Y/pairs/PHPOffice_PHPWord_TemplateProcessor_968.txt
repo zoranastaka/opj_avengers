@@ -1,0 +1,11 @@
+    /**
+     * Returns true if string contains a macro that is not in it's own w:r
+     *
+     * @param string $text
+     * @return bool
+     */
+
+    protected function textNeedsSplitting($text)
+    {
+        return preg_match('/[^>]\${|}[^<]/i', $text) == 1;
+    }

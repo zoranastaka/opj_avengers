@@ -1,0 +1,15 @@
+    /**
+     * @test         cubic with a₃ coefficient of z³ of 0 is the same as quadratic.
+     * @dataProvider dataProviderForQuadratic
+     * @param        float $b
+     * @param        float $c
+     * @param        float $d
+     * @param        array $quadratic
+     * @throws       \Exception
+     */
+
+    public function testCubicCubeCoefficientZeroSameAsQuadratic(float $b, float $c, float $d, array $quadratic)
+    {
+        $a = 0;
+        $this->assertEqualsWithDelta($quadratic, Algebra::cubic($a, $b, $c, $d), 0.00000001);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get active sheet index
+     *
+     * @return int Active sheet index
+     */
+
+    public function getActiveSheetIndex()
+    {
+        return $this->activeSheetIndex;
+    }

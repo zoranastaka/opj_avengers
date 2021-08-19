@@ -1,0 +1,10 @@
+    /**
+     * Returns the number of assertions performed.
+     *
+     * @return int
+     */
+
+    public static function getCount()
+    {
+        return self::$_count;
+    }

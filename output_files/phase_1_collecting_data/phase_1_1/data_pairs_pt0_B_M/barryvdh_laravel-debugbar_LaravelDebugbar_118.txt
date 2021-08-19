@@ -1,0 +1,44 @@
+    /**
+     * @param DebugBar $debugbar
+     */
+
+    protected function selectStorage(DebugBar $debugbar)
+    {
+        $config = $this->app['config'];
+        if ($config->get('debugbar.storage.enabled')) {
+            $driver = $config->get('debugbar.storage.driver', 'file');
+
+            switch ($driver) {
+                case 'pdo':
+                    $connection = $config->get('debugbar.storage.connection');
+                    $table = $this->app['db']->getTablePrefix() . 'phpdebugbar';
+                    $pdo = $this->app['db']->connection($connection)->getPdo();
+                    $storage = new PdoStorage($pdo, $table);
+                    break;
+                case 'redis':
+                    $connection = $config->get('debugbar.storage.connection');
+                    $client = $this->app['redis']->connection($connection);
+                    if (is_a($client, 'Illuminate\Redis\Connections\Connection', false)) {
+                        $client = $client->client();
+                    }
+                    $storage = new RedisStorage($client);
+                    break;
+                case 'custom':
+                    $class = $config->get('debugbar.storage.provider');
+                    $storage = $this->app->make($class);
+                    break;
+                case 'socket':
+                    $hostname = $config->get('debugbar.storage.hostname', '127.0.0.1');
+                    $port = $config->get('debugbar.storage.port', 2304);
+                    $storage = new SocketStorage($hostname, $port);
+                    break;
+                case 'file':
+                default:
+                    $path = $config->get('debugbar.storage.path');
+                    $storage = new FilesystemStorage($this->app['files'], $path);
+                    break;
+            }
+
+            $debugbar->setStorage($storage);
+        }
+    }

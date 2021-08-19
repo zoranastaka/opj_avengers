@@ -1,0 +1,16 @@
+    /**
+     * Converts the first character of the supplied string to upper case.
+     *
+     * @return static Object with the first character of $str being upper case
+     */
+
+    public function upperCaseFirst()
+    {
+        $first = \mb_substr($this->str, 0, 1, $this->encoding);
+        $rest = \mb_substr($this->str, 1, $this->length() - 1,
+            $this->encoding);
+
+        $str = \mb_strtoupper($first, $this->encoding) . $rest;
+
+        return static::create($str, $this->encoding);
+    }

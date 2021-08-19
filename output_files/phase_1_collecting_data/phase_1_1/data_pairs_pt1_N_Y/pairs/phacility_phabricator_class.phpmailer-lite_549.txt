@@ -1,0 +1,9 @@
+  /**
+   * Clears all recipients assigned in the CC array.  Returns void.
+   * @return void
+   */
+
+  public function ClearCCs() {
+    foreach($this->cc as $cc) {
+      unset($this->all_recipients[strtolower($cc[0])]);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Return the bias added to the decision function.
+     *
+     * @return float|null
+     */
+
+    public function bias() : ?float
+    {
+        return $this->bias;
+    }

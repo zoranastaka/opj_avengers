@@ -1,0 +1,16 @@
+    /** @test */
+
+    public function it_should_return_the_owning_user_from_a_token_containing_an_existing_user()
+    {
+        $payload = Mockery::mock(Payload::class);
+        $payload->shouldReceive('get')->once()->with('sub')->andReturn(1);
+
+        $this->manager->shouldReceive('decode')->once()->andReturn($payload);
+
+        $this->auth->shouldReceive('byId')->once()->with(1)->andReturn(true);
+        $this->auth->shouldReceive('user')->once()->andReturn((object) ['id' => 1]);
+
+        $user = $this->jwtAuth->setToken('foo.bar.baz')->customClaims(['foo' => 'bar'])->authenticate();
+
+        $this->assertSame($user->id, 1);
+    }

@@ -1,0 +1,16 @@
+    /**
+     * @test   Test that the new data must have the have the same number of columns
+     * @throws \Exception
+     */
+
+    public function testNewDataException()
+    {
+        // Given
+        $new_data = MatrixFactory::create([[1,2]]);
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        self::$pca->getScores($new_data);
+    }

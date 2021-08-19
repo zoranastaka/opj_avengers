@@ -1,0 +1,9 @@
+    /**
+     * @expectedException BadMethodCallException
+     */
+
+    public function testBadMethodCall()
+    {
+        $md = new Mobile_Detect(array());
+        $md->badmethodthatdoesntexistatall();
+    }

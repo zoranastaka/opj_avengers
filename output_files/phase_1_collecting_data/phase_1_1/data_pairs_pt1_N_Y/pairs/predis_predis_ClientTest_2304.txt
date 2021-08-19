@@ -1,0 +1,25 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testPubSubLoopWithArrayAndCallableExecutesPubSub(): void
+    {
+        // NOTE: we use a subscribe count of 0 in the message payload to trick
+        //       the context and forcing it to be closed since there are no more
+        //       active subscriptions.
+        $connection = $this->getMockBuilder('Predis\Connection\NodeConnectionInterface')->getMock();
+        $connection
+            ->expects($this->once())
+            ->method('read')
+            ->willReturn(array('subscribe', 'channel', 0));
+
+        $callable = $this->getMockBuilder('stdClass')
+            ->addMethods(array('__invoke'))
+            ->getMock();
+        $callable
+            ->expects($this->once())
+            ->method('__invoke');
+
+        $client = new Client($connection);
+        $this->assertNull($client->pubSubLoop(array('subscribe' => 'channel'), $callable));
+    }

@@ -1,0 +1,14 @@
+    /** @test */
+
+    public function it_can_double_a_class_with_mixed_types()
+    {
+        if (PHP_VERSION_ID < 80000) {
+            $this->markTestSkipped('Mixed type is not supported in this PHP version');
+        }
+
+        $classNode = (new ClassMirror())->reflect(new \ReflectionClass('Fixtures\Prophecy\MixedTypes'), []);
+        $methodNode = $classNode->getMethods()['doSomething'];
+
+        $this->assertEquals(new ArgumentTypeNode('mixed'), $methodNode->getArguments()[0]->getTypeNode());
+        $this->assertEquals(new ReturnTypeNode('mixed'), $methodNode->getReturnTypeNode());
+    }

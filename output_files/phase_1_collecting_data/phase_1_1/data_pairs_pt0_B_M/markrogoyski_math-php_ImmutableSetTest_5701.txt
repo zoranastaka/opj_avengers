@@ -1,0 +1,17 @@
+    /**
+     * @test removeMulti does nothing
+     */
+
+    public function testRemoveMultiDoesNothing()
+    {
+        // Given
+        $A = new ImmutableSet([1, 2, 3, 4]);
+        $B = $A->copy();
+
+        // When
+        $A->removeMulti([1]);
+        $A->removeMulti([2, 3]);
+
+        $this->assertEquals($B, $A);
+        $this->assertEquals($B->asArray(), $A->asArray());
+    }

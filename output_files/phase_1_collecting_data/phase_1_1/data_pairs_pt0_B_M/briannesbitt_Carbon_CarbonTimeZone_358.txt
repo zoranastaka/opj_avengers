@@ -1,0 +1,10 @@
+    /**
+     * Cast to string (get timezone name).
+     *
+     * @return string
+     */
+
+    public function __toString()
+    {
+        return $this->getName();
+    }

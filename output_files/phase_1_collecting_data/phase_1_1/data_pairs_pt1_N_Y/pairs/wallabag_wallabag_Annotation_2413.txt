@@ -1,0 +1,10 @@
+    /**
+     * Get entry.
+     *
+     * @return Entry
+     */
+
+    public function getEntry()
+    {
+        return $this->entry;
+    }

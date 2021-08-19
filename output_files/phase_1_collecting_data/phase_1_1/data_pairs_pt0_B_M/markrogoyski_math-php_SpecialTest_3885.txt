@@ -1,0 +1,15 @@
+    /**
+     * @test         lowerIncompleteGamma returns NAN for x = 0 and x nonzero
+     * @dataProvider dataProviderForLowerIncompleteGammaNanBoundary
+     * @param        float $s
+     * @param        float $x
+     */
+
+    public function testLowerIncompleteGammaNanBoundary(float $s, float $x)
+    {
+        // When
+        $lowerIncompleteGamma = Special::lowerIncompleteGamma($s, $x);
+
+        // Then
+        $this->assertNan($lowerIncompleteGamma);
+    }

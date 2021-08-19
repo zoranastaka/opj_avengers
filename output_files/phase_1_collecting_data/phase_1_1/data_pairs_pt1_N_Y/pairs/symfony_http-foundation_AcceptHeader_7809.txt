@@ -1,0 +1,10 @@
+    /**
+     * Returns header value's string representation.
+     *
+     * @return string
+     */
+
+    public function __toString()
+    {
+        return implode(',', $this->items);
+    }

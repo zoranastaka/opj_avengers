@@ -1,0 +1,38 @@
+    /**
+     * @covers ::create
+     * @covers ::rootElement
+     * @covers ::recordElement
+     * @covers ::fieldElement
+     * @covers ::import
+     * @covers ::recordToElement
+     * @covers ::fieldToElement
+     * @covers ::filterAttributeName
+     * @covers ::filterElementName
+     */
+
+    public function testImport(): void
+    {
+        $csv = Reader::createFromPath(__DIR__.'/../test_files/prenoms.csv', 'r')
+            ->setDelimiter(';')
+            ->setHeaderOffset(0)
+        ;
+
+        $stmt = Statement::create()
+            ->offset(3)
+            ->limit(5)
+        ;
+
+        $records = $stmt->process($csv);
+
+        $converter = XMLConverter::create()
+            ->rootElement('csv')
+            ->recordElement('record', 'offset')
+            ->fieldElement('field', 'name')
+        ;
+
+        $doc = new DOMDocument('1.0');
+        $element = $converter->import($records, $doc);
+
+        self::assertCount(0, $doc->childNodes);
+        self::assertCount(5, $element->childNodes);
+    }

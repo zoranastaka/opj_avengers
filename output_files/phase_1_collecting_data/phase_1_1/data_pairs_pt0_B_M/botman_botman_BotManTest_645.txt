@@ -1,0 +1,25 @@
+    /** @test */
+
+    public function it_uses_invoke_method()
+    {
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'Foo',
+        ]);
+        TestClass::$called = false;
+        $botman->hears('foo', TestClass::class);
+        $botman->listen();
+        $this->assertTrue(TestClass::$called);
+
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage('Invalid hears action: [stdClass]');
+
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'Foo',
+        ]);
+        $botman->hears('foo', \stdClass::class);
+        $botman->listen();
+    }

@@ -1,0 +1,29 @@
+    /**
+     * @deprecated In ramsey/uuid version 5.0.0, this will be removed.
+     *     It is available at {@see UuidV1::getDateTime()}.
+     *
+     * @return DateTimeImmutable An immutable instance of DateTimeInterface
+     *
+     * @throws UnsupportedOperationException if UUID is not time-based
+     * @throws DateTimeException if DateTime throws an exception/error
+     */
+
+    public function getDateTime(): DateTimeInterface
+    {
+        if ($this->fields->getVersion() !== 1) {
+            throw new UnsupportedOperationException('Not a time-based UUID');
+        }
+
+        $time = $this->timeConverter->convertTime($this->fields->getTimestamp());
+
+        try {
+            return new DateTimeImmutable(
+                '@'
+                . $time->getSeconds()->toString()
+                . '.'
+                . str_pad($time->getMicroseconds()->toString(), 6, '0', STR_PAD_LEFT)
+            );
+        } catch (Throwable $e) {
+            throw new DateTimeException($e->getMessage(), (int) $e->getCode(), $e);
+        }
+    }

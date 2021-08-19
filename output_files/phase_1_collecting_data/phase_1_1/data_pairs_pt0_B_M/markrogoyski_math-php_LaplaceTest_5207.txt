@@ -1,0 +1,19 @@
+    /**
+     * @test     median is always μ
+     */
+
+    public function testMedian()
+    {
+        foreach (\range(-5, 5) as $μ) {
+            foreach (\range(1, 3) as $b) {
+                // Given
+                $laplace = new Laplace($μ, $b);
+
+                // When
+                $median = $laplace->median();
+
+                // Then
+                $this->assertEquals($μ, $median);
+            }
+        }
+    }

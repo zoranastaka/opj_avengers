@@ -1,0 +1,17 @@
+    /**
+     * @test     Constructor throws a BadDataException if the probabilities do not add up to 1
+     * @throws   \Exception
+     */
+
+    public function testBadProbabilities()
+    {
+        // Given
+        $k             = 2;
+        $probabilities = [0.3, 0.2];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $categorical = new Categorical($k, $probabilities);
+    }

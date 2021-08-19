@@ -1,0 +1,20 @@
+    /**
+     * Reduced row echelon form (row canonical form) - RREF
+     *
+     * @return Reduction\ReducedRowEchelonForm
+     *
+     * @throws Exception\BadDataException
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MatrixException
+     */
+
+    public function rref(): Reduction\ReducedRowEchelonForm
+    {
+        if (!$this->catalog->hasReducedRowEchelonForm()) {
+            $ref = $this->ref();
+            $this->catalog->addReducedRowEchelonForm($ref->rref());
+        }
+
+        return $this->catalog->getReducedRowEchelonForm();
+    }

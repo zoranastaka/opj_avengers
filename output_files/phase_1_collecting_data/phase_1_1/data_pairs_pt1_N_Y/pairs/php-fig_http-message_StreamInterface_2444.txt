@@ -1,0 +1,7 @@
+    /**
+     * Returns true if the stream is at the end of the stream.
+     *
+     * @return bool
+     */
+
+    public function eof();

@@ -1,0 +1,10 @@
+	/**
+	 * Delete a user value
+	 *
+	 * @param string $userId the userId of the user that we want to store the value under
+	 * @param string $appName the appName that we stored the value under
+	 * @param string $key the key under which the value is being stored
+	 * @return bool
+	 */
+
+	public function deleteUserValue($userId, $appName, $key) {

@@ -1,0 +1,32 @@
+   /**
+    * Parses the HTML attributes given as string
+    *
+    * @param    string  HTML attribute string
+    * @return   array   An associative aray of attributes
+    */
+
+    protected static function parseAttributes($attrString)
+    {
+        $attributes = array();
+        if (preg_match_all(
+                "/(([A-Za-z_:]|[^\\x00-\\x7F])([A-Za-z0-9_:.-]|[^\\x00-\\x7F])*)" .
+                "([ \\n\\t\\r]+)?(=([ \\n\\t\\r]+)?(\"[^\"]*\"|'[^']*'|[^ \\n\\t\\r]*))?/",
+                $attrString,
+                $regs
+           )) {
+            for ($i = 0; $i < count($regs[1]); $i++) {
+                $name  = trim($regs[1][$i]);
+                $check = trim($regs[0][$i]);
+                $value = trim($regs[7][$i]);
+                if ($name == $check) {
+                    $attributes[strtolower($name)] = strtolower($name);
+                } else {
+                    if (!empty($value) && ($value[0] == '\'' || $value[0] == '"')) {
+                        $value = substr($value, 1, -1);
+                    }
+                    $attributes[strtolower($name)] = $value;
+                }
+            }
+        }
+        return $attributes;
+    }

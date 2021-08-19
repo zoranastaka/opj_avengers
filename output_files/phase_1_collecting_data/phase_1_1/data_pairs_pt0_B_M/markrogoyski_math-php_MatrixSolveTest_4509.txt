@@ -1,0 +1,22 @@
+    /**
+     * @test         Solve forcing RREF method
+     * @dataProvider dataProviderForSolve
+     * @param        array $A
+     * @param        array $b
+     * @param        array $expected
+     * @throws       \Exception
+     */
+
+    public function testSolveForcingRrefMethod(array $A, array $b, array $expected)
+    {
+        // Given
+        $A        = MatrixFactory::create($A);
+        $b        = new Vector($b);
+        $expected = new Vector($expected);
+
+        // When
+        $x = $A->solve($b, NumericMatrix::RREF);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $x, 0.00001);
+    }

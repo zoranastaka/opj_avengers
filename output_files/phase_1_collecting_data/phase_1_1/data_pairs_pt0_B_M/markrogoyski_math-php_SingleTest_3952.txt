@@ -1,0 +1,16 @@
+    /**
+     * @test         subtract
+     * @dataProvider dataProviderForSubtract
+     * @param        array $xs
+     * @param        int   $k
+     * @param        array $expected
+     */
+
+    public function testSubtract(array $xs, int $k, array $expected)
+    {
+        // When
+        $differences = Single::subtract($xs, $k);
+
+        // Then
+        $this->assertEquals($expected, $differences);
+    }

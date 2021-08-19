@@ -1,0 +1,14 @@
+    /**
+     * Normalizes a node: Converts builder objects to nodes.
+     *
+     * @param Node|Builder $node The node to normalize
+     *
+     * @return Node The normalized node
+     */
+
+    public static function normalizeNode($node) : Node {
+        if ($node instanceof Builder) {
+            return $node->getNode();
+        } elseif ($node instanceof Node) {
+            return $node;
+        }

@@ -1,0 +1,14 @@
+    /**
+     * @test         isZero returns false for infinitesimal quantities greater than the defined epsilon
+     * @dataProvider dataProviderForNotZero
+     * @param        float $x
+     */
+
+    public function testIsZeroFalse(float $x)
+    {
+        // When
+        $isZero = Support::isZero($x);
+
+        // Then
+        $this->assertFalse($isZero);
+    }

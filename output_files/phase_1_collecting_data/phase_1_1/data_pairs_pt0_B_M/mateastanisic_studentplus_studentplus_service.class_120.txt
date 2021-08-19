@@ -1,0 +1,4 @@
+	//vraća sve ponude koje u imenu sadržavaju podstring $ime 
+	//kod pretraživanja
+
+	function get_offers_by_podstring_name($ime){

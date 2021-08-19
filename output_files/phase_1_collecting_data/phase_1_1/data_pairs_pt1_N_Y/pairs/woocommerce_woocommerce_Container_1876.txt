@@ -1,0 +1,19 @@
+    /**
+     * Delegate a backup container to be checked for services if it
+     * cannot be resolved via this container.
+     *
+     * @param ContainerInterface $container
+     *
+     * @return self
+     */
+
+    public function delegate(ContainerInterface $container) : self
+    {
+        $this->delegates[] = $container;
+
+        if ($container instanceof ContainerAwareInterface) {
+            $container->setLeagueContainer($this);
+        }
+
+        return $this;
+    }

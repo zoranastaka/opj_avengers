@@ -1,0 +1,12 @@
+    /**
+     * Variance of the distribution
+     *
+     * σ² = p(1 - p) = pq
+     *
+     * @return float
+     */
+
+    public function variance(): float
+    {
+        return $this->p * $this->q;
+    }

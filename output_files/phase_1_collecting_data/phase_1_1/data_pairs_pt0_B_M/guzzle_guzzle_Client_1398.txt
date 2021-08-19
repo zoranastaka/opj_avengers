@@ -1,0 +1,12 @@
+    /**
+     * Return an InvalidArgumentException with pre-set message.
+     */
+
+    private function invalidBody(): InvalidArgumentException
+    {
+        return new InvalidArgumentException('Passing in the "body" request '
+            . 'option as an array to send a request is not supported. '
+            . 'Please use the "form_params" request option to send a '
+            . 'application/x-www-form-urlencoded request, or the "multipart" '
+            . 'request option to send a multipart/form-data request.');
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Returns all backups attached to image
+     *
+     * @return array
+     */
+
+    public function getBackups()
+    {
+        return $this->backups;
+    }

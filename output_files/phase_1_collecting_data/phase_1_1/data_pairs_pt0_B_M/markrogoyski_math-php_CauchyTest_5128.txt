@@ -1,0 +1,18 @@
+    /**
+     * @test         mean is not a number
+     * @dataProvider dataProviderForAverages
+     * @param        float $x₀
+     * @param        float $γ
+     */
+
+    public function testMean(float $x₀, float $γ)
+    {
+        // Given
+        $cauchy = new Cauchy($x₀, $γ);
+
+        // When
+        $mean = $cauchy->mean();
+
+        // Then
+        $this->assertNan($mean);
+    }

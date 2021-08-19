@@ -1,0 +1,27 @@
+    /**
+     * Writes the translation file for the given extension.
+     *
+     * @param array  $messages
+     * @param string $extension
+     * @param string $path
+     */
+
+    protected function writeTranslationFile($messages, $extension, $path)
+    {
+        foreach ($messages as $domain => $strings) {
+
+            $data = $this->getHeader($extension, $domain);
+
+            foreach ($strings as $string) {
+
+                $string = str_replace('"', '\"', $string);
+                $data .= "msgid \"".$string."\"\nmsgstr \"\"\n\n";
+
+            }
+
+            $refFile = $path.'/'.$domain.'.pot';
+            if (!file_exists($refFile) || !($compare = preg_replace('/^"POT-Creation-Date: (.*)$/im', '', [file_get_contents($refFile), $data]) and $compare[0] === $compare[1])) {
+                file_put_contents($refFile, $data);
+            }
+        }
+    }

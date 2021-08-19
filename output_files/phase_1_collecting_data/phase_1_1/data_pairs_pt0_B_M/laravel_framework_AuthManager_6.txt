@@ -1,0 +1,11 @@
+    /**
+     * Get the guard configuration.
+     *
+     * @param  string  $name
+     * @return array
+     */
+
+    protected function getConfig($name)
+    {
+        return $this->app['config']["auth.guards.{$name}"];
+    }

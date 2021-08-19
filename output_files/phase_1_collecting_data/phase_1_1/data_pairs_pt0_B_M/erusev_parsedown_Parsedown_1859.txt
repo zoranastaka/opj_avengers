@@ -1,0 +1,8 @@
+    #
+    # Blocks
+    #
+
+    protected function lines(array $lines)
+    {
+        return $this->elements($this->linesElements($lines));
+    }

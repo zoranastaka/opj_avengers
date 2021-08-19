@@ -1,0 +1,21 @@
+    /**
+     * @dataProvider getRenderedExceptions
+     */
+
+    public function testWriteExceptionVerbose($exception, $expected)
+    {
+        $output = $this->getOutput();
+        $output->setVerbosity(StreamOutput::VERBOSITY_VERBOSE);
+        $stream = $output->getStream();
+        $shell = new Shell($this->getConfig());
+        $shell->setOutput($output);
+
+        $shell->writeException($exception);
+        \rewind($stream);
+        $stdout = \stream_get_contents($stream);
+        $this->assertStringStartsWith($expected, $stdout);
+        $this->assertStringContainsString(\basename(__FILE__), $stdout);
+
+        $lineCount = \count(\explode(\PHP_EOL, $stdout));
+        $this->assertGreaterThan(4, $lineCount); // /shrug
+    }

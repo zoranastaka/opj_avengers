@@ -1,0 +1,10 @@
+    /**
+     * Get the unique broadcast identifier for the user.
+     *
+     * @return mixed
+     */
+
+    public function getAuthIdentifierForBroadcasting()
+    {
+        return $this->getAuthIdentifier();
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @test 32 hair length observations
+     */
+
+    public function testNumberOfHairLength()
+    {
+        // When
+        $observations = $this->people->getHairLength();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

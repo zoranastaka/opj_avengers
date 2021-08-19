@@ -1,0 +1,13 @@
+    /**
+     * @dataProvider provideLexCases
+     *
+     * @param string   $input
+     * @param string[] $output
+     *
+     * @return void
+     */
+
+    public function testLex(string $input, array $output)
+    {
+        self::assertSame($output, \iterator_to_array(Lexer::lex($input)));
+    }

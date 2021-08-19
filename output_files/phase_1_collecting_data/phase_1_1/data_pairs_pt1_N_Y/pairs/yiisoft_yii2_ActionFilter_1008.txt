@@ -1,0 +1,9 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function attach($owner)
+    {
+        $this->owner = $owner;
+        $owner->on(Controller::EVENT_BEFORE_ACTION, [$this, 'beforeFilter']);
+    }

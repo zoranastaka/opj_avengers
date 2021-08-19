@@ -1,0 +1,16 @@
+    /**
+     * @test rowInterchange propagates error tolerance to resultant matrix
+     */
+
+    public function testRowInterchange()
+    {
+        // Given
+        $i = 0;
+        $j = 1;
+
+        // When
+        $R = $this->A->rowInterchange($i, $j);
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

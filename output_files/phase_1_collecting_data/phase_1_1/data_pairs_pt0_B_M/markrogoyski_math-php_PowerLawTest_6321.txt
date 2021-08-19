@@ -1,0 +1,20 @@
+    /**
+     * @test         getParameters
+     * @dataProvider dataProviderForParameters
+     * @param        array $points
+     * @param        float $a
+     * @param        float $b
+     */
+
+    public function testGetParameters(array $points, float $a, float $b)
+    {
+        // Given
+        $regression = new PowerLaw($points);
+
+        // When
+        $parameters = $regression->getParameters();
+
+        // Then
+        $this->assertEqualsWithDelta($a, $parameters['a'], 0.0001);
+        $this->assertEqualsWithDelta($b, $parameters['b'], 0.0001);
+    }

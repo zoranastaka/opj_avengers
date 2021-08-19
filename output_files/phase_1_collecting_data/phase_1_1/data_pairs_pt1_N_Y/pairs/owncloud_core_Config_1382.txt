@@ -1,0 +1,22 @@
+	/**
+	 * This function sets the value
+	 *
+	 * @param string $key key
+	 * @param mixed $value value
+	 * @return bool True if the file needs to be updated, false otherwise
+	 */
+
+	protected function set($key, $value) {
+		return $this->emittingCall(function (&$afterArray) use (&$key, &$value) {
+			if (!isset($this->cache[$key]) || $this->cache[$key] !== $value) {
+				if (isset($this->cache[$key])) {
+					$afterArray['update'] = true;
+					$afterArray['oldvalue'] = $this->cache[$key];
+				}
+				// Add change
+				$this->cache[$key] = $value;
+				return true;
+			}
+
+			return false;
+		}, [

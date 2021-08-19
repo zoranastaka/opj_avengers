@@ -1,0 +1,135 @@
+    /**
+     * Modify the response and inject the debugbar (or data in headers)
+     *
+     * @param  \Symfony\Component\HttpFoundation\Request $request
+     * @param  \Symfony\Component\HttpFoundation\Response $response
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+
+    public function modifyResponse(Request $request, Response $response)
+    {
+        $app = $this->app;
+        if (!$this->isEnabled() || $this->isDebugbarRequest()) {
+            return $response;
+        }
+
+        // Show the Http Response Exception in the Debugbar, when available
+        if (isset($response->exception)) {
+            $this->addThrowable($response->exception);
+        }
+
+        if ($this->shouldCollect('config', false)) {
+            try {
+                $configCollector = new ConfigCollector();
+                $configCollector->setData($app['config']->all());
+                $this->addCollector($configCollector);
+            } catch (\Exception $e) {
+                $this->addThrowable(
+                    new Exception(
+                        'Cannot add ConfigCollector to Laravel Debugbar: ' . $e->getMessage(),
+                        $e->getCode(),
+                        $e
+                    )
+                );
+            }
+        }
+
+        if ($this->app->bound(SessionManager::class)) {
+
+            /** @var \Illuminate\Session\SessionManager $sessionManager */
+            $sessionManager = $app->make(SessionManager::class);
+            $httpDriver = new SymfonyHttpDriver($sessionManager, $response);
+            $this->setHttpDriver($httpDriver);
+
+            if ($this->shouldCollect('session') && ! $this->hasCollector('session')) {
+                try {
+                    $this->addCollector(new SessionCollector($sessionManager));
+                } catch (\Exception $e) {
+                    $this->addThrowable(
+                        new Exception(
+                            'Cannot add SessionCollector to Laravel Debugbar: ' . $e->getMessage(),
+                            $e->getCode(),
+                            $e
+                        )
+                    );
+                }
+            }
+        } else {
+            $sessionManager = null;
+        }
+
+        if ($this->shouldCollect('symfony_request', true) && !$this->hasCollector('request')) {
+            try {
+                $reqId = $this->getCurrentRequestId();
+                $this->addCollector(new RequestCollector($request, $response, $sessionManager, $reqId));
+            } catch (\Exception $e) {
+                $this->addThrowable(
+                    new Exception(
+                        'Cannot add SymfonyRequestCollector to Laravel Debugbar: ' . $e->getMessage(),
+                        $e->getCode(),
+                        $e
+                    )
+                );
+            }
+        }
+
+        if ($app['config']->get('debugbar.clockwork') && ! $this->hasCollector('clockwork')) {
+            try {
+                $this->addCollector(new ClockworkCollector($request, $response, $sessionManager));
+            } catch (\Exception $e) {
+                $this->addThrowable(
+                    new Exception(
+                        'Cannot add ClockworkCollector to Laravel Debugbar: ' . $e->getMessage(),
+                        $e->getCode(),
+                        $e
+                    )
+                );
+            }
+
+            $this->addClockworkHeaders($response);
+        }
+
+        if ($response->isRedirection()) {
+            try {
+                $this->stackData();
+            } catch (\Exception $e) {
+                $app['log']->error('Debugbar exception: ' . $e->getMessage());
+            }
+        } elseif (
+            $this->isJsonRequest($request) &&
+            $app['config']->get('debugbar.capture_ajax', true)
+        ) {
+            try {
+                $this->sendDataInHeaders(true);
+
+                if ($app['config']->get('debugbar.add_ajax_timing', false)) {
+                    $this->addServerTimingHeaders($response);
+                }
+            } catch (\Exception $e) {
+                $app['log']->error('Debugbar exception: ' . $e->getMessage());
+            }
+        } elseif (
+            ($response->headers->has('Content-Type') &&
+                strpos($response->headers->get('Content-Type'), 'html') === false) ||
+            $request->getRequestFormat() !== 'html' ||
+            $response->getContent() === false ||
+            $this->isJsonRequest($request)
+        ) {
+            try {
+                // Just collect + store data, don't inject it.
+                $this->collect();
+            } catch (\Exception $e) {
+                $app['log']->error('Debugbar exception: ' . $e->getMessage());
+            }
+        } elseif ($app['config']->get('debugbar.inject', true)) {
+            try {
+                $this->injectDebugbar($response);
+            } catch (\Exception $e) {
+                $app['log']->error('Debugbar exception: ' . $e->getMessage());
+            }
+        }
+
+
+
+        return $response;
+    }

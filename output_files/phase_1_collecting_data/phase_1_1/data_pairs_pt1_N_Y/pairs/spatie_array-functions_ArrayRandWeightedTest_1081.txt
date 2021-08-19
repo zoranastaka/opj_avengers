@@ -1,0 +1,8 @@
+    /**
+     * @test
+     */
+
+    public function it_can_handle_an_empty_array()
+    {
+        $this->assertNull(array_rand_weighted([]));
+    }

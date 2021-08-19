@@ -1,0 +1,8 @@
+    /**
+     * @return ArchiveManager
+     */
+
+    public function getArchiveManager()
+    {
+        return $this->archiveManager;
+    }

@@ -1,0 +1,36 @@
+    /**
+     * Is the matrix skew-symmetric? (Antisymmetric matrix)
+     * Does Aᵀ = −A
+     * aᵢⱼ = -aⱼᵢ and main diagonal are all zeros
+     *
+     * Algorithm: Iterate on the upper triangular half and compare with corresponding
+     * values on the lower triangular half. Skips the diagonal as it is symmetric with itself.
+     *
+     * @return bool true if skew-symmetric; false otherwise.
+     *
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MatrixException
+     */
+
+    public function isSkewSymmetric(): bool
+    {
+        if (!$this->isSquare()) {
+            return false;
+        }
+
+        for ($i = 0; $i < $this->m - 1; $i++) {
+            for ($j = $i + 1; $j < $this->n; $j++) {
+                if (Support::isNotEqual($this->A[$i][$j], -$this->A[$j][$i], $this->ε)) {
+                    return false;
+                }
+            }
+        }
+        foreach ($this->getDiagonalElements() as $diagonalElement) {
+            if (Support::isNotZero($diagonalElement, $this->ε)) {
+                return false;
+            }
+        }
+
+        return true;
+    }

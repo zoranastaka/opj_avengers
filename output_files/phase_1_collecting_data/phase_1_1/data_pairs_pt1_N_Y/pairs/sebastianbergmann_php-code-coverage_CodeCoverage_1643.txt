@@ -1,0 +1,8 @@
+    /**
+     * @psalm-assert-if-true !null $this->cacheDirectory
+     */
+
+    public function cachesStaticAnalysis(): bool
+    {
+        return $this->cacheDirectory !== null;
+    }

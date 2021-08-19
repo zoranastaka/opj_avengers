@@ -1,0 +1,12 @@
+    /**
+     * Sets both X and Y coordinate
+     *
+     * @param int $x
+     * @param int $y
+     */
+
+    public function setPosition($x, $y)
+    {
+        $this->setX($x);
+        $this->setY($y);
+    }

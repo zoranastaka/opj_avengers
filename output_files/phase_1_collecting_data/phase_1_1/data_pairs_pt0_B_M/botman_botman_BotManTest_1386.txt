@@ -1,0 +1,16 @@
+    /** @test */
+
+    public function it_allows_regular_expressions()
+    {
+        $called = false;
+
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'Hi Julia',
+        ]);
+
+        $botman->hears('hi {name}', function ($bot, $name) use (&$called) {
+            $called = true;
+            $this->assertSame('Julia', $name);
+        });

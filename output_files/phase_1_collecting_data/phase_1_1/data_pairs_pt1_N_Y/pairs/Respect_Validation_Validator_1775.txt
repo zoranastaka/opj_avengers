@@ -1,0 +1,16 @@
+    /**
+     * {@inheritDoc}
+     */
+
+    public function check($input): void
+    {
+        try {
+            parent::check($input);
+        } catch (ValidationException $exception) {
+            if (count($this->getRules()) == 1 && $this->template) {
+                $exception->updateTemplate($this->template);
+            }
+
+            throw $exception;
+        }
+    }

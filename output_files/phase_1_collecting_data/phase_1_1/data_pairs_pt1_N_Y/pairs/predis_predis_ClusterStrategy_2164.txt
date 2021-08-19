@@ -1,0 +1,22 @@
+    /**
+     * Extracts the key from a command with multiple keys only when all keys in
+     * the arguments array produce the same hash.
+     *
+     * @param CommandInterface $command Command instance.
+     *
+     * @return string|null
+     */
+
+    protected function getKeyFromInterleavedArguments(CommandInterface $command)
+    {
+        $arguments = $command->getArguments();
+        $keys = array();
+
+        for ($i = 0; $i < count($arguments); $i += 2) {
+            $keys[] = $arguments[$i];
+        }
+
+        if ($this->checkSameSlotForKeys($keys)) {
+            return $arguments[0];
+        }
+    }

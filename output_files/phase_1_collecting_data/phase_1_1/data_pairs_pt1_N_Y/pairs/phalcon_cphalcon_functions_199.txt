@@ -1,0 +1,14 @@
+    /**
+     * Get Session Stream options
+     */
+
+    function getOptionsSessionStream(): array
+    {
+        if (!is_dir(cacheDir('sessions'))) {
+            mkdir(cacheDir('sessions'));
+        }
+
+        return [
+            'savePath' => cacheDir('sessions'),
+        ];
+    }

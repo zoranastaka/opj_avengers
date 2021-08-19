@@ -1,0 +1,15 @@
+    /**
+     * Finds the PHP executable arguments.
+     *
+     * @return array The PHP executable arguments
+     */
+
+    public function findArguments()
+    {
+        $arguments = [];
+        if ('phpdbg' === \PHP_SAPI) {
+            $arguments[] = '-qrr';
+        }
+
+        return $arguments;
+    }

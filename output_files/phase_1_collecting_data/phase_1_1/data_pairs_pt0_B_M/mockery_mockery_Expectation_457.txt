@@ -1,0 +1,27 @@
+    /**
+     * Check if passed arguments match an argument expectation
+     *
+     * @param array $args
+     * @return bool
+     */
+
+    public function matchArgs(array $args)
+    {
+        if ($this->isArgumentListMatcher()) {
+            return $this->_matchArg($this->_expectedArgs[0], $args);
+        }
+        $argCount = count($args);
+        if ($argCount !== count((array) $this->_expectedArgs)) {
+            $lastExpectedArgument = end($this->_expectedArgs);
+            reset($this->_expectedArgs);
+
+            if ($this->isAndAnyOtherArgumentsMatcher($lastExpectedArgument)) {
+                $args = array_slice($args, 0, array_search($lastExpectedArgument, $this->_expectedArgs, true));
+                return $this->_matchArgs($args);
+            }
+
+            return false;
+        }
+
+        return $this->_matchArgs($args);
+    }

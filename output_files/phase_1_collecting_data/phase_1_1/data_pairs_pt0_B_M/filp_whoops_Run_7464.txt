@@ -1,0 +1,10 @@
+    /**
+     * @param Throwable $exception
+     *
+     * @return Inspector
+     */
+
+    private function getInspector($exception)
+    {
+        return new Inspector($exception);
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @return array [ν, μ]
+     */
+
+    public function dataProviderForVariance(): array
+    {
+        return [
+            [1.1, \INF],
+            [1.5, \INF],
+            [2, \INF],
+            [3, 3],
+            [4, 2],
+            [5, 5 / 3],
+        ];
+    }

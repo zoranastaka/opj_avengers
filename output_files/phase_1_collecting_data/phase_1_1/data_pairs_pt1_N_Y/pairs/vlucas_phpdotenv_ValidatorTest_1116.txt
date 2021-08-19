@@ -1,0 +1,10 @@
+    /**
+     * @doesNotPerformAssertions
+     */
+
+    public function testDotenvRegexMatchNotPresent()
+    {
+        $dotenv = Dotenv::createImmutable(self::$folder);
+        $dotenv->load();
+        $dotenv->ifPresent('FOOOOOOOOOOO')->allowedRegexValues('([[:lower:]]{3})');
+    }

@@ -1,0 +1,28 @@
+    /**
+     * @test Axiom: L is invertible iff diagonal is all non zero
+     * Lower triangular matrix is invertible if and only if its diagonal entries are all non zero
+     * @dataProvider dataProviderForLowerTriangularMatrix
+     * @param        array $L
+     * @throws       \Exception
+     */
+
+    public function testLowerTriangularMatrixIsInvertibleIfAndOnlyIfDigaonalEntriesAreAllNonZero(array $L)
+    {
+        // Given
+        $L = MatrixFactory::create($L);
+        $this->assertTrue($L->isLowerTriangular());
+
+        $zeros = \array_filter(
+            $L->getDiagonalElements(),
+            function ($x) {
+                return $x == 0;
+            }
+        );
+
+        // Then
+        if (count($zeros) == 0) {
+            $this->assertTrue($L->isInvertible());
+        } else {
+            $this->assertFalse($L->isInvertible());
+        }
+    }

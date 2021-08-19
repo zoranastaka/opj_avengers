@@ -1,0 +1,7 @@
+/**
+ * @covers PharIo\Manifest\Author
+ *
+ * @uses PharIo\Manifest\Email
+ */
+
+class AuthorTest extends TestCase {

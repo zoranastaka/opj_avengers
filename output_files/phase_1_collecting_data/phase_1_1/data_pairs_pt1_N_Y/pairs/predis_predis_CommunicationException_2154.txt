@@ -1,0 +1,10 @@
+    /**
+     * Indicates if the receiver should reset the underlying connection.
+     *
+     * @return bool
+     */
+
+    public function shouldResetConnection()
+    {
+        return true;
+    }

@@ -1,0 +1,10 @@
+  /**
+   * Are we running in Google AppEngine?
+   * return bool
+   */
+
+  public function isAppEngine()
+  {
+    return (isset($_SERVER['SERVER_SOFTWARE']) &&
+        strpos($_SERVER['SERVER_SOFTWARE'], 'Google App Engine') !== false);
+  }

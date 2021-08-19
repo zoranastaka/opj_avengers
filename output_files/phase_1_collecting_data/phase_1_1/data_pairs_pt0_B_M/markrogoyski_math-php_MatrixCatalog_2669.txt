@@ -1,0 +1,8 @@
+    /**
+     * @return Reduction\RowEchelonForm
+     */
+
+    public function getRowEchelonForm(): Reduction\RowEchelonForm
+    {
+        return $this->REF;
+    }

@@ -1,0 +1,15 @@
+    /**
+     * Returns the SQL query joining sites and access table for a given login
+     *
+     * @param string $select Columns or expression to SELECT FROM table, eg. "MIN(ts_created)"
+     * @return string  SQL query
+     */
+
+    public static function getSqlAccessSite($select)
+    {
+        $access    = Common::prefixTable('access');
+        $siteTable = Common::prefixTable('site');
+
+        return "SELECT " . $select . " FROM " . $access . " as t1
+				JOIN " . $siteTable . " as t2 USING (idsite) WHERE login = ?";
+    }

@@ -1,0 +1,16 @@
+    /**
+     * @covers ::__destruct
+     */
+
+    public function testClearAttachedStreamFilters(): void
+    {
+        $path = __DIR__.'/../test_files/foo.csv';
+        $csv = Reader::createFromPath($path);
+        $csv->addStreamFilter('string.toupper');
+
+        self::assertStringContainsString('JOHN', $csv->toString());
+
+        $csv = Reader::createFromPath($path);
+
+        self::assertStringNotContainsString('JOHN', $csv->toString());
+    }

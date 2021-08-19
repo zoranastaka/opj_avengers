@@ -1,0 +1,8 @@
+    /**
+     * @return bool
+     */
+
+    public function hasRowEchelonForm(): bool
+    {
+        return isset($this->REF);
+    }

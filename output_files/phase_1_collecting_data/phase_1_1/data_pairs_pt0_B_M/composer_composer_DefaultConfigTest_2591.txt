@@ -1,0 +1,9 @@
+    /**
+     * @group TLS
+     */
+
+    public function testDefaultValuesAreAsExpected()
+    {
+        $config = new Config;
+        $this->assertFalse($config->get('disable-tls'));
+    }

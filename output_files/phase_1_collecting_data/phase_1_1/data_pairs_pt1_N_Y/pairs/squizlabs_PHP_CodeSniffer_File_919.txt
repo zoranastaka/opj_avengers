@@ -1,0 +1,23 @@
+    /**
+     * Set the content of the file.
+     *
+     * Setting the content also calculates the EOL char being used.
+     *
+     * @param string $content The file content.
+     *
+     * @return void
+     */
+
+    public function setContent($content)
+    {
+        $this->content = $content;
+        $this->tokens  = [];
+
+        try {
+            $this->eolChar = Util\Common::detectLineEndings($content);
+        } catch (RuntimeException $e) {
+            $this->addWarningOnLine($e->getMessage(), 1, 'Internal.DetectLineEndings');
+            return;
+        }
+
+    }//end setContent()

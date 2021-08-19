@@ -1,0 +1,10 @@
+    /**
+     * Return the validation scores at each epoch from the last training session.
+     *
+     * @return float[]|null
+     */
+
+    public function scores() : ?array
+    {
+        return $this->scores;
+    }

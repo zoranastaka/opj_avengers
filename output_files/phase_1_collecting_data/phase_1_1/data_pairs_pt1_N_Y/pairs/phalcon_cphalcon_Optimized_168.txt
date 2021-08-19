@@ -1,0 +1,12 @@
+    /**
+     * @param string $sourceBuildDir
+     * @param string $output32Dir
+     * @param string $output64Dir
+     */
+
+    public function __construct(string $sourceBuildDir, string $output32Dir, string $output64Dir)
+    {
+        $this->sourceBuildDir = $sourceBuildDir;
+        $this->settings = $this->getPlatformsSettings($output32Dir, $output64Dir);
+        $this->filters = $this->getFilters();
+    }

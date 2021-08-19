@@ -1,0 +1,12 @@
+    /**
+     * @param Value[] $values
+     */
+
+    public function __construct(private string $name, $values)
+    {
+        $this->values = new SplObjectStorage();
+
+        foreach ($values as $value) {
+            $this->values->attach($value);
+        }
+    }

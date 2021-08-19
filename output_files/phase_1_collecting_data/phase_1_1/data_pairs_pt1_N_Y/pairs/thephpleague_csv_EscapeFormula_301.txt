@@ -1,0 +1,11 @@
+    /**
+     * Tells whether the submitted value is stringable.
+     *
+     * @param mixed $value value to check if it is stringable
+     */
+
+    protected function isStringable($value): bool
+    {
+        return is_string($value)
+            || (is_object($value) && method_exists($value, '__toString'));
+    }

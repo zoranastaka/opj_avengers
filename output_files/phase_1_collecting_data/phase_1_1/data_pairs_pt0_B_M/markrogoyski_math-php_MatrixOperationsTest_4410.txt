@@ -1,0 +1,16 @@
+    /**
+     * @test         covarianceMatrix
+     * @dataProvider dataProviderForCovarianceMatrix
+     */
+
+    public function testCovarianceMatrix(array $A, array $S)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $covarianceMatrix = $A->covarianceMatrix();
+
+        // Then
+        $this->assertEqualsWithDelta($S, $covarianceMatrix->getMatrix(), 0.0001);
+    }

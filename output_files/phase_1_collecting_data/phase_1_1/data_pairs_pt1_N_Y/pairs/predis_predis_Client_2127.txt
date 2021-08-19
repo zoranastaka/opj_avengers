@@ -1,0 +1,52 @@
+    /**
+     * Creates a new client using a specific underlying connection.
+     *
+     * This method allows to create a new client instance by picking a specific
+     * connection out of an aggregate one, with the same options of the original
+     * client instance.
+     *
+     * The specified selector defines which logic to use to look for a suitable
+     * connection by the specified value. Supported selectors are:
+     *
+     *   - `id`
+     *   - `key`
+     *   - `slot`
+     *   - `command`
+     *   - `alias`
+     *   - `role`
+     *
+     * Internally the client relies on duck-typing and follows this convention:
+     *
+     *   $selector string => getConnectionBy$selector($value) method
+     *
+     * This means that support for specific selectors may vary depending on the
+     * actual logic implemented by connection classes and there is no interface
+     * binding a connection class to implement any of these.
+     *
+     * @param string $selector Type of selector.
+     * @param mixed  $value    Value to be used by the selector.
+     *
+     * @return ClientInterface
+     */
+
+    public function getClientBy($selector, $value)
+    {
+        $selector = strtolower($selector);
+
+        if (!in_array($selector, array('id', 'key', 'slot', 'role', 'alias', 'command'))) {
+            throw new \InvalidArgumentException("Invalid selector type: `$selector`");
+        }
+
+        if (!method_exists($this->connection, $method = "getConnectionBy$selector")) {
+            $class = get_class($this->connection);
+            throw new \InvalidArgumentException("Selecting connection by $selector is not supported by $class");
+        }
+
+        if (!$connection = $this->connection->$method($value)) {
+            throw new \InvalidArgumentException("Cannot find a connection by $selector matching `$value`");
+        }
+
+        $client = new static($connection, $this->getOptions());
+
+        return $client;
+    }

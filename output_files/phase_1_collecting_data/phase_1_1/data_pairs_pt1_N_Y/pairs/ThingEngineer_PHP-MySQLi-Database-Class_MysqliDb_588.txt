@@ -1,0 +1,17 @@
+    /**
+     * Get where and what function was called for query stored in MysqliDB->trace
+     *
+     * @return string with information
+     */
+
+    private function _traceGetCaller()
+    {
+        $dd = debug_backtrace();
+        $caller = next($dd);
+        while (isset($caller) && $caller["file"] == __FILE__) {
+            $caller = next($dd);
+        }
+
+        return __CLASS__ . "->" . $caller["function"] . "() >>  file \"" .
+            str_replace($this->traceStripPrefix, '', $caller["file"]) . "\" line #" . $caller["line"] . " ";
+    }

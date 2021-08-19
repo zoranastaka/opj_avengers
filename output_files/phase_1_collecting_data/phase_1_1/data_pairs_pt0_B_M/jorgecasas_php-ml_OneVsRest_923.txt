@@ -1,0 +1,5 @@
+    /**
+     * Each classifier should implement this method instead of train(samples, targets)
+     */
+
+    abstract protected function trainBinary(array $samples, array $targets, array $labels);

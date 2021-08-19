@@ -1,0 +1,11 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function replace(array $attributes)
+    {
+        $this->attributes = [];
+        foreach ($attributes as $key => $value) {
+            $this->set($key, $value);
+        }
+    }

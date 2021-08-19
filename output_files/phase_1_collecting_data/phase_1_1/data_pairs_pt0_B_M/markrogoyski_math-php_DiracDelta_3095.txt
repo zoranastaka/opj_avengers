@@ -1,0 +1,10 @@
+    /**
+     * Mean of the distribution
+     *
+     * @return int
+     */
+
+    public function mean(): int
+    {
+        return 0;
+    }

@@ -1,0 +1,5 @@
+	/**
+	 * Locate user via AJAX.
+	 */
+
+	public static function get_customer_location() {

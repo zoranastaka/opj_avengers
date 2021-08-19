@@ -1,0 +1,18 @@
+    /**
+     * @test         cohensD
+     * @dataProvider dataProviderForCohensD
+     * @param        float $μ₁
+     * @param        float $μ₂
+     * @param        float $s₁
+     * @param        float $s₂
+     * @param        float $expected
+     */
+
+    public function testCohensD(float $μ₁, float $μ₂, float $s₁, float $s₂, float $expected)
+    {
+        // When
+        $d = EffectSize::cohensD($μ₁, $μ₂, $s₁, $s₂);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $d, 0.00001);
+    }

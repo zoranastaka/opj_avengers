@@ -1,0 +1,20 @@
+    /**
+     * @test         pdf
+     * @dataProvider dataProviderForPdf
+     * @param        float $x
+     * @param        float $α
+     * @param        float $β
+     * @param        float $expectedPdf
+     */
+
+    public function testPdf(float $x, float $α, float $β, float $expectedPdf)
+    {
+        // Given
+        $logLogistic = new LogLogistic($α, $β);
+
+        // When
+        $pdf = $logLogistic->pdf($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedPdf, $pdf, 0.000001);
+    }

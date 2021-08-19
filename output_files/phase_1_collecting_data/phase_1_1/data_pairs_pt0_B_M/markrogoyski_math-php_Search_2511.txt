@@ -1,0 +1,20 @@
+    /**
+     * Base argMax calculation
+     * Find the array index of the maximum value.
+     *
+     * In case of the maximum value appearing multiple times, the index of the first occurrence is returned.
+     *
+     * @param float[]|int[] $values
+     *
+     * @return int Index of the first occurrence of the maximum value
+     */
+
+    private static function baseArgMax(array $values): int
+    {
+        $max = \max($values);
+        foreach ($values as $i => $v) {
+            if ($v === $max) {
+                return $i;
+            }
+        }
+    }

@@ -1,0 +1,19 @@
+    /**
+     * @test         Minkowski distance
+     * @dataProvider dataProviderForMinkowskiDistance
+     * @param        float[] $x
+     * @param        float[] $y
+     * @param        int     $p
+     * @param        float   $expected
+     */
+
+    public function testMinkowski(array $x, array $y, int $p, float $expected)
+    {
+        // When
+        $distanceXy = Distance::minkowski($x, $y, $p);
+        $distanceYx = Distance::minkowski($y, $x, $p);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $distanceXy, 0.0000000001);
+        $this->assertEqualsWithDelta($expected, $distanceYx, 0.0000000001);
+    }

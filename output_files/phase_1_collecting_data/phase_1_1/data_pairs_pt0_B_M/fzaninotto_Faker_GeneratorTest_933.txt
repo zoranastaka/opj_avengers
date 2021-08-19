@@ -1,0 +1,11 @@
+    /**
+     * @expectedException InvalidArgumentException
+     */
+
+    public function testGetFormatterThrowsExceptionOnIncorrectFormatter()
+    {
+        $generator = new Generator;
+        $provider = new FooProvider();
+        $generator->addProvider($provider);
+        $generator->getFormatter('barFormatter');
+    }

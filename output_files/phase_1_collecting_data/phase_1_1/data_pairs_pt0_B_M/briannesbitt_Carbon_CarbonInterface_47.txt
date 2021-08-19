@@ -1,0 +1,10 @@
+    /**
+     * Get the farthest date from the instance (second-precision).
+     *
+     * @param \Carbon\Carbon|\DateTimeInterface|mixed $date1
+     * @param \Carbon\Carbon|\DateTimeInterface|mixed $date2
+     *
+     * @return static
+     */
+
+    public function farthest($date1, $date2);

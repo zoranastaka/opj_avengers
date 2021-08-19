@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function setRules(array $rules): ConfigInterface
+    {
+        $this->rules = $rules;
+
+        return $this;
+    }

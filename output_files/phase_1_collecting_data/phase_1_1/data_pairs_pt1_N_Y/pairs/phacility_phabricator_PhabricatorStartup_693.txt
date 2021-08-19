@@ -1,0 +1,16 @@
+  /**
+   * Get information about startup phase timings.
+   *
+   * Sometimes, performance problems can occur before we start the profiler.
+   * Since the profiler can't examine these phases, it isn't useful in
+   * understanding their performance costs.
+   *
+   * Instead, the startup process marks when it enters various phases using
+   * @{method:beginStartupPhase}. A later call to this method can retrieve this
+   * information, which can be examined to gain greater insight into where
+   * time was spent. The output is still crude, but better than nothing.
+   *
+   * @task phases
+   */
+
+  public static function getPhases() {

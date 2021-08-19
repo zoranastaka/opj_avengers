@@ -1,0 +1,24 @@
+    /**
+     * @test         Solve
+     * @dataProvider dataProviderForSolve
+     * @param        array $A
+     * @param        array $b
+     * @param        array $expected
+     * @throws       \Exception
+     */
+
+    public function testSolve(array $A, array $b, array $expected)
+    {
+        // Given
+        $A  = MatrixFactory::create($A);
+        $QR = $A->qrDecomposition();
+
+        // And
+        $expected = new Vector($expected);
+
+        // When
+        $x = $QR->solve($b);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $x, 0.00001);
+    }

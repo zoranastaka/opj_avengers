@@ -1,0 +1,10 @@
+    /**
+     * Build a key value array comprising of the claim name and value.
+     *
+     * @return array
+     */
+
+    public function toArray()
+    {
+        return [$this->getName() => $this->getValue()];
+    }

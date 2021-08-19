@@ -1,0 +1,13 @@
+    /**
+     * @dataProvider provideInvalidExtensions
+     */
+
+    public function testGetInvalidOperators(ExtensionInterface $extension, $expectedExceptionMessage)
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage($expectedExceptionMessage);
+
+        $env = new Environment($this->createMock(LoaderInterface::class));
+        $env->addExtension($extension);
+        $env->getUnaryOperators();
+    }

@@ -1,0 +1,14 @@
+    /**
+     * Validate the matrix is entirely m x n
+     *
+     * @throws Exception\BadDataException
+     */
+
+    protected function validateMatrixDimensions()
+    {
+        foreach ($this->A as $i => $row) {
+            if (\count($row) !== $this->n) {
+                throw new Exception\BadDataException("Row $i has a different column count: " . \count($row) . "; was expecting {$this->n}.");
+            }
+        }
+    }

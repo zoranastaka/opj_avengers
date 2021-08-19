@@ -1,0 +1,11 @@
+    /**
+     * @covers ::rewind
+     * @covers \League\Csv\UnavailableFeature::dueToMissingStreamSeekability
+     */
+
+    public function testRewindThrowsException(): void
+    {
+        $this->expectException(UnavailableFeature::class);
+        $stream = new Stream(fopen('php://stdin', 'r'));
+        $stream->rewind();
+    }

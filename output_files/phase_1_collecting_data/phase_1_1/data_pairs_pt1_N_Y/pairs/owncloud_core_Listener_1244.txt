@@ -1,0 +1,5 @@
+	/**
+	 * @param CommentsEvent $event
+	 */
+
+	public function commentEvent(CommentsEvent $event) {

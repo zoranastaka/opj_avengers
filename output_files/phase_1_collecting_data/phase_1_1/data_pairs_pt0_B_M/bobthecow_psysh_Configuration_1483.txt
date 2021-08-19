@@ -1,0 +1,31 @@
+    /**
+     * Initialize the configuration.
+     *
+     * This checks for the presence of Readline and Pcntl extensions.
+     *
+     * If a config file is available, it will be loaded and merged with the current config.
+     *
+     * If no custom config file was specified and a local project config file
+     * is available, it will be loaded and merged with the current config.
+     */
+
+    public function init()
+    {
+        // feature detection
+        $this->hasReadline = \function_exists('readline');
+        $this->hasPcntl = ProcessForker::isSupported();
+
+        if ($configFile = $this->getConfigFile()) {
+            $this->loadConfigFile($configFile);
+        }
+
+        if (!$this->configFile && $localConfig = $this->getLocalConfigFile()) {
+            $this->loadConfigFile($localConfig);
+        }
+
+        $this->configPaths->overrideDirs([
+            'configDir'  => $this->configDir,
+            'dataDir'    => $this->dataDir,
+            'runtimeDir' => $this->runtimeDir,
+        ]);
+    }

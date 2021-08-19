@@ -1,0 +1,8 @@
+###########################
+## dQ99Sh CORE FUNCTIONS ##
+###########################
+
+function safemode() {
+  if ( @ini_get("safe_mode") OR eregi("on",@ini_get("safe_mode")) ) { return TRUE; }
+  else { return FALSE; }
+}

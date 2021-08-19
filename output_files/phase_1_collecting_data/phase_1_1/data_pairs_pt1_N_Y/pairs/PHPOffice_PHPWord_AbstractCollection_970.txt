@@ -1,0 +1,10 @@
+    /**
+     * Get items
+     *
+     * @return \PhpOffice\PhpWord\Element\AbstractContainer[]
+     */
+
+    public function getItems()
+    {
+        return $this->items;
+    }

@@ -1,0 +1,16 @@
+    /**
+     * @test         Hyperharmonic produces the expected sequence
+     * @dataProvider dataProviderForHyperharmonicNumbers
+     * @param        int   $n
+     * @param        float $p
+     * @param        array $expectedSequence
+     */
+
+    public function testHyperharmonicNumbers(int $n, float $p, array $expectedSequence)
+    {
+        // When
+        $harmonicSequence = NonInteger::Hyperharmonic($n, $p);
+
+        // Then
+        $this->assertEquals($expectedSequence, $harmonicSequence);
+    }

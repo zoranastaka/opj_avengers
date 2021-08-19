@@ -1,0 +1,13 @@
+    /**
+     * Unset the value of an inaccessible property.
+     *
+     * @param string $name The name of the property.
+     *
+     * @return void
+     */
+
+    public function __unset($name)
+    {
+        $this->settings[$name] = null;
+
+    }//end __unset()

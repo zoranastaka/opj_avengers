@@ -1,0 +1,24 @@
+    /**
+     * @test         approximate e^x² (http://tutorial.math.lamar.edu/Classes/CalcII/ApproximatingDefIntegrals.aspx)
+     * @dataProvider dataProviderForEXSquared
+     * @param        int   $n
+     * @param        float $expected
+     * @param        float $tol
+     * @throws       \Exception
+     */
+
+    public function testApproximateUsingCallback2(int $n, float $expected, float $tol)
+    {
+        // Given e^x²
+        $func = function ($x) {
+            return M_E ** ($x ** 2);
+        };
+        $start    = 0;
+        $end      = 2;
+
+        // When
+        $x = TrapezoidalRule::approximate($func, $start, $end, $n);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $x, $tol);
+    }

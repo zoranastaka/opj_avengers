@@ -1,0 +1,14 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForHyperharmonicNumbers(): array
+    {
+        return [
+            [-1, 2, []],
+            [0, 2, []],
+            [1, 2, [1 => 1]],
+            [4, 2, [1 => 1, 5 / 4, 49 / 36, 205 / 144]],
+            [3, 1.01, [1 => 1, 1.4965462477, 1.8262375824425]],
+        ];
+    }

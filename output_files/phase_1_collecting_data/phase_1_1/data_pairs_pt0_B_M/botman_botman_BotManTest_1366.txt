@@ -1,0 +1,17 @@
+    /** @test */
+
+    public function it_does_not_hear_commands()
+    {
+        $called = false;
+
+        $botman = $this->getBot([
+            'user' => 'U0X12345',
+            'text' => 'bar',
+        ]);
+
+        $botman->hears('foo', function ($bot) use (&$called) {
+            $called = true;
+        });
+        $botman->listen();
+        $this->assertFalse($called);
+    }

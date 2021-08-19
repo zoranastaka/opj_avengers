@@ -1,0 +1,8 @@
+    /**
+     * This class makes the proper translation from one interface to another.
+     */
+
+    public function open()
+    {
+        $this->eBook->unlock();
+    }

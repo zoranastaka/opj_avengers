@@ -1,0 +1,13 @@
+    /**
+     * Sets the name generator to use for this factory
+     *
+     * @param NameGeneratorInterface $nameGenerator A generator to generate
+     *     binary data, based on a namespace and name
+     */
+
+    public function setNameGenerator(NameGeneratorInterface $nameGenerator): void
+    {
+        $this->isDefaultFeatureSet = false;
+
+        $this->nameGenerator = $nameGenerator;
+    }

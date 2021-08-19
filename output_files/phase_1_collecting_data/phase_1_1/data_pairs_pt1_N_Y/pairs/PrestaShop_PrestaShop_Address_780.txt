@@ -1,0 +1,28 @@
+    /**
+     * Check if the Country is active for a given address.
+     *
+     * @param int $id_address Address ID for which we want to get the Country status
+     *
+     * @return int Country status
+     */
+
+    public static function isCountryActiveById($id_address)
+    {
+        if (!isset($id_address) || empty($id_address)) {
+            return false;
+        }
+
+        $cache_id = 'Address::isCountryActiveById_' . (int) $id_address;
+        if (!Cache::isStored($cache_id)) {
+            $result = (bool) Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue('
+			SELECT c.`active`
+			FROM `' . _DB_PREFIX_ . 'address` a
+			LEFT JOIN `' . _DB_PREFIX_ . 'country` c ON c.`id_country` = a.`id_country`
+			WHERE a.`id_address` = ' . (int) $id_address);
+            Cache::store($cache_id, $result);
+
+            return $result;
+        }
+
+        return Cache::retrieve($cache_id);
+    }

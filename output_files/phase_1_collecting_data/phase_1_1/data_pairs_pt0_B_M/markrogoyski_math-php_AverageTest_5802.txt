@@ -1,0 +1,16 @@
+    /**
+     * @test         kthSmallest
+     * @dataProvider dataProviderForKthSmallest
+     * @param        array $numbers
+     * @param        int $k
+     * @param        float $expectedSmallest
+     */
+
+    public function testKthSmallest(array $numbers, int $k, float $expectedSmallest)
+    {
+        // When
+        $smallest = Average::kthSmallest($numbers, $k);
+
+        // Then
+        $this->assertEquals($expectedSmallest, $smallest);
+    }

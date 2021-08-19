@@ -1,0 +1,15 @@
+    /**
+     * @param \Rubix\ML\NeuralNet\Layers\Hidden[] $hiddenLayers
+     * @param int $batchSize
+     * @param \Rubix\ML\NeuralNet\Optimizers\Optimizer|null $optimizer
+     * @param float $alpha
+     * @param int $epochs
+     * @param float $minChange
+     * @param int $window
+     * @param float $holdOut
+     * @param \Rubix\ML\NeuralNet\CostFunctions\RegressionLoss|null $costFn
+     * @param \Rubix\ML\CrossValidation\Metrics\Metric|null $metric
+     * @throws \Rubix\ML\Exceptions\InvalidArgumentException
+     */
+
+    public function __construct(

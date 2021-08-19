@@ -1,0 +1,12 @@
+  /**
+   * Adjust `$_ENV` before execution.
+   *
+   * Adjustments here primarily impact the environment as seen by subprocesses.
+   * The environment is forwarded explicitly by @{class:ExecFuture}.
+   *
+   * @param map<string, wild> Input `$_ENV`.
+   * @return map<string, string> Suitable `$_ENV`.
+   * @task validation
+   */
+
+  private static function filterEnvSuperglobal(array $env) {

@@ -1,0 +1,10 @@
+    /**
+     * Returns current size of constraint
+     *
+     * @return \Intervention\Image\Size
+     */
+
+    public function getSize()
+    {
+        return $this->size;
+    }

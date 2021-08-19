@@ -1,0 +1,18 @@
+    /**
+     * @test
+     */
+
+    public function can_assert_against_a_fake_queued_export_with_chain()
+    {
+        ExcelFacade::fake();
+
+        ExcelFacade::queue(
+            $this->givenQueuedExport(), 'queued-filename.csv', 's3'
+        )->chain([
+            new ChainedJobStub(),
+        ]);
+
+        ExcelFacade::assertQueuedWithChain([
+            new ChainedJobStub(),
+        ]);
+    }

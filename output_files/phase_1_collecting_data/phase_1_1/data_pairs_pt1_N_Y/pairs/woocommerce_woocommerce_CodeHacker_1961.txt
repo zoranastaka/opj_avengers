@@ -1,0 +1,9 @@
+	/**
+	 * Advisory file locking.
+	 *
+	 * @param int $operation LOCK_SH, LOCK_EX, LOCK_UN, or LOCK_NB.
+	 *
+	 * @return bool TRUE on success or FALSE on failure.
+	 */
+
+	public function stream_lock( $operation ) {

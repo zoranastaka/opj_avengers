@@ -1,0 +1,22 @@
+    /**
+     * @return array|string
+     *
+     * @throws LibsvmCommandException
+     */
+
+    public function predict(array $samples)
+    {
+        $predictions = $this->runSvmPredict($samples, false);
+
+        if (in_array($this->type, [Type::C_SVC, Type::NU_SVC], true)) {
+            $predictions = DataTransformer::predictions($predictions, $this->targets);
+        } else {
+            $predictions = explode(PHP_EOL, trim($predictions));
+        }
+
+        if (!is_array($samples[0])) {
+            return $predictions[0];
+        }
+
+        return $predictions;
+    }

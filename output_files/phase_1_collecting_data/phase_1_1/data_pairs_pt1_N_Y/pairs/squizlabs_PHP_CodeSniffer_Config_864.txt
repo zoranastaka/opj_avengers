@@ -1,0 +1,13 @@
+    /**
+     * Check if the value of an inaccessible property is set.
+     *
+     * @param string $name The name of the property.
+     *
+     * @return bool
+     */
+
+    public function __isset($name)
+    {
+        return isset($this->settings[$name]);
+
+    }//end __isset()

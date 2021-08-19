@@ -1,0 +1,25 @@
+    /**
+     * Combines an array of arrays into one associative array.
+     *
+     * Each of the nested arrays should have one or two elements. The first
+     * value will be used as the keys in the associative array, and the second
+     * will be used as the values, or true if the nested array only contains one
+     * element. Array keys are lowercased.
+     *
+     * Example:
+     *
+     *     HeaderUtils::combine([["foo", "abc"], ["bar"]])
+     *     // => ["foo" => "abc", "bar" => true]
+     */
+
+    public static function combine(array $parts): array
+    {
+        $assoc = [];
+        foreach ($parts as $part) {
+            $name = strtolower($part[0]);
+            $value = $part[1] ?? true;
+            $assoc[$name] = $value;
+        }
+
+        return $assoc;
+    }

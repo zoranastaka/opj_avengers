@@ -1,0 +1,7 @@
+	/**
+	 * Convert a diff array into a pretty HTML report.
+	 * @param {Array.<Array.<number|string>>} diffs Array of diff tuples.
+	 * @return {string} HTML representation.
+	 */
+
+	function diff_prettyHtml($diffs) {

@@ -1,0 +1,22 @@
+    /**
+     * Recursively add specified CMSCategory childs to $toDelete array.
+     *
+     * @param array &$toDelete Array reference where categories ID will be saved
+     * @param array|int $id_cms_category Parent CMSCategory ID
+     */
+
+    protected function recursiveDelete(&$to_delete, $id_cms_category)
+    {
+        if (!is_array($to_delete) || !$id_cms_category) {
+            die(Tools::displayError());
+        }
+
+        $result = Db::getInstance()->executeS('
+		SELECT `id_cms_category`
+		FROM `' . _DB_PREFIX_ . 'cms_category`
+		WHERE `id_parent` = ' . (int) $id_cms_category);
+        foreach ($result as $row) {
+            $to_delete[] = (int) $row['id_cms_category'];
+            $this->recursiveDelete($to_delete, (int) $row['id_cms_category']);
+        }
+    }

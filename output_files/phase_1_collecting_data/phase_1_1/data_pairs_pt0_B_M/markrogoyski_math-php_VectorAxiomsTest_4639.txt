@@ -1,0 +1,21 @@
+    /**
+     * @test Axiom: projᵇA ⋅ perpᵇA = 0
+     * Dot product of proj and perp of A on B is 0
+     * @dataProvider dataProviderForProjPerp
+     */
+
+    public function testProjPerpDotProductEqualsZero(array $A, array $B)
+    {
+        // Given
+        $A = new Vector($A);
+        $B = new Vector($B);
+
+        // When
+        $projᵇA = $A->projection($B);
+        $perpᵇA = $A->perp($B);
+
+        $projᵇA⋅perpᵇA = $projᵇA->dotProduct($perpᵇA);
+
+        // Then
+        $this->assertEquals(0, $projᵇA⋅perpᵇA);
+    }

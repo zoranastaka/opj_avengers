@@ -1,0 +1,10 @@
+    /**
+     * @test         pmf
+     * @dataProvider dataProviderForTestHypergeometric
+     */
+
+    public function testHypergeometric(array $quantities, array $picks, $expected)
+    {
+        $dist = new Hypergeometric($quantities);
+        $this->assertEqualsWithDelta($expected, $dist->pmf($picks), 0.00000001);
+    }

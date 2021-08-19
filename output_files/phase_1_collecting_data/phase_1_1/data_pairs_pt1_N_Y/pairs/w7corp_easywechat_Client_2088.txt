@@ -1,0 +1,8 @@
+    /**
+     * @return string
+     */
+
+    protected function getAppId()
+    {
+        return $this->app['config']->get('app_id');
+    }

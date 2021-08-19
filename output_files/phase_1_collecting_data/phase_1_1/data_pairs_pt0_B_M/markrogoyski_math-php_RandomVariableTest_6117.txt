@@ -1,0 +1,13 @@
+    /**
+     * @test   sampleSkewness error when array has fewer than 3 elements
+     * @throws \Exception
+     */
+
+    public function testSampleSkewnessNullWhenSmallArray()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        RandomVariable::sampleSkewness([1, 2]);
+    }

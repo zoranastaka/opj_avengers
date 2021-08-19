@@ -1,0 +1,15 @@
+    /**
+     * @test         isDiagonal returns true for a diagonal matrix
+     * @dataProvider dataProviderForDiagonalMatrix
+     * @param        array $D
+     * @throws       \Exception
+     */
+
+    public function testIsDiagonal(array $D)
+    {
+        // Given
+        $D = MatrixFactory::create($D);
+
+        // Then
+        $this->assertTrue($D->isDiagonal());
+    }

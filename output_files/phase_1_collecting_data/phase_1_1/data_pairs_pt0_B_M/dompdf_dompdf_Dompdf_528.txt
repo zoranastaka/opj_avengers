@@ -1,0 +1,10 @@
+    /**
+     * Returns the HTTP context
+     *
+     * @return resource
+     */
+
+    public function getHttpContext()
+    {
+        return $this->httpContext;
+    }

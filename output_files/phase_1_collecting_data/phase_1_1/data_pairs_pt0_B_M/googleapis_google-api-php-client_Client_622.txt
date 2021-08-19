@@ -1,0 +1,9 @@
+  /**
+   * Set the login hint, email address or sub id.
+   * @param string $loginHint
+   */
+
+  public function setLoginHint($loginHint)
+  {
+    $this->config['login_hint'] = $loginHint;
+  }

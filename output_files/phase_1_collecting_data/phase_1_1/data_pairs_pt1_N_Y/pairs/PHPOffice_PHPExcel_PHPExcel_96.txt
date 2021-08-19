@@ -1,0 +1,31 @@
+     /**
+     * Create a new PHPExcel with one Worksheet
+     */
+
+    public function __construct()
+    {
+        $this->uniqueID = uniqid();
+        $this->calculationEngine = new PHPExcel_Calculation($this);
+
+        // Initialise worksheet collection and add one worksheet
+        $this->workSheetCollection = array();
+        $this->workSheetCollection[] = new PHPExcel_Worksheet($this);
+        $this->activeSheetIndex = 0;
+
+        // Create document properties
+        $this->properties = new PHPExcel_DocumentProperties();
+
+        // Create document security
+        $this->security = new PHPExcel_DocumentSecurity();
+
+        // Set named ranges
+        $this->namedRanges = array();
+
+        // Create the cellXf supervisor
+        $this->cellXfSupervisor = new PHPExcel_Style(true);
+        $this->cellXfSupervisor->bindParent($this);
+
+        // Create the default style
+        $this->addCellXf(new PHPExcel_Style);
+        $this->addCellStyleXf(new PHPExcel_Style);
+    }

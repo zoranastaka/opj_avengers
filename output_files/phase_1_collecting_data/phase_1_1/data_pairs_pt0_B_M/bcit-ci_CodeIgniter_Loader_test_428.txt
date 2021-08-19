@@ -1,0 +1,11 @@
+	// --------------------------------------------------------------------
+
+	public function test_non_existent_model()
+	{
+		$this->setExpectedException(
+			'RuntimeException',
+			'Unable to locate the model you have specified: Ci_test_nonexistent_model.php'
+		);
+
+		$this->load->model('ci_test_nonexistent_model.php');
+	}

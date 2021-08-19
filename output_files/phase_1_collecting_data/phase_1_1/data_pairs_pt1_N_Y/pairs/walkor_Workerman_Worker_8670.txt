@@ -1,0 +1,12 @@
+    /**
+     * Monitor all child processes.
+     *
+     * @return void
+     */
+
+    protected static function monitorWorkersForWindows()
+    {
+        Timer::add(1, "\\Workerman\\Worker::checkWorkerStatusForWindows");
+
+        static::$globalEvent->loop();
+    }

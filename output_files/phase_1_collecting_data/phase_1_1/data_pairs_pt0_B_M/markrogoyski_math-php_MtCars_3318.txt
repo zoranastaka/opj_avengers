@@ -1,0 +1,10 @@
+    /**
+     * Car model names
+     *
+     * @return string[]
+     */
+
+    public function getModels(): array
+    {
+        return \array_keys(self::DATA);
+    }

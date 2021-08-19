@@ -1,0 +1,15 @@
+    /**
+     * Checks if the sample should be normalized and if so, returns the
+     * normalized sample
+     */
+
+    protected function checkNormalizedSample(array $sample): array
+    {
+        if ($this->normalizer !== null) {
+            $samples = [$sample];
+            $this->normalizer->transform($samples);
+            $sample = $samples[0];
+        }
+
+        return $sample;
+    }

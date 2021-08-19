@@ -1,0 +1,64 @@
+    /**
+     * Two-sample t-test (Welch's test)
+     * Test the means of two samples.
+     * https://en.wikipedia.org/wiki/Student%27s_t-test
+     *
+     *        μ₁ - μ₂
+     * t = --------------
+     *        _________
+     *       /σ₁²   σ₂²
+     *      / --- + ---
+     *     √   n₁    n₂
+     *
+     *
+     *         / σ₁²   σ₂² \²
+     *        | --- + ---  |
+     *         \ n₁    n₂  /
+     * ν =  -------------------
+     *      (σ₁²/n₁)²  (σ₂²/n₂)²
+     *      -------- + --------
+     *       n₁ - 1     n₂ - 1
+     *
+     * where
+     *  μ₁ is sample mean 1
+     *  μ₂ is sample mean 2
+     *  σ₁ is standard deviation of sample mean 1
+     *  σ₂ is standard deviation of sample mean 2
+     *  n₁ is sample size of mean 1
+     *  n₂ is sample size of mean 2
+     *  t  is test statistic
+     *  ν  is degrees of freedom
+     *
+     * p1 = CDF above
+     * p2 = CDF outside
+     *
+     * @param array $x₁ sample set 1
+     * @param array $x₂ sample set 2
+     *
+     * @return array [
+     *   t     => t score
+     *   df    => degrees of freedom
+     *   p1    => one-tailed p value
+     *   p2    => two-tailed p value
+     *   mean1 => mean of sample set 1
+     *   mean2 => mean of sample set 2
+     *   sd1   => standard deviation of sample set 1
+     *   sd2   => standard deviation of sample set 2
+     * ]
+     *
+     * @throws Exception\OutOfBoundsException
+     */
+
+    public static function tTestTwoSample(array $x₁, array $x₂): array
+    {
+        $n₁ = \count($x₁);
+        $n₂ = \count($x₂);
+
+        $μ₁ = Average::mean($x₁);
+        $μ₂ = Average::mean($x₂);
+
+        $σ₁ = Descriptive::sd($x₁, Descriptive::SAMPLE);
+        $σ₂ = Descriptive::sd($x₂, Descriptive::SAMPLE);
+
+        return self::tTestTwoSampleFromSummaryData($μ₁, $μ₂, $n₁, $n₂, $σ₁, $σ₂);
+    }

@@ -1,0 +1,21 @@
+    /**
+     * Max norm (‖A‖max)
+     * Elementwise max
+     *
+     * @return number
+     */
+
+    public function maxNorm()
+    {
+        $m   = $this->m;
+        $n   = $this->n;
+        $max = \abs($this->A[0][0]);
+
+        for ($i = 0; $i < $m; $i++) {
+            for ($j = 0; $j < $n; $j++) {
+                $max = \max($max, \abs($this->A[$i][$j]));
+            }
+        }
+
+        return $max;
+    }

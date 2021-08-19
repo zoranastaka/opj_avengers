@@ -1,0 +1,10 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testConstructorDoesNotOpenConnection(): void
+    {
+        $connection = $this->createConnection();
+
+        $this->assertFalse($connection->isConnected());
+    }

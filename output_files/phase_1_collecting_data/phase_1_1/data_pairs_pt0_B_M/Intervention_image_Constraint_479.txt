@@ -1,0 +1,10 @@
+    /**
+     * Fixes aspect ratio in current constraint
+     *
+     * @return void
+     */
+
+    public function aspectRatio()
+    {
+        $this->fix(self::ASPECTRATIO);
+    }

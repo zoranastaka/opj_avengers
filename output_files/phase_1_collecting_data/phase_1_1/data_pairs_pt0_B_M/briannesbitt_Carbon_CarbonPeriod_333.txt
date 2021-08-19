@@ -1,0 +1,15 @@
+    /**
+     * Determines if the instance is equal to another.
+     * Warning: if options differ, instances wil never be equal.
+     *
+     * @param mixed $period
+     *
+     * @see equalTo()
+     *
+     * @return bool
+     */
+
+    public function eq($period): bool
+    {
+        return $this->equalTo($period);
+    }

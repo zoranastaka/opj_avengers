@@ -1,0 +1,8 @@
+    /**
+     * @param Matrix $A⁻¹
+     */
+
+    public function addInverse(Matrix $A⁻¹): void
+    {
+        $this->A⁻¹ = $A⁻¹;
+    }

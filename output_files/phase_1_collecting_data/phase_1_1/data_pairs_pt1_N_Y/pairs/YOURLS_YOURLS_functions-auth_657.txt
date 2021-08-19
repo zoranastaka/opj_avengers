@@ -1,0 +1,6 @@
+/**
+ * Check if timestamp is not too old
+ *
+ */
+
+function yourls_check_timestamp( $time ) {

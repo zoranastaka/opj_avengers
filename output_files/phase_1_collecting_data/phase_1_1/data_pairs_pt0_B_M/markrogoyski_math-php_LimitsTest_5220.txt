@@ -1,0 +1,8 @@
+    /**
+     * @test Limits constant is correct format
+     */
+
+    public function testChiSquaredSupportLimits()
+    {
+        $this->limitTest(Continuous\ChiSquared::SUPPORT_LIMITS);
+    }

@@ -1,0 +1,22 @@
+    /**
+     * @test         rowSubtractScalar
+     * @dataProvider dataProviderForRowSubtractScalar
+     * @param        array $A
+     * @param        int   $mᵢ
+     * @param        float $k
+     * @param        array $expectedMatrix
+     * @throws      \Exception
+     */
+
+    public function testRowSubtractScalar(array $A, int $mᵢ, float $k, array $expectedMatrix)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $expectedMatrix = MatrixFactory::create($expectedMatrix);
+
+        // When
+        $R = $A->rowSubtractScalar($mᵢ, $k);
+
+        // Then
+        $this->assertEquals($expectedMatrix, $R);
+    }

@@ -1,0 +1,26 @@
+    /**
+     * @test     preconditionExceptions throws an Exception\BadDataException if the functions are not callable
+     */
+
+    public function testConstructorPreconditionCallableException()
+    {
+        // Given
+        $intervals = [
+            [1, 2],
+            [2, 3],
+        ];
+        $functions = [
+            'not a function',
+            'certainly not callable',
+        ];
+
+        // And
+        $preconditions = new \ReflectionMethod(Piecewise::class, 'constructorPreconditions');
+        $preconditions->setAccessible(true);
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $preconditions->invokeArgs($this->piecewise, [$intervals, $functions]);
+    }

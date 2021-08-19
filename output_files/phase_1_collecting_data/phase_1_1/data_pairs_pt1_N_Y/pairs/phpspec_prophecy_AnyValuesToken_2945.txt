@@ -1,0 +1,10 @@
+    /**
+     * Returns true to stop wildcard from processing other tokens.
+     *
+     * @return bool
+     */
+
+    public function isLast()
+    {
+        return true;
+    }

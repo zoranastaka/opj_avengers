@@ -1,0 +1,17 @@
+    /**
+    * When a callback function is being evaluated at a specific point, find the
+    * the corresponding function for that point in the domain, and then return
+    * the function evaluated at that point. If no function is found, throw an Exception.
+    *
+    * @param float $x₀ The value at which we are evaluating our piecewise function
+    *
+    * @return float The specific function evaluated at $x₀
+    *
+    * @throws Exception\BadDataException if an interval cannot be found which contains our $x₀
+    */
+
+    public function __invoke(float $x₀): float
+    {
+        $function = $this->getFunction($x₀);
+        return $function($x₀);
+    }

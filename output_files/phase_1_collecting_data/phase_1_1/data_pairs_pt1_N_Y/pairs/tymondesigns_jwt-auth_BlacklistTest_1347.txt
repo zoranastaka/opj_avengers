@@ -1,0 +1,7 @@
+    /** @test */
+
+    public function it_should_set_and_get_the_blacklist_refresh_ttl()
+    {
+        $this->assertInstanceOf(Blacklist::class, $this->blacklist->setRefreshTTL(15));
+        $this->assertSame(15, $this->blacklist->getRefreshTTL());
+    }

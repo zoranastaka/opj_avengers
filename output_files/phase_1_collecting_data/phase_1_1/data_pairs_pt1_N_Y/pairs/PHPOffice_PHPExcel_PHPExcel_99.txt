@@ -1,0 +1,10 @@
+    /**
+     * Return the calculation engine for this worksheet
+     *
+     * @return PHPExcel_Calculation
+     */
+
+    public function getCalculationEngine()
+    {
+        return $this->calculationEngine;
+    }    //    function getCellCacheController()

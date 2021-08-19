@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function isCandidate(Tokens $tokens): bool
+    {
+        return $tokens->isTokenKindFound(T_DOC_COMMENT);
+    }

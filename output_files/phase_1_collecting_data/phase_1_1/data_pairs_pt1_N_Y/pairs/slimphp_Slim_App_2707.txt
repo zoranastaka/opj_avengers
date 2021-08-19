@@ -1,0 +1,10 @@
+    /**
+     * @param MiddlewareInterface|string|callable $middleware
+     * @return self
+     */
+
+    public function add($middleware): self
+    {
+        $this->middlewareDispatcher->add($middleware);
+        return $this;
+    }

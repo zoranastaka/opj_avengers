@@ -1,0 +1,15 @@
+    /**
+     * Return the importance scores of each feature column of the training set.
+     *
+     * @throws \Rubix\ML\Exceptions\RuntimeException
+     * @return float[]
+     */
+
+    public function featureImportances() : array
+    {
+        if (is_null($this->coefficients)) {
+            throw new RuntimeException('Learner has not been trained.');
+        }
+
+        return $this->coefficients->abs()->asArray();
+    }

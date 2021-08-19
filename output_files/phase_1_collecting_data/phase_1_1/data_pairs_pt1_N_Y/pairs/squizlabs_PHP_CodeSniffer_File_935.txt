@@ -1,0 +1,11 @@
+    /**
+     * Returns the number of warnings raised.
+     *
+     * @return int
+     */
+
+    public function getWarningCount()
+    {
+        return $this->warningCount;
+
+    }//end getWarningCount()

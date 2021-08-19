@@ -1,0 +1,22 @@
+    /**
+     * Is the matrix Hermitian?
+     *  - It is a square matrix
+     *  - A = Aᴴ
+     *
+     * https://en.wikipedia.org/wiki/Hermitian_matrix
+     * @return bool
+     *
+     * @throws Exception\MathException
+     */
+
+    public function isHermitian(): bool
+    {
+        if (!$this->isSquare()) {
+            return false;
+        }
+
+        // A = Aᴴ
+        $Aᴴ  = $this->conjugateTranspose();
+
+        return $this->isEqual($Aᴴ);
+    }

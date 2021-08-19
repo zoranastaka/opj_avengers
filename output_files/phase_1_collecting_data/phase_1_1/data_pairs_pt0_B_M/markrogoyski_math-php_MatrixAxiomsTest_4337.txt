@@ -1,0 +1,17 @@
+    /**
+     * @test Axiom: J⁻¹ = J
+     * Inverse of an exchange matrix is itself
+     * @throws \Exception
+     */
+
+    public function testInverseOfExchangeMatrix()
+    {
+        foreach (\range(1, 20) as $n) {
+            // Given
+            $J  = MatrixFactory::exchange($n);
+            // When
+            $J⁻¹ = $J->inverse();
+            // Then
+            $this->assertEquals($J->getMatrix(), $J⁻¹->getMatrix());
+        }
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Returns unique labels in the dataset
+     */
+
+    protected function getLabels(array $classes): array
+    {
+        $counts = array_count_values($classes);
+
+        return array_keys($counts);
+    }

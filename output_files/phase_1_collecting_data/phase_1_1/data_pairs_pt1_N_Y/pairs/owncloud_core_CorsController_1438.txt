@@ -1,0 +1,7 @@
+	/**
+	 * Checks whether a URL is valid
+	 * @param  string  $url URL to check
+	 * @return boolean      whether URL is valid
+	 */
+
+	private function isValidUrl(string $url) {

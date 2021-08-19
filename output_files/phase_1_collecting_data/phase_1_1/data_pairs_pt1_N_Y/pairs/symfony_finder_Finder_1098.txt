@@ -1,0 +1,18 @@
+    /**
+     * Sorts files and directories by an anonymous function.
+     *
+     * The anonymous function receives two \SplFileInfo instances to compare.
+     *
+     * This can be slow as all the matching files and directories must be retrieved for comparison.
+     *
+     * @return $this
+     *
+     * @see SortableIterator
+     */
+
+    public function sort(\Closure $closure)
+    {
+        $this->sort = $closure;
+
+        return $this;
+    }

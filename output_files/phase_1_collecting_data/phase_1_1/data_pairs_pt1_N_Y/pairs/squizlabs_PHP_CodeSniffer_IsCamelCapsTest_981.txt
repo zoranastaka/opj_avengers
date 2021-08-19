@@ -1,0 +1,20 @@
+    /**
+     * Test invalid private method names.
+     *
+     * @return void
+     */
+
+    public function testInvalidNotClassFormatPrivate()
+    {
+        $this->assertFalse(Common::isCamelCaps('thisIsCamelCaps', false, false, true));
+        $this->assertFalse(Common::isCamelCaps('_thisISCamelCaps', false, false, true));
+        $this->assertFalse(Common::isCamelCaps('_ThisIsCamelCaps', false, false, true));
+        $this->assertFalse(Common::isCamelCaps('__thisIsCamelCaps', false, false, true));
+        $this->assertFalse(Common::isCamelCaps('__thisISCamelCaps', false, false, false));
+
+        $this->assertFalse(Common::isCamelCaps('3thisIsCamelCaps', false, false, true));
+        $this->assertFalse(Common::isCamelCaps('*thisIsCamelCaps', false, false, true));
+        $this->assertFalse(Common::isCamelCaps('-thisIsCamelCaps', false, false, true));
+        $this->assertFalse(Common::isCamelCaps('_this_is_camel_caps', false, false, true));
+
+    }//end testInvalidNotClassFormatPrivate()

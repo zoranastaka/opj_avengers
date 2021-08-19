@@ -1,0 +1,10 @@
+    /**
+     * Gets the flashbag interface.
+     *
+     * @return FlashBagInterface
+     */
+
+    public function getFlashBag()
+    {
+        return $this->getBag($this->flashName);
+    }

@@ -1,0 +1,18 @@
+	/**
+	 * TODO - FIXME This fixes an issue with base.php that cause cyclic
+	 * dependencies, especially with autoconfig setup
+	 *
+	 * Replace this by properly injected database connection. Currently the
+	 * base.php triggers the getDatabaseConnection too early which causes in
+	 * autoconfig setup case a too early distributed database connection and
+	 * the autoconfig then needs to reinit all already initialized dependencies
+	 * that use the database connection.
+	 *
+	 * otherwise a SQLite database is created in the wrong directory
+	 * because the database connection was created with an uninitialized config
+	 */
+
+	private function fixDIInit() {
+		if ($this->connection === null) {
+			$this->connection = \OC::$server->getDatabaseConnection();
+		}

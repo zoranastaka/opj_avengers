@@ -1,0 +1,10 @@
+    /**
+     * Gets the process idle timeout (max. time since last output).
+     *
+     * @return float|null The timeout in seconds or null if it's disabled
+     */
+
+    public function getIdleTimeout()
+    {
+        return $this->idleTimeout;
+    }

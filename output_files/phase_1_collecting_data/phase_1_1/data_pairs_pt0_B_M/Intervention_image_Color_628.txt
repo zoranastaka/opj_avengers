@@ -1,0 +1,25 @@
+    /**
+     * Initiates color object from given array
+     *
+     * @param  array $value
+     * @return \Intervention\Image\AbstractColor
+     */
+
+    public function initFromArray($array)
+    {
+        $array = array_values($array);
+
+        if (count($array) == 4) {
+
+            // color array with alpha value
+            list($r, $g, $b, $a) = $array;
+
+        } elseif (count($array) == 3) {
+
+            // color array without alpha value
+            list($r, $g, $b) = $array;
+            $a = 1;
+        }
+
+        $this->setPixel($r, $g, $b, $a);
+    }

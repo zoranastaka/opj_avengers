@@ -1,0 +1,5 @@
+    /**
+     * @dataProvider replaceProvider()
+     */
+
+    public function testReplace($expected, $str, $search, $replacement,

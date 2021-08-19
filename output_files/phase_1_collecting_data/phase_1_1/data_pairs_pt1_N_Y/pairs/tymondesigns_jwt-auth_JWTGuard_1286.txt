@@ -1,0 +1,10 @@
+    /**
+     * Alias for getPayload().
+     *
+     * @return \Tymon\JWTAuth\Payload
+     */
+
+    public function payload()
+    {
+        return $this->getPayload();
+    }

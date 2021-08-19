@@ -1,0 +1,15 @@
+    /**
+     * @test isqrt error when value is negative
+     */
+
+    public function testIsqrtNegativeNumberIsBadParameterError()
+    {
+        // Given
+        $x = -1;
+
+        // Then
+        $this->expectException(Exception\BadParameterException::class);
+
+        // When
+        Arithmetic::isqrt($x);
+    }

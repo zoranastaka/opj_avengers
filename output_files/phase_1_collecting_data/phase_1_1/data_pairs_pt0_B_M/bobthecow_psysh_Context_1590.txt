@@ -1,0 +1,10 @@
+    /**
+     * Get the bound object ($this variable) for the interactive shell.
+     *
+     * @return object|null
+     */
+
+    public function getBoundObject()
+    {
+        return $this->boundObject;
+    }

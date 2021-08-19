@@ -1,0 +1,11 @@
+    /**
+     * Get the equation
+     * Uses the model's getModelEquation method.
+     *
+     * @return string
+     */
+
+    public function getEquation(): string
+    {
+        return $this->getModelEquation($this->parameters);
+    }

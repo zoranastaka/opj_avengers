@@ -1,0 +1,24 @@
+    /**
+     * @test Fluent interface
+     */
+
+    public function testFluentInterface()
+    {
+        // Given
+        $A = new Set();
+        $B = new Set([3, 4, 7, new Set([1, 2, 3])]);
+
+        // When
+        $A->add(1)
+          ->add(2)
+          ->add(3)
+          ->remove(2)
+          ->add(4)
+          ->remove(1)
+          ->addMulti([5, 6, 7])
+          ->add(new Set([1, 2, 3]))
+          ->removeMulti([5, 6]);
+
+        // Then
+        $this->assertEquals($B, $A);
+    }

@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function add(string $type, $message)
+    {
+        $this->flashes['new'][$type][] = $message;
+    }

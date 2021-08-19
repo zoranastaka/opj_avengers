@@ -1,0 +1,22 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderDet(): array
+    {
+        return [
+            [
+                [
+                    [new Polynomial([1, 0])],
+                ],
+                new Polynomial([1, 0]),
+            ],
+            [
+                [
+                    [new Polynomial([1, 0]), new Polynomial([1, 0])],
+                    [new Polynomial([1, 0]), new Polynomial([0, 4])],
+                ],
+                new Polynomial([-1, 4, 0]),
+            ],
+        ];
+    }

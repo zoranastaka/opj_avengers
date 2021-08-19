@@ -1,0 +1,14 @@
+	/**
+	 * Locate the best instance of 'pattern' in 'text' near 'loc' using the
+	 * Bitap algorithm.
+	 * @param {string} text The text to search.
+	 * @param {string} pattern The pattern to search for.
+	 * @param {number} loc The location to search around.
+	 * @return {number} Best match index or -1.
+	 * @private
+	 */
+
+	function match_bitap($text, $pattern, $loc) {
+		if (mb_strlen($pattern) > Match_MaxBits) {
+			echo_Exception('Pattern too long for this browser.');
+		}

@@ -1,0 +1,9 @@
+    /**
+     * Returns standardized plural of a given singular/plural unit name (in English).
+     *
+     * @param string $unit
+     *
+     * @return string
+     */
+
+    public static function pluralUnit(string $unit): string;

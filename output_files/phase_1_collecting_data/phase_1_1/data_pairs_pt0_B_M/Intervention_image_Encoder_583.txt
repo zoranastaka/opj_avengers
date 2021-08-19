@@ -1,0 +1,16 @@
+    /**
+     * Processes and returns encoded image as GIF string
+     *
+     * @return string
+     */
+
+    protected function processGif()
+    {
+        ob_start();
+        imagegif($this->image->getCore());
+        $this->image->mime = image_type_to_mime_type(IMAGETYPE_GIF);
+        $buffer = ob_get_contents();
+        ob_end_clean();
+
+        return $buffer;
+    }

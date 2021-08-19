@@ -1,0 +1,7 @@
+    /**
+     * Sets the authentication token to authenticate with.
+     *
+     * @param string $token_auth authentication token
+     */
+
+    public function setTokenAuth($token_auth);

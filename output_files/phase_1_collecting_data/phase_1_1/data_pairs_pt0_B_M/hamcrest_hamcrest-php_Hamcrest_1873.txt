@@ -1,0 +1,8 @@
+    /**
+     * Is the value an integer?
+     */
+
+    function intValue()
+    {
+        return \Hamcrest\Type\IsInteger::integerValue();
+    }

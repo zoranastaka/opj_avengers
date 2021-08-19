@@ -1,0 +1,17 @@
+    /**
+     * Is the matrix invertible? (Regular nonsingular matrix)
+     * Convenience method for isNonsingular.
+     * https://en.wikipedia.org/wiki/Invertible_matrix
+     * http://mathworld.wolfram.com/NonsingularMatrix.html
+     *
+     * @return bool true if invertible; false otherwise.
+     *
+     * @throws Exception\MatrixException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\BadParameterException
+     */
+
+    public function isInvertible(): bool
+    {
+        return $this->isNonsingular();
+    }

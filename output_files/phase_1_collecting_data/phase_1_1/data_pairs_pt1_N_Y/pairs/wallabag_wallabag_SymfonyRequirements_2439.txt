@@ -1,0 +1,10 @@
+    /**
+     * Returns the help text formatted in HTML.
+     *
+     * @return string The HTML help
+     */
+
+    public function getHelpHtml()
+    {
+        return $this->helpHtml;
+    }

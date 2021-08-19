@@ -1,0 +1,7 @@
+    /**
+     * Relative path from the bundle root to the directory where mapping files reside.
+     *
+     * @return string
+     */
+
+    abstract protected function getMappingResourceConfigDirectory();

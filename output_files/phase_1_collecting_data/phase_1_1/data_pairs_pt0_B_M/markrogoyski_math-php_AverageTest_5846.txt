@@ -1,0 +1,17 @@
+    /**
+     * @test   generalizedMean with a p of negative infinity
+     * @throws \Exception
+     */
+
+    public function testGeneralizedMeanPEqualsNegativeInfinityIsMin()
+    {
+        // Given
+        $numbers = [3, 6, 2, 9, 1, 7, 2];
+        $p       = -\INF;
+
+        // When
+        $mean = Average::generalizedMean($numbers, $p);
+
+        // Then
+        $this->assertEquals(\min($numbers), $mean);
+    }

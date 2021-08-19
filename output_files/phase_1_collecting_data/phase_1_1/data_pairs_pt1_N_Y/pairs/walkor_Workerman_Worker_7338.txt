@@ -1,0 +1,10 @@
+    /**
+     * Get all worker instances.
+     *
+     * @return array
+     */
+
+    public static function getAllWorkers()
+    {
+        return static::$_workers;
+    }

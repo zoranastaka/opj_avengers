@@ -1,0 +1,19 @@
+    /**
+     * @test   LU decomposition exception for matrix not being square
+     * @throws \Exception
+     */
+
+    public function testLUDecompositionExceptionNotSquare()
+    {
+        // Given
+        $A = MatrixFactory::create([
+            [1, 2, 3],
+            [2, 3, 4],
+        ]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $A->luDecomposition();
+    }

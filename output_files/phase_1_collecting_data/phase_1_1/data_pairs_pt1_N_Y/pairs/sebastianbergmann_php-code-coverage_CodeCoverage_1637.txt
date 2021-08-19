@@ -1,0 +1,10 @@
+    /**
+     * Clears collected code coverage data.
+     */
+
+    public function clear(): void
+    {
+        $this->currentId = null;
+        $this->data      = new ProcessedCodeCoverageData;
+        $this->tests     = [];
+    }

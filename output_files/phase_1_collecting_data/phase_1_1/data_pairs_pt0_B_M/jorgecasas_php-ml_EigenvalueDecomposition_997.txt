@@ -1,0 +1,9 @@
+    /**
+     * Return the imaginary parts of the eigenvalues <br>
+     *  d = imag(diag(D))
+     */
+
+    public function getImagEigenvalues(): array
+    {
+        return $this->e;
+    }

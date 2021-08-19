@@ -1,0 +1,19 @@
+    /**
+     * @test         inverse
+     * @dataProvider dataProviderForInverse
+     * @param        float $p
+     * @param        float $ν
+     * @param        float $x
+     */
+
+    public function testInverse(float $p, float $ν, float $x)
+    {
+        // Given
+        $studentT = new StudentT($ν);
+
+        // When
+        $inverse = $studentT->inverse($p);
+
+        // Then
+        $this->assertEqualsWithDelta($x, $inverse, 0.00001);
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider checksumProvider
+     */
+
+    public function testChecksum($iban, $checksum)
+    {
+        $this->assertEquals($checksum, Iban::checksum($iban), $iban);
+    }

@@ -1,0 +1,9 @@
+    /** @test */
+
+    public function it_should_get_a_claim_instance_by_name()
+    {
+        $collection = $this->getCollection();
+
+        $this->assertInstanceOf(Expiration::class, $collection->getByClaimName('exp'));
+        $this->assertInstanceOf(Subject::class, $collection->getByClaimName('sub'));
+    }

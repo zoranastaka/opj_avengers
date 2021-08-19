@@ -1,0 +1,10 @@
+    /**
+     * @requires PHP
+     */
+
+    public function testIsPhpReturnsTrueWhenRunningOnPhp(): void
+    {
+        $this->markTestSkippedWhenRunningOnPhpdbg();
+
+        $this->assertTrue($this->env->isPHP());
+    }

@@ -1,0 +1,9 @@
+    /**
+     * Sets the learning rate if gradient descent algorithm is
+     * selected for training
+     */
+
+    public function setLearningRate(float $learningRate): void
+    {
+        $this->learningRate = $learningRate;
+    }

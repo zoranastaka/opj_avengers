@@ -1,0 +1,53 @@
+    /**
+     * Stop.
+     *
+     * @return void
+     */
+
+    public static function stopAll()
+    {
+        static::$_status = static::STATUS_SHUTDOWN;
+        // For master process.
+        if (static::$_masterPid === \posix_getpid()) {
+            static::log("Workerman[" . \basename(static::$_startFile) . "] stopping ...");
+            $worker_pid_array = static::getAllWorkerPids();
+            // Send stop signal to all child processes.
+            if (static::$_gracefulStop) {
+                $sig = \SIGHUP;
+            } else {
+                $sig = \SIGINT;
+            }
+            foreach ($worker_pid_array as $worker_pid) {
+                \posix_kill($worker_pid, $sig);
+                if(!static::$_gracefulStop){
+                    Timer::add(static::KILL_WORKER_TIMER_TIME, '\posix_kill', array($worker_pid, \SIGKILL), false);
+                }
+            }
+            Timer::add(1, "\\Workerman\\Worker::checkIfChildRunning");
+            // Remove statistics file.
+            if (\is_file(static::$_statisticsFile)) {
+                @\unlink(static::$_statisticsFile);
+            }
+        } // For child processes.
+        else {
+            // Execute exit.
+            foreach (static::$_workers as $worker) {
+                if(!$worker->stopping){
+                    $worker->stop();
+                    $worker->stopping = true;
+                }
+            }
+            if (!static::$_gracefulStop || ConnectionInterface::$statistics['connection_count'] <= 0) {
+                static::$_workers = array();
+                if (static::$globalEvent) {
+                    static::$globalEvent->destroy();
+                }
+
+                try {
+                    exit(0);
+                } catch (Exception $e) {
+
+                }
+            }
+        }
+    }

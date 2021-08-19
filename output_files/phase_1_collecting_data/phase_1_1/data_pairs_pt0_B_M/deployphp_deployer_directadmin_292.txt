@@ -1,0 +1,19 @@
+/**
+ * getDirectAdminConfig
+ *
+ * @return array
+ */
+
+function getDirectAdminConfig()
+{
+    $config = get('directadmin', []);
+
+    if (!is_array($config) ||
+        !isset($config['host']) ||
+        !isset($config['username']) ||
+        !isset($config['password']) ) {
+        throw new \RuntimeException("Please set the following DirectAdmin config:" . PHP_EOL . "set('directadmin', ['host' => '127.0.0.1', 'port' => 2222, 'username' => 'admin', 'password' => 'password']);");
+    }
+
+    return $config;
+}

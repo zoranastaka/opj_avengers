@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider dataProviderForShannonEntropy
+     */
+
+    public function testShannonEntropy(array $p, $expected)
+    {
+        // When
+        $H = Entropy::shannonEntropy($p);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $H, 0.001);
+    }

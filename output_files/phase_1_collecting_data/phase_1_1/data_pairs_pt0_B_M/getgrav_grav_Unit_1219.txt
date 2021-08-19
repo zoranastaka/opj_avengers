@@ -1,0 +1,10 @@
+    /**
+     * HOOK: on fail
+     *
+     * @param Codeception\TestCase $test
+     * @param $fail
+     */
+
+    public function _failed(Codeception\TestCase $test, $fail)
+    {
+    }

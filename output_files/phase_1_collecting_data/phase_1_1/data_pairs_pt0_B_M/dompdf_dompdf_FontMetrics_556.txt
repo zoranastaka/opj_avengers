@@ -1,0 +1,11 @@
+    /**
+     * @param $font
+     * @param $size
+     * @return float
+     * @deprecated
+     */
+
+    public function get_font_height($font, $size)
+    {
+        return $this->getFontHeight($font, $size);
+    }

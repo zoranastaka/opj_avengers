@@ -1,0 +1,10 @@
+    /**
+     * Retrieve the User-Agent.
+     *
+     * @return string|null The user agent if it's set.
+     */
+
+    public function getUserAgent()
+    {
+        return $this->userAgent;
+    }

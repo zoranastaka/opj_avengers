@@ -1,0 +1,7 @@
+    /**
+     * Returns the total number of pages
+     *
+     * @return int
+     */
+
+    function get_page_count();

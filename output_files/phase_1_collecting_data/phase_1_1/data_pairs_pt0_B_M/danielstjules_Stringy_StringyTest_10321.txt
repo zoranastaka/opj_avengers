@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider toStringProvider()
+     */
+
+    public function testToString($expected, $str)
+    {
+        $this->assertEquals($expected, (string) new S($str));
+    }

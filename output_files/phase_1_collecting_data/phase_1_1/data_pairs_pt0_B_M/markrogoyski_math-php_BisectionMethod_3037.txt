@@ -1,0 +1,32 @@
+    /**
+     * Verify the input arguments are valid for correct use of the bisection
+     * method. If the tolerance is less than zero, an Exception will be thrown.
+     * If f($a) and f($b) have the same sign, we cannot use the intermediate
+     * value theorem to guarantee a root is between $a and $b. This exposes the
+     * risk of an endless loop, so we throw an Exception. If $a = $b, then clearly
+     * we cannot run our loop as $a and $b will themselves be the midpoint, so we
+     * throw an Exception.
+     *
+     * @param Callable $function f(x) callback function
+     * @param number   $a        The start of the interval which contains a root
+     * @param number   $b        The end of the interval which contains a root
+     * @param number   $tol      Tolerance; How close to the actual solution we would like.
+     *
+     * @throws Exception\OutOfBoundsException if $tol (the tolerance) is negative
+     * @throws Exception\BadDataException if $a = $b
+     * @throws Exception\BadDataException if f($a) and f($b) share the same sign
+     */
+
+    private static function validate(callable $function, $a, $b, $tol)
+    {
+        Validation::tolerance($tol);
+        Validation::interval($a, $b);
+
+        $f⟮a⟯ = $function($a);
+        $f⟮b⟯ = $function($b);
+        if (Special::sgn($f⟮a⟯) === Special::sgn($f⟮b⟯)) {
+            throw new Exception\BadDataException(
+                'Input function has the same sign at the start and end of the interval. Choose start and end points such that the function evaluated at those points has a different sign (one positive, one negative).'
+            );
+        }
+    }

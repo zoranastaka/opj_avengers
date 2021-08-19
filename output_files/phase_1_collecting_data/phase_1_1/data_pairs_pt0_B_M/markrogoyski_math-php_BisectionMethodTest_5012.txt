@@ -1,0 +1,23 @@
+    /**
+     * @test   Solve with negative tolerance
+     * @throws \Exception
+     */
+
+    public function testBisectionMethodExceptionNegativeTolerance()
+    {
+        // Given
+        $func = function ($x) {
+            return $x ** 4 + 8 * $x ** 3 - 13 * $x ** 2 - 92 * $x + 96;
+        };
+
+        // And
+        $tol = -0.00001;
+        $a   = 0;
+        $b   = 2;
+
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        $x = BisectionMethod::solve($func, $a, $b, $tol);
+    }

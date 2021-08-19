@@ -1,0 +1,9 @@
+	/**
+	 * Return a 20 digit device password
+	 *
+	 * Example: ABCDE-FGHIJ-KLMNO-PQRST
+	 *
+	 * @return string
+	 */
+
+	private function generateRandomDeviceToken() {

@@ -1,0 +1,15 @@
+    /********************************************************************************
+     * Route collector proxy methods
+     *******************************************************************************/
+
+    public function upperCaseRequestMethodsProvider()
+    {
+        return [
+            ['GET'],
+            ['POST'],
+            ['PUT'],
+            ['PATCH'],
+            ['DELETE'],
+            ['OPTIONS'],
+        ];
+    }

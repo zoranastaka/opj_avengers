@@ -1,0 +1,18 @@
+    /**
+     * @test         incompleteBeta returns the expected value
+     * @dataProvider dataProviderForIncompleteBeta
+     * @param        float $x
+     * @param        float $a
+     * @param        float $b
+     * @param        float $ib
+     * @throws       \Exception
+     */
+
+    public function testIncompleteBeta(float $x, float $a, float $b, float $ib)
+    {
+        // When
+        $incompleteBeta = Special::incompleteBeta($x, $a, $b);
+
+        // Then
+        $this->assertEqualsWithDelta($ib, $incompleteBeta, 0.0001);
+    }

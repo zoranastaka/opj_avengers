@@ -1,0 +1,47 @@
+/**
+ * This function converts the
+ * submitted Decimal Number to
+ * Hexadecimal Number.
+ *
+ * @param string $decimalNumber
+ * @return string
+ */
+
+function decimalToHex($decimalNumber)
+{
+    $hexDigits = [];
+
+    // Mapping for HexaDecimal Digits after 9
+    $hexDigitMappings = [
+        10 => 'A',
+        11 => 'B',
+        12 => 'C',
+        13 => 'D',
+        14 => 'E',
+        15 => 'F',
+    ];
+    if (!is_numeric($decimalNumber)) {
+        throw new \Exception('Please pass a valid Decimal Number for Converting it to a Hexadecimal Number.');
+    }
+
+    while ($decimalNumber > 0) {
+        $remainder = ($decimalNumber % 16);
+        $decimalNumber /= 16;
+        if (empty($hexDigits) && 0 === $remainder) {
+            continue;
+        }
+        $hexDigits[] = $remainder;
+    }
+
+    $hexDigits = array_reverse($hexDigits);
+
+    foreach ($hexDigits as $index => $digit) {
+        if ($digit > 9) {
+            $hexDigits[$index] = $hexDigitMappings[$digit];
+        }
+    }
+
+    $hexNumber = ltrim(implode('', $hexDigits), '0'); // Connecting all the digits and removing leading zeroes.
+
+    return $hexNumber;
+}

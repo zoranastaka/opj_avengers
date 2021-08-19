@@ -1,0 +1,9 @@
+    /**
+     * Returns the formatter component.
+     * @return \yii\i18n\Formatter the formatter application component.
+     */
+
+    public function getFormatter()
+    {
+        return $this->get('formatter');
+    }

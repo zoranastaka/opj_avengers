@@ -1,0 +1,111 @@
+    /**
+     * This helper method takes care of prepared statements' "bind_result method
+     * , when the number of variables to pass is unknown.
+     *
+     * @param mysqli_stmt $stmt Equal to the prepared statement object.
+     *
+     * @return array|string The results of the SQL fetch.
+     * @throws Exception
+     */
+
+    protected function _dynamicBindResults(mysqli_stmt $stmt)
+    {
+        $parameters = array();
+        $results = array();
+        /**
+         * @see http://php.net/manual/en/mysqli-result.fetch-fields.php
+         */
+        $mysqlLongType = 252;
+        $shouldStoreResult = false;
+
+        $meta = $stmt->result_metadata();
+
+        // if $meta is false yet sqlstate is true, there's no sql error but the query is
+        // most likely an update/insert/delete which doesn't produce any results
+        if (!$meta && $stmt->sqlstate)
+            return array();
+
+        $row = array();
+        while ($field = $meta->fetch_field()) {
+            if ($field->type == $mysqlLongType) {
+                $shouldStoreResult = true;
+            }
+
+            if ($this->_nestJoin && $field->table != $this->_tableName) {
+                $field->table = substr($field->table, strlen(self::$prefix));
+                $row[$field->table][$field->name] = null;
+                $parameters[] = & $row[$field->table][$field->name];
+            } else {
+                $row[$field->name] = null;
+                $parameters[] = & $row[$field->name];
+            }
+        }
+
+        // avoid out of memory bug in php 5.2 and 5.3. Mysqli allocates lot of memory for long*
+        // and blob* types. So to avoid out of memory issues store_result is used
+        // https://github.com/joshcam/PHP-MySQLi-Database-Class/pull/119
+        if ($shouldStoreResult) {
+            $stmt->store_result();
+        }
+
+        call_user_func_array(array($stmt, 'bind_result'), $parameters);
+
+        $this->totalCount = 0;
+        $this->count = 0;
+
+        while ($stmt->fetch()) {
+            if ($this->returnType == 'object') {
+                $result = new stdClass ();
+                foreach ($row as $key => $val) {
+                    if (is_array($val)) {
+                        $result->$key = new stdClass ();
+                        foreach ($val as $k => $v) {
+                            $result->$key->$k = $v;
+                        }
+                    } else {
+                        $result->$key = $val;
+                    }
+                }
+            } else {
+                $result = array();
+                foreach ($row as $key => $val) {
+                    if (is_array($val)) {
+                        foreach ($val as $k => $v) {
+                            $result[$key][$k] = $v;
+                        }
+                    } else {
+                        $result[$key] = $val;
+                    }
+                }
+            }
+            $this->count++;
+            if ($this->_mapKey) {
+                $results[$row[$this->_mapKey]] = count($row) > 2 ? $result : end($result);
+            } else {
+                array_push($results, $result);
+            }
+        }
+
+        if ($shouldStoreResult) {
+            $stmt->free_result();
+        }
+
+        $stmt->close();
+
+        // stored procedures sometimes can return more then 1 resultset
+        if ($this->mysqli()->more_results()) {
+            $this->mysqli()->next_result();
+        }
+
+        if (in_array('SQL_CALC_FOUND_ROWS', $this->_queryOptions)) {
+            $stmt = $this->mysqli()->query('SELECT FOUND_ROWS()');
+            $totalCount = $stmt->fetch_row();
+            $this->totalCount = $totalCount[0];
+        }
+
+        if ($this->returnType == 'json') {
+            return json_encode($results);
+        }
+
+        return $results;
+    }

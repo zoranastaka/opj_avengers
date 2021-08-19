@@ -1,0 +1,10 @@
+	/**
+	 * Work from the middle back to the end to determine the path.
+	 * @param {Array.<Object>} v_map Array of paths.
+	 * @param {string} text1 Old string fragment to be diffed.
+	 * @param {string} text2 New string fragment to be diffed.
+	 * @return {Array.<Array.<number|string>>} Array of diff tuples.
+	 * @private
+	 */
+
+	function diff_path2($v_map, $text1, $text2) {

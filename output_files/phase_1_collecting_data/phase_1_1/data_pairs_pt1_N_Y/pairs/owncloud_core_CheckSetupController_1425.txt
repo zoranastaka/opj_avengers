@@ -1,0 +1,11 @@
+	/**
+	 * Check if the used  SSL lib is outdated. Older OpenSSL and NSS versions do
+	 * have multiple bugs which likely lead to problems in combination with
+	 * functionality required by ownCloud such as SNI.
+	 *
+	 * @link https://github.com/owncloud/core/issues/17446#issuecomment-122877546
+	 * @link https://bugzilla.redhat.com/show_bug.cgi?id=1241172
+	 * @return string
+	 */
+
+	private function isUsedTlsLibOutdated() {

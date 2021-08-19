@@ -1,0 +1,24 @@
+    #
+    # Reference
+
+    protected function blockReference($Line)
+    {
+        if (strpos($Line['text'], ']') !== false
+            and preg_match('/^\[(.+?)\]:[ ]*+<?(\S+?)>?(?:[ ]+["\'(](.+)["\')])?[ ]*+$/', $Line['text'], $matches)
+        ) {
+            $id = strtolower($matches[1]);
+
+            $Data = array(
+                'url' => $matches[2],
+                'title' => isset($matches[3]) ? $matches[3] : null,
+            );
+
+            $this->DefinitionData['Reference'][$id] = $Data;
+
+            $Block = array(
+                'element' => array(),
+            );
+
+            return $Block;
+        }
+    }

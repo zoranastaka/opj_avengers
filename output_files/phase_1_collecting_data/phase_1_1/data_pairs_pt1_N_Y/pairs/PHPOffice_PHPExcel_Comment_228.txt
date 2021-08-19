@@ -1,0 +1,10 @@
+    /**
+     * Get fill color
+     *
+     * @return PHPExcel_Style_Color
+     */
+
+    public function getFillColor()
+    {
+        return $this->fillColor;
+    }

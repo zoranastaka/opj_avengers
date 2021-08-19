@@ -1,0 +1,14 @@
+    /**
+     * @covers Whoops\Exception\FrameCollection::getArray
+     */
+
+    public function testGetArray()
+    {
+        $frames = $this->getFrameCollectionInstance();
+        $frames = $frames->getArray();
+
+        $this->assertCount(10, $frames);
+        foreach ($frames as $frame) {
+            $this->assertInstanceOf('Whoops\\Exception\\Frame', $frame);
+        }
+    }

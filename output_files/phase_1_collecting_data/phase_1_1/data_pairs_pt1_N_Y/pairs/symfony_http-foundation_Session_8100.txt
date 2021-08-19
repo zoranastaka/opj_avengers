@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function isStarted()
+    {
+        return $this->storage->isStarted();
+    }

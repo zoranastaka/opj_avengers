@@ -1,0 +1,16 @@
+    /**
+     * @test         isSymmetric returns false for nonsymmetric matrices.
+     * @dataProvider dataProviderForNotSymmetricMatrix
+     * @dataProvider dataProviderForNotSquareMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsNotSymmetric(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isSymmetric());
+    }

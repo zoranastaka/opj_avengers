@@ -1,0 +1,14 @@
+/**
+ * get msgid
+ * 
+ * @param string $value
+ * @return string
+ */
+
+function get_msgid($value) {
+    if ($value[0] == '"') {
+        return $value;
+    } else {
+        $value = trim($value, "'");
+        return '"' . str_replace('"', '\"', $value) . '"';
+    }

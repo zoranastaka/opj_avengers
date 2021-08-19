@@ -1,0 +1,9 @@
+    /**
+     * @param $methodName
+     * @param $callable
+     */
+
+    public static function extend($methodName, $callable)
+    {
+        self::$extensions[$methodName] = $callable;
+    }

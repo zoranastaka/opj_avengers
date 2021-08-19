@@ -1,0 +1,72 @@
+    /**
+     * 自动分段 
+     * 
+     * @param string $text 
+     * @static
+     * @access private
+     * @return string
+     */
+
+    public function parse($text)
+    {
+        /** 重置计数器 */
+        $this->_uniqueId = 0;
+        $this->_blocks = array();
+        
+        /** 将已有的段落后面的换行处理掉 */
+        $text = preg_replace(array("/<\/p>\s+<p(\s*)/is", "/\s*<br\s*\/?>\s*/is"), array("</p><p\\1", "<br />"), trim($text));
+        
+        /** 将所有非自闭合标签解析为唯一的字符串 */
+        $foundTagCount = 0;
+        $textLength = strlen($text);
+        $uniqueIdList = array();
+
+        if (preg_match_all("/<\/\s*([a-z0-9]+)>/is", $text, $matches, PREG_OFFSET_CAPTURE)) {
+            foreach ($matches[0] as $key => $match) {
+                $tag = $matches[1][$key][0];
+                
+                $leftOffset = $match[1] - $textLength;
+                $posSingle = strrpos($text, '<' . $tag . '>', $leftOffset);
+                $posFix = strrpos($text, '<' . $tag . ' ', $leftOffset);
+                $pos = false;
+                
+                switch (true) {
+                    case (false !== $posSingle && false !== $posFix):
+                        $pos = max($posSingle, $posFix);
+                        break;
+                    case false === $posSingle && false !== $posFix:
+                        $pos = $posFix;
+                        break;
+                    case false !== $posSingle && false === $posFix:
+                        $pos = $posSingle;
+                        break;
+                    default:
+                        break;
+                }
+                
+                if (false !== $pos) {
+                    $uniqueId = $this->makeUniqueId();
+                    $uniqueIdList[$uniqueId] = $tag;
+                    $tagLength = strlen($tag);
+                    
+                    $text = substr_replace($text, $uniqueId, $pos + 1 + $tagLength, 0);
+                    $text = substr_replace($text, $uniqueId, $match[1] + 7 + $foundTagCount * 10 + $tagLength, 0); // 7 = 5 + 2
+                    $foundTagCount ++;
+                }
+            }
+        }
+        
+        foreach ($uniqueIdList as $uniqueId => $tag) {
+            $text = preg_replace_callback("/<({$tag})({$uniqueId})([^>]*)>(.*)<\/\\1\\2>/is",
+                array($this, 'replaceBlockCallback'), $text, 1);
+        }
+        
+        $text = $this->cutByBlock($text);
+        $blocks = array_reverse($this->_blocks);
+        
+        foreach ($blocks as $blockKey => $blockValue) {
+            $text = str_replace($blockKey, $blockValue, $text);
+        }
+        
+        return $this->fixPragraph($text);        
+    }

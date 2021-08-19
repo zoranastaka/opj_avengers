@@ -1,0 +1,13 @@
+    /**
+     * Disable reflection caching
+     *
+     * It should be always enabled, except when using
+     * PHPUnit's --static-backup option.
+     *
+     * @see https://github.com/mockery/mockery/issues/268
+     */
+
+    public function disableReflectionCache()
+    {
+        $this->_reflectionCacheEnabled = false;
+    }

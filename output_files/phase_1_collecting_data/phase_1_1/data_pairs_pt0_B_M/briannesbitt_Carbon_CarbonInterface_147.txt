@@ -1,0 +1,9 @@
+    /**
+     * Set the fallback locale.
+     *
+     * @see https://symfony.com/doc/current/components/translation.html#fallback-locales
+     *
+     * @param string $locale
+     */
+
+    public static function setFallbackLocale($locale);

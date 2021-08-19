@@ -1,0 +1,4 @@
+	//JA BI OVO OBRISALA
+	//vraća sve ponude neke tvrtke (ne šaljemo oib nego ime tvrtke)
+
+	function get_offers_by_company($tvrtka){

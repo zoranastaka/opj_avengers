@@ -1,0 +1,19 @@
+    /**
+     * @test         LU decomposition - L and U properties
+     * @dataProvider dataProviderForLUDecomposition
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testLUDecompositionLAndUProperties(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $LU = $A->luDecomposition();
+
+        // Then
+        $this->assertTrue($LU->L->isLowerTriangular());
+        $this->assertTrue($LU->U->isUpperTriangular());
+    }

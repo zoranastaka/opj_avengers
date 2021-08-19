@@ -1,0 +1,11 @@
+    /**
+     * @return array [sensitivity, specificity]
+     */
+
+    public function dataProviderForLikelihoodRatioSS(): array
+    {
+        return [
+            [0.67, 0.91, ['LL+' => 7.4444, 'LL-' => 0.3626]],
+            [0.90, 0.85, ['LL+' => 6, 'LL-' => 0.1176]]
+        ];
+    }

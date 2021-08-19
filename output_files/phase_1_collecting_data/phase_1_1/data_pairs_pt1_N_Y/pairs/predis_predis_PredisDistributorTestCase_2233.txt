@@ -1,0 +1,11 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testEmptyRingThrowsException(): void
+    {
+        $this->expectException('Predis\Cluster\Distributor\EmptyRingException');
+
+        $distributor = $this->getDistributorInstance();
+        $distributor->getByHash('nodehash');
+    }

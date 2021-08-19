@@ -1,0 +1,10 @@
+    /**
+     * Reset styles.
+     *
+     * @since 0.10.0
+     */
+
+    public static function resetStyles()
+    {
+        self::$styles = array();
+    }

@@ -1,0 +1,13 @@
+    /**
+     * @test   getColumn throws Exception\MatrixException if the column does not exist
+     * @throws \Exception
+     */
+
+    public function testGetColumnException()
+    {
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $this->matrix->getColumn(8);
+    }

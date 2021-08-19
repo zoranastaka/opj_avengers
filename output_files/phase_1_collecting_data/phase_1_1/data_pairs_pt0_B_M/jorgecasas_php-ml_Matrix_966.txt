@@ -1,0 +1,8 @@
+    /**
+     * Returns the transpose of given array
+     */
+
+    public static function transposeArray(array $array): array
+    {
+        return (new self($array, false))->transpose()->toArray();
+    }

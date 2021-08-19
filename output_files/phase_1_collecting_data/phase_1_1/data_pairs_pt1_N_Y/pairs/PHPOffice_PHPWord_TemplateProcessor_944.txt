@@ -1,0 +1,10 @@
+    /**
+     * Returns array of all variables in template.
+     *
+     * @return string[]
+     */
+
+    public function getVariables()
+    {
+        return array_keys($this->getVariableCount());
+    }

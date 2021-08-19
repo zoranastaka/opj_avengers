@@ -1,0 +1,16 @@
+    /**
+     * @test         twoWay using two sample sets
+     * @dataProvider dataProviderForTwoWayTwoAs
+     * @param        array $A₁
+     * @param        array $A₂
+     * @param        array $expected
+     */
+
+    public function testTwoWayTwoAs(array $A₁, array $A₂, array $expected)
+    {
+        // When
+        $anova = ANOVA::twoWay($A₁, $A₂);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $anova['ANOVA'], 0.001);
+    }

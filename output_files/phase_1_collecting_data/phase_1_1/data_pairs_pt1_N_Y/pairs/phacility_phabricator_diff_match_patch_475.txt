@@ -1,0 +1,8 @@
+	/**
+	 * Initialise the alphabet for the Bitap algorithm.
+	 * @param {string} pattern The text to encode.
+	 * @return {Object} Hash of character locations.
+	 * @private
+	 */
+
+	function match_alphabet($pattern) {

@@ -1,0 +1,5 @@
+    /**
+     * @dataProvider longestCommonSuffixProvider()
+     */
+
+    public function testLongestCommonSuffix($expected, $str, $otherStr,

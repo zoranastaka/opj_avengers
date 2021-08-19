@@ -1,0 +1,5 @@
+    /**
+     * @param $node
+     */
+
+    private function appendToRealParent($node) {

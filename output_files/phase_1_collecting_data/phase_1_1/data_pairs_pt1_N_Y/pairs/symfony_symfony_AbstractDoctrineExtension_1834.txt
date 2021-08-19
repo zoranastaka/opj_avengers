@@ -1,0 +1,77 @@
+    /**
+     * Loads a cache driver.
+     *
+     * @return string
+     *
+     * @throws \InvalidArgumentException
+     */
+
+    protected function loadCacheDriver(string $cacheName, string $objectManagerName, array $cacheDriver, ContainerBuilder $container)
+    {
+        $cacheDriverServiceId = $this->getObjectManagerElementName($objectManagerName.'_'.$cacheName);
+
+        switch ($cacheDriver['type']) {
+            case 'service':
+                $container->setAlias($cacheDriverServiceId, new Alias($cacheDriver['id'], false));
+
+                return $cacheDriverServiceId;
+            case 'memcached':
+                $memcachedClass = !empty($cacheDriver['class']) ? $cacheDriver['class'] : '%'.$this->getObjectManagerElementName('cache.memcached.class').'%';
+                $memcachedInstanceClass = !empty($cacheDriver['instance_class']) ? $cacheDriver['instance_class'] : '%'.$this->getObjectManagerElementName('cache.memcached_instance.class').'%';
+                $memcachedHost = !empty($cacheDriver['host']) ? $cacheDriver['host'] : '%'.$this->getObjectManagerElementName('cache.memcached_host').'%';
+                $memcachedPort = !empty($cacheDriver['port']) ? $cacheDriver['port'] : '%'.$this->getObjectManagerElementName('cache.memcached_port').'%';
+                $cacheDef = new Definition($memcachedClass);
+                $memcachedInstance = new Definition($memcachedInstanceClass);
+                $memcachedInstance->addMethodCall('addServer', [
+                    $memcachedHost, $memcachedPort,
+                ]);
+                $container->setDefinition($this->getObjectManagerElementName(sprintf('%s_memcached_instance', $objectManagerName)), $memcachedInstance);
+                $cacheDef->addMethodCall('setMemcached', [new Reference($this->getObjectManagerElementName(sprintf('%s_memcached_instance', $objectManagerName)))]);
+                break;
+             case 'redis':
+                $redisClass = !empty($cacheDriver['class']) ? $cacheDriver['class'] : '%'.$this->getObjectManagerElementName('cache.redis.class').'%';
+                $redisInstanceClass = !empty($cacheDriver['instance_class']) ? $cacheDriver['instance_class'] : '%'.$this->getObjectManagerElementName('cache.redis_instance.class').'%';
+                $redisHost = !empty($cacheDriver['host']) ? $cacheDriver['host'] : '%'.$this->getObjectManagerElementName('cache.redis_host').'%';
+                $redisPort = !empty($cacheDriver['port']) ? $cacheDriver['port'] : '%'.$this->getObjectManagerElementName('cache.redis_port').'%';
+                $cacheDef = new Definition($redisClass);
+                $redisInstance = new Definition($redisInstanceClass);
+                $redisInstance->addMethodCall('connect', [
+                    $redisHost, $redisPort,
+                ]);
+                $container->setDefinition($this->getObjectManagerElementName(sprintf('%s_redis_instance', $objectManagerName)), $redisInstance);
+                $cacheDef->addMethodCall('setRedis', [new Reference($this->getObjectManagerElementName(sprintf('%s_redis_instance', $objectManagerName)))]);
+                break;
+            case 'apc':
+            case 'apcu':
+            case 'array':
+            case 'xcache':
+            case 'wincache':
+            case 'zenddata':
+                $cacheDef = new Definition('%'.$this->getObjectManagerElementName(sprintf('cache.%s.class', $cacheDriver['type'])).'%');
+                break;
+            default:
+                throw new \InvalidArgumentException(sprintf('"%s" is an unrecognized Doctrine cache driver.', $cacheDriver['type']));
+        }
+
+        $cacheDef->setPublic(false);
+
+        if (!isset($cacheDriver['namespace'])) {
+            // generate a unique namespace for the given application
+            if ($container->hasParameter('cache.prefix.seed')) {
+                $seed = $container->getParameterBag()->resolveValue($container->getParameter('cache.prefix.seed'));
+            } else {
+                $seed = '_'.$container->getParameter('kernel.project_dir');
+                $seed .= '.'.$container->getParameter('kernel.container_class');
+            }
+
+            $namespace = 'sf_'.$this->getMappingResourceExtension().'_'.$objectManagerName.'_'.ContainerBuilder::hash($seed);
+
+            $cacheDriver['namespace'] = $namespace;
+        }
+
+        $cacheDef->addMethodCall('setNamespace', [$cacheDriver['namespace']]);
+
+        $container->setDefinition($cacheDriverServiceId, $cacheDef);
+
+        return $cacheDriverServiceId;
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Find the end position of the nearest table row after $offset.
+     *
+     * @param int $offset
+     *
+     * @return int
+     */
+
+    protected function findRowEnd($offset)
+    {
+        return strpos($this->tempDocumentMainPart, '</w:tr>', $offset) + 7;
+    }

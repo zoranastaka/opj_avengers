@@ -1,0 +1,10 @@
+    /**
+     * @return \Generator
+     */
+
+    public function dataProviderForOddNumbers(): \Generator
+    {
+        foreach (\range(-11, 101, 2) as $x) {
+            yield [$x];
+        }
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @return Decomposition\Cholesky
+     */
+
+    public function getCholeskyDecomposition(): Decomposition\Cholesky
+    {
+        return $this->cholesky;
+    }

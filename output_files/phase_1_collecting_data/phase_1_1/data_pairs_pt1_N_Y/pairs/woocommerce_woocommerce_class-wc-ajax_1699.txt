@@ -1,0 +1,17 @@
+	/**
+	 * Mark an order with a status.
+	 */
+
+	public static function mark_order_status() {
+		if ( current_user_can( 'edit_shop_orders' ) && check_admin_referer( 'woocommerce-mark-order-status' ) && isset( $_GET['status'], $_GET['order_id'] ) ) {
+			$status = sanitize_text_field( wp_unslash( $_GET['status'] ) );
+			$order  = wc_get_order( absint( wp_unslash( $_GET['order_id'] ) ) );
+
+			if ( wc_is_order_status( 'wc-' . $status ) && $order ) {
+				// Initialize payment gateways in case order has hooked status transition actions.
+				WC()->payment_gateways();
+
+				$order->update_status( $status, '', true );
+				do_action( 'woocommerce_order_edit_status', $order->get_id(), $status );
+			}
+		}

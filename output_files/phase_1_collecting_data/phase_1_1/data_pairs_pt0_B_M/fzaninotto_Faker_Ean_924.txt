@@ -1,0 +1,16 @@
+    /**
+     * Checks whether the provided number is an EAN compliant number and that
+     * the checksum is correct.
+     *
+     * @param string $ean An EAN number
+     * @return boolean
+     */
+
+    public static function isValid($ean)
+    {
+        if (!preg_match(self::PATTERN, $ean)) {
+            return false;
+        }
+
+        return self::checksum(substr($ean, 0, -1)) === intval(substr($ean, -1));
+    }

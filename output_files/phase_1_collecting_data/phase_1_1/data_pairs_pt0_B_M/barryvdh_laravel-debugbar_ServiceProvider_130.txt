@@ -1,0 +1,11 @@
+    /**
+     * Register the Debugbar Middleware
+     *
+     * @param  string $middleware
+     */
+
+    protected function registerMiddleware($middleware)
+    {
+        $kernel = $this->app[Kernel::class];
+        $kernel->pushMiddleware($middleware);
+    }

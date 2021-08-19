@@ -1,0 +1,9 @@
+    /**
+     * Remove event listener from event loop.
+     *
+     * @param mixed $fd
+     * @param int   $flag
+     * @return bool
+     */
+
+    public function del($fd, $flag);

@@ -1,0 +1,55 @@
+    /**
+     * Returns archive IDs for the sites, periods and archive names that are being
+     * queried. This function will use the idarchive cache if it has the right data,
+     * query archive tables for IDs w/o launching archiving, or launch archiving and
+     * get the idarchive from ArchiveProcessor instances.
+     *
+     * @param string $archiveNames
+     * @return array
+     */
+
+    private function getArchiveIds($archiveNames)
+    {
+        $plugins = $this->getRequestedPlugins($archiveNames);
+
+        // figure out which archives haven't been processed (if an archive has been processed,
+        // then we have the archive IDs in $this->idarchives)
+        $doneFlags     = array();
+        $archiveGroups = array();
+        foreach (array_merge($plugins, ['all']) as $plugin) {
+            $doneFlag = $this->getDoneStringForPlugin($plugin, $this->params->getIdSites());
+
+            $doneFlags[$doneFlag] = true;
+            if (!isset($this->idarchives[$doneFlag])) {
+                $archiveGroup = $this->getArchiveGroupOfPlugin($plugin);
+
+                if ($archiveGroup === self::ARCHIVE_ALL_PLUGINS_FLAG) {
+                    $archiveGroup = reset($plugins);
+                }
+                $archiveGroups[] = $archiveGroup;
+            }
+
+            $doneFlag = Rules::getDoneFlagArchiveContainsOnePlugin($this->params->getSegment(), $plugin);
+            $doneFlags[$doneFlag] = true;
+        }
+
+        $globalDoneFlag = Rules::getDoneFlagArchiveContainsAllPlugins($this->params->getSegment());
+        $doneFlags[$globalDoneFlag] = true;
+
+        $archiveGroups = array_unique($archiveGroups);
+
+        // cache id archives for plugins we haven't processed yet
+        if (!empty($archiveGroups)) {
+            if (Rules::isArchivingEnabledFor($this->params->getIdSites(), $this->params->getSegment(), $this->getPeriodLabel())
+                && !$this->forceFetchingWithoutLaunchingArchiving
+            ) {
+                $this->cacheArchiveIdsAfterLaunching($archiveGroups, $plugins);
+            } else {
+                $this->cacheArchiveIdsWithoutLaunching($plugins);
+            }
+        }
+
+        $idArchivesByMonth = $this->getIdArchivesByMonth($doneFlags);
+
+        return $idArchivesByMonth;
+    }

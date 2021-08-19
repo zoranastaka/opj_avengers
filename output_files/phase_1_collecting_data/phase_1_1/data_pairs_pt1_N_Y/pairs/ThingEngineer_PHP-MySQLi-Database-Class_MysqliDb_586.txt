@@ -1,0 +1,15 @@
+    /**
+     * Transaction rollback function
+     *
+     * @uses mysqli->rollback();
+     * @uses mysqli->autocommit(true);
+     * @throws Exception
+     */
+
+    public function rollback()
+    {
+        $result = $this->mysqli()->rollback();
+        $this->_transaction_in_progress = false;
+        $this->mysqli()->autocommit(true);
+        return $result;
+    }

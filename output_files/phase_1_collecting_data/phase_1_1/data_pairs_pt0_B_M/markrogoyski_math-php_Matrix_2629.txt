@@ -1,0 +1,17 @@
+    /**
+     * Get single column from the matrix
+     *
+     * @param  int   $j column index (from 0 to n - 1)
+     * @return array
+     *
+     * @throws Exception\MatrixException if column j does not exist
+     */
+
+    public function getColumn(int $j): array
+    {
+        if ($j >= $this->n) {
+            throw new Exception\MatrixException("Column $j does not exist");
+        }
+
+        return \array_column($this->A, $j);
+    }

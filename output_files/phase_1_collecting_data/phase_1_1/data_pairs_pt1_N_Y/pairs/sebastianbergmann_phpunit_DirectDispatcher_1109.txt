@@ -1,0 +1,23 @@
+    /**
+     * @throws UnknownSubscriberTypeException
+     */
+
+    public function registerSubscriber(Subscriber $subscriber): void
+    {
+        if (!$this->typeMap->isKnownSubscriberType($subscriber)) {
+            throw new UnknownSubscriberTypeException(
+                sprintf(
+                    'Subscriber "%s" does not implement any known interface - did you forget to register it?',
+                    $subscriber::class
+                )
+            );
+        }
+
+        $eventClassName = $this->typeMap->map($subscriber);
+
+        if (!array_key_exists($eventClassName, $this->subscribers)) {
+            $this->subscribers[$eventClassName] = [];
+        }
+
+        $this->subscribers[$eventClassName][] = $subscriber;
+    }

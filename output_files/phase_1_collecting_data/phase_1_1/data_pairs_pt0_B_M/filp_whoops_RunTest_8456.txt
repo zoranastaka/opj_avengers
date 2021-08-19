@@ -1,0 +1,10 @@
+    /**
+     * @covers Whoops\Run::pushHandler
+     */
+
+    public function testPushClosureBecomesHandler()
+    {
+        $run = $this->getRunInstance();
+        $run->pushHandler(function () {});
+        $this->assertInstanceOf('Whoops\\Handler\\CallbackHandler', $run->popHandler());
+    }

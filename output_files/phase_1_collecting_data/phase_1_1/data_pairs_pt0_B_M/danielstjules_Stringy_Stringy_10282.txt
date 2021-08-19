@@ -1,0 +1,10 @@
+    /**
+     * Returns true if the string is base64 encoded, false otherwise.
+     *
+     * @return bool Whether or not $str is base64 encoded
+     */
+
+    public function isBase64()
+    {
+        return (base64_encode(base64_decode($this->str, true)) === $this->str);
+    }

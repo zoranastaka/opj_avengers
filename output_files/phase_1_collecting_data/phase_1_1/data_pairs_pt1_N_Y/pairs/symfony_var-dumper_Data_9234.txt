@@ -1,0 +1,15 @@
+    /**
+     * Enables/disables objects' identifiers tracking.
+     *
+     * @param bool $useRefHandles False to hide global ref. handles
+     *
+     * @return static
+     */
+
+    public function withRefHandles(bool $useRefHandles)
+    {
+        $data = clone $this;
+        $data->useRefHandles = $useRefHandles ? -1 : 0;
+
+        return $data;
+    }

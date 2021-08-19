@@ -1,0 +1,18 @@
+   /**
+    * Creates HTML attribute string from array
+    *
+    * @param    array   Attribute array
+    * @return   string  Attribute string
+    */
+
+    protected static function getAttributesString($attributes)
+    {
+        $str = '';
+        if (is_array($attributes)) {
+            $charset = self::getOption('charset');
+            foreach ($attributes as $key => $value) {
+                $str .= ' ' . $key . '="' . htmlspecialchars($value, ENT_QUOTES, $charset) . '"';
+            }
+        }
+        return $str;
+    }

@@ -1,0 +1,12 @@
+	/**
+	 * Returns a specific child node, referenced by its name
+	 *
+	 * This method must throw Sabre\DAV\Exception\NotFound if the node does not
+	 * exist.
+	 *
+	 * @param string $name
+	 * @return \Sabre\DAV\INode
+	 * @throws NotFound
+	 */
+
+	public function getChild($name) {

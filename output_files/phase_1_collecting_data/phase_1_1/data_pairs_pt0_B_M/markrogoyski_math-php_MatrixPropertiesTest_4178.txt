@@ -1,0 +1,15 @@
+    /**
+     * @test         isSquare returns false for nonsquare matrices.
+     * @dataProvider dataProviderForNotSquareMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsSquareFalseNonSquareMatrix(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isSquare());
+    }

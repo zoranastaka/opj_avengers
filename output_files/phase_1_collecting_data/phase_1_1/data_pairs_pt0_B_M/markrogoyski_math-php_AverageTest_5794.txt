@@ -1,0 +1,17 @@
+    /**
+     * @test         weightedMean
+     * @dataProvider dataProviderForWeightedMean
+     * @param        array $numbers
+     * @param        array $weights
+     * @param        float $expectedMean
+     * @throws       \Exception
+     */
+
+    public function testWeightedMean(array $numbers, array $weights, float $expectedMean)
+    {
+        // When
+        $mean = Average::weightedMean($numbers, $weights);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedMean, $mean, 0.0001);
+    }

@@ -1,0 +1,20 @@
+    /**
+     * Sorts files and directories by the last inode changed time.
+     *
+     * This is the time that the inode information was last modified (permissions, owner, group or other metadata).
+     *
+     * On Windows, since inode is not available, changed time is actually the file creation time.
+     *
+     * This can be slow as all the matching files and directories must be retrieved for comparison.
+     *
+     * @return $this
+     *
+     * @see SortableIterator
+     */
+
+    public function sortByChangedTime()
+    {
+        $this->sort = Iterator\SortableIterator::SORT_BY_CHANGED_TIME;
+
+        return $this;
+    }

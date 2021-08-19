@@ -1,0 +1,15 @@
+    /**
+     * @test         hexagonalNumber
+     * @dataProvider dataProviderForHexagonalNumber
+     * @param        int $n
+     * @param        array $expected_hexagonal
+     */
+
+    public function testHexagonalNumber(int $n, array $expected_hexagonal)
+    {
+        // When
+        $hexagonal = Advanced::hexagonalNumber($n);
+
+        // Then
+        $this->assertEquals($expected_hexagonal, $hexagonal);
+    }

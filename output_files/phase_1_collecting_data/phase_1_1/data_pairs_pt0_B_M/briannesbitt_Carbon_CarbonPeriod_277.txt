@@ -1,0 +1,24 @@
+    /**
+     * Return whether given variable is an ISO 8601 specification.
+     *
+     * Note: Check is very basic, as actual validation will be done later when parsing.
+     * We just want to ensure that variable is not any other type of a valid parameter.
+     *
+     * @param mixed $var
+     *
+     * @return bool
+     */
+
+    protected static function isIso8601($var)
+    {
+        if (!\is_string($var)) {
+            return false;
+        }
+
+        // Match slash but not within a timezone name.
+        $part = '[a-z]+(?:[_-][a-z]+)*';
+
+        preg_match("#\b$part/$part\b|(/)#i", $var, $match);
+
+        return isset($match[1]);
+    }

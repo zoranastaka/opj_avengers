@@ -1,0 +1,11 @@
+    /**
+     * @param  RepositoryInterface $additionalFixedRepository
+     * @return $this
+     */
+
+    public function setAdditionalFixedRepository(RepositoryInterface $additionalFixedRepository)
+    {
+        $this->additionalFixedRepository = $additionalFixedRepository;
+
+        return $this;
+    }

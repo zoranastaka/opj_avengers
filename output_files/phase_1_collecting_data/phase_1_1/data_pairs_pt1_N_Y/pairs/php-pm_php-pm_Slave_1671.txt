@@ -1,0 +1,34 @@
+    /**
+     * String conversion for debugging
+     *
+     * @return string
+     */
+
+    public function __toString()
+    {
+        switch ($this->status) {
+            case self::CREATED:
+                $status = 'CREATED';
+                break;
+            case self::REGISTERED:
+                $status = 'REGISTERED';
+                break;
+            case self::READY:
+                $status = 'READY';
+                break;
+            case self::BUSY:
+                $status = 'BUSY';
+                break;
+            case self::CLOSED:
+                $status = 'CLOSED';
+                break;
+            default:
+                $status = 'INVALID';
+        }
+
+        return (string)\print_r([
+            'status' => $status,
+            'port' => $this->port,
+            'pid' => $this->pid
+        ], 1);
+    }

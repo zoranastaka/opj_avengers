@@ -1,0 +1,12 @@
+    /**
+     * Test add title style
+     */
+
+    public function testAddTitleStyle()
+    {
+        $phpWord = new PhpWord();
+        $titleLevel = 1;
+        $titleName = "Heading_{$titleLevel}";
+        $phpWord->addTitleStyle($titleLevel, array());
+        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Font', Style::getStyle($titleName));
+    }

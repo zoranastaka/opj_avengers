@@ -1,0 +1,52 @@
+    /**
+     * Template can be saved in temporary location.
+     *
+     * @covers ::save
+     * @covers ::zip
+     * @test
+     */
+
+    final public function testTemplateCanBeSavedInTemporaryLocation()
+    {
+        $templateFqfn = __DIR__ . '/_files/templates/with_table_macros.docx';
+
+        $templateProcessor = new TemplateProcessor($templateFqfn);
+        $xslDomDocument = new \DOMDocument();
+        $xslDomDocument->load(__DIR__ . '/_files/xsl/remove_tables_by_needle.xsl');
+        foreach (array('${employee.', '${scoreboard.', '${reference.') as $needle) {
+            $templateProcessor->applyXslStyleSheet($xslDomDocument, array('needle' => $needle));
+        }
+
+        $embeddingText = 'The quick Brown Fox jumped over the lazy^H^H^H^Htired unitTester';
+        $templateProcessor->zip()->AddFromString('word/embeddings/fox.bin', $embeddingText);
+        $documentFqfn = $templateProcessor->save();
+
+        $this->assertNotEmpty($documentFqfn, 'FQFN of the saved document is empty.');
+        $this->assertFileExists($documentFqfn, "The saved document \"{$documentFqfn}\" doesn't exist.");
+
+        $templateZip = new \ZipArchive();
+        $templateZip->open($templateFqfn);
+        $templateHeaderXml = $templateZip->getFromName('word/header1.xml');
+        $templateMainPartXml = $templateZip->getFromName('word/document.xml');
+        $templateFooterXml = $templateZip->getFromName('word/footer1.xml');
+        if (false === $templateZip->close()) {
+            throw new \Exception("Could not close zip file \"{$templateZip}\".");
+        }
+
+        $documentZip = new \ZipArchive();
+        $documentZip->open($documentFqfn);
+        $documentHeaderXml = $documentZip->getFromName('word/header1.xml');
+        $documentMainPartXml = $documentZip->getFromName('word/document.xml');
+        $documentFooterXml = $documentZip->getFromName('word/footer1.xml');
+        $documentEmbedding = $documentZip->getFromName('word/embeddings/fox.bin');
+        if (false === $documentZip->close()) {
+            throw new \Exception("Could not close zip file \"{$documentZip}\".");
+        }
+
+        $this->assertNotEquals($templateHeaderXml, $documentHeaderXml);
+        $this->assertNotEquals($templateMainPartXml, $documentMainPartXml);
+        $this->assertNotEquals($templateFooterXml, $documentFooterXml);
+        $this->assertEquals($embeddingText, $documentEmbedding);
+
+        return $documentFqfn;
+    }

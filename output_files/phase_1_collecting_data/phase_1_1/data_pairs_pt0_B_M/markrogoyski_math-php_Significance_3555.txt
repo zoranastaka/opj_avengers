@@ -1,0 +1,46 @@
+    /**
+     * One-sample Z-test
+     * When the population mean and standard deviation are known.
+     * https://en.wikipedia.org/wiki/Z-test
+     *
+     *     Hₐ - H₀   M - μ   M - μ   M - μ
+     * z = ------- = ----- = ----- = -----
+     *        σ        σ      SEM     σ/√n
+     *
+     * p1 = CDF below if left tailed
+     *    = CDF above if right tailed
+     * p2 = CDF outside
+     *
+     * @param float $Hₐ Alternate hypothesis (M Sample mean)
+     * @param int   $n  Sample size
+     * @param float $H₀ Null hypothesis (μ Population mean)
+     * @param float $σ  SD of population (Standard error of the mean)
+     *
+     * @return array [
+     *   z  => z score
+     *   p1 => one-tailed p value (left or right tail depends on how Hₐ differs from H₀)
+     *   p2 => two-tailed p value
+     * ]
+     */
+
+    public static function zTestOneSample(float $Hₐ, int $n, float $H₀, float $σ): array
+    {
+        // Calculate z score (test statistic)
+        $sem = self::sem($σ, $n);
+        $z   = self::zScore($Hₐ, $H₀, $sem, self::Z_RAW_VALUE);
+
+        // One- and two-tailed P values
+        $standardNormal = new StandardNormal();
+        if ($Hₐ < $H₀) {
+            $p1 = $standardNormal->cdf($z);
+        } else {
+            $p1 = $standardNormal->above($z);
+        }
+        $p2 = $standardNormal->outside(-\abs($z), \abs($z));
+
+        return [
+            'z'  => $z,
+            'p1' => $p1,
+            'p2' => $p2,
+        ];
+    }

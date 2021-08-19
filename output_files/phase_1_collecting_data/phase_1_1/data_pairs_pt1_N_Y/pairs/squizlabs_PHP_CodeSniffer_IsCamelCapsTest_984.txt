@@ -1,0 +1,15 @@
+    /**
+     * Test invalid class names with the private flag set.
+     *
+     * Note that the private flag is ignored if the class format
+     * flag is set, so these names are all invalid.
+     *
+     * @return void
+     */
+
+    public function testInvalidClassFormatPrivate()
+    {
+        $this->assertFalse(Common::isCamelCaps('_ThisIsCamelCaps', true, true));
+        $this->assertFalse(Common::isCamelCaps('_ThisIsCamelCaps', true, false));
+
+    }//end testInvalidClassFormatPrivate()

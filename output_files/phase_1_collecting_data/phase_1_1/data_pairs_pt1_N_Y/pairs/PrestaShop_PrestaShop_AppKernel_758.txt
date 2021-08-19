@@ -1,0 +1,3 @@
+        // Add translation paths to load into the translator. The paths are loaded by the Symfony's FrameworkExtension
+
+        $loader->load(function (ContainerBuilder $container) {

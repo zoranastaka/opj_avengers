@@ -1,0 +1,19 @@
+    /**
+     * @test         abs returns the expected value
+     * @dataProvider dataProviderForAbs
+     * @param        number $r
+     * @param        number $i
+     * @param        number $expected
+     */
+
+    public function testAbs($r, $i, $expected)
+    {
+        // Given
+        $c = new Complex($r, $i);
+
+        // When
+        $abs = $c->abs();
+
+        // Then
+        $this->assertEquals($expected, $abs);
+    }

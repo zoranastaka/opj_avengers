@@ -1,0 +1,9 @@
+    /**
+     * Construct.
+     *
+     * @param DefinitionAggregateInterface|null      $definitions
+     * @param ServiceProviderAggregateInterface|null $providers
+     * @param InflectorAggregateInterface|null       $inflectors
+     */
+
+    public function __construct(

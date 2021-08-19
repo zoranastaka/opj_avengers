@@ -1,0 +1,10 @@
+    /**
+     * @return \Generator
+     */
+
+    public function dataProviderForEvenNumbers(): \Generator
+    {
+        foreach (\range(-10, 100, 2) as $x) {
+            yield [$x];
+        }
+    }

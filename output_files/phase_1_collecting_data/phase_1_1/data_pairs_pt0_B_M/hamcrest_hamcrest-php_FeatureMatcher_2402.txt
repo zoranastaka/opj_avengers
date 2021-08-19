@@ -1,0 +1,9 @@
+    /**
+     * Implement this to extract the interesting feature.
+     *
+     * @param mixed $actual the target object
+     *
+     * @return mixed the feature to be matched
+     */
+
+    abstract protected function featureValueOf($actual);

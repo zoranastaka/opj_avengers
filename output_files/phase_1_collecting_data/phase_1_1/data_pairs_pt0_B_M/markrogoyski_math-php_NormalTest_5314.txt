@@ -1,0 +1,18 @@
+    /**
+     * @test         median
+     * @dataProvider dataProviderForMean
+     * @param        float μ
+     */
+
+    public function testMedian(float $μ)
+    {
+        // Given
+        $σ      = 1.5;
+        $normal = new Normal($μ, $σ);
+
+        // When
+        $median = $normal->median();
+
+        // Then
+        $this->assertEquals($μ, $median);
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @group connected
+     * @group slow
+     */
+
+    public function testThrowsExceptionOnUnixDomainSocketNotFound(): void
+    {
+        $this->expectException('Predis\Connection\ConnectionException');
+        $this->expectExceptionMessageMatches('/.* \[unix:\/tmp\/nonexistent\/redis\.sock]/');
+
+        $connection = $this->createConnectionWithParams(array(
+            'scheme' => 'unix',
+            'path' => '/tmp/nonexistent/redis.sock',
+        ), false);
+
+        $connection->connect();
+    }

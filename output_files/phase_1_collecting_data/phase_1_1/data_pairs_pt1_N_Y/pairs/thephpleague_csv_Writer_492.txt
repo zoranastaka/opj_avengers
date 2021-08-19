@@ -1,0 +1,14 @@
+    /**
+     * Validate a record.
+     *
+     * @throws CannotInsertRecord If the validation failed
+     */
+
+    protected function validateRecord(array $record): void
+    {
+        foreach ($this->validators as $name => $validator) {
+            if (true !== $validator($record)) {
+                throw CannotInsertRecord::triggerOnValidation($name, $record);
+            }
+        }
+    }

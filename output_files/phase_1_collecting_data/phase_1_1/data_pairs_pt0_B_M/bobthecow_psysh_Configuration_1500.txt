@@ -1,0 +1,10 @@
+    /**
+     * Get whether readline erases old duplicate history entries.
+     *
+     * @return bool
+     */
+
+    public function getEraseDuplicates()
+    {
+        return $this->eraseDuplicates;
+    }

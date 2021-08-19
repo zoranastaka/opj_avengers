@@ -1,0 +1,24 @@
+    /**
+     * Validate the current mock's ordering
+     *
+     * @param string $method
+     * @param int $order
+     * @throws \Mockery\Exception
+     * @return void
+     */
+
+    public function mockery_validateOrder($method, $order, \Mockery\LegacyMockInterface $mock)
+    {
+        if ($order < $this->_currentOrder) {
+            $exception = new \Mockery\Exception\InvalidOrderException(
+                'Method ' . $method . ' called out of order: expected order '
+                . $order . ', was ' . $this->_currentOrder
+            );
+            $exception->setMock($mock)
+                ->setMethodName($method)
+                ->setExpectedOrder($order)
+                ->setActualOrder($this->_currentOrder);
+            throw $exception;
+        }
+        $this->mockery_setCurrentOrder($order);
+    }

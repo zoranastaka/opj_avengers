@@ -1,0 +1,7 @@
+    /**
+     * Returns true if the date was created using CarbonImmutable::endOfTime()
+     *
+     * @return bool
+     */
+
+    public function isEndOfTime(): bool;

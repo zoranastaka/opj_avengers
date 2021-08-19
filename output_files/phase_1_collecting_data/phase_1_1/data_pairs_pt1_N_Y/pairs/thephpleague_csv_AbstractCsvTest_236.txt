@@ -1,0 +1,15 @@
+    /**
+     * @covers ::supportsStreamFilter
+     * @covers ::addStreamFilter
+     * @covers \League\Csv\Stream::appendFilter
+     */
+
+    public function testFailedAddStreamFilterWithWrongFilter(): void
+    {
+        $this->expectException(InvalidArgument::class);
+
+        /** @var resource $tmpfile */
+        $tmpfile = tmpfile();
+        $csv = Writer::createFromStream($tmpfile);
+        $csv->addStreamFilter('foobar.toupper');
+    }

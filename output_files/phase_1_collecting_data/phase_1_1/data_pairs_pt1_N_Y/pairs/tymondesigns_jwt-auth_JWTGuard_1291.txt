@@ -1,0 +1,10 @@
+    /**
+     * Return the currently cached user.
+     *
+     * @return \Illuminate\Contracts\Auth\Authenticatable|null
+     */
+
+    public function getUser()
+    {
+        return $this->user;
+    }

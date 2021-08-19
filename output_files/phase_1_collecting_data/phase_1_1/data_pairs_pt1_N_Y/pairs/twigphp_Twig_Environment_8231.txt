@@ -1,0 +1,12 @@
+    /**
+     * Compiles a node and returns the PHP code.
+     */
+
+    public function compile(Node $node): string
+    {
+        if (null === $this->compiler) {
+            $this->compiler = new Compiler($this);
+        }
+
+        return $this->compiler->compile($node)->getSource();
+    }

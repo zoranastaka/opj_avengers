@@ -1,0 +1,5 @@
+    /**
+     * Configures the subject
+     */
+
+    public function relatedTo(string $subject): Builder;

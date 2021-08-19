@@ -1,0 +1,8 @@
+    /**
+     * @return mixed The value of the current element.
+     */
+
+    public function current()
+    {
+        return ($this->callable)(parent::current(), parent::key());
+    }

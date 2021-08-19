@@ -1,0 +1,25 @@
+    /**
+     * Returns a case swapped version of the string.
+     *
+     * @return static Object whose $str has each character's case swapped
+     */
+
+    public function swapCase()
+    {
+        $stringy = static::create($this->str, $this->encoding);
+        $encoding = $stringy->encoding;
+
+        $stringy->str = preg_replace_callback(
+            '/[\S]/u',
+            function ($match) use ($encoding) {
+                if ($match[0] == \mb_strtoupper($match[0], $encoding)) {
+                    return \mb_strtolower($match[0], $encoding);
+                }
+
+                return \mb_strtoupper($match[0], $encoding);
+            },
+            $stringy->str
+        );
+
+        return $stringy;
+    }

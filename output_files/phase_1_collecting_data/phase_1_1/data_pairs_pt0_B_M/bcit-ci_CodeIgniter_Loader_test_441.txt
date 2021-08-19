@@ -1,0 +1,17 @@
+	// --------------------------------------------------------------------
+
+	public function test_remove_package_path()
+	{
+		$dir = 'third-party';
+		$path = APPPATH.$dir.'/';
+		$path2 = APPPATH.'another/';
+		$paths = $this->load->get_package_paths(TRUE);
+
+		$this->assertInstanceOf('CI_Loader', $this->load->add_package_path($path));
+		$this->assertInstanceOf('CI_Loader', $this->load->remove_package_path($path));
+		$this->assertEquals($paths, $this->load->get_package_paths(TRUE));
+
+		$this->assertInstanceOf('CI_Loader', $this->load->add_package_path($path2));
+		$this->assertInstanceOf('CI_Loader', $this->load->remove_package_path());
+		$this->assertNotContains($path2, $this->load->get_package_paths(TRUE));
+	}

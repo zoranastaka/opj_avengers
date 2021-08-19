@@ -1,0 +1,18 @@
+    /**
+     * CDF between - probability of being between two points, x₁ and x₂
+     * The area under a continuous distribution, that lies between two specified points.
+     *
+     * P(between) = CDF($x₂) - CDF($x₁)
+     *
+     * @param float $x₁ Lower bound
+     * @param float $x₂ Upper bound
+     *
+     * @return float
+     */
+
+    public function between(float $x₁, float $x₂): float
+    {
+        $upper_area = $this->cdf($x₂);
+        $lower_area = $this->cdf($x₁);
+        return $upper_area - $lower_area;
+    }

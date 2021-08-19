@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function setLineEnding(string $lineEnding): ConfigInterface
+    {
+        $this->lineEnding = $lineEnding;
+
+        return $this;
+    }

@@ -1,0 +1,11 @@
+    /**
+     * R - correlation coefficient
+     * Convenience wrapper for correlationCoefficient
+     *
+     * @return float
+     */
+
+    public function r(): float
+    {
+        return $this->correlationCoefficient();
+    }

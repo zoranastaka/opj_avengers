@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider labelEncoderDataProvider
+     */
+
+    public function testFitAndTransform(array $samples, array $transformed): void
+    {
+        $le = new LabelEncoder();
+        $le->fit($samples);
+        $le->transform($samples);
+
+        self::assertEquals($transformed, $samples);
+    }

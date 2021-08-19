@@ -1,0 +1,8 @@
+	//vraća ime tvrtke koja je postavila određenu ponudu
+
+	function get_companyname_by_offerid($id){
+		try{
+			$db = DB::getConnection();
+			$st = $db->prepare( 'SELECT oib FROM studentplus_offers WHERE id=:id' );
+			$st->execute( array( 'id' => $id ) );
+		}

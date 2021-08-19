@@ -1,0 +1,30 @@
+    /**
+     * @return bool
+     */
+
+    public function handle()
+    {
+        $this->fakerField = $this->argument('faker_field');
+
+        $intents = [];
+        $entityTypes = [
+            ENTITY_INVOICE,
+            ENTITY_QUOTE,
+            ENTITY_CLIENT,
+            ENTITY_CREDIT,
+            ENTITY_EXPENSE,
+            ENTITY_PAYMENT,
+            ENTITY_PRODUCT,
+            ENTITY_RECURRING_INVOICE,
+            ENTITY_TASK,
+            ENTITY_VENDOR,
+        ];
+
+        foreach ($entityTypes as $entityType) {
+            $intents = array_merge($intents, $this->createIntents($entityType));
+        }
+
+        $intents = array_merge($intents, $this->getNavigateToIntents($entityType));
+
+        $this->info(json_encode($intents));
+    }

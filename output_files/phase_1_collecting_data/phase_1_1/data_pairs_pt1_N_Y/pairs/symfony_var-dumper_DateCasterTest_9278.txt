@@ -1,0 +1,16 @@
+    /**
+     * @dataProvider provideTimeZones
+     */
+
+    public function testDumpTimeZoneExcludingVerbosity($timezone, $expected)
+    {
+        $timezone = new \DateTimeZone($timezone);
+
+        $xDump = <<<EODUMP
+DateTimeZone {
+  timezone: $expected
+}
+EODUMP;
+
+        $this->assertDumpMatchesFormat($xDump, $timezone, Caster::EXCLUDE_VERBOSE);
+    }

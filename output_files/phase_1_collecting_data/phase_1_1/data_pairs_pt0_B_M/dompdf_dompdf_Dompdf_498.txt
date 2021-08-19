@@ -1,0 +1,19 @@
+    /**
+     * @param string $value
+     * @return bool
+     */
+
+    public function parseDefaultView($value)
+    {
+        $valid = ["XYZ", "Fit", "FitH", "FitV", "FitR", "FitB", "FitBH", "FitBV"];
+
+        $options = preg_split("/\s*,\s*/", trim($value));
+        $defaultView = array_shift($options);
+
+        if (!in_array($defaultView, $valid)) {
+            return false;
+        }
+
+        $this->setDefaultView($defaultView, $options);
+        return true;
+    }

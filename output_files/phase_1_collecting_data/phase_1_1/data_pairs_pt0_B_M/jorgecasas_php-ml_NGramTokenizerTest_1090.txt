@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider textDataProvider
+     */
+
+    public function testNGramTokenization(int $minGram, int $maxGram, string $text, array $tokens): void
+    {
+        $tokenizer = new NGramTokenizer($minGram, $maxGram);
+
+        self::assertEquals($tokens, $tokenizer->tokenize($text));
+    }

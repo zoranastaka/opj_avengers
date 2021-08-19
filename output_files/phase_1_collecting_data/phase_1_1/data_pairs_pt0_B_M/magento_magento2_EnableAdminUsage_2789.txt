@@ -1,0 +1,8 @@
+    /**
+     * @inheritDoc
+     */
+
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed(static::ADMIN_RESOURCE);
+    }

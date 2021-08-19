@@ -1,0 +1,10 @@
+    /**
+     * Matches all values to the rest of the signature.
+     *
+     * @return Token\AnyValuesToken
+     */
+
+    public static function cetera()
+    {
+        return new Token\AnyValuesToken;
+    }

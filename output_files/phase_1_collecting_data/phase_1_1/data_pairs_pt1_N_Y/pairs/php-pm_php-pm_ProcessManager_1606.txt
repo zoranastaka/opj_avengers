@@ -1,0 +1,19 @@
+    /**
+     * A slave sent a `stop` command.
+     *
+     * @param array      $data
+     * @param ConnectionInterface $conn
+     */
+
+    protected function commandStop(array $data, ConnectionInterface $conn)
+    {
+        if ($this->output->isVeryVerbose()) {
+            $conn->on('close', function () {
+                $this->output->writeln('Stop command requested');
+            });
+        }
+
+        $conn->end(\json_encode([]));
+
+        $this->shutdown();
+    }

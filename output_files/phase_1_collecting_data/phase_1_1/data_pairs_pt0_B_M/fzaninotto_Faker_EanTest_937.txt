@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider ean13ValidationProvider
+     */
+
+    public function testEan13Validation($ean13, $valid)
+    {
+        $this->assertTrue(Ean::isValid($ean13) === $valid);
+    }

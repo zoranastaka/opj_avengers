@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider providerFitWithPosition
+     */
+
+    public function testFitWithPosition(Size $box, $position, $x, $y)
+    {
+        $fitted = $box->fit(new Size(100, 100), $position);
+        $this->assertEquals(600, $fitted->width);
+        $this->assertEquals(600, $fitted->height);
+        $this->assertEquals($x, $fitted->pivot->x);
+        $this->assertEquals($y, $fitted->pivot->y);
+    }

@@ -1,0 +1,3 @@
+	//procesuiraj register
+
+	public function check_register_type(){

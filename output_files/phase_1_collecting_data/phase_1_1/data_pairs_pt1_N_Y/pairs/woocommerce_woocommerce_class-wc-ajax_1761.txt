@@ -1,0 +1,14 @@
+	/**
+	 * Bulk set convenience function.
+	 *
+	 * @param array  $variations List of variations.
+	 * @param string $field Field to set.
+	 * @param string $value to set.
+	 */
+
+	private static function variation_bulk_set( $variations, $field, $value ) {
+		foreach ( $variations as $variation_id ) {
+			$variation = wc_get_product( $variation_id );
+			$variation->{ "set_$field" }( wc_clean( $value ) );
+			$variation->save();
+		}

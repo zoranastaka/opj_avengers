@@ -1,0 +1,15 @@
+    /**
+     * @test         mean
+     * @dataProvider dataProviderForMean
+     * @param        array $angles
+     * @param        float $expected
+     */
+
+    public function testMean(array $angles, float $expected)
+    {
+        // When
+        $mean = Circular::mean($angles);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $mean, 0.000001);
+    }

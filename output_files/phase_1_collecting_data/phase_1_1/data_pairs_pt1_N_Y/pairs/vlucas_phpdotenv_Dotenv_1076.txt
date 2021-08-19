@@ -1,0 +1,12 @@
+    /**
+     * Required ensures that the specified variables exist, and returns a new validator object.
+     *
+     * @param string|string[] $variables
+     *
+     * @return \Dotenv\Validator
+     */
+
+    public function required($variables)
+    {
+        return (new Validator($this->repository, (array) $variables))->required();
+    }

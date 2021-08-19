@@ -1,0 +1,15 @@
+    /**
+     * @test         cumulativeFrequency
+     * @dataProvider dataProviderForCumulativeFrequency
+     * @param        array $values
+     * @param        array $expected
+     */
+
+    public function testCumulativeFrequency(array $values, array $expected)
+    {
+        // When
+        $frequencies = Distribution::cumulativeFrequency($values);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $frequencies, 0.0001);
+    }

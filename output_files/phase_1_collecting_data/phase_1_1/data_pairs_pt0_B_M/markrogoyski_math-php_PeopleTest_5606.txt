@@ -1,0 +1,12 @@
+    /**
+     * @test 32 sex observations
+     */
+
+    public function testNumberOfSex()
+    {
+        // When
+        $observations = $this->people->getSex();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

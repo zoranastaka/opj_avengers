@@ -1,0 +1,22 @@
+    /**
+     * @test twoWay throws a BadDataException if the sample sets have factors with unequal elements
+     */
+
+    public function testTwoWAyExceptionDifferentNumbersOfFactorElements()
+    {
+        // Given
+        $A₁ = [
+            [106, 110], // Factor B₁
+            [95, 100],  // Factor B₂
+        ];
+        $A₂ = [
+            [106, 110, 200], // Factor B₁ has 3 elements!
+            [95, 100],       // Factor B₂
+        ];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        ANOVA::twoWay($A₁, $A₂);
+    }

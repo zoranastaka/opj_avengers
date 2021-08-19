@@ -1,0 +1,7 @@
+	/**
+	 * Class initialization, to be executed when the class is resolved by the container.
+	 *
+	 * @internal
+	 */
+
+	final public function init() {

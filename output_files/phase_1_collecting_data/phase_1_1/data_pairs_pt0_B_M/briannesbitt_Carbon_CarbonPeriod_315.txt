@@ -1,0 +1,20 @@
+    /**
+     * Move forward to the next date.
+     *
+     * @throws RuntimeException
+     *
+     * @return void
+     */
+
+    public function next()
+    {
+        if ($this->current === null) {
+            $this->rewind();
+        }
+
+        if ($this->validationResult !== static::END_ITERATION) {
+            $this->key++;
+
+            $this->incrementCurrentDateUntilValid();
+        }
+    }

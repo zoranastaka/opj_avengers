@@ -1,0 +1,15 @@
+    /**
+     * @test         isLowerHessenberg returns true for an lower Hessenberg matrix
+     * @dataProvider dataProviderForLowerHessenbergMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsLowerHessenberg(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isLowerHessenberg());
+    }

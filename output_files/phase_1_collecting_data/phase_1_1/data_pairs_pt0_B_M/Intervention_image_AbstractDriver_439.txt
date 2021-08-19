@@ -1,0 +1,7 @@
+    /**
+     * Checks if core module installation is available
+     *
+     * @return boolean
+     */
+
+    abstract protected function coreAvailable();

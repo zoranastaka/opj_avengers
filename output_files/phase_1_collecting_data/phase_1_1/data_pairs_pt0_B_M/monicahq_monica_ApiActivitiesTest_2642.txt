@@ -1,0 +1,18 @@
+    /** @test */
+
+    public function activities_create_error_wrong_parameter()
+    {
+        $user = $this->signin();
+        $contact = factory(Contact::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $response = $this->json('POST', '/api/activities', [
+            'contact_id' => [$contact->id],
+        ]);
+
+        $this->expectDataError($response, [
+            'The summary field is required.',
+            'The happened at field is required.',
+        ]);
+    }

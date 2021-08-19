@@ -1,0 +1,6 @@
+    /** @return Constraint[] */
+
+    public function validationConstraints(): array
+    {
+        return $this->validationConstraints;
+    }

@@ -1,0 +1,11 @@
+    /**
+     * Returns maximum nesting level directories of report files
+     *
+     * @param string $reportId
+     * @return integer
+     */
+
+    private function getMaxReportDirNestingLevel(string $reportId): int
+    {
+        return (int)floor(strlen($reportId) / self::NUMBER_SYMBOLS_IN_SUBDIR_NAME);
+    }

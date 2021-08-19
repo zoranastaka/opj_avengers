@@ -1,0 +1,10 @@
+    /**
+     * @test
+     * @group issue/339
+     */
+
+    public function canMockClassesThatDescendFromInternalClasses()
+    {
+        $mock = mock("MockeryTest_ClassThatDescendsFromInternalClass");
+        $this->assertInstanceOf("DateTime", $mock);
+    }

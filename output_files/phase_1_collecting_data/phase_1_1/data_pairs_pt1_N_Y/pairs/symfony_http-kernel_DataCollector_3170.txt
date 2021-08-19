@@ -1,0 +1,24 @@
+    /**
+     * Converts the variable into a serializable Data instance.
+     *
+     * This array can be displayed in the template using
+     * the VarDumper component.
+     *
+     * @param mixed $var
+     *
+     * @return Data
+     */
+
+    protected function cloneVar($var)
+    {
+        if ($var instanceof Data) {
+            return $var;
+        }
+        if (null === $this->cloner) {
+            $this->cloner = new VarCloner();
+            $this->cloner->setMaxItems(-1);
+            $this->cloner->addCasters($this->getCasters());
+        }
+
+        return $this->cloner->cloneVar($var);
+    }

@@ -1,0 +1,25 @@
+    /**
+     * Returns the longest common suffix between the string and $otherStr.
+     *
+     * @param  string $otherStr Second string for comparison
+     * @return static Object with its $str being the longest common suffix
+     */
+
+    public function longestCommonSuffix($otherStr)
+    {
+        $encoding = $this->encoding;
+        $maxLength = min($this->length(), \mb_strlen($otherStr, $encoding));
+
+        $longestCommonSuffix = '';
+        for ($i = 1; $i <= $maxLength; $i++) {
+            $char = \mb_substr($this->str, -$i, 1, $encoding);
+
+            if ($char == \mb_substr($otherStr, -$i, 1, $encoding)) {
+                $longestCommonSuffix = $char . $longestCommonSuffix;
+            } else {
+                break;
+            }
+        }
+
+        return static::create($longestCommonSuffix, $encoding);
+    }

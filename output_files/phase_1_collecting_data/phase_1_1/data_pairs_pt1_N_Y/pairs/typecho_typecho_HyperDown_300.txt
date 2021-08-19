@@ -1,0 +1,23 @@
+    /**
+     * @param $block
+     * @param $key
+     * @param $line
+     * @return bool
+     */
+
+    private function parseBlockQuote($block, $key, $line)
+    {
+        if (preg_match("/^(\s*)>/", $line, $matches)) {
+            if ($this->isBlock('list') && strlen($matches[1]) > 0) {
+                $this->setBlock($key);
+            } elseif ($this->isBlock('quote')) {
+                $this->setBlock($key);
+            } else {
+                $this->startBlock('quote', $key);
+            }
+
+            return false;
+        }
+
+        return true;
+    }

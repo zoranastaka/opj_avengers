@@ -1,0 +1,8 @@
+    /**
+     * Returns true if the builder has a handler.
+     */
+
+    public function hasHandler(): bool
+    {
+        return $this->handler !== null ;
+    }

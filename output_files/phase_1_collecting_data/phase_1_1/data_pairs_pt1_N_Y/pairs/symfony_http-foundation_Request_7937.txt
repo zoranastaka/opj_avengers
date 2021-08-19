@@ -1,0 +1,16 @@
+    /**
+     * Generates a normalized URI (URL) for the Request.
+     *
+     * @return string A normalized URI (URL) for the Request
+     *
+     * @see getQueryString()
+     */
+
+    public function getUri()
+    {
+        if (null !== $qs = $this->getQueryString()) {
+            $qs = '?'.$qs;
+        }
+
+        return $this->getSchemeAndHttpHost().$this->getBaseUrl().$this->getPathInfo().$qs;
+    }

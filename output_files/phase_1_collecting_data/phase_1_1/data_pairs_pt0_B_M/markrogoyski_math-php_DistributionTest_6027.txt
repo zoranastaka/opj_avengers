@@ -1,0 +1,25 @@
+    /**
+     * @return array [values, frequencies]
+     */
+
+    public function dataProviderForFrequency(): array
+    {
+        return [
+            [
+                [ 'A', 'A', 'B', 'B', 'B', 'B', 'C', 'C', 'D', 'F' ],
+                [ 'A' => 2, 'B' => 4, 'C' => 2, 'D' => 1, 'F' => 1 ],
+            ],
+            [
+                [ 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+                [ 1 => 5, 2 => 3, 3 => 9, 4 => 14 ],
+            ],
+            [
+                [ 'yes', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'no' ],
+                [ 'yes' => 6, 'no' => 4 ],
+            ],
+            [
+                [ 'agree', 'disagree', 'agree', 'agree', 'no opinion', 'agree', 'disagree' ],
+                [ 'agree' => 4, 'disagree' => 2, 'no opinion' => 1 ],
+            ],
+        ];
+    }

@@ -1,0 +1,14 @@
+    /**
+     * Get yAxis
+     *
+     * @return PHPExcel_Chart_Axis
+     */
+
+    public function getChartAxisY()
+    {
+        if ($this->yAxis !== null) {
+            return $this->yAxis;
+        }
+
+        return new PHPExcel_Chart_Axis();
+    }

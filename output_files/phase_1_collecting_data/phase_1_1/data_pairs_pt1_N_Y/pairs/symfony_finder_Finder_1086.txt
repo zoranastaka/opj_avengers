@@ -1,0 +1,23 @@
+    /**
+     * Adds rules that files must match.
+     *
+     * You can use patterns (delimited with / sign), globs or simple strings.
+     *
+     *     $finder->name('*.php')
+     *     $finder->name('/\.php$/') // same as above
+     *     $finder->name('test.php')
+     *     $finder->name(['test.py', 'test.php'])
+     *
+     * @param string|string[] $patterns A pattern (a regexp, a glob, or a string) or an array of patterns
+     *
+     * @return $this
+     *
+     * @see FilenameFilterIterator
+     */
+
+    public function name($patterns)
+    {
+        $this->names = array_merge($this->names, (array) $patterns);
+
+        return $this;
+    }

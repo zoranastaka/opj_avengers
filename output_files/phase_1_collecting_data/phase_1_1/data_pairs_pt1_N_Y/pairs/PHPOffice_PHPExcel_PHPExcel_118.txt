@@ -1,0 +1,14 @@
+    /**
+     * Get default style
+     *
+     * @return PHPExcel_Style
+     * @throws PHPExcel_Exception
+     */
+
+    public function getDefaultStyle()
+    {
+        if (isset($this->cellXfCollection[0])) {
+            return $this->cellXfCollection[0];
+        }
+        throw new PHPExcel_Exception('No default style found for this workbook');
+    }

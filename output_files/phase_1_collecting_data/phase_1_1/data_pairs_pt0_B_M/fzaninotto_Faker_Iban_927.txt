@@ -1,0 +1,11 @@
+    /**
+     * Converts letter to number
+     *
+     * @param string $char
+     * @return int
+     */
+
+    public static function alphaToNumber($char)
+    {
+        return ord($char) - 55;
+    }

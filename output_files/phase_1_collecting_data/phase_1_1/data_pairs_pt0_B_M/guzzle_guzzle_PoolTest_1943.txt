@@ -1,0 +1,24 @@
+    /**
+     * @doesNotPerformAssertions
+     */
+
+    public function testExecutesPendingWhenWaiting()
+    {
+        $r1 = new Promise(static function () use (&$r1) {
+            $r1->resolve(new Response());
+        });
+        $r2 = new Promise(static function () use (&$r2) {
+            $r2->resolve(new Response());
+        });
+        $r3 = new Promise(static function () use (&$r3) {
+            $r3->resolve(new Response());
+        });
+        $handler = new MockHandler([$r1, $r2, $r3]);
+        $c = new Client(['handler' => $handler]);
+        $p = new Pool($c, [
+            new Request('GET', 'http://example.com'),
+            new Request('GET', 'http://example.com'),
+            new Request('GET', 'http://example.com'),
+        ], ['pool_size' => 2]);
+        $p->promise()->wait();
+    }

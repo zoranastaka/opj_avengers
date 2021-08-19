@@ -1,0 +1,15 @@
+    /**
+     * IQM (Interquartile mean)
+     * Convenience function for interquartileMean
+     *
+     * @param  float[] $numbers
+     *
+     * @return float
+     *
+     * @throws Exception\OutOfBoundsException
+     */
+
+    public static function iqm(array $numbers): float
+    {
+        return self::truncatedMean($numbers, 25);
+    }

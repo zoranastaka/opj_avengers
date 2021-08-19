@@ -1,0 +1,14 @@
+    /**
+     * @test         isRef returns true for a matrix in row echelon form
+     * @dataProvider dataProviderForRrefMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsRref(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        $this->assertTrue($A->isRref());
+    }

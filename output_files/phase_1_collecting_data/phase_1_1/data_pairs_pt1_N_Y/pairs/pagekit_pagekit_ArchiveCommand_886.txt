@@ -1,0 +1,48 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $filesystem = new Filesystem();
+        $packageName = $this->getPackageFilename($name = $this->argument('name'));
+
+        if (!($targetDir = $this->option('dir'))) {
+            $targetDir = $this->container->path();
+        }
+
+        $sourcePath = $this->container->get('path.packages').'/'.$name;
+
+        $filesystem->ensureDirectoryExists($targetDir);
+
+        $target = realpath($targetDir).'/'.$packageName.'.zip';
+        $filesystem->ensureDirectoryExists(dirname($target));
+
+        $excludes = [];
+        if (file_exists($composerJsonPath = $sourcePath.'/composer.json')) {
+            $jsonFile = new JsonFile($composerJsonPath);
+            $jsonData = $jsonFile->read();
+
+            if (!empty($jsonData['archive']['exclude'])) {
+                $excludes = ($jsonData['archive']['exclude']);
+            }
+
+            if (!empty($jsonData['archive']['scripts'])) {
+                system($jsonData['archive']['scripts'], $return);
+
+                if ($return !== 0) {
+                    throw new \RuntimeException('Can not executes scripts.');
+                }
+            }
+        }
+
+        $tempTarget = sys_get_temp_dir().'/composer_archive'.uniqid().'.zip';
+        $filesystem->ensureDirectoryExists(dirname($tempTarget));
+
+        $archivePath = (new PharArchiver())->archive($sourcePath, $tempTarget, 'zip', $excludes);
+        rename($archivePath, $target);
+
+        $filesystem->remove($tempTarget);
+
+        return $target;
+    }

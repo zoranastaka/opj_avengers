@@ -1,0 +1,31 @@
+    /**
+     * Gets the IDs of the archives we're querying for and stores them in $this->archives.
+     * This function will not launch the archiving process (and is thus much, much faster
+     * than cacheArchiveIdsAfterLaunching).
+     *
+     * @param array $plugins List of plugin names from which data is being requested.
+     */
+
+    private function cacheArchiveIdsWithoutLaunching($plugins)
+    {
+        $idarchivesByReport = ArchiveSelector::getArchiveIds(
+            $this->params->getIdSites(), $this->params->getPeriods(), $this->params->getSegment(), $plugins);
+
+        // initialize archive ID cache for each report
+        foreach ($plugins as $plugin) {
+            $doneFlag = $this->getDoneStringForPlugin($plugin, $this->params->getIdSites());
+            $this->initializeArchiveIdCache($doneFlag);
+            $globalDoneFlag = Rules::getDoneFlagArchiveContainsAllPlugins($this->params->getSegment());
+            $this->initializeArchiveIdCache($globalDoneFlag);
+        }
+
+        foreach ($idarchivesByReport as $doneFlag => $idarchivesByDate) {
+            foreach ($idarchivesByDate as $dateRange => $idarchives) {
+                foreach ($idarchives as $idarchive) {
+                    // idarchives selected can include all plugin archives, plugin specific archives and partial report
+                    // archives. only the latest data in all of these archives will be selected.
+                    $this->idarchives[$doneFlag][$dateRange][] = $idarchive;
+                }
+            }
+        }
+    }

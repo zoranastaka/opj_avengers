@@ -1,0 +1,7 @@
+  /**
+   * Returns a formatted mail line.
+   * @access public
+   * @return string
+   */
+
+  public function TextLine($value) {

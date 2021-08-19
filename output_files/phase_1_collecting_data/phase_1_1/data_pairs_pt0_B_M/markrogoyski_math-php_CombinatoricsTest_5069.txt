@@ -1,0 +1,13 @@
+    /**
+     * @test   permutations bounds exception
+     * @throws \Exception
+     */
+
+    public function testPermutationsBoundsException()
+    {
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Combinatorics::permutations(-1);
+    }

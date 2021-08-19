@@ -1,0 +1,21 @@
+    /**
+     * @param AutocompleteRequest $request
+     *
+     * @return JsonResponse
+     */
+
+    public function budgets(AutocompleteRequest $request): JsonResponse
+    {
+        $data     = $request->getData();
+        $result   = $this->repository->searchBudget($data['query'], $data['limit']);
+        $filtered = $result->map(
+            static function (Budget $item) {
+                return [
+                    'id'   => (string)$item->id,
+                    'name' => $item->name,
+                ];
+            }
+        );
+
+        return response()->json($filtered);
+    }

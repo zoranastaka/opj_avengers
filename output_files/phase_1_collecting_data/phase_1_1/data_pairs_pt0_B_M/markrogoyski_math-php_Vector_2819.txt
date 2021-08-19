@@ -1,0 +1,10 @@
+    /**
+     * Get matrix
+     *
+     * @return array
+     */
+
+    public function getVector(): array
+    {
+        return $this->A;
+    }

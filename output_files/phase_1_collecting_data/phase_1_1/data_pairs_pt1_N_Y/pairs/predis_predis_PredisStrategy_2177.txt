@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getDistributor()
+    {
+        return $this->distributor;
+    }

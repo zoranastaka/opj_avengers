@@ -1,0 +1,8 @@
+    /**
+     * @deprecated
+     */
+
+    public static function getCurrentConfigDir()
+    {
+        return (new self())->currentConfigDir();
+    }

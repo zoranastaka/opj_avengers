@@ -1,0 +1,10 @@
+    /**
+     * Unset an instance of this class
+     *
+     * @access    public
+     */
+
+    public function __destruct()
+    {
+        $this->workbook = null;
+    }

@@ -1,0 +1,17 @@
+    /**
+     * Return the settings of the hyper-parameters in an associative array.
+     *
+     * @return mixed[]
+     */
+
+    public function params() : array
+    {
+        return [
+            'radius' => $this->radius,
+            'ratio' => $this->ratio,
+            'epochs' => $this->epochs,
+            'min shift' => $this->minShift,
+            'tree' => $this->tree,
+            'seeder' => $this->seeder,
+        ];
+    }

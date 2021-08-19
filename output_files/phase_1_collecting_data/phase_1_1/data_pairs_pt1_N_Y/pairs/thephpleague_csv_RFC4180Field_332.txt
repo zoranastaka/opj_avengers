@@ -1,0 +1,25 @@
+    /**
+     * Add a formatter to the {@link Writer} object to format the record
+     * field to avoid enclosure around a field with an empty space.
+     */
+
+    public static function addFormatterTo(Writer $csv, string $whitespace_replace): Writer
+    {
+        if ('' == $whitespace_replace || strlen($whitespace_replace) != strcspn($whitespace_replace, self::$force_enclosure)) {
+            throw new InvalidArgumentException('The sequence contains a character that enforces enclosure or is a CSV control character or is the empty string.');
+        }
+
+        $mapper = static function ($value) use ($whitespace_replace) {
+            if (is_string($value)) {
+                return str_replace(' ', $whitespace_replace, $value);
+            }
+
+            return $value;
+        };
+
+        $formatter = static function (array $record) use ($mapper): array {
+            return array_map($mapper, $record);
+        };
+
+        return $csv->addFormatter($formatter);
+    }

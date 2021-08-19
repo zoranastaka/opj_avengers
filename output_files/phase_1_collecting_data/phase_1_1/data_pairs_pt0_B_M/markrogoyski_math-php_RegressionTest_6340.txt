@@ -1,0 +1,20 @@
+    /**
+     * @test         The sum of squares of Y equals the sum of squares regression plus the sum of squares of error (residual)
+     *               SStotal = SSreg + SSres
+     * @dataProvider dataProviderForSumOfSquaresEqualsSumOfSQuaresRegressionPlusSumOfSquaresResidual
+     * @param        array $points
+     */
+
+    public function testSumOfSquaresEqualsSumOfSQuaresRegressionPlusSumOfSquaresResidual(array $points)
+    {
+        // Given
+        $regression = new Linear($points);
+
+        // Wheb
+        $SStot      = $regression->sumOfSquaresTotal();
+        $SSreg      = $regression->sumOfSquaresRegression();
+        $SSres      = $regression->sumOfSquaresResidual();
+
+        // Then
+        $this->assertEqualsWithDelta($SStot, $SSreg + $SSres, 0.001);
+    }

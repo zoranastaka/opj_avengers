@@ -1,0 +1,15 @@
+    /**
+     * @test         isTriangular returns false for a non triangular matrix
+     * @dataProvider dataProviderForNotTriangularMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsNotTriangular(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isTriangular());
+    }

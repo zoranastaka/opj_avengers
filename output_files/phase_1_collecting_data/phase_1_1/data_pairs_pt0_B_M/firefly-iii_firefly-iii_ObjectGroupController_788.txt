@@ -1,0 +1,50 @@
+/**
+ * Class ObjectGroupController
+ */
+
+class ObjectGroupController extends Controller
+{
+    private ObjectGroupRepositoryInterface $repository;
+
+    /**
+     * CurrencyController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->middleware(
+            function ($request, $next) {
+                /** @var User $user */
+                $user             = auth()->user();
+                $this->repository = app(ObjectGroupRepositoryInterface::class);
+                $this->repository->setUser($user);
+
+                return $next($request);
+            }
+        );
+    }
+
+    /**
+     * @param AutocompleteRequest $request
+     *
+     * @return JsonResponse
+     */
+    public function objectGroups(AutocompleteRequest $request): JsonResponse
+    {
+        $data   = $request->getData();
+        $return = [];
+        $result = $this->repository->search($data['query'], $data['limit']);
+
+        /** @var ObjectGroup $objectGroup */
+        foreach ($result as $objectGroup) {
+            $return[] = [
+                'id'    => (string)$objectGroup->id,
+                'name'  => $objectGroup->title,
+                'title' => $objectGroup->title,
+            ];
+        }
+
+        return response()->json($return);
+    }
+
+}

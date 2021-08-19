@@ -1,0 +1,25 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function onCreate(): bool
+    {
+        if (!$this->isValidParams($this->params)) {
+            return false;
+        }
+
+        $this->search = [$this->params['escape'].$this->params['enclosure']];
+        $this->replace = [$this->params['enclosure'].$this->params['enclosure']];
+        if (STREAM_FILTER_WRITE != $this->params['mode']) {
+            return true;
+        }
+
+        $this->search = [$this->params['escape'].$this->params['enclosure']];
+        $this->replace = [$this->params['escape'].$this->params['enclosure'].$this->params['enclosure']];
+        if ($this->isValidSequence($this->params)) {
+            $this->search[] = $this->params['whitespace_replace'];
+            $this->replace[] = ' ';
+        }
+
+        return true;
+    }

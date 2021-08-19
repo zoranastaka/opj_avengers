@@ -1,0 +1,9 @@
+	/**
+	 * Sort fees by amount.
+	 *
+	 * @param stdClass $a Fee object.
+	 * @param stdClass $b Fee object.
+	 * @return int
+	 */
+
+	protected function sort_fees_callback( $a, $b ) {

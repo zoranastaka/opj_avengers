@@ -1,0 +1,11 @@
+    /**
+     * Return the locale-specific translation of TRUE
+     *
+     * @access    public
+     * @return     string        locale-specific translation of TRUE
+     */
+
+    public static function getTRUE()
+    {
+        return self::$localeBoolean['TRUE'];
+    }

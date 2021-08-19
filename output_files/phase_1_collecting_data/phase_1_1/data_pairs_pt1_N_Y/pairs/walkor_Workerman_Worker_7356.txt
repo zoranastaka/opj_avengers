@@ -1,0 +1,14 @@
+    /**
+     * Fork some worker processes.
+     *
+     * @return void
+     */
+
+    protected static function forkWorkers()
+    {
+        if (static::$_OS === \OS_TYPE_LINUX) {
+            static::forkWorkersForLinux();
+        } else {
+            static::forkWorkersForWindows();
+        }
+    }

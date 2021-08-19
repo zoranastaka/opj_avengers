@@ -1,0 +1,15 @@
+    /**
+     * @test         describe will return null sek for values of n < 4
+     * @dataProvider dataProviderForDescribeNullSek
+     * @param        array $numbers
+     * @throws       \Exception
+     */
+
+    public function testDescribeSekNullForSmallN(array $numbers)
+    {
+        // When
+        $stats = Descriptive::describe($numbers);
+
+        // Then
+        $this->assertNull($stats['sek']);
+    }

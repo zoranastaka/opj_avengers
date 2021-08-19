@@ -1,0 +1,41 @@
+   /**
+    * Returns the element's value
+    *
+    * The default implementation for Containers is to return an array with
+    * contained elements' values. The array is indexed the same way $_GET and
+    * $_POST arrays would be for these elements.
+    *
+    * @return   array|null
+    */
+
+    public function getValue()
+    {
+        $values = array();
+        foreach ($this as $child) {
+            $value = $child->getValue();
+            if (null !== $value) {
+                if ($child instanceof HTML_QuickForm2_Container
+                    && !$child->prependsName()
+                ) {
+                    $values = self::arrayMerge($values, $value);
+                } else {
+                    $name = $child->getName();
+                    if (!strpos($name, '[')) {
+                        $values[$name] = $value;
+                    } else {
+                        $tokens   =  explode('[', str_replace(']', '', $name));
+                        $valueAry =& $values;
+                        do {
+                            $token = array_shift($tokens);
+                            if (!isset($valueAry[$token])) {
+                                $valueAry[$token] = array();
+                            }
+                            $valueAry =& $valueAry[$token];
+                        } while (count($tokens) > 1);
+                        $valueAry[$tokens[0]] = $value;
+                    }
+                }
+            }
+        }
+        return empty($values)? null: $this->applyFilters($values);
+    }

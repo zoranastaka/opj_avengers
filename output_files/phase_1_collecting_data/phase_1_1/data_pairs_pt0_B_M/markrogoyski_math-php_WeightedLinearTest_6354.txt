@@ -1,0 +1,21 @@
+    /**
+     * @test         getParameters
+     * @dataProvider dataProviderForParameters
+     * @param        array $points
+     * @param        array $weights
+     * @param        float $m
+     * @param        float $b
+     */
+
+    public function testGetParameters(array $points, array $weights, float $m, float $b)
+    {
+        // Given
+        $regression = new WeightedLinear($points, $weights);
+
+        // When
+        $parameters = $regression->getParameters();
+
+        // Then
+        $this->assertEqualsWithDelta($m, $parameters['m'], 0.0001);
+        $this->assertEqualsWithDelta($b, $parameters['b'], 0.0001);
+    }

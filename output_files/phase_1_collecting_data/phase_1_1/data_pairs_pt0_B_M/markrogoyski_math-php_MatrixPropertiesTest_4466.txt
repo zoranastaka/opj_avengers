@@ -1,0 +1,15 @@
+    /**
+     * @test         isBidiagonal returns true for an upper bidiagonal matrix
+     * @dataProvider dataProviderForUpperBidiagonalMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testUpperBidiagonalIsBidiagonal(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isBidiagonal());
+    }

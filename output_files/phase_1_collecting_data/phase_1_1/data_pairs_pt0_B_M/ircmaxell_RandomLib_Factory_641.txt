@@ -1,0 +1,14 @@
+    /**
+     * Get a low strength random number generator
+     *
+     * Low Strength should be used anywhere that random strings are needed in a
+     * non-cryptographical setting.  They are not strong enough to be used as
+     * keys or salts.  They are however useful for one-time use tokens.
+     *
+     * @return Generator The instantiated generator
+     */
+
+    public function getLowStrengthGenerator()
+    {
+        return $this->getGenerator(new Strength(Strength::LOW));
+    }

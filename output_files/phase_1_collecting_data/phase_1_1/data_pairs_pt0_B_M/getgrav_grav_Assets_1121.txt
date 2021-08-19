@@ -1,0 +1,13 @@
+    /**
+     * @param array $assets
+     * @return array
+     */
+
+    protected function sortAssets($assets)
+    {
+        uasort($assets, static function ($a, $b) {
+            return $b['priority'] <=> $a['priority'] ?: $a['order'] <=> $b['order'];
+        });
+
+        return $assets;
+    }

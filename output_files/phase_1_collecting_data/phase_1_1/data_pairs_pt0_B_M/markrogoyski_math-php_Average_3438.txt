@@ -1,0 +1,40 @@
+    /**
+     * Calculate the weighted mean average of a list of numbers
+     * https://en.wikipedia.org/wiki/Weighted_arithmetic_mean
+     *
+     *     ∑⟮xᵢwᵢ⟯
+     * x̄ = -----
+     *      ∑⟮wᵢ⟯
+     *
+     * @param float[] $numbers
+     * @param float[] $weights
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException if the input array of numbers is empty
+     * @throws Exception\BadDataException if the number of numbers and weights are not equal
+     */
+
+    public static function weightedMean(array $numbers, array $weights): float
+    {
+        if (empty($numbers)) {
+            throw new Exception\BadDataException('Cannot find the weightedMean of an empty list of numbers');
+        }
+        if (empty($weights)) {
+            return Average::mean($numbers);
+        }
+        if (\count($numbers) !== \count($weights)) {
+            throw new Exception\BadDataException('Numbers and weights must have the same number of elements.');
+        }
+
+        $∑⟮xᵢwᵢ⟯ = \array_sum(\array_map(
+            function ($xᵢ, $wᵢ) {
+                return $xᵢ * $wᵢ;
+            },
+            $numbers,
+            $weights
+        ));
+        $∑⟮wᵢ⟯ = \array_sum($weights);
+
+        return $∑⟮xᵢwᵢ⟯ / $∑⟮wᵢ⟯;
+    }

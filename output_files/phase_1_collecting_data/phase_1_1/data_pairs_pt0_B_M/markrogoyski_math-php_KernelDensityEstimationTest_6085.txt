@@ -1,0 +1,24 @@
+    /**
+     * @test         Custom kernel function and custom h
+     * @dataProvider dataProviderForKernelDensityCustomBoth
+     * @param        float $h
+     * @param        callable $kernel
+     * @param        float $x
+     * @param        float $expected
+     */
+
+    public function testDefaultKernelDensityCustomBoth(float $h, callable $kernel, float $x, float $expected)
+    {
+        // Given
+        $KDE     = new KernelDensityEstimation($this->data, $h, $kernel);
+        $kernel2 = KernelDensityEstimation::TRICUBE;
+        $KDE2    = new KernelDensityEstimation($this->data, $h, $kernel2);
+
+        // When
+        $estimate1 = $KDE->evaluate($x);
+        $estimate2 = $KDE2->evaluate($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $estimate1, 0.0001);
+        $this->assertEqualsWithDelta($expected, $estimate2, 0.0001);
+    }

@@ -1,0 +1,16 @@
+    /**
+     * Encodes a string as a quoted string, if necessary.
+     *
+     * If a string contains characters not allowed by the "token" construct in
+     * the HTTP specification, it is backslash-escaped and enclosed in quotes
+     * to match the "quoted-string" construct.
+     */
+
+    public static function quote(string $s): string
+    {
+        if (preg_match('/^[a-z0-9!#$%&\'*.^_`|~-]+$/i', $s)) {
+            return $s;
+        }
+
+        return '"'.addcslashes($s, '"\\"').'"';
+    }

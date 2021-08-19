@@ -1,0 +1,11 @@
+    /**
+     * @return array [a, b, c]
+     */
+
+    public function dataProviderForQuadraticNegativeDiscriminant(): array
+    {
+        return [
+            [10, 1, 1, [\NAN, \NAN]],
+            [3, 4, 20, [\NAN, \NAN]],
+        ];
+    }

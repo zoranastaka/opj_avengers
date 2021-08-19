@@ -1,0 +1,11 @@
+    /**
+     * Output only. False Positive Rate for the given confidence threshold.
+     *
+     * Generated from protobuf field <code>float false_positive_rate = 8;</code>
+     * @return float
+     */
+
+    public function getFalsePositiveRate()
+    {
+        return $this->false_positive_rate;
+    }

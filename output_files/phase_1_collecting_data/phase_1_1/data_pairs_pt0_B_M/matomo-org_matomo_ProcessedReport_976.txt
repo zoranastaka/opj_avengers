@@ -1,0 +1,43 @@
+    /**
+     * Prettifies a metric value based on the column name.
+     *
+     * @param int $idSite The ID of the site the metric is for (used if the column value is an amount of money).
+     * @param string $columnName The metric name.
+     * @param mixed $value The metric value.
+     * @param bool $isHtml If true, replaces all spaces with `'&nbsp;'`.
+     * @return string
+     */
+
+    public static function getPrettyValue(Formatter $formatter, $idSite, $columnName, $value)
+    {
+        if (!is_numeric($value)) {
+            return $value;
+        }
+
+        if (strpos($columnName, '_change') !== false) { // comparison change columns are formatted by DataComparisonFilter
+            return $value == '0' ? '+0%' : $value;
+        }
+
+        // Display time in human readable
+		if (strpos($columnName, 'time_generation') !== false) {
+			return $formatter->getPrettyTimeFromSeconds($value, true);
+		} 
+		if (strpos($columnName, 'time') !== false) {
+            return $formatter->getPrettyTimeFromSeconds($value);
+        }
+
+        // Add revenue symbol to revenues
+        $isMoneyMetric = strpos($columnName, 'revenue') !== false || strpos($columnName, 'price') !== false;
+        if ($isMoneyMetric && strpos($columnName, 'evolution') === false) {
+            return $formatter->getPrettyMoney($value, $idSite);
+        }
+
+        // Add % symbol to rates
+        if (strpos($columnName, '_rate') !== false) {
+            if (strpos($value, "%") === false) {
+                return (100 * $value) . "%";
+            }
+        }
+
+        return $value;
+    }

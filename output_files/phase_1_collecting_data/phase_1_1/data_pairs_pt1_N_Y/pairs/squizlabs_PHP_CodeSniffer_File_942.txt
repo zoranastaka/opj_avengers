@@ -1,0 +1,11 @@
+    /**
+     * Returns the absolute filename of this file.
+     *
+     * @return string
+     */
+
+    public function getFilename()
+    {
+        return $this->path;
+
+    }//end getFilename()

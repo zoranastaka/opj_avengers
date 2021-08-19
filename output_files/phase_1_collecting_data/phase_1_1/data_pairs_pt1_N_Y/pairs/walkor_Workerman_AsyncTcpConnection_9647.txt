@@ -1,0 +1,10 @@
+    /**
+     * Get remote URI.
+     *
+     * @return string
+     */
+
+    public function getRemoteURI()
+    {
+        return $this->_remoteURI;
+    }

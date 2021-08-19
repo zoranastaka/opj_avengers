@@ -1,0 +1,5 @@
+    /**
+     * @dataProvider provideTestReformatting
+     */
+
+    public function testReformatting($commentText, $reformattedText) {

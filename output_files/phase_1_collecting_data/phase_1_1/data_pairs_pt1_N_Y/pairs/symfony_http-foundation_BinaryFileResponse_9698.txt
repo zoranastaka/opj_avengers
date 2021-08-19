@@ -1,0 +1,10 @@
+    /**
+     * Gets the file.
+     *
+     * @return File The file to stream
+     */
+
+    public function getFile()
+    {
+        return $this->file;
+    }

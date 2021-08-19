@@ -1,0 +1,19 @@
+    /**
+     * Construct from binary factory method
+     *
+     * @param  string $value
+     * @param  bool   $positive
+     *
+     * @return ArbitraryInteger
+     *
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public static function fromBinary(string $value, bool $positive): ArbitraryInteger
+    {
+        $result = new ArbitraryInteger(0);
+        $result->setVariables($value, $positive);
+
+        return $result;
+    }

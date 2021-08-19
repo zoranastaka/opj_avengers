@@ -1,0 +1,15 @@
+    /**
+     * Mean of squares total
+     * MSTO = SSOT / (n - 1)
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException
+     */
+
+    public function meanSquareTotal(): float
+    {
+        $MSTO = $this->sumOfSquaresTotal() / ($this->n - $this->fit_constant);
+
+        return $MSTO;
+    }

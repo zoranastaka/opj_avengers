@@ -1,0 +1,8 @@
+    /**
+     * @test Limits constant is correct format
+     */
+
+    public function testNormalSupportLimits()
+    {
+        $this->limitTest(Continuous\Normal::SUPPORT_LIMITS);
+    }

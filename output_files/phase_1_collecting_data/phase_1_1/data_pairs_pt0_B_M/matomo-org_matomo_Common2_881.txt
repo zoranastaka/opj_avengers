@@ -1,0 +1,12 @@
+   /**
+    * Sets the comment for the element
+    *
+    * @param    string
+    * @return   HTML_Common2
+    */
+
+    public function setComment($comment)
+    {
+        $this->_comment = $comment;
+        return $this;
+    }

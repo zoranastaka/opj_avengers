@@ -1,0 +1,18 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testConnectAndDisconnect(): void
+    {
+        $connection = $this->getMockBuilder('Predis\Connection\ConnectionInterface')->getMock();
+        $connection
+            ->expects($this->once())
+            ->method('connect');
+        $connection
+            ->expects($this->once())
+            ->method('disconnect');
+
+        $client = new Client($connection);
+        $client->connect();
+        $client->disconnect();
+    }

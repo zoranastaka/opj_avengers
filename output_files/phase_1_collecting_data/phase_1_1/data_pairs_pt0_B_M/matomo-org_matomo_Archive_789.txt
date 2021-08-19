@@ -1,0 +1,47 @@
+    /**
+     * Gets the IDs of the archives we're querying for and stores them in $this->archives.
+     * This function will launch the archiving process for each period/site/plugin if
+     * metrics/reports have not been calculated/archived already.
+     *
+     * @param array $archiveGroups @see getArchiveGroupOfReport
+     * @param array $plugins List of plugin names to archive.
+     */
+
+    private function cacheArchiveIdsAfterLaunching($archiveGroups, $plugins)
+    {
+        $today = Date::today();
+
+        foreach ($this->params->getPeriods() as $period) {
+            $twoDaysBeforePeriod = $period->getDateStart()->subDay(2);
+            $twoDaysAfterPeriod = $period->getDateEnd()->addDay(2);
+
+            foreach ($this->params->getIdSites() as $idSite) {
+                $site = new Site($idSite);
+
+                if (Common::getRequestVar('skipArchiveSegmentToday', 0, 'int')
+                    && self::shouldSkipArchiveIfSkippingSegmentArchiveForToday($site, $period, $this->params->getSegment())
+                ) {
+                    Log::debug("Skipping archive %s for %s as segment today is disabled", $period->getLabel(), $period->getPrettyString());
+                    continue;
+                }
+
+                // if the END of the period is BEFORE the website creation date
+                // we already know there are no stats for this period
+                // we add one day to make sure we don't miss the day of the website creation
+                if ($twoDaysAfterPeriod->isEarlier($site->getCreationDate())) {
+                    Log::debug("Archive site %s, %s (%s) skipped, archive is before the website was created.",
+                        $idSite, $period->getLabel(), $period->getPrettyString());
+                    continue;
+                }
+
+                // if the starting date is in the future we know there is no visiidsite = ?t
+                if ($twoDaysBeforePeriod->isLater($today)) {
+                    Log::debug("Archive site %s, %s (%s) skipped, archive is after today.",
+                        $idSite, $period->getLabel(), $period->getPrettyString());
+                    continue;
+                }
+
+                $this->prepareArchive($archiveGroups, $site, $period);
+            }
+        }
+    }

@@ -1,0 +1,11 @@
+    /**
+     * @deprecated This has moved to {@see Rfc4122FieldsInterface::getUrn()} and
+     *     is available on {@see \Ramsey\Uuid\Rfc4122\UuidV1},
+     *     {@see \Ramsey\Uuid\Rfc4122\UuidV3}, {@see \Ramsey\Uuid\Rfc4122\UuidV4},
+     *     and {@see \Ramsey\Uuid\Rfc4122\UuidV5}.
+     */
+
+    public function getUrn(): string
+    {
+        return 'urn:uuid:' . $this->toString();
+    }

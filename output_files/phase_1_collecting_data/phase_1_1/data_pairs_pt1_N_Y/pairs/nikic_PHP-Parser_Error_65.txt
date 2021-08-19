@@ -1,0 +1,9 @@
+    /**
+     * Returns whether the error has start and end column information.
+     *
+     * For column information enable the startFilePos and endFilePos in the lexer options.
+     *
+     * @return bool
+     */
+
+    public function hasColumnInfo() : bool {

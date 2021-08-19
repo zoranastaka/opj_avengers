@@ -1,0 +1,16 @@
+    /**
+     * @test         simpleMovingAverage
+     * @dataProvider dataProviderForSimpleMovingAverage
+     * @param        array $numbers
+     * @param        int   $n
+     * @param        array $expectedSma
+     */
+
+    public function testSimpleMovingAverage(array $numbers, int $n, array $expectedSma)
+    {
+        // When
+        $sma = Average::simpleMovingAverage($numbers, $n);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedSma, $sma, 0.0001);
+    }

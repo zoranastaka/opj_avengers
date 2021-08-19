@@ -1,0 +1,10 @@
+/**
+ * Returns a version 4 (random) UUID
+ *
+ * @return string Version 4 UUID as a string
+ */
+
+function v4(): string
+{
+    return Uuid::uuid4()->toString();
+}

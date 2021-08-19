@@ -1,0 +1,22 @@
+    /**
+     * @return void
+     * @throws DebugBarException
+     */
+
+    protected function addDeprecations()
+    {
+        if (!$this->deprecations) {
+            return;
+        }
+
+        $collector = new MessagesCollector('deprecated');
+        $this->addCollector($collector);
+        $collector->addMessage('Your site is using following deprecated features:');
+
+        /** @var array $deprecated */
+        foreach ($this->deprecations as $deprecated) {
+            list($message, $scope) = $this->getDepracatedMessage($deprecated);
+
+            $collector->addMessage($message, $scope);
+        }
+    }

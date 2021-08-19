@@ -1,0 +1,11 @@
+    /**
+     * @return array [N, K, n, σ²]
+     */
+
+    public function dataProviderForVariance(): array
+    {
+        return [
+            [50, 5, 10, 0.73469387755102],
+            [100, 80, 50, 4.040404040404],
+        ];
+    }

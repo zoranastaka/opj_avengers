@@ -1,0 +1,8 @@
+    /**
+     * @test
+     */
+
+    public function it_returns_true_for_empty_needles()
+    {
+        $this->assertTrue(array_keys_exist([], ['a', 'b', 'c']));
+    }

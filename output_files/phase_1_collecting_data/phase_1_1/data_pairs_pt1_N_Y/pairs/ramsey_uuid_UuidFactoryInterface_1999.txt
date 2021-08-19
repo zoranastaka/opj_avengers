@@ -1,0 +1,7 @@
+    /**
+     * Returns the validator to use for the factory
+     *
+     * @psalm-mutation-free
+     */
+
+    public function getValidator(): ValidatorInterface;

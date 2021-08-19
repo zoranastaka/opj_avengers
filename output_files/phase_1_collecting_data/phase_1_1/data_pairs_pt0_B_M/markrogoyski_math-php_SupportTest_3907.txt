@@ -1,0 +1,16 @@
+    /**
+     * @test         checkLimits out of bounds
+     * @dataProvider dataProviderForCheckLimitsUpperLimitException
+     * @param        array $limits
+     * @param        array $params
+     * @throws       \Exception
+     */
+
+    public function testCheckLimitsUpperLimitException(array $limits, array $params)
+    {
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Support::checkLimits($limits, $params);
+    }

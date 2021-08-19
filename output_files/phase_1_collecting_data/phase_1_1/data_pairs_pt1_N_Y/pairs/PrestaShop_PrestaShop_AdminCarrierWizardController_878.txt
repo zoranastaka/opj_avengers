@@ -1,0 +1,51 @@
+    /**
+     * @param Carrier $carrier
+     * @param array $tpl_vars
+     * @param array $fields_value
+     */
+
+    protected function getTplRangesVarsAndValues($carrier, &$tpl_vars, &$fields_value)
+    {
+        $tpl_vars['zones'] = Zone::getZones(false, true);
+        $carrier_zones = $carrier->getZones();
+        $carrier_zones_ids = [];
+        if (is_array($carrier_zones)) {
+            foreach ($carrier_zones as $carrier_zone) {
+                $carrier_zones_ids[] = $carrier_zone['id_zone'];
+            }
+        }
+
+        $range_table = $carrier->getRangeTable();
+        $shipping_method = $carrier->getShippingMethod();
+
+        $zones = Zone::getZones(false);
+        foreach ($zones as $zone) {
+            $fields_value['zones'][$zone['id_zone']] = Tools::getValue('zone_' . $zone['id_zone'], (in_array($zone['id_zone'], $carrier_zones_ids)));
+        }
+
+        if ($shipping_method == Carrier::SHIPPING_METHOD_FREE) {
+            $range_obj = $carrier->getRangeObject($carrier->shipping_method);
+            $price_by_range = [];
+        } else {
+            $range_obj = $carrier->getRangeObject();
+            $price_by_range = Carrier::getDeliveryPriceByRanges($range_table, (int) $carrier->id);
+        }
+
+        foreach ($price_by_range as $price) {
+            $tpl_vars['price_by_range'][$price['id_' . $range_table]][$price['id_zone']] = $price['price'];
+        }
+
+        $tmp_range = $range_obj->getRanges((int) $carrier->id);
+        $tpl_vars['ranges'] = [];
+        if ($shipping_method != Carrier::SHIPPING_METHOD_FREE) {
+            foreach ($tmp_range as $id => $range) {
+                $tpl_vars['ranges'][$range['id_' . $range_table]] = $range;
+                $tpl_vars['ranges'][$range['id_' . $range_table]]['id_range'] = $range['id_' . $range_table];
+            }
+        }
+
+        // init blank range
+        if (!count($tpl_vars['ranges'])) {
+            $tpl_vars['ranges'][] = ['id_range' => 0, 'delimiter1' => 0, 'delimiter2' => 0];
+        }
+    }

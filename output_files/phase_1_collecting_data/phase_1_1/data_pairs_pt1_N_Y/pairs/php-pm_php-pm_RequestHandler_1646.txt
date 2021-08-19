@@ -1,0 +1,31 @@
+    /**
+     * Handle successful slave connection
+     *
+     * @param ConnectionInterface $connection Slave connection
+     */
+
+    public function slaveConnected(ConnectionInterface $connection)
+    {
+        $this->connection = $connection;
+
+        $this->verboseTimer(function ($took) {
+            return \sprintf('<info>Took abnormal %.3f seconds for connecting to worker %d</info>', $took, $this->slave->getPort());
+        });
+
+        // call handler once in case entire request as already been buffered
+        $this->handleData('');
+
+        // close slave connection when client goes away
+        $this->incoming->on('close', [$this->connection, 'close']);
+
+        // update slave availability
+        $this->connection->on('close', [$this, 'slaveClosed']);
+
+        // keep track of the last sent data to detect if slave exited abnormally
+        $this->connection->on('data', function ($data) {
+            $this->lastOutgoingData = $data;
+        });
+
+        // relay data to client
+        $this->connection->pipe($this->incoming, ['end' => false]);
+    }

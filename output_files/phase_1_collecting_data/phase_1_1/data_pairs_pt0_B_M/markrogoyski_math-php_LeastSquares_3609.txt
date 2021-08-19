@@ -1,0 +1,17 @@
+    /**
+     * Regression Leverages
+     * A measure of how far away the independent variable values of an observation are from those of the other observations.
+     * https://en.wikipedia.org/wiki/Leverage_(statistics)
+     *
+     * Leverage score for the i-th data unit is defined as:
+     * hᵢᵢ = [H]ᵢᵢ
+     * which is the i-th diagonal element of the project matrix H,
+     * where H = X⟮XᵀX⟯⁻¹Xᵀ where X is the design matrix.
+     *
+     * @return array
+     */
+
+    public function leverages(): array
+    {
+        return $this->reg_P->getDiagonalElements();
+    }

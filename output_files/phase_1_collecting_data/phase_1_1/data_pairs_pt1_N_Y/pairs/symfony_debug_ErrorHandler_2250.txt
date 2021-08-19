@@ -1,0 +1,16 @@
+    /**
+     * Gets the fatal error handlers.
+     *
+     * Override this method if you want to define more fatal error handlers.
+     *
+     * @return FatalErrorHandlerInterface[] An array of FatalErrorHandlerInterface
+     */
+
+    protected function getFatalErrorHandlers()
+    {
+        return [
+            new UndefinedFunctionFatalErrorHandler(),
+            new UndefinedMethodFatalErrorHandler(),
+            new ClassNotFoundFatalErrorHandler(),
+        ];
+    }

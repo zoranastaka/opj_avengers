@@ -1,0 +1,10 @@
+    /**
+     * JavascriptEmbedder constructor.
+     *
+     * @param Dompdf $dompdf
+     */
+
+    public function __construct(Dompdf $dompdf)
+    {
+        $this->_dompdf = $dompdf;
+    }

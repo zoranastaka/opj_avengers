@@ -1,0 +1,17 @@
+    /**
+     * @test         variance is not a number when ν ≤ 1
+     * @dataProvider dataProviderForVarianceNan
+     * @param        float $ν
+     */
+
+    public function testVarianceNan(float $ν)
+    {
+        // Given
+        $studentT = new StudentT($ν);
+
+        // When
+        $variance = $studentT->variance();
+
+        // Then
+        $this->assertNan($variance);
+    }

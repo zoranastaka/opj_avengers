@@ -1,0 +1,7 @@
+    /**
+     * @param mixed[] $args
+     *
+     * @dataProvider provideStaticMethods
+     */
+
+    public function testStaticCreationMethodsReturnSpecificUuidInstances(

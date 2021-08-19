@@ -1,0 +1,12 @@
+    /**
+     * @return int|bool
+     */
+
+    private function getTokenIndex(string $token)
+    {
+        if ($this->isStopWord($token)) {
+            return false;
+        }
+
+        return $this->vocabulary[$token] ?? false;
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @test         testIsNotSphenicNumber
+     * @dataProvider dataProviderForNonSphenicNumbers
+     * @param        int $n
+     * @throws       \Exception
+     */
+
+    public function testIsNotSphenicNumber(int $n)
+    {
+        // When
+        $isSphenicNumber = Integer::isSphenicNumber($n);
+
+        // Then
+        $this->assertFalse($isSphenicNumber);
+    }

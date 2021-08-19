@@ -1,0 +1,3 @@
+    //da li taj zaposleni se nalazi u bazi i ima pristup,  ZA LOGIN FORMU
+
+    public function ima_pristup($podaci){

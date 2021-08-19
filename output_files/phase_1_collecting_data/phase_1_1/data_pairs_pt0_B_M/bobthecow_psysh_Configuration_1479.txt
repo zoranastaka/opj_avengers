@@ -1,0 +1,57 @@
+    /**
+     * Construct a Configuration object from Symfony Console input.
+     *
+     * This is great for adding psysh-compatible command line options to framework- or app-specific
+     * wrappers.
+     *
+     * $input should already be bound to an appropriate InputDefinition (see self::getInputOptions
+     * if you want to build your own) before calling this method. It's not required, but things work
+     * a lot better if we do.
+     *
+     * @see self::getInputOptions
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @param InputInterface $input
+     *
+     * @return self
+     */
+
+    public static function fromInput(InputInterface $input)
+    {
+        $config = new self(['configFile' => self::getConfigFileFromInput($input)]);
+
+        // Handle --color and --no-color (and --ansi and --no-ansi aliases)
+        if (self::getOptionFromInput($input, ['color', 'ansi'])) {
+            $config->setColorMode(self::COLOR_MODE_FORCED);
+        } elseif (self::getOptionFromInput($input, ['no-color', 'no-ansi'])) {
+            $config->setColorMode(self::COLOR_MODE_DISABLED);
+        }
+
+        // Handle verbosity options
+        if ($verbosity = self::getVerbosityFromInput($input)) {
+            $config->setVerbosity($verbosity);
+        }
+
+        // Handle interactive mode
+        if (self::getOptionFromInput($input, ['interactive', 'interaction'], ['-a', '-i'])) {
+            $config->setInteractiveMode(self::INTERACTIVE_MODE_FORCED);
+        } elseif (self::getOptionFromInput($input, ['no-interactive', 'no-interaction'], ['-n'])) {
+            $config->setInteractiveMode(self::INTERACTIVE_MODE_DISABLED);
+        }
+
+        // Handle --raw-output
+        // @todo support raw output with interactive input?
+        if (!$config->getInputInteractive()) {
+            if (self::getOptionFromInput($input, ['raw-output'], ['-r'])) {
+                $config->setRawOutput(true);
+            }
+        }
+
+        // Handle --yolo
+        if (self::getOptionFromInput($input, ['yolo'])) {
+            $config->setYolo(true);
+        }
+
+        return $config;
+    }

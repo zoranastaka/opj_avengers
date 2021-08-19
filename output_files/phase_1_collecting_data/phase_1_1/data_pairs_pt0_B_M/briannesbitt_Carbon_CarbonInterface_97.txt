@@ -1,0 +1,9 @@
+    /**
+     * Returns true if a property can be changed via setter.
+     *
+     * @param string $unit
+     *
+     * @return bool
+     */
+
+    public static function isModifiableUnit($unit);

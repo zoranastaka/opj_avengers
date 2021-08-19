@@ -1,0 +1,21 @@
+    /**
+     * @test         add int returns the correct number
+     * @dataProvider dataProviderForAddInt
+     * @param        array $rn
+     * @param        int   $int
+     * @param        array $result
+     * @throws       \Exception
+     */
+
+    public function testAddInt(array $rn, int $int, array $result)
+    {
+        // Given
+        $rational_number = new Rational(...$rn);
+        $result_rn       = new Rational(...$result);
+
+        // When
+        $additionResult = $rational_number->add($int);
+
+        // Then
+        $this->assertTrue($additionResult->equals($result_rn));
+    }

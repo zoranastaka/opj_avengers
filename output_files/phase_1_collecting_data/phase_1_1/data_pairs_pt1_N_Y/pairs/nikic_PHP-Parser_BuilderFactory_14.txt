@@ -1,0 +1,9 @@
+    /**
+     * Creates a property builder.
+     *
+     * @param string $name Name of the property
+     *
+     * @return Builder\Property The created property builder
+     */
+
+    public function property(string $name) : Builder\Property {

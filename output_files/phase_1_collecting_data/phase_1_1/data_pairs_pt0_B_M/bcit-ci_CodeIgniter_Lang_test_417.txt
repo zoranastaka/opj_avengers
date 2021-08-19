@@ -1,0 +1,16 @@
+	// --------------------------------------------------------------------
+
+	public function test_multiple_file_load()
+	{
+		// Multiple files
+		$this->ci_vfs_clone('system/language/english/profiler_lang.php');
+		$files = array(
+			0 => 'profiler',
+			1 => 'nonexistent'
+		);
+		$this->setExpectedException(
+			'RuntimeException',
+			'CI Error: Unable to load the requested language file: language/english/nonexistent_lang.php'
+		);
+		$this->lang->load($files, 'english');
+	}

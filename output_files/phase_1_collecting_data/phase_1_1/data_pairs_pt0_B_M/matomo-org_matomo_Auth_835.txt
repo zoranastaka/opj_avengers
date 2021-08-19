@@ -1,0 +1,7 @@
+    /**
+     * Returns the login of the user being authenticated.
+     *
+     * @return string
+     */
+
+    public function getLogin();

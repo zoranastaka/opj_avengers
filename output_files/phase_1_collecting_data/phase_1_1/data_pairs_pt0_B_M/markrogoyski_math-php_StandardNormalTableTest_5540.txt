@@ -1,0 +1,16 @@
+    /**
+     * @test         z score
+     * @dataProvider dataProviderForZScores
+     * @param        float $Z
+     * @param        float $Φ
+     * @throws       \Exception
+     */
+
+    public function testGetZScoreProbability(float $Z, float $Φ)
+    {
+        // When
+        $score = StandardNormal::getZScoreProbability($Z);
+
+        // Then
+        $this->assertEqualsWithDelta($Φ, $score, 0.0001);
+    }

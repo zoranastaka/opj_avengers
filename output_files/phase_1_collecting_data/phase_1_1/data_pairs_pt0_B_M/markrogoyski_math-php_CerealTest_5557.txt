@@ -1,0 +1,14 @@
+    /**
+     * @test X variables
+     */
+
+    public function testXDataVariables()
+    {
+        // When
+        $X = $this->cereal->getXData();
+
+        // Then
+        foreach ($X as $observation) {
+            $this->assertCount(145, $observation);
+        }
+    }

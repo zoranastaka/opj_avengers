@@ -1,0 +1,9 @@
+    /**
+     * Resolve an array of arguments to their concrete implementations.
+     *
+     * @param array $arguments
+     *
+     * @return array
+     */
+
+    public function resolveArguments(array $arguments) : array;

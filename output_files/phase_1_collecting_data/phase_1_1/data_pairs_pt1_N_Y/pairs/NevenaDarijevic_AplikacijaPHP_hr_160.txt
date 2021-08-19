@@ -1,0 +1,3 @@
+//metoda koja vraca sve hr zaposlene iz baze
+
+    public function select_sve(){

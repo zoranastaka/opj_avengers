@@ -1,0 +1,20 @@
+    /**
+     * Run all worker instances.
+     *
+     * @return void
+     */
+
+    public static function runAll()
+    {
+        static::checkSapiEnv();
+        static::init();
+        static::parseCommand();
+        static::daemonize();
+        static::initWorkers();
+        static::installSignal();
+        static::saveMasterPid();
+        static::displayUI();
+        static::forkWorkers();
+        static::resetStd();
+        static::monitorWorkers();
+    }

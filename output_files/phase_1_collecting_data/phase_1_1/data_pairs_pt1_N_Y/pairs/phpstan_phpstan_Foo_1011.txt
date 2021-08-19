@@ -1,0 +1,11 @@
+	/**
+	 * @param mixed $value
+	 * @param \Symfony\Component\Validator\Constraint $constraint
+	 *
+	 * @return void
+	 */
+
+	public function validate($value, Constraint $constraint): void
+	{
+		$this->context->buildViolation('foo');
+	}

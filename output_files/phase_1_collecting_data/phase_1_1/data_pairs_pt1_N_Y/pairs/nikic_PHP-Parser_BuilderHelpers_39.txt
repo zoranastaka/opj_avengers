@@ -1,0 +1,10 @@
+    /**
+     * Adds a modifier and returns new modifier bitmask.
+     *
+     * @param int $modifiers Existing modifiers
+     * @param int $modifier  Modifier to set
+     *
+     * @return int New modifiers
+     */
+
+    public static function addModifier(int $modifiers, int $modifier) : int {

@@ -1,0 +1,15 @@
+    /**
+     * Get regression parameters (V and K)
+     *
+     * @param array $params
+     *
+     * @return array [ V => number, K => number ]
+     */
+
+    public function getModelParameters(array $params): array
+    {
+        return [
+            'V' => $params[self::$V],
+            'K' => $params[self::$K],
+        ];
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @test scalarMultiply propagates error tolerance to resultant matrix
+     */
+
+    public function testScalarMultiply()
+    {
+        // Given
+        $x = 4;
+
+        // When
+        $R = $this->A->scalarMultiply($x);
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Returns the callbacks array
+     *
+     * @return array
+     */
+
+    public function getCallbacks()
+    {
+        return $this->callbacks;
+    }

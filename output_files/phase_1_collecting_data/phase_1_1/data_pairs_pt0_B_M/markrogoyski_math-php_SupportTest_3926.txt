@@ -1,0 +1,17 @@
+    /**
+     * @test isEqual is true when setting a specific tolerance
+     */
+
+    public function testIsEqualWithinTolerance()
+    {
+        // Given
+        $x = 1.000001;
+        $y = 1.000002;
+        $ε = 0.000002;
+
+        // When
+        $isEqual = Support::isEqual($x, $y, $ε);
+
+        // Then
+        $this->assertTrue($isEqual);
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @test         complementaryErrorFunction returns the expected value
+     * @dataProvider dataProviderForComplementaryErrorFunction
+     * @param        float $x
+     * @param        float $expected
+     */
+
+    public function testComplementaryErrorFunction(float $x, float $expected)
+    {
+        // When
+        $complementaryErrorFunction = Special::complementaryErrorFunction($x);
+        $efc                        = Special::erfc($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $complementaryErrorFunction, 0.0001);
+        $this->assertEqualsWithDelta($expected, $efc, 0.0001);
+    }

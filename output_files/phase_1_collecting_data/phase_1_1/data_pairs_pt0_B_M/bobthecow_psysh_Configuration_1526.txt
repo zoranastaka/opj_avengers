@@ -1,0 +1,10 @@
+    /**
+     * Enable or disable tab completion.
+     *
+     * @param bool $useTabCompletion
+     */
+
+    public function setUseTabCompletion($useTabCompletion)
+    {
+        $this->useTabCompletion = (bool) $useTabCompletion;
+    }

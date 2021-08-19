@@ -1,0 +1,14 @@
+    /**
+     * sets the color for fill operations
+     *
+     * @param $fillRule
+     */
+
+    function setFillRule($fillRule)
+    {
+        if (!in_array($fillRule, ["nonzero", "evenodd"])) {
+            return;
+        }
+
+        $this->fillRule = $fillRule;
+    }

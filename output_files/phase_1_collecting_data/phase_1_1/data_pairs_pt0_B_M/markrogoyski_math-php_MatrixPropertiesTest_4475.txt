@@ -1,0 +1,15 @@
+    /**
+     * @test         isOrthogonal when not orthogonal
+     * @dataProvider dataProviderForNonOrthogonalMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsOrthogonalWhenNotOrthogonal(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isOrthogonal());
+    }

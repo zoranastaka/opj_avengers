@@ -1,0 +1,51 @@
+  /**
+   * Creates message and assigns Mailer. If the message is
+   * not sent successfully then it returns false.  Use the ErrorInfo
+   * variable to view description of the error.
+   * @return bool
+   */
+
+  public function Send() {
+    try {
+      if ((count($this->to) + count($this->cc) + count($this->bcc)) < 1) {
+        throw new phpmailerException($this->Lang('provide_address'), self::STOP_CRITICAL);
+      }
+
+      // Set whether the message is multipart/alternative
+      if(!empty($this->AltBody)) {
+        $this->ContentType = 'multipart/alternative';
+      }
+
+      $this->error_count = 0; // reset errors
+      $this->SetMessageType();
+      $header = $this->CreateHeader();
+      $body = $this->CreateBody();
+
+      if (empty($this->Body)) {
+        throw new phpmailerException($this->Lang('empty_message'), self::STOP_CRITICAL);
+      }
+
+      // digitally sign with DKIM if enabled
+      if ($this->DKIM_domain && $this->DKIM_private) {
+        $header_dkim = $this->DKIM_Add($header,$this->Subject,$body);
+        $header = str_replace("\r\n","\n",$header_dkim) . $header;
+      }
+
+      // Choose the mailer and send through it
+      switch($this->Mailer) {
+        case 'sendmail':
+          return $this->SendmailSend($header, $body);
+        case 'smtp':
+          return $this->SmtpSend($header, $body);
+        default:
+          return $this->MailSend($header, $body);
+      }
+
+    } catch (phpmailerException $e) {
+      $this->SetError($e->getMessage());
+      if ($this->exceptions) {
+        throw $e;
+      }
+      echo $e->getMessage()."\n";
+      return false;
+    }

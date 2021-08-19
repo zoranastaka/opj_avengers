@@ -1,0 +1,12 @@
+    /**
+     * Alias for onceUsingId.
+     *
+     * @param  mixed  $id
+     *
+     * @return bool
+     */
+
+    public function byId($id)
+    {
+        return $this->onceUsingId($id);
+    }

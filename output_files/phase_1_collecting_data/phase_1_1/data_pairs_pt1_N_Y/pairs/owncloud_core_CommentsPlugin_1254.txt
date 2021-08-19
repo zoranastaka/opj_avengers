@@ -1,0 +1,5 @@
+/**
+ * Sabre plugin to handle comments:
+ */
+
+class CommentsPlugin extends ServerPlugin {

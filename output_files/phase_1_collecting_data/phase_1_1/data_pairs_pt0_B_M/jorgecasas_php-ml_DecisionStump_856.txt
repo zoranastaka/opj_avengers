@@ -1,0 +1,44 @@
+    /**
+     * Calculates the ratio of wrong predictions based on the new threshold
+     * value given as the parameter
+     */
+
+    protected function calculateErrorRate(array $targets, float $threshold, string $operator, array $values): array
+    {
+        $wrong = 0.0;
+        $prob = [];
+        $leftLabel = $this->binaryLabels[0];
+        $rightLabel = $this->binaryLabels[1];
+
+        foreach ($values as $index => $value) {
+            if (Comparison::compare($value, $threshold, $operator)) {
+                $predicted = $leftLabel;
+            } else {
+                $predicted = $rightLabel;
+            }
+
+            $target = $targets[$index];
+            if ((string) $predicted != (string) $targets[$index]) {
+                $wrong += $this->weights[$index];
+            }
+
+            if (!isset($prob[$predicted][$target])) {
+                $prob[$predicted][$target] = 0;
+            }
+
+            ++$prob[$predicted][$target];
+        }
+
+        // Calculate probabilities: Proportion of labels in each leaf
+        $dist = array_combine($this->binaryLabels, array_fill(0, 2, 0.0));
+        foreach ($prob as $leaf => $counts) {
+            $leafTotal = (float) array_sum($prob[$leaf]);
+            foreach ($counts as $label => $count) {
+                if ((string) $leaf == (string) $label) {
+                    $dist[$leaf] = $count / $leafTotal;
+                }
+            }
+        }
+
+        return [$wrong / (float) array_sum($this->weights), $dist];
+    }

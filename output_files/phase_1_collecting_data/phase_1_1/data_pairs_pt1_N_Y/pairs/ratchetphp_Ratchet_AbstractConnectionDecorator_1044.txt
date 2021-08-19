@@ -1,0 +1,5 @@
+    /**
+     * @return ConnectionInterface
+     */
+
+    protected function getConnection() {

@@ -1,0 +1,15 @@
+    /**
+     * Get error message by error code.
+     *
+     * @param integer $type
+     * @return string
+     */
+
+    protected static function getErrorType($type)
+    {
+        if(isset(self::$_errorType[$type])) {
+            return self::$_errorType[$type];
+        }
+
+        return '';
+    }

@@ -1,0 +1,9 @@
+    /**
+     * Get column count (n)
+     * @return int number of columns
+     */
+
+    public function getN(): int
+    {
+        return $this->n;
+    }

@@ -1,0 +1,10 @@
+   /**
+    * Whether container prepends its name to names of contained elements
+    *
+    * @return   bool
+    */
+
+    protected function prependsName()
+    {
+        return false;
+    }

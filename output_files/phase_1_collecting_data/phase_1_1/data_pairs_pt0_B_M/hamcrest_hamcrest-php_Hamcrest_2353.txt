@@ -1,0 +1,8 @@
+    /**
+     * Matches if value (class, object, or array) does not have named $property.
+     */
+
+    function notSet($property)
+    {
+        return \Hamcrest\Core\Set::notSet($property);
+    }

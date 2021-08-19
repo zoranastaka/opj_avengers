@@ -1,0 +1,11 @@
+    /**
+     * @covers ::setFlushThreshold
+     * @covers \League\Csv\InvalidArgument::dueToInvalidThreshold
+     */
+
+    public function testFlushThresholdThrowsException(): void
+    {
+        $this->csv->setFlushThreshold(1);
+        $this->expectException(InvalidArgument::class);
+        $this->csv->setFlushThreshold(0);
+    }

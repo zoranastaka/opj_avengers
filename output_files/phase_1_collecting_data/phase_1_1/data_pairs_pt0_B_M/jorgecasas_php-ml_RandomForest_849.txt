@@ -1,0 +1,13 @@
+    /**
+     * A string array to represent the columns is given. They are useful
+     * when trying to print some information about the trees such as feature importances
+     *
+     * @return $this
+     */
+
+    public function setColumnNames(array $names)
+    {
+        $this->columnNames = $names;
+
+        return $this;
+    }

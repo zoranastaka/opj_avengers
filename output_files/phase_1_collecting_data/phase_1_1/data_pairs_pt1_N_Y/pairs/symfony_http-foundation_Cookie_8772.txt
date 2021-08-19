@@ -1,0 +1,10 @@
+    /**
+     * Gets the SameSite attribute.
+     *
+     * @return string|null
+     */
+
+    public function getSameSite()
+    {
+        return $this->sameSite;
+    }

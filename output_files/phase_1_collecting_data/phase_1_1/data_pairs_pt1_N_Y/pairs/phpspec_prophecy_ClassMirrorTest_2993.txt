@@ -1,0 +1,23 @@
+    /**
+     * @test
+     * @requires PHP 5.6
+     */
+
+    public function it_properly_reads_methods_variadic_arguments()
+    {
+        $class = new \ReflectionClass('Fixtures\Prophecy\WithVariadicArgument');
+
+        $mirror = new ClassMirror();
+
+        $classNode = $mirror->reflect($class, array());
+        $methodNode = $classNode->getMethod('methodWithArgs');
+        $argNodes = $methodNode->getArguments();
+
+        $this->assertCount(1, $argNodes);
+
+        $this->assertEquals('args', $argNodes[0]->getName());
+        $this->assertEquals(new ArgumentTypeNode(), $argNodes[0]->getTypeNode());
+        $this->assertFalse($argNodes[0]->isOptional());
+        $this->assertFalse($argNodes[0]->isPassedByReference());
+        $this->assertTrue($argNodes[0]->isVariadic());
+    }

@@ -1,0 +1,9 @@
+    /**
+     * This method is required by the interface [[\ArrayAccess]].
+     * @param mixed $offset the offset to unset element
+     */
+
+    public function offsetUnset($offset)
+    {
+        unset($this->data[$offset]);
+    }

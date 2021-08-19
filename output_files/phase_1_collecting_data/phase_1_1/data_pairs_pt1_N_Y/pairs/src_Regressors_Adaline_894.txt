@@ -1,0 +1,83 @@
+    /**
+     * Perform a partial train on the learner.
+     *
+     * @param \Rubix\ML\Datasets\Labeled $dataset
+     */
+
+    public function partial(Dataset $dataset) : void
+    {
+        if (!$this->network) {
+            $this->train($dataset);
+
+            return;
+        }
+
+        SpecificationChain::with([
+            new DatasetIsLabeled($dataset),
+            new DatasetIsNotEmpty($dataset),
+            new SamplesAreCompatibleWithEstimator($dataset, $this),
+            new LabelsAreCompatibleWithLearner($dataset, $this),
+            new DatasetHasDimensionality($dataset, $this->network->input()->width()),
+        ])->check();
+
+        if ($this->logger) {
+            $this->logger->info("$this initialized");
+        }
+
+        $prevLoss = $bestLoss = INF;
+        $delta = 0;
+
+        $this->losses = [];
+
+        for ($epoch = 1; $epoch <= $this->epochs; ++$epoch) {
+            $batches = $dataset->randomize()->batch($this->batchSize);
+
+            $loss = 0.0;
+
+            foreach ($batches as $batch) {
+                $loss += $this->network->roundtrip($batch);
+            }
+
+            if (is_nan($loss)) {
+                if ($this->logger) {
+                    $this->logger->info('Numerical under/overflow detected');
+                }
+
+                break;
+            }
+
+            $loss /= count($batches);
+
+            $this->losses[$epoch] = $loss;
+
+            if ($this->logger) {
+                $this->logger->info("Epoch $epoch - {$this->costFn}: $loss");
+            }
+
+            if ($loss <= 0.0) {
+                break;
+            }
+
+            if (abs($prevLoss - $loss) < $this->minChange) {
+                break;
+            }
+
+            if ($loss < $bestLoss) {
+                $bestLoss = $loss;
+
+                $delta = 0;
+            } else {
+                ++$delta;
+            }
+
+            if ($delta >= $this->window) {
+                break;
+            }
+
+            $prevLoss = $loss;
+        }
+
+        if ($this->logger) {
+            $this->logger->info('Training complete');
+        }
+    }

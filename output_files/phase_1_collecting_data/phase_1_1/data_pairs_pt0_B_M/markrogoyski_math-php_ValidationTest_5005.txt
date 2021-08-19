@@ -1,0 +1,25 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForSubintervalsNotMultiple(): array
+    {
+        return [
+            [
+                [[0,0], [1,1]],
+                2
+            ],
+            [
+                [[0,0], [1,1], [2,2]],
+                3
+            ],
+            [
+                [[0,2], [2,4], [4,6], [6,8]],
+                2
+            ],
+            [
+                [[1,0], [4,1], [7,2], [10,3], [13,4], [16,5]],
+                9
+            ],
+        ];
+    }

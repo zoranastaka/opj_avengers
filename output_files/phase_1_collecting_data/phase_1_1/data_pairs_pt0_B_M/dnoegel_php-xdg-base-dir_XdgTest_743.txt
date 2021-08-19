@@ -1,0 +1,22 @@
+    /**
+     * Ensure, that the fallback directories are created with correct permission
+     */
+
+    public function testGetRuntimeShouldDeleteDirsWithWrongPermission()
+    {
+        $runtimeDir = sys_get_temp_dir() . DIRECTORY_SEPARATOR . XdgBaseDir\Xdg::RUNTIME_DIR_FALLBACK . getenv('USER');
+
+        rmdir($runtimeDir);
+        mkdir($runtimeDir, 0764, true);
+
+        // Permission should be wrong now
+        $permission = decoct(fileperms($runtimeDir) & 0777);
+        $this->assertEquals(764, $permission);
+
+        putenv('XDG_RUNTIME_DIR=');
+        $dir = $this->getXdg()->getRuntimeDir(false);
+
+        // Permission should be fixed
+        $permission = decoct(fileperms($dir) & 0777);
+        $this->assertEquals(700, $permission);
+    }

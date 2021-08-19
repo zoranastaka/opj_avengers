@@ -1,0 +1,15 @@
+    /**
+     * @test         isNegativeSemidefinite returns true for a negative semidefinite square matrix.
+     * @dataProvider dataProviderForNegativeSemidefiniteMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsNegativeSemidefinite(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isNegativeSemidefinite());
+    }

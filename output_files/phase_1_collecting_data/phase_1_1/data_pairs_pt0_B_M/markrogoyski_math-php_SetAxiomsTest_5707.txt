@@ -1,0 +1,14 @@
+    /**
+     * @test Axiom: A ⊆ A
+     * Every set is a subset of itself
+     * @dataProvider dataProviderForSingleSet
+     */
+
+    public function testSetIsSubsetOfItself(Set $A)
+    {
+        // When
+        $isSubset = $A->isSubset($A);
+
+        // Then
+        $this->assertTrue($isSubset);
+    }

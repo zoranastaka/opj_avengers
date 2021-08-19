@@ -1,0 +1,15 @@
+    /**
+     * @test         lookAndSay
+     * @dataProvider dataProviderForLookAndSay
+     * @param        int $n
+     * @param        array $expected_look_and_say
+     */
+
+    public function testLookAndSay(int $n, array $expected_look_and_say)
+    {
+        // When
+        $look_and_say = Advanced::lookAndSay($n);
+
+        // Then
+        $this->assertEquals($expected_look_and_say, $look_and_say);
+    }

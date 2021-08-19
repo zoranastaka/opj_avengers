@@ -1,0 +1,21 @@
+    /**
+     * Probability mass function
+     *
+     * k trials where k ∈ {1, 2, 3, ...}
+     *
+     * pmf = (1 - p)ᵏ⁻¹p
+     *
+     * @param  int   $k number of trials     k ≥ 1
+     *
+     * @return float
+     */
+
+    public function pmf(int $k): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['k' => $k]);
+
+        $p = $this->p;
+
+        $⟮1 − p⟯ᵏ⁻¹ = \pow(1 - $p, $k - 1);
+        return $⟮1 − p⟯ᵏ⁻¹ * $p;
+    }

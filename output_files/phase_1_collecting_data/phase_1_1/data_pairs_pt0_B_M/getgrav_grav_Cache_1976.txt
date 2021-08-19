@@ -1,0 +1,15 @@
+    /**
+     * Gets a cached entry if it exists based on an id. If it does not exist, it returns false
+     *
+     * @param  string $id the id of the cached entry
+     * @return mixed|bool     returns the cached entry, can be any type, or false if doesn't exist
+     */
+
+    public function fetch($id)
+    {
+        if ($this->enabled) {
+            return $this->driver->fetch($id);
+        }
+
+        return false;
+    }

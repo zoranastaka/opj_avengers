@@ -1,0 +1,17 @@
+    /**
+     * Emit Response Headers
+     *
+     * @param ResponseInterface $response
+     */
+
+    private function emitHeaders(ResponseInterface $response): void
+    {
+        foreach ($response->getHeaders() as $name => $values) {
+            $first = strtolower($name) !== 'set-cookie';
+            foreach ($values as $value) {
+                $header = sprintf('%s: %s', $name, $value);
+                header($header, $first);
+                $first = false;
+            }
+        }
+    }

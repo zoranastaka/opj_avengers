@@ -1,0 +1,16 @@
+    /**
+     * @return AuthorizationValidatorInterface
+     */
+
+    protected function getAuthorizationValidator()
+    {
+        if ($this->authorizationValidator instanceof AuthorizationValidatorInterface === false) {
+            $this->authorizationValidator = new BearerTokenValidator($this->accessTokenRepository);
+        }
+
+        if ($this->authorizationValidator instanceof BearerTokenValidator === true) {
+            $this->authorizationValidator->setPublicKey($this->publicKey);
+        }
+
+        return $this->authorizationValidator;
+    }

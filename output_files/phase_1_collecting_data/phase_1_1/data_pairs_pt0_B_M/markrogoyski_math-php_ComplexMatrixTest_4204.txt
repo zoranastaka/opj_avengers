@@ -1,0 +1,14 @@
+    /**
+     * @test         Construction
+     * @dataProvider dataProviderForComplexObjectMatrix
+     * @param        Complex[][]
+     */
+
+    public function testConstruction(array $A)
+    {
+        // When
+        $A = new ComplexMatrix($A);
+
+        // Then
+        $this->assertInstanceOf(ComplexMatrix::class, $A);
+    }

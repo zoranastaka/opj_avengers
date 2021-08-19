@@ -1,0 +1,13 @@
+    /**
+     * @test sampleVariance when the array only contains one item
+     * @throws   \Exception
+     */
+
+    public function testSampleVarianceZeroWhenListContainsOnlyOneItem()
+    {
+        // When
+        $variance = Descriptive::sampleVariance([5]);
+
+        // Then
+        $this->assertEquals(0, $variance);
+    }

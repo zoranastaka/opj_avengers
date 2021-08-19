@@ -1,0 +1,7 @@
+    /** @test */
+
+    public function it_should_determine_whether_the_payload_has_a_claim()
+    {
+        $this->assertTrue($this->payload->has(new Subject(1)));
+        $this->assertFalse($this->payload->has(new Audience(1)));
+    }

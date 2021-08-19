@@ -1,0 +1,17 @@
+    /**
+     * Caches multiple numeric records in the archive for this processor's site, period
+     * and segment.
+     *
+     * @param array $numericRecords A name-value mapping of numeric values that should be
+     *                              archived, eg,
+     *
+     *                                  array('Referrers_distinctKeywords' => 23, 'Referrers_distinctCampaigns' => 234)
+     * @api
+     */
+
+    public function insertNumericRecords($numericRecords)
+    {
+        foreach ($numericRecords as $name => $value) {
+            $this->insertNumericRecord($name, $value);
+        }
+    }

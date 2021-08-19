@@ -1,0 +1,14 @@
+    /**
+     * @test         inverse
+     * @dataProvider dataProviderForInverse
+     * @param        float $x
+     * @param        float $μ
+     * @param        float $σ
+     * @param        float $inverse
+     */
+
+    public function testInverse(float $μ, float $σ, float $x, float $inverse)
+    {
+        $normal = new Normal($μ, $σ);
+        $this->assertEqualsWithDelta($inverse, $normal->inverse($x), 0.00001);
+    }

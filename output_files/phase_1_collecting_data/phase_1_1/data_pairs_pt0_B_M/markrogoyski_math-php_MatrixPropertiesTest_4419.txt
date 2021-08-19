@@ -1,0 +1,15 @@
+    /**
+     * @test         isSkewSymmetric returns true for skew-symmetric matrices.
+     * @dataProvider dataProviderForSkewSymmetricMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsSkewSymmetric(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isSkewSymmetric());
+    }

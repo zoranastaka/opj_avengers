@@ -1,0 +1,14 @@
+    /**
+     * Determine the access token validity.
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @throws OAuthServerException
+     *
+     * @return ServerRequestInterface
+     */
+
+    public function validateAuthenticatedRequest(ServerRequestInterface $request)
+    {
+        return $this->getAuthorizationValidator()->validateAuthorization($request);
+    }

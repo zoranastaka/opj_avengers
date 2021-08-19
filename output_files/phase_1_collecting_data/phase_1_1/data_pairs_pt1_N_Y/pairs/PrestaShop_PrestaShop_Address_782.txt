@@ -1,0 +1,20 @@
+    /**
+     * Check if Address is used (at least one order placed).
+     *
+     * @return int Order count for this Address
+     */
+
+    public function isUsed()
+    {
+        if ((int) $this->id <= 0) {
+            return false;
+        }
+
+        $result = (int) Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue('
+		SELECT COUNT(`id_order`) AS used
+		FROM `' . _DB_PREFIX_ . 'orders`
+		WHERE `id_address_delivery` = ' . (int) $this->id . '
+		OR `id_address_invoice` = ' . (int) $this->id);
+
+        return $result > 0 ? (int) $result : false;
+    }

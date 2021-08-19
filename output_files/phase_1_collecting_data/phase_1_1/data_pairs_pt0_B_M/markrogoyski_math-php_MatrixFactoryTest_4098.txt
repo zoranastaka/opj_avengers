@@ -1,0 +1,18 @@
+    /**
+     * @test createFromColumnVector failure due to not being a column vector
+     */
+
+    public function testConstructionFailure()
+    {
+        // Given
+        $A = [
+            [1, 2, 3],
+            [2, 3, 4],
+        ];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $R = MatrixFactory::createFromColumnVector($A);
+    }

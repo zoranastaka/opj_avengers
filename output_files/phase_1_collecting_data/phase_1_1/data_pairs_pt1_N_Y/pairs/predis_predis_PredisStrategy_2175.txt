@@ -1,0 +1,12 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getSlotByKey($key)
+    {
+        $key = $this->extractKeyTag($key);
+        $hash = $this->distributor->hash($key);
+        $slot = $this->distributor->getSlot($hash);
+
+        return $slot;
+    }

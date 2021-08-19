@@ -1,0 +1,25 @@
+    /**
+     * Get the Psy Shell readline service.
+     *
+     * By default, this service uses (in order of preference):
+     *
+     *  * GNU Readline
+     *  * Libedit
+     *  * A transient array-based readline emulation.
+     *
+     * @return Readline\Readline
+     */
+
+    public function getReadline()
+    {
+        if (!isset($this->readline)) {
+            $className = $this->getReadlineClass();
+            $this->readline = new $className(
+                $this->getHistoryFile(),
+                $this->getHistorySize(),
+                $this->getEraseDuplicates()
+            );
+        }
+
+        return $this->readline;
+    }

@@ -1,0 +1,13 @@
+    /**
+     * @throws DbException
+     */
+
+    public function up(): void
+    {
+        $this->schema->createIfNotExists('desc', function (Blueprint $blueprint) {
+            $blueprint->comment = 'user desc';
+
+            $blueprint->increments('id');
+            $blueprint->string('desc', 30);
+        });
+    }

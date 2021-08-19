@@ -1,0 +1,15 @@
+    /**
+     * @test         ses throws a BadDataException if n is < 3
+     * @dataProvider dataProviderForSesException
+     * @param        int $n
+     * @throws       \Exception
+     */
+
+    public function testSesException(int $n)
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        RandomVariable::ses($n);
+    }

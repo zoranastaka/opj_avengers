@@ -1,0 +1,12 @@
+                /*
+                 * Negative of Log-likelihood cost function to be minimized:
+                 *		J(x) = ∑( - y . log(h(x)) - (1 - y) . log(1 - h(x)))
+                 *
+                 * If regularization term is given, then it will be added to the cost:
+                 *		for L2 : J(x) = J(x) +  λ/m . w
+                 *
+                 * The gradient of the cost function to be used with gradient descent:
+                 *		∇J(x) = -(y - h(x)) = (h(x) - y)
+                 */
+
+                return function ($weights, $sample, $y) use ($penalty): array {

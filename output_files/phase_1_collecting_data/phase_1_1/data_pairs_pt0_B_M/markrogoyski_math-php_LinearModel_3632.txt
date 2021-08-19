@@ -1,0 +1,17 @@
+    /**
+     * Evaluate the model given all the model parameters
+     * y = mx + b
+     *
+     * @param float $x
+     * @param array $params
+     *
+     * @return float y evaluated
+     */
+
+    public static function evaluateModel(float $x, array $params): float
+    {
+        $m = $params[self::$M];
+        $b = $params[self::$B];
+
+        return $m * $x + $b;
+    }

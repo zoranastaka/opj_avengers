@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider validatorProvider
+     */
+
+    public function testIsValid($inn, $isValid)
+    {
+        $this->assertEquals($isValid, Inn::isValid($inn), $inn);
+    }

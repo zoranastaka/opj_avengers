@@ -1,0 +1,5 @@
+    /**
+     * Append the String <var>$str</var> to the description.
+     */
+
+    abstract protected function append($str);

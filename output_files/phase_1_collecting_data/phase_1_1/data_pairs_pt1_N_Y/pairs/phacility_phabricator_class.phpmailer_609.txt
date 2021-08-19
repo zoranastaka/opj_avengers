@@ -1,0 +1,10 @@
+  /**
+   * Returns a message in the appropriate language.
+   * @access private
+   * @return string
+   */
+
+  private function Lang($key) {
+    if(count($this->language) < 1) {
+      $this->SetLanguage('en'); // set the default language
+    }

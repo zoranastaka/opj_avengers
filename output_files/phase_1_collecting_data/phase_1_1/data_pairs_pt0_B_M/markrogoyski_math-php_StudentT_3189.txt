@@ -1,0 +1,15 @@
+    /**
+     * Inverse 2 tails
+     * Find t such that the area greater than t and the area beneath -t is p.
+     *
+     * @param float $p Proportion of area
+     *
+     * @return float t-score
+     */
+
+    public function inverse2Tails(float $p): float
+    {
+        Support::checkLimits(['p'  => '[0,1]'], ['p' => $p]);
+
+        return $this->inverse(1 - $p / 2);
+    }

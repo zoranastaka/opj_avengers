@@ -1,0 +1,13 @@
+    /**
+     * Static method to return the stream filter filtername.
+     */
+
+    public static function getFiltername(string $input_encoding, string $output_encoding): string
+    {
+        return sprintf(
+            '%s.%s/%s',
+            self::FILTERNAME,
+            self::filterEncoding($input_encoding),
+            self::filterEncoding($output_encoding)
+        );
+    }

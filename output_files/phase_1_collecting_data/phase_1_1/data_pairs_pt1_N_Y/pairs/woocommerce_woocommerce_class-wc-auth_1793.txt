@@ -1,0 +1,9 @@
+	/**
+	 * Maybe delete key.
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param array $key Key.
+	 */
+
+	private function maybe_delete_key( $key ) {

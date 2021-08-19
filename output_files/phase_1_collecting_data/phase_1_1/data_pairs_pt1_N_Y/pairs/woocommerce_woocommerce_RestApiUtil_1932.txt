@@ -1,0 +1,11 @@
+	/**
+	 * Convert the line items of a refund request to internal format (see adjust_create_refund_request_parameters).
+	 *
+	 * @param array $line_items The line items to convert.
+	 * @return array The converted line items.
+	 */
+
+	private static function adjust_line_items_for_create_refund_request( $line_items ) {
+		if ( ! is_array( $line_items ) || empty( $line_items ) || self::is_associative( $line_items ) ) {
+			return $line_items;
+		}

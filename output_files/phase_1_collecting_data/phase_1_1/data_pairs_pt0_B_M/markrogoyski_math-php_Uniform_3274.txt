@@ -1,0 +1,17 @@
+    /**
+     * Variance of the distribution
+     *
+     *      (b - a + 1)² - 1
+     * σ² = ----------------
+     *             12
+     *
+     * @return float
+     */
+
+    public function variance(): float
+    {
+        $a = $this->a;
+        $b = $this->b;
+
+        return (($b - $a + 1) ** 2 - 1) / 12;
+    }

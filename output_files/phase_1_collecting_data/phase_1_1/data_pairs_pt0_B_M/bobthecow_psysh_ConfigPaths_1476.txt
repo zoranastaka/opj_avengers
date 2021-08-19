@@ -1,0 +1,25 @@
+    /**
+     * Ensure that $dir exists and is writable.
+     *
+     * Generates E_USER_NOTICE error if the directory is not writable or creatable.
+     *
+     * @param string $dir
+     *
+     * @return bool False if directory exists but is not writeable, or cannot be created
+     */
+
+    public static function ensureDir($dir)
+    {
+        if (!\is_dir($dir)) {
+            // Just try making it and see if it works
+            @\mkdir($dir, 0700, true);
+        }
+
+        if (!\is_dir($dir) || !\is_writable($dir)) {
+            \trigger_error(\sprintf('Writing to directory %s is not allowed.', $dir), \E_USER_NOTICE);
+
+            return false;
+        }
+
+        return true;
+    }

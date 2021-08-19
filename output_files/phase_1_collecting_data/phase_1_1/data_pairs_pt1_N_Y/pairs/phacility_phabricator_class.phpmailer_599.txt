@@ -1,0 +1,9 @@
+  /**
+   * Clears all recipients assigned in the TO array.  Returns void.
+   * @return void
+   */
+
+  public function ClearAddresses() {
+    foreach($this->to as $to) {
+      unset($this->all_recipients[strtolower($to[0])]);
+    }

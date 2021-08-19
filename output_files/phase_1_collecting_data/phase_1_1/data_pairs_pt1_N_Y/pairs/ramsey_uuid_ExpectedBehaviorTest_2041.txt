@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider provideUuidConstantTests
+     */
+
+    public function testUuidConstants($constantName, $expected)
+    {
+        $this->assertSame($expected, constant("Ramsey\\Uuid\\Uuid::{$constantName}"));
+    }

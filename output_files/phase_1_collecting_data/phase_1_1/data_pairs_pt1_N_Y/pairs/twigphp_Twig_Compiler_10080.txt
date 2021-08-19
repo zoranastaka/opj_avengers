@@ -1,0 +1,12 @@
+    /**
+     * Adds a quoted string to the compiled code.
+     *
+     * @return $this
+     */
+
+    public function string(string $value)
+    {
+        $this->source .= sprintf('"%s"', addcslashes($value, "\0\t\"\$\\"));
+
+        return $this;
+    }

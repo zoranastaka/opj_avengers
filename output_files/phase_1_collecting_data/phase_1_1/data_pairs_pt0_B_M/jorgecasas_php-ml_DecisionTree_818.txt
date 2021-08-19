@@ -1,0 +1,32 @@
+    /**
+     * @param mixed $baseValue
+     */
+
+    public function getGiniIndex($baseValue, array $colValues, array $targets): float
+    {
+        $countMatrix = [];
+        foreach ($this->labels as $label) {
+            $countMatrix[$label] = [0, 0];
+        }
+
+        foreach ($colValues as $index => $value) {
+            $label = $targets[$index];
+            $rowIndex = $value === $baseValue ? 0 : 1;
+            ++$countMatrix[$label][$rowIndex];
+        }
+
+        $giniParts = [0, 0];
+        for ($i = 0; $i <= 1; ++$i) {
+            $part = 0;
+            $sum = array_sum(array_column($countMatrix, $i));
+            if ($sum > 0) {
+                foreach ($this->labels as $label) {
+                    $part += ($countMatrix[$label][$i] / (float) $sum) ** 2;
+                }
+            }
+
+            $giniParts[$i] = (1 - $part) * $sum;
+        }
+
+        return array_sum($giniParts) / count($colValues);
+    }

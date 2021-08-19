@@ -1,0 +1,16 @@
+    /**
+     * Guess whether stdin is piped.
+     *
+     * This is mostly useful for deciding whether to use non-interactive mode.
+     *
+     * @return bool
+     */
+
+    public function inputIsPiped()
+    {
+        if ($this->pipedInput === null) {
+            $this->pipedInput = \defined('STDIN') && static::looksLikeAPipe(\STDIN);
+        }
+
+        return $this->pipedInput;
+    }

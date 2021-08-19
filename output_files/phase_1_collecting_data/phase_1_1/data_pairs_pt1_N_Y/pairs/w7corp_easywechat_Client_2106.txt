@@ -1,0 +1,13 @@
+    /**
+     * Return url for ticket.
+     * Detail: https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1443433542 .
+     *
+     * @param string $ticket
+     *
+     * @return string
+     */
+
+    public function url($ticket)
+    {
+        return sprintf('https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=%s', urlencode($ticket));
+    }

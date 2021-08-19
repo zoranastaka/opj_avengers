@@ -1,0 +1,12 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getPriority(): int
+    {
+        if (\count($this->proxyFixers) > 1) {
+            throw new \LogicException('You need to override this method to provide the priority of combined fixers.');
+        }
+
+        return reset($this->proxyFixers)->getPriority();
+    }

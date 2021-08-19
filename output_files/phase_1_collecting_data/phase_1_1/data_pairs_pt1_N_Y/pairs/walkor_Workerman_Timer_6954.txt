@@ -1,0 +1,35 @@
+    /**
+     * Tick.
+     *
+     * @return void
+     */
+
+    public static function tick()
+    {
+        if (empty(self::$_tasks)) {
+            \pcntl_alarm(0);
+            return;
+        }
+        $time_now = \time();
+        foreach (self::$_tasks as $run_time => $task_data) {
+            if ($time_now >= $run_time) {
+                foreach ($task_data as $index => $one_task) {
+                    $task_func     = $one_task[0];
+                    $task_args     = $one_task[1];
+                    $persistent    = $one_task[2];
+                    $time_interval = $one_task[3];
+                    try {
+                        \call_user_func_array($task_func, $task_args);
+                    } catch (\Exception $e) {
+                        Worker::safeEcho($e);
+                    }
+                    if($persistent && !empty(self::$_status[$index])) {
+                        $new_run_time = \time() + $time_interval;
+                        if(!isset(self::$_tasks[$new_run_time])) self::$_tasks[$new_run_time] = array();
+                        self::$_tasks[$new_run_time][$index] = array($task_func, (array)$task_args, $persistent, $time_interval);
+                    }
+                }
+                unset(self::$_tasks[$run_time]);
+            }
+        }
+    }

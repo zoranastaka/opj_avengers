@@ -1,0 +1,10 @@
+    /**
+     * @return $this
+     */
+
+    public function registerParserShortcut(ParserInterface $shortcut): self
+    {
+        $this->shortcutParsers[] = $shortcut;
+
+        return $this;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get Company
+     *
+     * @return string
+     */
+
+    public function getCompany()
+    {
+        return $this->company;
+    }

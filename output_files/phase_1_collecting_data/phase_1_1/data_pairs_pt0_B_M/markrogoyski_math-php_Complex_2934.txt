@@ -1,0 +1,15 @@
+    /**
+     * Test for equality
+     * Two complex numbers are equal if and only if both their real and imaginary parts are equal.
+     *
+     * https://en.wikipedia.org/wiki/Complex_number#Equality
+     *
+     * @param Complex $c
+     *
+     * @return bool
+     */
+
+    public function equals(Complex $c): bool
+    {
+        return \abs($this->r - $c->r) < self::EPSILON && \abs($this->i - $c->i) < self::EPSILON;
+    }

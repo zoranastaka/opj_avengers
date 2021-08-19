@@ -1,0 +1,8 @@
+    /**
+     * @param string $bridge
+     */
+
+    public function setBridge($bridge)
+    {
+        $this->bridge = $bridge;
+    }

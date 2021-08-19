@@ -1,0 +1,11 @@
+    /**
+     * @covers ::__construct
+     * @covers \League\Csv\InvalidArgument
+     */
+
+    public function testColumnsCountTriggersException(): void
+    {
+        $this->expectException(InvalidArgument::class);
+
+        new ColumnConsistency(-2);
+    }

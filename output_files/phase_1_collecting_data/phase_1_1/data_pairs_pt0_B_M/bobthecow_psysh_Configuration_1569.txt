@@ -1,0 +1,10 @@
+    /**
+     * Get the configured output verbosity.
+     *
+     * @return string
+     */
+
+    public function verbosity()
+    {
+        return $this->verbosity;
+    }

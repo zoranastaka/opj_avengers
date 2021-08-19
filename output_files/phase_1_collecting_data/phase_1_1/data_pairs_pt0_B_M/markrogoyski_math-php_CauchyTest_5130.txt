@@ -1,0 +1,18 @@
+    /**
+     * @test         mode is $x₀
+     * @dataProvider dataProviderForAverages
+     * @param        float $x₀
+     * @param        float $γ
+     */
+
+    public function testMode(float $x₀, float $γ)
+    {
+        // Given
+        $cauchy = new Cauchy($x₀, $γ);
+
+        // When
+        $mode = $cauchy->mode();
+
+        // Then
+        $this->assertEquals($x₀, $mode);
+    }

@@ -1,0 +1,13 @@
+    /**
+     * Pause accept new connections.
+     *
+     * @return void
+     */
+
+    public function pauseAccept()
+    {
+        if (static::$globalEvent && false === $this->_pauseAccept && $this->_mainSocket) {
+            static::$globalEvent->del($this->_mainSocket, EventInterface::EV_READ);
+            $this->_pauseAccept = true;
+        }
+    }

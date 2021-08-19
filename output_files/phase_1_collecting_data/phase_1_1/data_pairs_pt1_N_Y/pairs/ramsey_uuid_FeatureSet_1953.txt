@@ -1,0 +1,8 @@
+    /**
+     * Returns true if the PHP build is 64-bit
+     */
+
+    private function is64BitSystem(): bool
+    {
+        return PHP_INT_SIZE === 8 && !$this->disable64Bit;
+    }

@@ -1,0 +1,21 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function shutdown()
+    {
+        if (false === $this->booted) {
+            return;
+        }
+
+        $this->booted = false;
+
+        foreach ($this->getBundles() as $bundle) {
+            $bundle->shutdown();
+            $bundle->setContainer(null);
+        }
+
+        $this->container = null;
+        $this->requestStackSize = 0;
+        $this->resetServices = false;
+    }

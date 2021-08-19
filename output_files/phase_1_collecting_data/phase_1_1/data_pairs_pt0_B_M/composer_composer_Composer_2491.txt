@@ -1,0 +1,8 @@
+    /**
+     * @param RepositoryManager $manager
+     */
+
+    public function setRepositoryManager(RepositoryManager $manager)
+    {
+        $this->repositoryManager = $manager;
+    }

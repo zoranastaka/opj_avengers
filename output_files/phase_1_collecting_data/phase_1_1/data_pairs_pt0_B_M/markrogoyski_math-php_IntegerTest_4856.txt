@@ -1,0 +1,15 @@
+    /**
+     * @test         sumOfDivisors throws an OutOfBoundsException if n is < 1.
+     * @dataProvider dataProviderForPrimeFactorizationOutOfBoundsException
+     * @param        int $n
+     * @throws       \Exception
+     */
+
+    public function testSumOfDivisorsOutOfBoundsException(int $n)
+    {
+        // When
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // Then
+        Integer::sumOfDivisors($n);
+    }

@@ -1,0 +1,22 @@
+    /**
+     * @test Kernel function NORMAL
+     * Test data made with scipy.stats.gaussian_kde
+     * @dataProvider dataProviderForNormalKde
+     * @param float $x
+     * @param float $expected
+     */
+
+    public function testNormal(float $x, float $expected)
+    {
+        // Given
+        $KDE = new KernelDensityEstimation($this->data);
+        $h   = 0.3932;
+        $KDE->setBandwidth($h);
+        $KDE->setKernelFunction(KernelDensityEstimation::NORMAL);
+
+        // When
+        $estimate = $KDE->evaluate($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $estimate, 0.00001, "Evaluate x = $x");
+    }

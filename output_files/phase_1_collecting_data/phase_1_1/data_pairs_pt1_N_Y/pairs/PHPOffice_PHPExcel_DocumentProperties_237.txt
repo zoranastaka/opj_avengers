@@ -1,0 +1,10 @@
+    /**
+     * Get Created
+     *
+     * @return datetime
+     */
+
+    public function getCreated()
+    {
+        return $this->created;
+    }

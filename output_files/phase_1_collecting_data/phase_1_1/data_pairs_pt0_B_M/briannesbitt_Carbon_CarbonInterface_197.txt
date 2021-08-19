@@ -1,0 +1,12 @@
+    /**
+     * Format the instance as RFC2822
+     *
+     * @example
+     * ```
+     * echo Carbon::now()->toRfc2822String();
+     * ```
+     *
+     * @return string
+     */
+
+    public function toRfc2822String();

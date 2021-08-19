@@ -1,0 +1,12 @@
+    /**
+     * @test 32 observations
+     */
+
+    public function testDataHas32Observations()
+    {
+        // When
+        $data = $this->mtCars->getData();
+
+        // Then
+        $this->assertCount(32, $data);
+    }

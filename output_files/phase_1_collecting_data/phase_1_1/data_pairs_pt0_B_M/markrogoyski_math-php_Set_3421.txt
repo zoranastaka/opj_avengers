@@ -1,0 +1,24 @@
+    /**
+     * Symmetric Difference (A Δ B) = (A ∖ B) ∪ (B ∖ A)
+     * Produces a new set with elements that are in the set or the other,
+     * but not both.
+     *
+     * Example:
+     *  {7, 8, 9, 10} Δ {9, 10, 11, 12} = {7, 8, 11, 12}
+     *
+     * @param  Set $B
+     *
+     * @return Set
+     */
+
+    public function symmetricDifference(Set $B): Set
+    {
+        $B_array = $B->asArray();
+
+        $A∪B = \array_intersect_key($this->A, $B_array);
+
+        $A∖B = \array_diff_key($this->A, $A∪B);
+        $B∖A = \array_diff_key($B_array, $A∪B);
+
+        return new Set($A∖B + $B∖A);
+    }

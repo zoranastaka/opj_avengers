@@ -1,0 +1,59 @@
+    /**
+     * Call matching message callbacks.
+     */
+
+    protected function callMatchingMessages()
+    {
+        $matchingMessages = $this->conversationManager->getMatchingMessages($this->getMessages(), $this->middleware,
+            $this->getConversationAnswer(), $this->getDriver());
+
+        foreach ($matchingMessages as $matchingMessage) {
+            $this->command = $matchingMessage->getCommand();
+            $callback = $this->command->getCallback();
+
+            $callback = $this->getCallable($callback);
+
+            // Set the message first, so it's available for middlewares
+            $this->message = $matchingMessage->getMessage();
+
+            $commandMiddleware = Collection::make($this->command->getMiddleware())->filter(function ($middleware) {
+                return $middleware instanceof Heard;
+            })->toArray();
+
+            $this->message = $this->middleware->applyMiddleware('heard', $matchingMessage->getMessage(),
+                $commandMiddleware);
+
+            $parameterNames = $this->compileParameterNames($this->command->getPattern());
+
+            $parameters = $matchingMessage->getMatches();
+            if (\count($parameterNames) !== \count($parameters)) {
+                $parameters = array_merge(
+                //First, all named parameters (eg. function ($a, $b, $c))
+                    array_filter(
+                        $parameters,
+                        '\is_string',
+                        ARRAY_FILTER_USE_KEY
+                    ),
+                    //Then, all other unsorted parameters (regex non named results)
+                    array_filter(
+                        $parameters,
+                        '\is_integer',
+                        ARRAY_FILTER_USE_KEY
+                    )
+                );
+            }
+
+            $this->matches = $parameters;
+            array_unshift($parameters, $this);
+
+            $parameters = $this->conversationManager->addDataParameters($this->message, $parameters);
+
+            if (call_user_func_array($callback, array_values($parameters))) {
+                return;
+            }
+        }
+
+        if (empty($matchingMessages) && empty($this->getBotMessages()) && ! \is_null($this->fallbackMessage)) {
+            $this->callFallbackMessage();
+        }
+    }

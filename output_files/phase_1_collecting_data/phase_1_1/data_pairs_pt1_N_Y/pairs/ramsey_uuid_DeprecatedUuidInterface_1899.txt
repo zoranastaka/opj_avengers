@@ -1,0 +1,6 @@
+    /**
+     * @deprecated In ramsey/uuid version 5.0.0, this will be removed from this
+     *     interface. It has moved to {@see \Ramsey\Uuid\Rfc4122\UuidInterface::getUrn()}.
+     */
+
+    public function getUrn(): string;

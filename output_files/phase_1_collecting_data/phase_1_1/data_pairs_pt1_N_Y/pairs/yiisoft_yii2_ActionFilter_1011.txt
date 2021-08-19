@@ -1,0 +1,9 @@
+    /**
+     * @param ActionEvent $event
+     */
+
+    public function afterFilter($event)
+    {
+        $event->result = $this->afterAction($event->action, $event->result);
+        $this->owner->off(Controller::EVENT_AFTER_ACTION, [$this, 'afterFilter']);
+    }

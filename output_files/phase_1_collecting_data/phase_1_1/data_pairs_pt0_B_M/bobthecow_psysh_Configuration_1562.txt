@@ -1,0 +1,10 @@
+    /**
+     * Get the startup message.
+     *
+     * @return string|null
+     */
+
+    public function getStartupMessage()
+    {
+        return $this->startupMessage;
+    }

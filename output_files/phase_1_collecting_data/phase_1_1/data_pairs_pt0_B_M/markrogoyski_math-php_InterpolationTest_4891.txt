@@ -1,0 +1,17 @@
+    /**
+     * @test   getPoints with incorrect type - source is neither a callback nor a set of arrays
+     * @throws \Exception
+     */
+
+    public function testIncorrectInput()
+    {
+        // Given
+        $x                 = 10;
+        $incorrectFunction = $x ** 2 + 2 * $x + 1;
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Interpolation::getPoints($incorrectFunction, [0,4,5]);
+    }

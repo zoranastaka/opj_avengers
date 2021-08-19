@@ -1,0 +1,10 @@
+    /**
+     * Returns true if the Cache-Control directive is defined.
+     *
+     * @return bool true if the directive exists, false otherwise
+     */
+
+    public function hasCacheControlDirective(string $key)
+    {
+        return \array_key_exists($key, $this->cacheControl);
+    }

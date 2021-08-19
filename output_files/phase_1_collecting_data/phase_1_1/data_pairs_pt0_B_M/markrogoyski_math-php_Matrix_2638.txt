@@ -1,0 +1,44 @@
+    /**
+     * Augment a matrix
+     * An augmented matrix is a matrix obtained by appending the columns of two given matrices
+     *
+     *     [1, 2, 3]
+     * A = [2, 3, 4]
+     *     [3, 4, 5]
+     *
+     *     [4]
+     * B = [5]
+     *     [6]
+     *
+     *         [1, 2, 3 | 4]
+     * (A|B) = [2, 3, 4 | 5]
+     *         [3, 4, 5 | 6]
+     *
+     * @param  Matrix $B Matrix columns to add to matrix A
+     *
+     * @return Matrix
+     *
+     * @throws Exception\MatrixException if matrices do not have the same number of rows
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function augment(Matrix $B): Matrix
+    {
+        if ($this->getObjectType() !== $B->getObjectType()) {
+            throw new Exception\MatrixException('Matrices must be the same type.');
+        }
+        if ($B->getM() !== $this->m) {
+            throw new Exception\MatrixException('Matrices to augment do not have the same number of rows');
+        }
+
+        $m    = $this->m;
+        $A    = $this->A;
+        $B    = $B->getMatrix();
+        $⟮A∣B⟯ = [];
+
+        for ($i = 0; $i < $m; $i++) {
+            $⟮A∣B⟯[$i] = \array_merge($A[$i], $B[$i]);
+        }
+
+        return MatrixFactory::create($⟮A∣B⟯, $this->ε);
+    }

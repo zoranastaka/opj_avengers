@@ -1,0 +1,10 @@
+    /**
+     * @param string $role
+     *
+     * @return bool
+     */
+
+    public function hasRole(string $role): bool
+    {
+        return $this->roles()->where('name', $role)->count() === 1;
+    }

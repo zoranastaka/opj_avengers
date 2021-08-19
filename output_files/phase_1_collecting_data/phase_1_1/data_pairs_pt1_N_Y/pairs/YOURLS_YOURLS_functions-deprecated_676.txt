@@ -1,0 +1,6 @@
+/**
+ * Return list of all shorturls associated to the same long URL. Returns NULL or array of keywords.
+ *
+ */
+
+function yourls_get_duplicate_keywords( $longurl ) {

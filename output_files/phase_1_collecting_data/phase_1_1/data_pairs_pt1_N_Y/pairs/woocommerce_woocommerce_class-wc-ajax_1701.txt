@@ -1,0 +1,5 @@
+	/**
+	 * Add an attribute row.
+	 */
+
+	public static function add_attribute() {

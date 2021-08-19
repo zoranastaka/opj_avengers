@@ -1,0 +1,6 @@
+    /**
+     * @uses \PharIo\Manifest\Library
+     * @uses \PharIo\Manifest\ApplicationName
+     */
+
+    public function testCanSerializeToFile(): void {

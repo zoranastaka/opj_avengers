@@ -1,0 +1,29 @@
+    /**
+     * Check whether current value and key pass all the filters.
+     *
+     * @return bool|string
+     */
+
+    protected function checkFilters()
+    {
+        $current = $this->prepareForReturn($this->current);
+
+        foreach ($this->filters as $tuple) {
+            $result = \call_user_func(
+                $tuple[0],
+                $current->avoidMutation(),
+                $this->key,
+                $this
+            );
+
+            if ($result === static::END_ITERATION) {
+                return static::END_ITERATION;
+            }
+
+            if (!$result) {
+                return false;
+            }
+        }
+
+        return true;
+    }

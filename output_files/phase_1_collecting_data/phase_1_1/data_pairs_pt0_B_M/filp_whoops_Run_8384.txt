@@ -1,0 +1,20 @@
+    /**
+     * Echo something to the browser.
+     *
+     * @param string $output
+     *
+     * @return Run
+     */
+
+    private function writeToOutputNow($output)
+    {
+        if ($this->sendHttpCode() && Misc::canSendHeaders()) {
+            $this->system->setHttpResponseCode(
+                $this->sendHttpCode()
+            );
+        }
+
+        echo $output;
+
+        return $this;
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @inheritdoc
+     */
+
+    public function setOptions(array $options)
+    {
+        if (isset($options['uniqueId'])) {
+            $this->sessionId = $options['uniqueId'];
+        }
+
+        $this->options = $options;
+    }

@@ -1,0 +1,19 @@
+    /**
+     * @test         variance
+     * @dataProvider dataProviderForVariance
+     * @param        int   $r
+     * @param        float $p
+     * @param        float σ²
+     */
+
+    public function testVariance(int $r, float $p, float $σ²)
+    {
+        // Given
+        $pascal = new Pascal($r, $p);
+
+        // When
+        $variance = $pascal->variance();
+
+        // Then
+        $this->assertEqualsWithDelta($σ², $variance, 0.00000001);
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @covers ::addTo
+     * @covers ::addFormatterTo
+     * @covers ::onCreate
+     * @covers ::filter
+     */
+
+    public function testDoNotEncloseWhiteSpacedFieldThrowsException(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        RFC4180Field::addTo(Writer::createFromString(''), "\t\0");
+    }

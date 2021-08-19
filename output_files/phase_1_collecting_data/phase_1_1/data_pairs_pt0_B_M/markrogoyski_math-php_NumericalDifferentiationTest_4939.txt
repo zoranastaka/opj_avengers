@@ -1,0 +1,17 @@
+    /**
+     * @test   validate an array doesn't have precisely two numbers (coordinates)
+     * @throws \Exception
+     */
+
+    public function testNotCoordinatesException()
+    {
+        // Given
+        $points = [[0,0], [1,2,3], [2,2]];
+        $degree = 3;
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        NumericalDifferentiation::validate($points, $degree);
+    }

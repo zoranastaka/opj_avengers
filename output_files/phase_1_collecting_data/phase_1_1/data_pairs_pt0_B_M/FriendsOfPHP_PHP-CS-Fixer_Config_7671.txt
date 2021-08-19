@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getIndent(): string
+    {
+        return $this->indent;
+    }

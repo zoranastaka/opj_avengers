@@ -1,0 +1,8 @@
+    /**
+     * @return string
+     */
+
+    public function getCacheFile()
+    {
+        return $this->getOptions()->getFontDir() . '/' . self::CACHE_FILE;
+    }

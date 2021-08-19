@@ -1,0 +1,13 @@
+    /**
+     * parseAhtml
+     *
+     * @param array $lines
+     * @param mixed $value
+     * @param int $start
+     * @return string
+     */
+
+    private function parseAhtml(array $lines, $value, $start)
+    {
+        return trim(implode("\n", $this->markLines($lines, $start)));
+    }

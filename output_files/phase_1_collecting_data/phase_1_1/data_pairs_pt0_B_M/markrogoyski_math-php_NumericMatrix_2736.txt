@@ -1,0 +1,18 @@
+    /**
+     * Is the matrix involutory?
+     * A matrix that is its own inverse. That is, multiplication by matrix A is an involution if and only if A² = I
+     * https://en.wikipedia.org/wiki/Involutory_matrix
+     *
+     * @return boolean true if matrix is involutory; false otherwise
+     *
+     * @throws Exception\OutOfBoundsException
+     * @throws Exception\MathException
+     */
+
+    public function isInvolutory(): bool
+    {
+        $I  = MatrixFactory::identity($this->m);
+        $A² = $this->multiply($this);
+
+        return $A²->isEqual($I);
+    }

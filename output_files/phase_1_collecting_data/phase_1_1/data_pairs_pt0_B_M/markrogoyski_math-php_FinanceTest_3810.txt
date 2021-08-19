@@ -1,0 +1,18 @@
+    /**
+     * @test         periods not a number
+     * @dataProvider dataProviderForPeriodsNan
+     * @param        float $rate
+     * @param        float $payment
+     * @param        float $pv
+     * @param        float $fv
+     * @param        bool  $beginning
+     */
+
+    public function testPeriodsNan(float $rate, float $payment, float $pv, float $fv, bool $beginning)
+    {
+        // When
+        $periods = Finance::periods($rate, $payment, $pv, $fv, $beginning);
+
+        // Then
+        $this->assertNan($periods);
+    }

@@ -1,0 +1,11 @@
+    /**
+     * HTML td field name attribute setter.
+     */
+
+    public function td(string $fieldname_attribute_name): self
+    {
+        $clone = clone $this;
+        $clone->xml_converter = $this->xml_converter->fieldElement('td', $fieldname_attribute_name);
+
+        return $clone;
+    }

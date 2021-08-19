@@ -1,0 +1,5 @@
+	/**
+	 * Is home trail..
+	 */
+
+	protected function add_crumbs_home() {

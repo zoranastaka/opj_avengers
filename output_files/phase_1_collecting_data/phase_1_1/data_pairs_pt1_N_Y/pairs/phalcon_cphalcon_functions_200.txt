@@ -1,0 +1,10 @@
+    /**
+     * Get sqlite db options
+     */
+
+    function getOptionsSqlite(): array
+    {
+        return [
+            'dbname' => codecept_root_dir(env('DATA_SQLITE_NAME')),
+        ];
+    }

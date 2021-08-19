@@ -1,0 +1,15 @@
+    /**
+     * @covers ::getOutputBOM
+     * @covers ::setOutputBOM
+     */
+
+    public function testBOMSettings(): void
+    {
+        self::assertSame('', $this->csv->getOutputBOM());
+
+        $this->csv->setOutputBOM(Reader::BOM_UTF8);
+        self::assertSame(Reader::BOM_UTF8, $this->csv->getOutputBOM());
+
+        $this->csv->setOutputBOM('');
+        self::assertSame('', $this->csv->getOutputBOM());
+    }

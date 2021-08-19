@@ -1,0 +1,10 @@
+    /**
+     * Clean up after test case.
+     */
+
+    public static function tearDownAfterClass()
+    {
+        parent::tearDownAfterClass();
+        $logger = Yii::getLogger();
+        $logger->flush();
+    }

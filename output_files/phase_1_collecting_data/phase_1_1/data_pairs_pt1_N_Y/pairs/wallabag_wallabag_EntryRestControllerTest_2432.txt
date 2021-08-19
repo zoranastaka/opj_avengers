@@ -1,0 +1,14 @@
+    /**
+     * @dataProvider dataForEntriesExistWithUrl
+     */
+
+    public function testGetEntriesExists($url, $expectedValue)
+    {
+        $this->client->request('GET', $url);
+
+        $this->assertSame(200, $this->client->getResponse()->getStatusCode());
+
+        $content = json_decode($this->client->getResponse()->getContent(), true);
+
+        $this->assertSame($expectedValue, $content['exists']);
+    }

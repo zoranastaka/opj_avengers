@@ -1,0 +1,14 @@
+	/**
+	 * @NoAdminRequired
+	 * @NoSubadminRequired
+	 *
+	 * @param string $name
+	 * @return JSONResponse | array
+	 */
+
+	public function create($name) {
+		try {
+			$sessionId = $this->session->getId();
+		} catch (SessionNotAvailableException $ex) {
+			return $this->getServiceNotAvailableResponse();
+		}

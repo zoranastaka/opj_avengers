@@ -1,0 +1,15 @@
+    /**
+     * @covers ::triggerOnInsertion
+     * @covers ::getName
+     * @covers ::getRecord
+     */
+
+    public function testTriggerOnInsertion(): void
+    {
+        $record = ['jane', 'doe', 'jane.doe@example.com'];
+        $exception = CannotInsertRecord::triggerOnInsertion($record);
+
+        self::assertSame($record, $exception->getRecord());
+        self::assertSame('', $exception->getName());
+        self::assertSame('Unable to write record to the CSV document', $exception->getMessage());
+    }

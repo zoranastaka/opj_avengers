@@ -1,0 +1,11 @@
+    /**
+     * Invoke the middleware stack
+     *
+     * @param ServerRequestInterface $request
+     * @return ResponseInterface
+     */
+
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        return $this->tip->handle($request);
+    }

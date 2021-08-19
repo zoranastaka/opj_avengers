@@ -1,0 +1,24 @@
+    /**
+     * @test Axiom: (A ⊗ B)ᵀ = Aᵀ ⊗ Bᵀ
+     * Transpose of Kronecker product
+     * @dataProvider dataProviderForTwoSquareMatrices
+     * @param        array $A
+     * @param        array $B
+     * @throws       \Exception
+     */
+
+    public function testKroneckerProductTranspose(array $A, array $B)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $B = MatrixFactory::create($B);
+
+        // When
+        $Aᵀ    = $A->transpose();
+        $Bᵀ    = $B->transpose();
+        $Aᵀ⊗Bᵀ = $Aᵀ->kroneckerProduct($Bᵀ);
+        $⟮A⊗B⟯ᵀ = $A->kroneckerProduct($B)->transpose();
+
+        // Then
+        $this->assertEquals($Aᵀ⊗Bᵀ->getMatrix(), $⟮A⊗B⟯ᵀ->getMatrix());
+    }

@@ -1,0 +1,14 @@
+    /**
+     * Determines if the instance is not equal to another
+     *
+     * @param CarbonInterval|DateInterval|mixed $interval
+     *
+     * @see notEqualTo()
+     *
+     * @return bool
+     */
+
+    public function ne($interval): bool
+    {
+        return $this->notEqualTo($interval);
+    }

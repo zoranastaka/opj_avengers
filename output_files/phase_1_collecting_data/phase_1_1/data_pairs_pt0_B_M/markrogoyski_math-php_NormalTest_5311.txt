@@ -1,0 +1,20 @@
+    /**
+     * @test         above
+     * @dataProvider dataProviderForAbove
+     * @param        float $x
+     * @param        float $μ
+     * @param        float $σ
+     * @param        float $probability
+     */
+
+    public function testAbove(float $x, float $μ, float $σ, float $probability)
+    {
+        // Given
+        $normal = new Normal($μ, $σ);
+
+        // When
+        $above = $normal->above($x);
+
+        // Then
+        $this->assertEqualsWithDelta($probability, $above, 0.00001);
+    }

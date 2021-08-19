@@ -1,0 +1,12 @@
+    /**
+     * @test
+     */
+
+    public function can_queue_an_export()
+    {
+        $export = new QueuedExport();
+
+        $export->queue('queued-export.xlsx')->chain([
+            new AfterQueueExportJob(__DIR__ . '/Data/Disks/Local/queued-export.xlsx'),
+        ]);
+    }

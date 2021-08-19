@@ -1,0 +1,15 @@
+	/**
+	 * Is Loaded
+	 *
+	 * A utility method to test if a class is in the self::$_ci_classes array.
+	 *
+	 * @used-by	Mainly used by Form Helper function _get_validation_object().
+	 *
+	 * @param 	string		$class	Class name to check for
+	 * @return 	string|bool	Class object name if loaded or FALSE
+	 */
+
+	public function is_loaded($class)
+	{
+		return array_search(ucfirst($class), $this->_ci_classes, TRUE);
+	}

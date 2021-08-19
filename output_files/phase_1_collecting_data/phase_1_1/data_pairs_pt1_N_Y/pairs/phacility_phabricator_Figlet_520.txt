@@ -1,0 +1,17 @@
+    /**
+    * Function for skipping one character in a font file
+    *
+    * @param resource &$fp handle of font file
+    *
+    * @return boolean always return true
+    * @access private
+    */
+
+    function _skip(&$fp)
+    {
+        for ($i = 0; $i<$this->height && !feof($fp); $i++) {
+            fgets($fp, 2048);
+        }
+
+        return true;
+    }

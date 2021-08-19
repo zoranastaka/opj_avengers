@@ -1,0 +1,12 @@
+    /**
+     * Returns the secret used to calculate a user's token auth.
+     *
+     * A users token auth is generated using the user's login and this secret. The secret
+     * should be specific to the user and not easily guessed. Piwik's default Auth implementation
+     * uses an MD5 hash of a user's password.
+     *
+     * @return string
+     * @throws Exception if the token auth secret does not exist or cannot be obtained.
+     */
+
+    public function getTokenAuthSecret();

@@ -1,0 +1,12 @@
+    /**
+     * @covers ::setHeaderOffset
+     *
+     * @covers \League\Csv\InvalidArgument::dueToInvalidHeaderOffset
+     */
+
+    public function testSetHeaderThrowsExceptionOnWrongInputRange(): void
+    {
+        $this->expectException(InvalidArgument::class);
+
+        $this->csv->setHeaderOffset(-1);
+    }

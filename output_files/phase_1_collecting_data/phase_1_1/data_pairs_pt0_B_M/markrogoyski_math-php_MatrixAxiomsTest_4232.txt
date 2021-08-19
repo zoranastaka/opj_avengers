@@ -1,0 +1,23 @@
+    /**
+     * @test Axiom: A + (−A) = 0
+     * Adding the negate of a matrix is a zero matrix.
+     *
+     * @dataProvider dataProviderForNegateAdditionZeroMatrix
+     * @param        array $A
+     * @param        array $Z
+     * @throws       \Exception
+     */
+
+    public function testAddNegateIsZeroMatrix(array $A, array $Z)
+    {
+        // Given
+        $A  = MatrixFactory::create($A);
+        $Z  = MatrixFactory::create($Z);
+
+        // When
+        $−A = $A->negate();
+
+        // Then
+        $this->assertEquals($Z, $A->add($−A));
+        $this->assertEquals($Z, $−A->add($A));
+    }

@@ -1,0 +1,20 @@
+    /**
+     * @test         cdf
+     * @dataProvider dataProviderForCdf
+     * @param        float $x
+     * @param        float $α
+     * @param        float $β
+     * @param        float $expectedPdf
+     */
+
+    public function testCdf(float $x, float $α, float $β, float $expectedPdf)
+    {
+        // Given
+        $logLogistic = new LogLogistic($α, $β);
+
+        // When
+        $cdf = $logLogistic->cdf($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedPdf, $cdf, 0.000001);
+    }

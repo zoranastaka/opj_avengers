@@ -1,0 +1,16 @@
+    /**
+     * @test         creation with string representation
+     * @dataProvider dataProviderForTestCreateArbitrary
+     */
+
+    public function testCreateArbitrary(string $int, int $base, string $expected)
+    {
+        // Given
+        $int = BaseEncoderDecoder::createArbitraryInteger($int, $base);
+
+        // When
+        $stringRepresentation = (string) $int;
+
+        // Then
+        $this->assertEquals($expected, $stringRepresentation);
+    }

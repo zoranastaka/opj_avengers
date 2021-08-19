@@ -1,0 +1,21 @@
+    /**
+     * Inverse CDF (Quantile function)
+     *
+     *                 /   p   \ 1/β
+     * F⁻¹(p;α,β) = α |  -----  |
+     *                 \ 1 - p /
+     *
+     * @param float $p
+     *
+     * @return float
+     */
+
+    public function inverse(float $p): float
+    {
+        Support::checkLimits(['p' => '[0,1]'], ['p' => $p]);
+
+        $α = $this->α;
+        $β = $this->β;
+
+        return $α * ($p / (1 - $p)) ** (1 / $β);
+    }

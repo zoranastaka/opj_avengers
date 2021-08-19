@@ -1,0 +1,10 @@
+    /**
+     * @param $type
+     * @return string
+     * @deprecated
+     */
+
+    public function get_type($type)
+    {
+        return $this->getType($type);
+    }

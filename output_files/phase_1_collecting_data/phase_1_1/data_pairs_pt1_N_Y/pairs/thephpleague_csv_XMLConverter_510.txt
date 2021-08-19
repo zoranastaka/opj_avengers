@@ -1,0 +1,12 @@
+    /**
+     * Convert a Record collection into a DOMDocument.
+     */
+
+    public function convert(iterable $records): DOMDocument
+    {
+        $doc = new DOMDocument('1.0');
+        $node = $this->import($records, $doc);
+        $doc->appendChild($node);
+
+        return $doc;
+    }

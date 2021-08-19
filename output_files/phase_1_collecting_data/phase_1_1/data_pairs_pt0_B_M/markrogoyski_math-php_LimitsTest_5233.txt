@@ -1,0 +1,8 @@
+    /**
+     * @test Limits constant is correct format
+     */
+
+    public function testLogLogisticSupportLimits()
+    {
+        $this->limitTest(Continuous\LogLogistic::SUPPORT_LIMITS);
+    }

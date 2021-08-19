@@ -1,0 +1,11 @@
+    /**
+     * @param float $c
+     * @param float $epsilon
+     * @param \Rubix\ML\Kernels\SVM\Kernel|null $kernel
+     * @param bool $shrinking
+     * @param float $tolerance
+     * @param float $cacheSize
+     * @throws \Rubix\ML\Exceptions\InvalidArgumentException
+     */
+
+    public function __construct(

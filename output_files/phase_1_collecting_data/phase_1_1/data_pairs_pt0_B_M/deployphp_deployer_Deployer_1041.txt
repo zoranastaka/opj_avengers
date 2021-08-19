@@ -1,0 +1,13 @@
+    /**
+     * Transform tasks to console commands.
+     */
+
+    public function addTaskCommands()
+    {
+        foreach ($this->tasks as $name => $task) {
+            $command = new MainCommand($name, $task->getDescription(), $this);
+            $command->setHidden($task->isHidden());
+
+            $this->getConsole()->add($command);
+        }
+    }

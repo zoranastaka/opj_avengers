@@ -1,0 +1,66 @@
+    /**
+     * Extracts translateable strings from a given file.
+     *
+     * @param  string $file Path to the file
+     * @return array Array of strings to be translated, grouped by message domain.
+     *               Example:
+     *               ['messages' = ['Hello' => 'Hello', 'Apple' => 'Apple'], 'customdomain' => ['One' => 'One']]
+     */
+
+    protected function extractStrings($file)
+    {
+        $content = file_get_contents($file);
+
+        // collect pairs of [$domain, string] from all matches
+        $pairs = [];
+
+        // vue matches {{ 'foo' | trans [args] }}
+        preg_match_all('/({{\s*(\'|")((?:(?!\2).)+)\2\s*\|\s*trans\s+([^\s]+\s+((\'|")((?:(?!\6).)+)\6))?.*}})/', $content, $matches);
+        foreach ($matches[3] as $i => $string) {
+            $domain = $matches[7][$i] ?: 'messages';
+
+            $pairs[] = [$domain, $string];
+        }
+
+        // vue matches {{ 'foo' | transChoice [args] }}
+        preg_match_all('/({{\s*(\'|")((?:(?!\2).)+)\2\s*\|\s*transChoice\s+([^\s]+\s+[^\s]+\s+((\'|")((?:(?!\6).)+)\6))?.*}})/', $content, $matches);
+        foreach ($matches[3] as $i => $string) {
+            $domain = $matches[7][$i] ?: 'messages';
+
+            $pairs[] = [$domain, $string];
+        }
+
+        // vue, js files
+        // $trans('foo', [args])
+        // $transChoice('foo'[, args])
+        preg_match_all('/\$trans(Choice)?\((\'|")((?:(?!\2).)+)\2/', $content, $matches);
+        foreach ($matches[3] as $i => $string) {
+            $domain = 'messages'; // TODO: allow custom domain
+
+            $pairs[] = [$domain, $string];
+        }
+
+        // php matches ...->trans('foo'[, args]) or __('foo'[, args])
+        // php matches ...->transChoice('foo'[, args]) or _c('foo'[, args])
+        $this->visitor->traverse([$file]);
+
+        foreach ($this->visitor->results as $domain => $strings) {
+            foreach ($strings as $string => $attr) {
+                $pairs[] = [$domain, $string];
+            }
+        }
+
+        // group strings by message domain
+        $messages = [];
+        foreach ($pairs as $pair) {
+            list($domain, $string) = $pair;
+
+            if (!isset($messages[$domain])) {
+                $messages[$domain] = [];
+            }
+
+            $messages[$domain][$string] = $string;
+        }
+
+        return $messages;
+    }

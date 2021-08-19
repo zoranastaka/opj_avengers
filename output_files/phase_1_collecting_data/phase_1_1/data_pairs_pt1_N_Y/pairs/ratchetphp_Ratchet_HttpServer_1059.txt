@@ -1,0 +1,18 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function onMessage(ConnectionInterface $from, $msg) {
+        if (true !== $from->httpHeadersReceived) {
+            try {
+                if (null === ($request = $this->_reqParser->onMessage($from, $msg))) {
+                    return;
+                }
+            } catch (\OverflowException $oe) {
+                return $this->close($from, 413);
+            }
+
+            $from->httpHeadersReceived = true;
+
+            return $this->_httpServer->onOpen($from, $request);
+        }

@@ -1,0 +1,12 @@
+    /**
+     * Is this parser factory supports kinds?
+     *
+     * PHP parser < 2.0 doesn't support kinds, >= 2.0 — does.
+     *
+     * @return bool
+     */
+
+    public function hasKindsSupport()
+    {
+        return \class_exists(OriginalParserFactory::class);
+    }

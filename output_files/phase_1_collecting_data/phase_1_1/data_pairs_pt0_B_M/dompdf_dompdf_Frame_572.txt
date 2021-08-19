@@ -1,0 +1,43 @@
+    /**
+     * Class constructor
+     *
+     * @param \DOMNode $node the DOMNode this frame represents
+     */
+
+    public function __construct(\DOMNode $node)
+    {
+        $this->_node = $node;
+
+        $this->_parent = null;
+        $this->_first_child = null;
+        $this->_last_child = null;
+        $this->_prev_sibling = $this->_next_sibling = null;
+
+        $this->_style = null;
+        $this->_original_style = null;
+
+        $this->_containing_block = [
+            "x" => null,
+            "y" => null,
+            "w" => null,
+            "h" => null,
+        ];
+
+        $this->_containing_block[0] =& $this->_containing_block["x"];
+        $this->_containing_block[1] =& $this->_containing_block["y"];
+        $this->_containing_block[2] =& $this->_containing_block["w"];
+        $this->_containing_block[3] =& $this->_containing_block["h"];
+
+        $this->_position = [
+            "x" => null,
+            "y" => null,
+        ];
+
+        $this->_position[0] =& $this->_position["x"];
+        $this->_position[1] =& $this->_position["y"];
+
+        $this->_opacity = 1.0;
+        $this->_decorator = null;
+
+        $this->set_id(self::$ID_COUNTER++);
+    }

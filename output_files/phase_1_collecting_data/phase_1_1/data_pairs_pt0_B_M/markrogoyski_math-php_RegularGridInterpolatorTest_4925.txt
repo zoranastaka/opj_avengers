@@ -1,0 +1,49 @@
+    /**
+     * @test Similar values
+     *
+     * >>> xs = [1, 2, 3];
+     * >>> ys = [1, 2, 3];
+     * >>> zs = [1, 2, 3];
+     *
+     * >>> def func(x, y, z):
+     * ...   return 2 * x + 3 * y - z
+     *
+     * >>> values = [[[func(x, y, z) for z in zs] for y in ys] for x in xs]
+     *
+     * >>> my_interpolating_function = RegularGridInterpolator((xs, ys, zs), values, method='linear')
+     * >>> my_interpolating_function(point)
+     *
+     * @dataProvider dataProviderForSimilarValues
+     * @param        array $point
+     * @param        float $expected
+     */
+
+    public function testSimilarValues(array $point, float $expected)
+    {
+        // Given
+        $xs = [1, 2, 3];
+        $ys = [1, 2, 3];
+        $zs = [1, 2, 3];
+
+        // And
+        $func = function ($x, $y, $z) {
+            return 2 * $x + 3 * $y - $z;
+        };
+
+        // And
+        $data = [];
+        foreach ($xs as $i => $x) {
+            foreach ($ys as $j => $y) {
+                foreach ($zs as $k => $z) {
+                    $data[$i][$j][$k] = $func($x, $y, $z);
+                }
+            }
+        }
+
+        // When
+        $interp = new RegularGridInterpolator([$xs, $ys, $zs], $data, 'linear');
+        $result = $interp($point);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $result, 0.00001);
+    }

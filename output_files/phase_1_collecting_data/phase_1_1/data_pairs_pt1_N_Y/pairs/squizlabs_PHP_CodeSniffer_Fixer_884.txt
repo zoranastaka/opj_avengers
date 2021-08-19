@@ -1,0 +1,12 @@
+    /**
+     * Get the current content of the file, as a string.
+     *
+     * @return string
+     */
+
+    public function getContents()
+    {
+        $contents = implode($this->tokens);
+        return $contents;
+
+    }//end getContents()

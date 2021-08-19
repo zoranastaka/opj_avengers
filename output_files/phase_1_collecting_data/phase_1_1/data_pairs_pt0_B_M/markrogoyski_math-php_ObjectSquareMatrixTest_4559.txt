@@ -1,0 +1,29 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderisEqual()
+    {
+        return [
+            'same' => [
+                [[new Polynomial([1, 0])]],
+                [[new Polynomial([1, 0])]],
+                true,
+            ],
+            'different types' => [
+                [[new Polynomial([1, 0])]],
+                [[1]],
+                false,
+            ],
+            'different contents' => [
+                [[new Polynomial([1, 0])]],
+                [[new Polynomial([1, 1])]],
+                false,
+            ],
+            'different shapes' => [
+                [[new Polynomial([1, 0]), new Polynomial([1, 0])]],
+                [[new Polynomial([1, 0])], [new Polynomial([1, 0])]],
+                false,
+            ],
+        ];
+    }

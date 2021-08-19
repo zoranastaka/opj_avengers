@@ -1,0 +1,15 @@
+    /**
+     * Median of the distribution
+     *
+     *     a + b
+     * μ = -----
+     *       2
+     *
+     *
+     * @return float
+     */
+
+    public function median(): float
+    {
+        return ($this->a + $this->b) / 2;
+    }

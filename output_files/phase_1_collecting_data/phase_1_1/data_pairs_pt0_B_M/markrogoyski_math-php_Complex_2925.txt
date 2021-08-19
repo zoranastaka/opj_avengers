@@ -1,0 +1,27 @@
+    /**
+     * The square root of a complex number
+     * https://en.wikipedia.org/wiki/Complex_number#Square_root
+     *
+     * The roots of a + bi (with b ≠ 0) are ±(γ + δi), where
+     *
+     *         ____________
+     *        /     _______
+     *       / a + √a² + b²
+     * γ =  /  ------------
+     *     √         2
+     *
+     *               ____________
+     *              /      _______
+     *             / -a + √a² + b²
+     * δ = sgn(b) /  -------------
+     *           √         2
+     *
+     * The square root returns the positive root.
+     *
+     * @return Complex (positive root)
+     */
+
+    public function sqrt(): Complex
+    {
+        return $this->roots()[0];
+    }

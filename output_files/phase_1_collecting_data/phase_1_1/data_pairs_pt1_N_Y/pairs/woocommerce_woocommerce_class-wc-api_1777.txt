@@ -1,0 +1,7 @@
+	/**
+	 * WC API for payment gateway IPNs, etc.
+	 *
+	 * @since 2.0
+	 */
+
+	public static function add_endpoint() {

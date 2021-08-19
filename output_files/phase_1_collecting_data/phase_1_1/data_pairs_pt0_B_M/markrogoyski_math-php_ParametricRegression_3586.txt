@@ -1,0 +1,8 @@
+    /**
+     * Return the model as a string
+     */
+
+    public function __toString(): string
+    {
+        return $this->getEquation();
+    }

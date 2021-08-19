@@ -1,0 +1,25 @@
+    /**
+     * Takes a data and returns a lower dimensional version
+     * of this data while preserving $totalVariance or $numFeatures. <br>
+     * $data is an n-by-m matrix and returned array is
+     * n-by-k matrix where k <= m
+     */
+
+    public function fit(array $data): array
+    {
+        $numRows = count($data);
+        $this->data = $data;
+
+        if ($this->gamma === null) {
+            $this->gamma = 1.0 / $numRows;
+        }
+
+        $matrix = $this->calculateKernelMatrix($this->data, $numRows);
+        $matrix = $this->centerMatrix($matrix, $numRows);
+
+        $this->eigenDecomposition($matrix);
+
+        $this->fit = true;
+
+        return Matrix::transposeArray($this->eigVectors);
+    }

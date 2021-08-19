@@ -1,0 +1,12 @@
+    /**
+     * Remove the token (jti claim) from the blacklist.
+     *
+     * @param  \Tymon\JWTAuth\Payload  $payload
+     *
+     * @return bool
+     */
+
+    public function remove(Payload $payload)
+    {
+        return $this->storage->destroy($this->getKey($payload));
+    }

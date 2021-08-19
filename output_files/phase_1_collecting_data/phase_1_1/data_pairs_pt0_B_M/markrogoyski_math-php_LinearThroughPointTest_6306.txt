@@ -1,0 +1,18 @@
+    /**
+     * @test         ci
+     * @dataProvider dataProviderForCI
+     * @param        array $points
+     * @param        float $x
+     * @param        float $p
+     * @param        float $ci
+     * @throws       \Exception
+     */
+
+    public function testCI(array $points, float $x, float $p, float $ci)
+    {
+        // Given
+        $regression = new LinearThroughPoint($points);
+
+        // Then
+        $this->assertEqualsWithDelta($ci, $regression->ci($x, $p), .0000001);
+    }

@@ -1,0 +1,41 @@
+    /**
+     * Test data created using Python: from scipy.spatial import distance
+     * distance.minkowski(x, y, 1)
+     * @return array
+     */
+
+    public function dataProviderForManhattanDistance(): array
+    {
+        return [
+            [
+                [1, 0, 0],
+                [0, 1, 0],
+                2,
+            ],
+            [
+                [1, 1, 0],
+                [0, 1, 0],
+                1,
+            ],
+            [
+                [1, 2, 3],
+                [0, 0, 0],
+                6,
+            ],
+            [
+                [0, 0, 0],
+                [0, 0, 0],
+                0,
+            ],
+            [
+                [1, 1, 1],
+                [1, 1, 1],
+                0,
+            ],
+            [
+                [56, 26, 83],
+                [11, 82, 95],
+                113,
+            ],
+        ];
+    }

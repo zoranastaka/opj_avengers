@@ -1,0 +1,16 @@
+    /**
+     * @test         aer
+     * @dataProvider dataProviderForAer
+     * @param        float $nominal
+     * @param        int   $periods
+     * @param        float $expected
+     */
+
+    public function testAer(float $nominal, int $periods, float $expected)
+    {
+        // Given
+        $aer = Finance::aer($nominal, $periods);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $aer, Finance::EPSILON);
+    }

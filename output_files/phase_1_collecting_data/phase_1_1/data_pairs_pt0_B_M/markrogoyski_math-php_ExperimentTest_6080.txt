@@ -1,0 +1,16 @@
+    /**
+     * @test likelihoodRatioSS exception if sensitivity or specificity are > 1.0
+     */
+
+    public function testLikelihoodRatioSSException()
+    {
+        // Given
+        $sensitivity = 1.2;
+        $specificity = 1.5;
+
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Experiment::likelihoodRatioSS($sensitivity, $specificity);
+    }

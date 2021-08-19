@@ -1,0 +1,27 @@
+    /**
+     * Complex multiplication
+     * https://en.wikipedia.org/wiki/Complex_number#Multiplication_and_division
+     *
+     * (a + bi)(c + di) = (ac - bd) + (bc + ad)i
+     *
+     * @param mixed $c
+     *
+     * @return Complex
+     *
+     * @throws Exception\IncorrectTypeException if the argument is not numeric or Complex.
+     */
+
+    public function multiply($c): Complex
+    {
+        if (\is_numeric($c)) {
+            $r = $c * $this->r;
+            $i = $c * $this->i;
+        } elseif ($c instanceof Complex) {
+            $r = $this->r * $c->r - $this->i * $c->i;
+            $i = $this->i * $c->r + $this->r * $c->i;
+        } else {
+            throw new Exception\IncorrectTypeException('Argument must be real or complex number');
+        }
+
+        return new Complex($r, $i);
+    }

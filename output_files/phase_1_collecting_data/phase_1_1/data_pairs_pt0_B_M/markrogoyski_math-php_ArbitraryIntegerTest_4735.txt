@@ -1,0 +1,17 @@
+    /**
+     * @test   prepareParameter throws an exception when an object is provided
+     * @throws \Exception
+     */
+
+    public function testIncorrectTypeExceptionPrepareParameter()
+    {
+        // Given
+        $number = new ArbitraryInteger(0);
+        $class  = new \stdClass();
+
+        // Then
+        $this->expectException(Exception\IncorrectTypeException::class);
+
+        // When
+        $int = $number->add($class);
+    }

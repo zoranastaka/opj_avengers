@@ -1,0 +1,7 @@
+  /**
+   * Clears all recipients assigned in the TO, CC and BCC
+   * array.  Returns void.
+   * @return void
+   */
+
+  public function ClearAllRecipients() {

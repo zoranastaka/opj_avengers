@@ -1,0 +1,12 @@
+    /**
+     * Variance of the distribution
+     *
+     * var[X] = kθ²
+     *
+     * @return float
+     */
+
+    public function variance(): float
+    {
+        return $this->k * $this->θ ** 2;
+    }

@@ -1,0 +1,7 @@
+  /**
+   * Get the total number of rate limit buckets to retain.
+   *
+   * @return int Total number of rate limit buckets to retain.
+   */
+
+  abstract protected function getBucketCount();

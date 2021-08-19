@@ -1,0 +1,12 @@
+    /**
+     * Forget all of the resolved guard instances.
+     *
+     * @return $this
+     */
+
+    public function forgetGuards()
+    {
+        $this->guards = [];
+
+        return $this;
+    }

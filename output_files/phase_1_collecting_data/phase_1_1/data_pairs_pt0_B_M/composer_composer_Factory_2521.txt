@@ -1,0 +1,18 @@
+    /**
+     * @return bool
+     */
+
+    private static function useXdg()
+    {
+        foreach (array_keys($_SERVER) as $key) {
+            if (strpos($key, 'XDG_') === 0) {
+                return true;
+            }
+        }
+
+        if (Silencer::call('is_dir', '/etc/xdg')) {
+            return true;
+        }
+
+        return false;
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Enables BOM Stripping.
+     *
+     * @return static
+     */
+
+    public function skipInputBOM(): self
+    {
+        $this->is_input_bom_included = false;
+
+        return $this;
+    }

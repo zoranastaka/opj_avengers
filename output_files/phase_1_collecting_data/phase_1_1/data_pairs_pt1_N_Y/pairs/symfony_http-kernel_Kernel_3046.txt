@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getStartTime()
+    {
+        return $this->debug && null !== $this->startTime ? $this->startTime : -\INF;
+    }

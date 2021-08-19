@@ -1,0 +1,11 @@
+    /**
+     * @group issue #20
+     */
+
+    public function testMockingDemeterChainsPassesMockeryExpectationToCompositeExpectation()
+    {
+        $mock = mock('Mockery_Demeterowski');
+        $mock->shouldReceive('foo->bar->baz')->andReturn('Spam!');
+        $demeter = new Mockery_UseDemeter($mock);
+        $this->assertSame('Spam!', $demeter->doit());
+    }

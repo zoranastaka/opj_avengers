@@ -1,0 +1,10 @@
+    /**
+     * Get Legend
+     *
+     * @return PHPExcel_Chart_Legend
+     */
+
+    public function getLegend()
+    {
+        return $this->legend;
+    }

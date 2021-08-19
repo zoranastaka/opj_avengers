@@ -1,0 +1,21 @@
+    /** @test */
+
+    public function it_gets_the_list_of_countries()
+    {
+        $user = $this->signin();
+
+        $response = $this->json('GET', '/api/countries');
+
+        $response->assertStatus(200);
+        $response->assertJsonStructure([
+            'data' => ['*' => $this->jsonCountries],
+        ]);
+        $response->assertJsonFragment([
+            'DEU' => [
+                'id' => 'DE',
+                'iso' => 'DE',
+                'name' => 'Germany',
+                'object' => 'country',
+            ],
+        ]);
+    }

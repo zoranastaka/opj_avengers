@@ -1,0 +1,20 @@
+   /**
+    * Generates hidden form field containing the element's value
+    *
+    * This is used to pass the frozen element's value if 'persistent freeze'
+    * feature is on
+    *
+    * @return string
+    */
+
+    protected function getPersistentContent()
+    {
+        if (!$this->persistent || null === ($value = $this->getValue())) {
+            return '';
+        }
+        return '<input type="hidden"' . self::getAttributesString(array(
+            'name'  => $this->getName(),
+            'value' => $value,
+            'id'    => $this->getId()
+        )) . ' />';
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Create a new remove component command instance.
+     *
+     * @param \CachetHQ\Cachet\Models\Component $component
+     *
+     * @return void
+     */
+
+    public function __construct(Component $component)
+    {
+        $this->component = $component;
+    }

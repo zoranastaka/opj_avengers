@@ -1,0 +1,28 @@
+    /**
+     *
+     */
+
+    public function assign_frame_heights()
+    {
+        // Pre-condition: widths and heights of each column & row must be
+        // calcluated
+        foreach ($this->_frames as $arr) {
+            $frame = $arr["frame"];
+
+            $h = 0;
+            foreach ($arr["rows"] as $row) {
+                if (!isset($this->_rows[$row])) {
+                    // The row has been removed because of a page split, so skip it.
+                    continue;
+                }
+
+                $h += $this->_rows[$row]["height"];
+            }
+
+            if ($frame instanceof TableCellFrameDecorator) {
+                $frame->set_cell_height($h);
+            } else {
+                $frame->get_style()->height = $h;
+            }
+        }
+    }

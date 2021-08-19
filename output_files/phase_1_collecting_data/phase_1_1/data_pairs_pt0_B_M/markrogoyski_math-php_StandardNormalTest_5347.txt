@@ -1,0 +1,12 @@
+    /**
+     * @test mode
+     */
+
+    public function testMode()
+    {
+        // When
+        $mode = $this->standardNormal->mode();
+
+        // Then
+        $this->assertEquals(0, $mode);
+    }

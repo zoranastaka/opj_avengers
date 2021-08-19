@@ -1,0 +1,14 @@
+    /**
+     * Begin a transaction
+     *
+     * @uses mysqli->autocommit(false)
+     * @uses register_shutdown_function(array($this, "_transaction_shutdown_check"))
+     * @throws Exception
+     */
+
+    public function startTransaction()
+    {
+        $this->mysqli()->autocommit(false);
+        $this->_transaction_in_progress = true;
+        register_shutdown_function(array($this, "_transaction_status_check"));
+    }

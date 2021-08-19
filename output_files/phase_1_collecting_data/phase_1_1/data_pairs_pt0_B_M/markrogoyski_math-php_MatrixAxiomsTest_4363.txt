@@ -1,0 +1,20 @@
+    /**
+     * @test         Axiom: AᵀA = I for an orthogonal matrix A
+     * @dataProvider dataProviderForOrthogonalMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testOrthogonalTransposeOfOrthogonalMatrixTimesMatrixIsIdentityMatrix(array $A)
+    {
+        // Given
+        $A  = MatrixFactory::create($A);
+        $Aᵀ = $A->transpose();
+        $I  = MatrixFactory::identity($A->getM());
+
+        // When
+        $AᵀA = $Aᵀ->multiply($A);
+
+        // Then
+        $this->assertEquals($I->getMatrix(), $AᵀA->getMatrix());
+    }

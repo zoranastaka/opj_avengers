@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider providerIMLOG2
+     */
+
+    public function testIMLOG2()
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMLOG2'), $args);
+        $complexAssert = new complexAssert();
+        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+    }

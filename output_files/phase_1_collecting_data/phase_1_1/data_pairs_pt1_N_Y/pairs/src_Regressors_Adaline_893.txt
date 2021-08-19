@@ -1,0 +1,21 @@
+    /**
+     * Train the estimator with a dataset.
+     *
+     * @param \Rubix\ML\Datasets\Labeled $dataset
+     */
+
+    public function train(Dataset $dataset) : void
+    {
+        DatasetIsNotEmpty::with($dataset)->check();
+
+        $this->network = new FeedForward(
+            new Placeholder1D($dataset->numFeatures()),
+            [new Dense(1, $this->alpha, true, new Xavier2())],
+            new Continuous($this->costFn),
+            $this->optimizer
+        );
+
+        $this->network->initialize();
+
+        $this->partial($dataset);
+    }

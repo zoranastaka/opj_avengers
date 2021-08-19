@@ -1,0 +1,11 @@
+    /**
+     * @test
+     */
+
+    public function it_recursively_flattens_an_array_to_a_certain_level()
+    {
+        $this->assertEquals(
+            ['a', 'b', ['c'], 'd', 'e'],
+            array_flatten(['a', ['b', ['c'], 'd'], 'e'], 1)
+        );
+    }

@@ -1,0 +1,20 @@
+    /**
+     * Excludes "hidden" directories and files (starting with a dot).
+     *
+     * This option is enabled by default.
+     *
+     * @return $this
+     *
+     * @see ExcludeDirectoryFilterIterator
+     */
+
+    public function ignoreDotFiles(bool $ignoreDotFiles)
+    {
+        if ($ignoreDotFiles) {
+            $this->ignore |= static::IGNORE_DOT_FILES;
+        } else {
+            $this->ignore &= ~static::IGNORE_DOT_FILES;
+        }
+
+        return $this;
+    }

@@ -1,0 +1,14 @@
+    /**
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingTraversableTypeHintSpecification
+     */
+
+    public function provideStaticMethods(): array
+    {
+        return [
+            ['uuid1'],
+            ['uuid2', [Uuid::DCE_DOMAIN_PERSON]],
+            ['uuid3', [Uuid::NIL, 'foobar']],
+            ['uuid4'],
+            ['uuid5', [Uuid::NIL, 'foobar']],
+        ];
+    }

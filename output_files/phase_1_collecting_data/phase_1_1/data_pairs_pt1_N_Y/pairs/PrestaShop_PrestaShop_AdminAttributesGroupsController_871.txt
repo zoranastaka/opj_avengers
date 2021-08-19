@@ -1,0 +1,43 @@
+    /**
+     * AdminController::initContent() override.
+     *
+     * @see AdminController::initContent()
+     */
+
+    public function initContent()
+    {
+        if (Combination::isFeatureActive()) {
+            if ($this->display == 'edit' || $this->display == 'add') {
+                if (!($this->object = $this->loadObject(true))) {
+                    return;
+                }
+                $this->content .= $this->renderForm();
+            } elseif ($this->display == 'editAttributes') {
+                if (!$this->object = new Attribute((int) Tools::getValue('id_attribute'))) {
+                    return;
+                }
+
+                $this->content .= $this->renderFormAttributes();
+            } elseif ($this->display != 'view' && !$this->ajax) {
+                $this->content .= $this->renderList();
+                $this->content .= $this->renderOptions();
+                /* reset all attributes filter */
+                if (!Tools::getValue('submitFilterattribute_group', 0) && !Tools::getIsset('id_attribute_group')) {
+                    $this->processResetFilters('attribute_values');
+                }
+            } elseif ($this->display == 'view' && !$this->ajax) {
+                $this->content = $this->renderView();
+            }
+        } else {
+            $adminPerformanceUrl = $this->context->link->getAdminLink('AdminPerformance');
+            $url = '<a href="' . $adminPerformanceUrl . '#featuresDetachables">' . $this->trans('Performance', [], 'Admin.Global') . '</a>';
+            $this->displayWarning($this->trans('This feature has been disabled. You can activate it here: %link%.', ['%link%' => $url], 'Admin.Catalog.Notification'));
+        }
+
+        $this->context->smarty->assign([
+            'table' => $this->table,
+            'current' => self::$currentIndex,
+            'token' => $this->token,
+            'content' => $this->content,
+        ]);
+    }

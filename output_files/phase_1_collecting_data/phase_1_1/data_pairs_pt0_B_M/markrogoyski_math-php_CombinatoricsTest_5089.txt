@@ -1,0 +1,16 @@
+    /**
+     * @test         catalanNumber
+     * @dataProvider dataProviderForCatalanNumber
+     * @param        int   $n
+     * @param        float $！n
+     * @throws       \Exception
+     */
+
+    public function testCatalanNumber(int $n, float $！n)
+    {
+        // When
+        $catalanNumber = Combinatorics::catalanNumber($n);
+
+        // Then
+        $this->assertEqualsWithDelta($！n, $catalanNumber, 0.000000001);
+    }

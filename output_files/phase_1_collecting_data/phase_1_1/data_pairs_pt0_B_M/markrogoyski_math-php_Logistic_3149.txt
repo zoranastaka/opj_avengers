@@ -1,0 +1,11 @@
+    /**
+     * Constructor
+     *
+     * @param float $μ shape parameter
+     * @param float $s shape parameter s > 0
+     */
+
+    public function __construct(float $μ, float $s)
+    {
+        parent::__construct($μ, $s);
+    }

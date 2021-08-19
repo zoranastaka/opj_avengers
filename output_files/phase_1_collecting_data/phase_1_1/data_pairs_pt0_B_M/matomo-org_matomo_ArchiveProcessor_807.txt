@@ -1,0 +1,26 @@
+    /**
+     * If the DataTable is a Map, sums all DataTable in the map and return the DataTable.
+     *
+     *
+     * @param $data DataTable|DataTable\Map
+     * @param $columnsToRenameAfterAggregation array
+     * @return DataTable
+     */
+
+    protected function getAggregatedDataTableMap($data, $columnsAggregationOperation)
+    {
+        $table = new DataTable();
+
+        if (!empty($columnsAggregationOperation)) {
+            $table->setMetadata(DataTable::COLUMN_AGGREGATION_OPS_METADATA_NAME, $columnsAggregationOperation);
+        }
+
+        if ($data instanceof DataTable\Map) {
+            // as $date => $tableToSum
+            $this->aggregatedDataTableMapsAsOne($data, $table);
+        } else {
+            $table->addDataTable($data);
+        }
+
+        return $table;
+    }

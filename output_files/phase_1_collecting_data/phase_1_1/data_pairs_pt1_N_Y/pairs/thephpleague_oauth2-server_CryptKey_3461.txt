@@ -1,0 +1,10 @@
+    /**
+     * Retrieve key path.
+     *
+     * @return string
+     */
+
+    public function getKeyPath()
+    {
+        return $this->keyPath;
+    }

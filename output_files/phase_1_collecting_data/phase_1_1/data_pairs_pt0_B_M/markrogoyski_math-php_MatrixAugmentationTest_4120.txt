@@ -1,0 +1,17 @@
+    /**
+     * @test         augmentBelow
+     * @throws       \Exception
+     */
+
+    public function testAugmentBelowExceptionTypeMismatch()
+    {
+        // Given
+        $A    = MatrixFactory::create([[1]]);
+        $B    = MatrixFactory::create([[new Polynomial([1,1])]]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $augmented = $A->augmentBelow($B);
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @test         isNotEqual returns false for equal values
+     * @dataProvider dataProviderForEqualValues
+     * @param        int|float $x
+     * @param        int|float $y
+     */
+
+    public function testIsNotEqualWhenEqual($x, $y)
+    {
+        // When
+        $isNotEqual = Support::isNotEqual($x, $y);
+
+        // Then
+        $this->assertFalse($isNotEqual);
+    }

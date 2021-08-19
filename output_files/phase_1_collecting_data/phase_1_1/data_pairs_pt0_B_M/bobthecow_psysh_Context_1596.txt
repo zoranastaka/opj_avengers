@@ -1,0 +1,12 @@
+    /**
+     * Check whether a variable name is a magic variable.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+
+    public static function isSpecialVariableName($name)
+    {
+        return \in_array($name, self::$specialNames) || \in_array($name, self::$commandScopeNames);
+    }

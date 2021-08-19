@@ -1,0 +1,5 @@
+	/**
+	 * remove the users avatars
+	*/
+
+	public function remove() {

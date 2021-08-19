@@ -1,0 +1,18 @@
+    /**
+     * Ensures that the number of subintervals is a multiple of m, or
+     * equivalently, if there are n points, that n-1 is a multiple of m
+     *
+     * @param  array $points
+     * @param  int   $m      The number that n-1 should be a multiple of
+     *
+     * @throws Exception\BadDataException if the number of points minus 1 is not a multiple of m
+     */
+
+    public static function isSubintervalsMultiple(array $points, int $m)
+    {
+        if ((\count($points) - 1) % $m !== 0) {
+            throw new Exception\BadDataException(
+                'The number of subintervals must be a multiple of m. Your input must either be a set of n points, where n-1 is a multiple of m, or a callback function evaluated at an n points, where n-1 is a multiple of m'
+            );
+        }
+    }

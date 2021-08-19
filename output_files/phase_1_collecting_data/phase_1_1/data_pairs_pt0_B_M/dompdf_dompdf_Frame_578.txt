@@ -1,0 +1,8 @@
+    /**
+     * @return string
+     */
+
+    public function get_id()
+    {
+        return $this->_id;
+    }

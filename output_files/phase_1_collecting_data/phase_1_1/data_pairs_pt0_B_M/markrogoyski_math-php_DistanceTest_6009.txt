@@ -1,0 +1,46 @@
+    /**
+     * Test data created using Python: from scipy.spatial import distance
+     * distance.cosine(x, y)
+     * @return array
+     */
+
+    public function dataProviderForCosineDistance(): array
+    {
+        return [
+            [
+                [1, 0, 0],
+                [0, 1, 0],
+                1,
+            ],
+            [
+                [100, 0, 0],
+                [0, 1, 0],
+                1,
+            ],
+            [
+                [1, 1, 0],
+                [0, 1, 0],
+                0.29289321881345254,
+            ],
+            [
+                [1, 1, 1],
+                [1, 1, 1],
+                0,
+            ],
+            [
+                [2, 2, 2],
+                [2, 2, 2],
+                0,
+            ],
+            [
+                [1, 1, 1],
+                [2, 2, 2],
+                0,
+            ],
+            [
+                [56, 26, 83],
+                [11, 82, 95],
+                0.1840657409250167,
+            ],
+        ];
+    }

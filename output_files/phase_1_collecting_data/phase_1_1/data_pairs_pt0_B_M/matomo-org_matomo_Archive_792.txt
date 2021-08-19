@@ -1,0 +1,25 @@
+    /**
+     * Returns an array describing what metadata to use when indexing a query result.
+     * For use with DataCollection.
+     *
+     * @return array
+     */
+
+    private function getResultIndices()
+    {
+        $indices = array();
+
+        if (count($this->params->getIdSites()) > 1
+            || $this->forceIndexedBySite
+        ) {
+            $indices['site'] = 'idSite';
+        }
+
+        if (count($this->params->getPeriods()) > 1
+            || $this->forceIndexedByDate
+        ) {
+            $indices['period'] = 'date';
+        }
+
+        return $indices;
+    }

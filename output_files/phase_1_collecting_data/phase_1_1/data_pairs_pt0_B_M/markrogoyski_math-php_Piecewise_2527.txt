@@ -1,0 +1,35 @@
+    /**
+     * Check the as and bs in the intervals
+     * Helper method of constructor.
+     *
+     * @param  number $a
+     * @param  number $b
+     * @param  number $lastA
+     * @param  number $lastB
+     * @param  bool   $lastBOpen
+     * @param  bool   $aOpen
+     * @param  bool   $bOpen
+     *
+     * @return void
+     *
+     * @throws Exception\BadDataException if any interval [a, b] is decreasing, or b < a
+     * @throws Exception\BadDataException if an interval is a point that is not closed
+     * @throws Exception\BadDataException if two intervals share a point that is closed at both ends
+     * @throws Exception\BadDataException if one interval starts or ends inside another interval
+     */
+
+    private function checkAsAndBs($a, $b, $lastA, $lastB, $lastBOpen, bool $aOpen, bool $bOpen)
+    {
+        if ($a === $b && ($aOpen || $bOpen)) {
+            throw new Exception\BadDataException("Your interval [{$a}, {$b}] is a point and thus needs to be closed at both ends");
+        }
+        if ($a > $b) {
+            throw new Exception\BadDataException("Interval must be increasing. Try again using [{$b}, {$a}] instead of [{$a}, {$b}]");
+        }
+        if ($a === $lastB && !$aOpen && !$lastBOpen) {
+            throw new Exception\BadDataException("The intervals [{$lastA}, {$lastB}] and [{$a}, {$b}] share a point, but both intervals are also closed at that point. For intervals to share a point, one or both sides of that point must be open.");
+        }
+        if ($a < $lastB) {
+            throw new Exception\BadDataException("The intervals [{$lastA}, {$lastB}] and [{$a}, {$b}] overlap. The subintervals of a piecewise functions cannot overlap.");
+        }
+    }

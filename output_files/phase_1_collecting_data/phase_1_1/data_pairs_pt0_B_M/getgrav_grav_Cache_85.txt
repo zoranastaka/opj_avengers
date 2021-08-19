@@ -1,0 +1,18 @@
+    /**
+     * Set the cache lifetime programmatically
+     *
+     * @param int $future timestamp
+     * @return void
+     */
+
+    public function setLifetime($future)
+    {
+        if (!$future) {
+            return;
+        }
+
+        $interval = (int)($future - $this->now);
+        if ($interval > 0 && $interval < $this->getLifetime()) {
+            $this->lifetime = $interval;
+        }
+    }

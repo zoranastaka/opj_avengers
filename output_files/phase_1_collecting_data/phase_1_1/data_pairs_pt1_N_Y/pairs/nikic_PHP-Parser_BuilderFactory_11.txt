@@ -1,0 +1,9 @@
+    /**
+     * Creates a trait use builder.
+     *
+     * @param Node\Name|string ...$traits Trait names
+     *
+     * @return Builder\TraitUse The create trait use builder
+     */
+
+    public function useTrait(...$traits) : Builder\TraitUse {

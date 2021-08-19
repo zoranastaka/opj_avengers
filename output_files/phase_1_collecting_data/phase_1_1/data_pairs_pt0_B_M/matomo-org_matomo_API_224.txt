@@ -1,0 +1,41 @@
+    /**
+     * Performs multiple API requests at once and returns every result.
+     *
+     * @param array $urls The array of API requests.
+     * @return array
+     */
+
+    public function getBulkRequest($urls)
+    {
+        if (empty($urls)) {
+            return array();
+        }
+
+        $urls = array_map('urldecode', $urls);
+        $urls = array_map(array('Piwik\Common', 'unsanitizeInputValue'), $urls);
+
+        $result = array();
+        foreach ($urls as $url) {
+            $params = Request::getRequestArrayFromString($url . '&format=json');
+
+            if (!empty($params['method']) && $params['method'] === 'API.getBulkRequest') {
+                continue;
+            }
+
+            if (isset($params['urls']) && $params['urls'] == $urls) {
+                // by default 'urls' is added to $params as Request::getRequestArrayFromString adds all $_GET/$_POST
+                // default parameters
+                unset($params['urls']);
+            }
+
+            if (!empty($params['segment']) && strpos($url, 'segment=') > -1) {
+                // only unsanitize input when segment is actually present in URL, not when it was used from
+                // $defaultRequest in Request::getRequestArrayFromString from $_GET/$_POST
+                $params['segment'] = urlencode(Common::unsanitizeInputValue($params['segment']));
+            }
+
+            $req = new Request($params);
+            $result[] = json_decode($req->process(), true);
+        }
+        return $result;
+    }

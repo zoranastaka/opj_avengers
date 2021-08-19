@@ -1,0 +1,25 @@
+    /** @test */
+
+    public function it_cant_update_a_debt_with_a_wrong_account()
+    {
+        $user = $this->signin();
+
+        $account = factory(Account::class)->create();
+        $contact = factory(Contact::class)->create([
+            'account_id' => $account->id,
+        ]);
+        $debt = factory(Debt::class)->create([
+            'account_id' => $user->account_id,
+            'contact_id' => $contact->id,
+        ]);
+
+        $response = $this->json('PUT', '/api/debts/'.$debt->id, [
+            'contact_id' => $contact->id,
+            'in_debt' => 'yes',
+            'status' => 'completed',
+            'amount' => 142,
+            'reason' => 'voilà',
+        ]);
+
+        $this->expectNotFound($response);
+    }

@@ -1,0 +1,5 @@
+    /**
+     * @return bool
+     */
+
+    public function currentTableIsTainted() {

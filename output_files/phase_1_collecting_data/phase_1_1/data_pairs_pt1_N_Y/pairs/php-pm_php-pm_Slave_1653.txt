@@ -1,0 +1,10 @@
+    /**
+     * Attach a slave to a running process
+     *
+     * @param Process $process
+     */
+
+    public function attach(Process $process)
+    {
+        $this->process = $process;
+    }

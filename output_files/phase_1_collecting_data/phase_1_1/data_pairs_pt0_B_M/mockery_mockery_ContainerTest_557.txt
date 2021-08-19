@@ -1,0 +1,11 @@
+    /**
+     * @group issue/7
+     */
+
+    public function testMockedStaticMethodsObeyMethodCounting()
+    {
+        $m = mock('alias:MyNamespace\MyClass3');
+        $m->shouldReceive('staticFoo')->once()->andReturn('bar');
+        $this->expectException(\Mockery\CountValidator\Exception::class);
+        Mockery::close();
+    }

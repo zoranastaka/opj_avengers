@@ -1,0 +1,8 @@
+    /**
+     * @param int $memoryLimit
+     */
+
+    public function setMemoryLimit($memoryLimit)
+    {
+        $this->memoryLimit = $memoryLimit;
+    }

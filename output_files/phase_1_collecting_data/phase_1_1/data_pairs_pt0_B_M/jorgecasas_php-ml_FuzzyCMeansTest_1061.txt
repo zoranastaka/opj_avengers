@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider invalidClusterNumberProvider
+     */
+
+    public function testInvalidClusterNumber(int $clusters): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        new FuzzyCMeans($clusters);
+    }

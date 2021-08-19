@@ -1,0 +1,6 @@
+  /**
+  * Return the current array of language strings
+  * @return array
+  */
+
+  public function GetTranslations() {

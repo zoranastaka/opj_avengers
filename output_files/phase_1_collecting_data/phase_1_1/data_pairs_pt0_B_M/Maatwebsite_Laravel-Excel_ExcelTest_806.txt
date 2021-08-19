@@ -1,0 +1,21 @@
+    /**
+     * @test
+     */
+
+    public function import_will_throw_error_when_no_reader_type_could_be_detected_with_unknown_extension()
+    {
+        $this->expectException(\Maatwebsite\Excel\Exceptions\NoTypeDetectedException::class);
+
+        $import = new class implements ToArray
+        {
+            /**
+             * @param array $array
+             */
+            public function array(array $array)
+            {
+                //
+            }
+        };
+
+        $this->SUT->import($import, 'unknown-reader-type.zip');
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @medium
+     * @group connected
+     */
+
+    public function testThrowsExceptionOnProtocolDesynchronizationErrors(): void
+    {
+        $this->expectException('Predis\Protocol\ProtocolException');
+
+        $connection = $this->createConnection();
+        $stream = $connection->getResource();
+
+        $connection->writeRequest($this->getCommandFactory()->create('ping'));
+        fread($stream, 1);
+
+        $connection->read();
+    }

@@ -1,0 +1,10 @@
+   /**
+    * Returns the comment associated with the element
+    *
+    * @return   string
+    */
+
+    public function getComment()
+    {
+        return $this->_comment;
+    }

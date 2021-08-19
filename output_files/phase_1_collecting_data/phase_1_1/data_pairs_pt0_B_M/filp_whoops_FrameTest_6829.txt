@@ -1,0 +1,11 @@
+    /**
+     * @covers Whoops\Exception\Frame::getFileContents
+     */
+
+    public function testGetFileContents()
+    {
+        $data  = $this->getFrameData();
+        $frame = $this->getFrameInstance($data);
+
+        $this->assertStringEqualsFile($data['file'], $frame->getFileContents());
+    }

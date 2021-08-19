@@ -1,0 +1,14 @@
+    /**
+     * γ - Convenience method for lower incomplete gamma function
+     * https://en.wikipedia.org/wiki/Incomplete_gamma_function#Lower_incomplete_Gamma_function
+     *
+     * @param float $s > 0
+     * @param float $x ≥ 0
+     *
+     * @return float
+     */
+
+    public static function γ(float $s, float $x): float
+    {
+        return self::lowerIncompleteGamma($s, $x);
+    }

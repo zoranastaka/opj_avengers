@@ -1,0 +1,10 @@
+    /**
+     * @see ObjectModel::getFieldsRequired()
+     */
+
+    public static function getFieldsRequired()
+    {
+        $address = new CustomerAddress();
+
+        return array_unique(array_merge($address->getFieldsRequiredDB(), AddressFormat::$requireFormFieldsList));
+    }

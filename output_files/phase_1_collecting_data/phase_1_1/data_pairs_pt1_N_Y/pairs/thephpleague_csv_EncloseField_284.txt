@@ -1,0 +1,8 @@
+    /**
+     * Static method to return the stream filter filtername.
+     */
+
+    public static function getFiltername(): string
+    {
+        return self::FILTERNAME;
+    }

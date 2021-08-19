@@ -1,0 +1,16 @@
+    /**
+     * @test         Matrix implements \JsonSerializable
+     * @dataProvider dataProviderForJsonSerialize
+     * @param        array $A
+     * @param        string $json
+     * @throws      \Exception
+     */
+
+    public function testJsonSerialize(array $A, string $json)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertEquals($json, json_encode($A));
+    }

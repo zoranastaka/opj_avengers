@@ -1,0 +1,8 @@
+    /**
+     * Is the value a numeric?
+     */
+
+    function numericValue()
+    {
+        return \Hamcrest\Type\IsNumeric::numericValue();
+    }

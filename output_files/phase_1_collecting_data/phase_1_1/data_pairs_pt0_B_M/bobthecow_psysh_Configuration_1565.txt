@@ -1,0 +1,10 @@
+    /**
+     * Get the force array indexes.
+     *
+     * @return bool
+     */
+
+    public function forceArrayIndexes()
+    {
+        return $this->forceArrayIndexes;
+    }

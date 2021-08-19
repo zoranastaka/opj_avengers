@@ -1,0 +1,10 @@
+  /**
+   * Use when the service account has been delegated domain wide access.
+   *
+   * @param string $subject an email address account to impersonate
+   */
+
+  public function setSubject($subject)
+  {
+    $this->config['subject'] = $subject;
+  }

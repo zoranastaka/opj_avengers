@@ -1,0 +1,33 @@
+    /**
+     * @group connected
+     */
+
+    public function testIsAbleToWriteMultipleCommandsAndReadThemBackForPipelining(): void
+    {
+        $commands = $this->getCommandFactory();
+
+        /** @var CommandInterface|MockObject */
+        $cmdPing = $this->getMockBuilder($commands->getCommandClass('ping'))
+            ->onlyMethods(array('parseResponse'))
+            ->getMock();
+        $cmdPing
+            ->expects($this->never())
+            ->method('parseResponse');
+
+        /** @var CommandInterface|MockObject */
+        $cmdEcho = $this->getMockBuilder($commands->getCommandClass('echo'))
+            ->onlyMethods(array('parseResponse'))
+            ->getMock();
+        $cmdEcho->setArguments(array('ECHOED'));
+        $cmdEcho
+            ->expects($this->never())
+            ->method('parseResponse');
+
+        $connection = $this->createConnection();
+
+        $connection->writeRequest($cmdPing);
+        $connection->writeRequest($cmdEcho);
+
+        $this->assertEquals('PONG', $connection->readResponse($cmdPing));
+        $this->assertSame('ECHOED', $connection->readResponse($cmdEcho));
+    }

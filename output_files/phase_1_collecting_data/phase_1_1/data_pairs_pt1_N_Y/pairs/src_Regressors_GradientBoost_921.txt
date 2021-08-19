@@ -1,0 +1,14 @@
+    /**
+     * @param \Rubix\ML\Learner|null $booster
+     * @param float $rate
+     * @param float $ratio
+     * @param int $estimators
+     * @param float $minChange
+     * @param int $window
+     * @param float $holdOut
+     * @param \Rubix\ML\CrossValidation\Metrics\Metric|null $metric
+     * @param \Rubix\ML\Learner|null $base
+     * @throws \Rubix\ML\Exceptions\InvalidArgumentException
+     */
+
+    public function __construct(

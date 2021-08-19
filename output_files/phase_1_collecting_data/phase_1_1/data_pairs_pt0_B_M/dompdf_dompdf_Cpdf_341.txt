@@ -1,0 +1,9 @@
+    /**
+     * @param $x
+     * @param $y
+     */
+
+    function moveTo($x, $y)
+    {
+        $this->addContent(sprintf("\n%.3F %.3F m", $x, $y));
+    }

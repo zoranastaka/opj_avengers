@@ -1,0 +1,16 @@
+    /**
+     * @test         testRadical
+     * @dataProvider dataProviderForRadical
+     * @param        int $n
+     * @param        int $expected
+     * @throws       \Exception
+     */
+
+    public function testRadical(int $n, int $expected)
+    {
+        // When
+        $radical = Integer::radical($n);
+
+        // Then
+        $this->assertEquals($expected, $radical);
+    }

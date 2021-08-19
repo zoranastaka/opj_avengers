@@ -1,0 +1,11 @@
+    /**
+     * @group finalclass
+     */
+
+    public function testFinalClassesCanBePartialMocks()
+    {
+        $m = mock(new MockeryFoo3());
+        $m->shouldReceive('foo')->andReturn('baz');
+        $this->assertEquals('baz', $m->foo());
+        $this->assertNotInstanceOf(MockeryFoo3::class, $m);
+    }

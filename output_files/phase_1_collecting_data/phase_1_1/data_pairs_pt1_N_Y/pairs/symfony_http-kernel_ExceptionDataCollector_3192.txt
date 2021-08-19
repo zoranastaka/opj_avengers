@@ -1,0 +1,10 @@
+    /**
+     * Gets the exception code.
+     *
+     * @return int The exception code
+     */
+
+    public function getCode()
+    {
+        return $this->data['exception']->getCode();
+    }

@@ -1,0 +1,14 @@
+    /**
+     * Set the claims to be persisted when refreshing a token.
+     *
+     * @param  array  $claims
+     *
+     * @return $this
+     */
+
+    public function setPersistentClaims(array $claims)
+    {
+        $this->persistentClaims = $claims;
+
+        return $this;
+    }

@@ -1,0 +1,8 @@
+	/**
+	 * Determine the common suffix of two strings
+	 * @param {string} text1 First string.
+	 * @param {string} text2 Second string.
+	 * @return {number} The number of characters common to the end of each string.
+	 */
+
+	function diff_commonSuffix($text1, $text2) {

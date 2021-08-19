@@ -1,0 +1,12 @@
+    /**
+     * Convert single record arrays into strings to ensure backwards compatibility between v4 and v3.x of lcobucci/jwt
+     *
+     * @param mixed $aud
+     *
+     * @return array|string
+     */
+
+    private function convertSingleRecordAudToString($aud)
+    {
+        return \is_array($aud) && \count($aud) === 1 ? $aud[0] : $aud;
+    }

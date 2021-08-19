@@ -1,0 +1,22 @@
+    /**
+     * @param int $i
+     *
+     * @return mixed
+     */
+
+    public function &get_column($i)
+    {
+        if (!isset($this->_columns[$i])) {
+            $this->_columns[$i] = [
+                "x"          => 0,
+                "min-width"  => 0,
+                "max-width"  => 0,
+                "used-width" => null,
+                "absolute"   => 0,
+                "percent"    => 0,
+                "auto"       => true,
+            ];
+        }
+
+        return $this->_columns[$i];
+    }

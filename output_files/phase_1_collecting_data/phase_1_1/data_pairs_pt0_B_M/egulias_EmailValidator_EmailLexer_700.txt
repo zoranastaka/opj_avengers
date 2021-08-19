@@ -1,0 +1,12 @@
+    /**
+     * Lexical non-catchable patterns.
+     *
+     * @return string[]
+     */
+
+    protected function getNonCatchablePatterns()
+    {
+        return [
+            '[\xA0-\xff]+',
+        ];
+    }

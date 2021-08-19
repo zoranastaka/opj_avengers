@@ -1,0 +1,16 @@
+    /**
+     * @test         payback
+     * @dataProvider dataProviderForPayback
+     * @param        array $values
+     * @param        float $rate
+     * @param        float $expected
+     */
+
+    public function testPayback(array $values, float $rate, float $expected)
+    {
+        // When
+        $payback = Finance::payback($values, $rate);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $payback, Finance::EPSILON);
+    }

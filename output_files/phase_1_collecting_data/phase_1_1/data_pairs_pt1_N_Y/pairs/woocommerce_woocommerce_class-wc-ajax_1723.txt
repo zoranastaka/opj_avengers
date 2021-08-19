@@ -1,0 +1,5 @@
+	/**
+	 * Delete order note via ajax.
+	 */
+
+	public static function delete_order_note() {

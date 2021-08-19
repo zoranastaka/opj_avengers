@@ -1,0 +1,11 @@
+    /**
+     * Execute the console command.
+     *
+     * @return void
+     */
+
+    public function handle(): void
+    {
+        $job = new ExportAllAsSQL();
+        $this->info('Exported as '.$job->handle().'');
+    }

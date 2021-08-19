@@ -1,0 +1,16 @@
+    /**
+     * @test   Empty Vector is not allowed
+     * @throws \Exception
+     */
+
+    public function testEmptyVectorException()
+    {
+        // Given
+        $values = [];
+
+        // Then
+        $this->expectException(Exception\MathException::class);
+
+        // When
+        $V = new Vector($values);
+    }

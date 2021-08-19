@@ -1,0 +1,20 @@
+    /**
+     * Get the given string of bytes as a stirng of Hexadecimal sequences.
+     *
+     * @param string $binary
+     *
+     * @return string
+     */
+
+    private function asHexString($binary)
+    {
+        $hex = '';
+
+        $bytes = unpack('H*', $binary);
+
+        foreach ($bytes as &$byte) {
+            $byte = strtoupper($byte);
+        }
+
+        return implode('', $bytes);
+    }

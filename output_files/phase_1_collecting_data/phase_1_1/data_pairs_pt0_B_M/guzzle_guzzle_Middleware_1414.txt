@@ -1,0 +1,11 @@
+    /**
+     * This middleware adds a default content-type if possible, a default
+     * content-length or transfer-encoding header, and the expect header.
+     */
+
+    public static function prepareBody(): callable
+    {
+        return static function (callable $handler): PrepareBodyMiddleware {
+            return new PrepareBodyMiddleware($handler);
+        };
+    }

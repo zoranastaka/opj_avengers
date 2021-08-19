@@ -1,0 +1,22 @@
+    /**
+     * @test Axiom: (rA)ᵀ = rAᵀ
+     * Scalar multiplication order does not matter for transpose
+     *
+     * @dataProvider dataProviderForSquareMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testScalarMultiplicationOfTransposeOrder(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $r = 4;
+
+        // When
+        $⟮rA⟯ᵀ = $A->scalarMultiply($r)->transpose();
+        $rAᵀ  = $A->transpose()->scalarMultiply($r);
+
+        // Then
+        $this->assertEquals($⟮rA⟯ᵀ->getMatrix(), $rAᵀ->getMatrix());
+    }

@@ -1,0 +1,3 @@
+	//obradi prihvaćanje/odbijanje studenta
+
+	function change_status( $status, $id_student, $id_offer ){

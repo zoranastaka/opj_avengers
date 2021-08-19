@@ -1,0 +1,10 @@
+    /**
+     * Setter for the $_loader static property.
+     *
+     * @param Loader $loader
+     */
+
+    public static function setLoader(Loader $loader)
+    {
+        self::$_loader = $loader;
+    }

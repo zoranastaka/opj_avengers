@@ -1,0 +1,267 @@
+    /**
+     * Adds an error to the error stack.
+     *
+     * @param boolean $error    Is this an error message?
+     * @param string  $message  The text of the message.
+     * @param int     $line     The line on which the message occurred.
+     * @param int     $column   The column at which the message occurred.
+     * @param string  $code     A violation code unique to the sniff message.
+     * @param array   $data     Replacements for the message.
+     * @param int     $severity The severity level for this message. A value of 0
+     *                          will be converted into the default severity level.
+     * @param boolean $fixable  Can the problem be fixed by the sniff?
+     *
+     * @return boolean
+     */
+
+    protected function addMessage($error, $message, $line, $column, $code, $data, $severity, $fixable)
+    {
+        // Check if this line is ignoring all message codes.
+        if (isset($this->tokenizer->ignoredLines[$line]['.all']) === true) {
+            return false;
+        }
+
+        // Work out which sniff generated the message.
+        $parts = explode('.', $code);
+        if ($parts[0] === 'Internal') {
+            // An internal message.
+            $listenerCode = Util\Common::getSniffCode($this->activeListener);
+            $sniffCode    = $code;
+            $checkCodes   = [$sniffCode];
+        } else {
+            if ($parts[0] !== $code) {
+                // The full message code has been passed in.
+                $sniffCode    = $code;
+                $listenerCode = substr($sniffCode, 0, strrpos($sniffCode, '.'));
+            } else {
+                $listenerCode = Util\Common::getSniffCode($this->activeListener);
+                $sniffCode    = $listenerCode.'.'.$code;
+                $parts        = explode('.', $sniffCode);
+            }
+
+            $checkCodes = [
+                $sniffCode,
+                $parts[0].'.'.$parts[1].'.'.$parts[2],
+                $parts[0].'.'.$parts[1],
+                $parts[0],
+            ];
+        }//end if
+
+        if (isset($this->tokenizer->ignoredLines[$line]) === true) {
+            // Check if this line is ignoring this specific message.
+            $ignored = false;
+            foreach ($checkCodes as $checkCode) {
+                if (isset($this->tokenizer->ignoredLines[$line][$checkCode]) === true) {
+                    $ignored = true;
+                    break;
+                }
+            }
+
+            // If it is ignored, make sure it's not whitelisted.
+            if ($ignored === true
+                && isset($this->tokenizer->ignoredLines[$line]['.except']) === true
+            ) {
+                foreach ($checkCodes as $checkCode) {
+                    if (isset($this->tokenizer->ignoredLines[$line]['.except'][$checkCode]) === true) {
+                        $ignored = false;
+                        break;
+                    }
+                }
+            }
+
+            if ($ignored === true) {
+                return false;
+            }
+        }//end if
+
+        $includeAll = true;
+        if ($this->configCache['cache'] === false
+            || $this->configCache['recordErrors'] === false
+        ) {
+            $includeAll = false;
+        }
+
+        // Filter out any messages for sniffs that shouldn't have run
+        // due to the use of the --sniffs command line argument.
+        if ($includeAll === false
+            && ((empty($this->configCache['sniffs']) === false
+            && in_array(strtolower($listenerCode), $this->configCache['sniffs'], true) === false)
+            || (empty($this->configCache['exclude']) === false
+            && in_array(strtolower($listenerCode), $this->configCache['exclude'], true) === true))
+        ) {
+            return false;
+        }
+
+        // If we know this sniff code is being ignored for this file, return early.
+        foreach ($checkCodes as $checkCode) {
+            if (isset($this->ignoredCodes[$checkCode]) === true) {
+                return false;
+            }
+        }
+
+        $oppositeType = 'warning';
+        if ($error === false) {
+            $oppositeType = 'error';
+        }
+
+        foreach ($checkCodes as $checkCode) {
+            // Make sure this message type has not been set to the opposite message type.
+            if (isset($this->ruleset->ruleset[$checkCode]['type']) === true
+                && $this->ruleset->ruleset[$checkCode]['type'] === $oppositeType
+            ) {
+                $error = !$error;
+                break;
+            }
+        }
+
+        if ($error === true) {
+            $configSeverity = $this->configCache['errorSeverity'];
+            $messageCount   = &$this->errorCount;
+            $messages       = &$this->errors;
+        } else {
+            $configSeverity = $this->configCache['warningSeverity'];
+            $messageCount   = &$this->warningCount;
+            $messages       = &$this->warnings;
+        }
+
+        if ($includeAll === false && $configSeverity === 0) {
+            // Don't bother doing any processing as these messages are just going to
+            // be hidden in the reports anyway.
+            return false;
+        }
+
+        if ($severity === 0) {
+            $severity = 5;
+        }
+
+        foreach ($checkCodes as $checkCode) {
+            // Make sure we are interested in this severity level.
+            if (isset($this->ruleset->ruleset[$checkCode]['severity']) === true) {
+                $severity = $this->ruleset->ruleset[$checkCode]['severity'];
+                break;
+            }
+        }
+
+        if ($includeAll === false && $configSeverity > $severity) {
+            return false;
+        }
+
+        // Make sure we are not ignoring this file.
+        $included = null;
+        if (trim($this->path, '\'"') === 'STDIN') {
+            $included = true;
+        } else {
+            foreach ($checkCodes as $checkCode) {
+                $patterns = null;
+
+                if (isset($this->configCache['includePatterns'][$checkCode]) === true) {
+                    $patterns  = $this->configCache['includePatterns'][$checkCode];
+                    $excluding = false;
+                } else if (isset($this->configCache['ignorePatterns'][$checkCode]) === true) {
+                    $patterns  = $this->configCache['ignorePatterns'][$checkCode];
+                    $excluding = true;
+                }
+
+                if ($patterns === null) {
+                    continue;
+                }
+
+                foreach ($patterns as $pattern => $type) {
+                    // While there is support for a type of each pattern
+                    // (absolute or relative) we don't actually support it here.
+                    $replacements = [
+                        '\\,' => ',',
+                        '*'   => '.*',
+                    ];
+
+                    // We assume a / directory separator, as do the exclude rules
+                    // most developers write, so we need a special case for any system
+                    // that is different.
+                    if (DIRECTORY_SEPARATOR === '\\') {
+                        $replacements['/'] = '\\\\';
+                    }
+
+                    $pattern = '`'.strtr($pattern, $replacements).'`i';
+                    $matched = preg_match($pattern, $this->path);
+
+                    if ($matched === 0) {
+                        if ($excluding === false && $included === null) {
+                            // This file path is not being included.
+                            $included = false;
+                        }
+
+                        continue;
+                    }
+
+                    if ($excluding === true) {
+                        // This file path is being excluded.
+                        $this->ignoredCodes[$checkCode] = true;
+                        return false;
+                    }
+
+                    // This file path is being included.
+                    $included = true;
+                    break;
+                }//end foreach
+            }//end foreach
+        }//end if
+
+        if ($included === false) {
+            // There were include rules set, but this file
+            // path didn't match any of them.
+            return false;
+        }
+
+        $messageCount++;
+        if ($fixable === true) {
+            $this->fixableCount++;
+        }
+
+        if ($this->configCache['recordErrors'] === false
+            && $includeAll === false
+        ) {
+            return true;
+        }
+
+        // See if there is a custom error message format to use.
+        // But don't do this if we are replaying errors because replayed
+        // errors have already used the custom format and have had their
+        // data replaced.
+        if ($this->replayingErrors === false
+            && isset($this->ruleset->ruleset[$sniffCode]['message']) === true
+        ) {
+            $message = $this->ruleset->ruleset[$sniffCode]['message'];
+        }
+
+        if (empty($data) === false) {
+            $message = vsprintf($message, $data);
+        }
+
+        if (isset($messages[$line]) === false) {
+            $messages[$line] = [];
+        }
+
+        if (isset($messages[$line][$column]) === false) {
+            $messages[$line][$column] = [];
+        }
+
+        $messages[$line][$column][] = [
+            'message'  => $message,
+            'source'   => $sniffCode,
+            'listener' => $this->activeListener,
+            'severity' => $severity,
+            'fixable'  => $fixable,
+        ];
+
+        if (PHP_CODESNIFFER_VERBOSITY > 1
+            && $this->fixer->enabled === true
+            && $fixable === true
+        ) {
+            @ob_end_clean();
+            echo "\tE: [Line $line] $message ($sniffCode)".PHP_EOL;
+            ob_start();
+        }
+
+        return true;
+
+    }//end addMessage()

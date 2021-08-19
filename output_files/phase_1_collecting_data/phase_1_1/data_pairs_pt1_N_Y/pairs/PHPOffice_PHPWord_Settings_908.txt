@@ -1,0 +1,16 @@
+    /**
+     * Location of external library to use for rendering PDF files
+     *
+     * @param string $libraryBaseDir Directory path to the library's base folder
+     * @return bool Success or failure
+     */
+
+    public static function setPdfRendererPath($libraryBaseDir)
+    {
+        if (false === file_exists($libraryBaseDir) || false === is_readable($libraryBaseDir)) {
+            return false;
+        }
+        self::$pdfRendererPath = $libraryBaseDir;
+
+        return true;
+    }

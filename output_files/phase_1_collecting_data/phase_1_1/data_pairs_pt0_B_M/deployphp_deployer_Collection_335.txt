@@ -1,0 +1,12 @@
+    /**
+     * @return mixed
+     */
+
+    public function get(string $name)
+    {
+        if ($this->has($name)) {
+            return $this->values[$name];
+        } else {
+            $this->throwNotFound($name);
+        }
+    }

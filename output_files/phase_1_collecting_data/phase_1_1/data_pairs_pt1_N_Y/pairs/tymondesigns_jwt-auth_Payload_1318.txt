@@ -1,0 +1,14 @@
+    /**
+     * Don't allow changing the payload as it should be immutable.
+     *
+     * @param  string  $key
+     *
+     * @throws \Tymon\JWTAuth\Exceptions\PayloadException
+     *
+     * @return void
+     */
+
+    public function offsetUnset($key)
+    {
+        throw new PayloadException('The payload is immutable');
+    }

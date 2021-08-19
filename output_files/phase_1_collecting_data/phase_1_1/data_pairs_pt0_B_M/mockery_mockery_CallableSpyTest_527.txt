@@ -1,0 +1,11 @@
+    /** @test */
+
+    public function it_can_verify_it_was_called_a_number_of_times()
+    {
+        $spy = spy(function () {});
+
+        $spy();
+        $spy();
+
+        $spy->shouldHaveBeenCalled()->twice();
+    }

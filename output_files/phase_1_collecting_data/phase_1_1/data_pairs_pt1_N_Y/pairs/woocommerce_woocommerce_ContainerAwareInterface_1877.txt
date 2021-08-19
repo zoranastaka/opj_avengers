@@ -1,0 +1,9 @@
+    /**
+     * Set a container
+     *
+     * @param ContainerInterface $container
+     *
+     * @return self
+     */
+
+    public function setContainer(ContainerInterface $container) : self;

@@ -1,0 +1,8 @@
+    /**
+     * @return ExtensionInterface[] An array of extensions (keys are for internal usage only and should not be relied on)
+     */
+
+    public function getExtensions(): array
+    {
+        return $this->extensionSet->getExtensions();
+    }

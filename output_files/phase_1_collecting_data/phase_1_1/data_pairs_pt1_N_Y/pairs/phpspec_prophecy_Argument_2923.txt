@@ -1,0 +1,12 @@
+    /**
+     * Checks that argument array has key
+     *
+     * @param mixed $key exact value or token
+     *
+     * @return Token\ArrayEntryToken
+     */
+
+    public static function withKey($key)
+    {
+        return new Token\ArrayEntryToken($key, self::any());
+    }

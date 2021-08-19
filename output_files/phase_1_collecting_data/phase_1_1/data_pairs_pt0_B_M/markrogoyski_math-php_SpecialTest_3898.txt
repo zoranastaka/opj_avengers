@@ -1,0 +1,22 @@
+    /**
+     * @test         hypergeometric returns the expected value
+     * @dataProvider dataProviderForHypergeometric
+     * @param        float $a
+     * @param        float $b
+     * @param        float $c
+     * @param        float $z
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testHypergeometric(float $a, float $b, float $c, float $z, float $expected)
+    {
+        // Given
+        $tol = .000001 * $expected;
+
+        // When
+        $actual = Special::hypergeometric($a, $b, $c, $z);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $actual, $tol);
+    }

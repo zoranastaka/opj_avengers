@@ -1,0 +1,10 @@
+    /**
+     * @expectedException InvalidArgumentException
+     */
+
+    public function testMissingToString()
+    {
+        (string) new S(new stdClass());
+        $this->fail('Expecting exception when the constructor is passed an ' .
+                    'object without a __toString method');
+    }

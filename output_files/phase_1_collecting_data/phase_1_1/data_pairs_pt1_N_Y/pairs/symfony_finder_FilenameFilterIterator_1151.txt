@@ -1,0 +1,15 @@
+    /**
+     * Converts glob to regexp.
+     *
+     * PCRE patterns are left unchanged.
+     * Glob strings are transformed with Glob::toRegex().
+     *
+     * @param string $str Pattern: glob or regexp
+     *
+     * @return string regexp corresponding to a given glob or regexp
+     */
+
+    protected function toRegex(string $str)
+    {
+        return $this->isRegex($str) ? $str : Glob::toRegex($str);
+    }

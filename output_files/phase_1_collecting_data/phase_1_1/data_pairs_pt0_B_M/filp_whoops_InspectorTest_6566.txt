@@ -1,0 +1,12 @@
+    /**
+     * @covers Whoops\Exception\Inspector::__construct
+     * @covers Whoops\Exception\Inspector::getException
+     */
+
+    public function testExceptionIsStoredAndReturned()
+    {
+        $exception = $this->getException();
+        $inspector = $this->getInspectorInstance($exception);
+
+        $this->assertSame($exception, $inspector->getException());
+    }

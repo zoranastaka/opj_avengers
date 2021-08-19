@@ -1,0 +1,8 @@
+    /**
+     * @return array
+     */
+
+    public function &get_columns()
+    {
+        return $this->_columns;
+    }

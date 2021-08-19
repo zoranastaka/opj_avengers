@@ -1,0 +1,10 @@
+    /**
+     * Return CSS file inclusion directive(s) using the markup <link>
+     *
+     * @return string
+     */
+
+    public function getCssInclusionDirective()
+    {
+        return sprintf(self::CSS_IMPORT_DIRECTIVE, self::GET_CSS_MODULE_ACTION);
+    }

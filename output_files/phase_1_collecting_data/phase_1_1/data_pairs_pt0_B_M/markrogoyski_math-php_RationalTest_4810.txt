@@ -1,0 +1,16 @@
+    /**
+     * @test     Raising zero to a negative exponent throws an exception.
+     * @throws   \Exception
+     */
+
+    public function testPowException()
+    {
+        // Given
+        $number = new Rational(0, 0, 1);
+
+        // Then
+        $this->expectException(Exception\DivisionByZeroException::class);
+
+        // When
+        $number->pow(-2);
+    }

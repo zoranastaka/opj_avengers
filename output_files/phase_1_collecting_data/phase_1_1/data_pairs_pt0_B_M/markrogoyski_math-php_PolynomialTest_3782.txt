@@ -1,0 +1,19 @@
+    /**
+     * @return array (p1, scalar, sum)
+     */
+
+    public function dataProviderForScalarAddition(): array
+    {
+        return [
+            [
+                [1, 2, 3],         // f(x)      = x² + 2x + 3
+                2,
+                [1, 2, 5],         // f(x)*c    = x² + 2x + 5
+            ],
+            [
+                [1, 2, 3, 4, 4],      // f(x)      = x⁴ + 2x³ + 3x² + 4x + 4
+                -2,
+                [1, 2, 3, 4, 2],      // f(x)*c    = 1x⁴ + 2x³ + 3x² + 4x + 2
+            ],
+        ];
+    }

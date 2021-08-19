@@ -1,0 +1,7 @@
+	/**
+	 * Set the email text
+	 * @return Object MimeMailParser Instance
+	 * @param $data String
+	 */
+
+	public function setText($data) {

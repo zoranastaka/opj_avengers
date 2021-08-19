@@ -1,0 +1,10 @@
+    /**
+     * Returns true if the end date should be included.
+     *
+     * @return bool
+     */
+
+    public function isEndIncluded()
+    {
+        return !$this->isEndExcluded();
+    }

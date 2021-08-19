@@ -1,0 +1,25 @@
+    /**
+     * Get all attributes for a given language / group.
+     *
+     * @param int $idLang Language ID
+     * @param int $idAttributeGroup AttributeGroup ID
+     *
+     * @return array Attributes
+     */
+
+    public static function getAttributes($idLang, $idAttributeGroup)
+    {
+        if (!Combination::isFeatureActive()) {
+            return [];
+        }
+
+        return Db::getInstance()->executeS('
+			SELECT *
+			FROM `' . _DB_PREFIX_ . 'attribute` a
+			' . Shop::addSqlAssociation('attribute', 'a') . '
+			LEFT JOIN `' . _DB_PREFIX_ . 'attribute_lang` al
+				ON (a.`id_attribute` = al.`id_attribute` AND al.`id_lang` = ' . (int) $idLang . ')
+			WHERE a.`id_attribute_group` = ' . (int) $idAttributeGroup . '
+			ORDER BY `position` ASC
+		');
+    }

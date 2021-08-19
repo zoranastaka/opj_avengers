@@ -1,0 +1,42 @@
+    /**
+     * Adds a single record to a CSV Document using RFC4180 algorithm.
+     *
+     * @see https://php.net/manual/en/function.fputcsv.php
+     * @see https://php.net/manual/en/function.fwrite.php
+     * @see https://tools.ietf.org/html/rfc4180
+     * @see http://edoceo.com/utilitas/csv-file-format
+     *
+     * String conversion is done without any check like fputcsv.
+     *
+     *     - Emits E_NOTICE on Array conversion (returns the 'Array' string)
+     *     - Throws catchable fatal error on objects that can not be converted
+     *     - Returns resource id without notice or error (returns 'Resource id #2')
+     *     - Converts boolean true to '1', boolean false to the empty string
+     *     - Converts null value to the empty string
+     *
+     * Fields must be delimited with enclosures if they contains :
+     *
+     *     - Embedded whitespaces
+     *     - Embedded delimiters
+     *     - Embedded line-breaks
+     *     - Embedded enclosures.
+     *
+     * Embedded enclosures must be doubled.
+     *
+     * The LF character is added at the end of each record to mimic fputcsv behavior
+     *
+     * @return int|false
+     */
+
+    protected function addRFC4180CompliantRecord(array $record)
+    {
+        foreach ($record as &$field) {
+            $field = (string) $field;
+            if (1 === preg_match($this->rfc4180_regexp, $field)) {
+                $field = $this->enclosure.str_replace($this->enclosure, $this->rfc4180_enclosure, $field).$this->enclosure;
+            }
+        }
+        unset($field);
+
+        return $this->document->fwrite(implode($this->delimiter, $record)."\n");
+    }

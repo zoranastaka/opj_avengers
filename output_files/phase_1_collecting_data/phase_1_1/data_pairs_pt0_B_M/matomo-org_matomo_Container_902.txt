@@ -1,0 +1,10 @@
+   /**
+    * Returns a recursive iterator for the container elements
+    *
+    * @return    HTML_QuickForm2_ContainerIterator
+    */
+
+    public function getIterator()
+    {
+        return new HTML_QuickForm2_ContainerIterator($this);
+    }

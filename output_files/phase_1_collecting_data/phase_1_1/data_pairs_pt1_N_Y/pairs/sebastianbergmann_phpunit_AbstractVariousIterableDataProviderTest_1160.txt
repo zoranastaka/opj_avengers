@@ -1,0 +1,9 @@
+    /**
+     * @dataProvider asArrayProviderInParent
+     * @dataProvider asIteratorProviderInParent
+     * @dataProvider asTraversableProviderInParent
+     */
+
+    public function testInParent(): void
+    {
+    }

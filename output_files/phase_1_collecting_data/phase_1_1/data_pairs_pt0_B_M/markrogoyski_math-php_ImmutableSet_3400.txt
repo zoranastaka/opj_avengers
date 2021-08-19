@@ -1,0 +1,12 @@
+    /**
+     * Cannot remove members of an immutable set
+     *
+     * @param  array $x
+     *
+     * @return Set (this set unchanged)
+     */
+
+    public function removeMulti(array $x): Set
+    {
+        return $this;
+    }

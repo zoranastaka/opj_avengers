@@ -1,0 +1,5 @@
+	/**
+	 * @return DataResponse
+	 */
+
+	public function check() {

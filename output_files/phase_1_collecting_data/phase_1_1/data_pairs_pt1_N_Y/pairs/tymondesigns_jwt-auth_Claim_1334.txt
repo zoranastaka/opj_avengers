@@ -1,0 +1,10 @@
+    /**
+     * Get the payload as a string.
+     *
+     * @return string
+     */
+
+    public function __toString()
+    {
+        return $this->toJson();
+    }

@@ -1,0 +1,8 @@
+	/**
+	 * Add crumbs for date based archives.
+	 */
+
+	protected function add_crumbs_date() {
+		if ( is_year() || is_month() || is_day() ) {
+			$this->add_crumb( get_the_time( 'Y' ), get_year_link( get_the_time( 'Y' ) ) );
+		}

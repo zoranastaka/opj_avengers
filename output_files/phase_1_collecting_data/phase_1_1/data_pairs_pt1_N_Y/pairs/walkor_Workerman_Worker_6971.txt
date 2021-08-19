@@ -1,0 +1,20 @@
+    /**
+     * Get UI columns to be shown in terminal
+     *
+     * 1. $column_map: array('ui_column_name' => 'clas_property_name')
+     * 2. Consider move into configuration in future
+     *
+     * @return array
+     */
+
+    public static function getUiColumns()
+    {
+        return array(
+            'proto'     =>  'transport',
+            'user'      =>  'user',
+            'worker'    =>  'name',
+            'socket'    =>  'socket',
+            'processes' =>  'count',
+            'status'    =>  'status',
+        );
+    }

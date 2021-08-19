@@ -1,0 +1,3 @@
+        // 剪贴板复制图片
+
+        textarea.pastableTextarea().on('pasteImage', function (e, data) {

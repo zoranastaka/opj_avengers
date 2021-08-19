@@ -1,0 +1,10 @@
+    /**
+     * @return $this
+     */
+
+    public function types()
+    {
+        $this->getDriver()->types($this->message);
+
+        return $this;
+    }

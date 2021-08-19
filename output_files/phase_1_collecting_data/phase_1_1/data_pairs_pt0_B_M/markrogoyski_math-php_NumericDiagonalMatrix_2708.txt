@@ -1,0 +1,9 @@
+    /**
+     * Diagonal matrix must be upper triangular
+     * @inheritDoc
+     */
+
+    public function isUpperTriangular(): bool
+    {
+        return true;
+    }

@@ -1,0 +1,13 @@
+    /**
+     * @return array [a, b]
+     */
+
+    public function dataProviderForOutOfBoundsParameters(): array
+    {
+        return [
+            [1, 0],
+            [2, 1],
+            [4, 1],
+            [94, 35],
+        ];
+    }

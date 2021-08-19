@@ -1,0 +1,21 @@
+    /**
+     * @test Axiom: -a = a * -1
+     * Negation is the same as multiplying by -1
+     * @dataProvider dataProviderForOnePolynomial
+     * @param        array $a
+     * @throws       \Exception
+     */
+
+    public function testNegateSameAsMultiplyingByNegativeOne(array $a)
+    {
+        // Given
+        $a = new Polynomial($a);
+
+        // When
+        $−a = $a->negate();
+        $a⟮−1⟯ = $a->multiply(-1);
+
+        // Then
+        $this->assertEquals($−a->getDegree(), $a⟮−1⟯->getDegree());
+        $this->assertEquals($−a->getCoefficients(), $a⟮−1⟯->getCoefficients());
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @inheritDoc
+     */
+
+    public function getClassName(): string
+    {
+        return $this->className;
+    }

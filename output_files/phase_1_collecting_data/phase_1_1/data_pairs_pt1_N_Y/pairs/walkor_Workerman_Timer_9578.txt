@@ -1,0 +1,13 @@
+    /**
+     * ALARM signal handler.
+     *
+     * @return void
+     */
+
+    public static function signalHandle()
+    {
+        if (!self::$_event) {
+            \pcntl_alarm(1);
+            self::tick();
+        }
+    }

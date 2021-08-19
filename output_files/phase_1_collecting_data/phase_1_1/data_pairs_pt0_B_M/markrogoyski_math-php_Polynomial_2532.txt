@@ -1,0 +1,19 @@
+    /**
+     * Check that our input is either a number or a Polynomial
+     * Convert any numbers to Polynomial objects
+     *
+     * @param mixed $input The variable to check
+     * @return Polynomial
+     * @throws Exception\IncorrectTypeException
+     */
+
+    private function checkNumericOrPolynomial($input): Polynomial
+    {
+        if ($input instanceof Polynomial) {
+            return $input;
+        } elseif (\is_numeric($input)) {
+            return new Polynomial([$input]);
+        } else {
+            throw new Exception\IncorrectTypeException('Input must be a Polynomial or a number');
+        }
+    }

@@ -1,0 +1,11 @@
+    /** @test */
+
+    public function a_user_cannot_access_a_route_protected_by_permission_middleware_if_have_not_permissions()
+    {
+        Auth::login($this->testUser);
+
+        $this->assertEquals(
+            403,
+            $this->runMiddleware($this->permissionMiddleware, 'edit-articles|edit-news')
+        );
+    }

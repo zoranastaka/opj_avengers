@@ -1,0 +1,9 @@
+    /**
+     * @test
+     */
+
+    public function it_returns_false_when_needle_is_not_present_in_haystack()
+    {
+        $this->assertFalse(values_in_array('d', ['a', 'b', 'c']));
+        $this->assertFalse(values_in_array(['d'], ['a', 'b', 'c']));
+    }

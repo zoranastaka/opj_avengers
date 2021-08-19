@@ -1,0 +1,25 @@
+/**
+ * @deprecated Nothing should use this anymore
+ */
+
+class ConsoleColorFactory
+{
+    /**
+     * @param string $colorMode
+     */
+    public function __construct($colorMode)
+    {
+        // Nothing to see here
+    }
+
+    /**
+     * Get a `ConsoleColor` instance configured according to the given color
+     * mode.
+     *
+     * @return ConsoleColor
+     */
+    public function getConsoleColor()
+    {
+        return new ConsoleColor(); // /shrug
+    }
+}

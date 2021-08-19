@@ -1,0 +1,12 @@
+    /**
+     * Set a part of the Carbon object
+     *
+     * @param string                  $name
+     * @param string|int|DateTimeZone $value
+     *
+     * @throws UnknownSetterException|ReflectionException
+     *
+     * @return void
+     */
+
+    public function __set($name, $value);

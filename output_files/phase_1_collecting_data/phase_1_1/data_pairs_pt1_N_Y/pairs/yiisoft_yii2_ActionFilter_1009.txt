@@ -1,0 +1,12 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function detach()
+    {
+        if ($this->owner) {
+            $this->owner->off(Controller::EVENT_BEFORE_ACTION, [$this, 'beforeFilter']);
+            $this->owner->off(Controller::EVENT_AFTER_ACTION, [$this, 'afterFilter']);
+            $this->owner = null;
+        }
+    }

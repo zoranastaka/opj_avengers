@@ -1,0 +1,10 @@
+    /**
+     * Get vertical text alignment
+     *
+     * @return string
+     */
+
+    public function getValign()
+    {
+        return $this->valign;
+    }

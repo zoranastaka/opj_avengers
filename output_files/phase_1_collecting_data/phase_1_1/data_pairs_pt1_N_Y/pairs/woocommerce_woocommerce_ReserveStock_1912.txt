@@ -1,0 +1,5 @@
+/**
+ * Stock Reservation class.
+ */
+
+final class ReserveStock {

@@ -1,0 +1,10 @@
+    /**
+     * Get a list of all Excel function names
+     *
+     * @return    array
+     */
+
+    public function listAllFunctionNames()
+    {
+        return array_keys(self::$PHPExcelFunctions);
+    }

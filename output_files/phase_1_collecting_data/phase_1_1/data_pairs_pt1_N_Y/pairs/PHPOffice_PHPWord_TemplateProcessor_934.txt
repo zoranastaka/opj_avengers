@@ -1,0 +1,16 @@
+    /**
+     * @param string $fileName
+     *
+     * @return string
+     */
+
+    protected function readPartWithRels($fileName)
+    {
+        $relsFileName = $this->getRelationsName($fileName);
+        $partRelations = $this->zipClass->getFromName($relsFileName);
+        if ($partRelations !== false) {
+            $this->tempDocumentRelations[$fileName] = $partRelations;
+        }
+
+        return $this->fixBrokenMacros($this->zipClass->getFromName($fileName));
+    }

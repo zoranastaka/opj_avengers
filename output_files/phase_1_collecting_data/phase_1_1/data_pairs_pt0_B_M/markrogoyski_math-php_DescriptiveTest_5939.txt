@@ -1,0 +1,16 @@
+    /**
+     * @test         sd using population variance
+     * @dataProvider dataProviderForStandardDeviationUsingPopulationVariance
+     * @param        array $numbers
+     * @param        float $expectedStandardDeviation
+     * @throws       \Exception
+     */
+
+    public function testSdUsingPopulationVariance(array $numbers, float $expectedStandardDeviation)
+    {
+        // When
+        $sd = Descriptive::sd($numbers, true);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedStandardDeviation, $sd, 0.01);
+    }

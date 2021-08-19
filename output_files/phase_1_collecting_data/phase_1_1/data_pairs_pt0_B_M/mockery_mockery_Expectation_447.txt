@@ -1,0 +1,12 @@
+    /**
+     * Return a string with the method name and arguments formatted
+     *
+     * @param string $name Name of the expected method
+     * @param array $args List of arguments to the method
+     * @return string
+     */
+
+    public function __toString()
+    {
+        return \Mockery::formatArgs($this->_name, $this->_expectedArgs);
+    }

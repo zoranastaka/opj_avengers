@@ -1,0 +1,10 @@
+    /**
+     * Tests if header has given value.
+     *
+     * @return bool
+     */
+
+    public function has(string $value)
+    {
+        return isset($this->items[$value]);
+    }

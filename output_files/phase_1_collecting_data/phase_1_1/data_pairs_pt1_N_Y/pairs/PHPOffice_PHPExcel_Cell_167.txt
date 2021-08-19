@@ -1,0 +1,10 @@
+    /**
+     *    Get cell coordinate row
+     *
+     *    @return    int
+     */
+
+    public function getRow()
+    {
+        return $this->parent->getCurrentRow();
+    }

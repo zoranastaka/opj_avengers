@@ -1,0 +1,10 @@
+    /**
+     * Enable or disable Readline usage.
+     *
+     * @param bool $useReadline
+     */
+
+    public function setUseReadline($useReadline)
+    {
+        $this->useReadline = (bool) $useReadline;
+    }

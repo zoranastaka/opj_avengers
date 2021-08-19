@@ -1,0 +1,20 @@
+    /**
+     * @test Axiom: DD is diagonal
+     * Product of two diagonal matrices is diagonal
+     * @dataProvider dataProviderForDiagonalMatrix
+     * @param        array $D
+     * @throws       \Exception
+     */
+
+    public function testProductOfTwoDiagonalMatricesIsDiagonal(array $D)
+    {
+        // Given
+        $D = MatrixFactory::create($D);
+
+        // When
+        $DD = $D->multiply($D);
+
+        // Then
+        $this->assertTrue($D->isDiagonal());
+        $this->assertTrue($DD->isDiagonal());
+    }

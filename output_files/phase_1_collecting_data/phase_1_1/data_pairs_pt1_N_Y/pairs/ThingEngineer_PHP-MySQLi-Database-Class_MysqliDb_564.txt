@@ -1,0 +1,12 @@
+    /**
+     * Helper function to add variables into bind parameters array in bulk
+     *
+     * @param array $values Variable with values
+     */
+
+    protected function _bindParams($values)
+    {
+        foreach ($values as $value) {
+            $this->_bindParam($value);
+        }
+    }

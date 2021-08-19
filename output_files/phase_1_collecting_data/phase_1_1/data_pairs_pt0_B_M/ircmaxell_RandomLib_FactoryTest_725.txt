@@ -1,0 +1,13 @@
+    /**
+     * @expectedException RuntimeException
+     * @expectedExceptionMessage Could not find sources
+     */
+
+    public function testNoAvailableSource()
+    {
+        $factory = new Factory();
+        $sources = new \ReflectionProperty($factory, 'sources');
+        $sources->setAccessible(true);
+        $sources->setValue($factory, array());
+        $factory->getMediumStrengthGenerator();
+    }

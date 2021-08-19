@@ -1,0 +1,7 @@
+    /**
+     * Returns the mapType, see constants.
+     *
+     * @return int
+     */
+
+    public function getMapType();

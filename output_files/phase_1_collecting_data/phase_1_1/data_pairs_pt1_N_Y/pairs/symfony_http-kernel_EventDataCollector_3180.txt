@@ -1,0 +1,12 @@
+    /**
+     * Sets the called listeners.
+     *
+     * @param array $listeners An array of called listeners
+     *
+     * @see TraceableEventDispatcher
+     */
+
+    public function setCalledListeners(array $listeners)
+    {
+        $this->data['called_listeners'] = $listeners;
+    }

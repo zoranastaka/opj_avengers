@@ -1,0 +1,16 @@
+    /**
+     * Sets the number of seconds after which the response should no longer be considered fresh.
+     *
+     * This methods sets the Cache-Control max-age directive.
+     *
+     * @return $this
+     *
+     * @final
+     */
+
+    public function setMaxAge(int $value): object
+    {
+        $this->headers->addCacheControlDirective('max-age', $value);
+
+        return $this;
+    }

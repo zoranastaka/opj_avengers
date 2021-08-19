@@ -1,0 +1,17 @@
+    /**
+     * @testCase rand is always 0
+     */
+
+    public function testRand()
+    {
+        // Given
+        $diracDelta = new DiracDelta();
+
+        foreach (\range(-10, 10, 0.5) as $_) {
+            // When
+            $rand = $diracDelta->rand();
+
+            // Then
+            $this->assertEquals(0, $rand);
+        }
+    }

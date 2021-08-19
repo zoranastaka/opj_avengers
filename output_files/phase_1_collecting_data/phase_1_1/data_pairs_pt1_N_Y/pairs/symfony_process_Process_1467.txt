@@ -1,0 +1,14 @@
+    /**
+     * Clears the process output.
+     *
+     * @return $this
+     */
+
+    public function clearErrorOutput()
+    {
+        ftruncate($this->stderr, 0);
+        fseek($this->stderr, 0);
+        $this->incrementalErrorOutputOffset = 0;
+
+        return $this;
+    }

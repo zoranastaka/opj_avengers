@@ -1,0 +1,12 @@
+    /**
+     * Return a new polynomial that is the negated version.
+     *
+     * @return Polynomial that is negated
+     */
+
+    public function negate(): Polynomial
+    {
+        return new Polynomial(
+            Map\Single::multiply($this->coefficients, -1)
+        );
+    }

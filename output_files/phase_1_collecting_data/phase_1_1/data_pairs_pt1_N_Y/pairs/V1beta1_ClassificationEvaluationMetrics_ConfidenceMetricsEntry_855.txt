@@ -1,0 +1,15 @@
+    /**
+     * Output only. False Positive Rate for the given confidence threshold.
+     *
+     * Generated from protobuf field <code>float false_positive_rate = 8;</code>
+     * @param float $var
+     * @return $this
+     */
+
+    public function setFalsePositiveRate($var)
+    {
+        GPBUtil::checkFloat($var);
+        $this->false_positive_rate = $var;
+
+        return $this;
+    }

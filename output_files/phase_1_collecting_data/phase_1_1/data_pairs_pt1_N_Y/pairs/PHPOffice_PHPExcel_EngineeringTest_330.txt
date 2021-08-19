@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider providerOCT2HEX
+     */
+
+    public function testOCT2HEX()
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','OCTTOHEX'), $args);
+        $this->assertEquals($expectedResult, $result, null);
+    }

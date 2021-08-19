@@ -1,0 +1,10 @@
+    /**
+     *    Get cell value
+     *
+     *    @return    mixed
+     */
+
+    public function getValue()
+    {
+        return $this->value;
+    }

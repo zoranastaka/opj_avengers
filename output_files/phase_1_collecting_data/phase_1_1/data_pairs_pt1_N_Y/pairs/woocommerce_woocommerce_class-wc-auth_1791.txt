@@ -1,0 +1,8 @@
+	/**
+	 * Handle auth requests.
+	 *
+	 * @since 2.4.0
+	 * @throws Exception When auth_endpoint validation fails.
+	 */
+
+	public function handle_auth_requests() {

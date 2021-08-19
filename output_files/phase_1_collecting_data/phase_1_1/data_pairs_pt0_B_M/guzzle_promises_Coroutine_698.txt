@@ -1,0 +1,10 @@
+    /**
+     * Create a new coroutine.
+     *
+     * @return self
+     */
+
+    public static function of(callable $generatorFn)
+    {
+        return new self($generatorFn);
+    }

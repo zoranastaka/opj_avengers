@@ -1,0 +1,7 @@
+    /**
+     * Constructor is private: this is a static class
+     */
+
+    private function __construct()
+    {
+    }

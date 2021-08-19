@@ -1,0 +1,12 @@
+    /**
+     * Returns a `{@link Piwik\DataAccess\LogAggregator}` instance for the site, period and segment this
+     * ArchiveProcessor will insert archive data for.
+     *
+     * @return LogAggregator
+     * @api
+     */
+
+    public function getLogAggregator()
+    {
+        return $this->logAggregator;
+    }

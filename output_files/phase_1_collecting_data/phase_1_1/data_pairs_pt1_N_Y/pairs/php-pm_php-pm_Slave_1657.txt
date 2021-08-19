@@ -1,0 +1,15 @@
+    /**
+     * Releases a slave from request handling
+     *
+     * @return void
+     */
+
+    public function release()
+    {
+        if ($this->status !== self::BUSY) {
+            throw new \LogicException('Cannot release a slave that is not in busy state');
+        }
+
+        $this->status = self::READY;
+        $this->handledRequests++;
+    }

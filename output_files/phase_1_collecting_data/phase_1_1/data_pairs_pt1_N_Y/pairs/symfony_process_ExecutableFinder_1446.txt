@@ -1,0 +1,8 @@
+    /**
+     * Adds new possible suffix to check for executable.
+     */
+
+    public function addSuffix(string $suffix)
+    {
+        $this->suffixes[] = $suffix;
+    }

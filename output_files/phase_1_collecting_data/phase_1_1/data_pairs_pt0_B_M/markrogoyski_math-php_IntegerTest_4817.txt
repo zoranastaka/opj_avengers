@@ -1,0 +1,15 @@
+    /**
+     * @test         isAbundantNumber returns true if n is an abundant number
+     * @dataProvider dataProviderForAbundantNumbers
+     * @param        int   $n
+     * @throws       \Exception
+     */
+
+    public function testIsAbundantNumber(int $n)
+    {
+        // When
+        $isAbundantNumber = Integer::isAbundantNumber($n);
+
+        // Then
+        $this->assertTrue($isAbundantNumber);
+    }

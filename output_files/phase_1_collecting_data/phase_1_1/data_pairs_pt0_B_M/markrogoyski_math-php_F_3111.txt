@@ -1,0 +1,20 @@
+    /**
+     * Mean of the distribution
+     *
+     *       d₂
+     * μ = ------  for d₂ > 2
+     *     d₂ - 2
+     *
+     * @return float
+     */
+
+    public function mean(): float
+    {
+        $d₂ = $this->d₂;
+
+        if ($d₂ > 2) {
+            return $d₂ / ($d₂ - 2);
+        }
+
+        return \NAN;
+    }

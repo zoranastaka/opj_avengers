@@ -1,0 +1,8 @@
+    /**
+     * Returns the validator configured for this environment
+     */
+
+    public function getValidator(): ValidatorInterface
+    {
+        return $this->validator;
+    }

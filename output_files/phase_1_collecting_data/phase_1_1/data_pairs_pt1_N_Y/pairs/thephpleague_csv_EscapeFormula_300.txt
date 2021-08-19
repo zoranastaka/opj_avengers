@@ -1,0 +1,21 @@
+    /**
+     * Escape a CSV cell if its content is stringable.
+     *
+     * @param mixed $cell the content of the cell
+     *
+     * @return mixed|string the escaped content
+     */
+
+    protected function escapeField($cell)
+    {
+        if (!$this->isStringable($cell)) {
+            return $cell;
+        }
+
+        $str_cell = (string) $cell;
+        if (isset($str_cell[0], $this->special_chars[$str_cell[0]])) {
+            return $this->escape.$str_cell;
+        }
+
+        return $cell;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Returns false.
+     *
+     * @return boolean
+     */
+
+    public function isLast()
+    {
+        return false;
+    }

@@ -1,0 +1,14 @@
+    /**
+     * Determine whether this mapping should be activated or not. This allows
+     * to take this decision with the container builder available.
+     *
+     * This default implementation checks if the class has the enabledParameter
+     * configured and if so if that parameter is present in the container.
+     *
+     * @return bool whether this compiler pass really should register the mappings
+     */
+
+    protected function enabled(ContainerBuilder $container)
+    {
+        return !$this->enabledParameter || $container->hasParameter($this->enabledParameter);
+    }

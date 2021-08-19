@@ -1,0 +1,10 @@
+    /**
+     * Get text.
+     *
+     * @return string
+     */
+
+    public function getText()
+    {
+        return $this->text;
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @return bool
+     */
+
+    public function isSetup(): bool
+    {
+        return isset($this->initialized['setup']);
+    }

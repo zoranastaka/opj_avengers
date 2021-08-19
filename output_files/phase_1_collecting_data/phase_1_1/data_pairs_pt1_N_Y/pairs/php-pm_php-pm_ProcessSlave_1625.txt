@@ -1,0 +1,58 @@
+    /**
+     * Shuts down the event loop. This basically exits the process.
+     * @return boolean
+     */
+
+    public function prepareShutdown()
+    {
+        if ($this->inShutdown) {
+            return false;
+        }
+
+        if ($this->errorLogger && $logs = $this->errorLogger->cleanLogs()) {
+            $messages = \array_map(
+                function ($item) {
+                    //array($level, $message, $context);
+                    $message = $item[1];
+                    $context = $item[2];
+
+                    if (isset($context['file'])) {
+                        $message .= ' in ' . $context['file'] . ':' . $context['line'];
+                    }
+
+                    if (isset($context['stack'])) {
+                        foreach ($context['stack'] as $idx => $stack) {
+                            $message .= PHP_EOL . \sprintf(
+                                "#%d: %s%s %s%s",
+                                $idx,
+                                isset($stack['class']) ? $stack['class'] . '->' : '',
+                                $stack['function'],
+                                isset($stack['file']) ? 'in' . $stack['file'] : '',
+                                isset($stack['line']) ? ':' . $stack['line'] : ''
+                            );
+                        }
+                    }
+                    return $message;
+                },
+                $logs
+            );
+            \error_log(\implode(PHP_EOL, $messages));
+        }
+
+        $this->inShutdown = true;
+
+        $this->sendCurrentFiles();
+
+        // $this->controller->close() is no longer called here, because it prevented
+        // shutdown functions from triggering (see https://github.com/php-pm/php-pm/pull/432)
+
+        if ($this->server) {
+            @$this->server->close();
+        }
+
+        if ($this->loop) {
+            $this->loop->stop();
+        }
+
+        return true;
+    }

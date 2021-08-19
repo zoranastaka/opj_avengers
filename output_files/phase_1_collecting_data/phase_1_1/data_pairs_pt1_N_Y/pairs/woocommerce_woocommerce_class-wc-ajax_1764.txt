@@ -1,0 +1,5 @@
+	/**
+	 * Handle submissions from assets/js/settings-views-html-settings-tax.js Backbone model.
+	 */
+
+	public static function tax_rates_save_changes() {

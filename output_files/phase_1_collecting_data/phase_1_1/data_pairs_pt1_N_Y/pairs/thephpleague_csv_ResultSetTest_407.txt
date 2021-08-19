@@ -1,0 +1,25 @@
+    /**
+     * @covers \League\Csv\Statement::limit
+     * @covers \League\Csv\Statement::offset
+     * @covers \League\Csv\Statement::process
+     * @covers \League\Csv\Statement::filter
+     *
+     * @dataProvider intervalTest
+     */
+
+    public function testInterval(int $offset, int $limit): void
+    {
+        self::assertContains(
+            ['jane', 'doe', 'jane.doe@example.com'],
+            $this->stmt
+                ->offset($offset)
+                ->limit($limit)
+                ->where(function (array $record): bool {
+                    return true;
+                })
+                ->where(function (array $record): bool {
+                    return [] !== $record;
+                })
+                ->process($this->csv)
+        );
+    }

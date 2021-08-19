@@ -1,0 +1,37 @@
+    /**
+     * Get the interval_spec string of a date interval.
+     *
+     * @param DateInterval $interval
+     *
+     * @return string
+     */
+
+    public static function getDateIntervalSpec(DateInterval $interval)
+    {
+        $date = array_filter([
+            static::PERIOD_YEARS => abs($interval->y),
+            static::PERIOD_MONTHS => abs($interval->m),
+            static::PERIOD_DAYS => abs($interval->d),
+        ]);
+
+        $time = array_filter([
+            static::PERIOD_HOURS => abs($interval->h),
+            static::PERIOD_MINUTES => abs($interval->i),
+            static::PERIOD_SECONDS => abs($interval->s),
+        ]);
+
+        $specString = static::PERIOD_PREFIX;
+
+        foreach ($date as $key => $value) {
+            $specString .= $value.$key;
+        }
+
+        if (\count($time) > 0) {
+            $specString .= static::PERIOD_TIME_PREFIX;
+            foreach ($time as $key => $value) {
+                $specString .= $value.$key;
+            }
+        }
+
+        return $specString === static::PERIOD_PREFIX ? 'PT0S' : $specString;
+    }

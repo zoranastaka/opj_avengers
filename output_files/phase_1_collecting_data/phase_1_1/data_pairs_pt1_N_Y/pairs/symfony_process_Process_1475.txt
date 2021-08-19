@@ -1,0 +1,16 @@
+    /**
+     * Checks if the process is currently running.
+     *
+     * @return bool true if the process is currently running, false otherwise
+     */
+
+    public function isRunning()
+    {
+        if (self::STATUS_STARTED !== $this->status) {
+            return false;
+        }
+
+        $this->updateStatus(false);
+
+        return $this->processInformation['running'];
+    }

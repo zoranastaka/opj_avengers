@@ -1,0 +1,21 @@
+    /**
+     * Return the block diagonal eigenvalue matrix
+     */
+
+    public function getDiagonalEigenvalues(): array
+    {
+        $D = [];
+
+        for ($i = 0; $i < $this->n; ++$i) {
+            $D[$i] = array_fill(0, $this->n, 0.0);
+            $D[$i][$i] = $this->d[$i];
+            if ($this->e[$i] == 0) {
+                continue;
+            }
+
+            $o = $this->e[$i] > 0 ? $i + 1 : $i - 1;
+            $D[$i][$o] = $this->e[$i];
+        }
+
+        return $D;
+    }

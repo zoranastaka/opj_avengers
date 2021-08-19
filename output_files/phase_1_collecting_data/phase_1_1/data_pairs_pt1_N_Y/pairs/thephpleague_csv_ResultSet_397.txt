@@ -1,0 +1,19 @@
+    /**
+     * Filter a column name against the header if any.
+     *
+     * @param string|int $field  the field name or the field index
+     * @param string     $method the calling method
+     *
+     * @throws Exception if the field is invalid or not found
+     *
+     * @return string|int
+     */
+
+    protected function getColumnIndex($field, string $type, string $method)
+    {
+        if (is_string($field)) {
+            return $this->getColumnIndexByValue($field, $type, $method);
+        }
+
+        return $this->getColumnIndexByKey($field, $type, $method);
+    }

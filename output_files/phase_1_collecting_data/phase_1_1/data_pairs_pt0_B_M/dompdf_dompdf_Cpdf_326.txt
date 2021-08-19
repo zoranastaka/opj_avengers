@@ -1,0 +1,22 @@
+    /**
+     * initialize the encryption for processing a particular object
+     *
+     * @param $id
+     */
+
+    function encryptInit($id)
+    {
+        $tmp = $this->encryptionKey;
+        $hex = dechex($id);
+        if (mb_strlen($hex, '8bit') < 6) {
+            $hex = substr('000000', 0, 6 - mb_strlen($hex, '8bit')) . $hex;
+        }
+        $tmp .= chr(hexdec(substr($hex, 4, 2)))
+            . chr(hexdec(substr($hex, 2, 2)))
+            . chr(hexdec(substr($hex, 0, 2)))
+            . chr(0)
+            . chr(0)
+        ;
+        $key = $this->md5_16($tmp);
+        $this->ARC4_init(substr($key, 0, 10));
+    }

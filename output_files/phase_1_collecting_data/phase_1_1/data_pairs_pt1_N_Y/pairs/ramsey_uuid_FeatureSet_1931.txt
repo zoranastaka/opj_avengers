@@ -1,0 +1,8 @@
+    /**
+     * Returns the calculator configured for this environment
+     */
+
+    public function getCalculator(): CalculatorInterface
+    {
+        return $this->calculator;
+    }

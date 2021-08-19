@@ -1,0 +1,13 @@
+    /**
+     * @param array $themes
+     * @throws InvalidStyleException
+     * @throws \InvalidArgumentException
+     */
+
+    public function setThemes(array $themes)
+    {
+        $this->themes = array();
+        foreach ($themes as $name => $styles) {
+            $this->addTheme($name, $styles);
+        }
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Adds a check for the the URL port.
+     *
+     * @param int|null $port The port number to connect to
+     */
+
+    public function matchPort(?int $port)
+    {
+        $this->port = $port;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * @param string $className
+     * @param mixed $optionalValue
+     */
+
+    public function __construct(string $className, $optionalValue)
+    {
+        $this->className = $className;
+        $this->optionalValue = $optionalValue;
+    }

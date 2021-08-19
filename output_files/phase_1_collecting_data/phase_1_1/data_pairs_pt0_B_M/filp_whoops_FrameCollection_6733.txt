@@ -1,0 +1,10 @@
+    /**
+     * @param array $frames
+     */
+
+    public function __construct(array $frames)
+    {
+        $this->frames = array_map(function ($frame) {
+            return new Frame($frame);
+        }, $frames);
+    }

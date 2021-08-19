@@ -1,0 +1,8 @@
+	/**
+	 * Make validation.
+	 *
+	 * @since  2.4.0
+	 * @throws Exception When validate fails.
+	 */
+
+	protected function make_validation() {

@@ -1,0 +1,8 @@
+    /**
+     * Sets the locale.
+     */
+
+    public function setLocale(string $locale)
+    {
+        $this->setPhpDefaultLocale($this->locale = $locale);
+    }

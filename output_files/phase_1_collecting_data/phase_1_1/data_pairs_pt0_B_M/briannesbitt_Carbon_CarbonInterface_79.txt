@@ -1,0 +1,7 @@
+    /**
+     * Return true if the current instance has its own translator.
+     *
+     * @return bool
+     */
+
+    public function hasLocalTranslator();

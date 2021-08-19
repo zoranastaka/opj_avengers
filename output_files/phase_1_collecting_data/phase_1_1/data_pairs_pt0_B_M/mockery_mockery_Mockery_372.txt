@@ -1,0 +1,16 @@
+    /**
+     * Static shortcut to \Mockery\Container::self().
+     *
+     * @throws LogicException
+     *
+     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     */
+
+    public static function self()
+    {
+        if (is_null(self::$_container)) {
+            throw new \LogicException('You have not declared any mocks yet');
+        }
+
+        return self::$_container->self();
+    }

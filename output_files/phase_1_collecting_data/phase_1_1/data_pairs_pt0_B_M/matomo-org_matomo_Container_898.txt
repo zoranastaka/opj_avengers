@@ -1,0 +1,20 @@
+   /**
+    * Appends an element to the container
+    *
+    * If the element was previously added to the container or to another
+    * container, it is first removed there.
+    *
+    * @param    HTML_QuickForm2_Node     Element to add
+    * @return   HTML_QuickForm2_Node     Added element
+    * @throws   HTML_QuickForm2_InvalidArgumentException
+    */
+
+    public function appendChild(HTML_QuickForm2_Node $element)
+    {
+        if ($this === $element->getContainer()) {
+            $this->removeChild($element);
+        }
+        $element->setContainer($this);
+        $this->elements[] = $element;
+        return $element;
+    }

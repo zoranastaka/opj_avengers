@@ -1,0 +1,14 @@
+    /** @test */
+
+    public function it_can_reply()
+    {
+        $bot = m::mock(BotMan::class);
+        $bot->shouldReceive('getToken');
+        $bot->shouldReceive('reply')
+            ->once()
+            ->with('This is my reply', []);
+
+        $conversation = new TestConversation();
+        $conversation->setBot($bot);
+        $conversation->say('This is my reply');
+    }

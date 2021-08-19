@@ -1,0 +1,38 @@
+    /**
+     * Weighted correlation coefficient
+     * Pearson product-moment correlation coefficient (PPMCC or PCC or Pearson's r) width weighted values
+     *
+     * A normalized measure of the linear correlation between two variables X and Y,
+     * giving a value between +1 and −1 inclusive, where 1 is total positive correlation,
+     * 0 is no correlation, and −1 is total negative correlation.
+     * It is widely used in the sciences as a measure of the degree of linear dependence between two variables.
+     * https://en.wikipedia.org/wiki/Pearson_correlation_coefficient#Weighted_correlation_coefficient
+     *
+     * The weighted correlation coefficient of two variables in a data sample is their covariance
+     * divided by the product of their individual standard deviations.
+     *
+     *          cov(X,Y,w)
+     * ρxyw = -------------
+     *          √(sxw syw)
+     *
+     *  conv(X,Y, w) is the weighted covariance
+     *  sxw is the weighted variance of X
+     *  syw is the weighted variance of Y
+     *
+     * @param array $X values for random variable X
+     * @param array $Y values for random variable Y
+     * @param array $w values for weights
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException
+     */
+
+    public static function weightedCorrelationCoefficient(array $X, array $Y, array $w): float
+    {
+        $cov⟮X，Y，w⟯ = self::weightedCovariance($X, $Y, $w);
+        $sxw         = Descriptive::weightedSampleVariance($X, $w, true);
+        $syw         = Descriptive::weightedSampleVariance($Y, $w, true);
+
+        return $cov⟮X，Y，w⟯ / \sqrt($sxw * $syw);
+    }

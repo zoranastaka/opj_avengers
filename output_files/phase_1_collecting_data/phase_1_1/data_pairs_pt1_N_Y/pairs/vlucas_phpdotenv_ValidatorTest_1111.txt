@@ -1,0 +1,21 @@
+    /**
+     * List of non-integer values in fixtures/env/integers.env.
+     *
+     * @return string[][]
+     */
+
+    public function invalidIntegerValuesDataProvider()
+    {
+        return [
+            ['INVALID_SOMETHING'],
+            ['INVALID_EMPTY'],
+            ['INVALID_EMPTY_STRING'],
+            ['INVALID_NULL'],
+            ['INVALID_NEGATIVE'],
+            ['INVALID_MINUS'],
+            ['INVALID_TILDA'],
+            ['INVALID_EXCLAMATION'],
+            ['INVALID_SPACES'],
+            ['INVALID_COMMAS'],
+        ];
+    }

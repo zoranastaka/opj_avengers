@@ -1,0 +1,11 @@
+    /**
+     * Initiates new Image from Intervention\Image\Image
+     *
+     * @param  Image $object
+     * @return \Intervention\Image\Image
+     */
+
+    public function initFromInterventionImage($object)
+    {
+        return $object;
+    }

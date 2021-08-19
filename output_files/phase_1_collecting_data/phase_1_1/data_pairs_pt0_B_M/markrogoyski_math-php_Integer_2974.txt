@@ -1,0 +1,20 @@
+    /**
+     * Refactorable (or tau) number
+     * A refactorable number is divisible by the count of its divisors σ₀(n)
+     *
+     * @see    https://en.wikipedia.org/wiki/Refactorable_number
+     * @see    https://oeis.org/A033950
+     *
+     * @param  int $n
+     *
+     * @return bool true if n is divisible by σ₀(n); false otherwise
+     */
+
+    public static function isRefactorableNumber(int $n): bool
+    {
+        if ($n < 1) {
+            return false;
+        }
+
+        return $n % self::numberOfDivisors($n) === 0;
+    }

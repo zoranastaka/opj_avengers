@@ -1,0 +1,10 @@
+    /**
+     * Get Matomo version
+     * @return string
+     */
+
+    public function getMatomoVersion()
+    {
+        Piwik::checkUserHasSomeViewAccess();
+        return Version::VERSION;
+    }

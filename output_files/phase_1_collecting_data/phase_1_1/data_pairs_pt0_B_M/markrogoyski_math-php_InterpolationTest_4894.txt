@@ -1,0 +1,16 @@
+    /**
+     * @test   validate - two arrays share the same first number (x component)
+     * @throws \Exception
+     */
+
+    public function testNotAFunctionException()
+    {
+        // Given
+        $points = [[0,0], [0,5], [1,1]];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Interpolation::validate($points);
+    }

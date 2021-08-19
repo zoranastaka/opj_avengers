@@ -1,0 +1,8 @@
+    /**
+     * Returns true if the event allows a custom response code.
+     */
+
+    public function isAllowingCustomResponseCode(): bool
+    {
+        return $this->allowCustomResponseCode;
+    }

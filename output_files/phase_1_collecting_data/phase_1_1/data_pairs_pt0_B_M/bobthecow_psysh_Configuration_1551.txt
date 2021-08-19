@@ -1,0 +1,17 @@
+    /**
+     * Check whether to warn on multiple configuration or data files.
+     *
+     * By default, PsySH will use the file with highest precedence, and will
+     * silently ignore all others. With this enabled, a warning will be emitted
+     * (but not an exception thrown) if multiple configuration or data files
+     * are found.
+     *
+     * This will default to true in a future release, but is false for now.
+     *
+     * @return bool
+     */
+
+    public function warnOnMultipleConfigs()
+    {
+        return $this->warnOnMultipleConfigs;
+    }

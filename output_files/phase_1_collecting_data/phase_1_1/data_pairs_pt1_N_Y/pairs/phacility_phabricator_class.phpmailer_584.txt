@@ -1,0 +1,10 @@
+  /**
+   * Set the body wrapping.
+   * @access public
+   * @return void
+   */
+
+  public function SetWordWrap() {
+    if($this->WordWrap < 1) {
+      return;
+    }

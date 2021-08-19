@@ -1,0 +1,13 @@
+    /**
+     * A test suite ended.
+     */
+
+    public function endTestSuite(TestSuite $suite): void
+    {
+        if ($suite->getName() !== 'Cachet Test Suite') {
+            return;
+        }
+
+        foreach (glob(__DIR__.'/../bootstrap/cache{,t}/*.php', GLOB_BRACE) as $file) {
+            unlink($file);
+        }

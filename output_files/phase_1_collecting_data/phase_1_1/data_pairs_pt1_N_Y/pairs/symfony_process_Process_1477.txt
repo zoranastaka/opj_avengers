@@ -1,0 +1,12 @@
+    /**
+     * Checks if the process is terminated.
+     *
+     * @return bool true if process is terminated, false otherwise
+     */
+
+    public function isTerminated()
+    {
+        $this->updateStatus(false);
+
+        return self::STATUS_TERMINATED == $this->status;
+    }

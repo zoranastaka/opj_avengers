@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function clear(string $cacheDir)
+    {
+        foreach ($this->clearers as $clearer) {
+            $clearer->clear($cacheDir);
+        }
+    }

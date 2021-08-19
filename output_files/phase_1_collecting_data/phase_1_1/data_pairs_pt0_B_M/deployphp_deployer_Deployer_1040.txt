@@ -1,0 +1,23 @@
+    /**
+     * Init console application
+     */
+
+    public function init()
+    {
+        $this->addTaskCommands();
+        $this->getConsole()->add(new AutocompleteCommand());
+        $this->getConsole()->add(new BlackjackCommand());
+        $this->getConsole()->add(new ConfigCommand($this));
+        $this->getConsole()->add(new WorkerCommand($this));
+        $this->getConsole()->add(new InitCommand());
+        $this->getConsole()->add(new TreeCommand($this));
+        $this->getConsole()->add(new SshCommand($this));
+        $this->getConsole()->add(new RunCommand($this));
+        if (self::isPharArchive()) {
+            $selfUpdate = new PharUpdateCommand('self-update');
+            $selfUpdate->setDescription('Updates deployer.phar to the latest version');
+            $selfUpdate->setManifestUri('https://deployer.org/manifest.json');
+            $this->getConsole()->add($selfUpdate);
+            $this->getConsole()->getHelperSet()->set(new PharUpdateHelper());
+        }
+    }

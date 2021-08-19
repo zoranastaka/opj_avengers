@@ -1,0 +1,27 @@
+    /** @test */
+
+    public function activities_get_all()
+    {
+        $user = $this->signin();
+        $activity1 = factory(Activity::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+        $activity2 = factory(Activity::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $response = $this->json('GET', '/api/activities');
+
+        $response->assertStatus(200);
+        $response->assertJsonStructure([
+            'data' => ['*' => $this->jsonActivity],
+        ]);
+        $response->assertJsonFragment([
+            'object' => 'activity',
+            'id' => $activity1->id,
+        ]);
+        $response->assertJsonFragment([
+            'object' => 'activity',
+            'id' => $activity2->id,
+        ]);
+    }

@@ -1,0 +1,9 @@
+    /**
+     * @return Stylesheet
+     * @deprecated
+     */
+
+    public function get_css()
+    {
+        return $this->getCss();
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Stop a measure
+     *
+     * @param string $name Internal name, used to stop the measure
+     */
+
+    function stop_measure($name)
+    {
+        debugbar()->stopMeasure($name);
+    }

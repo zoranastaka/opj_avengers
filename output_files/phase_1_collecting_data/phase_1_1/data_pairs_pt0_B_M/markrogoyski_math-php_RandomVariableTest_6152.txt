@@ -1,0 +1,11 @@
+    /**
+     * @test         isPlatykurtic returns false for a leptokurtic data set
+     * @dataProvider dataProviderForLeptokurtic
+     * @param        array $data
+     * @throws       \Exception
+     */
+
+    public function testIsNotPlatykurtic(array $data)
+    {
+        $this->assertFalse(RandomVariable::isPlatykurtic($data));
+    }

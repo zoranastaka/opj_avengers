@@ -1,0 +1,15 @@
+   /**
+    * Sets the indentation level
+    *
+    * @param    int
+    * @return   HTML_Common2
+    */
+
+    public function setIndentLevel($level)
+    {
+        $level = intval($level);
+        if (0 <= $level) {
+            $this->_indentLevel = $level;
+        }
+        return $this;
+    }

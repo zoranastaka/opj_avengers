@@ -1,0 +1,9 @@
+// Tags for FIX ME!!!: (in order of priority)
+//      XXX - should be fixed NAO!
+//      XERROR - with regards to parse errors
+//      XSCRIPT - with regards to scripting mode
+//      XENCODING - with regards to encoding (for reparsing tests)
+//      XDOM - DOM specific code (tagName is explicitly not marked).
+//          this is not (yet) in helper functions.
+
+class HTML5_TreeBuilder {

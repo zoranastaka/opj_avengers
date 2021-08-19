@@ -1,0 +1,32 @@
+    /**
+     * Calculates vital statistics for each label & feature. Stores these
+     * values in private array in order to avoid repeated calculation
+     */
+
+    private function calculateStatistics(string $label, array $samples): void
+    {
+        $this->std[$label] = array_fill(0, $this->featureCount, 0);
+        $this->mean[$label] = array_fill(0, $this->featureCount, 0);
+        $this->dataType[$label] = array_fill(0, $this->featureCount, self::CONTINUOS);
+        $this->discreteProb[$label] = array_fill(0, $this->featureCount, self::CONTINUOS);
+        for ($i = 0; $i < $this->featureCount; ++$i) {
+            // Get the values of nth column in the samples array
+            // Mean::arithmetic is called twice, can be optimized
+            $values = array_column($samples, $i);
+            $numValues = count($values);
+            // if the values contain non-numeric data,
+            // then it should be treated as nominal/categorical/discrete column
+            if ($values !== array_filter($values, 'is_numeric')) {
+                $this->dataType[$label][$i] = self::NOMINAL;
+                $this->discreteProb[$label][$i] = array_count_values($values);
+                $db = &$this->discreteProb[$label][$i];
+                $db = array_map(function ($el) use ($numValues) {
+                    return $el / $numValues;
+                }, $db);
+            } else {
+                $this->mean[$label][$i] = Mean::arithmetic($values);
+                // Add epsilon in order to avoid zero stdev
+                $this->std[$label][$i] = 1e-10 + StandardDeviation::population($values, false);
+            }
+        }
+    }

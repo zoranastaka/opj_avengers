@@ -1,0 +1,10 @@
+    /**
+     * @covers Whoops\Run::sendHttpCode
+     */
+
+    public function testSendHttpCode()
+    {
+        $run = $this->getRunInstance();
+        $run->sendHttpCode(true);
+        $this->assertEquals(500, $run->sendHttpCode());
+    }

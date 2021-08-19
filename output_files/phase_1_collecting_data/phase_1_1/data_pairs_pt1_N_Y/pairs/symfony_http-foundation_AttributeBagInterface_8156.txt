@@ -1,0 +1,7 @@
+    /**
+     * Returns attributes.
+     *
+     * @return array
+     */
+
+    public function all();

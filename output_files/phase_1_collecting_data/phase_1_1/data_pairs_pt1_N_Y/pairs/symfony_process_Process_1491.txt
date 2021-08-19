@@ -1,0 +1,16 @@
+    /**
+     * Gets the working directory.
+     *
+     * @return string|null The current working directory or null on failure
+     */
+
+    public function getWorkingDirectory()
+    {
+        if (null === $this->cwd) {
+            // getcwd() will return false if any one of the parent directories does not have
+            // the readable or search mode set, even if the current directory does
+            return getcwd() ?: null;
+        }
+
+        return $this->cwd;
+    }

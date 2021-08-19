@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getFormat(): string
+    {
+        return $this->format;
+    }

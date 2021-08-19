@@ -1,0 +1,8 @@
+    /**
+     * @expectedException BadMethodCallException
+     */
+
+    public function testBadMethodCall()
+    {
+        $result = S::invalidMethod('foo');
+    }

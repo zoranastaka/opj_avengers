@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider dataProviderForRenyiEntropy
+     */
+
+    public function testRenyiEntropy(array $p, $α, $expected)
+    {
+        // When
+        $H = Entropy::renyiEntropy($p, $α);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $H, 0.001);
+    }

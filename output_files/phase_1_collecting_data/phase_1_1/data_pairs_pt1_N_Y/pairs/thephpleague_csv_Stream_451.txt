@@ -1,0 +1,27 @@
+    /**
+     * Seek to specified line.
+     *
+     * @see http://php.net/manual/en/SplFileObject.seek.php
+     *
+     * @param  int       $position
+     * @throws Exception if the position is negative
+     */
+
+    public function seek($position): void
+    {
+        if ($position < 0) {
+            throw InvalidArgument::dueToInvalidSeekingPosition($position, __METHOD__);
+        }
+
+        $this->rewind();
+        while ($this->key() !== $position && $this->valid()) {
+            $this->current();
+            $this->next();
+        }
+
+        if (0 !== $position) {
+            $this->offset--;
+        }
+
+        $this->current();
+    }

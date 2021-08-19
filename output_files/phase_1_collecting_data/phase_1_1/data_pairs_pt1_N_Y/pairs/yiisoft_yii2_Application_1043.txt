@@ -1,0 +1,9 @@
+    /**
+     * Returns the asset manager.
+     * @return \yii\web\AssetManager the asset manager application component.
+     */
+
+    public function getAssetManager()
+    {
+        return $this->get('assetManager');
+    }

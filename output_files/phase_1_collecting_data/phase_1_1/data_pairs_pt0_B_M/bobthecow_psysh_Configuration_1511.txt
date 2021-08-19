@@ -1,0 +1,10 @@
+    /**
+     * Check whether this PHP instance has Pcntl available.
+     *
+     * @return bool True if Pcntl is available
+     */
+
+    public function hasPcntl()
+    {
+        return $this->hasPcntl;
+    }

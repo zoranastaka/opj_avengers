@@ -1,0 +1,12 @@
+    /**
+     * @covers ::chunk
+     * @covers \League\Csv\InvalidArgument::dueToInvalidChunkSize
+     */
+
+    public function testChunkTriggersException(): void
+    {
+        $this->expectException(InvalidArgument::class);
+
+        $chunk = $this->csv->chunk(0);
+        iterator_to_array($chunk);
+    }

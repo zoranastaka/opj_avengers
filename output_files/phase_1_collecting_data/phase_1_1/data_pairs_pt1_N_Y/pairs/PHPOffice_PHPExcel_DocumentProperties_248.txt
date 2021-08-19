@@ -1,0 +1,14 @@
+    /**
+     * Get a Custom Property Value
+     *
+     * @param string $propertyName
+     * @return string
+     */
+
+    public function getCustomPropertyValue($propertyName)
+    {
+        if (isset($this->customProperties[$propertyName])) {
+            return $this->customProperties[$propertyName]['value'];
+        }
+
+    }

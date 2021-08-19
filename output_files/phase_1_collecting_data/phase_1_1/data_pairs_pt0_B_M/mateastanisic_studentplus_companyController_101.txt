@@ -1,0 +1,3 @@
+	//provjerava na koje smo dugme stisnuli
+
+	public function check_button_choice(){

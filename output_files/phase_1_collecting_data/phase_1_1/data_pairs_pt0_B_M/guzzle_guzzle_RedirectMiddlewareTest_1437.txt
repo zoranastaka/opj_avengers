@@ -1,0 +1,10 @@
+    /**
+     * Verifies how RedirectMiddleware::modifyRequest() modifies the method and body of a request issued when
+     * encountering a redirect response.
+     *
+     * @dataProvider modifyRequestFollowRequyestMethodAndBodyProvider
+     *
+     * @param string $expectedFollowRequestMethod
+     */
+
+    public function testModifyRequestFollowRequestMethodAndBody(

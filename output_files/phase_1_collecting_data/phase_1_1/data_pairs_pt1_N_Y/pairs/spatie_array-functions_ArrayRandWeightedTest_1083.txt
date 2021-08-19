@@ -1,0 +1,16 @@
+    /**
+     * @test
+     */
+
+    public function it_is_safe_to_assume_the_result_is_weighted()
+    {
+        $results = [];
+
+        for ($i = 0; $i < 100; ++$i) {
+            $results[] = array_rand_weighted($this->testArray);
+        }
+
+        $resultCounts = array_count_values($results);
+
+        $this->assertGreaterThan($resultCounts['foo'] + $resultCounts['bar'], $resultCounts['baz']);
+    }

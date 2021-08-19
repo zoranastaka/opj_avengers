@@ -1,0 +1,5 @@
+    /**
+     * @return LegacyMockInterface|MockInterface
+     */
+
+    public function getMock();

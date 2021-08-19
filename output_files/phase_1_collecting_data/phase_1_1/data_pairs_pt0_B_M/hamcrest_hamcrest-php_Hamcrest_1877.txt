@@ -1,0 +1,8 @@
+    /**
+     * Is the value a resource?
+     */
+
+    function resourceValue()
+    {
+        return \Hamcrest\Type\IsResource::resourceValue();
+    }

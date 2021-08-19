@@ -1,0 +1,15 @@
+    /**
+     * The argument (phase) of a complex number
+     * The argument of z is the angle of the radius OP with the positive real axis, and is written as arg(z).
+     * https://en.wikipedia.org/wiki/Complex_number#Absolute_value_and_argument
+     *
+     * If z = a + bi
+     * arg(z) = atan(b, a)
+     *
+     * @return number
+     */
+
+    public function arg()
+    {
+        return \atan2($this->i, $this->r);
+    }

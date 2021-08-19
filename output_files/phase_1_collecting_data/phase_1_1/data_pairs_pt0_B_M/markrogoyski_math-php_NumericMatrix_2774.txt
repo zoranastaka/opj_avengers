@@ -1,0 +1,18 @@
+    /**
+     * 1-norm (‖A‖₁)
+     * Maximum absolute column sum of the matrix
+     *
+     * @return number
+     */
+
+    public function oneNorm()
+    {
+        $n = $this->n;
+        $‖A‖₁ = \array_sum(Map\Single::abs(\array_column($this->A, 0)));
+
+        for ($j = 1; $j < $n; $j++) {
+            $‖A‖₁ = \max($‖A‖₁, \array_sum(Map\Single::abs(\array_column($this->A, $j))));
+        }
+
+        return $‖A‖₁;
+    }

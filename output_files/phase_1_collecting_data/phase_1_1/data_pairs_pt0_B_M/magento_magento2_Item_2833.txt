@@ -1,0 +1,8 @@
+    /**
+     * @return int
+     */
+
+    public function getItemId()
+    {
+        return $this->_data['item_id'];
+    }

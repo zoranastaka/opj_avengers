@@ -1,0 +1,9 @@
+	/**
+	 * Write to stream.
+	 *
+	 * @param string $data Should be stored into the underlying stream.
+	 *
+	 * @return false|int The number of bytes that were successfully stored, or 0 if none could be stored.
+	 */
+
+	public function stream_write( $data ) {

@@ -1,0 +1,10 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testPipelineWithoutArgumentsReturnsPipeline(): void
+    {
+        $client = new Client();
+
+        $this->assertInstanceOf('Predis\Pipeline\Pipeline', $client->pipeline());
+    }

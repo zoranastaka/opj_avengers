@@ -1,0 +1,24 @@
+    /**
+     * Defines PHP required version from Symfony version.
+     *
+     * @return string|false The PHP required version or false if it could not be guessed
+     */
+
+    protected function getPhpRequiredVersion()
+    {
+        if (!file_exists($path = __DIR__.'/../composer.lock')) {
+            return false;
+        }
+
+        $composerLock = json_decode(file_get_contents($path), true);
+        foreach ($composerLock['packages'] as $package) {
+            $name = $package['name'];
+            if ('symfony/symfony' !== $name && 'symfony/http-kernel' !== $name) {
+                continue;
+            }
+
+            return (int) $package['version'][1] > 2 ? self::REQUIRED_PHP_VERSION : self::LEGACY_REQUIRED_PHP_VERSION;
+        }
+
+        return false;
+    }

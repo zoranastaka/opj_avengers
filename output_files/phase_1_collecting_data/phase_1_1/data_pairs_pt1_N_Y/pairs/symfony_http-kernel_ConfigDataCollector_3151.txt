@@ -1,0 +1,10 @@
+    /**
+     * Returns the state of the current Symfony release.
+     *
+     * @return string One of: unknown, dev, stable, eom, eol
+     */
+
+    public function getSymfonyState()
+    {
+        return $this->data['symfony_state'];
+    }

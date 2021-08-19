@@ -1,0 +1,14 @@
+	/**
+	 * CI Component getter
+	 *
+	 * Get a reference to a specific library or model.
+	 *
+	 * @param 	string	$component	Component name
+	 * @return	bool
+	 */
+
+	protected function &_ci_get_component($component)
+	{
+		$CI =& get_instance();
+		return $CI->$component;
+	}

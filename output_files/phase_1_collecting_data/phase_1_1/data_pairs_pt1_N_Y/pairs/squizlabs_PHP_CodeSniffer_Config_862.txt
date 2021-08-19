@@ -1,0 +1,18 @@
+    /**
+     * Get the value of an inaccessible property.
+     *
+     * @param string $name The name of the property.
+     *
+     * @return mixed
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If the setting name is invalid.
+     */
+
+    public function __get($name)
+    {
+        if (array_key_exists($name, $this->settings) === false) {
+            throw new RuntimeException("ERROR: unable to get value of property \"$name\"");
+        }
+
+        return $this->settings[$name];
+
+    }//end __get()

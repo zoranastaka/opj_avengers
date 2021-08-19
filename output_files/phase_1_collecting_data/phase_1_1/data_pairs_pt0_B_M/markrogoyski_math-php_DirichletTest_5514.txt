@@ -1,0 +1,18 @@
+    /**
+     * @test    pdf throws a BadDataException if the xs and αs do not have the same number of elements
+     * @throws \Exception
+     */
+
+    public function testPdfArraysNotSameLengthException()
+    {
+        // Given
+        $xs = [0.1, 0.2];
+        $αs = [1, 2, 3];
+        $dirichlet = new Dirichlet($αs);
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $pdf = $dirichlet->pdf($xs);
+    }

@@ -1,0 +1,25 @@
+    /**
+     * @test   Solve f(x) = x² - 5
+     *         Polynomial has a root of √5
+     * @throws \Exception
+     */
+
+    public function testXSquaredSubtractFive()
+    {
+        // Given
+        $func = function ($x) {
+            return $x ** 2 - 5;
+        };
+
+        // And
+        $expected = \sqrt(5);
+        $p₁       = 1;
+        $p₀       = 5;
+        $tol      = 0.00001;
+
+        // When
+        $root = SecantMethod::solve($func, $p₀, $p₁, $tol);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $root, $tol);
+    }
