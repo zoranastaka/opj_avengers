@@ -1,0 +1,5 @@
+    /**
+     * Sets attributes.
+     */
+
+    public function replace(array $attributes);

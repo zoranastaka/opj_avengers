@@ -1,0 +1,8 @@
+    /** @test */
+
+    public function it_can_load_drivers_from_name()
+    {
+        $botman = $this->getBot('');
+
+        $this->assertInstanceOf(FakeDriver::class, $botman->getDriver());
+    }

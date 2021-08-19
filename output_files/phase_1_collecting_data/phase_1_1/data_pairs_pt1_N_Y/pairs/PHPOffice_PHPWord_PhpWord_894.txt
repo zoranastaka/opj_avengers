@@ -1,0 +1,10 @@
+    /**
+     * Set default font size.
+     *
+     * @param int $fontSize
+     */
+
+    public function setDefaultFontSize($fontSize)
+    {
+        Settings::setDefaultFontSize($fontSize);
+    }

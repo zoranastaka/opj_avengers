@@ -1,0 +1,19 @@
+    /**
+     * @test     mode is always μ
+     */
+
+    public function testMode()
+    {
+        foreach (\range(-5, 5) as $μ) {
+            foreach (\range(1, 3) as $b) {
+                // Given
+                $laplace = new Laplace($μ, $b);
+
+                // When
+                $mode = $laplace->mode();
+
+                // Then
+                $this->assertEquals($μ, $mode);
+            }
+        }
+    }

@@ -1,0 +1,14 @@
+    /**
+     * Returns true if the response is "fresh".
+     *
+     * Fresh responses may be served from cache without any interaction with the
+     * origin. A response is considered fresh when it includes a Cache-Control/max-age
+     * indicator or Expires header and the calculated age is less than the freshness lifetime.
+     *
+     * @final
+     */
+
+    public function isFresh(): bool
+    {
+        return $this->getTtl() > 0;
+    }

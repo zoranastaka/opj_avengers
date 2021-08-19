@@ -1,0 +1,71 @@
+    /**
+     * `realpath` on MacOSX doesn't normalize the case of characters.
+     */
+
+    private function darwinRealpath(string $real): string
+    {
+        $i = 1 + strrpos($real, '/');
+        $file = substr($real, $i);
+        $real = substr($real, 0, $i);
+
+        if (isset(self::$darwinCache[$real])) {
+            $kDir = $real;
+        } else {
+            $kDir = strtolower($real);
+
+            if (isset(self::$darwinCache[$kDir])) {
+                $real = self::$darwinCache[$kDir][0];
+            } else {
+                $dir = getcwd();
+
+                if (!@chdir($real)) {
+                    return $real.$file;
+                }
+
+                $real = getcwd().'/';
+                chdir($dir);
+
+                $dir = $real;
+                $k = $kDir;
+                $i = \strlen($dir) - 1;
+                while (!isset(self::$darwinCache[$k])) {
+                    self::$darwinCache[$k] = [$dir, []];
+                    self::$darwinCache[$dir] = &self::$darwinCache[$k];
+
+                    while ('/' !== $dir[--$i]) {
+                    }
+                    $k = substr($k, 0, ++$i);
+                    $dir = substr($dir, 0, $i--);
+                }
+            }
+        }
+
+        $dirFiles = self::$darwinCache[$kDir][1];
+
+        if (!isset($dirFiles[$file]) && ') : eval()\'d code' === substr($file, -17)) {
+            // Get the file name from "file_name.php(123) : eval()'d code"
+            $file = substr($file, 0, strrpos($file, '(', -17));
+        }
+
+        if (isset($dirFiles[$file])) {
+            return $real.$dirFiles[$file];
+        }
+
+        $kFile = strtolower($file);
+
+        if (!isset($dirFiles[$kFile])) {
+            foreach (scandir($real, 2) as $f) {
+                if ('.' !== $f[0]) {
+                    $dirFiles[$f] = $f;
+                    if ($f === $file) {
+                        $kFile = $k = $file;
+                    } elseif ($f !== $k = strtolower($f)) {
+                        $dirFiles[$k] = $f;
+                    }
+                }
+            }
+            self::$darwinCache[$kDir][1] = $dirFiles;
+        }
+
+        return $real.$dirFiles[$kFile];
+    }

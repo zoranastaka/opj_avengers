@@ -1,0 +1,10 @@
+    /**
+     * @return array
+     */
+
+    protected function initDirs()
+    {
+        $dirs []= dirname(__FILE__).'/data/';
+
+        return $dirs;
+    }

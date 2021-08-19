@@ -1,0 +1,16 @@
+    /**
+     * @return array [a, b, c, d, rr]
+     */
+
+    public function dataProviderForRiskRatio(): array
+    {
+        return [
+            [20, 80, 1, 99, ['RR' => 20, 'ci_lower_bound' => 2.7361, 'ci_upper_bound' => 146.1912, 'p' => 0.0032]],
+            [100, 200, 20, 400, ['RR' => 7, 'ci_lower_bound' => 4.4337, 'ci_upper_bound' => 11.0516, 'p' => 0.0001]],
+            [43, 26, 54, 654, ['RR' => 8.1707, 'ci_lower_bound' => 5.9614, 'ci_upper_bound' => 11.1987, 'p' => 0.0001]],
+            [53, 58, 11, 40, ['RR' => 2.2138, 'ci_lower_bound' => 1.2666, 'ci_upper_bound' => 3.8693, 'p' => 0.0053]],
+            [59, 33, 17, 44, ['RR' => 2.3012, 'ci_lower_bound' => 1.4944, 'ci_upper_bound' => 3.5434, 'p' => 0.0002]],
+            [28, 129, 4, 133, ['RR' => 6.1083, 'ci_lower_bound' => 2.1976, 'ci_upper_bound' => 16.9784, 'p' => 0.0005]],
+            [1000, 49000, 100, 49900, ['RR' => 10, 'ci_lower_bound' => 8.1449, 'ci_upper_bound' => 12.2776, 'p' => 0.0001]],
+        ];
+    }

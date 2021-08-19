@@ -1,0 +1,14 @@
+// funkcija za pravljenje zadatka
+
+function napravi_zadatak($to_do_id, $naziv, $prioritet_id, $rok)
+{
+    $napravi = $GLOBALS['con']->prepare(' insert into zadaci (lista_id, naziv, prioritet_id, rok) values
+                                                            (:lista_id, :naziv, :prioritet_id, :rok)
+                                       ');
+    $napravi->execute([
+        ':lista_id'     => $to_do_id,
+        ':naziv'        => $naziv,
+        ':prioritet_id' => $prioritet_id,
+        ':rok'          => $rok
+    ]);
+}

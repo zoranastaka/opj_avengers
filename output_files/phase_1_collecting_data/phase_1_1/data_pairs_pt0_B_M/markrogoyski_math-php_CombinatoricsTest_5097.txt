@@ -1,0 +1,12 @@
+    /**
+     * @return array [n, k]
+     */
+
+    public function dataProviderForLahNumberExceptionNOrKLessThanOne(): array
+    {
+        return [
+            [-1, 2],
+            [2, -2],
+            [-3, -3],
+        ];
+    }

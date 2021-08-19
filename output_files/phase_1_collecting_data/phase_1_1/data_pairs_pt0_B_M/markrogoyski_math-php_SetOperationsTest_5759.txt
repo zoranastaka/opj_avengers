@@ -1,0 +1,15 @@
+    /**
+     * @test
+     * @dataProvider dataProviderForPowerSet
+     */
+
+    public function testPowerSet(Set $A, Set $expected)
+    {
+        // When
+        $P⟮S⟯ = $A->powerSet();
+
+        // Then
+        $this->assertEquals($expected, $P⟮S⟯);
+        $this->assertEquals($expected->asArray(), $P⟮S⟯->asArray());
+        $this->assertEquals(count($expected), count($P⟮S⟯));
+    }

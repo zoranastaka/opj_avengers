@@ -1,0 +1,21 @@
+    /**
+     * @test Axiom: D⁻¹ is diagonal (If D is invertible)
+     * The inverse of an invertible diagonal matrix is diagonal
+     * @dataProvider dataProviderForDiagonalMatrix
+     * @param        array $D
+     * @throws       \Exception
+     */
+
+    public function testInverseOfInvertibleDiagonalMatrixIsDiagonal(array $D)
+    {
+        // Given
+        $D = MatrixFactory::create($D);
+        $this->assertTrue($D->isDiagonal());
+
+        if ($D->isInvertible()) {
+            // When
+            $D⁻¹ = $D->inverse();
+            // Then
+            $this->assertTrue($D⁻¹->isDiagonal());
+        }
+    }

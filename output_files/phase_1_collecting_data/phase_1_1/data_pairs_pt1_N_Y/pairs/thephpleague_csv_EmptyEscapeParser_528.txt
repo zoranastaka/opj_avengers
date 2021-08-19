@@ -1,0 +1,61 @@
+    /**
+     * Extracts the content from a field with enclosure.
+     *
+     * - Field content can spread on multiple document lines.
+     * - Content between consecutive enclosure characters must be preserved.
+     * - Double enclosure sequence must be replaced by single enclosure character.
+     * - Trailing line break must be removed if they are not part of the field content.
+     * - Invalid field content is treated as per fgetcsv behavior.
+     *
+     * @return string|null
+     */
+
+    private static function extractEnclosedFieldContent()
+    {
+        if (false !== self::$line && self::$line[0] === self::$enclosure) {
+            self::$line = substr(self::$line, 1);
+        }
+
+        $content = '';
+        while (false !== self::$line) {
+            /** @var array $result */
+            $result = explode(self::$enclosure, self::$line, 2);
+            [$buffer, $remainder] = $result + [1 => false];
+            $content .= $buffer;
+            self::$line = $remainder;
+            if (false !== self::$line) {
+                break;
+            }
+
+            if (self::$document->valid()) {
+                self::$line = self::$document->fgets();
+                continue;
+            }
+
+            if ($buffer === rtrim($content, "\r\n")) {
+                return null;
+            }
+        }
+
+        if (in_array(self::$line, self::FIELD_BREAKS, true)) {
+            self::$line = false;
+            if (!self::$document->valid()) {
+                return $content;
+            }
+
+            return rtrim($content, "\r\n");
+        }
+
+        $char = self::$line[0] ?? '';
+        if ($char === self::$delimiter) {
+            self::$line = substr(self::$line, 1);
+
+            return $content;
+        }
+
+        if ($char === self::$enclosure) {
+            return $content.self::$enclosure.self::extractEnclosedFieldContent();
+        }
+
+        return $content.self::extractFieldContent();
+    }

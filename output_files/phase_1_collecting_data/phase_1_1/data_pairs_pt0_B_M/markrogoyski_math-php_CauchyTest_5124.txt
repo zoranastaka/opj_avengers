@@ -1,0 +1,20 @@
+    /**
+     * @test         inverse of CDF is original support x
+     * @dataProvider dataProviderForCdf
+     * @param        float $x
+     * @param        float $x₀
+     * @param        float $γ
+     */
+
+    public function testInverseOfCdf(float $x, float $x₀, float $γ)
+    {
+        // Given
+        $cauchy = new Cauchy($x₀, $γ);
+        $cdf = $cauchy->cdf($x);
+
+        // When
+        $inverse_of_cdf = $cauchy->inverse($cdf);
+
+        // Then
+        $this->assertEqualsWithDelta($x, $inverse_of_cdf, 0.000000001);
+    }

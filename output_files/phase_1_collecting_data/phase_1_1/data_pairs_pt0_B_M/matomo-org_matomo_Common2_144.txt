@@ -1,0 +1,10 @@
+   /**
+    * Gets the indentation level
+    *
+    * @return   int
+    */
+
+    public function getIndentLevel()
+    {
+        return $this->_indentLevel;
+    }

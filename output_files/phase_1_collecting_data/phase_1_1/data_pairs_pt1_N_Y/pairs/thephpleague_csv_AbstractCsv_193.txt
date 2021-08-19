@@ -1,0 +1,8 @@
+    /**
+     * Returns the pathname of the underlying document.
+     */
+
+    public function getPathname(): string
+    {
+        return $this->document->getPathname();
+    }

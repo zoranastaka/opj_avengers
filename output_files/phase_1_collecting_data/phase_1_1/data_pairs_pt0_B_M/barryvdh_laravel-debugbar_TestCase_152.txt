@@ -1,0 +1,16 @@
+    /**
+     * Define environment setup.
+     *
+     * @param  \Illuminate\Foundation\Application $app
+     *
+     * @return void
+     */
+
+    protected function getEnvironmentSetUp($app)
+    {
+        /** @var Router $router */
+        $router = $app['router'];
+
+        $this->addWebRoutes($router);
+        $this->addApiRoutes($router);
+    }

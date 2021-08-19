@@ -1,0 +1,23 @@
+/**
+ * @internal This class is not covered by the backward compatibility promise for phpunit/php-code-coverage
+ */
+
+final class Directory
+{
+    /**
+     * @throws DirectoryCouldNotBeCreatedException
+     */
+    public static function create(string $directory): void
+    {
+        $success = !(!is_dir($directory) && !@mkdir($directory, 0777, true) && !is_dir($directory));
+
+        if (!$success) {
+            throw new DirectoryCouldNotBeCreatedException(
+                sprintf(
+                    'Directory "%s" could not be created',
+                    $directory
+                )
+            );
+        }
+    }
+}

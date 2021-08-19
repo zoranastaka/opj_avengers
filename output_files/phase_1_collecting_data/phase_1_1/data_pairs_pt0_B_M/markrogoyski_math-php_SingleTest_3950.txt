@@ -1,0 +1,15 @@
+    /**
+     * @test         equals
+     * @dataProvider dataProviderForAbs
+     * @param        array $xs
+     * @param        array $expected
+     */
+
+    public function testAbs(array $xs, array $expected)
+    {
+        // When
+        $abs = Single::abs($xs);
+
+        // Then
+        $this->assertEquals($expected, $abs);
+    }

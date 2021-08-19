@@ -1,0 +1,24 @@
+    /**
+     * @param int $index The index of the function token
+     */
+
+    protected function findFunctionDocComment(Tokens $tokens, int $index): ?int
+    {
+        do {
+            $index = $tokens->getPrevNonWhitespace($index);
+        } while ($tokens[$index]->isGivenKind([
+            T_COMMENT,
+            T_ABSTRACT,
+            T_FINAL,
+            T_PRIVATE,
+            T_PROTECTED,
+            T_PUBLIC,
+            T_STATIC,
+        ]));
+
+        if ($tokens[$index]->isGivenKind(T_DOC_COMMENT)) {
+            return $index;
+        }
+
+        return null;
+    }

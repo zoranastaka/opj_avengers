@@ -1,0 +1,17 @@
+    /**
+     * @test   add - IncorrectTypeException if the argument is not numeric or a Polynomial
+     * @throws \Exception
+     */
+
+    public function testException()
+    {
+        // Given
+        $string = 'This is a string!';
+        $poly   = new Polynomial([1, 2]);
+
+        // Then
+        $this->expectException(Exception\IncorrectTypeException::class);
+
+        // When
+        $sum = $poly->add($string);
+    }

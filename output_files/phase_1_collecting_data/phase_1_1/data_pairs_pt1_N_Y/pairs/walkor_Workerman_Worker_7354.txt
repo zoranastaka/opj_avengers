@@ -1,0 +1,31 @@
+    /**
+     * Get event loop name.
+     *
+     * @return string
+     */
+
+    protected static function getEventLoopName()
+    {
+        if (static::$eventLoopClass) {
+            return static::$eventLoopClass;
+        }
+
+        if (!\class_exists('\Swoole\Event', false)) {
+            unset(static::$_availableEventLoops['swoole']);
+        }
+
+        $loop_name = '';
+        foreach (static::$_availableEventLoops as $name=>$class) {
+            if (\extension_loaded($name)) {
+                $loop_name = $name;
+                break;
+            }
+        }
+
+        if ($loop_name) {
+            static::$eventLoopClass = static::$_availableEventLoops[$loop_name];
+        } else {
+            static::$eventLoopClass =  '\Workerman\Events\Select';
+        }
+        return static::$eventLoopClass;
+    }

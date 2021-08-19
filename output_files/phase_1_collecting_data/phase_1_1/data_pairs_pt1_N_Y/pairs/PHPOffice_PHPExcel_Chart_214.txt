@@ -1,0 +1,13 @@
+    /**
+     * Get the offset position within the Top Left cell for the chart
+     *
+     * @return integer[]
+     */
+
+    public function getTopLeftOffset()
+    {
+        return array(
+            'X' => $this->topLeftXOffset,
+            'Y' => $this->topLeftYOffset
+        );
+    }

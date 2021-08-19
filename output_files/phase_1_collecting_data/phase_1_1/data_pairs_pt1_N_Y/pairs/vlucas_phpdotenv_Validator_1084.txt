@@ -1,0 +1,19 @@
+    /**
+     * Assert that each variable matches the given regular expression.
+     *
+     * @param string $regex
+     *
+     * @throws \Dotenv\Exception\ValidationException
+     *
+     * @return \Dotenv\Validator
+     */
+
+    public function allowedRegexValues(string $regex)
+    {
+        return $this->assertNullable(
+            static function (string $value) use ($regex) {
+                return Regex::matches($regex, $value)->success()->getOrElse(false);
+            },
+            \sprintf('does not match "%s"', $regex)
+        );
+    }

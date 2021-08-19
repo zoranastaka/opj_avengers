@@ -1,0 +1,11 @@
+/**
+ * Out of memory exception.
+ *
+ * @author Nicolas Grekas <p@tchwork.com>
+ *
+ * @deprecated since Symfony 4.4, use Symfony\Component\ErrorHandler\Error\OutOfMemoryError instead.
+ */
+
+class OutOfMemoryException extends FatalErrorException
+{
+}

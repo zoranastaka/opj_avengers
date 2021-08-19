@@ -1,0 +1,17 @@
+	/**
+	 * Call a user function. This should be used to execute any non-idempotent function, especially
+	 * those in the `includes` directory or provided by WordPress.
+	 *
+	 * If a mock has been defined for the requested function using `register_function_mocks`, then the registered
+	 * callback will be executed instead of the function.
+	 *
+	 * @param string $function_name The function to execute.
+	 * @param mixed  ...$parameters The parameters to pass to the function.
+	 *
+	 * @return mixed The result from the function or mock callback.
+	 */
+
+	public function call_function( $function_name, ...$parameters ) {
+		if ( array_key_exists( $function_name, $this->mocked_functions ) ) {
+			return call_user_func_array( $this->mocked_functions[ $function_name ], $parameters );
+		}

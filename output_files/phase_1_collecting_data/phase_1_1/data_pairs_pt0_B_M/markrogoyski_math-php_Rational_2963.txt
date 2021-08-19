@@ -1,0 +1,16 @@
+    /**
+     * Test for equality
+     *
+     * Two normalized RationalNumbers are equal IFF all three parts are equal.
+     *
+     * @param Rational $rn
+     *
+     * @return bool
+     */
+
+    public function equals(Rational $rn): bool
+    {
+        return $this->whole       == $rn->whole        &&
+               $this->numerator   == $rn->numerator    &&
+               $this->denominator == $rn->denominator;
+    }

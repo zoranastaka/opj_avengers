@@ -1,0 +1,18 @@
+    /** @test */
+
+    public function everythingShouldWorkWhenUsingATokenGeneratedByOtherLibs(): void
+    {
+        $data = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXUyJ9.eyJoZWxsbyI6IndvcmxkIn0.s'
+                . 'GYbB1KrmnESNfJ4D9hOe1Zad_BMyxdb8G4p4LNP7StYlOyBWck6q7XPpPj_6gB'
+                . 'Bo1ohD3MA2o0HY42lNIrAStaVhfsFKGdIou8TarwMGZBPcif_3ThUV1pGS3fZc'
+                . 'lFwF2SP7rqCngQis_xcUVCyqa8E1Wa_v28grnl1QZrnmQFO8B5JGGLqcrfUHJO'
+                . 'nJCupP-Lqh4TmIhftIimSCgLNmJg80wyrpUEfZYReE7hPuEmY0ClTqAGIMQoNS'
+                . '98ljwDxwhfbSuL2tAdbV4DekbTpWzspe3dOJ7RSzmPKVZ6NoezaIazKqyqkmHZfcMaHI1lQeGia6LTbHU1bp0gINi74Vw';
+
+        $token = $this->config->parser()->parse($data);
+        assert($token instanceof Token\Plain);
+        $constraint = new SignedWith($this->config->signer(), $this->config->verificationKey());
+
+        self::assertTrue($this->config->validator()->validate($token, $constraint));
+        self::assertEquals('world', $token->claims()->get('hello'));
+    }

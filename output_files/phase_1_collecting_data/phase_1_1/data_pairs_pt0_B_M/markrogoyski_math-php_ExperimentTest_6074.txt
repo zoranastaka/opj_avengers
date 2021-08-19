@@ -1,0 +1,21 @@
+    /**
+     * @test         oddsRatio
+     * @dataProvider dataProviderForOddsRatio
+     * @param        int   $a
+     * @param        int   $b
+     * @param        int   $c
+     * @param        int   $d
+     * @param        array $expected
+     */
+
+    public function testOddsRatio(int $a, int $b, int $c, int $d, array $expected)
+    {
+        // When
+        $oddsRatio = Experiment::oddsRatio($a, $b, $c, $d);
+
+        // Then
+        $this->assertEqualsWithDelta($expected['OR'], $oddsRatio['OR'], 0.001);
+        $this->assertEqualsWithDelta($expected['ci_lower_bound'], $oddsRatio['ci_lower_bound'], 0.001);
+        $this->assertEqualsWithDelta($expected['ci_upper_bound'], $oddsRatio['ci_upper_bound'], 0.001);
+        $this->assertEqualsWithDelta($expected['p'], $oddsRatio['p'], 0.0001);
+    }

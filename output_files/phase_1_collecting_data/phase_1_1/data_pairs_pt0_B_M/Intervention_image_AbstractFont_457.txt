@@ -1,0 +1,13 @@
+    /**
+     * Set text to be written
+     *
+     * @param  String $text
+     * @return void
+     */
+
+    public function text($text)
+    {
+        $this->text = $text;
+
+        return $this;
+    }

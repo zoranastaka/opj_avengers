@@ -1,0 +1,6 @@
+    /**
+     * @param $token
+     * @param $mode
+     */
+
+    private function processWithRulesFor($token, $mode) {

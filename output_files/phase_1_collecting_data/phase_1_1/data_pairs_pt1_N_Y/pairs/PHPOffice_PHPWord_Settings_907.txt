@@ -1,0 +1,10 @@
+    /**
+     * Return the directory path to the PDF Rendering Library.
+     *
+     * @return string
+     */
+
+    public static function getPdfRendererPath()
+    {
+        return self::$pdfRendererPath;
+    }

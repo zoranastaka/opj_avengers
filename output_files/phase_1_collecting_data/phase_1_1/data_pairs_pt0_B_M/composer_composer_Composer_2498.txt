@@ -1,0 +1,8 @@
+    /**
+     * @return InstallationManager
+     */
+
+    public function getInstallationManager()
+    {
+        return $this->installationManager;
+    }

@@ -1,0 +1,26 @@
+    /**
+     * @test         Axiom: Aadj⟮A⟯ = adj⟮A⟯A = det⟮A⟯I
+     *               A matrix times its adjugate equals the adjugate times the matrix which equals the identity matrix times the determinant
+     * @dataProvider dataProviderForNonsingularMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testMatrixTimesItsAdjugateEqualsAdjugateTimesMatrixEqualsDetTimesIdentity(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $adj⟮A⟯  = $A->adjugate();
+        $Aadj⟮A⟯ = $A->multiply($adj⟮A⟯);
+        $adj⟮A⟯A = $adj⟮A⟯->multiply($A);
+        $det⟮A⟯  = $A->det();
+        $I      = MatrixFactory::identity($A->getN());
+        $det⟮A⟯I = $I->scalarMultiply($det⟮A⟯);
+
+        // Then
+        $this->assertEqualsWithDelta($Aadj⟮A⟯, $adj⟮A⟯A, 0.0001);
+        $this->assertEqualsWithDelta($Aadj⟮A⟯, $det⟮A⟯I, 0.0001);
+        $this->assertEqualsWithDelta($adj⟮A⟯A, $det⟮A⟯I, 0.0001);
+    }

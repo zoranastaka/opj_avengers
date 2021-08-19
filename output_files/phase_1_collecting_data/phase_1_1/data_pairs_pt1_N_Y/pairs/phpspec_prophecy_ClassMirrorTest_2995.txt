@@ -1,0 +1,21 @@
+    /**
+     * @test
+     */
+
+    public function it_marks_passed_by_reference_args_as_passed_by_reference()
+    {
+        $class = new \ReflectionClass('Fixtures\Prophecy\WithReferences');
+
+        $mirror = new ClassMirror();
+
+        $classNode = $mirror->reflect($class, array());
+
+        $this->assertTrue($classNode->hasMethod('methodWithReferenceArgument'));
+
+        $argNodes = $classNode->getMethod('methodWithReferenceArgument')->getArguments();
+
+        $this->assertCount(2, $argNodes);
+
+        $this->assertTrue($argNodes[0]->isPassedByReference());
+        $this->assertTrue($argNodes[1]->isPassedByReference());
+    }

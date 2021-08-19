@@ -1,0 +1,22 @@
+    /**
+     * @test         augmentAbove
+     * @dataProvider dataProviderForAugmentAbove
+     * @param        array $A
+     * @param        array $B
+     * @param        array $⟮A∣B⟯
+     * @throws       \Exception
+     */
+
+    public function testAugmentAbove(array $A, array $B, array $⟮A∣B⟯)
+    {
+        // Given
+        $A    = MatrixFactory::create($A);
+        $B    = MatrixFactory::create($B);
+        $⟮A∣B⟯ = MatrixFactory::create($⟮A∣B⟯);
+
+        // When
+        $augmented = $A->augmentAbove($B);
+
+        // Then
+        $this->assertEquals($⟮A∣B⟯, $augmented);
+    }

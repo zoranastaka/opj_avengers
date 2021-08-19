@@ -1,0 +1,18 @@
+    /**
+     * Log information about the last user response
+     *
+     * @return ResultInterface
+     */
+
+    private function markUserNotified(): ResultInterface
+    {
+        $responseContent = [
+            'success' => $this->notificationLogger->log(
+                $this->productMetadata->getVersion()
+            ),
+            'error_message' => ''
+        ];
+
+        $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
+        return $resultJson->setData($responseContent);
+    }

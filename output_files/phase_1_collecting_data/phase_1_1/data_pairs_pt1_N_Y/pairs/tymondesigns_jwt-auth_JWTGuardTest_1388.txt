@@ -1,0 +1,20 @@
+    /** @test */
+
+    public function it_should_return_true_if_credentials_are_ok_and_user_is_found_when_choosing_not_to_login()
+    {
+        $credentials = ['foo' => 'bar', 'baz' => 'bob'];
+        $user = new LaravelUserStub;
+
+        $this->provider->shouldReceive('retrieveByCredentials')
+                       ->twice()
+                       ->with($credentials)
+                       ->andReturn($user);
+
+        $this->provider->shouldReceive('validateCredentials')
+                       ->twice()
+                       ->with($user, $credentials)
+                       ->andReturn(true);
+
+        $this->assertTrue($this->guard->attempt($credentials, false)); // once
+        $this->assertTrue($this->guard->validate($credentials)); // twice
+    }

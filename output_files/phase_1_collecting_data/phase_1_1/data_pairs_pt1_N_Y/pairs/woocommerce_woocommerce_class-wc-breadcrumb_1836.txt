@@ -1,0 +1,9 @@
+	/**
+	 * Add a breadcrumb for search results.
+	 */
+
+	protected function search_trail() {
+		if ( is_search() ) {
+			/* translators: %s: search term */
+			$this->add_crumb( sprintf( __( 'Search results for &ldquo;%s&rdquo;', 'woocommerce' ), get_search_query() ), remove_query_arg( 'paged' ) );
+		}

@@ -1,0 +1,9 @@
+  /**
+   * Set the private key file and password to sign the message.
+   *
+   * @access public
+   * @param string $key_filename Parameter File Name
+   * @param string $key_pass Password for private key
+   */
+
+  public function DKIM_QP($txt) {

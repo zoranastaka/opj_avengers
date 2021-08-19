@@ -1,0 +1,17 @@
+    /**
+     * @test         percentile
+     * @dataProvider dataProviderForPercentile
+     * @param        array $numbers
+     * @param        float $percentile
+     * @param        float $expectedValue
+     * @throws       \Exception
+     */
+
+    public function testPercentile(array $numbers, float $percentile, float $expectedValue)
+    {
+        // When
+        $value = Descriptive::percentile($numbers, $percentile);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedValue, $value, 0.0000001);
+    }

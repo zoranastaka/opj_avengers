@@ -1,0 +1,14 @@
+    /**
+     * Test save
+     */
+
+    public function testSave()
+    {
+        $this->setOutputCallback(function () {
+        });
+        $phpWord = new PhpWord();
+        $section = $phpWord->addSection();
+        $section->addText('Hello world!');
+
+        $this->assertTrue($phpWord->save('test.docx', 'Word2007', true));
+    }

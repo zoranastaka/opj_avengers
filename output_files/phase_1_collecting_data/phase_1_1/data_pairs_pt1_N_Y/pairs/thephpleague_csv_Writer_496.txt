@@ -1,0 +1,10 @@
+    /**
+     * Sets the newline sequence.
+     */
+
+    public function setNewline(string $newline): self
+    {
+        $this->newline = $newline;
+
+        return $this;
+    }

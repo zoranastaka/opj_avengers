@@ -1,0 +1,38 @@
+    /**
+     * Standard error of the regression parameters (coefficients)
+     *
+     *              _________
+     *             /  ∑eᵢ²
+     *            /  -----
+     * se(m) =   /     ν
+     *          /  ---------
+     *         √   ∑⟮xᵢ - μ⟯²
+     *
+     *  where
+     *    eᵢ = residual (difference between observed value and value predicted by the model)
+     *    ν  = n - 2  degrees of freedom
+     *
+     *           ______
+     *          / ∑xᵢ²
+     * se(b) = /  ----
+     *        √    n
+     *
+     * @return array [m => se(m), b => se(b)]
+     *
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function standardErrors(): array
+    {
+        $⟮XᵀX⟯⁻¹ = $this->⟮XᵀX⟯⁻¹;
+        $σ²     = $this->meanSquareResidual();
+
+        $standard_error_matrix = $⟮XᵀX⟯⁻¹->scalarMultiply($σ²);
+        $standard_error_array  = Single::sqrt($standard_error_matrix->getDiagonalElements());
+
+        return [
+            'm' => $standard_error_array[1],
+            'b' => $standard_error_array[0],
+        ];
+    }

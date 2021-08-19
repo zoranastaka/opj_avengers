@@ -1,0 +1,10 @@
+    /**
+     * Get index to cellXf
+     *
+     * @return int
+     */
+
+    public function getXfIndex()
+    {
+        return $this->xfIndex;
+    }

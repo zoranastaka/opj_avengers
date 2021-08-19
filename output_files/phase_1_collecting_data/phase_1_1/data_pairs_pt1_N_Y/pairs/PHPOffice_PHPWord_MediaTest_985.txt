@@ -1,0 +1,8 @@
+    /**
+     * Get header media elements
+     */
+
+    public function testGetHeaderMediaElementsWithNull()
+    {
+        $this->assertEquals(array(), Media::getElements('header'));
+    }

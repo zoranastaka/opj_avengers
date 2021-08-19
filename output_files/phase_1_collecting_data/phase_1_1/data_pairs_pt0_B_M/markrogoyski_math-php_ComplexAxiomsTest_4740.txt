@@ -1,0 +1,29 @@
+    /**
+     * @test Axiom: z(uv) = (zu)v
+     * Associativity of Multiplication.
+     * @dataProvider dataProviderForThreeComplexNumbers
+     * @param        int $r₁
+     * @param        int $i₁
+     * @param        int $r₂
+     * @param        int $i₂
+     * @param        int $r₃
+     * @param        int $i₃
+     * @throws       \Exception
+     */
+
+    public function testAssociativityOfMultiplication(int $r₁, int $i₁, int $r₂, int $i₂, int $r₃, int $i₃)
+    {
+        // Given
+        $z = new Complex($r₁, $i₁);
+        $u = new Complex($r₂, $i₂);
+        $v = new Complex($r₃, $i₃);
+
+        // When
+        $z⟮uv⟯ = $z->multiply($u->multiply($v));
+        $⟮zu⟯v = $z->multiply($u)->multiply($v);
+
+        $this->assertTrue($z⟮uv⟯->equals($⟮zu⟯v));
+        $this->assertTrue($⟮zu⟯v->equals($z⟮uv⟯));
+        $this->assertEquals($z⟮uv⟯->r, $⟮zu⟯v->r);
+        $this->assertEquals($z⟮uv⟯->i, $⟮zu⟯v->i);
+    }

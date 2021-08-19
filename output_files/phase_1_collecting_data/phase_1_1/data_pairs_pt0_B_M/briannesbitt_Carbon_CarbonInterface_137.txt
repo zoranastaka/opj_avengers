@@ -1,0 +1,9 @@
+    /**
+     * Call native PHP DateTime/DateTimeImmutable sub() method.
+     *
+     * @param DateInterval $interval
+     *
+     * @return static
+     */
+
+    public function rawSub(DateInterval $interval);

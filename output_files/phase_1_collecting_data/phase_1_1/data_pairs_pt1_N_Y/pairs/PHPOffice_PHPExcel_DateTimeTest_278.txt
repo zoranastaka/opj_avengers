@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider providerYEAR
+     */
+
+    public function testYEAR()
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'YEAR'), $args);
+        $this->assertEquals($expectedResult, $result, null, 1E-8);
+    }

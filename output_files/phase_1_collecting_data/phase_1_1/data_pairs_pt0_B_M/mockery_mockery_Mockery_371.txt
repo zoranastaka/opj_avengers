@@ -1,0 +1,19 @@
+    /**
+     * Static shortcut to \Mockery\Container::mock(), first argument names the mock.
+     *
+     * @param mixed ...$args
+     *
+     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     */
+
+    public static function namedMock(...$args)
+    {
+        $name = array_shift($args);
+
+        $builder = new MockConfigurationBuilder();
+        $builder->setName($name);
+
+        array_unshift($args, $builder);
+
+        return call_user_func_array(array(self::getContainer(), 'mock'), $args);
+    }

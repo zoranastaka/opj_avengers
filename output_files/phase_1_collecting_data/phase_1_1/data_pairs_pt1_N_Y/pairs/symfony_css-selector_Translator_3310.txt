@@ -1,0 +1,16 @@
+    /**
+     * @return SelectorNode[]
+     */
+
+    private function parseSelectors(string $css): array
+    {
+        foreach ($this->shortcutParsers as $shortcut) {
+            $tokens = $shortcut->parse($css);
+
+            if (!empty($tokens)) {
+                return $tokens;
+            }
+        }
+
+        return $this->mainParser->parse($css);
+    }

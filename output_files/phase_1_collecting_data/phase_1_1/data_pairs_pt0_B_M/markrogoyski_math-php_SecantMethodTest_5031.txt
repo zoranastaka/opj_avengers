@@ -1,0 +1,25 @@
+    /**
+     * @test   Solve f(x) = x⁴ + 8x³ -13x² -92x + 96
+     *         Polynomial has 4 roots: 3, 1, -8 and -4
+     *         Uses \Closure object
+     * @dataProvider dataProviderForPolynomial
+     * @param        int $p₀
+     * @param        int $p₁
+     * @param        int $expected
+     * @throws       \Exception
+     */
+
+    public function testSolvePolynomialWithFourRootsUsingClosure(int $p₀, int $p₁, int $expected)
+    {
+        // Given
+        $func = function ($x) {
+            return $x ** 4 + 8 * $x ** 3 - 13 * $x ** 2 - 92 * $x + 96;
+        };
+        $tol = 0.00001;
+
+        // When solving for f(x) = 0 where x $expected
+        $x = SecantMethod::solve($func, $p₀, $p₁, $tol);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $x, $tol);
+    }

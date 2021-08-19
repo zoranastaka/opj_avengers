@@ -1,0 +1,16 @@
+    /**
+     * @covers ::onCreate
+     * @covers ::filter
+     */
+
+    public function testCharsetConverterAsStreamFilterFailed(): void
+    {
+        $this->expectException(InvalidArgument::class);
+        stream_filter_register(CharsetConverter::FILTERNAME.'.*', CharsetConverter::class);
+        $expected = 'Batman,Superman,Anaïs';
+        $raw = mb_convert_encoding($expected, 'iso-8859-15', 'utf-8');
+        $csv = Reader::createFromString($raw)
+            ->addStreamFilter('string.toupper')
+            ->addStreamFilter('convert.league.csv.iso-8859-15:utf-8')
+        ;
+    }

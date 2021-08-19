@@ -1,0 +1,19 @@
+    /**
+     * Remove access.
+     *
+     * @param int $idProfile Profile ID
+     * @param int $idRole Role ID
+     *
+     * @return string Whether access has been successfully removed ("ok", "error")
+     */
+
+    public function removeAccess($idProfile, $idRole)
+    {
+        $sql = '
+            DELETE FROM `' . _DB_PREFIX_ . 'access`
+            WHERE `id_profile` = "' . (int) $idProfile . '"
+            AND `id_authorization_role` = "' . (int) $idRole . '"
+        ';
+
+        return Db::getInstance()->execute($sql) ? 'ok' : 'error';
+    }

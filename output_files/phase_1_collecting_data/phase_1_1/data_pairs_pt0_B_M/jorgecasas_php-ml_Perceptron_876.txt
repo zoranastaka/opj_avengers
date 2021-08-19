@@ -1,0 +1,12 @@
+    /**
+     * @return mixed
+     */
+
+    protected function predictSampleBinary(array $sample)
+    {
+        $sample = $this->checkNormalizedSample($sample);
+
+        $predictedClass = $this->outputClass($sample);
+
+        return $this->labels[$predictedClass];
+    }

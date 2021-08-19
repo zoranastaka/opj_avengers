@@ -1,0 +1,15 @@
+    /**
+     * Imports a log file in custom format that contains generation time
+     */
+
+    private function logCustomFormat()
+    {
+        $logFile = PIWIK_INCLUDE_PATH . '/tests/resources/access-logs/fake_logs_custom.log';
+
+        $opts = array('--idsite'           => $this->idSite,
+                      '--token-auth'       => self::getTokenAuth(),
+                      '--log-format-regex' => '(?P<ip>\S+) - - \[(?P<date>.*?) (?P<timezone>.*?)\] (?P<status>\S+) '
+                          . '\"\S+ (?P<path>.*?) \S+\" (?P<generation_time_micro>\S+)');
+
+        self::executeLogImporter($logFile, $opts);
+    }

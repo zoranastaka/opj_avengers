@@ -1,5 +1,5 @@
 __pycache__/
-scraper/__pycache__/
+my_scraper/__pycache__/
 .DS_Store
 development.ipynb
 debug.ipynb

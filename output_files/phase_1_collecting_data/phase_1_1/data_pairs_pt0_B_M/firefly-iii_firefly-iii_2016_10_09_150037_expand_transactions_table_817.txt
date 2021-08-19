@@ -1,0 +1,36 @@
+/**
+ * Class ExpandTransactionsTable.
+ *
+ * @codeCoverageIgnore
+ */
+
+class ExpandTransactionsTable extends Migration
+{
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table(
+            'transactions',
+            static function (Blueprint $table) {
+                $table->dropColumn('identifier');
+            }
+        );
+    }
+
+    /**
+     * Run the migrations.
+     *
+     * @SuppressWarnings(PHPMD.ShortMethodName)
+     */
+    public function up(): void
+    {
+        Schema::table(
+            'transactions',
+            static function (Blueprint $table) {
+                $table->smallInteger('identifier', false, true)->default(0);
+            }
+        );
+    }
+}

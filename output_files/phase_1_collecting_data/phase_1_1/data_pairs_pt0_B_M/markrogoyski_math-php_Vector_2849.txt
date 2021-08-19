@@ -1,0 +1,17 @@
+    /**
+     * l²-norm (|x|₂)
+     * Also known as Euclidean norm, Euclidean length, L² distance, ℓ² distance
+     * Used to normalize a vector.
+     *
+     * http://mathworld.wolfram.com/L2-Norm.html
+     * https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm
+     *         ______
+     * |x|₂ = √∑|xᵢ|²
+     *
+     * @return number
+     */
+
+    public function l2Norm()
+    {
+        return \sqrt(\array_sum(Map\Single::square($this->A)));
+    }

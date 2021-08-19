@@ -1,0 +1,14 @@
+    /**
+     * Build a new instance of the generator
+     *
+     * @param array $sources An array of random data sources to use
+     * @param Mixer $mixer   The mixing strategy to use for this generator
+     */
+
+    public function __construct(array $sources, Mixer $mixer)
+    {
+        foreach ($sources as $source) {
+            $this->addSource($source);
+        }
+        $this->mixer = $mixer;
+    }

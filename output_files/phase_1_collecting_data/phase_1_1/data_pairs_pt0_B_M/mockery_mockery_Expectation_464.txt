@@ -1,0 +1,11 @@
+    /**
+     * Set with() as no arguments expected
+     *
+     * @return self
+     */
+
+    public function withNoArgs()
+    {
+        $this->_expectedArgs = [new NoArgs()];
+        return $this;
+    }

@@ -1,0 +1,7 @@
+    /**
+     * Add a named destination (similar to <a name="foo">...</a> in html)
+     *
+     * @param string $anchorname The name of the named destination
+     */
+
+    function add_named_dest($anchorname);

@@ -1,0 +1,21 @@
+    /**
+     * 修复段落开头和结尾
+     * 
+     * @access private
+     * @param string $text
+     * @return string
+     */
+
+    private function fixPragraph($text)
+    {
+        $text = trim($text);
+        if (!preg_match("/^<(" . self::BLOCK . ")(\s|>)/i", $text)) {
+            $text = '<p>' . $text;
+        }
+        
+        if (!preg_match("/<\/(" . self::BLOCK . ")>$/i", $text)) {
+            $text = $text . '</p>';
+        }
+        
+        return $text;
+    }

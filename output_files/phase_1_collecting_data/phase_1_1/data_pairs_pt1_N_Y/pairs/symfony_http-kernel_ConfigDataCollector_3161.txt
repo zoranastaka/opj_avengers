@@ -1,0 +1,10 @@
+    /**
+     * Gets the environment.
+     *
+     * @return string The environment
+     */
+
+    public function getEnv()
+    {
+        return $this->data['env'];
+    }

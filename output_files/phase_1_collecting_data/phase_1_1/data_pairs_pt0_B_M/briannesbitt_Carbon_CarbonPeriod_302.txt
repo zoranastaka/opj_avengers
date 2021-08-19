@@ -1,0 +1,10 @@
+    /**
+     * Returns true if the start date should be included.
+     *
+     * @return bool
+     */
+
+    public function isStartIncluded()
+    {
+        return !$this->isStartExcluded();
+    }

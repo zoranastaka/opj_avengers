@@ -1,0 +1,20 @@
+    /**
+     * @test         ipmt
+     * @dataProvider dataProviderForIpmt
+     * @param        float $rate
+     * @param        int   $period
+     * @param        int   $periods
+     * @param        float $pv
+     * @param        float $fv
+     * @param        bool  $beginning
+     * @param        float $expected
+     */
+
+    public function testIPMT(float $rate, int $period, int $periods, float $pv, float $fv, bool $beginning, float $expected)
+    {
+        // Given
+        $ipmt = Finance::ipmt($rate, $period, $periods, $pv, $fv, $beginning);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $ipmt, Finance::EPSILON);
+    }

@@ -1,0 +1,5 @@
+    /**
+     * @param mixed $input
+     */
+
+    public function check($input): void;

@@ -1,0 +1,7 @@
+	/**
+	 * Handle a refund via the edit order screen.
+	 *
+	 * @throws Exception To return errors.
+	 */
+
+	public static function refund_line_items() {

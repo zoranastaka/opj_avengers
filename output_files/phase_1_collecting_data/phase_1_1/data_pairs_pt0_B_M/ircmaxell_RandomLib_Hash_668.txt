@@ -1,0 +1,10 @@
+    /**
+     * Get the block size (the size of the individual blocks used for the mixing)
+     *
+     * @return int The block size
+     */
+
+    protected function getPartSize()
+    {
+        return Util::safeStrlen(hash($this->hash, '', true));
+    }

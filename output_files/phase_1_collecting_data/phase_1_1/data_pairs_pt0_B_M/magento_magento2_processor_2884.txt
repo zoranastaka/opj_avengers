@@ -1,0 +1,14 @@
+    /**
+     * Get index dir
+     *
+     * @return string
+     */
+
+    protected function _getIndexDir()
+    {
+        $documentRoot = '';
+        if (!empty($_SERVER['DOCUMENT_ROOT'])) {
+            $documentRoot = rtrim(realpath($_SERVER['DOCUMENT_ROOT']), '/');
+        }
+        return dirname($documentRoot . $this->_scriptName) . '/';
+    }

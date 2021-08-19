@@ -1,0 +1,10 @@
+    /**
+     * Get slave process
+     *
+     * @return Process slave process
+     */
+
+    public function getProcess()
+    {
+        return $this->process;
+    }

@@ -1,0 +1,41 @@
+    /**
+     * Simple n-point moving average SMA
+     * The unweighted mean of the previous n data.
+     *
+     * First calculate initial average:
+     *  ⁿ⁻¹
+     *   ∑ xᵢ
+     *  ᵢ₌₀
+     *
+     * To calculating successive values, a new value comes into the sum and an old value drops out:
+     *  SMAtoday = SMAyesterday + NewNumber/N - DropNumber/N
+     *
+     * @param  float[] $numbers
+     * @param  int     $n       n-point moving average
+     *
+     * @return float[] of averages for each n-point time period
+     */
+
+    public static function simpleMovingAverage(array $numbers, int $n): array
+    {
+        $m   = \count($numbers);
+        $SMA = [];
+
+        // Counters
+        $new       = $n; // New value comes into the sum
+        $drop      = 0;  // Old value drops out
+        $yesterday = 0;  // Yesterday's SMA
+
+        // Base case: initial average
+        $SMA[] = \array_sum(\array_slice($numbers, 0, $n)) / $n;
+
+        // Calculating successive values: New value comes in; old value drops out
+        while ($new < $m) {
+            $SMA[] = $SMA[$yesterday] + ($numbers[$new] / $n) - ($numbers[$drop] / $n);
+            $drop++;
+            $yesterday++;
+            $new++;
+        }
+
+        return $SMA;
+    }

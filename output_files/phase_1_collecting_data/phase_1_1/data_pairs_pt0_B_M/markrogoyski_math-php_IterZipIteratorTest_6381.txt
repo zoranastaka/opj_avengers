@@ -1,0 +1,20 @@
+    /**
+     * @test         zip with two iterators of the different sizes
+     * @dataProvider dataProviderForZipTwoIteratorsDifferentSize
+     * @param        \Iterator $iter1
+     * @param        \Iterator $iter2
+     * @param        array     $expected
+     */
+
+    public function testZipTwoIteatorsDifferentSize(\Iterator $iter1, \Iterator $iter2, array $expected)
+    {
+        // Given
+        $result = [];
+
+        foreach (Iter::zip($iter1, $iter2) as [$value1, $value2]) {
+            $result[] = [$value1, $value2];
+        }
+
+        // Then
+        $this->assertEquals($expected, $result);
+    }

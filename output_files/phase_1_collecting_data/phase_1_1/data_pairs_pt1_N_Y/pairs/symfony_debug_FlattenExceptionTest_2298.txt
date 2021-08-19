@@ -1,0 +1,9 @@
+    /**
+     * @dataProvider flattenDataProvider
+     */
+
+    public function testLine(\Throwable $exception)
+    {
+        $flattened = FlattenException::createFromThrowable($exception);
+        $this->assertSame($exception->getLine(), $flattened->getLine());
+    }

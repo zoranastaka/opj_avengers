@@ -1,0 +1,11 @@
+    /**
+     * Static method to register the class as a stream filter.
+     */
+
+    public static function register(): void
+    {
+        $filtername = self::FILTERNAME.'.*';
+        if (!in_array($filtername, stream_get_filters(), true)) {
+            stream_filter_register($filtername, self::class);
+        }
+    }

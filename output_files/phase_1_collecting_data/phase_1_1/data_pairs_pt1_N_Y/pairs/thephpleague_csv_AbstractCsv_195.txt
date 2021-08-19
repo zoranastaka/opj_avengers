@@ -1,0 +1,8 @@
+    /**
+     * Returns the BOM sequence in use on Output methods.
+     */
+
+    public function getOutputBOM(): string
+    {
+        return $this->output_bom;
+    }

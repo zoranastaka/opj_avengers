@@ -1,0 +1,20 @@
+    /**
+     * Returns the mime type of the file.
+     *
+     * The mime type is guessed using a MimeTypeGuesserInterface instance,
+     * which uses finfo_file() then the "file" system binary,
+     * depending on which of those are available.
+     *
+     * @return string|null The guessed mime type (e.g. "application/pdf")
+     *
+     * @see MimeTypes
+     */
+
+    public function getMimeType()
+    {
+        if (!class_exists(MimeTypes::class)) {
+            throw new \LogicException('You cannot guess the mime type as the Mime component is not installed. Try running "composer require symfony/mime".');
+        }
+
+        return MimeTypes::getDefault()->guessMimeType($this->getPathname());
+    }

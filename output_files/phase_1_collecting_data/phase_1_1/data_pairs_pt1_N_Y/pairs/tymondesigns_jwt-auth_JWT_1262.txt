@@ -1,0 +1,12 @@
+    /**
+     * Unset the current token.
+     *
+     * @return $this
+     */
+
+    public function unsetToken()
+    {
+        $this->token = null;
+
+        return $this;
+    }

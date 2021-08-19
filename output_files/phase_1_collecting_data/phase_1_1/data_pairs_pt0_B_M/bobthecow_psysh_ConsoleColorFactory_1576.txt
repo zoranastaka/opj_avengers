@@ -1,0 +1,8 @@
+    /**
+     * @param string $colorMode
+     */
+
+    public function __construct($colorMode)
+    {
+        // Nothing to see here
+    }

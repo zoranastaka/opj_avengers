@@ -1,0 +1,16 @@
+    /**
+     * Log out a failed login attempt, Providing the given username
+     * as part of the message if the '%u' string is used.
+     */
+
+    public function logFailedLogin(string $username)
+    {
+        $message = config('logging.failed_login.message');
+        if (!$message) {
+            return;
+        }
+
+        $message = str_replace("%u", $username, $message);
+        $channel = config('logging.failed_login.channel');
+        Log::channel($channel)->warning($message);
+    }

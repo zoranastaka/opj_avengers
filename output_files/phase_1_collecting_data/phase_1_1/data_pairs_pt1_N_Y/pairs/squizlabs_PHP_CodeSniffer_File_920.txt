@@ -1,0 +1,13 @@
+    /**
+     * Reloads the content of the file.
+     *
+     * By default, we have no idea where our content comes from,
+     * so we can't do anything.
+     *
+     * @return void
+     */
+
+    public function reloadContent()
+    {
+
+    }//end reloadContent()

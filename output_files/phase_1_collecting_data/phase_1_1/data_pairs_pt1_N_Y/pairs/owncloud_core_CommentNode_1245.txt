@@ -1,0 +1,11 @@
+	/**
+	 * CommentNode constructor.
+	 *
+	 * @param ICommentsManager $commentsManager
+	 * @param IComment $comment
+	 * @param IUserManager $userManager
+	 * @param IUserSession $userSession
+	 * @param ILogger $logger
+	 */
+
+	public function __construct(

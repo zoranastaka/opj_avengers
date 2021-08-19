@@ -1,0 +1,15 @@
+    /**
+     * @test         isRef returns false for a matrix not in row echelon form
+     * @dataProvider dataProviderForNotRefMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsNotRref(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isRref());
+    }

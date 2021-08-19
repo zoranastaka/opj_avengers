@@ -1,0 +1,9 @@
+/**
+ * Set HTML context (stats, index, infos, ...)
+ *
+ * @since  1.7.3
+ * @param  string  $context
+ * @return void
+ */
+
+function yourls_set_html_context($context) {

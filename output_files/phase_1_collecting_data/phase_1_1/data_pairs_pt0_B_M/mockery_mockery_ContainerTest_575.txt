@@ -1,0 +1,7 @@
+    /** @group issue/144 */
+
+    public function testMockeryShouldCallConstructorByDefaultWhenRequestingPartials()
+    {
+        $mock = mock("EmptyConstructorTest[foo]");
+        $this->assertSame(0, $mock->numberOfConstructorArgs);
+    }

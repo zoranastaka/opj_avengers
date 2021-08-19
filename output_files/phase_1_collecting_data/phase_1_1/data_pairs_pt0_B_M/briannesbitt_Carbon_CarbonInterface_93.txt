@@ -1,0 +1,13 @@
+    /**
+     * Determines if the instance is a leap year.
+     *
+     * @example
+     * ```
+     * Carbon::parse('2020-01-01')->isLeapYear(); // true
+     * Carbon::parse('2019-01-01')->isLeapYear(); // false
+     * ```
+     *
+     * @return bool
+     */
+
+    public function isLeapYear();

@@ -1,0 +1,22 @@
+    /**
+     * Return a new polynomial that is the difference of the current polynomial and an
+     * input polynomial
+     * Example: $polynomial = new Polynomial([3, -16, 12]);        // 3x² - 16x + 12
+     *          $integral   = $polynomial->differentiate();         // 6x - 16
+     *          $difference = $polynomial->subtract($derivative);  // 3x² - 22x + 28
+     *
+     * @param mixed $polynomial The polynomial or scalar we are subtracting from our current polynomial
+     *
+     * @return Polynomial The difference of our polynomial objects, also a polynomial object
+     *
+     * @throws Exception\BadDataException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function subtract($polynomial): Polynomial
+    {
+        $polynomial = $this->checkNumericOrPolynomial($polynomial);
+        $additiveInverse = $polynomial->negate();
+
+        return $this->add($additiveInverse);
+    }

@@ -1,0 +1,8 @@
+	// Vraća stanje grejnog tela
+	// Ukoliko peć nije povezana, rezultat je -1
+
+	function thermalStatus() {
+		if (!TERM_DOSTUPNO && intval(PiroData::$data['grejanje']['status_peci']) != -1) {
+			PiroData::$data['grejanje']['status_peci'] = -1;
+			upis();
+		}

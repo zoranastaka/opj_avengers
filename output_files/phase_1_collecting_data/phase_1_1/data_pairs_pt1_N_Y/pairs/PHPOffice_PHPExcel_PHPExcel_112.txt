@@ -1,0 +1,10 @@
+    /**
+     * Get named ranges
+     *
+     * @return PHPExcel_NamedRange[]
+     */
+
+    public function getNamedRanges()
+    {
+        return $this->namedRanges;
+    }

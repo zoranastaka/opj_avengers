@@ -1,0 +1,11 @@
+    /**
+     * Returns the token stack for this file.
+     *
+     * @return array
+     */
+
+    public function getTokens()
+    {
+        return $this->tokens;
+
+    }//end getTokens()

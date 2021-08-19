@@ -1,0 +1,8 @@
+    /**
+     * Returns true if the strict mode is globally in use, false else.
+     * (It can be overridden in specific instances.)
+     *
+     * @return bool
+     */
+
+    public static function isStrictModeEnabled();

@@ -1,0 +1,11 @@
+    /**
+     * Namespace botman keys in redis.
+     *
+     * @param $key
+     * @return string
+     */
+
+    private function decorateKey($key)
+    {
+        return self::KEY_PREFIX.$key;
+    }

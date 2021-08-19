@@ -1,0 +1,14 @@
+    /**
+     * @test
+     * @dataProvider dataProviderForIsSubsetSuperset
+     */
+
+    public function testIsSuperset(array $A, array $B)
+    {
+        // Given
+        $setA = new Set($B);
+        $setB = new Set($A);
+
+        // Then
+        $this->assertTrue($setA->isSuperset($setB));
+    }

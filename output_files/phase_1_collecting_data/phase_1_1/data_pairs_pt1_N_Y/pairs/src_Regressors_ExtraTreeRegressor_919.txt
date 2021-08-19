@@ -1,0 +1,10 @@
+    /**
+     * Return the string representation of the object.
+     *
+     * @return string
+     */
+
+    public function __toString() : string
+    {
+        return 'Extra Tree Regressor (' . Params::stringify($this->params()) . ')';
+    }

@@ -1,0 +1,39 @@
+    /**
+     * Reinstall signal handler.
+     *
+     * @return void
+     */
+
+    protected static function reinstallSignal()
+    {
+        if (static::$_OS !== \OS_TYPE_LINUX) {
+            return;
+        }
+        $signalHandler = '\Workerman\Worker::signalHandler';
+        // uninstall stop signal handler
+        \pcntl_signal(\SIGINT, \SIG_IGN, false);
+        // uninstall stop signal handler
+        \pcntl_signal(\SIGTERM, \SIG_IGN, false);
+        // uninstall graceful stop signal handler
+        \pcntl_signal(\SIGHUP, \SIG_IGN, false);
+        // uninstall reload signal handler
+        \pcntl_signal(\SIGUSR1, \SIG_IGN, false);
+        // uninstall graceful reload signal handler
+        \pcntl_signal(\SIGQUIT, \SIG_IGN, false);
+        // uninstall status signal handler
+        \pcntl_signal(\SIGUSR2, \SIG_IGN, false);
+        // uninstall connections status signal handler
+        \pcntl_signal(\SIGIO, \SIG_IGN, false);
+        // reinstall stop signal handler
+        static::$globalEvent->add(\SIGINT, EventInterface::EV_SIGNAL, $signalHandler);
+        // reinstall graceful stop signal handler
+        static::$globalEvent->add(\SIGHUP, EventInterface::EV_SIGNAL, $signalHandler);
+        // reinstall reload signal handler
+        static::$globalEvent->add(\SIGUSR1, EventInterface::EV_SIGNAL, $signalHandler);
+        // reinstall graceful reload signal handler
+        static::$globalEvent->add(\SIGQUIT, EventInterface::EV_SIGNAL, $signalHandler);
+        // reinstall status signal handler
+        static::$globalEvent->add(\SIGUSR2, EventInterface::EV_SIGNAL, $signalHandler);
+        // reinstall connection status signal handler
+        static::$globalEvent->add(\SIGIO, EventInterface::EV_SIGNAL, $signalHandler);
+    }

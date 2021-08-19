@@ -1,0 +1,18 @@
+    /**
+     * @testCase     cdf
+     * @dataProvider dataProviderForCdf
+     * @param        float $x
+     * @param        int   $expectedCdf
+     */
+
+    public function testCdf(float $x, int $expectedCdf)
+    {
+        // Given
+        $dirac = new DiracDelta();
+
+        // When
+        $cdf = $dirac->cdf($x);
+
+        // Then
+        $this->assertSame($expectedCdf, $cdf);
+    }

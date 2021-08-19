@@ -1,0 +1,10 @@
+    /**
+     * Gets the time the cookie expires.
+     *
+     * @return int
+     */
+
+    public function getExpiresTime()
+    {
+        return $this->expire;
+    }

@@ -1,0 +1,8 @@
+    /**
+     * Is the value an array?
+     */
+
+    function arrayValue()
+    {
+        return \Hamcrest\Type\IsArray::arrayValue();
+    }

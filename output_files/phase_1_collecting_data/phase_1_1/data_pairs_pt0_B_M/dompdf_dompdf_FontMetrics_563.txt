@@ -1,0 +1,10 @@
+    /**
+     * Returns the current font lookup table
+     *
+     * @return array
+     */
+
+    public function getFontFamilies()
+    {
+        return $this->fontLookup;
+    }

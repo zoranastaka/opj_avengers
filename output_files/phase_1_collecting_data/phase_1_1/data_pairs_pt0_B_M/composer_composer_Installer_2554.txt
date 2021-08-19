@@ -1,0 +1,13 @@
+    /**
+     * Update the lock file to the exact same versions and references but use current remote metadata like URLs and mirror info
+     *
+     * @param  bool      $updateMirrors
+     * @return Installer
+     */
+
+    public function setUpdateMirrors($updateMirrors)
+    {
+        $this->updateMirrors = $updateMirrors;
+
+        return $this;
+    }

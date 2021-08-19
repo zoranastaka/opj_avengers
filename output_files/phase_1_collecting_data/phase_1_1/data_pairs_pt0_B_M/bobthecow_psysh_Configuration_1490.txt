@@ -1,0 +1,10 @@
+    /**
+     * Get the current configuration directory, if any is explicitly set.
+     *
+     * @return string
+     */
+
+    public function getConfigDir()
+    {
+        return $this->configDir;
+    }

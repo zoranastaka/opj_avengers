@@ -1,0 +1,35 @@
+  /**
+   * Retrieve and cache a certificates file.
+   *
+   * @param $url string location
+   * @throws \Google\Exception
+   * @return array certificates
+   */
+
+  private function retrieveCertsFromLocation($url)
+  {
+    // If we're retrieving a local file, just grab it.
+    if (0 !== strpos($url, 'http')) {
+      if (!$file = file_get_contents($url)) {
+        throw new GoogleException(
+            "Failed to retrieve verification certificates: '" .
+            $url . "'."
+        );
+      }
+
+      return json_decode($file, true);
+    }
+
+    $response = $this->http->get($url);
+
+    if ($response->getStatusCode() == 200) {
+      return json_decode((string) $response->getBody(), true);
+    }
+    throw new GoogleException(
+        sprintf(
+            'Failed to retrieve verification certificates: "%s".',
+            $response->getBody()->getContents()
+        ),
+        $response->getStatusCode()
+    );
+  }

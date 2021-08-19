@@ -1,0 +1,5 @@
+    /**
+     * @param mixed $compareTo
+     */
+
+    public function min($compareTo): ChainedValidator;

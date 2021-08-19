@@ -1,0 +1,6 @@
+    /** @param callable(ClaimsFormatter): Builder $builderFactory */
+
+    public function setBuilderFactory(callable $builderFactory): void
+    {
+        $this->builderFactory = Closure::fromCallable($builderFactory);
+    }

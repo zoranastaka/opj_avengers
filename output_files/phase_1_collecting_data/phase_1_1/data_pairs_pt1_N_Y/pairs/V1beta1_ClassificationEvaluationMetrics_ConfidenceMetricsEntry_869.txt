@@ -1,0 +1,16 @@
+    /**
+     * Output only. The number of model created labels that do not match a
+     * ground truth label.
+     *
+     * Generated from protobuf field <code>int64 false_positive_count = 11;</code>
+     * @param int|string $var
+     * @return $this
+     */
+
+    public function setFalsePositiveCount($var)
+    {
+        GPBUtil::checkInt64($var);
+        $this->false_positive_count = $var;
+
+        return $this;
+    }

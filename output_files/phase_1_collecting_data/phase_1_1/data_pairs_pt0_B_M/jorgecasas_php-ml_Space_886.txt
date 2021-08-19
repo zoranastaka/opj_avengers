@@ -1,0 +1,47 @@
+    /**
+     * @param Cluster[] $clusters
+     */
+
+    protected function iterate(array $clusters): bool
+    {
+        $convergence = true;
+
+        $attach = new SplObjectStorage();
+        $detach = new SplObjectStorage();
+
+        foreach ($clusters as $cluster) {
+            foreach ($cluster as $point) {
+                $closest = $point->getClosest($clusters);
+
+                if ($closest === null) {
+                    continue;
+                }
+
+                if ($closest !== $cluster) {
+                    $attach[$closest] ?? $attach[$closest] = new SplObjectStorage();
+                    $detach[$cluster] ?? $detach[$cluster] = new SplObjectStorage();
+
+                    $attach[$closest]->attach($point);
+                    $detach[$cluster]->attach($point);
+
+                    $convergence = false;
+                }
+            }
+        }
+
+        /** @var Cluster $cluster */
+        foreach ($attach as $cluster) {
+            $cluster->attachAll($attach[$cluster]);
+        }
+
+        /** @var Cluster $cluster */
+        foreach ($detach as $cluster) {
+            $cluster->detachAll($detach[$cluster]);
+        }
+
+        foreach ($clusters as $cluster) {
+            $cluster->updateCentroid();
+        }
+
+        return $convergence;
+    }

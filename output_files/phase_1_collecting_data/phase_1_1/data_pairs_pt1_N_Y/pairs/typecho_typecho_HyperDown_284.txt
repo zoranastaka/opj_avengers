@@ -1,0 +1,10 @@
+    /**
+     * @param $text
+     * @return mixed
+     */
+
+    private function initText($text)
+    {
+        $text = str_replace(array("\t", "\r"),  array('    ', ''),  $text);
+        return $text;
+    }

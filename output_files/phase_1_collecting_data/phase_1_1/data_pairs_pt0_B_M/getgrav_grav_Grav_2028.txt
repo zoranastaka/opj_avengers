@@ -1,0 +1,13 @@
+    /**
+     * Reset the Grav instance.
+     *
+     * @return void
+     */
+
+    public static function resetInstance()
+    {
+        if (self::$instance) {
+            // @phpstan-ignore-next-line
+            self::$instance = null;
+        }
+    }

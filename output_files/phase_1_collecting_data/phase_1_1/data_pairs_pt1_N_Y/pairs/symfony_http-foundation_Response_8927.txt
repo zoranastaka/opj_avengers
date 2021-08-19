@@ -1,0 +1,10 @@
+    /**
+     * Retrieves the response charset.
+     *
+     * @final
+     */
+
+    public function getCharset(): ?string
+    {
+        return $this->charset;
+    }

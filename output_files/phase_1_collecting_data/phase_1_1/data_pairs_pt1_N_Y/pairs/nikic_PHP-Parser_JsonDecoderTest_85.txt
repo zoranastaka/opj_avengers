@@ -1,0 +1,3 @@
+    /** @dataProvider provideTestDecodingError */
+
+    public function testDecodingError($json, $expectedMessage) {

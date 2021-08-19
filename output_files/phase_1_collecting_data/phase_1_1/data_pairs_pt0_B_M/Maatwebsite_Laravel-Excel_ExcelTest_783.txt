@@ -1,0 +1,19 @@
+    /**
+     * @test
+     */
+
+    public function can_store_tsv_export_with_default_settings()
+    {
+        $export = new EmptyExport;
+        $name   = 'filename.tsv';
+        $path   = FileHelper::absolutePath($name, 'local');
+
+        @unlink($path);
+
+        $this->assertFileMissing($path);
+
+        $response = $this->SUT->store($export, $name);
+
+        $this->assertTrue($response);
+        $this->assertFileExists($path);
+    }

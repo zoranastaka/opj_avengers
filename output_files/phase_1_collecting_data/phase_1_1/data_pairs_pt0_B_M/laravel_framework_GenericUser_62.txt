@@ -1,0 +1,10 @@
+    /**
+     * Get the "remember me" token value.
+     *
+     * @return string
+     */
+
+    public function getRememberToken()
+    {
+        return $this->attributes[$this->getRememberTokenName()];
+    }

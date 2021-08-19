@@ -1,0 +1,10 @@
+    /**
+     * Return the number of training samples each centroid is responsible for.
+     *
+     * @return int[]
+     */
+
+    public function sizes() : array
+    {
+        return $this->sizes;
+    }

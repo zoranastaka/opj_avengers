@@ -1,0 +1,12 @@
+    /**
+     * @return array [X, n, moment]
+     */
+
+    public function dataProviderForCentralMoment(): array
+    {
+        return [
+            [ [ 600, 470, 170, 430, 300 ], 1, 0 ],
+            [ [ 600, 470, 170, 430, 300 ], 2, 21704 ],
+            [ [ 600, 470, 170, 430, 300 ], 3, -568512 ],
+        ];
+    }

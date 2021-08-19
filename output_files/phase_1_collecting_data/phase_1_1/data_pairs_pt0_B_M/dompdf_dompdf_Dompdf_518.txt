@@ -1,0 +1,10 @@
+    /**
+     * Returns the base hostname
+     *
+     * @return string
+     */
+
+    public function getBaseHost()
+    {
+        return $this->baseHost;
+    }

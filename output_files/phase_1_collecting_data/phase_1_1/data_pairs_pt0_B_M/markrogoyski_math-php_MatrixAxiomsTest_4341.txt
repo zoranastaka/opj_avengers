@@ -1,0 +1,14 @@
+    /**
+     * @test Axiom: Hilbert matrix is positive definite
+     * @throws   \Exception
+     */
+
+    public function testHilbertMatrixIsPositiveDefinite()
+    {
+        foreach (\range(1, 10) as $n) {
+            // Given
+            $H = MatrixFactory::hilbert($n);
+            // Then
+            $this->assertTrue($H->isPositiveDefinite());
+        }
+    }

@@ -1,0 +1,8 @@
+    /** @test */
+
+    public function it_calls_received_middleware()
+    {
+        $this->botman->middleware->received(new TestCustomMiddleware());
+        $this->replyWithFakeMessage('Hello');
+        $this->assertEquals('Hello', $_SERVER['middleware_received']);
+    }

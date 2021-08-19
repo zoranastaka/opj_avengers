@@ -1,0 +1,7 @@
+	/**
+	 * Is the updater running?
+	 *
+	 * @return boolean
+	 */
+
+	public function is_updating() {

@@ -1,0 +1,10 @@
+    /**
+     * Returns true if a promise is pending.
+     *
+     * @return bool
+     */
+
+    public static function pending(PromiseInterface $promise)
+    {
+        return $promise->getState() === PromiseInterface::PENDING;
+    }

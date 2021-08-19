@@ -1,0 +1,9 @@
+    /**
+     * @see ArrayAccess::offsetSet
+     * @param int $offset
+     */
+
+    public function offsetSet($offset, $value)
+    {
+        throw new \Exception(__CLASS__ . ' is read only');
+    }

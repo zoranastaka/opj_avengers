@@ -1,0 +1,15 @@
+    /**
+     * @test         isDiagonal returns false for a non diagonal matrix
+     * @dataProvider dataProviderForNotDiagonalMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsDiagonalForLowerTriangular(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isDiagonal());
+    }

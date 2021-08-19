@@ -1,0 +1,9 @@
+    /**
+     * Set a container. This will be removed in favour of setContainer receiving Container in next major release.
+     *
+     * @param Container $container
+     *
+     * @return self
+     */
+
+    public function setLeagueContainer(Container $container) : self;

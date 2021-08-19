@@ -1,0 +1,10 @@
+    /**
+     * Get item count (n)
+     *
+     * @return int number of items
+     */
+
+    public function getN(): int
+    {
+        return $this->n;
+    }

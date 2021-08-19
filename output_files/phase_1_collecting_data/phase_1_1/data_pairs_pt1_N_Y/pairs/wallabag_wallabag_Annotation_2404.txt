@@ -1,0 +1,10 @@
+    /**
+     * Get updated.
+     *
+     * @return \DateTime
+     */
+
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }

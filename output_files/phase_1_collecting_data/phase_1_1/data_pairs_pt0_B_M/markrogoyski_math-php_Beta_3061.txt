@@ -1,0 +1,17 @@
+    /**
+     * Mean of the distribution
+     *
+     *       α
+     * μ = -----
+     *     α + β
+     *
+     * @return float
+     */
+
+    public function mean(): float
+    {
+        $α = $this->α;
+        $β = $this->β;
+
+        return $α / ($α + $β);
+    }

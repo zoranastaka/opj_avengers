@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getLineEnding(): string
+    {
+        return $this->lineEnding;
+    }

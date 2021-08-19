@@ -1,0 +1,23 @@
+    /**
+     * @test Axiom: |x|∞ ≤ |x|₂ ≤ √n |x|∞
+     * Max norm is less than equal to l₂-norm which is less than equal to sqrt n * max norm.
+     *
+     * @dataProvider dataProviderForSingleVector
+     */
+
+    public function testMaxNormLessThtanEQualL2NormLessThanEqualSqrtNMaxNorm(array $V)
+    {
+        // Given
+        $V = new Vector($V);
+        $n = $V->getN();
+
+        // When
+        $max_norm    = $V->maxNorm();
+        $l²norm      = $V->l2Norm();
+        $√n_max_norm = $n * $max_norm;
+
+        // Then
+        $this->assertLessThanOrEqual($l²norm, $max_norm);
+        $this->assertLessThanOrEqual($√n_max_norm, $l²norm);
+        $this->assertLessThanOrEqual($√n_max_norm, $max_norm);
+    }

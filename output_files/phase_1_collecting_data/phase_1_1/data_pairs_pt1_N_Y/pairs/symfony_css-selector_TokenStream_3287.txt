@@ -1,0 +1,18 @@
+    /**
+     * Returns nex identifier token.
+     *
+     * @return string The identifier token value
+     *
+     * @throws SyntaxErrorException If next token is not an identifier
+     */
+
+    public function getNextIdentifier(): string
+    {
+        $next = $this->getNext();
+
+        if (!$next->isIdentifier()) {
+            throw SyntaxErrorException::unexpectedToken('identifier', $next);
+        }
+
+        return $next->getValue();
+    }

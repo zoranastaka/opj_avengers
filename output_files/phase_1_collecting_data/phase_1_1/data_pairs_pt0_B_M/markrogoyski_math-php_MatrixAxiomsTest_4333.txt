@@ -1,0 +1,21 @@
+    /**
+     * @test Axiom: kD is Diagonal
+     * Product of a diagonal matrix by a constant is diagonal
+     * @dataProvider dataProviderForDiagonalMatrix
+     * @param        array $D
+     * @throws       \Exception
+     */
+
+    public function testProductOfDiagonalMatrixByConstantIsDiagonal(array $D)
+    {
+        // Given
+        $D = MatrixFactory::create($D);
+        $this->assertTrue($D->isDiagonal());
+
+        foreach (\range(1, 10) as $k) {
+            // When
+            $kD = $D->scalarMultiply($k);
+            // Then
+            $this->assertTrue($kD->isDiagonal());
+        }
+    }

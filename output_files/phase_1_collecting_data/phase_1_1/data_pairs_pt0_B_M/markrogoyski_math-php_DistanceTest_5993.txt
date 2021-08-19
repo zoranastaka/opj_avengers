@@ -1,0 +1,20 @@
+    /**
+     * @test         Mahalanobis from a point to the center of the data
+     * @dataProvider dataProviderForMahalanobisCenter
+     * @param        array         $x
+     * @param        NumericMatrix $data
+     * @param        float         $expectedDistance
+     * @throws       \Exception
+     */
+
+    public function testMahalanobisCenter(array $x, NumericMatrix $data, float $expectedDistance)
+    {
+        // Given
+        $x_m = new NumericMatrix($x);
+
+        // When
+        $distance = Distance::mahalanobis($x_m, $data);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedDistance, $distance, 0.0001);
+    }

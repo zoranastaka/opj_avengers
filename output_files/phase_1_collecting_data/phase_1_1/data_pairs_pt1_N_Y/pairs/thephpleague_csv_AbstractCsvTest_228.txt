@@ -1,0 +1,15 @@
+    /**
+     * @covers ::getDelimiter
+     * @covers ::setDelimiter
+     */
+
+    public function testDelimiter(): void
+    {
+        $this->csv->setDelimiter('o');
+        self::assertSame('o', $this->csv->getDelimiter());
+        self::assertSame($this->csv, $this->csv->setDelimiter('o'));
+
+        $this->expectException(InvalidArgument::class);
+
+        $this->csv->setDelimiter('foo');
+    }

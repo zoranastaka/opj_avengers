@@ -1,0 +1,19 @@
+    /**
+     * Resolves headers in the php_phalcon.h file
+     */
+
+    protected function processKernelGlobals()
+    {
+        $lines = [];
+
+        foreach (file($this->outputDir . '/php_phalcon.h') as $line) {
+            if (preg_match('@^#include "(kernel/.+)"@', $line, $matches)) {
+                $content = file_get_contents($this->sourceDir . DIRECTORY_SEPARATOR . $matches[1]);
+                $lines[] = $content . PHP_EOL;
+            } else {
+                $lines[] = $line;
+            }
+        }
+
+        file_put_contents($this->outputDir . '/php_phalcon.h', join('', $lines));
+    }

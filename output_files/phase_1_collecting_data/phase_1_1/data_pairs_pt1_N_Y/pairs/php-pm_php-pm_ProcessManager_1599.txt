@@ -1,0 +1,8 @@
+    /**
+     * @param int $reloadTimeout
+     */
+
+    public function setReloadTimeout($reloadTimeout)
+    {
+        $this->reloadTimeout = $reloadTimeout;
+    }

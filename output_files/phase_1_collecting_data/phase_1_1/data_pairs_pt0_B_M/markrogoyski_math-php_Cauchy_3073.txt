@@ -1,0 +1,10 @@
+    /**
+     * Variance of the distribution (undefined)
+     *
+     * @return float
+     */
+
+    public function variance(): float
+    {
+        return \NAN;
+    }

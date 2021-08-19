@@ -1,0 +1,16 @@
+    /**
+     * @covers Whoops\Handler\PlainTextHandler::loggerOnly
+     * @covers Whoops\Handler\PlainTextHandler::handle
+     */
+
+    public function testReturnsWithLoggerOnlyOutput()
+    {
+        $text = $this->getPlainTextFromHandler(
+            $withTrace = true,
+            $withTraceArgs = true,
+            $traceFunctionArgsOutputLimit = 1024,
+            $loggerOnly = true
+        );
+        // Check that the response has the correct value:
+        $this->assertEquals('', $text);
+    }

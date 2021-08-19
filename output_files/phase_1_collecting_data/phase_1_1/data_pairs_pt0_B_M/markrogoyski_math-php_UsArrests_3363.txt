@@ -1,0 +1,13 @@
+    /**
+     * Data for a state, with labels
+     * ['murder' => 13.2, 'assault' => 236, 'urbanPop' => 58, 'rape' => 21.2]
+     *
+     * @param string $state
+     *
+     * @return number[]
+     */
+
+    public function getStateData(string $state): array
+    {
+        return \array_combine(self::LABELS, self::DATA[$state]);
+    }

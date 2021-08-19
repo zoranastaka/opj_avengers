@@ -1,0 +1,20 @@
+    /**
+     * @test         Custom variable for string representation
+     * @dataProvider dataProviderForVariable
+     * @param        array $args
+     * @param        string $expected
+     */
+
+    public function testVariable(array $args, string $expected)
+    {
+        // Given
+        $coefficients = $args[0];
+        $variable     = $args[1] ?? "x";
+        $polynomial   = new Polynomial($coefficients, $variable);
+
+        // When
+        $string = \strval($polynomial);
+
+        // Then
+        $this->assertEquals($expected, $string);
+    }

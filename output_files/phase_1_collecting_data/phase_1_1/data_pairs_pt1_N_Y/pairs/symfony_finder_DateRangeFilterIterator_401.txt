@@ -1,0 +1,23 @@
+    /**
+     * Filters the iterator values.
+     *
+     * @return bool true if the value should be kept, false otherwise
+     */
+
+    public function accept()
+    {
+        $fileinfo = $this->current();
+
+        if (!file_exists($fileinfo->getPathname())) {
+            return false;
+        }
+
+        $filedate = $fileinfo->getMTime();
+        foreach ($this->comparators as $compare) {
+            if (!$compare->test($filedate)) {
+                return false;
+            }
+        }
+
+        return true;
+    }

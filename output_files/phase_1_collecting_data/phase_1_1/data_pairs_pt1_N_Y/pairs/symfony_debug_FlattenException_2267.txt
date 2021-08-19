@@ -1,0 +1,10 @@
+    /**
+     * @return $this
+     */
+
+    public function setClass($class)
+    {
+        $this->class = false !== strpos($class, "@anonymous\0") ? (get_parent_class($class) ?: key(class_implements($class)) ?: 'class').'@anonymous' : $class;
+
+        return $this;
+    }

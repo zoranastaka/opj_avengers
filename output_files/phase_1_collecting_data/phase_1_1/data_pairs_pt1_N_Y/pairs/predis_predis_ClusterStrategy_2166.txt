@@ -1,0 +1,16 @@
+    /**
+     * Extracts the key from BLPOP and BRPOP commands.
+     *
+     * @param CommandInterface $command Command instance.
+     *
+     * @return string|null
+     */
+
+    protected function getKeyFromBlockingListCommands(CommandInterface $command)
+    {
+        $arguments = $command->getArguments();
+
+        if ($this->checkSameSlotForKeys(array_slice($arguments, 0, count($arguments) - 1))) {
+            return $arguments[0];
+        }
+    }

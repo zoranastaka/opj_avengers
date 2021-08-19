@@ -1,0 +1,16 @@
+    /**
+     * @dataProvider hasAbilitiesTestDataProvider
+     *
+     * @param  array  $abilitiesToSet
+     * @param  array|string  $abilitiesToCheck
+     * @param  bool  $expectedHasValue
+     */
+
+    public function testHasAbilities($abilitiesToSet, $abilitiesToCheck, $expectedHasValue)
+    {
+        $gate = $this->getBasicGate();
+
+        $gate->resource('test', AccessGateTestResource::class, $abilitiesToSet);
+
+        $this->assertEquals($expectedHasValue, $gate->has($abilitiesToCheck));
+    }

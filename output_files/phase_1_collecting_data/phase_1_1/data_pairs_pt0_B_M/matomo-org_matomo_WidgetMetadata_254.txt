@@ -1,0 +1,36 @@
+    /**
+     * @param CategoryList $categoryList
+     * @param WidgetConfig[] $widgetConfigs
+     */
+
+    private function createMissingCategoriesAndSubcategories($categoryList, $widgetConfigs)
+    {
+        // move reports into categories/subcategories and create missing ones if needed
+        foreach ($widgetConfigs as $widgetConfig) {
+            $categoryId    = $widgetConfig->getCategoryId();
+            $subcategoryId = $widgetConfig->getSubcategoryId();
+
+            if (!$categoryId) {
+                continue;
+            }
+
+            if ($widgetConfig instanceof WidgetContainerConfig && !$widgetConfig->getWidgetConfigs()) {
+                // if a container does not contain any widgets, ignore it
+                continue;
+            }
+
+            if (!$categoryList->hasCategory($categoryId)) {
+                $categoryList->addCategory($this->createCategory($categoryId));
+            }
+
+            if (!$subcategoryId) {
+                continue;
+            }
+
+            $category = $categoryList->getCategory($categoryId);
+
+            if (!$category->hasSubcategory($subcategoryId)) {
+                $category->addSubcategory($this->createSubcategory($categoryId, $subcategoryId));
+            }
+        }
+    }

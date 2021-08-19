@@ -1,0 +1,11 @@
+	// Vraća stanje uređaja
+
+	function getRelayStatus($a) {
+		switch ($a) {
+			case 0:
+				return PiroData::$data['rasveta']['led_centar'];
+			case 1:
+				return PiroData::$data['rasveta']['led_desno'];
+			case 2:
+				return PiroData::$data['rasveta']['led_levo'];
+		}

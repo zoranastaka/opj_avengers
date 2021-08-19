@@ -1,0 +1,18 @@
+    /**
+     * Reduce a matrix to reduced row echelon form (row canonical form) - RREF
+     * Factory method to create ReducedRowEchelonForm from any Matrix.
+     *
+     * @param NumericMatrix $A
+     *
+     * @return ReducedRowEchelonForm
+     *
+     * @throws Exception\BadDataException
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MatrixException
+     */
+
+    public static function reduce(NumericMatrix $A): ReducedRowEchelonForm
+    {
+        return self::reduceFromRowEchelonForm($A->ref());
+    }

@@ -1,0 +1,16 @@
+    /**
+     * @test         add
+     * @dataProvider dataProviderForBitwiseAdd
+     * @param        int   $a
+     * @param        int   $b
+     * @param        array $expected
+     */
+
+    public function testBitwiseAdd(int $a, int $b, array $expected)
+    {
+        // When
+        $sum = Bitwise::add($a, $b);
+
+        // Then
+        $this->assertEquals($expected, $sum);
+    }

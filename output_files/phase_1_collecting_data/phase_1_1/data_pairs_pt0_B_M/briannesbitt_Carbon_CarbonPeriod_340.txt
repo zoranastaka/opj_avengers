@@ -1,0 +1,12 @@
+    /**
+     * Specify data which should be serialized to JSON.
+     *
+     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return CarbonInterface[]
+     */
+
+    public function jsonSerialize()
+    {
+        return $this->toArray();
+    }

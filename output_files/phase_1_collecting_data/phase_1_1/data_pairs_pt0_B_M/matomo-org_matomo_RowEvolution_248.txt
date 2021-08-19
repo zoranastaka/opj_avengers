@@ -1,0 +1,75 @@
+    /**
+     * Given the Row evolution dataTable, and the associated metadata,
+     * enriches the metadata with min/max values, and % change between the first period and the last one
+     * @param array $metadata
+     * @param DataTable\Map $dataTable
+     */
+
+    private function enhanceRowEvolutionMetaData(&$metadata, $dataTable)
+    {
+        // prepare result array for metrics
+        $metricsResult = array();
+        foreach ($metadata['metrics'] as $metric => $name) {
+            $metricsResult[$metric] = array('name' => $name);
+
+            if (!empty($metadata['logos'][$metric])) {
+                $metricsResult[$metric]['logo'] = $metadata['logos'][$metric];
+            }
+        }
+        unset($metadata['logos']);
+
+        $subDataTables = $dataTable->getDataTables();
+        if (empty($subDataTables)) {
+            throw new \Exception("Unexpected state: row evolution API call returned empty DataTable\\Map.");
+        }
+
+        $firstDataTable = reset($subDataTables);
+        $this->checkDataTableInstance($firstDataTable);
+        $firstDataTableRow = $firstDataTable->getFirstRow();
+
+        $lastDataTable = end($subDataTables);
+        $this->checkDataTableInstance($lastDataTable);
+        $lastDataTableRow = $lastDataTable->getFirstRow();
+
+        // Process min/max values
+        $firstNonZeroFound = array();
+        foreach ($subDataTables as $subDataTable) {
+            // $subDataTable is the report for one period, it has only one row
+            $firstRow = $subDataTable->getFirstRow();
+            foreach ($metadata['metrics'] as $metric => $label) {
+                $value = $firstRow ? floatval($firstRow->getColumn($metric)) : 0;
+                if ($value > 0) {
+                    $firstNonZeroFound[$metric] = true;
+                } else if (!isset($firstNonZeroFound[$metric])) {
+                    continue;
+                }
+                if (!isset($metricsResult[$metric]['min'])
+                    || $metricsResult[$metric]['min'] > $value
+                ) {
+                    $metricsResult[$metric]['min'] = $value;
+                }
+                if (!isset($metricsResult[$metric]['max'])
+                    || $metricsResult[$metric]['max'] < $value
+                ) {
+                    $metricsResult[$metric]['max'] = $value;
+                }
+            }
+        }
+
+        // Process % change between first/last values
+        foreach ($metadata['metrics'] as $metric => $label) {
+            $first = $firstDataTableRow ? floatval($firstDataTableRow->getColumn($metric)) : 0;
+            $last = $lastDataTableRow ? floatval($lastDataTableRow->getColumn($metric)) : 0;
+
+            // do not calculate evolution if the first value is 0 (to avoid divide-by-zero)
+            if ($first == 0) {
+                continue;
+            }
+
+            $change = CalculateEvolutionFilter::calculate($last, $first, $quotientPrecision = 0, true, true);
+
+            $metricsResult[$metric]['change'] = $change;
+        }
+
+        $metadata['metrics'] = $metricsResult;
+    }

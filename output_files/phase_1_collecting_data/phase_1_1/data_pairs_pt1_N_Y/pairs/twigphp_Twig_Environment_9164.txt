@@ -1,0 +1,16 @@
+    /**
+     * @internal
+     */
+
+    public function getGlobals(): array
+    {
+        if ($this->extensionSet->isInitialized()) {
+            if (null === $this->resolvedGlobals) {
+                $this->resolvedGlobals = array_merge($this->extensionSet->getGlobals(), $this->globals);
+            }
+
+            return $this->resolvedGlobals;
+        }
+
+        return array_merge($this->extensionSet->getGlobals(), $this->globals);
+    }

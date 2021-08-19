@@ -1,0 +1,15 @@
+    /**
+     * @test         isRef returns false for a ref matrix
+     * @dataProvider dataProviderForNotRrefMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsNotRrefForRefMatrix(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isRref());
+    }

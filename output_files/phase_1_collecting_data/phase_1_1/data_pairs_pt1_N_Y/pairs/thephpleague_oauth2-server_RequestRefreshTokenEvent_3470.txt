@@ -1,0 +1,9 @@
+    /**
+     * @return RefreshTokenEntityInterface
+     * @codeCoverageIgnore
+     */
+
+    public function getRefreshToken()
+    {
+        return $this->refreshToken;
+    }

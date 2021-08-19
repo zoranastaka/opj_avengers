@@ -1,0 +1,18 @@
+    /**
+     * Verify if there's a header line on the stack
+     *
+     * @param string $header
+     *
+     * @return bool
+     */
+
+    public static function has($header)
+    {
+        foreach (self::$data as $item) {
+            $components = explode(':', $item['header']);
+            if (trim($components[0]) === $header) {
+                return true;
+            }
+        }
+        return false;
+    }

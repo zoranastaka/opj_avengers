@@ -1,0 +1,10 @@
+    /**
+     * Returns the underlying {@link FrameTree} object
+     *
+     * @return FrameTree
+     */
+
+    public function getTree()
+    {
+        return $this->tree;
+    }

@@ -1,0 +1,9 @@
+    /** @dataProvider getOutputVerbosityProvider */
+
+    public function testGetOutputVerbosity($expectation, $verbosity)
+    {
+        $config = $this->getConfig();
+        $config->setVerbosity($verbosity);
+
+        $this->assertSame($expectation, $config->getOutputVerbosity());
+    }

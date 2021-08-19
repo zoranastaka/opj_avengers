@@ -1,0 +1,12 @@
+    /**
+     * Return the last date in the date period.
+     *
+     * @return CarbonInterface|null
+     */
+
+    public function last()
+    {
+        $array = $this->toArray();
+
+        return $array ? $array[\count($array) - 1] : null;
+    }

@@ -1,0 +1,7 @@
+    /**
+     * Returns the fully-qualified class name of the connection used for tests.
+     *
+     * @return string
+     */
+
+    protected abstract function getConnectionClass(): string;

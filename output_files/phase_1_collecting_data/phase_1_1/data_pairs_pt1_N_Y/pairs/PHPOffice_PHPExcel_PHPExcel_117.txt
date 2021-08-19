@@ -1,0 +1,10 @@
+    /**
+     * Get the workbook collection of cellXfs
+     *
+     * @return PHPExcel_Style[]
+     */
+
+    public function getCellXfCollection()
+    {
+        return $this->cellXfCollection;
+    }

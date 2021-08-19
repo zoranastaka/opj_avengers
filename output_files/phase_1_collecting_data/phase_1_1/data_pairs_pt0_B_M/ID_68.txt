@@ -1,0 +1,37 @@
+    /**
+     * Test line break reformatting.
+     */
+
+    public function testLineBreaks()
+    {
+        //May have been altered by earlier tests, can interfere with line break format
+        $this->Mail->isSMTP();
+        $this->Mail->preSend();
+        $unixsrc = "hello\nWorld\nAgain\n";
+        $macsrc = "hello\rWorld\rAgain\r";
+        $windowssrc = "hello\r\nWorld\r\nAgain\r\n";
+        $mixedsrc = "hello\nWorld\rAgain\r\n";
+        $target = "hello\r\nWorld\r\nAgain\r\n";
+        self::assertEquals($target, PHPMailer::normalizeBreaks($unixsrc), 'UNIX break reformatting failed');
+        self::assertEquals($target, PHPMailer::normalizeBreaks($macsrc), 'Mac break reformatting failed');
+        self::assertEquals($target, PHPMailer::normalizeBreaks($windowssrc), 'Windows break reformatting failed');
+        self::assertEquals($target, PHPMailer::normalizeBreaks($mixedsrc), 'Mixed break reformatting failed');
+
+        //To see accurate results when using postfix, set `sendmail_fix_line_endings = never` in main.cf
+        $this->Mail->Subject = 'PHPMailer DOS line breaks';
+        $this->Mail->Body = "This message\r\ncontains\r\nDOS-format\r\nCRLF line breaks.";
+        self::assertTrue($this->Mail->send());
+
+        $this->Mail->Subject = 'PHPMailer UNIX line breaks';
+        $this->Mail->Body = "This message\ncontains\nUNIX-format\nLF line breaks.";
+        self::assertTrue($this->Mail->send());
+
+        $this->Mail->Encoding = 'quoted-printable';
+        $this->Mail->Subject = 'PHPMailer DOS line breaks, QP';
+        $this->Mail->Body = "This message\r\ncontains\r\nDOS-format\r\nCRLF line breaks.";
+        self::assertTrue($this->Mail->send());
+
+        $this->Mail->Subject = 'PHPMailer UNIX line breaks, QP';
+        $this->Mail->Body = "This message\ncontains\nUNIX-format\nLF line breaks.";
+        self::assertTrue($this->Mail->send());
+    }

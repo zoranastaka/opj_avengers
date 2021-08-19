@@ -1,0 +1,21 @@
+    /**
+     * @test         cdf
+     * @dataProvider dataProviderForCdf
+     * @param        float $a
+     * @param        float $b
+     * @param        float $x
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testCdf(float $a, float $b, float $x, float $expected)
+    {
+        // Given
+        $uniform = new Uniform($a, $b);
+
+        // When
+        $cdf = $uniform->cdf($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $cdf, 0.001);
+    }

@@ -1,0 +1,13 @@
+    /**
+     * Set a part of the CarbonInterval object.
+     *
+     * @param string $name
+     * @param int    $value
+     *
+     * @throws UnknownSetterException
+     */
+
+    public function __set($name, $value)
+    {
+        $this->set($name, $value);
+    }

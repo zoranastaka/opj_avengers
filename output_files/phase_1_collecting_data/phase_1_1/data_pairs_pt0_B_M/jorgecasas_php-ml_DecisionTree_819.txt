@@ -1,0 +1,22 @@
+    /**
+     * This method is used to set number of columns to be used
+     * when deciding a split at an internal node of the tree.  <br>
+     * If the value is given 0, then all features are used (default behaviour),
+     * otherwise the given value will be used as a maximum for number of columns
+     * randomly selected for each split operation.
+     *
+     * @return $this
+     *
+     * @throws InvalidArgumentException
+     */
+
+    public function setNumFeatures(int $numFeatures)
+    {
+        if ($numFeatures < 0) {
+            throw new InvalidArgumentException('Selected column count should be greater or equal to zero');
+        }
+
+        $this->numUsableFeatures = $numFeatures;
+
+        return $this;
+    }

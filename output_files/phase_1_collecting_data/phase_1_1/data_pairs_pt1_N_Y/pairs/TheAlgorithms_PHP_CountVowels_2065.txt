@@ -1,0 +1,20 @@
+/**
+ * This function returns
+ * the Total no. of vowels
+ * present in the given
+ * string using a
+ * regular expression.
+ *
+ * @param string $string
+ * @return int
+ */
+
+function countVowelsRegex(string $string)
+{
+    if (empty($string)) {
+        throw new \Exception('Please pass a non-empty string value');
+    }
+    $string = strtolower($string); // For case-insensitive checking
+
+    return preg_match_all('/[a,e,i,o,u]/', $string);
+}

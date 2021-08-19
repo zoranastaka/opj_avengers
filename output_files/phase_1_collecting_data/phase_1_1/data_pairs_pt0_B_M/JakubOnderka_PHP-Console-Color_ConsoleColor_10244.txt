@@ -1,0 +1,24 @@
+    /**
+     * @param string $name
+     * @param array|string $styles
+     * @throws \InvalidArgumentException
+     * @throws InvalidStyleException
+     */
+
+    public function addTheme($name, $styles)
+    {
+        if (is_string($styles)) {
+            $styles = array($styles);
+        }
+        if (!is_array($styles)) {
+            throw new \InvalidArgumentException("Style must be string or array.");
+        }
+
+        foreach ($styles as $style) {
+            if (!$this->isValidStyle($style)) {
+                throw new InvalidStyleException($style);
+            }
+        }
+
+        $this->themes[$name] = $styles;
+    }

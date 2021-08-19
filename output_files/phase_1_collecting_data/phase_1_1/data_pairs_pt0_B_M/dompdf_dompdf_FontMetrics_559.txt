@@ -1,0 +1,15 @@
+    /**
+     * @param string $family
+     * @return null|string
+     */
+
+    public function getFamily($family)
+    {
+        $family = str_replace(["'", '"'], "", mb_strtolower($family));
+
+        if (isset($this->fontLookup[$family])) {
+            return $this->fontLookup[$family];
+        }
+
+        return null;
+    }

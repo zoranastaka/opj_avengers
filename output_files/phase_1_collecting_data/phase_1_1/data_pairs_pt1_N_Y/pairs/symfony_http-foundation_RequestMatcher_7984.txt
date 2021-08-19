@@ -1,0 +1,10 @@
+    /**
+     * Adds a check for the HTTP method.
+     *
+     * @param string|string[]|null $method An HTTP method or an array of HTTP methods
+     */
+
+    public function matchMethod($method)
+    {
+        $this->methods = null !== $method ? array_map('strtoupper', (array) $method) : [];
+    }

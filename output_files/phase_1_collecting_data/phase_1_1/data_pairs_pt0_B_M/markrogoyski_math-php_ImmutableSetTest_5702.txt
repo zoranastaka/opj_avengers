@@ -1,0 +1,16 @@
+    /**
+     * @test clear does nothing
+     */
+
+    public function testClearDoesNothing()
+    {
+        // Given
+        $A = new ImmutableSet([1, 2, 3, 4]);
+        $B = $A->copy();
+
+        // When
+        $A->clear();
+
+        $this->assertEquals($B, $A);
+        $this->assertEquals($B->asArray(), $A->asArray());
+    }

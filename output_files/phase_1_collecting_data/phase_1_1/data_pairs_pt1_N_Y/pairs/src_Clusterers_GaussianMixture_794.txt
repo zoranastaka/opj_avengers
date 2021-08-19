@@ -1,0 +1,33 @@
+    /**
+     * Calculate the joint log likelihood of a sample being a member
+     * of each of the gaussian components.
+     *
+     * @param list<int|float> $sample
+     * @return float[]
+     */
+
+    protected function jointLogLikelihood(array $sample) : array
+    {
+        $likelihoods = [];
+
+        foreach ($this->logPriors as $cluster => $prior) {
+            $means = $this->means[$cluster];
+            $variances = $this->variances[$cluster];
+
+            $likelihood = $prior;
+
+            foreach ($sample as $column => $feature) {
+                $mean = $means[$column];
+                $variance = $variances[$column];
+
+                $pdf = -0.5 * log(TWO_PI * $variance);
+                $pdf -= 0.5 * (($feature - $mean) ** 2) / $variance;
+
+                $likelihood += $pdf;
+            }
+
+            $likelihoods[$cluster] = $likelihood;
+        }
+
+        return $likelihoods;
+    }

@@ -1,0 +1,14 @@
+    /**
+     * Get a medium strength random number generator
+     *
+     * Medium Strength should be used for most needs of a cryptographic nature.
+     * They are strong enough to be used as keys and salts.  However, they do
+     * take some time and resources to generate, so they should not be over-used
+     *
+     * @return Generator The instantiated generator
+     */
+
+    public function getMediumStrengthGenerator()
+    {
+        return $this->getGenerator(new Strength(Strength::MEDIUM));
+    }

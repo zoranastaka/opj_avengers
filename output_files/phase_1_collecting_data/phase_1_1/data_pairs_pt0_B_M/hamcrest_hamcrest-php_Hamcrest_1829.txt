@@ -1,0 +1,8 @@
+    /**
+     * Does array size satisfy a given matcher?
+     */
+
+    function hasToString($matcher)
+    {
+        return \Hamcrest\Core\HasToString::hasToString($matcher);
+    }

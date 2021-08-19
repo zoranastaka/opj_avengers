@@ -1,0 +1,30 @@
+    /**
+     * Prepares the ContainerBuilder before it is compiled.
+     */
+
+    protected function prepareContainer(ContainerBuilder $container)
+    {
+        $extensions = [];
+        foreach ($this->bundles as $bundle) {
+            if ($extension = $bundle->getContainerExtension()) {
+                $container->registerExtension($extension);
+            }
+
+            if ($this->debug) {
+                $container->addObjectResource($bundle);
+            }
+        }
+
+        foreach ($this->bundles as $bundle) {
+            $bundle->build($container);
+        }
+
+        $this->build($container);
+
+        foreach ($container->getExtensions() as $extension) {
+            $extensions[] = $extension->getAlias();
+        }
+
+        // ensure these extensions are implicitly loaded
+        $container->getCompilerPassConfig()->setMergePass(new MergeExtensionConfigurationPass($extensions));
+    }

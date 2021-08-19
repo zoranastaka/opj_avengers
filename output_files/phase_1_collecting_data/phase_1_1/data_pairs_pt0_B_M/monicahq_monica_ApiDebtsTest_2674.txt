@@ -1,0 +1,19 @@
+    /** @test */
+
+    public function it_cant_update_a_debt_with_missing_parameters()
+    {
+        $user = $this->signin();
+        $debt = factory(Debt::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $response = $this->json('PUT', '/api/debts/'.$debt->id, [
+            'contact_id' => $debt->contact_id,
+        ]);
+
+        $this->expectDataError($response, [
+            'The in debt field is required.',
+            'The status field is required.',
+            'The amount field is required.',
+        ]);
+    }

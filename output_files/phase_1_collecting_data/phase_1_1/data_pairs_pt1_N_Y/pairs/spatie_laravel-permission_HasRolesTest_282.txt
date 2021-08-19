@@ -1,0 +1,10 @@
+    /** @test */
+
+    public function it_can_sync_multiple_roles()
+    {
+        $this->testUser->syncRoles('testRole', 'testRole2');
+
+        $this->assertTrue($this->testUser->hasRole('testRole'));
+
+        $this->assertTrue($this->testUser->hasRole('testRole2'));
+    }

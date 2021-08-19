@@ -1,0 +1,8 @@
+    /**
+     * @inheritDoc
+     */
+
+    public function getNodeType(): string
+    {
+        return \PhpParser\Node\Expr\Variable::class;
+    }

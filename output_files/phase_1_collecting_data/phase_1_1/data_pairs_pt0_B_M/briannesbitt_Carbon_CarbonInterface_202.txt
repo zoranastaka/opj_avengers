@@ -1,0 +1,12 @@
+    /**
+     * Returns english human readable complete date string.
+     *
+     * @example
+     * ```
+     * echo Carbon::now()->toString();
+     * ```
+     *
+     * @return string
+     */
+
+    public function toString();

@@ -1,0 +1,12 @@
+    /**
+     * @covers ::__construct
+     * @covers ::getEscape
+     */
+
+    public function testGetEscape(): void
+    {
+        $formatter = new EscapeFormula();
+        self::assertSame("\t", $formatter->getEscape());
+        $formatterBis = new EscapeFormula("\n");
+        self::assertSame("\n", $formatterBis->getEscape());
+    }

@@ -1,0 +1,9 @@
+    /**
+     * Gets the token offset the comment started on.
+     *
+     * @deprecated Use getStartTokenPos() instead
+     *
+     * @return int Token offset
+     */
+
+    public function getTokenPos() : int {

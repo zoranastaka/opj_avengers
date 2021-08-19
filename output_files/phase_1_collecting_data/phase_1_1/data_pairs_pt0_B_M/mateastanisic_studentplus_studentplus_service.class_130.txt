@@ -1,0 +1,8 @@
+	//vraća studenta(klasa) s određenim id-om
+
+	function get_student_by_id($id){
+		try{
+			$db = DB::getConnection();
+			$st = $db->prepare( 'SELECT * FROM studentplus_students WHERE id=:id ORDER BY id' );
+			$st->execute( array('id' => $id ) );
+		}

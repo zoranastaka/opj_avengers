@@ -1,0 +1,9 @@
+    /**
+     * @return array
+     * @deprecated
+     */
+
+    public function get_callbacks()
+    {
+        return $this->getCallbacks();
+    }

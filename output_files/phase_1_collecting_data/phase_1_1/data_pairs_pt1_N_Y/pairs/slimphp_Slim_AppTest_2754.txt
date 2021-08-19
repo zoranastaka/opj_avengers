@@ -1,0 +1,18 @@
+    /**
+     * @param string $pattern
+     * @dataProvider routePatternsProvider
+     */
+
+    public function testRoutePatterns(string $pattern)
+    {
+        $responseFactoryProphecy = $this->prophesize(ResponseFactoryInterface::class);
+
+        $app = new App($responseFactoryProphecy->reveal());
+        $app->get($pattern, function () {
+        });
+
+        $routeCollector = $app->getRouteCollector();
+        $route = $routeCollector->lookupRoute('route0');
+
+        $this->assertEquals($pattern, $route->getPattern());
+    }

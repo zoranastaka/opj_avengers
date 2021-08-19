@@ -1,0 +1,12 @@
+    /**
+     * Mean of the distribution
+     *
+     * μ = k θ
+     *
+     * @return float
+     */
+
+    public function mean(): float
+    {
+        return $this->k * $this->θ;
+    }

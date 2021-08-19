@@ -1,0 +1,18 @@
+    /**
+     * @test
+     * @depends builderCanGenerateAToken
+     */
+
+    public function tokenValidationShouldPassWhenEverythingIsFine(Token $generated): void
+    {
+        $clock = new FrozenClock(new DateTimeImmutable('@' . self::CURRENT_TIME));
+
+        $constraints = [
+            new IdentifiedBy('1'),
+            new PermittedFor('http://client.abc.com'),
+            new IssuedBy('http://issuer.abc.com', 'http://api.abc.com'),
+            new LooseValidAt($clock),
+        ];
+
+        self::assertTrue($this->config->validator()->validate($generated, ...$constraints));
+    }

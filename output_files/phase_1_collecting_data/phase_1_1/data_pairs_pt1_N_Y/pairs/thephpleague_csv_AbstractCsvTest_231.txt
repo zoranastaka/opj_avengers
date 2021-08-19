@@ -1,0 +1,14 @@
+    /**
+     * @covers ::setOutputBOM
+     * @covers ::toString
+     */
+
+    public function testChangingBOMOnOutput(): void
+    {
+        $text = 'john,doe,john.doe@example.com'.PHP_EOL
+            .'jane,doe,jane.doe@example.com'.PHP_EOL;
+        $reader = Reader::createFromString(Reader::BOM_UTF32_BE.$text);
+        $reader->setOutputBOM(Reader::BOM_UTF8);
+
+        self::assertSame(Reader::BOM_UTF8.$text, $reader->toString());
+    }

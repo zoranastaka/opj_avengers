@@ -1,0 +1,12 @@
+    /**
+     * Format the instance as RFC850
+     *
+     * @example
+     * ```
+     * echo Carbon::now()->toRfc850String();
+     * ```
+     *
+     * @return string
+     */
+
+    public function toRfc850String();

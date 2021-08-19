@@ -1,0 +1,8 @@
+    /**
+     * Matches an empty array.
+     */
+
+    function nonEmptyArray()
+    {
+        return \Hamcrest\Arrays\IsArrayWithSize::nonEmptyArray();
+    }

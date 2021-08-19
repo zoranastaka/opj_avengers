@@ -1,0 +1,11 @@
+    /**
+     * Set text to be written
+     *
+     * @param  string $text
+     * @return void
+     */
+
+    public function background($color)
+    {
+        $this->background = $color;
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @requires OS Linux
+     */
+
+    public function testFamilyCanBeRetrieved(): void
+    {
+        $this->assertEquals('Linux', $this->os->getFamily());
+    }

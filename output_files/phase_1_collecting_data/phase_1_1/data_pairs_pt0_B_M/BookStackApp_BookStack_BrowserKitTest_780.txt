@@ -1,0 +1,12 @@
+    /**
+     * Quickly sets an array of settings.
+     * @param $settingsArray
+     */
+
+    protected function setSettings($settingsArray)
+    {
+        $settings = app(SettingService::class);
+        foreach ($settingsArray as $key => $value) {
+            $settings->put($key, $value);
+        }
+    }

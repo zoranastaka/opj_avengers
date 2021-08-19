@@ -1,0 +1,20 @@
+    /**
+     * Returns the status of the current session
+     *
+     * ``` php
+     * <?php
+     * if ($session->status() !== PHP_SESSION_ACTIVE) {
+     *     $session->start();
+     * }
+     * ?>
+     * ```
+     */
+
+    public function status(): int
+    {
+        if ($this->isStarted()) {
+            return PHP_SESSION_ACTIVE;
+        }
+
+        return PHP_SESSION_NONE;
+    }

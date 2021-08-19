@@ -1,0 +1,26 @@
+    /**
+     * ARC4 encrypt a text string
+     *
+     * @param $text
+     * @return string
+     */
+
+    function ARC4($text)
+    {
+        $len = mb_strlen($text, '8bit');
+        $a = 0;
+        $b = 0;
+        $c = $this->arc4;
+        $out = '';
+        for ($i = 0; $i < $len; $i++) {
+            $a = ($a + 1) % 256;
+            $t = $c[$a];
+            $b = ($b + ord($t)) % 256;
+            $c[$a] = $c[$b];
+            $c[$b] = $t;
+            $k = ord($c[(ord($c[$a]) + ord($c[$b])) % 256]);
+            $out .= chr(ord($text[$i]) ^ $k);
+        }
+
+        return $out;
+    }

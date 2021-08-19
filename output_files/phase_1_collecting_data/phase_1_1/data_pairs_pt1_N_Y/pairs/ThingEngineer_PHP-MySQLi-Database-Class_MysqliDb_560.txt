@@ -1,0 +1,13 @@
+    /**
+     * Escape harmful characters which might affect a query.
+     *
+     * @param string $str The string to escape.
+     *
+     * @return string The escaped string.
+     * @throws Exception
+     */
+
+    public function escape($str)
+    {
+        return $this->mysqli()->real_escape_string($str);
+    }

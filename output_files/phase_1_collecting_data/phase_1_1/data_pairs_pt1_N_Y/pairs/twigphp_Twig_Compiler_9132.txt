@@ -1,0 +1,18 @@
+    /**
+     * @return $this
+     */
+
+    public function addDebugInfo(Node $node)
+    {
+        if ($node->getTemplateLine() != $this->lastLine) {
+            $this->write(sprintf("// line %d\n", $node->getTemplateLine()));
+
+            $this->sourceLine += substr_count($this->source, "\n", $this->sourceOffset);
+            $this->sourceOffset = \strlen($this->source);
+            $this->debugInfo[$this->sourceLine] = $node->getTemplateLine();
+
+            $this->lastLine = $node->getTemplateLine();
+        }
+
+        return $this;
+    }

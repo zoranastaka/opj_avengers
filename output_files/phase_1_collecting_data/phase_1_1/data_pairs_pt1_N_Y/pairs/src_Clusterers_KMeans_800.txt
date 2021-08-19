@@ -1,0 +1,10 @@
+    /**
+     * Return the estimator type.
+     *
+     * @return \Rubix\ML\EstimatorType
+     */
+
+    public function type() : EstimatorType
+    {
+        return EstimatorType::clusterer();
+    }

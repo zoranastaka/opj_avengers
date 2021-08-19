@@ -1,0 +1,18 @@
+    /**
+     * @test         isRef on ref matrix should return true
+     * @dataProvider dataProviderForNonsingularMatrix
+     * @param        $A
+     * @throws       \Exception
+     */
+
+    public function testRefIsRef(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $ref = $A->ref();
+
+        // Then
+        $this->assertTrue($ref->isRef());
+    }

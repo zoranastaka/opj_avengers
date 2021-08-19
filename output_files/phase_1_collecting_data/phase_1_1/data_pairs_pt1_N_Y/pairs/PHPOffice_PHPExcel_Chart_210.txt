@@ -1,0 +1,14 @@
+    /**
+     * Get Minor Gridlines
+     *
+     * @return PHPExcel_Chart_GridLines
+     */
+
+    public function getMinorGridlines()
+    {
+        if ($this->minorGridlines !== null) {
+            return $this->minorGridlines;
+        }
+
+        return new PHPExcel_Chart_GridLines();
+    }

@@ -1,0 +1,16 @@
+    /**
+     * @test         min multiple arrays
+     * @dataProvider dataProviderForMinMulti
+     * @param        array $expected
+     * @param        array[] $arrays
+     * @throws       \Exception
+     */
+
+    public function testMinMulti(array $expected, array ...$arrays)
+    {
+        // When
+        $mins = Multi::min(...$arrays);
+
+        // Then
+        $this->assertEquals($expected, $mins);
+    }

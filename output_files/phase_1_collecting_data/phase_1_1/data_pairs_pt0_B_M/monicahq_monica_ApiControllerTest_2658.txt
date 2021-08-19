@@ -1,0 +1,20 @@
+    /** @test */
+
+    public function it_only_accepts_some_sorting_parameters()
+    {
+        $apiController = new ApiController;
+
+        $apiController->setSortCriteria('created_at');
+
+        $this->assertEquals(
+            'created_at',
+            $apiController->getSortCriteria()
+        );
+
+        $apiController->setSortCriteria('anything');
+
+        $this->assertEquals(
+            '',
+            $apiController->getSortCriteria()
+        );
+    }

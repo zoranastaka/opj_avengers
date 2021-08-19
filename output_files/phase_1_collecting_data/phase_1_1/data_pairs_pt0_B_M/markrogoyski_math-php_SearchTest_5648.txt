@@ -1,0 +1,15 @@
+    /**
+     * @test argMin error when the input array is empty
+     */
+
+    public function testArgMinErrorOnEmptyArray()
+    {
+        // Given
+        $values = [];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $index = Search::argMin($values);
+    }

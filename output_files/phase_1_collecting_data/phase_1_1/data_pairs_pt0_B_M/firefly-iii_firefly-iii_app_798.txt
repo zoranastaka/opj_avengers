@@ -1,0 +1,11 @@
+    /**
+     * @param string $left
+     * @param string $right
+     *
+     * @return bool
+     */
+
+    function str_is_equal(string $left, string $right): bool
+    {
+        return $left === $right;
+    }

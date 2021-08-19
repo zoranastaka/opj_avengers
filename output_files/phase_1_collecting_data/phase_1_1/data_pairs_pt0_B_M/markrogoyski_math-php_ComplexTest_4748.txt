@@ -1,0 +1,17 @@
+    /**
+     * @test __get throws an Exception\BadParameterException if a property other than r or i is attempted
+     */
+
+    public function testGetException()
+    {
+        // Given
+        $r       = 1;
+        $i       = 2;
+        $complex = new Complex($r, $i);
+
+        // Then
+        $this->expectException(Exception\BadParameterException::class);
+
+        // When
+        $z = $complex->z;
+    }

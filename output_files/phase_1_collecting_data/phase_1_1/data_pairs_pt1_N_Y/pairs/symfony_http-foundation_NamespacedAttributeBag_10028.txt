@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function set(string $name, $value)
+    {
+        $attributes = &$this->resolveAttributePath($name, true);
+        $name = $this->resolveKey($name);
+        $attributes[$name] = $value;
+    }

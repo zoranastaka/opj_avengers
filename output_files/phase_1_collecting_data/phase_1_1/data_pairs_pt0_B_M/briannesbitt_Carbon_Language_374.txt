@@ -1,0 +1,12 @@
+    /**
+     * Set the ISO language name.
+     *
+     * @param string $isoName
+     */
+
+    public function setIsoName(string $isoName): self
+    {
+        $this->isoName = $isoName;
+
+        return $this;
+    }

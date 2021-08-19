@@ -1,0 +1,11 @@
+    /**
+     * @test     Adding a float throws an exception
+     * @throws   \Exception
+     */
+
+    public function testAddException()
+    {
+        $this->expectException(Exception\IncorrectTypeException::class);
+        $number = new Rational(1, 0, 1);
+        $number->add(1.5);
+    }

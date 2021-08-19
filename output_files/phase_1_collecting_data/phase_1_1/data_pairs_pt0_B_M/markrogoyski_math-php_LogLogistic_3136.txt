@@ -1,0 +1,22 @@
+    /**
+     * Mean of the distribution
+     *
+     *      απ / β
+     * μ = --------  if β > 1, else undefined
+     *     sin(π/β)
+     *
+     * @return float
+     */
+
+    public function mean(): float
+    {
+        $α = $this->α;
+        $β = $this->β;
+        $π = \M_PI;
+
+        if ($β > 1) {
+            return (($α * $π) / $β) / \sin($π / $β);
+        }
+
+        return \NAN;
+    }

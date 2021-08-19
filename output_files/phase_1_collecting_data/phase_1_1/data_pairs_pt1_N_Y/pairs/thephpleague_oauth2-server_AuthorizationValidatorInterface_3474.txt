@@ -1,0 +1,10 @@
+    /**
+     * Determine the access token in the authorization header and append OAUth properties to the request
+     *  as attributes.
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return ServerRequestInterface
+     */
+
+    public function validateAuthorization(ServerRequestInterface $request);

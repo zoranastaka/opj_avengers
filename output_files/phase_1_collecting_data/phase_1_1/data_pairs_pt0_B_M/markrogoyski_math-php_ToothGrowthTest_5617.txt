@@ -1,0 +1,14 @@
+    /**
+     * @test 3 variables
+     */
+
+    public function testDataHas3Variables()
+    {
+        // When
+        $data = $this->toothGrowth->getData();
+
+        // Then
+        foreach ($data as $observation) {
+            $this->assertCount(3, $observation);
+        }
+    }

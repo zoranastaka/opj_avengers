@@ -1,0 +1,16 @@
+    /**
+     * Middleware that applies a map function to the request before passing to
+     * the next handler.
+     *
+     * @param callable $fn Function that accepts a RequestInterface and returns
+     *                     a RequestInterface.
+     */
+
+    public static function mapRequest(callable $fn): callable
+    {
+        return static function (callable $handler) use ($fn): callable {
+            return static function (RequestInterface $request, array $options) use ($handler, $fn) {
+                return $handler($fn($request), $options);
+            };
+        };
+    }

@@ -1,0 +1,10 @@
+    /**
+     * @requires PHP
+     */
+
+    public function testGetNameReturnsPhpdbgWhenRunningOnPhp(): void
+    {
+        $this->markTestSkippedWhenRunningOnPhpdbg();
+
+        $this->assertSame('PHP', $this->env->getName());
+    }

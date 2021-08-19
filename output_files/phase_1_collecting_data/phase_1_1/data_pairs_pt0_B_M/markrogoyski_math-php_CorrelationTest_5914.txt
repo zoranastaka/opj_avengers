@@ -1,0 +1,17 @@
+    /**
+     * @test     spearmansRho with different length arrays
+     * @throws   \Exception
+     */
+
+    public function testSpearmansRhoExceptionDifferentLengthArrays()
+    {
+        // Given
+        $X = [1, 2, 3];
+        $Y = [2, 3, 4, 5];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Correlation::spearmansRho($X, $Y);
+    }

@@ -1,0 +1,15 @@
+    /**
+     * Returns a named array with default values for connection parameters.
+     *
+     * @return array Default connection parameters
+     */
+
+    protected function getDefaultParametersArray(): array
+    {
+        return array(
+            'scheme' => 'tcp',
+            'host' => constant('REDIS_SERVER_HOST'),
+            'port' => constant('REDIS_SERVER_PORT'),
+            'database' => constant('REDIS_SERVER_DBNUM'),
+        );
+    }

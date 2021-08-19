@@ -1,0 +1,19 @@
+    /**
+     * @test
+     * @dataProvider timeFractionConversions
+     *
+     * @param float|int|string $issuedAt
+     */
+
+    public function typeConversionDoesNotCauseParsingErrors($issuedAt, string $timeFraction): void
+    {
+        $encoder = new JoseEncoder();
+        $headers = $encoder->base64UrlEncode($encoder->jsonEncode(['typ' => 'JWT', 'alg' => 'none']));
+        $claims  = $encoder->base64UrlEncode($encoder->jsonEncode(['iat' => $issuedAt]));
+
+        $config      = Configuration::forUnsecuredSigner();
+        $parsedToken = $config->parser()->parse($headers . '.' . $claims . '.');
+
+        self::assertInstanceOf(Plain::class, $parsedToken);
+        self::assertSame($timeFraction, $parsedToken->claims()->get('iat')->format('U.u'));
+    }

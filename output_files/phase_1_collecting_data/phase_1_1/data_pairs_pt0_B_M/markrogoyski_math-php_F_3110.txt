@@ -1,0 +1,27 @@
+    /**
+     * Cumulative distribution function
+     *
+     *          / d₁  d₂ \
+     *  I      |  --, --  |
+     *   ᵈ¹ˣ    \ 2   2  /
+     *   ------
+     *   ᵈ¹ˣ⁺ᵈ²
+     *
+     * Where I is the regularized incomplete beta function.
+     *
+     * @param float $x  percentile ≥ 0
+     *
+     * @return float
+     */
+
+    public function cdf(float $x): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['x' => $x]);
+
+        $d₁ = $this->d₁;
+        $d₂ = $this->d₂;
+
+        $ᵈ¹ˣ／d₁x＋d₂ = ($d₁ * $x) / ($d₁ * $x + $d₂);
+
+        return Special::regularizedIncompleteBeta($ᵈ¹ˣ／d₁x＋d₂, $d₁ / 2, $d₂ / 2);
+    }

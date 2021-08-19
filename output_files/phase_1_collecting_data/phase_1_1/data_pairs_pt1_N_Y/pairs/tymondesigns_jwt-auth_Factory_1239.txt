@@ -1,0 +1,10 @@
+    /**
+     * Build and get the Claims Collection.
+     *
+     * @return \Tymon\JWTAuth\Claims\Collection
+     */
+
+    public function buildClaimsCollection()
+    {
+        return $this->buildClaims()->resolveClaims();
+    }

@@ -1,0 +1,20 @@
+    /**
+     * @covers ::convert
+     * @covers ::inputEncoding
+     */
+
+    public function testCharsetConverterConvertsAnArray(): void
+    {
+        $expected = ['Batman', 'Superman', 'Anaïs'];
+        $raw = explode(',', mb_convert_encoding(implode(',', $expected), 'iso-8859-15', 'utf-8'));
+        $converter = (new CharsetConverter())
+            ->inputEncoding('iso-8859-15')
+            ->inputEncoding('iso-8859-15')
+            ->outputEncoding('utf-8')
+        ;
+
+        /** @var array $result */
+        $result = $converter->convert([$raw]);
+
+        self::assertSame($expected, $result[0]);
+    }

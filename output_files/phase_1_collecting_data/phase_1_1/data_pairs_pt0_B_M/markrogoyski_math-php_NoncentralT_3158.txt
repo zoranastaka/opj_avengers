@@ -1,0 +1,11 @@
+    /**
+     * Constructor
+     *
+     * @param int   $ν degrees of freedom > 0
+     * @param float $μ Noncentrality parameter
+     */
+
+    public function __construct(int $ν, float $μ)
+    {
+        parent::__construct($ν, $μ);
+    }

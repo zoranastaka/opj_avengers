@@ -1,0 +1,12 @@
+    /**
+     * Format the instance as a string using the set format
+     *
+     * @example
+     * ```
+     * echo Carbon::now(); // Carbon instances can be casted to string
+     * ```
+     *
+     * @return string
+     */
+
+    public function __toString();

@@ -1,0 +1,17 @@
+    /**
+     * Map square
+     *
+     * @param  array  $xs
+     *
+     * @return array
+     */
+
+    public static function square(array $xs): array
+    {
+        return \array_map(
+            function ($x) {
+                return $x ** 2;
+            },
+            $xs
+        );
+    }

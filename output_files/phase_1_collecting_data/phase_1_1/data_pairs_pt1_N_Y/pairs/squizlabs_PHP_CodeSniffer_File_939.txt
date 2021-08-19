@@ -1,0 +1,11 @@
+    /**
+     * Returns the errors raised from processing this file.
+     *
+     * @return array
+     */
+
+    public function getErrors()
+    {
+        return $this->errors;
+
+    }//end getErrors()

@@ -1,0 +1,12 @@
+    /**
+     * Returns a new command instance.
+     *
+     * @return Command\CommandInterface
+     */
+
+    public function getCommand(): Command\CommandInterface
+    {
+        $command = $this->getExpectedCommand();
+
+        return $command instanceof Command\CommandInterface ? $command : new $command();
+    }

@@ -1,0 +1,19 @@
+    /**
+     * @test     checkAsAndBs throws an Exception\BadDataException if a point is not closed
+     */
+
+    public function testCheckAsAndBsExceptionPointNotClosed()
+    {
+        // Given
+        [$a, $b, $lastA, $lastB, $lastBOpen, $aOpen, $bOpen] = [1, 1, null, null, null, true, true];
+
+        // And
+        $checkAsAndBs = new \ReflectionMethod(Piecewise::class, 'checkAsAndBs');
+        $checkAsAndBs->setAccessible(true);
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $checkAsAndBs->invokeArgs($this->piecewise, [$a, $b, $lastA, $lastB, $lastBOpen, $aOpen, $bOpen]);
+    }

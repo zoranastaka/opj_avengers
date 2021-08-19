@@ -1,0 +1,10 @@
+    /**
+     * Sets image to process
+     *
+     * @param Image $image
+     */
+
+    protected function setImage($image)
+    {
+        $this->image = $image;
+    }

@@ -1,0 +1,22 @@
+    /**
+     * @test         Matrix eigenvalues using powerIterationMethod returns the expected eigenvalues
+     * @dataProvider dataProviderForEigenvalues
+     * @dataProvider dataProviderForLargeMatrixEigenvalues
+     * @dataProvider dataProviderForSymmetricEigenvalues
+     * @param        array $A
+     * @param        array $S
+     * @param        float $max_abs_eigenvalue maximum absolute eigenvalue
+     * @throws       \Exception
+     */
+
+    public function testPowerIterationViaMatrix(array $A, array $S, float $max_abs_eigenvalue)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $eigenvalues = $A->eigenvalues(Eigenvalue::POWER_ITERATION);
+
+        // Then
+        $this->assertEqualsWithDelta([$max_abs_eigenvalue], $eigenvalues, 0.0001);
+    }

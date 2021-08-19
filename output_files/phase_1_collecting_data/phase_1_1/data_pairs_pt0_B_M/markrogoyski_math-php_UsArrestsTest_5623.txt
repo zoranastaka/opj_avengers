@@ -1,0 +1,12 @@
+    /**
+     * @test 50 observations
+     */
+
+    public function testDataHas50Observations()
+    {
+        // When
+        $data = $this->usArrests->getData();
+
+        // Then
+        $this->assertCount(50, $data);
+    }

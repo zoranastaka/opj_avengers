@@ -1,0 +1,8 @@
+    /**
+     * @test Limits constant is correct format
+     */
+
+    public function testDirichletSupportLimits()
+    {
+        $this->limitTest(Multivariate\Dirichlet::SUPPORT_LIMITS);
+    }

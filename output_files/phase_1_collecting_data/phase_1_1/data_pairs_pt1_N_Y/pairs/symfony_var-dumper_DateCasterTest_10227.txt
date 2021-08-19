@@ -1,0 +1,16 @@
+    /**
+     * @dataProvider provideTimeZones
+     */
+
+    public function testDumpTimeZone($timezone, $expected)
+    {
+        $timezone = new \DateTimeZone($timezone);
+
+        $xDump = <<<EODUMP
+DateTimeZone {
+  timezone: $expected
+%A}
+EODUMP;
+
+        $this->assertDumpMatchesFormat($xDump, $timezone);
+    }

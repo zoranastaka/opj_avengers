@@ -1,0 +1,10 @@
+    /**
+     * Get comment height (CSS style, i.e. XXpx or YYpt)
+     *
+     * @return string
+     */
+
+    public function getHeight()
+    {
+        return $this->height;
+    }

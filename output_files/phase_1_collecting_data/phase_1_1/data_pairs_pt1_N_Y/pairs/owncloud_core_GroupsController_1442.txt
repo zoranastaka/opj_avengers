@@ -1,0 +1,6 @@
+	/**
+	 * @param string $id
+	 * @return DataResponse
+	 */
+
+	public function destroy($id) {

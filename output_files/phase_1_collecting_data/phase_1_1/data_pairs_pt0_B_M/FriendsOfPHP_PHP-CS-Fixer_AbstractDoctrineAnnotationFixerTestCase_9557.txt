@@ -1,0 +1,107 @@
+/**
+ * @internal
+ */
+
+abstract class AbstractDoctrineAnnotationFixerTestCase extends AbstractFixerTestCase
+{
+    /**
+     * @dataProvider provideInvalidConfigurationCases
+     */
+    public function testConfigureWithInvalidConfiguration(array $configuration): void
+    {
+        $this->expectException(\PhpCsFixer\ConfigurationException\InvalidFixerConfigurationException::class);
+
+        $this->fixer->configure($configuration);
+    }
+
+    public function provideInvalidConfigurationCases(): array
+    {
+        return [
+            [['foo' => 'bar']],
+            [['ignored_tags' => 'foo']],
+        ];
+    }
+
+    /**
+     * @param array<array<string>> $commentCases
+     */
+    protected function createTestCases(array $commentCases): array
+    {
+        $cases = [];
+        foreach ($commentCases as $commentCase) {
+            $cases[] = [
+                $this->withClassDocBlock($commentCase[0]),
+                isset($commentCase[1]) ? $this->withClassDocBlock($commentCase[1]) : null,
+            ];
+
+            $cases[] = [
+                $this->withPropertyDocBlock($commentCase[0]),
+                isset($commentCase[1]) ? $this->withPropertyDocBlock($commentCase[1]) : null,
+            ];
+
+            $cases[] = [
+                $this->withMethodDocBlock($commentCase[0]),
+                isset($commentCase[1]) ? $this->withMethodDocBlock($commentCase[1]) : null,
+            ];
+
+            $cases[] = [
+                $this->withWrongElementDocBlock($commentCase[0]),
+            ];
+        }
+
+        return $cases;
+    }
+
+    private function withClassDocBlock(string $comment): string
+    {
+        return $this->with('<?php
+
+%s
+class FooClass
+{
+}', $comment, false);
+    }
+
+    private function withPropertyDocBlock(string $comment): string
+    {
+        return $this->with('<?php
+
+class FooClass
+{
+    %s
+    private $foo;
+}', $comment, true);
+    }
+
+    private function withMethodDocBlock(string $comment): string
+    {
+        return $this->with('<?php
+
+class FooClass
+{
+    %s
+    public function foo()
+    {
+    }
+}', $comment, true);
+    }
+
+    private function withWrongElementDocBlock(string $comment): string
+    {
+        return $this->with('<?php
+
+%s
+$foo = bar();', $comment, false);
+    }
+
+    private function with(string $php, string $comment, bool $indent): string
+    {
+        $comment = trim($comment);
+
+        if ($indent) {
+            $comment = str_replace("\n", "\n    ", $comment);
+        }
+
+        return sprintf($php, preg_replace('/^\n+/', '', $comment));
+    }
+}

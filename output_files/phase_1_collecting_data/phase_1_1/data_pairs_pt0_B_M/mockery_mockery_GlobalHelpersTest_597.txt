@@ -1,0 +1,10 @@
+    /** @test */
+
+    public function mock_creates_a_mock()
+    {
+        $double = mock();
+
+        $this->assertInstanceOf(\Mockery\MockInterface::class, $double);
+        $this->expectException(\Exception::class);
+        $double->foo();
+    }

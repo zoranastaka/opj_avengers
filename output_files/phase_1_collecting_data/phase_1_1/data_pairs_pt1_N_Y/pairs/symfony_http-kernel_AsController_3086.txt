@@ -1,0 +1,8 @@
+#[\Attribute(\Attribute::TARGET_CLASS)]
+
+class AsController
+{
+    public function __construct()
+    {
+    }
+}

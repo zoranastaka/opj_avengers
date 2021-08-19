@@ -1,0 +1,27 @@
+    /**
+     * Standard Error of Kurtosis (SEK)
+     *
+     *                ______________
+     *               /    (n² - 1)
+     * SEK = 2(SES) / --------------
+     *             √  (n - 3)(n + 5)
+     *
+     * @param int $n Sample size
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException if n < 4
+     */
+
+    public static function sek(int $n): float
+    {
+        if ($n < 4) {
+            throw new Exception\BadDataException("SEK requires a dataset of n > 3. N of $n given.");
+        }
+
+        $２⟮SES⟯        = 2 * self::ses($n);
+        $⟮n² − 1⟯       = $n ** 2 - 1;
+        $⟮n − 3⟯⟮n ＋ 5⟯ = ($n - 3) * ($n + 5);
+
+        return $２⟮SES⟯ * \sqrt($⟮n² − 1⟯ / $⟮n − 3⟯⟮n ＋ 5⟯);
+    }

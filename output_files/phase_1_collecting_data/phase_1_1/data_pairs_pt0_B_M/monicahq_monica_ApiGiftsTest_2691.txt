@@ -1,0 +1,24 @@
+    /** @test */
+
+    public function gifts_update_error_bad_account()
+    {
+        $user = $this->signin();
+
+        $account = factory(Account::class)->create();
+        $contact = factory(Contact::class)->create([
+            'account_id' => $account->id,
+        ]);
+        $gift = factory(Gift::class)->create([
+            'account_id' => $user->account_id,
+            'contact_id' => $contact->id,
+        ]);
+
+        $response = $this->json('PUT', '/api/gifts/'.$gift->id, [
+            'contact_id' => $contact->id,
+            'name' => 'the gift',
+            'status' => 'idea',
+            'comment' => 'one comment',
+        ]);
+
+        $this->expectNotFound($response);
+    }

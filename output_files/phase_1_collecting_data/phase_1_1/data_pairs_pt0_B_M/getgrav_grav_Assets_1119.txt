@@ -1,0 +1,10 @@
+    /**
+     * Add a JS asset or a collection of assets.
+     *
+     * @return $this
+     */
+
+    public function addJs($asset)
+    {
+        return $this->addType($this::JS_COLLECTION, $this::JS_TYPE, $asset, $this->unifyLegacyArguments(func_get_args(), $this::JS_TYPE));
+    }

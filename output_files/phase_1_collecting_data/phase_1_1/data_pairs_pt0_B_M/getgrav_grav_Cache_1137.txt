@@ -1,0 +1,10 @@
+    /**
+     * Get cache state
+     *
+     * @return string
+     */
+
+    public function getCacheStatus()
+    {
+        return 'Cache: [' . ($this->enabled ? 'true' : 'false') . '] Setting: [' . $this->driver_setting . '] Driver: [' . $this->driver_name . ']';
+    }

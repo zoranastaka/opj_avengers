@@ -1,0 +1,13 @@
+    /**
+     * @return array [a, b, c, quadratic]
+     */
+
+    public function dataProviderForQuadraticAIsZero(): array
+    {
+        return [
+            [0, -5, -3, [-3 / 5]],
+            [0, 5, -3, [3 / 5]],
+            [0, 12, 6, [-1 / 2]],
+            [0, 3, 7, [-7 / 3]],
+        ];
+    }

@@ -1,0 +1,5 @@
+  /**
+   * @task info
+   */
+
+  public static function getMicrosecondsSinceStart() {

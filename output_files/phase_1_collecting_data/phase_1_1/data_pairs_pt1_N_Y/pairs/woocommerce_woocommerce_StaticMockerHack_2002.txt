@@ -1,0 +1,12 @@
+	/**
+	 * Handler for undefined static methods on this class, it invokes the mock for the method if both the class and the method are registered, or the original method in the original class if not.
+	 *
+	 * @param string $name Name of the method.
+	 * @param array  $arguments Arguments for the function.
+	 *
+	 * @return mixed The return value from the invoked callback or method.
+	 *
+	 * @throws \Exception Invalid method name.
+	 */
+
+	public static function __callStatic( $name, $arguments ) {

@@ -1,0 +1,20 @@
+    /**
+     * @internal
+     */
+
+    public function _handleSuccess($value)
+    {
+        unset($this->currentPromise);
+        try {
+            $next = $this->generator->send($value);
+            if ($this->generator->valid()) {
+                $this->nextCoroutine($next);
+            } else {
+                $this->result->resolve($value);
+            }
+        } catch (Exception $exception) {
+            $this->result->reject($exception);
+        } catch (Throwable $throwable) {
+            $this->result->reject($throwable);
+        }
+    }

@@ -1,0 +1,16 @@
+    /**
+     * @test         kullbackLeibler
+     * @dataProvider dataProviderForKullbackLeibler
+     * @param        array $p
+     * @param        array $q
+     * @param        float $expected
+     */
+
+    public function testKullbackLeibler(array $p, array $q, float $expected)
+    {
+        // When
+        $BD = Divergence::kullbackLeibler($p, $q);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $BD, 0.0001);
+    }

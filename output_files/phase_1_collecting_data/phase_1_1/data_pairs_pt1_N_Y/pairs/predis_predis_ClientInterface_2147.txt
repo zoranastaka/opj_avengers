@@ -1,0 +1,5 @@
+    /**
+     * Closes the underlying connection from the server.
+     */
+
+    public function disconnect();

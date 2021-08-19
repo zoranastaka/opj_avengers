@@ -1,0 +1,17 @@
+    /**
+     * Find template path
+     *
+     * @param string $template
+     * @return string
+     */
+
+    protected function _getTemplatePath($template)
+    {
+        $directories[] = $this->_errorDir . $this->_config->skin . '/';
+
+        if ($this->_config->skin != self::DEFAULT_SKIN) {
+            $directories[] = $this->_errorDir . self::DEFAULT_SKIN . '/';
+        }
+
+        return $this->_getFilePath($template, $directories);
+    }

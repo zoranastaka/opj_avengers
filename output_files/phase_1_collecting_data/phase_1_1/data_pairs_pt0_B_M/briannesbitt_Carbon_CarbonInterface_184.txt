@@ -1,0 +1,14 @@
+    /**
+     * @alias toDateTime
+     *
+     * Return native DateTime PHP object matching the current instance.
+     *
+     * @example
+     * ```
+     * var_dump(Carbon::now()->toDate());
+     * ```
+     *
+     * @return DateTime
+     */
+
+    public function toDate();

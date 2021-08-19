@@ -1,0 +1,10 @@
+    /**
+     * Get the cell address where the top left of the chart is fixed
+     *
+     * @return string
+     */
+
+    public function getTopLeftCell()
+    {
+        return $this->topLeftCellRef;
+    }

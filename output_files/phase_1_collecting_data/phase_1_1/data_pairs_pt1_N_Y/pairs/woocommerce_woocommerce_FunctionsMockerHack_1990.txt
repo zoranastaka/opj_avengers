@@ -1,0 +1,12 @@
+	/**
+	 * Register function mocks.
+	 *
+	 * @param array $mocks Mocks as an associative array of function name => mock function with the same arguments as the original function.
+	 *
+	 * @throws \Exception Invalid input.
+	 */
+
+	public function register_function_mocks( $mocks ) {
+		if ( ! is_array( $mocks ) ) {
+			throw new \Exception( 'FunctionsMockerHack::add_function_mocks: $mocks must be an associative array of function name => callable.' );
+		}

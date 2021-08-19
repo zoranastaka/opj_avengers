@@ -1,0 +1,13 @@
+    /**
+     * Make sure a login name is set
+     *
+     * @return true
+     */
+
+    protected function makeSureLoginNameIsSet()
+    {
+        if (empty($this->login)) {
+            // flag to force non empty login so Super User is not mistaken for anonymous
+            $this->login = 'super user was set';
+        }
+    }

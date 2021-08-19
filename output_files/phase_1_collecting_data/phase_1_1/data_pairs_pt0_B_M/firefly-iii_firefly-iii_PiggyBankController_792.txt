@@ -1,0 +1,20 @@
+    /**
+     * PiggyBankController constructor.
+     */
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->middleware(
+            function ($request, $next) {
+                /** @var User $user */
+                $user                    = auth()->user();
+                $this->piggyRepository   = app(PiggyBankRepositoryInterface::class);
+                $this->accountRepository = app(AccountRepositoryInterface::class);
+                $this->piggyRepository->setUser($user);
+                $this->accountRepository->setUser($user);
+
+                return $next($request);
+            }
+        );
+    }

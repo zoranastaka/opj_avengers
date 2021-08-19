@@ -1,0 +1,12 @@
+    /**
+     * Verify the container mocks
+     *
+     * @return void
+     */
+
+    public function mockery_verify()
+    {
+        foreach ($this->_mocks as $mock) {
+            $mock->mockery_verify();
+        }
+    }

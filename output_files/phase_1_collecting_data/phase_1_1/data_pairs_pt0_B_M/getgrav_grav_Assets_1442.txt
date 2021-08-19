@@ -1,0 +1,51 @@
+    /**
+     * Add an asset or a collection of assets.
+     *
+     * It automatically detects the asset type (JavaScript, CSS or collection).
+     * You may add more than one asset passing an array as argument.
+     *
+     * @param string|string[] $asset
+     * @return $this
+     */
+
+    public function add($asset)
+    {
+        $args = func_get_args();
+
+        // More than one asset
+        if (is_array($asset)) {
+            foreach ($asset as $index => $location) {
+                $params = array_slice($args, 1);
+                if (is_array($location)) {
+                    $params = array_shift($params);
+                    if (is_numeric($params)) {
+                        $params = [ 'priority' => $params ];
+                    }
+                    $params = [array_replace_recursive([], $location, $params)];
+                    $location = $index;
+                }
+
+                $params = array_merge([$location], $params);
+                call_user_func_array([$this, 'add'], $params);
+            }
+        } elseif (isset($this->collections[$asset])) {
+            array_shift($args);
+            $args = array_merge([$this->collections[$asset]], $args);
+            call_user_func_array([$this, 'add'], $args);
+        } else {
+            // Get extension
+            $extension = pathinfo(parse_url($asset, PHP_URL_PATH), PATHINFO_EXTENSION);
+
+            // JavaScript or CSS
+            if ($extension !== '') {
+                $extension = strtolower($extension);
+                if ($extension === 'css') {
+                    call_user_func_array([$this, 'addCss'], $args);
+                } elseif ($extension === 'js') {
+                    call_user_func_array([$this, 'addJs'], $args);
+                }
+            }
+        }
+
+        return $this;
+    }

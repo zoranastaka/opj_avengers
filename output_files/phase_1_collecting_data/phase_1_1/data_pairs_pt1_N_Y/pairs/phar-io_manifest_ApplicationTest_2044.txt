@@ -1,0 +1,6 @@
+/**
+ * @covers PharIo\Manifest\Application
+ * @covers PharIo\Manifest\Type
+ */
+
+class ApplicationTest extends TestCase {

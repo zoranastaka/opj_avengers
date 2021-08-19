@@ -1,0 +1,25 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function onCreate(): bool
+    {
+        $prefix = self::FILTERNAME.'.';
+        if (0 !== strpos($this->filtername, $prefix)) {
+            return false;
+        }
+
+        $encodings = substr($this->filtername, strlen($prefix));
+        if (1 !== preg_match(',^(?<input>[-\w]+)\/(?<output>[-\w]+)$,', $encodings, $matches)) {
+            return false;
+        }
+
+        try {
+            $this->input_encoding = self::filterEncoding($matches['input']);
+            $this->output_encoding = self::filterEncoding($matches['output']);
+        } catch (OutOfRangeException $e) {
+            return false;
+        }
+
+        return true;
+    }

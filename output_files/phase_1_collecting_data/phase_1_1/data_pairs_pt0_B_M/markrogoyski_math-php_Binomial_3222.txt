@@ -1,0 +1,12 @@
+    /**
+     * Mean of the distribution
+     *
+     * μ = np
+     *
+     * @return float
+     */
+
+    public function mean(): float
+    {
+        return $this->n * $this->p;
+    }

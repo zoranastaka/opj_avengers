@@ -1,0 +1,8 @@
+    /**
+     * @param $script
+     */
+
+    public function insert($script)
+    {
+        $this->_dompdf->getCanvas()->javascript($script);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Checks if the process ended successfully.
+     *
+     * @return bool true if the process ended successfully, false otherwise
+     */
+
+    public function isSuccessful()
+    {
+        return 0 === $this->getExitCode();
+    }

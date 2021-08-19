@@ -1,0 +1,15 @@
+    /**
+     * @test         isSymmetric returns true for symmetric matrices.
+     * @dataProvider dataProviderForSymmetricMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsSymmetric(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isSymmetric());
+    }

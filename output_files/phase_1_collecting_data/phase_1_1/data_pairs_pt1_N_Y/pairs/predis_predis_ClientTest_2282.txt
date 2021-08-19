@@ -1,0 +1,32 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testCallingRedisCommandExecutesInstanceOfCommand(): void
+    {
+        $ping = $this->getCommandFactory()->create('ping', array());
+
+        $connection = $this->getMockBuilder('Predis\Connection\ConnectionInterface')->getMock();
+        $connection
+            ->expects($this->once())
+            ->method('executeCommand')
+            ->with($this->isInstanceOf('Predis\Command\Redis\PING'))
+            ->willReturn('PONG');
+
+        $commands = $this->getMockBuilder('Predis\Command\FactoryInterface')->getMock();
+        $commands
+            ->expects($this->once())
+            ->method('create')
+            ->with('ping', array())
+            ->willReturn($ping);
+
+        $options = array('commands' => $commands);
+
+        /** @var ClientInterface */
+        $client = $this->getMockBuilder('Predis\Client')
+            ->onlyMethods(array())
+            ->setConstructorArgs(array($connection, $options))
+            ->getMock();
+
+        $this->assertEquals('PONG', $client->ping());
+    }

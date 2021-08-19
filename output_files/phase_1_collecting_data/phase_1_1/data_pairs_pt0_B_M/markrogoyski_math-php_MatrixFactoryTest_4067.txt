@@ -1,0 +1,13 @@
+    /**
+     * @test         createFunctionMatrix
+     * @dataProvider dataProviderForFunctionSquareMatrix
+     */
+
+    public function testCreateFunctionSquareMatrix(array $A)
+    {
+        // When
+        $A = MatrixFactory::createFunctionMatrix($A);
+
+        // Then
+        $this->assertInstanceOf(\MathPHP\LinearAlgebra\FunctionMatrix::class, $A);
+    }

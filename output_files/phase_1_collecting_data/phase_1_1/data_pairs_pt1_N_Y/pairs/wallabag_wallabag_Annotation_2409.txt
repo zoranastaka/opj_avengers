@@ -1,0 +1,14 @@
+    /**
+     * Set user.
+     *
+     * @param User $user
+     *
+     * @return Annotation
+     */
+
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }

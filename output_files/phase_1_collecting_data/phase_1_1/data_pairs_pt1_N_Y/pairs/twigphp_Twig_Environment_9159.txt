@@ -1,0 +1,10 @@
+    /**
+     * @return TwigTest[]
+     *
+     * @internal
+     */
+
+    public function getTests(): array
+    {
+        return $this->extensionSet->getTests();
+    }

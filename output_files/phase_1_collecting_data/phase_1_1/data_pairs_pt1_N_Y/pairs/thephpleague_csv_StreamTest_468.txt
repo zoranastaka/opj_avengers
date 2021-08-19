@@ -1,0 +1,11 @@
+    /**
+     * @covers ::seek
+     * @covers \League\Csv\UnavailableFeature::dueToMissingStreamSeekability
+     */
+
+    public function testCreateStreamWithNonSeekableStream(): void
+    {
+        $this->expectException(UnavailableFeature::class);
+        $stream = new Stream(fopen('php://stdin', 'r'));
+        $stream->seek(3);
+    }

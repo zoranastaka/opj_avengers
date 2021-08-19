@@ -1,0 +1,24 @@
+    /**
+     * @return array [p, q, distance]
+     */
+
+    public function dataProviderForBhattacharyyaDistance(): array
+    {
+        return [
+            [
+                [0.2, 0.5, 0.3],
+                [0.1, 0.4, 0.5],
+                0.024361049046679,
+            ],
+            [
+                [0.4, 0.6],
+                [0.3, 0.7],
+                0.005531036666445
+            ],
+            [
+                [0.9, 0.1],
+                [0.1, 0.9],
+                0.510825623765991
+            ],
+        ];
+    }

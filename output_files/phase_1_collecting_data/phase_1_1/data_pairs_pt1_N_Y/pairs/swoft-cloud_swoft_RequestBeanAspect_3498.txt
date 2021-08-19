@@ -1,0 +1,34 @@
+/**
+ * Class RequestBeanAspect
+ *
+ * @since 2.0
+ * @Aspect()
+ * @PointBean(include={"requestBean"})
+ */
+
+class RequestBeanAspect
+{
+    /**
+     * @Before()
+     */
+    public function beforeRun(): void
+    {
+        $id = (string)Co::tid();
+        /** @var RequestBean $rb */
+        $rb = BF::getRequestBean('requestBean', $id);
+
+        vdump(__METHOD__, $rb->temp);
+    }
+
+    /**
+     * @After()
+     */
+    public function afterRun(): void
+    {
+        $id = (string)Co::tid();
+        /** @var RequestBean $rb */
+        $rb = BF::getRequestBean('requestBean', $id);
+
+        vdump(__METHOD__, $rb->temp);
+    }
+}

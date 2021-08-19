@@ -1,0 +1,19 @@
+    /**
+     * @test         evaluate using optional kernel functions
+     * @dataProvider dataProviderForTestKernels
+     * @param        string $kernel
+     * @param        float $x
+     * @param        float $expected
+     */
+
+    public function testKernels(string $kernel, float $x, float $expected)
+    {
+        // Given
+        $KDE = new KernelDensityEstimation($this->data, 1, $kernel);
+
+        // When
+        $estimate = $KDE->evaluate($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $estimate, 0.0001);
+    }

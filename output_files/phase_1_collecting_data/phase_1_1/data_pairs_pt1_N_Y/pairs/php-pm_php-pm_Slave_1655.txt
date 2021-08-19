@@ -1,0 +1,14 @@
+    /**
+     * Ready a slave after bootstrap completed
+     *
+     * @return void
+     */
+
+    public function ready()
+    {
+        if ($this->status !== self::REGISTERED) {
+            throw new \LogicException('Cannot ready a slave that is not in registered state');
+        }
+
+        $this->status = self::READY;
+    }

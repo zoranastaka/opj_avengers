@@ -1,0 +1,26 @@
+    /**
+     * Cubic mean
+     * https://en.wikipedia.org/wiki/Cubic_mean
+     *              _________
+     *             / 1  n
+     * x cubic = ³/  -  ∑ xᵢ³
+     *           √   n ⁱ⁼¹
+     *
+     * @param array $numbers
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException if the input array of numbers is empty
+     */
+
+    public static function cubicMean(array $numbers): float
+    {
+        if (empty($numbers)) {
+            throw new Exception\BadDataException('Cannot find the cubic mean of an empty list of numbers');
+        }
+
+        $n    = \count($numbers);
+        $∑xᵢ³ = \array_sum(Map\Single::cube($numbers));
+
+        return \pow($∑xᵢ³ / $n, 1 / 3);
+    }

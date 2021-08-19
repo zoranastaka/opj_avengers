@@ -1,0 +1,6 @@
+            // ensure that more than one nested group at the same level doesn't break middleware
+
+            $group->group('/fizz', function (RouteCollectorProxyInterface $group) {
+                $group->get('/buzz', function (ServerRequestInterface $request, ResponseInterface $response) {
+                    return $response;
+                });

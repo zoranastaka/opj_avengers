@@ -1,0 +1,9 @@
+	/**
+	 * The hack method to implement.
+	 *
+	 * @param string $code The code to hack.
+	 * @param string $path The path of the file containing the code to hack.
+	 * @return string The hacked code.
+	 */
+
+	abstract public function hack( $code, $path);

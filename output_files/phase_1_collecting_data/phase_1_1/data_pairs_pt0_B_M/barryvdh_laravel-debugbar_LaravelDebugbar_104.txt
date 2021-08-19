@@ -1,0 +1,18 @@
+    /**
+     * Stops a measure
+     *
+     * @param string $name
+     */
+
+    public function stopMeasure($name)
+    {
+        if ($this->hasCollector('time')) {
+            /** @var \DebugBar\DataCollector\TimeDataCollector $collector */
+            $collector = $this->getCollector('time');
+            try {
+                $collector->stopMeasure($name);
+            } catch (\Exception $e) {
+                //  $this->addThrowable($e);
+            }
+        }
+    }

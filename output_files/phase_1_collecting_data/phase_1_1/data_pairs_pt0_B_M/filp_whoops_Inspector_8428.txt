@@ -1,0 +1,11 @@
+    /**
+     * @return int[]
+     */
+
+    public function getPreviousExceptionCodes()
+    {
+        return array_map(function ($prev) {
+            /** @var \Throwable $prev */
+            return $prev->getCode();
+        }, $this->getPreviousExceptions());
+    }

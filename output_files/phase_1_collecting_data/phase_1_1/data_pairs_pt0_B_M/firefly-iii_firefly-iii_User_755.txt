@@ -1,0 +1,14 @@
+    /**
+     * @codeCoverageIgnore
+     * Generates access token.
+     *
+     * @return string
+     * @throws Exception
+     */
+
+    public function generateAccessToken(): string
+    {
+        $bytes = random_bytes(16);
+
+        return bin2hex($bytes);
+    }

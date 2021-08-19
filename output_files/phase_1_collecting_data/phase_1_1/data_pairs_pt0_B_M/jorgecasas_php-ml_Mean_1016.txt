@@ -1,0 +1,10 @@
+    /**
+     * @throws InvalidArgumentException
+     */
+
+    public static function arithmetic(array $numbers): float
+    {
+        self::checkArrayLength($numbers);
+
+        return array_sum($numbers) / count($numbers);
+    }

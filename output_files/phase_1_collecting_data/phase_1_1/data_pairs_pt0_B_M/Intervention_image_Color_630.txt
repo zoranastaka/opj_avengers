@@ -1,0 +1,14 @@
+    /**
+     * Initiates color object from given ImagickPixel object
+     *
+     * @param  ImagickPixel $value
+     *
+     * @return \Intervention\Image\AbstractColor
+     */
+
+    public function initFromObject($value)
+    {
+        if (is_a($value, '\ImagickPixel')) {
+            $this->pixel = $value;
+        }
+    }

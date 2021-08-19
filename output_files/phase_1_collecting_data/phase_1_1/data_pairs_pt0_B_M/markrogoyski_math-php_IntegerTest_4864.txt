@@ -1,0 +1,17 @@
+    /**
+     * @test         perfectPower returns m and k for n such that mᵏ = n if n is a perfect power.
+     * @dataProvider dataProviderForPerfectPower
+     * @param        int $n
+     * @param        int $expected_m
+     * @param        int $expected_k
+     */
+
+    public function testPerfectPower(int $n, int $expected_m, int $expected_k)
+    {
+        // When
+        [$m, $k] = Integer::perfectPower($n);
+
+        // Then
+        $this->assertEquals($expected_m, $m);
+        $this->assertEquals($expected_k, $k);
+    }

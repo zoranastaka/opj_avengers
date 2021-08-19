@@ -1,0 +1,10 @@
+    /**
+     * Return order number
+     *
+     * @return int
+     */
+
+    public function getOrderNumber()
+    {
+        return $this->_orderNumber;
+    }

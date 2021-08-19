@@ -1,0 +1,10 @@
+	/**
+	 * Crush the diff into an encoded string which describes the operations
+	 * required to transform text1 into text2.
+	 * E.g. =3\t-2\t+ing  -> Keep 3 chars, delete 2 chars, insert 'ing'.
+	 * Operations are tab-separated.  Inserted text is escaped using %xx notation.
+	 * @param {Array.<Array.<number|string>>} diffs Array of diff tuples.
+	 * @return {string} Delta text.
+	 */
+
+	function diff_toDelta($diffs) {

@@ -1,0 +1,35 @@
+    /**
+     * Hexagonal numbers
+     * Figurate numbers that represent hexagons.
+     * https://en.wikipedia.org/wiki/Hexagonal_number
+     *
+     *      2n × (2n - 1)
+     * hn = -------------
+     *           2
+     *
+     * Example:
+     *  n = 6
+     *  Sequence:    1, 6, 15, 28, 45, 66
+     *  Array index: 1, 2, 3,  4,  5,  6
+     *
+     * @param  int $n How many numbers in the sequence
+     *
+     * @return array Indexed from 1
+     */
+
+    public static function hexagonalNumber(int $n): array
+    {
+        $hexagonal = [];
+
+        // Bad input; return empty list
+        if ($n <= 0) {
+            return $hexagonal;
+        }
+
+        // Standard case for hn: (2n × (2n - 1)) / 2
+        for ($i = 1; $i <= $n; $i++) {
+            $hexagonal[$i] = ((2 * $i) * (2 * $i - 1)) / 2;
+        }
+
+        return $hexagonal;
+    }

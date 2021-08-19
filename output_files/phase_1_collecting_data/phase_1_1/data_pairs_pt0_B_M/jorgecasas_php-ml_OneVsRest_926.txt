@@ -1,0 +1,7 @@
+    /**
+     * Each classifier should implement this method instead of predictSample()
+     *
+     * @return mixed
+     */
+
+    abstract protected function predictSampleBinary(array $sample);

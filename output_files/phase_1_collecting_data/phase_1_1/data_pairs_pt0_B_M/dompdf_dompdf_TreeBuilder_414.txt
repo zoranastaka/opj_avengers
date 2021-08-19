@@ -1,0 +1,10 @@
+    /**
+     * @param $token
+     * @param $key
+     * @return bool
+     */
+
+    private function getAttr($token, $key) {
+        if (!isset($token['attr'])) {
+            return false;
+        }

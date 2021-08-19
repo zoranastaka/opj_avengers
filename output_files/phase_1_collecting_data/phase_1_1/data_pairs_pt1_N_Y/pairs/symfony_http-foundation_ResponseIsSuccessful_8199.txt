@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function toString(): string
+    {
+        return 'is successful';
+    }

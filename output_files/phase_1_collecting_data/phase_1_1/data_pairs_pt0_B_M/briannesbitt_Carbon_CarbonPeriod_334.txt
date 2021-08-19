@@ -1,0 +1,23 @@
+    /**
+     * Determines if the instance is equal to another.
+     * Warning: if options differ, instances wil never be equal.
+     *
+     * @param mixed $period
+     *
+     * @return bool
+     */
+
+    public function equalTo($period): bool
+    {
+        if (!($period instanceof self)) {
+            $period = self::make($period);
+        }
+
+        $end = $this->getEndDate();
+
+        return $period !== null
+            && $this->getDateInterval()->eq($period->getDateInterval())
+            && $this->getStartDate()->eq($period->getStartDate())
+            && ($end ? $end->eq($period->getEndDate()) : $this->getRecurrences() === $period->getRecurrences())
+            && ($this->getOptions() & (~static::IMMUTABLE)) === ($period->getOptions() & (~static::IMMUTABLE));
+    }

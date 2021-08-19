@@ -1,0 +1,12 @@
+    /**
+     * Convenience method to get a claim value.
+     *
+     * @param  string  $claim
+     *
+     * @return mixed
+     */
+
+    public function getClaim($claim)
+    {
+        return $this->payload()->get($claim);
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @dataProvider providerSplitRange
+     */
+
+    public function testSplitRange()
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(array('PHPExcel_Cell','splitRange'), $args);
+        foreach ($result as $key => $split) {
+            if (!is_array($expectedResult[$key])) {
+                $this->assertEquals($expectedResult[$key], $split[0]);
+            } else {
+                $this->assertEquals($expectedResult[$key], $split);
+            }
+        }
+    }

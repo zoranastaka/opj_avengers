@@ -1,0 +1,11 @@
+    /**
+     * @covers ::insertAll
+     *
+     * @dataProvider dataToSave
+     */
+
+    public function testSave(iterable $argument, string $expected): void
+    {
+        $this->csv->insertAll($argument);
+        self::assertStringContainsString($expected, $this->csv->toString());
+    }

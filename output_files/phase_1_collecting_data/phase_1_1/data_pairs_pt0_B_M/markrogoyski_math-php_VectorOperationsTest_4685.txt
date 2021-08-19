@@ -1,0 +1,19 @@
+    /**
+     * @test         perp
+     * @dataProvider dataProviderForPerp
+     */
+
+    public function testPerp(array $A, array $B, array $expected)
+    {
+        // Given
+        $A        = new Vector($A);
+        $B        = new Vector($B);
+        $expected = new Vector($expected);
+
+        // When
+        $perpₐb = $A->perp($B);
+
+        // Then
+        $this->assertEquals($expected, $perpₐb);
+        $this->assertEquals($expected->getVector(), $perpₐb->getVector());
+    }

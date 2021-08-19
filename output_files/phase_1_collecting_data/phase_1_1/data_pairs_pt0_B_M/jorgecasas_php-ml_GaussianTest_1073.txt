@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider gaussianDerivativeProvider
+     *
+     * @param float|int $value
+     */
+
+    public function testGaussianDerivative(float $expected, $value): void
+    {
+        $gaussian = new Gaussian();
+        $activatedValue = $gaussian->compute($value);
+        self::assertEqualsWithDelta($expected, $gaussian->differentiate($value, $activatedValue), 0.001);
+    }

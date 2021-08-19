@@ -1,0 +1,16 @@
+    /**
+     * Sets the records input encoding charset.
+     */
+
+    public function inputEncoding(string $encoding): self
+    {
+        $encoding = self::filterEncoding($encoding);
+        if ($encoding === $this->input_encoding) {
+            return $this;
+        }
+
+        $clone = clone $this;
+        $clone->input_encoding = $encoding;
+
+        return $clone;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Constructor
+     *
+     * @param float $k degrees of freedom parameter k >= 1
+     */
+
+    public function __construct(float $k)
+    {
+        parent::__construct($k);
+    }

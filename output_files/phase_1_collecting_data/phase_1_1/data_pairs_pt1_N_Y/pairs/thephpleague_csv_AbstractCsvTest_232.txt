@@ -1,0 +1,15 @@
+    /**
+     * @covers ::getEscape
+     * @covers ::setEscape
+     */
+
+    public function testEscape(): void
+    {
+        $this->csv->setEscape('o');
+        self::assertSame('o', $this->csv->getEscape());
+        self::assertSame($this->csv, $this->csv->setEscape('o'));
+
+        $this->expectException(InvalidArgument::class);
+
+        $this->csv->setEscape('foo');
+    }

@@ -1,0 +1,18 @@
+    /**
+     * @test         median
+     * @dataProvider dataProviderForMedian
+     * @param        float $λ
+     * @param        float $expected
+     */
+
+    public function testMedian(float $λ, float $expected)
+    {
+        // Given
+        $poisson = new Poisson($λ);
+
+        // When
+        $median = $poisson->median();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $median, 0.000001);
+    }

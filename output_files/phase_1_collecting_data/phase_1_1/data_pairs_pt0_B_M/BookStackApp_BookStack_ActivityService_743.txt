@@ -1,0 +1,12 @@
+    /**
+     * Flashes a notification message to the session if an appropriate message is available.
+     */
+
+    protected function setNotification(string $type)
+    {
+        $notificationTextKey = 'activities.' . $type . '_notification';
+        if (trans()->has($notificationTextKey)) {
+            $message = trans($notificationTextKey);
+            session()->flash('success', $message);
+        }
+    }

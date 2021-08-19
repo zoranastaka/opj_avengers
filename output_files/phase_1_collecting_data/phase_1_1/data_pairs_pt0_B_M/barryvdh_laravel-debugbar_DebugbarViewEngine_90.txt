@@ -1,0 +1,10 @@
+    /**
+     * @param  Engine  $engine
+     * @param  LaravelDebugbar  $laravelDebugbar
+     */
+
+    public function __construct(Engine $engine, LaravelDebugbar $laravelDebugbar)
+    {
+        $this->engine = $engine;
+        $this->laravelDebugbar = $laravelDebugbar;
+    }

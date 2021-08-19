@@ -1,0 +1,15 @@
+    /**
+     * @covers Whoops\Exception\FrameCollection::map
+     */
+
+    public function testMapFramesEnforceType()
+    {
+        $frames = $this->getFrameCollectionInstance();
+
+        $this->expectExceptionOfType('UnexpectedValueException');
+
+        // Filter out all frames with a line number under 6
+        $frames->map(function ($frame) {
+            return "bajango";
+        });
+    }

@@ -1,0 +1,13 @@
+    /**
+     * Get headers from message as string
+     */
+
+    private function headers(MessageInterface $message): string
+    {
+        $result = '';
+        foreach ($message->getHeaders() as $name => $values) {
+            $result .= $name . ': ' . \implode(', ', $values) . "\r\n";
+        }
+
+        return \trim($result);
+    }

@@ -1,0 +1,21 @@
+    /**
+     * @test         Interpolated regular grid function computes expected values: p(x) = expected
+     * @dataProvider dataProviderForRegularGridNearestAgrees
+     * @param        array $point
+     * @throws       \Exception
+     */
+
+    public function testRegularGridNearestAgrees(array $point, $expected)
+    {
+        // Given
+        [$points, $values] = $this->getSample4d();
+
+        // And
+        $p = new RegularGridInterpolator($points, $values, RegularGridInterpolator::METHOD_NEAREST);
+
+        // When
+        $evaluated = $p($point);
+
+        // Then
+        $this->assertEquals($expected, $evaluated);
+    }

@@ -1,0 +1,25 @@
+    /**
+     * Get object data by path
+     *
+     * Method consider the path as chain of keys: a/b/c => ['a']['b']['c']
+     *
+     * @param string $path
+     * @return mixed
+     */
+
+    public function getDataByPath($path)
+    {
+        $keys = explode('/', $path);
+
+        $data = $this->_data;
+        foreach ($keys as $key) {
+            if ((array)$data === $data && isset($data[$key])) {
+                $data = $data[$key];
+            } elseif ($data instanceof \Magento\Framework\DataObject) {
+                $data = $data->getDataByKey($key);
+            } else {
+                return null;
+            }
+        }
+        return $data;
+    }

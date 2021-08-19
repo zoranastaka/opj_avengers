@@ -1,0 +1,13 @@
+    /**
+     * Element-wise <b>multiplication</b> of two vectors of the same size
+     */
+
+    public static function mul(array $m1, array $m2): array
+    {
+        $res = [];
+        foreach ($m1 as $i => $val) {
+            $res[] = $val * $m2[$i];
+        }
+
+        return $res;
+    }

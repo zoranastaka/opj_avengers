@@ -1,0 +1,21 @@
+    /**
+     * Fetch the return value for the matching args
+     *
+     * @param array $args
+     * @return mixed
+     */
+
+    protected function _getReturnValue(array $args)
+    {
+        if (count($this->_closureQueue) > 1) {
+            return call_user_func_array(array_shift($this->_closureQueue), $args);
+        } elseif (count($this->_closureQueue) > 0) {
+            return call_user_func_array(current($this->_closureQueue), $args);
+        } elseif (count($this->_returnQueue) > 1) {
+            return array_shift($this->_returnQueue);
+        } elseif (count($this->_returnQueue) > 0) {
+            return current($this->_returnQueue);
+        }
+
+        return $this->_mock->mockery_returnValueForMethod($this->_name);
+    }

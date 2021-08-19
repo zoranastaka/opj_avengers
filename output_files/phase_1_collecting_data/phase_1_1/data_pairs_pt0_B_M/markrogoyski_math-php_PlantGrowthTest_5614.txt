@@ -1,0 +1,12 @@
+    /**
+     * @test 30 weight observations
+     */
+
+    public function testNumberOfWeights()
+    {
+        // When
+        $observations = $this->plantGrowth->getWeight();
+
+        // Then
+        $this->assertCount(30, $observations);
+    }

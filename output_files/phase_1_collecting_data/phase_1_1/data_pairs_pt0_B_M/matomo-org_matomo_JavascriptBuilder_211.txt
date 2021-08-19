@@ -1,0 +1,10 @@
+   /**
+    * Adds the Rule javascript to the list of current form Rules
+    *
+    * @param HTML_QuickForm2_Rule
+    */
+
+    public function addRule(HTML_QuickForm2_Rule $rule)
+    {
+        $this->rules[$this->formId][] = $rule->getJavascript();
+    }

@@ -1,0 +1,13 @@
+    /**
+     * @test
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+
+    public function it_throws_an_exception_with_no_drivers()
+    {
+        $botman = m::mock(BotMan::class)->makePartial();
+        $botman->middleware = m::mock(MiddlewareManager::class)->makePartial();
+        $this->expectException(BotManException::class);
+        $botman->say('foo', 'channel');
+    }

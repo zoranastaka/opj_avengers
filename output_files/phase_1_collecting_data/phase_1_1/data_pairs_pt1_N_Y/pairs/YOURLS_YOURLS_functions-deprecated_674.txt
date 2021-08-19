@@ -1,0 +1,8 @@
+/**
+ * Return array of stats for a given keyword
+ *
+ * @deprecated 1.7.10
+ *
+ */
+
+function yourls_get_link_stats( $url ) {

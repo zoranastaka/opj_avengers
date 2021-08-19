@@ -1,0 +1,9 @@
+    /**
+     * Decodes from Base64URL
+     *
+     * @link http://tools.ietf.org/html/rfc4648#section-5
+     *
+     * @throws CannotDecodeContent When something goes wrong while decoding.
+     */
+
+    public function base64UrlDecode(string $data): string;

@@ -1,0 +1,10 @@
+    /**
+     * Returns the protocol in use
+     *
+     * @return string
+     */
+
+    public function getProtocol()
+    {
+        return $this->protocol;
+    }

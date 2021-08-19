@@ -1,0 +1,15 @@
+    /**
+     * Check file is archive.
+     *
+     * @param string $file
+     * @return boolean
+     */
+
+    public function isArchive($file)
+    {
+        $archivers = $this->_getArchivers($file);
+        if (count($archivers)) {
+            return true;
+        }
+        return false;
+    }

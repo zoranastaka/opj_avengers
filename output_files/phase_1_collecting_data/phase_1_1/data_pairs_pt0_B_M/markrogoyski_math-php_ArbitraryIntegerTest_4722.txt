@@ -1,0 +1,22 @@
+    /**
+     * @test         fact()
+     * @dataProvider dataProviderForFact
+     * @param        int    $int
+     * @param        string $expected
+     * @throws       \Exception
+     */
+
+    public function testFact(int $int, string $expected)
+    {
+        // Given
+        $int         = new ArbitraryInteger($int);
+        $expectedInt = new ArbitraryInteger($expected);
+
+        // When
+        $fact = $int->fact();
+
+        // Then
+        $this->assertEquals($expectedInt->toBinary(), $fact->toBinary());
+        $this->assertTrue($expectedInt->equals($fact));
+        $this->assertSame($expected, (string) $fact);
+    }

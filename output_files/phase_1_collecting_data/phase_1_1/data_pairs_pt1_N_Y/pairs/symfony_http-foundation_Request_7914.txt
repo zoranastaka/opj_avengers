@@ -1,0 +1,10 @@
+    /**
+     * Gets the list of trusted host patterns.
+     *
+     * @return array An array of trusted host patterns
+     */
+
+    public static function getTrustedHosts()
+    {
+        return self::$trustedHostPatterns;
+    }

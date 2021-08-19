@@ -1,0 +1,17 @@
+    /**
+     * @test remove does nothing
+     */
+
+    public function testRemoveDoesNothing()
+    {
+        // Given
+        $A = new ImmutableSet([1, 2, 3, 4]);
+        $B = $A->copy();
+
+        // When
+        $A->remove(1);
+        $A->remove([2, 3]);
+
+        $this->assertEquals($B, $A);
+        $this->assertEquals($B->asArray(), $A->asArray());
+    }

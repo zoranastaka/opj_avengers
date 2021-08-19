@@ -1,0 +1,5 @@
+	/**
+	 * 404 trail.
+	 */
+
+	protected function add_crumbs_404() {

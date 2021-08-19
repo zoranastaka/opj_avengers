@@ -1,0 +1,15 @@
+    /**
+     * @test         primeFactorization throws an OutOfBoundsException if n is < 1.
+     * @dataProvider dataProviderForPrimeFactorizationOutOfBoundsException
+     * @param        int $n
+     * @throws       \Exception
+     */
+
+    public function testPrimeFactorizationOutOfBoundsException(int $n)
+    {
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Integer::primeFactorization($n);
+    }

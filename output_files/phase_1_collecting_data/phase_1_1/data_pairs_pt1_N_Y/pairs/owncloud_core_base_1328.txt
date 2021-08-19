@@ -1,0 +1,8 @@
+	/**
+	 * Check login: apache auth, auth token, basic auth
+	 *
+	 * @param OCP\IRequest $request
+	 * @return boolean
+	 */
+
+	public static function handleLogin(OCP\IRequest $request) {

@@ -1,0 +1,10 @@
+    /**
+     * Returns the item quality.
+     *
+     * @return float
+     */
+
+    public function getQuality()
+    {
+        return $this->quality;
+    }

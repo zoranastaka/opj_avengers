@@ -1,0 +1,25 @@
+    /**
+     * @test   Solve more polynomials
+     * @throws \Exception
+     * Example from https://ece.uwaterloo.ca/~dwharder/NumericalAnalysis/10RootFinding/bisection/examples.html
+     */
+
+    public function testSolveXSquaredSubtractThree()
+    {
+        // Given f(x) = x² - 3
+        $func = function ($x) {
+            return $x ** 2 - 3;
+        };
+        $tol = 0.01;
+
+        // And solving for f(x) = 0 where x is about 1.7344 (Find the root 1.7344)
+        $a        = 1;
+        $b        = 2;
+        $expected = 1.7344;
+
+        // When
+        $x = BisectionMethod::solve($func, $a, $b, $tol);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $x, $tol);
+    }

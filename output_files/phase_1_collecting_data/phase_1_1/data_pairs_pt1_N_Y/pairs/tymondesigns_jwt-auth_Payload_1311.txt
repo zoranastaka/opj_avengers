@@ -1,0 +1,12 @@
+    /**
+     * Determine whether the payload has the claim (by key).
+     *
+     * @param  string  $claim
+     *
+     * @return bool
+     */
+
+    public function hasKey($claim)
+    {
+        return $this->offsetExists($claim);
+    }

@@ -1,0 +1,18 @@
+    /**
+     * @test         Householder transformation creates a matrix that is involutory
+     * @dataProvider dataProviderForHouseholder
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testHouseholderTransformMatrixInvolutoryProperty(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $H = Householder::transform($A);
+
+        // Then
+        $this->assertTrue($H->isInvolutory());
+    }

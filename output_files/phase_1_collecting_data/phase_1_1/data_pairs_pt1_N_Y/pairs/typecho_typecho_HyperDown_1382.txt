@@ -1,0 +1,10 @@
+    /**
+     * parseDefine
+     *
+     * @return string
+     */
+
+    private function parseDefinition()
+    {
+        return '';
+    }

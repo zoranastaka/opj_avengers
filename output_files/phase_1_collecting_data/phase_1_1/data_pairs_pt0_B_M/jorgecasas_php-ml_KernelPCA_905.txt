@@ -1,0 +1,3 @@
+                // k(x,y) = xT.y
+
+                return function ($x, $y) {

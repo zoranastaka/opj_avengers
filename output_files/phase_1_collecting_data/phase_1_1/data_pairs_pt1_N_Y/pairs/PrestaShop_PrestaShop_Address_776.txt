@@ -1,0 +1,20 @@
+    /**
+     * @see ObjectModel::delete()
+     */
+
+    public function delete()
+    {
+        if (Validate::isUnsignedId($this->id_customer)) {
+            Customer::resetAddressCache($this->id_customer, $this->id);
+        }
+
+        if (!$this->isUsed()) {
+            $this->deleteCartAddress();
+
+            return parent::delete();
+        } else {
+            $this->deleted = true;
+
+            return $this->update();
+        }
+    }

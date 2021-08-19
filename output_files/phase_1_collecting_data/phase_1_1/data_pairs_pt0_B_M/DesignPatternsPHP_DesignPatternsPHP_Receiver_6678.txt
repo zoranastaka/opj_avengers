@@ -1,0 +1,8 @@
+    /**
+     * Enable receiver to display message date
+     */
+
+    public function enableDate()
+    {
+        $this->enableDate = true;
+    }

@@ -1,0 +1,20 @@
+    /**
+     * List of non-boolean values in fixtures/env/booleans.env.
+     *
+     * @return string[][]
+     */
+
+    public function invalidBooleanValuesDataProvider()
+    {
+        return [
+            ['INVALID_SOMETHING'],
+            ['INVALID_EMPTY'],
+            ['INVALID_EMPTY_STRING'],
+            ['INVALID_NULL'],
+            ['INVALID_NUMBER_POSITIVE'],
+            ['INVALID_NUMBER_NEGATIVE'],
+            ['INVALID_MINUS'],
+            ['INVALID_TILDA'],
+            ['INVALID_EXCLAMATION'],
+        ];
+    }

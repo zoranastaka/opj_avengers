@@ -1,0 +1,9 @@
+    /**
+     * Returns a matcher that matches when the method is executed
+     * exactly $count times.
+     */
+
+    function exactly(int $count): InvokedCountMatcher
+    {
+        return new InvokedCountMatcher($count);
+    }

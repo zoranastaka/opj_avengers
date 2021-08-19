@@ -1,0 +1,18 @@
+    /**
+     * Get index for sheet
+     *
+     * @param  PHPExcel_Worksheet $pSheet
+     * @return int Sheet index
+     * @throws PHPExcel_Exception
+     */
+
+    public function getIndex(PHPExcel_Worksheet $pSheet)
+    {
+        foreach ($this->workSheetCollection as $key => $value) {
+            if ($value->getHashCode() == $pSheet->getHashCode()) {
+                return $key;
+            }
+        }
+
+        throw new PHPExcel_Exception("Sheet does not exist.");
+    }

@@ -1,0 +1,7 @@
+    /**
+     * This method does something.
+     *
+     * @param SomeClass And takes a parameter
+     */
+
+    public abstract function someMethod(SomeClass $someParam);

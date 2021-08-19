@@ -1,0 +1,18 @@
+    /**
+     * If the user doesn't have any view permission, throw exception
+     *
+     * @throws \Piwik\NoAccessException
+     */
+
+    public function checkUserHasSomeViewAccess()
+    {
+        if ($this->hasSuperUserAccess()) {
+            return;
+        }
+
+        $idSitesAccessible = $this->getSitesIdWithAtLeastViewAccess();
+
+        if (count($idSitesAccessible) == 0) {
+            $this->throwNoAccessException(Piwik::translate('General_ExceptionPrivilegeAtLeastOneWebsite', array('view')));
+        }
+    }

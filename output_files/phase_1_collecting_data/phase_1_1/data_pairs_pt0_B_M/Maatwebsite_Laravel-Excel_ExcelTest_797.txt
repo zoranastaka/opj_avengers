@@ -1,0 +1,40 @@
+    /**
+     * @test
+     */
+
+    public function can_chain_imports()
+    {
+        $import1 = new class implements ToArray
+        {
+            /**
+             * @param array $array
+             */
+            public function array(array $array)
+            {
+                Assert::assertEquals([
+                    ['test', 'test'],
+                    ['test', 'test'],
+                ], $array);
+            }
+        };
+
+        $import2 = new class implements ToArray
+        {
+            /**
+             * @param array $array
+             */
+            public function array(array $array)
+            {
+                Assert::assertEquals([
+                    ['test', 'test'],
+                    ['test', 'test'],
+                ], $array);
+            }
+        };
+
+        $imported = $this->SUT
+            ->import($import1, 'import.xlsx')
+            ->import($import2, 'import.xlsx');
+
+        $this->assertInstanceOf(Importer::class, $imported);
+    }

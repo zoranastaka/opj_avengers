@@ -1,0 +1,14 @@
+    /**
+     * @param int $i
+     * @param long $height
+     */
+
+    public function set_row_height($i, $height)
+    {
+        $row =& $this->get_row($i);
+        if ($height > $row["height"]) {
+            $row["height"] = $height;
+        }
+        $next_row =& $this->get_row($i + 1);
+        $next_row["y"] = $row["y"] + $row["height"];
+    }

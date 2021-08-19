@@ -1,0 +1,12 @@
+    /** @test */
+
+    public function it_should_get_the_claims()
+    {
+        $claims = $this->payload->getClaims();
+
+        $this->assertInstanceOf(Expiration::class, $claims['exp']);
+        $this->assertInstanceOf(JwtId::class, $claims['jti']);
+        $this->assertInstanceOf(Subject::class, $claims['sub']);
+
+        $this->assertContainsOnlyInstancesOf(Claim::class, $claims);
+    }

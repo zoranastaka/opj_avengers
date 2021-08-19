@@ -1,0 +1,17 @@
+    /** @test */
+
+    public function calling_api_with_a_wrong_sort_parameter_raises_an_error()
+    {
+        $user = $this->signin();
+
+        $criteria = 'anything';
+
+        $response = $this->json('GET', "/api/contacts?sort={$criteria}");
+
+        $response->assertStatus(400);
+
+        $response->assertJsonFragment([
+            'message' => 'The sorting criteria is invalid',
+            'error_code' => 39,
+        ]);
+    }

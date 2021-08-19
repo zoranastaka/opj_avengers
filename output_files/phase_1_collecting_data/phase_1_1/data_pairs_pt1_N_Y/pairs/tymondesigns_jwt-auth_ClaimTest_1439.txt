@@ -1,0 +1,6 @@
+    /** @test */
+
+    public function it_should_implement_arrayable()
+    {
+        $this->assertInstanceOf(Arrayable::class, $this->claim);
+    }

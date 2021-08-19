@@ -1,0 +1,20 @@
+    /**
+     * @return Annotation[]
+     */
+
+    protected function getAnnotationsFromDocComment(string $name, Tokens $tokens, int $docCommentIndex): array
+    {
+        $namespacesAnalyzer = new NamespacesAnalyzer();
+        $namespace = $namespacesAnalyzer->getNamespaceAt($tokens, $docCommentIndex);
+
+        $namespaceUsesAnalyzer = new NamespaceUsesAnalyzer();
+        $namespaceUses = $namespaceUsesAnalyzer->getDeclarationsInNamespace($tokens, $namespace);
+
+        $doc = new DocBlock(
+            $tokens[$docCommentIndex]->getContent(),
+            $namespace,
+            $namespaceUses
+        );
+
+        return $doc->getAnnotationsOfType($name);
+    }

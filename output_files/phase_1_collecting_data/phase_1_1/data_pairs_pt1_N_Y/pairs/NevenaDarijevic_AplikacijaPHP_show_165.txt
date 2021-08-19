@@ -1,0 +1,3 @@
+       //KADA ZELIMO DA OBRISEMO RADNIKA POZIVA SE delete.php za brisanje radnika
+
+        function obrisi(x){

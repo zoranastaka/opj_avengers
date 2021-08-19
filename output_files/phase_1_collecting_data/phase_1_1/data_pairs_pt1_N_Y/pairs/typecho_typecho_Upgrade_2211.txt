@@ -1,0 +1,16 @@
+    /**
+     * v0_9r13_11_24  
+     * 
+     * @param mixed $db 
+     * @param mixed $options 
+     * @access public
+     * @return void
+     */
+
+    public function v0_9r13_12_6($db, $options)
+    {
+        if (!isset($options->frontArchive)) {
+            $db->query($db->insert('table.options')
+                ->rows(array('name' => 'frontArchive', 'user' => 0, 'value' => 0)));
+        }
+    }

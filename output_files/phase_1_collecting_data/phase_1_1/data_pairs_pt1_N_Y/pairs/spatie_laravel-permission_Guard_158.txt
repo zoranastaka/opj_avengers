@@ -1,0 +1,13 @@
+    /**
+     * Lookup a guard name relevant for the $class model and the current user.
+     *
+     * @param string|Model $class model class object or name
+     * @return string guard name
+     */
+
+    public static function getDefaultName($class): string
+    {
+        $default = config('auth.defaults.guard');
+
+        return static::getNames($class)->first() ?: $default;
+    }

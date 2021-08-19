@@ -1,0 +1,12 @@
+    /**
+     * @return TwigFunction[]
+     */
+
+    public function getFunctions(): array
+    {
+        if (!$this->initialized) {
+            $this->initExtensions();
+        }
+
+        return $this->functions;
+    }

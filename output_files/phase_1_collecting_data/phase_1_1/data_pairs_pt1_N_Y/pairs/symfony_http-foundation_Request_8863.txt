@@ -1,0 +1,12 @@
+    /**
+     * Gets the "real" request method.
+     *
+     * @return string The request method
+     *
+     * @see getMethod()
+     */
+
+    public function getRealMethod()
+    {
+        return strtoupper($this->server->get('REQUEST_METHOD', 'GET'));
+    }

@@ -1,0 +1,5 @@
+    /**
+     * @psalm-param class-string $testClassName
+     */
+
+    public function testAfterLastTestMethodCalled(string $testClassName, Code\ClassMethod $calledMethod): void;

@@ -1,0 +1,10 @@
+    /**
+     * @param AcceptHeaderItem[] $items
+     */
+
+    public function __construct(array $items)
+    {
+        foreach ($items as $item) {
+            $this->add($item);
+        }
+    }

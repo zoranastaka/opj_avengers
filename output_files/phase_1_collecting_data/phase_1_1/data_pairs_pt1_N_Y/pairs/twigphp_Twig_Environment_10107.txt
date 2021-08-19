@@ -1,0 +1,8 @@
+    /**
+     * @internal
+     */
+
+    public function getFilter(string $name): ?TwigFilter
+    {
+        return $this->extensionSet->getFilter($name);
+    }

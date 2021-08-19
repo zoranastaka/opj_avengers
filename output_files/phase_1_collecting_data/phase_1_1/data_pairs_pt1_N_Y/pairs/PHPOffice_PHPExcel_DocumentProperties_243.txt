@@ -1,0 +1,10 @@
+    /**
+     * Get Category
+     *
+     * @return string
+     */
+
+    public function getCategory()
+    {
+        return $this->category;
+    }

@@ -1,0 +1,15 @@
+    /**
+     * Add header media element
+     */
+
+    public function testAddHeaderMediaElement()
+    {
+        $local = __DIR__ . '/_files/images/mars.jpg';
+        $remote = self::getRemoteImageUrl();
+        Media::addElement('header1', 'image', $local, new Image($local));
+        Media::addElement('header1', 'image', $local, new Image($local));
+        Media::addElement('header1', 'image', $remote, new Image($remote));
+
+        $this->assertCount(2, Media::getElements('header1'));
+        $this->assertEmpty(Media::getElements('header2'));
+    }

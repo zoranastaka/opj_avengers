@@ -1,0 +1,16 @@
+    /**
+     * @test         testReducedTotient
+     * @dataProvider dataProviderForReducedTotient
+     * @param        int $n
+     * @param        int $expected
+     * @throws       \Exception
+     */
+
+    public function testReducedTotient(int $n, int $expected)
+    {
+        // When
+        $result = Integer::reducedTotient($n);
+
+        // Then
+        $this->assertEquals($expected, $result);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Returns true if Zend OPcache is enabled.
+     *
+     * @return bool true if Zend OPcache is enabled, false otherwise
+     */
+
+    public function hasZendOpcache()
+    {
+        return $this->data['zend_opcache_enabled'];
+    }

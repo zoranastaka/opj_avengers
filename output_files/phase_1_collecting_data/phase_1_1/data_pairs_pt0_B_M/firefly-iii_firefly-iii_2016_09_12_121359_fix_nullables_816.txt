@@ -1,0 +1,22 @@
+    /**
+     * Run the migrations.
+     *
+     * @SuppressWarnings(PHPMD.ShortMethodName)
+     */
+
+    public function up(): void
+    {
+        Schema::table(
+            'rule_groups',
+            static function (Blueprint $table) {
+                $table->text('description')->nullable()->change();
+            }
+        );
+
+        Schema::table(
+            'rules',
+            static function (Blueprint $table) {
+                $table->text('description')->nullable()->change();
+            }
+        );
+    }

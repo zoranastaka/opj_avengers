@@ -1,0 +1,12 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForNestedArithmetic(): array
+    {
+        return [
+            'Π(0) = -18'     => [0, -18],
+            'Π(5) = -48'  => [5, -48],
+            'Π(-5) = 112' => [-5, 112],
+        ];
+    }

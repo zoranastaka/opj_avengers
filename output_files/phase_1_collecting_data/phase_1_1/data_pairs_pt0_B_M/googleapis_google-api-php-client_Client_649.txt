@@ -1,0 +1,9 @@
+  /**
+   * Set the Http Client object
+   * @param ClientInterface $http
+   */
+
+  public function setHttpClient(ClientInterface $http)
+  {
+    $this->http = $http;
+  }

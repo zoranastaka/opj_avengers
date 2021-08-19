@@ -1,0 +1,10 @@
+    /**
+     */
+
+    public function testCanMockMultipleInterfacesThatMayNotExist()
+    {
+        $m = mock('NonExistingClass, MockeryTest_Interface1, MockeryTest_Interface2, \Some\Thing\That\Doesnt\Exist');
+        $this->assertInstanceOf(MockeryTest_Interface1::class, $m);
+        $this->assertInstanceOf(MockeryTest_Interface2::class, $m);
+        $this->assertInstanceOf(\Some\Thing\That\Doesnt\Exist::class, $m);
+    }

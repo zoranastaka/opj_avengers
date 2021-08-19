@@ -1,0 +1,9 @@
+    /**
+     * Evaluates to true if ANY of the passed in matchers evaluate to true.
+     */
+
+    function anyOf(/* args... */)
+    {
+        $args = func_get_args();
+        return call_user_func_array(array('\Hamcrest\Core\AnyOf', 'anyOf'), $args);
+    }

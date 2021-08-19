@@ -1,0 +1,13 @@
+    /**
+     * Reverse the migrations.
+     */
+
+    public function down(): void
+    {
+        Schema::table(
+            'transactions',
+            static function (Blueprint $table) {
+                $table->dropColumn('identifier');
+            }
+        );
+    }

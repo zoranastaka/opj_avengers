@@ -1,0 +1,16 @@
+    /**
+     * add a link in the document to an external URL
+     *
+     * @param $url
+     * @param $x0
+     * @param $y0
+     * @param $x1
+     * @param $y1
+     */
+
+    function addLink($url, $x0, $y0, $x1, $y1)
+    {
+        $this->numObj++;
+        $info = ['type' => 'link', 'url' => $url, 'rect' => [$x0, $y0, $x1, $y1]];
+        $this->o_annotation($this->numObj, 'new', $info);
+    }

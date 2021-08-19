@@ -1,0 +1,18 @@
+    /**
+     * @param $vendor
+     */
+
+    private function createExpense($vendor)
+    {
+        for ($i = 0; $i < $this->count; $i++) {
+            $data = [
+                'vendor_id' => $vendor->id,
+                'amount' => $this->faker->randomFloat(2, 1, 10),
+                'expense_date' => date_create()->modify(rand(-100, 100) . ' days')->format('Y-m-d'),
+                'public_notes' => '',
+            ];
+
+            $expense = $this->expenseRepo->save($data);
+            $this->info('Expense: ' . $expense->amount);
+        }
+    }

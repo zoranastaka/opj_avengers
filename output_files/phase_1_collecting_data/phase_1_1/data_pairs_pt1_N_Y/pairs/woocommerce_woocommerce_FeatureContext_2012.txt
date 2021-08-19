@@ -1,0 +1,5 @@
+/**
+ * Features context.
+ */
+
+class FeatureContext extends BehatContext implements ClosuredContextInterface {

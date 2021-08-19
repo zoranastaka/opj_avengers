@@ -1,0 +1,31 @@
+    /**
+     * Add a new middleware to the stack
+     *
+     * Middleware are organized as a stack. That means middleware
+     * that have been added before will be executed after the newly
+     * added one (last in, first out).
+     *
+     * @param MiddlewareInterface|string|callable $middleware
+     * @return MiddlewareDispatcherInterface
+     */
+
+    public function add($middleware): MiddlewareDispatcherInterface
+    {
+        if ($middleware instanceof MiddlewareInterface) {
+            return $this->addMiddleware($middleware);
+        }
+
+        if (is_string($middleware)) {
+            return $this->addDeferred($middleware);
+        }
+
+        if (is_callable($middleware)) {
+            return $this->addCallable($middleware);
+        }
+
+        /** @phpstan-ignore-next-line */
+        throw new RuntimeException(
+            'A middleware must be an object/class name referencing an implementation of ' .
+            'MiddlewareInterface or a callable with a matching signature.'
+        );
+    }

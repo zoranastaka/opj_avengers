@@ -1,0 +1,10 @@
+    /**
+     * Get the current interactive mode.
+     *
+     * @return string
+     */
+
+    public function interactiveMode()
+    {
+        return $this->interactiveMode;
+    }

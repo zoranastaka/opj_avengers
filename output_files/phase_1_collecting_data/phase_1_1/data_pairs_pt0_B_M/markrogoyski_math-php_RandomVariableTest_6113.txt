@@ -1,0 +1,13 @@
+    /**
+     * @test   populationSkewness error if array is empty
+     * @throws \Exception
+     */
+
+    public function testPopulationSkewnessNullWhenEmptyArray()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        RandomVariable::populationSkewness(array());
+    }

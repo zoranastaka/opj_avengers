@@ -1,0 +1,27 @@
+    /**
+     * Gets the application root dir (path of the project's composer file).
+     *
+     * @return string The project root dir
+     */
+
+    public function getProjectDir()
+    {
+        if (null === $this->projectDir) {
+            $r = new \ReflectionObject($this);
+
+            if (!is_file($dir = $r->getFileName())) {
+                throw new \LogicException(sprintf('Cannot auto-detect project dir for kernel of class "%s".', $r->name));
+            }
+
+            $dir = $rootDir = \dirname($dir);
+            while (!is_file($dir.'/composer.json')) {
+                if ($dir === \dirname($dir)) {
+                    return $this->projectDir = $rootDir;
+                }
+                $dir = \dirname($dir);
+            }
+            $this->projectDir = $dir;
+        }
+
+        return $this->projectDir;
+    }

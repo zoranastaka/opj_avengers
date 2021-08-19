@@ -1,0 +1,20 @@
+    /**
+     * AdminController::initContent() override.
+     *
+     * @see AdminController::initContent()
+     */
+
+    public function initContent()
+    {
+        $this->display = 'edit';
+
+        if (!$this->loadObject(true)) {
+            return;
+        }
+
+        $this->content .= $this->renderForm();
+
+        $this->context->smarty->assign([
+            'content' => $this->content,
+        ]);
+    }

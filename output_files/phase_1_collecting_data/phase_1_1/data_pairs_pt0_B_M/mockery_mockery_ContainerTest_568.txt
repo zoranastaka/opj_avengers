@@ -1,0 +1,8 @@
+    /**
+     * @issue issue/21
+     */
+
+    public function testClassDeclaringUnsetDoesNotThrowException()
+    {
+        $this->assertInstanceOf(MockInterface::class, mock('MockeryTest_UnsetMethod'));
+    }

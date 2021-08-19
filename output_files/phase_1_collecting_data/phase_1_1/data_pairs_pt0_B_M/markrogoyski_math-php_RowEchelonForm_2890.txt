@@ -1,0 +1,98 @@
+    /**
+     * Reduce a matrix to row echelon form using basic row operations
+     * Custom MathPHP algorithm for classic row reduction using basic matrix operations.
+     *
+     * Algorithm:
+     *   (1) Find pivot
+     *     (a) If pivot column is 0, look down the column to find a non-zero pivot and swap rows
+     *     (b) If no non-zero pivot in the column, go to the next column of the same row and repeat (1)
+     *   (2) Scale pivot row so pivot is 1 by using row division
+     *   (3) Eliminate elements below pivot (make 0 using row addition of the pivot row * a scaling factor)
+     *       so there are no non-zero elements in the pivot column in rows below the pivot
+     *   (4) Repeat from 1 from the next row and column
+     *
+     *   (Extra) Keep track of number of row swaps (used for computing determinant)
+     *
+     * @param NumericMatrix $A
+     *
+     * @return array - matrix in row echelon form and number of row swaps
+     *
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MatrixException
+     * @throws Exception\BadParameterException
+     */
+
+    public static function rowReductionToEchelonForm(NumericMatrix $A): array
+    {
+        $m    = $A->m;
+        $n    = $A->n;
+        $R    = $A;
+        $ε    = $A->getError();
+
+        // Starting conditions
+        $row   = 0;
+        $col   = 0;
+        $swaps = 0;
+        $ref   = false;
+
+        while (!$ref) {
+            // If pivot is 0, try to find a non-zero pivot in the column and swap rows
+            if (Support::isZero($R[$row][$col], $ε)) {
+                for ($j = $row + 1; $j < $m; $j++) {
+                    if (Support::isNotZero($R[$j][$col], $ε)) {
+                        $R = $R->rowInterchange($row, $j);
+                        $swaps++;
+                        break;
+                    }
+                }
+            }
+
+            // No non-zero pivot, go to next column of the same row
+            if (Support::isZero($R[$row][$col], $ε)) {
+                $col++;
+                if ($row >= $m || $col >= $n) {
+                    $ref = true;
+                }
+                continue;
+            }
+
+            // Scale pivot to 1
+            $divisor = $R[$row][$col];
+            $R = $R->rowDivide($row, $divisor);
+
+            // Eliminate elements below pivot
+            for ($j = $row + 1; $j < $m; $j++) {
+                $factor = $R[$j][$col];
+                if (Support::isNotZero($factor, $ε)) {
+                    $R = $R->rowAdd($row, $j, -$factor);
+                    for ($k = 0; $k < $n; $k++) {
+                        if (Support::isZero($R[$j][$k], $ε)) {
+                            $R->A[$j][$k] = 0;
+                        }
+                    }
+                }
+            }
+
+            // Move on to next row and column
+            $row++;
+            $col++;
+
+            // If no more rows or columns, ref achieved
+            if ($row >= $m || $col >= $n) {
+                $ref = true;
+            }
+        }
+
+        $R = $R->getMatrix();
+
+        // Floating point adjustment for zero values
+        for ($i = 0; $i < $m; $i++) {
+            for ($j = 0; $j < $n; $j++) {
+                if (Support::isZero($R[$i][$j], $ε)) {
+                    $R[$i][$j] = 0;
+                }
+            }
+        }
+
+        return [$R, $swaps];
+    }

@@ -1,0 +1,22 @@
+    /**
+     * Adapts the weights with respect to given samples and targets
+     * by use of gradient descent learning rule
+     */
+
+    protected function runTraining(array $samples, array $targets): void
+    {
+        // The cost function is the sum of squares
+        $callback = function ($weights, $sample, $target): array {
+            $this->weights = $weights;
+
+            $output = $this->output($sample);
+            $gradient = $output - $target;
+            $error = $gradient ** 2;
+
+            return [$error, $gradient];
+        };
+
+        $isBatch = $this->trainingType == self::BATCH_TRAINING;
+
+        parent::runGradientDescent($samples, $targets, $callback, $isBatch);
+    }

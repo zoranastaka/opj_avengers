@@ -1,0 +1,5 @@
+	/**
+	 * Post type archive trail.
+	 */
+
+	protected function add_crumbs_post_type_archive() {

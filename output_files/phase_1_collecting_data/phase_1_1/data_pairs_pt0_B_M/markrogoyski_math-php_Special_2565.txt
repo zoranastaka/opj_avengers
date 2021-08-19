@@ -1,0 +1,13 @@
+    /**
+     * Error function (Gauss error function)
+     * Convenience method for errorFunction
+     *
+     * @param  float $x
+     *
+     * @return float
+     */
+
+    public static function erf(float $x): float
+    {
+        return self::errorFunction($x);
+    }

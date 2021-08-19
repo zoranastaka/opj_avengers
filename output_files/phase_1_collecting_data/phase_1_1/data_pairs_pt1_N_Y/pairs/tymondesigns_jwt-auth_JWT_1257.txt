@@ -1,0 +1,16 @@
+    /**
+     * Build the claims array and return it.
+     *
+     * @param  \Tymon\JWTAuth\Contracts\JWTSubject  $subject
+     *
+     * @return array
+     */
+
+    protected function getClaimsArray(JWTSubject $subject)
+    {
+        return array_merge(
+            $this->getClaimsForSubject($subject),
+            $subject->getJWTCustomClaims(), // custom claims from JWTSubject method
+            $this->customClaims // custom claims from inline setter
+        );
+    }

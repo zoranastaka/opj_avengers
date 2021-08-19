@@ -1,0 +1,11 @@
+    /**
+     * @covers Whoops\Exception\FrameCollection::getIterator
+     */
+
+    public function testCollectionIsIterable()
+    {
+        $frames = $this->getFrameCollectionInstance();
+        foreach ($frames as $frame) {
+            $this->assertInstanceOf('Whoops\\Exception\\Frame', $frame);
+        }
+    }

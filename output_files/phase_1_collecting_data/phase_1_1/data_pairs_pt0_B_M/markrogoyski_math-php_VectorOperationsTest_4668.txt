@@ -1,0 +1,18 @@
+    /**
+     * @test         scalar multiply
+     * @dataProvider dataProviderForScalarMultiply
+     */
+
+    public function testScalarMultiply(array $A, $k, array $R)
+    {
+        // Given
+        $A  = new Vector($A);
+        $R  = new Vector($R);
+
+        // When
+        $kA = $A->scalarMultiply($k);
+
+        // Then
+        $this->assertEquals($R, $kA);
+        $this->assertEquals($R->getVector(), $kA->getVector());
+    }

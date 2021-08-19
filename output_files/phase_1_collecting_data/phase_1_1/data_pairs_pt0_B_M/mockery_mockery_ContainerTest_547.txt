@@ -1,0 +1,9 @@
+    /**
+     * @group issue/14
+     */
+
+    public function testCanMockClassContainingAPublicWakeupMethod()
+    {
+        $m = mock('MockeryTest_Wakeup1');
+        $this->assertInstanceOf(MockeryTest_Wakeup1::class, $m);
+    }

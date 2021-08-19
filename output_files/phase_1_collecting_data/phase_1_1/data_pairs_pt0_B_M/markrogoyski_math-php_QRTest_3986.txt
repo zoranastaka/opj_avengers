@@ -1,0 +1,27 @@
+    /**
+     * @test         qrDecomposition returns the expected array of Q and R factorized matrices
+     *               This test could be removed. It is testing a specific implementation of QR decomposition.
+     * @dataProvider dataProviderForQrDecompositionSquareMatricesWithSpecificResults
+     * @dataProvider dataProviderForQrDecompositionNonSquareMatricesWithSpecificResults
+     * @param        array $A
+     * @param        array $Q
+     * @param        array $R
+     * @throws       \Exception
+     */
+
+    public function testQrDecompositionResultMatrices(array $A, array $Q, array $R)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $Q = MatrixFactory::create($Q);
+        $R = MatrixFactory::create($R);
+
+        // When
+        $qr  = $A->qrDecomposition();
+        $qrQ = $qr->Q;
+        $qrR = $qr->R;
+
+        // And Q and R are expected solution to QR decomposition
+        $this->assertEqualsWithDelta($R->getMatrix(), $qrR->getMatrix(), 0.00001);
+        $this->assertEqualsWithDelta($Q->getMatrix(), $qrQ->getMatrix(), 0.00001);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get log by the last view version.
+     *
+     * @return Log
+     */
+
+    public function get(): Log
+    {
+        return $this->logFactory->create(['data' => $this->loadLatestLogData()]);
+    }

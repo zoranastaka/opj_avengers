@@ -1,0 +1,12 @@
+    /**
+     * Returns whether the argument has a default value.
+     *
+     * Implies whether an argument is optional.
+     *
+     * @return bool
+     */
+
+    public function hasDefaultValue()
+    {
+        return $this->hasDefaultValue;
+    }

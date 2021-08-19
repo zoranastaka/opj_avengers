@@ -1,0 +1,11 @@
+	/**
+	 * Adjust the taxes array from a line item in a refund request, see adjust_create_refund_parameters.
+	 *
+	 * @param array $taxes_array The array to adjust.
+	 * @return array The adjusted array.
+	 */
+
+	private static function adjust_taxes_for_create_refund_request_line_item( $taxes_array ) {
+		if ( ! is_array( $taxes_array ) || empty( $taxes_array ) || self::is_associative( $taxes_array ) ) {
+			return $taxes_array;
+		}

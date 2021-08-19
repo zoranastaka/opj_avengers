@@ -1,0 +1,27 @@
+    /**
+     * (AB)⁻¹ = B⁻¹A⁻¹
+     * The inverse of a product is the reverse product of the inverses.
+     *
+     * @dataProvider dataProviderForInverseProductIsReverseProductOfInverses
+     * @param        array $A
+     * @param        array $B
+     * @throws       \Exception
+     */
+
+    public function testInverseProductIsReverseProductOfInverses(array $A, array $B)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $B = MatrixFactory::create($B);
+
+        // When
+        $⟮AB⟯⁻¹ = $A->multiply($B)->inverse();
+
+        // And
+        $B⁻¹ = $B->inverse();
+        $A⁻¹ = $A->inverse();
+        $B⁻¹A⁻¹ = $B⁻¹->multiply($A⁻¹);
+
+        // Then
+        $this->assertEquals($⟮AB⟯⁻¹->getMatrix(), $B⁻¹A⁻¹->getMatrix());
+    }

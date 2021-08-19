@@ -1,0 +1,18 @@
+    /**
+     * Whether or not generated autoloader considers the class map
+     * authoritative.
+     *
+     * @param  bool      $classMapAuthoritative
+     * @return Installer
+     */
+
+    public function setClassMapAuthoritative($classMapAuthoritative)
+    {
+        $this->classMapAuthoritative = (bool) $classMapAuthoritative;
+        if ($this->classMapAuthoritative) {
+            // Force optimizeAutoloader when classmap is authoritative
+            $this->setOptimizeAutoloader(true);
+        }
+
+        return $this;
+    }

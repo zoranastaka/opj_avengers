@@ -1,0 +1,30 @@
+    /**
+     * @covers ::parse
+     * @covers ::extractRecord
+     * @covers ::extractFieldContent
+     * @covers ::extractEnclosedFieldContent
+     */
+
+    public function testPreserveEmptyLines(): void
+    {
+        $source = <<<EOF
+"parent name","child name","title"
+
+
+"parentA","childA","titleA"
+EOF;
+
+        $rsrc = new SplTempFileObject();
+        $rsrc->fwrite($source);
+
+        $expected = [
+            ['parent name', 'child name', 'title'],
+            [null],
+            [null],
+            ['parentA', 'childA', 'titleA'],
+        ];
+
+        foreach (EmptyEscapeParser::parse($rsrc) as $offset => $record) {
+            self::assertSame($expected[$offset], $record);
+        }
+    }

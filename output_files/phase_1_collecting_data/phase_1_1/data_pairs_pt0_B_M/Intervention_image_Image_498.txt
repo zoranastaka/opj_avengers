@@ -1,0 +1,10 @@
+    /**
+     * Calculates current image height
+     *
+     * @return int
+     */
+
+    public function getHeight()
+    {
+        return $this->getSize()->height;
+    }

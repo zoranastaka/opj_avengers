@@ -1,0 +1,13 @@
+    /**
+     * @dataProvider invalidUTF8CharsProvider
+     */
+
+    public function testLexerParsesInvalidUTF8($char)
+    {
+        $lexer = new EmailLexer();
+        $lexer->setInput($char);
+        $lexer->moveNext();
+        $lexer->moveNext();
+
+        $this->assertEquals(EmailLexer::INVALID, $lexer->token['type']);
+    }

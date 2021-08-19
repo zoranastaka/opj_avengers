@@ -1,0 +1,11 @@
+    /**
+     * @param $token
+     * @return mixed
+     */
+
+    public function adjustMathMLAttributes($token) {
+        foreach ($token['attr'] as &$kp) {
+            if ($kp['name'] === 'definitionurl') {
+                $kp['name'] = 'definitionURL';
+            }
+        }

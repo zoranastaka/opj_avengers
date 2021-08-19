@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider validBooleanValuesDataProvider
+     * @doesNotPerformAssertions
+     */
+
+    public function testCanValidateBooleans(string $boolean)
+    {
+        $dotenv = Dotenv::createImmutable(self::$folder, 'booleans.env');
+        $dotenv->load();
+        $dotenv->required($boolean)->isBoolean();
+    }

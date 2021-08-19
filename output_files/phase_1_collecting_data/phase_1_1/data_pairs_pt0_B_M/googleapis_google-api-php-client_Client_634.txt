@@ -1,0 +1,13 @@
+  /**
+   * @return string|null
+   * @visible For Testing
+   */
+
+  public function prepareScopes()
+  {
+    if (empty($this->requestedScopes)) {
+      return null;
+    }
+
+    return implode(' ', $this->requestedScopes);
+  }

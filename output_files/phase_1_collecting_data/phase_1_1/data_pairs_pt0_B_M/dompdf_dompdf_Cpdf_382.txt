@@ -1,0 +1,10 @@
+    /**
+     * used to add messages for use in debugging
+     *
+     * @param $message
+     */
+
+    function addMessage($message)
+    {
+        $this->messages .= $message . "\n";
+    }

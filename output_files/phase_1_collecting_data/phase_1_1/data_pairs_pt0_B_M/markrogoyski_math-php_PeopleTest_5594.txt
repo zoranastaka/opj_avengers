@@ -1,0 +1,12 @@
+    /**
+     * @test 16 names
+     */
+
+    public function testNumberOfNames()
+    {
+        // When
+        $names = $this->people->getNames();
+
+        // Then
+        $this->assertCount(32, $names);
+    }

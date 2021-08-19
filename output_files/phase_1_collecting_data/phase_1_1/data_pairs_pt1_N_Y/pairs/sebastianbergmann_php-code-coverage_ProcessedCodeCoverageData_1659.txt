@@ -1,0 +1,22 @@
+    /**
+     * For a function we have seen before, only copy over and init the 'hit' array for any unseen branches and paths.
+     * Techniques such as mocking and where the contents of a file are different vary during tests (e.g. compiling
+     * containers) mean that the functions inside a file cannot be relied upon to be static.
+     */
+
+    private function initPreviouslySeenFunction(string $file, string $functionName, array $functionData): void
+    {
+        foreach ($functionData['branches'] as $branchId => $branchData) {
+            if (!isset($this->functionCoverage[$file][$functionName]['branches'][$branchId])) {
+                $this->functionCoverage[$file][$functionName]['branches'][$branchId]        = $branchData;
+                $this->functionCoverage[$file][$functionName]['branches'][$branchId]['hit'] = [];
+            }
+        }
+
+        foreach ($functionData['paths'] as $pathId => $pathData) {
+            if (!isset($this->functionCoverage[$file][$functionName]['paths'][$pathId])) {
+                $this->functionCoverage[$file][$functionName]['paths'][$pathId]        = $pathData;
+                $this->functionCoverage[$file][$functionName]['paths'][$pathId]['hit'] = [];
+            }
+        }
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Format the instance as RSS
+     *
+     * @example
+     * ```
+     * echo Carbon::now()->toRssString();
+     * ```
+     *
+     * @return string
+     */
+
+    public function toRssString();

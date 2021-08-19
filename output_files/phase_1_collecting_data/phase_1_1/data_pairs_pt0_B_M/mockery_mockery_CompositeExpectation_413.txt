@@ -1,0 +1,12 @@
+    /**
+     * Return order number of the first expectation
+     *
+     * @return int
+     */
+
+    public function getOrderNumber()
+    {
+        reset($this->_expectations);
+        $first = current($this->_expectations);
+        return $first->getOrderNumber();
+    }

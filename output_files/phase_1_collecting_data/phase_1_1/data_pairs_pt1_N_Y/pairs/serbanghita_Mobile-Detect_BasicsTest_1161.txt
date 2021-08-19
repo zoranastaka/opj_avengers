@@ -1,0 +1,58 @@
+    //special headers that give 'quick' indication that a device is mobile
+
+    public function quickHeadersData()
+    {
+        return array(
+            array(array(
+                'HTTP_ACCEPT' => 'application/json; q=0.2, application/x-obml2d; q=0.8, image/gif; q=0.99, */*'
+            )),
+            array(array(
+                'HTTP_ACCEPT' => 'text/*; q=0.1, application/vnd.rim.html'
+            )),
+            array(array(
+                'HTTP_ACCEPT' => 'text/vnd.wap.wml',
+            )),
+            array(array(
+                'HTTP_ACCEPT' => 'application/vnd.wap.xhtml+xml',
+            )),
+            array(array(
+                'HTTP_X_WAP_PROFILE' => 'hello',
+            )),
+            array(array(
+                'HTTP_X_WAP_CLIENTID' => ''
+            )),
+            array(array(
+                'HTTP_WAP_CONNECTION' => ''
+            )),
+            array(array(
+                'HTTP_PROFILE' => ''
+            )),
+            array(array(
+                'HTTP_X_OPERAMINI_PHONE_UA' => ''
+            )),
+            array(array(
+                'HTTP_X_NOKIA_GATEWAY_ID' => ''
+            )),
+            array(array(
+                'HTTP_X_ORANGE_ID' => ''
+            )),
+            array(array(
+                'HTTP_X_VODAFONE_3GPDPCONTEXT' => ''
+            )),
+            array(array(
+                'HTTP_X_HUAWEI_USERID' => ''
+            )),
+            array(array(
+                'HTTP_UA_OS' => ''
+            )),
+            array(array(
+                'HTTP_X_MOBILE_GATEWAY' => ''
+            )),
+            array(array(
+                'HTTP_X_ATT_DEVICEID' => ''
+            )),
+            array(array(
+                'HTTP_UA_CPU' => 'ARM'
+            ))
+        );
+    }

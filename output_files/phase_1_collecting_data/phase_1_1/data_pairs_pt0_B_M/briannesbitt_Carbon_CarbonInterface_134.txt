@@ -1,0 +1,7 @@
+    /**
+     * Go backward to the previous weekend day.
+     *
+     * @return static
+     */
+
+    public function previousWeekendDay();

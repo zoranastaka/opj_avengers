@@ -1,0 +1,22 @@
+    /**
+     * Reset filters stack.
+     *
+     * @return $this
+     */
+
+    public function resetFilters()
+    {
+        $this->filters = [];
+
+        if ($this->endDate !== null) {
+            $this->filters[] = [static::END_DATE_FILTER, null];
+        }
+
+        if ($this->recurrences !== null) {
+            $this->filters[] = [static::RECURRENCES_FILTER, null];
+        }
+
+        $this->handleChangedParameters();
+
+        return $this;
+    }

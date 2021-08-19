@@ -1,0 +1,21 @@
+    /** @test */
+
+    public function it_deletes_a_journal_entry()
+    {
+        $user = $this->signin();
+        $entry = factory(Entry::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+        $this->assertDatabaseHas('entries', [
+            'account_id' => $user->account_id,
+            'id' => $entry->id,
+        ]);
+
+        $response = $this->json('DELETE', '/api/journal/'.$entry->id);
+
+        $response->assertStatus(200);
+        $this->assertDatabaseMissing('entries', [
+            'account_id' => $user->account_id,
+            'id' => $entry->id,
+        ]);
+    }

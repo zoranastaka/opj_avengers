@@ -1,0 +1,12 @@
+    /**
+     * @return array<int,\Dotenv\Repository\Adapter\AdapterInterface|string>[]
+     */
+
+    public function providesAdapters()
+    {
+        return [
+            [ArrayAdapter::create()->get()],
+            [EnvConstAdapter::class],
+            [ServerConstAdapter::class],
+        ];
+    }

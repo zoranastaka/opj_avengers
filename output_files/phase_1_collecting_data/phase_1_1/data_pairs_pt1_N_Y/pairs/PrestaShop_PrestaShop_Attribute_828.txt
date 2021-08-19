@@ -1,0 +1,59 @@
+    /**
+     * Move an attribute inside its group.
+     *
+     * @param bool $direction Up (1) or Down (0)
+     * @param int $position Current position of the attribute
+     *
+     * @return bool Update result
+     */
+
+    public function updatePosition($direction, $position)
+    {
+        if (!$idAttributeGroup = (int) Tools::getValue('id_attribute_group')) {
+            $idAttributeGroup = (int) $this->id_attribute_group;
+        }
+
+        $sql = '
+			SELECT a.`id_attribute`, a.`position`, a.`id_attribute_group`
+			FROM `' . _DB_PREFIX_ . 'attribute` a
+			WHERE a.`id_attribute_group` = ' . (int) $idAttributeGroup . '
+			ORDER BY a.`position` ASC';
+
+        if (!$res = Db::getInstance()->executeS($sql)) {
+            return false;
+        }
+
+        foreach ($res as $attribute) {
+            if ((int) $attribute['id_attribute'] == (int) $this->id) {
+                $movedAttribute = $attribute;
+            }
+        }
+
+        if (!isset($movedAttribute) || !isset($position)) {
+            return false;
+        }
+
+        // < and > statements rather than BETWEEN operator
+        // since BETWEEN is treated differently according to databases
+
+        $res1 = Db::getInstance()->execute(
+            '
+			UPDATE `' . _DB_PREFIX_ . 'attribute`
+			SET `position`= `position` ' . ($direction ? '- 1' : '+ 1') . '
+			WHERE `position`
+			' . ($direction
+                ? '> ' . (int) $movedAttribute['position'] . ' AND `position` <= ' . (int) $position
+                : '< ' . (int) $movedAttribute['position'] . ' AND `position` >= ' . (int) $position) . '
+			AND `id_attribute_group`=' . (int) $movedAttribute['id_attribute_group']
+        );
+
+        $res2 = Db::getInstance()->execute(
+            '
+			UPDATE `' . _DB_PREFIX_ . 'attribute`
+			SET `position` = ' . (int) $position . '
+			WHERE `id_attribute` = ' . (int) $movedAttribute['id_attribute'] . '
+			AND `id_attribute_group`=' . (int) $movedAttribute['id_attribute_group']
+        );
+
+        return $res1 && $res2;
+    }

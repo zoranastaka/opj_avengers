@@ -1,0 +1,29 @@
+    /**
+     * Column vector (column matrix)
+     * m × 1 matrix consisting of a single column of m elements.
+     *
+     *     [x₁]
+     * x = [x₂]
+     *     [⋮ ]
+     *     [xm]
+     *
+     * @param array $A m × 1 vector representing the matrix
+     *
+     * @return Matrix
+     */
+
+    public static function createFromColumnVector(array $A): Matrix
+    {
+        foreach ($A as $item) {
+            if (\is_array($item)) {
+                throw new Exception\BadDataException('Column vector data must be a one-dimensional array');
+            }
+        }
+
+        $R = [];
+        foreach ($A as $value) {
+            $R[] = [$value];
+        }
+
+        return self::create($R);
+    }

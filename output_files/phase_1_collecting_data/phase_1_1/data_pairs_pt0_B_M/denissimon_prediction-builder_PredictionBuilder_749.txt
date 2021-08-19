@@ -1,0 +1,10 @@
+    /**
+     * The Pearson's correlation coefficient
+     * Rxy = b * (√Dx / √Dy)
+     *
+     * @param float $b
+     *
+     * @return float
+     */
+
+    private function corCoefficient($b) {

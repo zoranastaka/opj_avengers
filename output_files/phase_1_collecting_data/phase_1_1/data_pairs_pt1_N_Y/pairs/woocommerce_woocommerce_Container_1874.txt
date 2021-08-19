@@ -1,0 +1,14 @@
+    /**
+     * Add a service provider.
+     *
+     * @param ServiceProviderInterface|string $provider
+     *
+     * @return self
+     */
+
+    public function addServiceProvider($provider) : self
+    {
+        $this->providers->add($provider);
+
+        return $this;
+    }

@@ -1,0 +1,9 @@
+    /**
+     * Returns a bundle.
+     *
+     * @return BundleInterface A BundleInterface instance
+     *
+     * @throws \InvalidArgumentException when the bundle is not enabled
+     */
+
+    public function getBundle(string $name);

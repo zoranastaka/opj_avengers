@@ -1,0 +1,22 @@
+    /**
+     * @test         quadratic returns array of [NAN, NAN] if the discriminant is negative.
+     * @dataProvider dataProviderForQuadraticNegativeDiscriminant
+     * @param        float $a
+     * @param        float $b
+     * @param        float $c
+     * @throws       \MathPHP\Exception\IncorrectTypeException
+     */
+
+    public function testQuadraticNegativeDiscriminant(float $a, float $b, float $c)
+    {
+        // When
+        $roots = Algebra::quadratic($a, $b, $c);
+
+        // Then
+        $this->assertIsArray($roots);
+        $this->assertNotEmpty($roots);
+        $this->assertEquals(2, count($roots));
+        foreach ($roots as $root) {
+            $this->assertTrue(\is_nan($root));
+        }
+    }

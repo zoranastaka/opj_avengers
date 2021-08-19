@@ -1,0 +1,25 @@
+    /**
+     * @covers ::setValue
+     * @covers ::cloneRow
+     * @covers ::saveAs
+     * @test
+     */
+
+    public function testCloneRow()
+    {
+        $templateProcessor = new TemplateProcessor(__DIR__ . '/_files/templates/clone-merge.docx');
+
+        $this->assertEquals(
+            array('tableHeader', 'userId', 'userName', 'userLocation'),
+            $templateProcessor->getVariables()
+        );
+
+        $docName = 'clone-test-result.docx';
+        $templateProcessor->setValue('tableHeader', utf8_decode('ééé'));
+        $templateProcessor->cloneRow('userId', 1);
+        $templateProcessor->setValue('userId#1', 'Test');
+        $templateProcessor->saveAs($docName);
+        $docFound = file_exists($docName);
+        unlink($docName);
+        $this->assertTrue($docFound);
+    }

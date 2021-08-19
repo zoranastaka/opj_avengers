@@ -1,0 +1,8 @@
+    /**
+     * Returns text from the language files, Looks up by using the activity key.
+     */
+
+    public function getText(): string
+    {
+        return trans('activities.' . $this->type);
+    }

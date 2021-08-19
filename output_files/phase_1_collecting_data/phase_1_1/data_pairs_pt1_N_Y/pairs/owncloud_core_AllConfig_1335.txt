@@ -1,0 +1,7 @@
+	/**
+	 * Delete a system wide defined value
+	 *
+	 * @param string $key the key of the value, under which it was saved
+	 */
+
+	public function deleteSystemValue($key) {

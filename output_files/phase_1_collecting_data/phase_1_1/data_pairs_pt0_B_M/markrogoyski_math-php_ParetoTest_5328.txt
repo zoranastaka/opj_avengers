@@ -1,0 +1,20 @@
+    /**
+     * @test         inverse
+     * @dataProvider dataProviderForInverse
+     * @param        float $p
+     * @param        float $a
+     * @param        float $b
+     * @param        float $expected_inverse
+     */
+
+    public function testInverse(float $p, float $a, float $b, float $expected_inverse)
+    {
+        // Given
+        $pareto = new Pareto($a, $b);
+
+        // When
+        $inverse = $pareto->inverse($p);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_inverse, $inverse, 0.00001);
+    }

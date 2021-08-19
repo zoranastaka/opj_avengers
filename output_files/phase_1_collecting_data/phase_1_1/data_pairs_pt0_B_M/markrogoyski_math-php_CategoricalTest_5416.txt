@@ -1,0 +1,12 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForBadK(): array
+    {
+        return [
+            [0],
+            [-1],
+            [-40],
+        ];
+    }

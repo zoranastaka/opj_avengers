@@ -1,0 +1,16 @@
+    /**
+     * Create a new DOMElement related to the given DOMDocument.
+     *
+     * **DOES NOT** attach to the DOMDocument
+     */
+
+    public function import(iterable $records, DOMDocument $doc): DOMElement
+    {
+        $root = $doc->createElement($this->root_name);
+        foreach ($records as $offset => $record) {
+            $node = $this->recordToElement($doc, $record, $offset);
+            $root->appendChild($node);
+        }
+
+        return $root;
+    }

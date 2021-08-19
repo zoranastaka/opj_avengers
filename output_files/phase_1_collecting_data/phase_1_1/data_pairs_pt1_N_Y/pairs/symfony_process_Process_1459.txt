@@ -1,0 +1,22 @@
+    /**
+     * Disables fetching output and error output from the underlying process.
+     *
+     * @return $this
+     *
+     * @throws RuntimeException In case the process is already running
+     * @throws LogicException   if an idle timeout is set
+     */
+
+    public function disableOutput()
+    {
+        if ($this->isRunning()) {
+            throw new RuntimeException('Disabling output while the process is running is not possible.');
+        }
+        if (null !== $this->idleTimeout) {
+            throw new LogicException('Output can not be disabled while an idle timeout is set.');
+        }
+
+        $this->outputDisabled = true;
+
+        return $this;
+    }

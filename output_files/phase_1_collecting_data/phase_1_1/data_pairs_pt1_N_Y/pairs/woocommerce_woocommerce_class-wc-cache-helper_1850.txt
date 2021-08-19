@@ -1,0 +1,17 @@
+	/**
+	 * Updates the `woocommerce_geo_hash` cookie, which is used to help ensure we display
+	 * the correct pricing etc to customers, according to their billing country.
+	 *
+	 * Note that:
+	 *
+	 * A) This only sets the cookie if the default customer address is set to "Geolocate (with
+	 *    Page Caching Support)".
+	 *
+	 * B) It is hooked into the `wc_ajax_update_order_review` action, which has the benefit of
+	 *    ensuring we update the cookie any time the billing country is changed.
+	 */
+
+	public static function update_geolocation_hash() {
+		if ( 'geolocation_ajax' === get_option( 'woocommerce_default_customer_address' ) ) {
+			wc_setcookie( 'woocommerce_geo_hash', static::geolocation_ajax_get_location_hash(), time() + HOUR_IN_SECONDS );
+		}

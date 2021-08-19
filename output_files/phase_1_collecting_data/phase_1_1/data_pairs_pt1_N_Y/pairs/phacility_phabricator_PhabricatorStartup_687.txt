@@ -1,0 +1,8 @@
+  /**
+   * Add a new client limits.
+   *
+   * @param PhabricatorClientLimit New limit.
+   * @return PhabricatorClientLimit The limit.
+   */
+
+  public static function addRateLimit(PhabricatorClientLimit $limit) {

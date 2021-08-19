@@ -1,0 +1,6 @@
+  /**
+   * Returns the end of a message boundary.
+   * @access private
+   */
+
+  private function EndBoundary($boundary) {

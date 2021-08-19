@@ -1,0 +1,8 @@
+    /**
+     * Returns the number converter used by this factory
+     */
+
+    public function getNumberConverter(): NumberConverterInterface
+    {
+        return $this->numberConverter;
+    }

@@ -1,0 +1,3 @@
+            // Na osnovu korisnikovog inputa podesava brzinu igraca
+
+            function getP1Input(canvas, player, deltaTime) {

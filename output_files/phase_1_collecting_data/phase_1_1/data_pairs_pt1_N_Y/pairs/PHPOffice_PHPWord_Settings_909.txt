@@ -1,0 +1,10 @@
+    /**
+     * Get measurement unit
+     *
+     * @return string
+     */
+
+    public static function getMeasurementUnit()
+    {
+        return self::$measurementUnit;
+    }

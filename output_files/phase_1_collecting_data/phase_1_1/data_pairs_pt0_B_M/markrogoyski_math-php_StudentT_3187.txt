@@ -1,0 +1,35 @@
+    /**
+     * Probability density function
+     *
+     *     / ν + 1 \
+     *  Γ |  -----  |
+     *     \   2   /    /    x² \ ⁻⁽ᵛ⁺¹⁾/²
+     *  -------------  | 1 + --  |
+     *   __    / ν \    \    ν  /
+     *  √νπ Γ |  -  |
+     *         \ 2 /
+     *
+     *
+     * @param float $t t score
+     *
+     * @return float
+     */
+
+    public function pdf(float $t): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['t' => $t]);
+
+        $ν = $this->ν;
+        $π = \M_PI;
+
+        // Numerator
+        $Γ⟮⟮ν＋1⟯∕2⟯ = Special::gamma(($ν + 1) / 2);
+        $⟮1＋t²∕ν⟯ = 1 + ($t ** 2 / $ν);
+        $−⟮ν＋1⟯∕2 = -($ν + 1) / 2;
+
+        // Denominator
+        $√⟮νπ⟯  = \sqrt($ν * $π);
+        $Γ⟮ν∕2⟯ = Special::gamma($ν / 2);
+
+        return ($Γ⟮⟮ν＋1⟯∕2⟯ * $⟮1＋t²∕ν⟯ ** $−⟮ν＋1⟯∕2) / ($√⟮νπ⟯ * $Γ⟮ν∕2⟯);
+    }

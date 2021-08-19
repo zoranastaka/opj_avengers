@@ -1,0 +1,10 @@
+    /**
+     * Set the startup message.
+     *
+     * @param string $message
+     */
+
+    public function setStartupMessage($message)
+    {
+        $this->startupMessage = $message;
+    }

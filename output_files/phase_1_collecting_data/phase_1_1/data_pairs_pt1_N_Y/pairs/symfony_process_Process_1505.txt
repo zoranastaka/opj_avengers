@@ -1,0 +1,18 @@
+    /**
+     * Validates and returns the filtered timeout.
+     *
+     * @throws InvalidArgumentException if the given timeout is a negative number
+     */
+
+    private function validateTimeout(?float $timeout): ?float
+    {
+        $timeout = (float) $timeout;
+
+        if (0.0 === $timeout) {
+            $timeout = null;
+        } elseif ($timeout < 0) {
+            throw new InvalidArgumentException('The timeout value must be a valid positive integer or float number.');
+        }
+
+        return $timeout;
+    }

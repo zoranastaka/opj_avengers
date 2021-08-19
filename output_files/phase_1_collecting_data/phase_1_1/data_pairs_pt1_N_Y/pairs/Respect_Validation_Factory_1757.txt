@@ -1,0 +1,8 @@
+    /**
+     * Define the default instance of the Factory.
+     */
+
+    public static function setDefaultInstance(self $defaultInstance): void
+    {
+        self::$defaultInstance = $defaultInstance;
+    }

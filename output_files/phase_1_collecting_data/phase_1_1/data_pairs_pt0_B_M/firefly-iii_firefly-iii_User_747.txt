@@ -1,0 +1,12 @@
+    /**
+     * @codeCoverageIgnore
+     *
+     * Link to webhooks
+     *
+     * @return HasMany
+     */
+
+    public function webhooks(): HasMany
+    {
+        return $this->hasMany(Webhook::class);
+    }

@@ -1,0 +1,9 @@
+    /**
+     * @test    getMatrix returns the expected array representation of the matrix
+     * @throws \Exception
+     */
+
+    public function testGetMatrix()
+    {
+        $this->assertEquals($this->A, $this->matrix->getMatrix());
+    }

@@ -1,0 +1,11 @@
+  /**
+   * Declare whether making API calls should make the call immediately, or
+   * return a request which can be called with ->execute();
+   *
+   * @param boolean $defer True if calls should not be executed right away.
+   */
+
+  public function setDefer($defer)
+  {
+    $this->deferExecution = $defer;
+  }

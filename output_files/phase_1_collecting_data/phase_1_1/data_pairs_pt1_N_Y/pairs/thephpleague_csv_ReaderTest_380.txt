@@ -1,0 +1,12 @@
+    /**
+     * @covers ::setHeader
+     * @covers ::seekRow
+     *
+     * @covers \League\Csv\SyntaxError::dueToHeaderNotFound
+     */
+
+    public function testGetHeaderThrowsExceptionWithSplFileObject(): void
+    {
+        $this->expectException(SyntaxError::class);
+        $this->csv->setHeaderOffset(23)->getRecords();
+    }

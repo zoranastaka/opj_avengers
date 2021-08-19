@@ -1,0 +1,10 @@
+    /**
+     * Get the cell address where the bottom right of the chart is fixed
+     *
+     * @return string
+     */
+
+    public function getBottomRightCell()
+    {
+        return $this->bottomRightCellRef;
+    }

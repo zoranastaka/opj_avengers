@@ -1,0 +1,24 @@
+    /**
+     * @requires extension pcntl
+     */
+
+    public function testStopWithTimeoutIsActuallyWorking()
+    {
+        $p = $this->getProcess([self::$phpBin, __DIR__.'/NonStopableProcess.php', 30]);
+        $p->start();
+
+        while ($p->isRunning() && false === strpos($p->getOutput(), 'received')) {
+            usleep(1000);
+        }
+
+        if (!$p->isRunning()) {
+            throw new \LogicException('Process is not running: '.$p->getErrorOutput());
+        }
+
+        $start = microtime(true);
+        $p->stop(0.1);
+
+        $p->wait();
+
+        $this->assertLessThan(15, microtime(true) - $start);
+    }

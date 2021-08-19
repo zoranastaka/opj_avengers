@@ -1,0 +1,19 @@
+    /** @test */
+
+    public function it_allows_unicode_regular_expressions()
+    {
+        $called = false;
+
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'Какая погода в Минске',
+        ]);
+
+        $botman->hears('какая\s+погода\s+в\s+([а-яa-z0-9]+)\s*', function ($bot, $city) use (&$called) {
+            $called = true;
+            $this->assertSame('Минске', $city);
+        });
+        $botman->listen();
+        $this->assertTrue($called);
+    }

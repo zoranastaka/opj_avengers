@@ -1,0 +1,62 @@
+    /**
+     * @dataProvider dataForDeletingTagByLabel
+     */
+
+    public function testDeleteTagsByLabel($useQueryString)
+    {
+        $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
+        $entry = $this->client->getContainer()
+            ->get('doctrine.orm.entity_manager')
+            ->getRepository('WallabagCoreBundle:Entry')
+            ->findOneWithTags($this->user->getId());
+
+        $entry = $entry[0];
+
+        $tag = new Tag();
+        $tag->setLabel('Awesome tag for tagsLabel');
+        $em->persist($tag);
+
+        $tag2 = new Tag();
+        $tag2->setLabel('Awesome tag for tagsLabel 2');
+        $em->persist($tag2);
+
+        $entry->addTag($tag);
+        $entry->addTag($tag2);
+
+        $em->persist($entry);
+        $em->flush();
+
+        if ($useQueryString) {
+            $this->client->request('DELETE', '/api/tags/label.json?tags=' . $tag->getLabel() . ',' . $tag2->getLabel());
+        } else {
+            $this->client->request('DELETE', '/api/tags/label.json', ['tags' => $tag->getLabel() . ',' . $tag2->getLabel()]);
+        }
+
+        $this->assertSame(200, $this->client->getResponse()->getStatusCode());
+
+        $content = json_decode($this->client->getResponse()->getContent(), true);
+
+        $this->assertCount(2, $content);
+
+        $this->assertArrayHasKey('label', $content[0]);
+        $this->assertSame($tag->getLabel(), $content[0]['label']);
+        $this->assertSame($tag->getSlug(), $content[0]['slug']);
+
+        $this->assertArrayHasKey('label', $content[1]);
+        $this->assertSame($tag2->getLabel(), $content[1]['label']);
+        $this->assertSame($tag2->getSlug(), $content[1]['slug']);
+
+        $entries = $this->client->getContainer()
+            ->get('doctrine.orm.entity_manager')
+            ->getRepository('WallabagCoreBundle:Entry')
+            ->findAllByTagId($this->user->getId(), $tag->getId());
+
+        $this->assertCount(0, $entries);
+
+        $entries = $this->client->getContainer()
+            ->get('doctrine.orm.entity_manager')
+            ->getRepository('WallabagCoreBundle:Entry')
+            ->findAllByTagId($this->user->getId(), $tag2->getId());
+
+        $this->assertCount(0, $entries);
+    }

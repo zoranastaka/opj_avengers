@@ -1,0 +1,12 @@
+    /**
+     * Parses a Cache-Control HTTP header.
+     *
+     * @return array An array representing the attribute values
+     */
+
+    protected function parseCacheControl(string $header)
+    {
+        $parts = HeaderUtils::split($header, ',=');
+
+        return HeaderUtils::combine($parts);
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @return Canvas
+     */
+
+    public function getCanvas()
+    {
+        return $this->canvas;
+    }

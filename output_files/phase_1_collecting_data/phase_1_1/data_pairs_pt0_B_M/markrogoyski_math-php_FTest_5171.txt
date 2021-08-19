@@ -1,0 +1,20 @@
+    /**
+     * @test         pdf
+     * @dataProvider dataProviderForPdf
+     * @param        int   $x
+     * @param        int   $d₁
+     * @param        int   $d₂
+     * @param        float $expectedPdf
+     */
+
+    public function testPdf(int $x, int $d₁, int $d₂, float $expectedPdf)
+    {
+        // Given
+        $f = new F($d₁, $d₂);
+
+        // When
+        $pdf = $f->pdf($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedPdf, $pdf, 0.00001);
+    }

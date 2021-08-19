@@ -1,0 +1,23 @@
+    /**
+     * @test         kroneckerSum returns the expected SquareMatrix
+     * @dataProvider dataProviderKroneckerSum
+     * @param        array A
+     * @param        array B
+     * @param        array $expected
+     */
+
+    public function testKroneckerSum(array $A, array $B, array $expected)
+    {
+        // Given
+        $A   = new NumericSquareMatrix($A);
+        $B   = new NumericSquareMatrix($B);
+        $R   = new NumericSquareMatrix($expected);
+
+        // When
+        $A⊕B = $A->kroneckerSum($B);
+
+        // Then
+        $this->assertEquals($R, $A⊕B);
+        $this->assertEquals($R->getMatrix(), $A⊕B->getMatrix());
+        $this->assertInstanceOf(NumericSquareMatrix::class, $A⊕B);
+    }

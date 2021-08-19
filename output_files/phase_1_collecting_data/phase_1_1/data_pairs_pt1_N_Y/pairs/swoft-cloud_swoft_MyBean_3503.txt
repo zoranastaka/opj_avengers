@@ -1,0 +1,21 @@
+/**
+ * Class MyBean
+ *
+ * @package App\Common
+ * @Bean()
+ */
+
+class MyBean
+{
+    public function myMethod(): array
+    {
+        vdump(__METHOD__);
+
+        return ['hi'];
+    }
+
+    public function myMethod2(): string
+    {
+        return __METHOD__;
+    }
+}

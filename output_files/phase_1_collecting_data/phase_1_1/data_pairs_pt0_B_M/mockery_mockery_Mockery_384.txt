@@ -1,0 +1,10 @@
+    /**
+     * Return instance of ANY matcher.
+     *
+     * @return \Mockery\Matcher\Any
+     */
+
+    public static function any()
+    {
+        return new \Mockery\Matcher\Any();
+    }

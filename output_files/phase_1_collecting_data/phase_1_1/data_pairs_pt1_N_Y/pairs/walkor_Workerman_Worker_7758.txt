@@ -1,0 +1,10 @@
+    /**
+     * If stop gracefully.
+     *
+     * @return bool
+     */
+
+    public static function getGracefulStop()
+    {
+        return static::$_gracefulStop;
+    }

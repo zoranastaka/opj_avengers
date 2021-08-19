@@ -1,0 +1,10 @@
+    /**
+     * Set CSV stream flags.
+     *
+     * @see http://php.net/manual/en/SplFileObject.setflags.php
+     */
+
+    public function setFlags(int $flags): void
+    {
+        $this->flags = $flags;
+    }

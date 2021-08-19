@@ -1,0 +1,11 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function parse(string $source): array
+    {
+        $reader = new Reader($source);
+        $stream = $this->tokenizer->tokenize($reader);
+
+        return $this->parseSelectorList($stream);
+    }

@@ -1,0 +1,17 @@
+    /**
+     * Unregisters all handlers registered by this Whoops\Run instance.
+     *
+     * @return Run
+     */
+
+    public function unregister()
+    {
+        if ($this->isRegistered) {
+            $this->system->restoreExceptionHandler();
+            $this->system->restoreErrorHandler();
+
+            $this->isRegistered = false;
+        }
+
+        return $this;
+    }

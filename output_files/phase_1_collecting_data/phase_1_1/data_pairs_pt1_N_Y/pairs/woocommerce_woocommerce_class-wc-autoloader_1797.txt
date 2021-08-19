@@ -1,0 +1,12 @@
+	/**
+	 * Include a class file.
+	 *
+	 * @param  string $path File path.
+	 * @return bool Successful or not.
+	 */
+
+	private function load_file( $path ) {
+		if ( $path && is_readable( $path ) ) {
+			include_once $path;
+			return true;
+		}

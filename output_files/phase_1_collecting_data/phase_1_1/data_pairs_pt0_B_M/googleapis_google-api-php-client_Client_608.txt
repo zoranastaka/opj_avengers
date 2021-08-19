@@ -1,0 +1,12 @@
+  /**
+   * For backwards compatibility
+   * alias for fetchAccessTokenWithAssertion
+   *
+   * @return array access token
+   * @deprecated
+   */
+
+  public function refreshTokenWithAssertion()
+  {
+    return $this->fetchAccessTokenWithAssertion();
+  }

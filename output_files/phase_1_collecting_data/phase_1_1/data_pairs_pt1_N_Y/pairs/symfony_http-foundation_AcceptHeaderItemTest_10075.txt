@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider provideFromStringData
+     */
+
+    public function testFromString($string, $value, array $attributes)
+    {
+        $item = AcceptHeaderItem::fromString($string);
+        $this->assertEquals($value, $item->getValue());
+        $this->assertEquals($attributes, $item->getAttributes());
+    }

@@ -1,0 +1,22 @@
+    /**
+     * @test         Interpolated piecewise function computes expected values: p(x) = expected
+     * @dataProvider dataProviderForPolynomialAgrees
+     * @param        int $x
+     * @param        int $expected
+     * @throws       \Exception
+     */
+
+    public function testPolynomialAgrees(int $x, int $expected)
+    {
+        // Given
+        $points = [[0, 0, 1], [1, 5, -2], [3, 2, 0], [7, 10, 3], [10, -4, 3]];
+
+        // And
+        $p = ClampedCubicSpline::interpolate($points);
+
+        // When
+        $evaluated = $p($x);
+
+        // Then
+        $this->assertEquals($expected, $evaluated);
+    }

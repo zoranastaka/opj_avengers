@@ -1,0 +1,10 @@
+    /**
+     *    Get cell data type
+     *
+     *    @return string
+     */
+
+    public function getDataType()
+    {
+        return $this->dataType;
+    }

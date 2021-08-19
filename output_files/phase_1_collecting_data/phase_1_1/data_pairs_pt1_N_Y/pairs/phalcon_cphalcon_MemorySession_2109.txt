@@ -1,0 +1,10 @@
+    /**
+     * @inheritdoc
+     */
+
+    public function remove(string $index)
+    {
+        unset(
+            $this->memory[$this->prepareIndex($index)]
+        );
+    }

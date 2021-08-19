@@ -1,0 +1,62 @@
+    /**
+     * 评论回复js脚本
+     *
+     * @access public
+     * @return void
+     */
+
+    public static function threadedCommentsScript()
+    {
+        if (self::options()->commentsThreaded) {
+            echo
+<<<EOF
+<script type="text/javascript">
+var typechoAddCommentReply = function (cid, coid, cfid, style) {
+    var _ce = document.getElementById(cid), _cp = _ce.parentNode;
+    var _cf = document.getElementById(cfid);
+
+    var _pi = document.getElementById('comment-parent');
+    if (null == _pi) {
+        _pi = document.createElement('input');
+        _pi.setAttribute('type', 'hidden');
+        _pi.setAttribute('name', 'parent');
+        _pi.setAttribute('id', 'comment-parent');
+
+        var _form = 'form' == _cf.tagName ? _cf : _cf.getElementsByTagName('form')[0];
+
+        _form.appendChild(_pi);
+    }
+    _pi.setAttribute('value', coid);
+
+    if (null == document.getElementById('comment-form-place-holder')) {
+        var _cfh = document.createElement('div');
+        _cfh.setAttribute('id', 'comment-form-place-holder');
+        _cf.parentNode.insertBefore(_cfh, _cf);
+    }
+
+    1 == style ? (null == _ce.nextSibling ? _cp.appendChild(_cf)
+    : _cp.insertBefore(_cf, _ce.nextSibling)) : _ce.appendChild(_cf);
+
+    return false;
+};
+
+var typechoCancelCommentReply = function (cfid) {
+    var _cf = document.getElementById(cfid),
+    _cfh = document.getElementById('comment-form-place-holder');
+
+    var _pi = document.getElementById('comment-parent');
+    if (null != _pi) {
+        _pi.parentNode.removeChild(_pi);
+    }
+
+    if (null == _cfh) {
+        return true;
+    }
+
+    _cfh.parentNode.insertBefore(_cf, _cfh);
+    return false;
+};
+</script>
+EOF;
+        }
+    }

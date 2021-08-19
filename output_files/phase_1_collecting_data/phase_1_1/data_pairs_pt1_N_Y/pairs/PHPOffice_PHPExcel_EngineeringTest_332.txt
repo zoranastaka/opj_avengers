@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider providerGESTEP
+     */
+
+    public function testGESTEP()
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','GESTEP'), $args);
+        $this->assertEquals($expectedResult, $result, null);
+    }

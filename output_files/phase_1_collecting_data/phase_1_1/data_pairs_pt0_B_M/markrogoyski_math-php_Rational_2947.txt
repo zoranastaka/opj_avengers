@@ -1,0 +1,13 @@
+    /**
+     * Convert the denominator to subscript character
+     *
+     * @return string
+     */
+
+    private function denominatorToSubscript(): string
+    {
+        return $this->toSuperOrSubscript(
+            $this->denominator,
+            ['₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉']
+        );
+    }

@@ -1,0 +1,18 @@
+    /**
+     * @test Nothing to iterate does nothing
+     */
+
+    public function testNothingToIterate()
+    {
+        // Given
+        $nothing = [];
+        $result  = [];
+
+        // When
+        foreach (Iter::zip($nothing) as $_) {
+            $result[] = $_;
+        }
+
+        // Then
+        $this->assertEmpty($result);
+    }

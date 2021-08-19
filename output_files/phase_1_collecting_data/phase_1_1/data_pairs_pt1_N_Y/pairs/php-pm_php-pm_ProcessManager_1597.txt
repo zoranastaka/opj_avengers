@@ -1,0 +1,8 @@
+    /**
+     * @param boolean $debug
+     */
+
+    public function setDebug($debug)
+    {
+        $this->debug = $debug;
+    }

@@ -1,0 +1,5 @@
+    /**
+     * Configures the token id
+     */
+
+    public function identifiedBy(string $id): Builder;

@@ -1,0 +1,12 @@
+    /**
+     * @test 50 murder observations
+     */
+
+    public function testNumberOfMurders()
+    {
+        // When
+        $observations = $this->usArrests->getMurder();
+
+        // Then
+        $this->assertCount(50, $observations);
+    }

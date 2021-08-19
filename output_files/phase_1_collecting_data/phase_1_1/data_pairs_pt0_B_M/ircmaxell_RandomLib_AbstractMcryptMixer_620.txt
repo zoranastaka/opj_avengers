@@ -1,0 +1,7 @@
+    /**
+     * Fetch the cipher for mcrypt.
+     *
+     * @return string
+     */
+
+    abstract protected function getCipher();

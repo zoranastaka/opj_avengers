@@ -1,0 +1,14 @@
+    /**
+     * Sets the HTTP protocol version (1.0 or 1.1).
+     *
+     * @return $this
+     *
+     * @final
+     */
+
+    public function setProtocolVersion(string $version): object
+    {
+        $this->version = $version;
+
+        return $this;
+    }

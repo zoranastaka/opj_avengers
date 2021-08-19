@@ -1,0 +1,48 @@
+    /**
+     * Returns the cookie as a string.
+     *
+     * @return string The cookie
+     */
+
+    public function __toString()
+    {
+        if ($this->isRaw()) {
+            $str = $this->getName();
+        } else {
+            $str = str_replace(self::RESERVED_CHARS_FROM, self::RESERVED_CHARS_TO, $this->getName());
+        }
+
+        $str .= '=';
+
+        if ('' === (string) $this->getValue()) {
+            $str .= 'deleted; expires='.gmdate('D, d-M-Y H:i:s T', time() - 31536001).'; Max-Age=0';
+        } else {
+            $str .= $this->isRaw() ? $this->getValue() : rawurlencode($this->getValue());
+
+            if (0 !== $this->getExpiresTime()) {
+                $str .= '; expires='.gmdate('D, d-M-Y H:i:s T', $this->getExpiresTime()).'; Max-Age='.$this->getMaxAge();
+            }
+        }
+
+        if ($this->getPath()) {
+            $str .= '; path='.$this->getPath();
+        }
+
+        if ($this->getDomain()) {
+            $str .= '; domain='.$this->getDomain();
+        }
+
+        if (true === $this->isSecure()) {
+            $str .= '; secure';
+        }
+
+        if (true === $this->isHttpOnly()) {
+            $str .= '; httponly';
+        }
+
+        if (null !== $this->getSameSite()) {
+            $str .= '; samesite='.$this->getSameSite();
+        }
+
+        return $str;
+    }

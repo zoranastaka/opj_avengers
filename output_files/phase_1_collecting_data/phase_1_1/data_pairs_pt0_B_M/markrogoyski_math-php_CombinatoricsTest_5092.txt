@@ -1,0 +1,16 @@
+    /**
+     * @test         multinomial
+     * @dataProvider dataProviderForMultinomialTheorem
+     * @param        array $groups
+     * @param        int   $expected
+     * @throws       \Exception
+     */
+
+    public function testMultinomialTheorem(array $groups, int $expected)
+    {
+        // When
+        $divisions = Combinatorics::multinomial($groups);
+
+        // Then
+        $this->assertEquals($expected, $divisions);
+    }

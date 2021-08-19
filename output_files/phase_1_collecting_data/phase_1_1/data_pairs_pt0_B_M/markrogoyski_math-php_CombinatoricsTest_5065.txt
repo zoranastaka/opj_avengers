@@ -1,0 +1,16 @@
+    /**
+     * @test         subfactorial
+     * @dataProvider dataProviderForSubfactorial
+     * @param        int   $n
+     * @param        float $！n
+     * @throws       \Exception
+     */
+
+    public function testSubfactorial(int $n, float $！n)
+    {
+        // When
+        $subfactorial = Combinatorics::subfactorial($n);
+
+        // Then
+        $this->assertEqualsWithDelta($！n, $subfactorial, 0.000000001);
+    }

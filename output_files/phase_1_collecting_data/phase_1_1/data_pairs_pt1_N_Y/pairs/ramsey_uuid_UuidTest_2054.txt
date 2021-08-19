@@ -1,0 +1,46 @@
+    /**
+     * Iterates over a 3600-second period and tests to ensure that, for each
+     * second in the period, the 32-bit and 64-bit versions of the UUID match
+     */
+
+    public function test32BitMatch64BitForOneHourPeriod(): void
+    {
+        $currentTime = strtotime('2012-12-11T00:00:00+00:00');
+        $endTime = $currentTime + 3600;
+
+        $timeOfDay = new FixedTimeProvider(new Time($currentTime, 0));
+
+        $smallIntFeatureSet = new FeatureSet(false, true);
+        $smallIntFeatureSet->setTimeProvider($timeOfDay);
+
+        $smallIntFactory = new UuidFactory($smallIntFeatureSet);
+
+        $featureSet = new FeatureSet();
+        $featureSet->setTimeProvider($timeOfDay);
+
+        $factory = new UuidFactory($featureSet);
+
+        while ($currentTime <= $endTime) {
+            foreach ([0, 50000, 250000, 500000, 750000, 999999] as $usec) {
+                $timeOfDay->setSec($currentTime);
+                $timeOfDay->setUsec($usec);
+
+                $uuid32 = $smallIntFactory->uuid1(0x00007ffffffe, 0x1669);
+                $uuid64 = $factory->uuid1(0x00007ffffffe, 0x1669);
+
+                $this->assertTrue(
+                    $uuid32->equals($uuid64),
+                    'Breaks at ' . gmdate('r', $currentTime)
+                        . "; 32-bit: {$uuid32->toString()}, 64-bit: {$uuid64->toString()}"
+                );
+
+                // Assert that the time matches
+                $usecAdd = BigDecimal::of($usec)->dividedBy('1000000', 14, RoundingMode::HALF_UP);
+                $testTime = BigDecimal::of($currentTime)->plus($usecAdd)->toScale(0, RoundingMode::DOWN);
+                $this->assertSame((string) $testTime, (string) $uuid64->getDateTime()->getTimestamp());
+                $this->assertSame((string) $testTime, (string) $uuid32->getDateTime()->getTimestamp());
+            }
+
+            $currentTime++;
+        }
+    }

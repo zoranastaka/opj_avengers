@@ -1,0 +1,5 @@
+    /**
+     * @return LibXMLError[]
+     */
+
+    public function getLibxmlErrors(): array {

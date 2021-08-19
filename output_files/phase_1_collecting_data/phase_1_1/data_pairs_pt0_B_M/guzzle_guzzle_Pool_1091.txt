@@ -1,0 +1,8 @@
+    /**
+     * Get promise
+     */
+
+    public function promise(): PromiseInterface
+    {
+        return $this->each->promise();
+    }

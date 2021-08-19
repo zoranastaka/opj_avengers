@@ -1,0 +1,13 @@
+    /**
+     * Get R² Values
+     *
+     * R² for each component is eigenvalue divided by the sum of all eigenvalues
+     *
+     * @return float[]
+     */
+
+    public function getR2(): array
+    {
+        $total_variance = $this->EVal->sum();
+        return $this->EVal->scalarDivide($total_variance)->getVector();
+    }

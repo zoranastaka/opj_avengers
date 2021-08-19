@@ -1,0 +1,13 @@
+    /**
+     * Set X-Axis Label
+     *
+     * @param    PHPExcel_Chart_Title $label
+     * @return    PHPExcel_Chart
+     */
+
+    public function setXAxisLabel(PHPExcel_Chart_Title $label)
+    {
+        $this->xAxisLabel = $label;
+
+        return $this;
+    }

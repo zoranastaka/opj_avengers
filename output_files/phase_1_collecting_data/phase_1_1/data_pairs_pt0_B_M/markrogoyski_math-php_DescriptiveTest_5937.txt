@@ -1,0 +1,17 @@
+    /**
+     * @test   weightedSampleVariance throws a BadDataException if the weights and numbers have different counts
+     * @throws Exception\BadDataException
+     */
+
+    public function testWeightedSampleVarianceException()
+    {
+        // Given
+        $numbers = [1, 2, 3];
+        $weights = [1, 1];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Descriptive::weightedSampleVariance($numbers, $weights);
+    }

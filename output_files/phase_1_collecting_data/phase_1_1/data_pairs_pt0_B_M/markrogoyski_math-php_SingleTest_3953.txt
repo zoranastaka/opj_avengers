@@ -1,0 +1,16 @@
+    /**
+     * @test         multiply
+     * @dataProvider dataProviderForMultiply
+     * @param        array $xs
+     * @param        int   $k
+     * @param        array $expected
+     */
+
+    public function testMultiply(array $xs, int $k, array $expected)
+    {
+        // When
+        $products = Single::multiply($xs, $k);
+
+        // Then
+        $this->assertEquals($expected, $products);
+    }

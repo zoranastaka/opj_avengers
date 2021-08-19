@@ -1,0 +1,10 @@
+    /**
+     * Get Plot Area
+     *
+     * @return PHPExcel_Chart_PlotArea
+     */
+
+    public function getPlotArea()
+    {
+        return $this->plotArea;
+    }

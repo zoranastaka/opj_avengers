@@ -1,0 +1,13 @@
+    /**
+     * Sets the DCE Security generator to use for this factory
+     *
+     * @param DceSecurityGeneratorInterface $generator A generator to generate
+     *     binary data, based on a local domain and local identifier
+     */
+
+    public function setDceSecurityGenerator(DceSecurityGeneratorInterface $generator): void
+    {
+        $this->isDefaultFeatureSet = false;
+
+        $this->dceSecurityGenerator = $generator;
+    }

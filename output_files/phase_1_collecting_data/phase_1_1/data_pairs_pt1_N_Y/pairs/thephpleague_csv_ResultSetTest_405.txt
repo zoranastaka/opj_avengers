@@ -1,0 +1,11 @@
+    /**
+     * @covers \League\Csv\Statement::limit
+     * @covers \League\Csv\InvalidArgument::dueToInvalidLimit
+     */
+
+    public function testSetLimitThrowException(): void
+    {
+        $this->expectException(InvalidArgument::class);
+
+        $this->stmt->limit(-4);
+    }

@@ -1,0 +1,12 @@
+    /** @test */
+
+    public function it_should_return_false_when_passing_invalid_credentials_to_attempt_method()
+    {
+        $this->manager->shouldReceive('encode->get')->never();
+        $this->auth->shouldReceive('byCredentials')->once()->andReturn(false);
+        $this->auth->shouldReceive('user')->never();
+
+        $token = $this->jwtAuth->attempt(['foo' => 'bar']);
+
+        $this->assertFalse($token);
+    }

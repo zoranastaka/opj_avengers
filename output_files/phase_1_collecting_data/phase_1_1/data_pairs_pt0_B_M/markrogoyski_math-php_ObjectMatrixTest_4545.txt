@@ -1,0 +1,24 @@
+    /**
+     * @test         det
+     * @dataProvider dataProviderDet
+     * @param        array $A
+     * @param        Polynomial $expected
+     */
+
+    public function testDet(array $A, Polynomial $expected)
+    {
+        // Given
+        $A = new ObjectMatrix($A);
+
+        // When
+        $det = $A->det();
+
+        // Then
+        $this->assertEquals($det, $expected);
+
+        // And when
+        $det = $A->det();
+
+        // Then
+        $this->assertEquals($expected, $det);
+    }

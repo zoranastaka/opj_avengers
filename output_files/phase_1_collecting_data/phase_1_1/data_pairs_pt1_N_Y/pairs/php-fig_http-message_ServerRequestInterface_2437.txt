@@ -1,0 +1,17 @@
+    /**
+     * Return an instance with the specified derived request attribute.
+     *
+     * This method allows setting a single derived request attribute as
+     * described in getAttributes().
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * updated attribute.
+     *
+     * @see getAttributes()
+     * @param string $name The attribute name.
+     * @param mixed $value The value of the attribute.
+     * @return static
+     */
+
+    public function withAttribute($name, $value);

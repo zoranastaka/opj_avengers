@@ -1,0 +1,11 @@
+  /**
+   * openid.realm is a parameter from the OpenID 2.0 protocol, not from OAuth
+   * 2.0. It is used in OpenID 2.0 requests to signify the URL-space for which
+   * an authentication request is valid.
+   * @param $realm string - the URL-space to use.
+   */
+
+  public function setOpenidRealm($realm)
+  {
+    $this->config['openid.realm'] = $realm;
+  }

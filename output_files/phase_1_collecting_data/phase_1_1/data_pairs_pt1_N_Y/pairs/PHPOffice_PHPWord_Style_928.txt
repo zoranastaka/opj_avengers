@@ -1,0 +1,11 @@
+    /**
+     * Set default paragraph style
+     *
+     * @param array|\PhpOffice\PhpWord\Style\AbstractStyle $styles Paragraph style definition
+     * @return \PhpOffice\PhpWord\Style\Paragraph
+     */
+
+    public static function setDefaultParagraphStyle($styles)
+    {
+        return self::addParagraphStyle('Normal', $styles);
+    }

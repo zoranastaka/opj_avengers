@@ -1,0 +1,25 @@
+    /**
+     * Creates a promise for a value if the value is not a promise.
+     *
+     * @param mixed $value Promise or value.
+     *
+     * @return PromiseInterface
+     */
+
+    public static function promiseFor($value)
+    {
+        if ($value instanceof PromiseInterface) {
+            return $value;
+        }
+
+        // Return a Guzzle promise that shadows the given promise.
+        if (is_object($value) && method_exists($value, 'then')) {
+            $wfn = method_exists($value, 'wait') ? [$value, 'wait'] : null;
+            $cfn = method_exists($value, 'cancel') ? [$value, 'cancel'] : null;
+            $promise = new Promise($wfn, $cfn);
+            $value->then([$promise, 'resolve'], [$promise, 'reject']);
+            return $promise;
+        }
+
+        return new FulfilledPromise($value);
+    }

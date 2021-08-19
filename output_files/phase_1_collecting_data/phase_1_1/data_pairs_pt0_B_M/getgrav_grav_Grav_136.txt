@@ -1,0 +1,10 @@
+    /**
+     * @param ResponseInterface $response
+     * @return void
+     * @deprecated 1.7 Do not use
+     */
+
+    public function exit(ResponseInterface $response): void
+    {
+        $this->close($response);
+    }

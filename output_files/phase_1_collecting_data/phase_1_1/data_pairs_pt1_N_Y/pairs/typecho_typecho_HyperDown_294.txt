@@ -1,0 +1,38 @@
+    /**
+     * @param $block
+     * @param $key
+     * @param $line
+     * @param $state
+     * @return bool
+     */
+
+    private function parseBlockAhtml($block, $key, $line, &$state)
+    {
+        if ($this->_html) {
+            if (preg_match("/^\s*<({$this->_blockHtmlTags})(\s+[^>]*)?>/i", $line, $matches)) {
+                if ($this->isBlock('ahtml')) {
+                    $this->setBlock($key);
+                    return false;
+                } elseif (empty($matches[2]) || $matches[2] != '/') {
+                    $this->startBlock('ahtml', $key);
+                    preg_match_all("/<({$this->_blockHtmlTags})(\s+[^>]*)?>/i", $line, $allMatches);
+                    $lastMatch = $allMatches[1][count($allMatches[0]) - 1];
+
+                    if (strpos($line, "</{$lastMatch}>") !== false) {
+                        $this->endBlock();
+                    } else {
+                        $state['html'] = $lastMatch;
+                    }
+                    return false;
+                }
+            } elseif (!!$state['html'] && strpos($line, "</{$state['html']}>") !== false) {
+                $this->setBlock($key)->endBlock();
+                $state['html'] = false;
+                return false;
+            } elseif ($this->isBlock('ahtml')) {
+                $this->setBlock($key);
+                return false;
+            } elseif (preg_match("/^\s*<!\-\-(.*?)\-\->\s*$/", $line, $matches)) {
+                $this->startBlock('ahtml', $key)->endBlock();
+                return false;
+            }

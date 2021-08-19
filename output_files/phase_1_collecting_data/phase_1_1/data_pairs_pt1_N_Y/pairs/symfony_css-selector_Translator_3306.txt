@@ -1,0 +1,12 @@
+    /**
+     * @throws ExpressionErrorException
+     */
+
+    public function addCombination(string $combiner, NodeInterface $xpath, NodeInterface $combinedXpath): XPathExpr
+    {
+        if (!isset($this->combinationTranslators[$combiner])) {
+            throw new ExpressionErrorException(sprintf('Combiner "%s" not supported.', $combiner));
+        }
+
+        return $this->combinationTranslators[$combiner]($this->nodeToXPath($xpath), $this->nodeToXPath($combinedXpath));
+    }

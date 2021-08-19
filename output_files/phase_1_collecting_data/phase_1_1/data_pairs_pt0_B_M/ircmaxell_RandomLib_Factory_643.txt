@@ -1,0 +1,10 @@
+    /**
+     * Get all loaded mixing strategies
+     *
+     * @return array An array of mixers
+     */
+
+    public function getMixers()
+    {
+        return $this->mixers;
+    }

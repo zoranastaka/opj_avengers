@@ -1,0 +1,7 @@
+    /** @test */
+
+    public function it_should_get_the_authenticated_user()
+    {
+        $manager = $this->jwtAuth->manager();
+        $this->assertInstanceOf(Manager::class, $manager);
+    }

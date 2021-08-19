@@ -1,0 +1,14 @@
+    /**
+     * @test
+     */
+
+    public function sets_php_spreadsheet_settings()
+    {
+        $driver = config('excel.cache.driver');
+
+        $this->assertEquals('memory', $driver);
+        $this->assertInstanceOf(
+            MemoryCache::class,
+            Settings::getCache()
+        );
+    }

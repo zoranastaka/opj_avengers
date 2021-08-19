@@ -1,0 +1,16 @@
+    /**
+     * Directly set the class properties
+     *
+     * @param string $value
+     * @param bool   $positive
+     */
+
+    protected function setVariables(string $value, bool $positive)
+    {
+        $value = \ltrim($value, \chr(0));
+        if ($value == '') {
+            $value = \chr(0);
+        }
+        $this->base256  = $value;
+        $this->isPositive = $positive;
+    }

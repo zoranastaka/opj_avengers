@@ -1,0 +1,13 @@
+    /**
+     * Set Legend
+     *
+     * @param    PHPExcel_Chart_Legend $legend
+     * @return    PHPExcel_Chart
+     */
+
+    public function setLegend(PHPExcel_Chart_Legend $legend)
+    {
+        $this->legend = $legend;
+
+        return $this;
+    }

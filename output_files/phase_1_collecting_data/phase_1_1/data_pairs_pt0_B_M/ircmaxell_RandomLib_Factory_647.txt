@@ -1,0 +1,25 @@
+    /**
+     * Find a sources based upon the requested strength
+     *
+     * @param Strength $strength The strength mixer to find
+     *
+     * @throws RuntimeException if a valid source cannot be found
+     *
+     * @return Source The found source
+     */
+
+    protected function findSources(\SecurityLib\Strength $strength)
+    {
+        $sources = array();
+        foreach ($this->getSources() as $source) {
+            if ($strength->compare($source::getStrength()) <= 0 && $source::isSupported()) {
+                $sources[] = new $source();
+            }
+        }
+
+        if (0 === count($sources)) {
+            throw new \RuntimeException('Could not find sources');
+        }
+
+        return $sources;
+    }

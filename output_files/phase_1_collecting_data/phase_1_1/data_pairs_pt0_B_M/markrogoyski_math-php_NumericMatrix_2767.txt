@@ -1,0 +1,12 @@
+    /**
+     * Householder matrix transformation
+     *
+     * @return NumericMatrix
+     *
+     * @throws Exception\MathException
+     */
+
+    public function householder(): NumericMatrix
+    {
+        return Householder::transform($this);
+    }

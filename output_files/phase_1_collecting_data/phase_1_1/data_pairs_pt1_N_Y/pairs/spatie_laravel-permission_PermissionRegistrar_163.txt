@@ -1,0 +1,10 @@
+    /**
+     * Get an instance of the permission class.
+     *
+     * @return \Spatie\Permission\Contracts\Permission
+     */
+
+    public function getPermissionClass(): Permission
+    {
+        return app($this->permissionClass);
+    }

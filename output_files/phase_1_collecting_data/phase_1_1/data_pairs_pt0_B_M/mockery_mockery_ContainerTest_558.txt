@@ -1,0 +1,17 @@
+    /**
+     */
+
+    public function testMockedStaticThrowsExceptionWhenMethodDoesNotExist()
+    {
+        $m = mock('alias:MyNamespace\StaticNoMethod');
+        try {
+            MyNameSpace\StaticNoMethod::staticFoo();
+        } catch (BadMethodCallException $e) {
+            // Mockery + PHPUnit has a fail safe for tests swallowing our
+            // exceptions
+            $e->dismiss();
+            return;
+        }
+
+        $this->fail('Exception was not thrown');
+    }

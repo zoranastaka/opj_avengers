@@ -1,0 +1,19 @@
+    /**
+     * Tests known version-3 UUIDs
+     *
+     * Taken from the Python UUID tests in
+     * http://hg.python.org/cpython/file/2f4c4db9aee5/Lib/test/test_uuid.py
+     *
+     * @dataProvider provideUuid3WithKnownUuids
+     */
+
+    public function testUuid3WithKnownUuids(string $uuid, string $ns, string $name): void
+    {
+        $uobj1 = Uuid::uuid3($ns, $name);
+        $uobj2 = Uuid::uuid3(Uuid::fromString($ns), $name);
+
+        $this->assertSame(2, $uobj1->getVariant());
+        $this->assertSame(3, $uobj1->getVersion());
+        $this->assertSame(Uuid::fromString($uuid)->toString(), $uobj1->toString());
+        $this->assertTrue($uobj1->equals($uobj2));
+    }

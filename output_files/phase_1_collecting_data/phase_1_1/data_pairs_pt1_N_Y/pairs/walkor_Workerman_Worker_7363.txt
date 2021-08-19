@@ -1,0 +1,13 @@
+    /**
+     * Get worker id.
+     *
+     * @param int $worker_id
+     * @param int $pid
+     *
+     * @return integer
+     */
+
+    protected static function getId($worker_id, $pid)
+    {
+        return \array_search($pid, static::$_idMap[$worker_id]);
+    }

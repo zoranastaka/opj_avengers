@@ -1,0 +1,31 @@
+    /**
+     * Extracts the content from a field without enclosure.
+     *
+     * - Field content can not spread on multiple document lines.
+     * - Content must be preserved.
+     * - Trailing line-breaks must be removed.
+     *
+     * @return string|null
+     */
+
+    private static function extractFieldContent()
+    {
+        if (in_array(self::$line, self::FIELD_BREAKS, true)) {
+            self::$line = false;
+
+            return null;
+        }
+
+        /** @var array<string> $result */
+        $result = explode(self::$delimiter, self::$line, 2);
+        /** @var string $content */
+        [$content, $remainder] = $result + [1 => false];
+
+        /* @var string|false line */
+        self::$line = $remainder;
+        if (false === self::$line) {
+            return rtrim($content, "\r\n");
+        }
+
+        return $content;
+    }

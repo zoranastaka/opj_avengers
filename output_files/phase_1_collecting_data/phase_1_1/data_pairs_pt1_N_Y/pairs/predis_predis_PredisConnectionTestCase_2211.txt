@@ -1,0 +1,22 @@
+    /**
+     * @group connected
+     */
+
+    public function testExecutesMultipleCommandsOnServer(): void
+    {
+        $commands = $this->getCommandFactory();
+
+        $cmdPing = $commands->create('ping');
+        $cmdEcho = $commands->create('echo', array('echoed'));
+        $cmdGet = $commands->create('get', array('foobar'));
+        $cmdRpush = $commands->create('rpush', array('metavars', 'foo', 'hoge', 'lol'));
+        $cmdLrange = $commands->create('lrange', array('metavars', 0, -1));
+
+        $connection = $this->createConnection(true);
+
+        $this->assertEquals('PONG', $connection->executeCommand($cmdPing));
+        $this->assertSame('echoed', $connection->executeCommand($cmdEcho));
+        $this->assertNull($connection->executeCommand($cmdGet));
+        $this->assertSame(3, $connection->executeCommand($cmdRpush));
+        $this->assertSame(array('foo', 'hoge', 'lol'), $connection->executeCommand($cmdLrange));
+    }

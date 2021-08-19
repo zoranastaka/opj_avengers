@@ -1,0 +1,21 @@
+    /**
+     * Sets the process idle timeout (max. time since last output) in seconds.
+     *
+     * To disable the timeout, set this value to null.
+     *
+     * @return $this
+     *
+     * @throws LogicException           if the output is disabled
+     * @throws InvalidArgumentException if the timeout is negative
+     */
+
+    public function setIdleTimeout(?float $timeout)
+    {
+        if (null !== $timeout && $this->outputDisabled) {
+            throw new LogicException('Idle timeout can not be set while the output is disabled.');
+        }
+
+        $this->idleTimeout = $this->validateTimeout($timeout);
+
+        return $this;
+    }

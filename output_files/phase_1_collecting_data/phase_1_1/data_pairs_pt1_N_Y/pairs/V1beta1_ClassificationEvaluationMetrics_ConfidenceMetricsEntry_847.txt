@@ -1,0 +1,16 @@
+    /**
+     * Output only. Metrics are computed with an assumption that the model
+     * never returns predictions with score lower than this value.
+     *
+     * Generated from protobuf field <code>float confidence_threshold = 1;</code>
+     * @param float $var
+     * @return $this
+     */
+
+    public function setConfidenceThreshold($var)
+    {
+        GPBUtil::checkFloat($var);
+        $this->confidence_threshold = $var;
+
+        return $this;
+    }

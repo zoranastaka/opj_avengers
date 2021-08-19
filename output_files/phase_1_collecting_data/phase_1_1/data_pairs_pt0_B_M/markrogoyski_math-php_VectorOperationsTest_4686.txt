@@ -1,0 +1,18 @@
+    /**
+     * @test         direct product
+     * @dataProvider dataProviderForDirectProduct
+     */
+
+    public function testDirectProduct(array $A, array $B, array $expected)
+    {
+        // Given
+        $A        = new Vector($A);
+        $B        = new Vector($B);
+        $expected = new NumericMatrix($expected);
+
+        // When
+        $AB = $A->directProduct($B);
+
+        // Then
+        $this->assertEquals($expected->getMatrix(), $AB->getMatrix());
+    }

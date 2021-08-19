@@ -1,0 +1,5 @@
+    /**
+     * Appends new items to audience
+     */
+
+    public function permittedFor(string ...$audiences): Builder;

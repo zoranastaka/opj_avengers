@@ -1,0 +1,11 @@
+    /**
+     * @group issue/11
+     */
+
+    public function testMockingAKnownConcreteClassCanBeGrantedAnArbitraryClassType()
+    {
+        $m = mock('alias:MyNamespace\MyClass');
+        $m->shouldReceive('foo')->andReturn('bar');
+        $this->assertEquals('bar', $m->foo());
+        $this->assertInstanceOf(MyNamespace\MyClass::class, $m);
+    }

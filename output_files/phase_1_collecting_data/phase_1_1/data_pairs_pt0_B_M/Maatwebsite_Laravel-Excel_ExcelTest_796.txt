@@ -1,0 +1,10 @@
+            /**
+             * @return array
+             */
+
+            public function getCsvSettings(): array
+            {
+                return [
+                    'delimiter' => "\t",
+                ];
+            }

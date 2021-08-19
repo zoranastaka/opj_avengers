@@ -1,0 +1,14 @@
+    /**
+     * Enable using the class as a formatter for the {@link Writer}.
+     */
+
+    public function __invoke(array $record): array
+    {
+        $outputRecord = [];
+        foreach ($record as $offset => $value) {
+            [$newOffset, $newValue] = $this->encodeField($value, $offset);
+            $outputRecord[$newOffset] = $newValue;
+        }
+
+        return $outputRecord;
+    }

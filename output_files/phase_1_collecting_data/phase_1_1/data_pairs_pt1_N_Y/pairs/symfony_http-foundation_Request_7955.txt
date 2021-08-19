@@ -1,0 +1,10 @@
+    /**
+     * Get the locale.
+     *
+     * @return string
+     */
+
+    public function getLocale()
+    {
+        return null === $this->locale ? $this->defaultLocale : $this->locale;
+    }

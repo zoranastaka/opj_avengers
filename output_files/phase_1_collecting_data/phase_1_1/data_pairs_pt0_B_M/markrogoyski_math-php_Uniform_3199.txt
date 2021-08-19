@@ -1,0 +1,12 @@
+    /**
+     * Mode of the distribution
+     *
+     * mode = any value in (a, b)
+     *
+     * @return float
+     */
+
+    public function mode(): float
+    {
+        return $this->a;
+    }

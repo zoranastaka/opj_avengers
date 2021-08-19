@@ -1,0 +1,17 @@
+    /**
+     * @test         augmentLeft
+     * @throws       \Exception
+     */
+
+    public function testAugmentLeftExceptionTypeMismatch()
+    {
+        // Given
+        $A    = MatrixFactory::create([[1]]);
+        $B    = MatrixFactory::create([[new Polynomial([1,1])]]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $augmented = $A->augmentLeft($B);
+    }

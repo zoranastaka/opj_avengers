@@ -1,0 +1,12 @@
+    /**
+     * Return the current key.
+     *
+     * @return int|null
+     */
+
+    public function key()
+    {
+        return $this->valid()
+            ? $this->key
+            : null;
+    }

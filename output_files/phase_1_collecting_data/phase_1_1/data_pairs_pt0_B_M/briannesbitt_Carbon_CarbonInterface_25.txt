@@ -1,0 +1,9 @@
+    /**
+     * Cleanup properties attached to the public scope of DateTime when a dump of the date is requested.
+     * foreach ($date as $_) {}
+     * serializer($date)
+     * var_export($date)
+     * get_object_vars($date)
+     */
+
+    public function cleanupDumpProperties();

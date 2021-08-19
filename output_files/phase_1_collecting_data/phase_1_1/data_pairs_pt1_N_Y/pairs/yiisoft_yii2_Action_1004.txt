@@ -1,0 +1,12 @@
+    /**
+     * This method is called right before `run()` is executed.
+     * You may override this method to do preparation work for the action run.
+     * If the method returns false, it will cancel the action.
+     *
+     * @return bool whether to run the action.
+     */
+
+    protected function beforeRun()
+    {
+        return true;
+    }

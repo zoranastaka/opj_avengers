@@ -1,0 +1,8 @@
+    /**
+     * Constructs a new factory.
+     */
+
+    public function __construct()
+    {
+        $this->registerDefaultComparators();
+    }

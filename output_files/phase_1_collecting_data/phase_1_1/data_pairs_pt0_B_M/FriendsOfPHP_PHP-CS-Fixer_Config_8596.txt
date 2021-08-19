@@ -1,0 +1,12 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function registerCustomFixers(iterable $fixers): ConfigInterface
+    {
+        foreach ($fixers as $fixer) {
+            $this->addCustomFixer($fixer);
+        }
+
+        return $this;
+    }

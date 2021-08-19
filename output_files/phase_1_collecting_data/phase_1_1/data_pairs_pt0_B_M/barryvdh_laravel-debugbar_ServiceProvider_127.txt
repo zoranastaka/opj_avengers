@@ -1,0 +1,10 @@
+    /**
+     * Get the active router.
+     *
+     * @return Router
+     */
+
+    protected function getRouter()
+    {
+        return $this->app['router'];
+    }

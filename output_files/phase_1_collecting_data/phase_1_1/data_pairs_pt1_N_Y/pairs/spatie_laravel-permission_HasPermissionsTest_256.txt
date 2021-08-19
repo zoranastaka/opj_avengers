@@ -1,0 +1,16 @@
+    /** @test */
+
+    public function it_can_sync_multiple_permissions_by_id()
+    {
+        $this->testUser->givePermissionTo('edit-news');
+
+        $ids = app(Permission::class)::whereIn('name', ['edit-articles', 'edit-blog'])->pluck('id');
+
+        $this->testUser->syncPermissions($ids);
+
+        $this->assertTrue($this->testUser->hasDirectPermission('edit-articles'));
+
+        $this->assertTrue($this->testUser->hasDirectPermission('edit-blog'));
+
+        $this->assertFalse($this->testUser->hasDirectPermission('edit-news'));
+    }

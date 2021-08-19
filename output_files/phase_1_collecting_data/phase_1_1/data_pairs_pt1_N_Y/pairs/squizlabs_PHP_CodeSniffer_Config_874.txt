@@ -1,0 +1,19 @@
+    /**
+     * Prints out the usage information for this script.
+     *
+     * @return void
+     */
+
+    public function printUsage()
+    {
+        echo PHP_EOL;
+
+        if (PHP_CODESNIFFER_CBF === true) {
+            $this->printPHPCBFUsage();
+        } else {
+            $this->printPHPCSUsage();
+        }
+
+        echo PHP_EOL;
+
+    }//end printUsage()

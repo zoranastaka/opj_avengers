@@ -1,0 +1,14 @@
+    /**
+     * Adds one or more messages to the MessagesCollector
+     *
+     * @param  mixed ...$value
+     * @return string
+     */
+
+    function debug($value)
+    {
+        $debugbar = debugbar();
+        foreach (func_get_args() as $value) {
+            $debugbar->addMessage($value, 'debug');
+        }
+    }

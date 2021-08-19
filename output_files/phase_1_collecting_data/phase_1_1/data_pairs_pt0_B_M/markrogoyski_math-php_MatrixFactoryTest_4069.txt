@@ -1,0 +1,19 @@
+    /**
+     * @test createFunctionMatrix error when matrix not made of functions
+     */
+
+    public function testCreateFunctionMatrixErrorNotMadeOfFunctions()
+    {
+        // Given
+        $A = [
+            [1, 2, 3],
+            [2, 3, 4],
+            [3, 4, 5],
+        ];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $A = MatrixFactory::createFunctionMatrix($A);
+    }

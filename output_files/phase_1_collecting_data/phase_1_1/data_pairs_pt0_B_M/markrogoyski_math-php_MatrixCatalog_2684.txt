@@ -1,0 +1,8 @@
+    /**
+     * @return Decomposition\Crout
+     */
+
+    public function getCroutDecomposition(): Decomposition\Crout
+    {
+        return $this->crout;
+    }

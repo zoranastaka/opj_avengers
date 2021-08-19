@@ -1,0 +1,20 @@
+    /**
+     * @test         inverse
+     * @dataProvider dataProviderForInverse
+     * @param        float $p
+     * @param        float $μ
+     * @param        float $b
+     * @param        $expected_inverse
+     */
+
+    public function testInverse(float $p, float $μ, float $b, $expected_inverse)
+    {
+        // Given
+        $laplace = new Laplace($μ, $b);
+
+        // When
+        $inverse = $laplace->inverse($p);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_inverse, $inverse, 0.00001);
+    }

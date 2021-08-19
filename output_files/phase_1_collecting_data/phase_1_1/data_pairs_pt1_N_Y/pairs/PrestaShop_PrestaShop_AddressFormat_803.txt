@@ -1,0 +1,21 @@
+    /**
+     * Return a data array containing ordered, formatedValue and object fields.
+     */
+
+    public static function getFormattedLayoutData($address)
+    {
+        $layoutData = [];
+
+        if ($address && $address instanceof Address) {
+            $layoutData['ordered'] = AddressFormat::getOrderedAddressFields((int) $address->id_country);
+            $layoutData['formated'] = AddressFormat::getFormattedAddressFieldsValues($address, $layoutData['ordered']);
+            $layoutData['object'] = [];
+
+            $reflect = new ReflectionObject($address);
+            $publicProperties = $reflect->getProperties(ReflectionProperty::IS_PUBLIC);
+            foreach ($publicProperties as $property) {
+                if (isset($address->{$property->getName()})) {
+                    $layoutData['object'][$property->getName()] = $address->{$property->getName()};
+                }
+            }
+        }

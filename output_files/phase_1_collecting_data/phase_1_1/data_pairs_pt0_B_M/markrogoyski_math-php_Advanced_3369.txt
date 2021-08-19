@@ -1,0 +1,47 @@
+    /**
+     * Fibonacci numbers
+     * Every number is the sum of the two preceding ones.
+     * https://en.wikipedia.org/wiki/Fibonacci_number
+     *
+     * F₀ = 0
+     * F₁ = 1
+     * Fᵢ = Fᵢ₋₁ + Fᵢ₋₂
+     *
+     * Example:
+     *  n = 6
+     *  Sequence:    0, 1, 1, 2, 3, 5
+     *  Array index: 0, 1, 2, 3, 4, 5
+     *
+     * @param  int $n How many numbers in the sequence
+     *
+     * @return array Indexed from 0
+     */
+
+    public static function fibonacci(int $n): array
+    {
+        $fibonacci = [];
+
+        // Bad input; return empty list
+        if ($n <= 0) {
+            return $fibonacci;
+        }
+
+        // Base case (n = 1): F₀ = 0
+        $fibonacci[] = 0;
+        if ($n === 1) {
+            return $fibonacci;
+        }
+
+        // Base case (n = 2): F₀ = 0, F₁ = 1
+        $fibonacci[] = 1;
+        if ($n === 2) {
+            return $fibonacci;
+        }
+
+        // Standard iterative case (n > 1): Fᵢ = Fᵢ₋₁ + Fᵢ₋₂
+        for ($i = 2; $i < $n; $i++) {
+            $fibonacci[] = $fibonacci[$i - 1] + $fibonacci[$i - 2];
+        }
+
+        return $fibonacci;
+    }

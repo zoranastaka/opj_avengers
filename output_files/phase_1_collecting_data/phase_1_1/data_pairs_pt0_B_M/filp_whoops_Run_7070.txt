@@ -1,0 +1,12 @@
+    /**
+     * Removes and returns the last handler pushed to the handler stack.
+     *
+     * @see Run::removeFirstHandler(), Run::removeLastHandler()
+     *
+     * @return HandlerInterface|null
+     */
+
+    public function popHandler()
+    {
+        return array_pop($this->handlerStack);
+    }

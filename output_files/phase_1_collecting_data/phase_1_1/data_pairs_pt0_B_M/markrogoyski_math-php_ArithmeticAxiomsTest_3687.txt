@@ -1,0 +1,19 @@
+    /**
+     * @test Axiom Identity: (a mod n) mod n = a mod n
+     * https://en.wikipedia.org/wiki/Modulo_operation#Properties_(identities)
+     */
+
+    public function testModuloIdentity()
+    {
+        // Given
+        foreach (\range(-20, 20) as $a) {
+            foreach (\range(-20, 20) as $n) {
+                // When
+                $⟮a mod n⟯ mod n = Arithmetic::modulo(Arithmetic::modulo($a, $n), $n);
+                $a mod n        = Arithmetic::modulo($a, $n);
+
+                // Then
+                $this->assertEquals($⟮a mod n⟯ mod n, $a mod n);
+            }
+        }
+    }

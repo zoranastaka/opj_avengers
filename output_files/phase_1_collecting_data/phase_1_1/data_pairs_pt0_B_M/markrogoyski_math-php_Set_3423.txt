@@ -1,0 +1,49 @@
+    /**
+     * Power set P(S)
+     * The set of all subsets of S, including the empty set and S itself.
+     *
+     * Example:
+     *  S = {x, y, z}
+     *  P(S) = {Ø, {x}, {y}, {z}, {x,y}, {x,z}, {y,z}, {x,y,z}}
+     *
+     * Algorithm:
+     *  Setup:
+     *   - n:     size of the original set
+     *   - 2ⁿ:    size of the power set
+     *   - A:     original set as an array with numbered indices 0 to n - 1
+     *   - P(S):  power set to be created
+     *
+     *  Iterative loop algorithm:
+     *   - Loop i from 0 to < 2ⁿ
+     *    - Create empty temporary Set
+     *    - Loop j from 0 to < n
+     *      - If the jᵗʰ bit of the i counter is set, add A[j] to temporary Set
+     *    - Add temporary set to power set
+     *
+     * Time complexity: O(n2ⁿ)
+     * Reference: http://www.geeksforgeeks.org/power-set/
+     *
+     * @return Set
+     */
+
+    public function powerSet(): Set
+    {
+        // Setup
+        $n   = \count($this->A);         // Size of the original set
+        $２ⁿ = \pow(2, $n);              // Size of the power set
+        $A   = \array_values($this->A); //  Original set as an array with numbered indices
+        $P⟮S⟯ = new Set();              //  Power set to be created
+
+        // Populate power set
+        for ($i = 0; $i < $２ⁿ; $i++) {
+            $member_set = new Set();
+            for ($j = 0; $j < $n; $j++) {
+                if ($i & (1 << $j)) {
+                    $member_set->add($A[$j]);
+                }
+            }
+            $P⟮S⟯->add($member_set);
+        }
+
+        return $P⟮S⟯;
+    }

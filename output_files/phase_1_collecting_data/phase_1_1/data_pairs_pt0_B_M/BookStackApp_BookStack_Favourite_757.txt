@@ -1,0 +1,8 @@
+    /**
+     * Get the related model that can be favourited.
+     */
+
+    public function favouritable(): MorphTo
+    {
+        return $this->morphTo();
+    }

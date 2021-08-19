@@ -1,0 +1,9 @@
+    /**
+     * Returns the database connection component.
+     * @return \yii\db\Connection the database connection.
+     */
+
+    public function getDb()
+    {
+        return $this->get('db');
+    }

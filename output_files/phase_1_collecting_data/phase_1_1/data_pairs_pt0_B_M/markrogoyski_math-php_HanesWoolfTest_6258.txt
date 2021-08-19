@@ -1,0 +1,19 @@
+    /**
+     * @test         evaluate
+     * @dataProvider dataProviderForEvaluate
+     * @param        array $points
+     * @param        $x
+     * @param        $expected_y
+     */
+
+    public function testEvaluate(array $points, float $x, float $expected_y)
+    {
+        // Given
+        $regression = new HanesWoolf($points);
+
+        // When
+        $y = $regression->evaluate($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_y, $y, 0.0001);
+    }

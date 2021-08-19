@@ -1,0 +1,8 @@
+    /**
+     * @test Limits constant is correct format
+     */
+
+    public function testBinomialSupportLimits()
+    {
+        $this->limitTest(Discrete\Binomial::SUPPORT_LIMITS);
+    }

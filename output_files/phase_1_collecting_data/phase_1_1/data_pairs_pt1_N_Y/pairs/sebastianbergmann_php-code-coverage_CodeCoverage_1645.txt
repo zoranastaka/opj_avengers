@@ -1,0 +1,8 @@
+    /**
+     * @psalm-param class-string $className
+     */
+
+    public function excludeSubclassesOfThisClassFromUnintentionallyCoveredCodeCheck(string $className): void
+    {
+        $this->parentClassesExcludedFromUnintentionallyCoveredCodeCheck[] = $className;
+    }

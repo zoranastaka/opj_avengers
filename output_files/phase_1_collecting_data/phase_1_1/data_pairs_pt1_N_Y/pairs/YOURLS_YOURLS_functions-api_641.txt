@@ -1,0 +1,6 @@
+/**
+ * Return array for counts of shorturls and clicks
+ *
+ */
+
+function yourls_api_db_stats() {

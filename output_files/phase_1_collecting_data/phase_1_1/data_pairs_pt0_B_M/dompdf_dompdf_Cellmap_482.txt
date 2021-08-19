@@ -1,0 +1,22 @@
+    /**
+     * Remove a row group from the cellmap.
+     *
+     * @param Frame $group The group to remove
+     */
+
+    public function remove_row_group(Frame $group)
+    {
+        $key = $group->get_id();
+        if (!isset($this->_frames[$key])) {
+            return; // Presumably this row has alredy been removed
+        }
+
+        $iter = $group->get_first_child();
+        while ($iter) {
+            $this->remove_row($iter);
+            $iter = $iter->get_next_sibling();
+        }
+
+        $this->_frames[$key] = null;
+        unset($this->_frames[$key]);
+    }

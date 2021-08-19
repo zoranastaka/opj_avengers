@@ -1,0 +1,22 @@
+    /**
+     * @covers ::setValue
+     * @covers ::saveAs
+     * @test
+     */
+
+    public function testMacrosCanBeReplacedInHeaderAndFooter()
+    {
+        $templateProcessor = new TemplateProcessor(__DIR__ . '/_files/templates/header-footer.docx');
+
+        $this->assertEquals(array('documentContent', 'headerValue:100:100', 'footerValue'), $templateProcessor->getVariables());
+
+        $macroNames = array('headerValue', 'documentContent', 'footerValue');
+        $macroValues = array('Header Value', 'Document text.', 'Footer Value');
+        $templateProcessor->setValue($macroNames, $macroValues);
+
+        $docName = 'header-footer-test-result.docx';
+        $templateProcessor->saveAs($docName);
+        $docFound = file_exists($docName);
+        unlink($docName);
+        $this->assertTrue($docFound);
+    }

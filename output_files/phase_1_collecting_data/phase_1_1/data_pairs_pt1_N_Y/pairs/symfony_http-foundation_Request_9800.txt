@@ -1,0 +1,10 @@
+    /**
+     * Returns the password.
+     *
+     * @return string|null
+     */
+
+    public function getPassword()
+    {
+        return $this->headers->get('PHP_AUTH_PW');
+    }

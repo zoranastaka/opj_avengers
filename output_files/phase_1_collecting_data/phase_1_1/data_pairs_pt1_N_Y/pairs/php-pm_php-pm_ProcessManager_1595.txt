@@ -1,0 +1,8 @@
+    /**
+     * @param string $staticDirectory
+     */
+
+    public function setStaticDirectory($staticDirectory)
+    {
+        $this->staticDirectory = $staticDirectory;
+    }

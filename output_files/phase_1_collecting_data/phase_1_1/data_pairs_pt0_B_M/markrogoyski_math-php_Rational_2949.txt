@@ -1,0 +1,12 @@
+    /**
+     * Rational number as a float
+     *
+     * @return float
+     */
+
+    public function toFloat(): float
+    {
+        $frac = $this->numerator / $this->denominator;
+        $sum  = $this->whole + $frac;
+        return $sum;
+    }

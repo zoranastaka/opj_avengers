@@ -1,0 +1,15 @@
+    /**
+     * @test         variance
+     * @dataProvider dataProviderForVariance
+     * @param        array $angles
+     * @param        float $expected
+     */
+
+    public function testVariance(array $angles, float $expected)
+    {
+        // When
+        $variance = Circular::variance($angles);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $variance, 0.000001);
+    }

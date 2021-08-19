@@ -1,0 +1,81 @@
+/**
+ * @author SpacePossum
+ */
+
+abstract class AbstractNoUselessElseFixer extends AbstractFixer
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriority(): int
+    {
+        // should be run before NoWhitespaceInBlankLineFixer, NoExtraBlankLinesFixer, BracesFixer and after NoEmptyStatementFixer.
+        return 39;
+    }
+
+    protected function isSuperfluousElse(Tokens $tokens, int $index): bool
+    {
+        $previousBlockStart = $index;
+
+        do {
+            // Check if all 'if', 'else if ' and 'elseif' blocks above this 'else' always end,
+            // if so this 'else' is overcomplete.
+            list($previousBlockStart, $previousBlockEnd) = $this->getPreviousBlock($tokens, $previousBlockStart);
+
+            // short 'if' detection
+            $previous = $previousBlockEnd;
+            if ($tokens[$previous]->equals('}')) {
+                $previous = $tokens->getPrevMeaningfulToken($previous);
+            }
+
+            if (
+                !$tokens[$previous]->equals(';')                                    // 'if' block doesn't end with semicolon, keep 'else'
+                || $tokens[$tokens->getPrevMeaningfulToken($previous)]->equals('{') // empty 'if' block, keep 'else'
+            ) {
+                return false;
+            }
+
+            $candidateIndex = $tokens->getPrevTokenOfKind(
+                $previous,
+                [
+                    ';',
+                    [T_BREAK],
+                    [T_CLOSE_TAG],
+                    [T_CONTINUE],
+                    [T_EXIT],
+                    [T_GOTO],
+                    [T_IF],
+                    [T_RETURN],
+                    [T_THROW],
+                ]
+            );
+
+            if (null === $candidateIndex || $tokens[$candidateIndex]->equalsAny([';', [T_CLOSE_TAG], [T_IF]])) {
+                return false;
+            }
+
+            if ($tokens[$candidateIndex]->equals([T_THROW])) {
+                $previousIndex = $tokens->getPrevMeaningfulToken($candidateIndex);
+
+                if (!$tokens[$previousIndex]->equalsAny([';', '{'])) {
+                    return false;
+                }
+            }
+
+            if ($this->isInConditional($tokens, $candidateIndex, $previousBlockStart)
+                || $this->isInConditionWithoutBraces($tokens, $candidateIndex, $previousBlockStart)
+            ) {
+                return false;
+            }
+
+            // implicit continue, i.e. delete candidate
+        } while (!$tokens[$previousBlockStart]->isGivenKind(T_IF));
+
+        return true;
+    }
+
+    /**
+     * Return the first and last token index of the previous block.
+     *
+     * [0] First is either T_IF, T_ELSE or T_ELSEIF
+     * [1] Last is either '}' or ';' / T_CLOSE_TAG for short notation blocks

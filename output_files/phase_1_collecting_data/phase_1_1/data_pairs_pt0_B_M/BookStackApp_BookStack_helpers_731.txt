@@ -1,0 +1,8 @@
+/**
+ * Check if current user is a signed in user.
+ */
+
+function signedInUser(): bool
+{
+    return auth()->user() && !auth()->user()->isDefault();
+}

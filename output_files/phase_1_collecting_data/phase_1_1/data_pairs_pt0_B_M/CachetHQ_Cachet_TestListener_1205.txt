@@ -1,0 +1,8 @@
+    /**
+     * Risky test.
+     */
+
+    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
+    {
+        //
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Helper function to create dbObject with array return type
+     * Added for consistency as that's default output type
+     *
+     * @return MysqliDb
+     */
+
+    public function arrayBuilder()
+    {
+        $this->returnType = 'array';
+        return $this;
+    }

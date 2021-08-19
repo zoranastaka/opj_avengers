@@ -1,0 +1,10 @@
+    /**
+     * Get a copy of the instance.
+     *
+     * @return static
+     */
+
+    public function clone()
+    {
+        return $this->copy();
+    }

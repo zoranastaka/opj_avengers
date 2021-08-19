@@ -1,0 +1,14 @@
+    /**
+     * @return array [μ₁, μ₂, n₁, n₂, σ₁, σ₂, expected]
+     */
+
+    public function dataProviderForTTestTwoSampleFromSummaryData(): array
+    {
+        return [
+            // Regression issue 265 - data generated with http://www.usablestats.com/calcs/2samplet&summary=1
+            [
+                32, 30, 134, 210, 21, 18,
+                ['t' => 0.9097, 'df' => 251.72638768068, 'p1' => 0.1819, 'p2' => 0.3638 ],
+            ],
+        ];
+    }

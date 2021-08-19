@@ -1,0 +1,5 @@
+    /**
+     * Remove all macros and generic macros.
+     */
+
+    public static function resetMacros();

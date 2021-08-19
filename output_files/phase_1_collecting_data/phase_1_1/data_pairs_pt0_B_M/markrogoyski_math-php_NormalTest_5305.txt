@@ -1,0 +1,20 @@
+    /**
+     * @test         cdf
+     * @dataProvider dataProviderForCdf
+     * @param        float $x
+     * @param        float $μ
+     * @param        float $σ
+     * @param        float $expected_cdf
+     */
+
+    public function testCdf(float $μ, float $σ, float $x, float $expected_cdf)
+    {
+        // Given
+        $normal = new Normal($μ, $σ);
+
+        // When
+        $cdf = $normal->cdf($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_cdf, $cdf, 0.0000001);
+    }

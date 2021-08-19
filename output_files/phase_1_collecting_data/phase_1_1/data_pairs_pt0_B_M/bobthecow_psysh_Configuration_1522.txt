@@ -1,0 +1,10 @@
+    /**
+     * Set a CodeCleaner service instance.
+     *
+     * @param CodeCleaner $cleaner
+     */
+
+    public function setCodeCleaner(CodeCleaner $cleaner)
+    {
+        $this->cleaner = $cleaner;
+    }

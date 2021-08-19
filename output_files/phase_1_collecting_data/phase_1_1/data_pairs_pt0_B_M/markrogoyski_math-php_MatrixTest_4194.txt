@@ -1,0 +1,13 @@
+    /**
+     * @test   Matrix implements \ArrayAccess
+     * @throws \Exception
+     */
+
+    public function testArrayAccessOffsetUnsetException()
+    {
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        unset($this->matrix[0]);
+    }

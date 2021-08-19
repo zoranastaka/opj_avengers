@@ -1,0 +1,24 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    protected function checkSameSlotForKeys(array $keys)
+    {
+        if (!$count = count($keys)) {
+            return false;
+        }
+
+        $currentKey = $this->extractKeyTag($keys[0]);
+
+        for ($i = 1; $i < $count; ++$i) {
+            $nextKey = $this->extractKeyTag($keys[$i]);
+
+            if ($currentKey !== $nextKey) {
+                return false;
+            }
+
+            $currentKey = $nextKey;
+        }
+
+        return true;
+    }

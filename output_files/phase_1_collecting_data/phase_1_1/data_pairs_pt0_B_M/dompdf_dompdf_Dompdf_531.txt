@@ -1,0 +1,10 @@
+    /**
+     * Return the underlying Canvas instance (e.g. Dompdf\Adapter\CPDF, Dompdf\Adapter\GD)
+     *
+     * @return Canvas
+     */
+
+    public function getCanvas()
+    {
+        return $this->canvas;
+    }

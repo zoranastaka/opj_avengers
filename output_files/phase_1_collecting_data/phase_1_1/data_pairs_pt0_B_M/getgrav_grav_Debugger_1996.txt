@@ -1,0 +1,97 @@
+    /**
+     * Initialize the debugger
+     *
+     * @return $this
+     * @throws DebugBarException
+     */
+
+    public function init()
+    {
+        if ($this->initialized) {
+            return $this;
+        }
+
+        $this->grav = Grav::instance();
+        $this->config = $this->grav['config'];
+
+        // Enable/disable debugger based on configuration.
+        $this->enabled = (bool)$this->config->get('system.debugger.enabled');
+        $this->censored = (bool)$this->config->get('system.debugger.censored', false);
+
+        if ($this->enabled) {
+            $this->initialized = true;
+
+            $clockwork = $debugbar = null;
+
+            switch ($this->config->get('system.debugger.provider', 'debugbar')) {
+                case 'clockwork':
+                    $this->clockwork = $clockwork = new Clockwork();
+                    break;
+                default:
+                    $this->debugbar = $debugbar = new DebugBar();
+            }
+
+            $plugins_config = (array)$this->config->get('plugins');
+            ksort($plugins_config);
+
+            if ($clockwork) {
+                $log = $this->grav['log'];
+                $clockwork->setStorage(new FileStorage('cache://clockwork'));
+                if (extension_loaded('xdebug')) {
+                    $clockwork->addDataSource(new XdebugDataSource());
+                }
+                if ($log instanceof Logger) {
+                    $clockwork->addDataSource(new MonologDataSource($log));
+                }
+
+                $timeline = $clockwork->timeline();
+                if ($this->requestTime !== GRAV_REQUEST_TIME) {
+                    $event = $timeline->event('Server');
+                    $event->finalize($this->requestTime, GRAV_REQUEST_TIME);
+                }
+                if ($this->currentTime !== GRAV_REQUEST_TIME) {
+                    $event = $timeline->event('Loading');
+                    $event->finalize(GRAV_REQUEST_TIME, $this->currentTime);
+                }
+                $event = $timeline->event('Site Setup');
+                $event->finalize($this->currentTime, microtime(true));
+            }
+
+            if ($this->censored) {
+                $censored = ['CENSORED' => true];
+            }
+
+            if ($debugbar) {
+                $debugbar->addCollector(new PhpInfoCollector());
+                $debugbar->addCollector(new MessagesCollector());
+                if (!$this->censored) {
+                    $debugbar->addCollector(new RequestDataCollector());
+                }
+                $debugbar->addCollector(new TimeDataCollector($this->requestTime));
+                $debugbar->addCollector(new MemoryCollector());
+                $debugbar->addCollector(new ExceptionsCollector());
+                $debugbar->addCollector(new ConfigCollector($censored ?? (array)$this->config->get('system'), 'Config'));
+                $debugbar->addCollector(new ConfigCollector($censored ?? $plugins_config, 'Plugins'));
+                $debugbar->addCollector(new ConfigCollector($this->config->get('streams.schemes'), 'Streams'));
+
+                if ($this->requestTime !== GRAV_REQUEST_TIME) {
+                    $debugbar['time']->addMeasure('Server', $debugbar['time']->getRequestStartTime(), GRAV_REQUEST_TIME);
+                }
+                if ($this->currentTime !== GRAV_REQUEST_TIME) {
+                    $debugbar['time']->addMeasure('Loading', GRAV_REQUEST_TIME, $this->currentTime);
+                }
+                $debugbar['time']->addMeasure('Site Setup', $this->currentTime, microtime(true));
+            }
+
+            $this->addMessage('Grav v' . GRAV_VERSION . ' - PHP ' . PHP_VERSION);
+            $this->config->debug();
+
+            if ($clockwork) {
+                $clockwork->info('System Configuration', $censored ?? $this->config->get('system'));
+                $clockwork->info('Plugins Configuration', $censored ?? $plugins_config);
+                $clockwork->info('Streams', $this->config->get('streams.schemes'));
+            }
+        }
+
+        return $this;
+    }

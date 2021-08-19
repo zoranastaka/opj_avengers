@@ -1,0 +1,11 @@
+// funkcija za brisanje liste
+
+function brisanje_liste($to_do_id)
+{
+    $brisanje = $GLOBALS['con']->prepare(' delete from to_do where to_do_id = :to_do_id ');
+    $brisanje->execute([
+        ':to_do_id' => $to_do_id
+    ]);
+
+    header('location: index.php');
+}

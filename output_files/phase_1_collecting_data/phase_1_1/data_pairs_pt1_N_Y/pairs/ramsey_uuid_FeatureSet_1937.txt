@@ -1,0 +1,8 @@
+    /**
+     * Returns the random generator configured for this environment
+     */
+
+    public function getRandomGenerator(): RandomGeneratorInterface
+    {
+        return $this->randomGenerator;
+    }

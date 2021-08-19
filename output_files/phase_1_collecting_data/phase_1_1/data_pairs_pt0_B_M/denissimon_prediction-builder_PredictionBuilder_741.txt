@@ -1,0 +1,10 @@
+    /**
+     * Magic overloading method
+     * 
+     * @param string $name
+     * @param array  $arguments
+     *
+     * @throws \Exception when the method doesn't exist
+     */
+
+    public function __call($name, $arguments) {

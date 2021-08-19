@@ -1,0 +1,55 @@
+    /** @test */
+
+    public function it_can_repeat_a_question()
+    {
+        $driver = m::mock(NullDriver::class)->makePartial();
+
+        $driver->shouldReceive('getMessages')
+            ->andReturn([new IncomingMessage('Hi Julia', 'UX12345', 'general')]);
+
+        $driver->shouldReceive('buildServicePayload')
+            ->once()
+            ->withArgs(function ($message, $match, $arguments) {
+                return $message->getText() === 'This is a test question' && ($match instanceof IncomingMessage) && $arguments === [];
+            });
+
+        $driver->shouldReceive('sendPayload')
+            ->once();
+
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'C12345',
+            'message' => 'Hi Julia',
+        ]);
+
+        $botman->setDriver($driver);
+
+        $botman->hears('Hi Julia', function ($bot) {
+            $bot->startConversation(new TestConversation());
+        });
+        $botman->listen();
+
+        /*
+         * Now that the first message is saved, fake a reply
+         */
+        $botman = $this->getBot([]);
+
+        $driver->shouldReceive('getConversationAnswer')
+            ->andReturn(Answer::create('repeat'));
+
+        $driver->shouldReceive('getMessages')
+            ->andReturn([new IncomingMessage('repeat', 'UX12345', 'general')]);
+
+        $driver->shouldReceive('buildServicePayload')
+            ->once()
+            ->withArgs(function ($message, $match, $arguments) {
+                return $message->getText() === 'This is a test question' && ($match instanceof IncomingMessage) && $arguments === [];
+            });
+
+        $driver->shouldReceive('sendPayload')
+            ->once();
+
+        $botman->setDriver($driver);
+
+        $botman->listen();
+    }

@@ -1,0 +1,21 @@
+    /**
+     * Call given macro.
+     *
+     * @param string $name
+     * @param array  $parameters
+     *
+     * @return mixed
+     */
+
+    protected function callMacro($name, $parameters)
+    {
+        $macro = static::$macros[$name];
+
+        if ($macro instanceof Closure) {
+            $boundMacro = @$macro->bindTo($this, static::class) ?: @$macro->bindTo(null, static::class);
+
+            return ($boundMacro ?: $macro)(...$parameters);
+        }
+
+        return $macro(...$parameters);
+    }

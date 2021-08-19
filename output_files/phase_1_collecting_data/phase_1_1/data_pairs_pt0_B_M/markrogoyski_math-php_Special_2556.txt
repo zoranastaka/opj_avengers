@@ -1,0 +1,14 @@
+    /**
+     * Gamma function convenience method
+     *
+     * @param float $n
+     *
+     * @return float
+     *
+     * @throws Exception\OutOfBoundsException
+     */
+
+    public static function Γ(float $n): float
+    {
+        return self::gamma($n);
+    }

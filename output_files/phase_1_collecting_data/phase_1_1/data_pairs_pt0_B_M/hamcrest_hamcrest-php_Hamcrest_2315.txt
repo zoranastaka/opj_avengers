@@ -1,0 +1,9 @@
+    /**
+     * Evaluates to true only if each $matcher[$i] is satisfied by $array[$i].
+     */
+
+    function anArray(/* args... */)
+    {
+        $args = func_get_args();
+        return call_user_func_array(array('\Hamcrest\Arrays\IsArray', 'anArray'), $args);
+    }

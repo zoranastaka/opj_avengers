@@ -1,0 +1,15 @@
+    /**
+     * @test         isUnitary when not unitary
+     * @dataProvider dataProviderForNonOrthogonalMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsUnitaryWhenNotUnitary(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isUnitary());
+    }

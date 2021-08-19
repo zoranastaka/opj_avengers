@@ -1,0 +1,9 @@
+    /**
+     * Returns the request component.
+     * @return \yii\web\Request|\yii\console\Request the request component.
+     */
+
+    public function getRequest()
+    {
+        return $this->get('request');
+    }

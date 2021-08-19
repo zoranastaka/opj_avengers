@@ -1,0 +1,19 @@
+    /**
+     * Returns the HTTP host being requested.
+     *
+     * The port name will be appended to the host if it's non-standard.
+     *
+     * @return string
+     */
+
+    public function getHttpHost()
+    {
+        $scheme = $this->getScheme();
+        $port = $this->getPort();
+
+        if (('http' == $scheme && 80 == $port) || ('https' == $scheme && 443 == $port)) {
+            return $this->getHost();
+        }
+
+        return $this->getHost().':'.$port;
+    }

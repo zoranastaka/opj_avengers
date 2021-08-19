@@ -1,0 +1,19 @@
+    /** @throws CannotDecodeContent */
+
+    public static function base642binFallback(string $encoded, int $variant): string
+    {
+        if (
+            $variant === self::SODIUM_BASE64_VARIANT_URLSAFE
+            || $variant === self::SODIUM_BASE64_VARIANT_URLSAFE_NO_PADDING
+        ) {
+            $encoded = strtr($encoded, '-_', '+/');
+        }
+
+        $decoded = base64_decode($encoded, true);
+
+        if (! is_string($decoded)) {
+            throw CannotDecodeContent::invalidBase64String();
+        }
+
+        return $decoded;
+    }

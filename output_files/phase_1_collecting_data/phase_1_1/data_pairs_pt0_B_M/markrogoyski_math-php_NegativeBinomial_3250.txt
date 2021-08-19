@@ -1,0 +1,14 @@
+    /**
+     * Variance of the distribution
+     *
+     *         pr
+     * σ² = --------
+     *      (1 - p)²
+     *
+     * @return float
+     */
+
+    public function variance(): float
+    {
+        return ($this->p * $this->r) / (1 - $this->p) ** 2;
+    }

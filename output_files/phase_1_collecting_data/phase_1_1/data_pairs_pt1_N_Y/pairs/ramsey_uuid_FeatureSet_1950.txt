@@ -1,0 +1,19 @@
+    /**
+     * Returns a time generator configured for this environment
+     *
+     * @param TimeProviderInterface $timeProvider The time provider to use with
+     *     the time generator
+     */
+
+    private function buildTimeGenerator(TimeProviderInterface $timeProvider): TimeGeneratorInterface
+    {
+        if ($this->enablePecl) {
+            return new PeclUuidTimeGenerator();
+        }
+
+        return (new TimeGeneratorFactory(
+            $this->nodeProvider,
+            $this->timeConverter,
+            $timeProvider
+        ))->getGenerator();
+    }

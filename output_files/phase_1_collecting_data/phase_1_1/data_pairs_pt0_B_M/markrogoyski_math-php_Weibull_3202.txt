@@ -1,0 +1,31 @@
+    /**
+     * Weibull distribution - probability density function
+     *
+     * https://en.wikipedia.org/wiki/Weibull_distribution
+     *
+     *        k  /x\ ᵏ⁻¹        ᵏ
+     * f(x) = - | - |    ℯ⁻⁽x/λ⁾   for x ≥ 0
+     *        λ  \λ/
+     *
+     * f(x) = 0                    for x < 0
+     *
+     * @param float $x percentile (value to evaluate)
+     *
+     * @return float
+     */
+
+    public function pdf(float $x): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['x' => $x]);
+        if ($x < 0) {
+            return 0;
+        }
+
+        $k = $this->k;
+        $λ = $this->λ;
+
+        $k／λ      = $k / $λ;
+        $⟮x／λ⟯ᵏ⁻¹  = \pow($x / $λ, $k - 1);
+        $ℯ⁻⁽x／λ⁾ᵏ = \exp(- \pow($x / $λ, $k));
+        return $k／λ * $⟮x／λ⟯ᵏ⁻¹ * $ℯ⁻⁽x／λ⁾ᵏ;
+    }

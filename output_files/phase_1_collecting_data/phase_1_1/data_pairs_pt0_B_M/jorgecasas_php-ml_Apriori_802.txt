@@ -1,0 +1,22 @@
+    /**
+     * Get all association rules which are generated for every k-length frequent item set.
+     *
+     * @return mixed[][]
+     */
+
+    public function getRules(): array
+    {
+        if (count($this->large) === 0) {
+            $this->large = $this->apriori();
+        }
+
+        if (count($this->rules) > 0) {
+            return $this->rules;
+        }
+
+        $this->rules = [];
+
+        $this->generateAllRules();
+
+        return $this->rules;
+    }

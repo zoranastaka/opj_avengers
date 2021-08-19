@@ -1,0 +1,8 @@
+            /**
+             * @param array $array
+             */
+
+            public function array(array $array)
+            {
+                //
+            }

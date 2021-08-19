@@ -1,0 +1,12 @@
+    /**
+     * @test 16 height observations
+     */
+
+    public function testNumberOfHeight()
+    {
+        // When
+        $observations = $this->people->getHeight();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

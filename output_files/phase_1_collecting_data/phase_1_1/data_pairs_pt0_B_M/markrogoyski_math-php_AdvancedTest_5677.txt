@@ -1,0 +1,13 @@
+    /**
+     * @test     perfectNumbers exceptionis n is too large
+     * @throws   \Exception
+     */
+
+    public function testPerfectNumberException()
+    {
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        $sequence = Advanced::perfectNumbers(11);
+    }

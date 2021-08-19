@@ -1,0 +1,12 @@
+    /**
+     * Sets encoded image buffer
+     *
+     * @param string $value
+     */
+
+    public function setEncoded($value)
+    {
+        $this->encoded = $value;
+
+        return $this;
+    }

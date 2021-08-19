@@ -1,0 +1,10 @@
+    /**
+     * Returns the current driver name
+     *
+     * @return string
+     */
+
+    public function getDriverName()
+    {
+        return $this->driver_name;
+    }

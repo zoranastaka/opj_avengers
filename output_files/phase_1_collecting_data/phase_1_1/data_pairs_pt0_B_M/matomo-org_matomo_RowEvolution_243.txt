@@ -1,0 +1,20 @@
+    /**
+     * @param array $labels
+     * @param DataTable\Map $dataTable
+     * @return mixed
+     */
+
+    protected function enrichRowAddMetadataLabelIndex($labels, $dataTable)
+    {
+        // set label index metadata
+        $labelsToIndex = array_flip($labels);
+        foreach ($dataTable->getDataTables() as $table) {
+            foreach ($table->getRows() as $row) {
+                $label = $row->getColumn('label');
+                if (isset($labelsToIndex[$label])) {
+                    $row->setMetadata(LabelFilter::FLAG_IS_ROW_EVOLUTION, $labelsToIndex[$label]);
+                }
+            }
+        }
+        return $dataTable;
+    }

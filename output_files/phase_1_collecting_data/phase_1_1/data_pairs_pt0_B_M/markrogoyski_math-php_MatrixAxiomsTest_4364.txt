@@ -1,0 +1,19 @@
+    /**
+     * @test         Axiom: A⁻¹ = Aᵀ for an orthogonal matrix A
+     * @dataProvider dataProviderForOrthogonalMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testOrthogonalMatrixInverseEqualsTransposeOfOrthogonalMatrix(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $Aᵀ  = $A->transpose();
+        $A⁻¹ = $A->inverse();
+
+        // Then
+        $this->assertEquals($A⁻¹->getMatrix(), $Aᵀ->getMatrix());
+    }

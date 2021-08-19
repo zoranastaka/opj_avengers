@@ -1,0 +1,10 @@
+    /**
+    * Return the macros certificate
+    *
+    * @return string|null
+    */
+
+    public function getMacrosCertificate()
+    {
+        return $this->macrosCertificate;
+    }

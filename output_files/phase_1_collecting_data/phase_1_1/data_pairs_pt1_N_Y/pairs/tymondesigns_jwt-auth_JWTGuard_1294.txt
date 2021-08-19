@@ -1,0 +1,10 @@
+    /**
+     * Get the last user we attempted to authenticate.
+     *
+     * @return \Illuminate\Contracts\Auth\Authenticatable
+     */
+
+    public function getLastAttempted()
+    {
+        return $this->lastAttempted;
+    }

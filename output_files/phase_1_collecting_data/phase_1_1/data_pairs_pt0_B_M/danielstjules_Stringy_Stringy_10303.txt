@@ -1,0 +1,14 @@
+    /**
+     * Surrounds $str with the given substring.
+     *
+     * @param  string $substring The substring to add to both sides
+     * @return static Object whose $str had the substring both prepended and
+     *                 appended
+     */
+
+    public function surround($substring)
+    {
+        $str = implode('', [$substring, $this->str, $substring]);
+
+        return static::create($str, $this->encoding);
+    }

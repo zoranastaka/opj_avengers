@@ -1,0 +1,57 @@
+    /**
+     * Reverts the previous fix made to a token.
+     *
+     * @param int $stackPtr The position of the token in the token stack.
+     *
+     * @return bool If a change was reverted.
+     */
+
+    public function revertToken($stackPtr)
+    {
+        if (isset($this->fixedTokens[$stackPtr]) === false) {
+            return false;
+        }
+
+        if (PHP_CODESNIFFER_VERBOSITY > 1) {
+            $bt = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+            if ($bt[1]['class'] === 'PHP_CodeSniffer\Fixer') {
+                $sniff = $bt[2]['class'];
+                $line  = $bt[1]['line'];
+            } else {
+                $sniff = $bt[1]['class'];
+                $line  = $bt[0]['line'];
+            }
+
+            $sniff = Util\Common::getSniffCode($sniff);
+
+            $tokens     = $this->currentFile->getTokens();
+            $type       = $tokens[$stackPtr]['type'];
+            $tokenLine  = $tokens[$stackPtr]['line'];
+            $oldContent = Common::prepareForOutput($this->tokens[$stackPtr]);
+            $newContent = Common::prepareForOutput($this->fixedTokens[$stackPtr]);
+            if (trim($this->tokens[$stackPtr]) === '' && isset($tokens[($stackPtr + 1)]) === true) {
+                // Add some context for whitespace only changes.
+                $append      = Common::prepareForOutput($this->tokens[($stackPtr + 1)]);
+                $oldContent .= $append;
+                $newContent .= $append;
+            }
+        }//end if
+
+        $this->tokens[$stackPtr] = $this->fixedTokens[$stackPtr];
+        unset($this->fixedTokens[$stackPtr]);
+        $this->numFixes--;
+
+        if (PHP_CODESNIFFER_VERBOSITY > 1) {
+            $indent = "\t";
+            if (empty($this->changeset) === false) {
+                $indent .= "\tR: ";
+            }
+
+            @ob_end_clean();
+            echo "$indent$sniff:$line reverted token $stackPtr ($type on line $tokenLine) \"$oldContent\" => \"$newContent\"".PHP_EOL;
+            ob_start();
+        }
+
+        return true;
+
+    }//end revertToken()

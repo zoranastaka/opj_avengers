@@ -1,0 +1,11 @@
+   /**
+    * Sets the form currently being processed
+    *
+    * @param HTML_QuickForm2
+    */
+
+    public function startForm(HTML_QuickForm2 $form)
+    {
+        $this->formId = $form->getId();
+        $this->rules[$this->formId] = array();
+    }

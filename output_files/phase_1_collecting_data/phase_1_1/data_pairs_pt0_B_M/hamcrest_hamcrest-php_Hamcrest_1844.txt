@@ -1,0 +1,9 @@
+    /**
+     * Matches if value is a number equal to $value within some range of
+     * acceptable error $delta.
+     */
+
+    function closeTo($value, $delta)
+    {
+        return \Hamcrest\Number\IsCloseTo::closeTo($value, $delta);
+    }

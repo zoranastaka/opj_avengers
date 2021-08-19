@@ -1,0 +1,7 @@
+    /**
+     * Get the current translator locale.
+     *
+     * @return string
+     */
+
+    public static function getLocale();

@@ -1,0 +1,16 @@
+    /**
+     * @test         isSubintervalsMultiple
+     * @dataProvider dataProviderForSubintervalsMultiple
+     * @param        array $points
+     * @param        int   $m
+     * @throws       \Exception
+     */
+
+    public function testIsSubintervalsMultiple(array $points, int $m)
+    {
+        // When
+        Validation::isSubintervalsMultiple($points, $m);
+
+        // Then
+        $this->assertTrue(true);
+    }

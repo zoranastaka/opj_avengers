@@ -1,0 +1,36 @@
+    /**
+     * Provide static helpers to create instances.  Allows CarbonInterval::years(3).
+     *
+     * Note: This is done using the magic method to allow static and instance methods to
+     *       have the same names.
+     *
+     * @param string $method     magic method name called
+     * @param array  $parameters parameters list
+     *
+     * @return static|null
+     */
+
+    public static function __callStatic($method, $parameters)
+    {
+        try {
+            $interval = new static(0);
+            $localStrictModeEnabled = $interval->localStrictModeEnabled;
+            $interval->localStrictModeEnabled = true;
+
+            $result = static::hasMacro($method)
+                ? static::bindMacroContext(null, function () use (&$method, &$parameters, &$interval) {
+                    return $interval->callMacro($method, $parameters);
+                })
+                : $interval->$method(...$parameters);
+
+            $interval->localStrictModeEnabled = $localStrictModeEnabled;
+
+            return $result;
+        } catch (BadFluentSetterException $exception) {
+            if (Carbon::isStrictModeEnabled()) {
+                throw new BadFluentConstructorException($method, 0, $exception);
+            }
+
+            return null;
+        }
+    }

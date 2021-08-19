@@ -1,0 +1,20 @@
+    /**
+     * @test         applyRows with a callable
+     * @dataProvider dataProviderForApplyRowsCallable
+     * @param        array    $A
+     * @param        callable $func
+     * @param        array    $expected
+     * @throws       \Exception
+     */
+
+    public function testApplyRowsWithCallable(array $A, callable $func, array $expected)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $R = $A->mapRows($func);
+
+        // Then
+        $this->assertEquals($expected, $R);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Returns true if the XDebug is enabled.
+     *
+     * @return bool true if XDebug is enabled, false otherwise
+     */
+
+    public function hasXDebug()
+    {
+        return $this->data['xdebug_enabled'];
+    }

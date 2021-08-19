@@ -1,0 +1,8 @@
+	/**
+	 * Renames the node
+	 *
+	 * @param string $name The new name
+	 * @throws MethodNotAllowed
+	 */
+
+	public function setName($name) {

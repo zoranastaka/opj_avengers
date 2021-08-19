@@ -1,0 +1,12 @@
+    /**
+     * Set the HTTP handler that actually returns a promise.
+     *
+     * @param callable(RequestInterface, array): PromiseInterface $handler Accepts a request and array of options and
+     *                                                                     returns a Promise.
+     */
+
+    public function setHandler(callable $handler): void
+    {
+        $this->handler = $handler;
+        $this->cached = null;
+    }

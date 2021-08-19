@@ -1,0 +1,19 @@
+    /**
+     * Returns an array of all previous exceptions for this inspector's exception
+     * @return \Throwable[]
+     */
+
+    public function getPreviousExceptions()
+    {
+        if ($this->previousExceptions === null) {
+            $this->previousExceptions = [];
+
+            $prev = $this->exception->getPrevious();
+            while ($prev !== null) {
+                $this->previousExceptions[] = $prev;
+                $prev = $prev->getPrevious();
+            }
+        }
+
+        return $this->previousExceptions;
+    }

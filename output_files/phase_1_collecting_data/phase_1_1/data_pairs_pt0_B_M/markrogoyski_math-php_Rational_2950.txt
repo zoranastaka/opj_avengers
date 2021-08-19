@@ -1,0 +1,10 @@
+    /**
+     * The absolute value of a rational number
+     *
+     * @return Rational
+     */
+
+    public function abs(): Rational
+    {
+        return new Rational(\abs($this->whole), \abs($this->numerator), \abs($this->denominator));
+    }

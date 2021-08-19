@@ -1,0 +1,14 @@
+    /**
+     * @covers ::getDocument
+     */
+
+    public function testReaderWithEmptyEscapeChar2(): void
+    {
+        $source = '"parent name","child name","title"
+            "parentA","childA","titleA"';
+        $csv = Reader::createFromString($source);
+        $csv->setEscape('');
+        self::assertCount(2, $csv);
+        $csv->setHeaderOffset(0);
+        self::assertCount(1, $csv);
+    }

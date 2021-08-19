@@ -1,0 +1,10 @@
+    /**
+     * End iteration filter callback.
+     *
+     * @return string
+     */
+
+    protected function endIteration()
+    {
+        return static::END_ITERATION;
+    }

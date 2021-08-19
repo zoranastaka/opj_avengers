@@ -1,0 +1,15 @@
+    /**
+     * @test multiply throws an Exception\IncorrectTypeException when the argument is not a number or complex number
+     */
+
+    public function testComplexMultiplyException()
+    {
+        // Given
+        $complex = new Complex(1, 1);
+
+        // Then
+        $this->expectException(Exception\IncorrectTypeException::class);
+
+        // When
+        $complex->multiply("string");
+    }

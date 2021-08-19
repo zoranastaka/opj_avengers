@@ -1,0 +1,7 @@
+	/**
+	 * Check if the code hacker is enabled.
+	 *
+	 * @return bool True if the code hacker is enabled.
+	 */
+
+	public static function is_enabled() {

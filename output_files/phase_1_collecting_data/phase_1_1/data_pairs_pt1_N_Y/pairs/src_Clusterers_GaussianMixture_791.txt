@@ -1,0 +1,13 @@
+    /**
+     * Predict a single sample and return the result.
+     *
+     * @internal
+     *
+     * @param (int|float)[] $sample
+     * @return int
+     */
+
+    public function predictSample(array $sample) : int
+    {
+        return argmax($this->jointLogLikelihood($sample));
+    }

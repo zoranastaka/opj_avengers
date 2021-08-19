@@ -1,0 +1,29 @@
+    /**
+     * Add the token (jti claim) to the blacklist.
+     *
+     * @param  \Tymon\JWTAuth\Payload  $payload
+     *
+     * @return bool
+     */
+
+    public function add(Payload $payload)
+    {
+        // if there is no exp claim then add the jwt to
+        // the blacklist indefinitely
+        if (! $payload->hasKey('exp')) {
+            return $this->addForever($payload);
+        }
+
+        // if we have already added this token to the blacklist
+        if (! empty($this->storage->get($this->getKey($payload)))) {
+            return true;
+        }
+
+        $this->storage->add(
+            $this->getKey($payload),
+            ['valid_until' => $this->getGraceTimestamp()],
+            $this->getMinutesUntilExpired($payload)
+        );
+
+        return true;
+    }

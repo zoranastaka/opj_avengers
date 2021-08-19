@@ -1,0 +1,16 @@
+    /** @test */
+
+    public function it_cant_update_a_journal_entry_with_missing_parameters()
+    {
+        $user = $this->signin();
+        $entry = factory(Entry::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $response = $this->json('PUT', '/api/journal/'.$entry->id, []);
+
+        $this->expectDataError($response, [
+            'The title field is required.',
+            'The post field is required.',
+        ]);
+    }

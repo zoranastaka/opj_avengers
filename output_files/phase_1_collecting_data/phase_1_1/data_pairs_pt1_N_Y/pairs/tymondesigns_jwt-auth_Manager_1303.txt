@@ -1,0 +1,10 @@
+    /**
+     * Get the JWTProvider instance.
+     *
+     * @return \Tymon\JWTAuth\Contracts\Providers\JWT
+     */
+
+    public function getJWTProvider()
+    {
+        return $this->provider;
+    }

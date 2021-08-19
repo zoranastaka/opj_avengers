@@ -1,0 +1,10 @@
+    /**
+     * Return the validation score at each epoch.
+     *
+     * @return float[]|null
+     */
+
+    public function scores() : ?array
+    {
+        return $this->scores;
+    }

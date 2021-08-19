@@ -1,0 +1,24 @@
+    /**
+     * @dataProvider headersProvider
+     * @param array $headers
+     */
+
+    public function testConstructorInjection(array $headers)
+    {
+        $md = new Mobile_Detect($headers);
+
+        foreach ($headers as $header => $value) {
+            if (substr($header, 0, 5) !== 'HTTP_') {
+                //make sure it wasn't set
+                $this->assertNull($md->getHttpHeader($value));
+            } else {
+                //make sure it's equal
+                $this->assertEquals($value, $md->getHttpHeader($header));
+            }
+        }
+
+        //verify some of the headers work with the translated getter
+        $this->assertNull($md->getHttpHeader('Remote-Addr'));
+        $this->assertNull($md->getHttpHeader('Server-Software'));
+        $this->assertEquals($headers['HTTP_USER_AGENT'], $md->getHttpHeader('User-Agent'));
+    }

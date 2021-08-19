@@ -1,0 +1,10 @@
+    /**
+     * Gets the value of the cookie.
+     *
+     * @return string|null
+     */
+
+    public function getValue()
+    {
+        return $this->value;
+    }

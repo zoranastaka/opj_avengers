@@ -1,0 +1,19 @@
+    /**
+     * @test         equals returns true if the complex numbers are the same
+     * @dataProvider dataProviderForComplexNumbers
+     * @param        number $r
+     * @param        number $i
+     */
+
+    public function testEqualsTrue($r, $i)
+    {
+        // Given
+        $c1 = new Complex($r, $i);
+        $c2 = new Complex($r, $i);
+
+        // When
+        $isEqual = $c1->Equals($c2);
+
+        // Then
+        $this->assertTrue($isEqual);
+    }

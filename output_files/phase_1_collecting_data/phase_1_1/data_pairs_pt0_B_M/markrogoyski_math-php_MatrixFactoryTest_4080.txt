@@ -1,0 +1,19 @@
+    /**
+     * @test         exchange
+     * @dataProvider dataProviderForExchange
+     * @param        int   $n
+     * @param        array $R
+     * @throws       \Exception
+     */
+
+    public function testExchange(int $n, array $R)
+    {
+        // Given
+        $R = new NumericSquareMatrix($R);
+
+        // When
+        $E = MatrixFactory::exchange($n);
+
+        // Then
+        $this->assertEquals($R, $E);
+    }

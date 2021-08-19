@@ -1,0 +1,9 @@
+	/**
+	 * Return a list of permissions a scope allows.
+	 *
+	 * @since  2.4.0
+	 * @param  string $scope Permission scope.
+	 * @return array
+	 */
+
+	protected function get_permissions_in_scope( $scope ) {

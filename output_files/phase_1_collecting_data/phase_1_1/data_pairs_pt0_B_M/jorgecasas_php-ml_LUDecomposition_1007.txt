@@ -1,0 +1,10 @@
+    /**
+     * Return pivot permutation vector.
+     *
+     * @return array Pivot vector
+     */
+
+    public function getPivot(): array
+    {
+        return $this->piv;
+    }

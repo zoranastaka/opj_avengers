@@ -1,0 +1,3 @@
+	//ide kad stisnemo da želimo vidjeti sve ponude koje je ta tvrtka napravila
+
+	public function company_offers(){

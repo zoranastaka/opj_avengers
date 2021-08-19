@@ -1,0 +1,19 @@
+    /**
+     * @test         identity
+     * @dataProvider dataProviderForIdentity
+     * @param        int   $n
+     * @param        array $R
+     * @throws       \Exception
+     */
+
+    public function testIdentity(int $n, array $R)
+    {
+        // Given
+        $R = new NumericSquareMatrix($R);
+
+        // When
+        $I = MatrixFactory::identity($n);
+
+        // Then
+        $this->assertEquals($R, $I);
+    }

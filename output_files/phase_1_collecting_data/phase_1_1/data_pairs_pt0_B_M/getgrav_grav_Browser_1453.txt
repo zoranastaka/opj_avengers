@@ -1,0 +1,10 @@
+    /**
+     * Get the current full version identifier
+     *
+     * @return string the browser full version identifier
+     */
+
+    public function getLongVersion()
+    {
+        return $this->useragent['version'];
+    }

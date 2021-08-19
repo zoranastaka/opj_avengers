@@ -1,0 +1,11 @@
+	/**
+	 * Get the version of the REST API package being ran.
+	 *
+	 * @since 3.7.0
+	 * @return string
+	 */
+
+	public function get_rest_api_package_path() {
+		if ( ! $this->is_rest_api_loaded() ) {
+			return null;
+		}

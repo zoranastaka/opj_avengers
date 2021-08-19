@@ -1,0 +1,14 @@
+    /**
+     * @param  Config                     $config The configuration
+     * @param  Downloader\DownloadManager $dm     Manager use to download sources
+     * @return Archiver\ArchiveManager
+     */
+
+    public function createArchiveManager(Config $config, Downloader\DownloadManager $dm, Loop $loop)
+    {
+        $am = new Archiver\ArchiveManager($dm, $loop);
+        $am->addArchiver(new Archiver\ZipArchiver);
+        $am->addArchiver(new Archiver\PharArchiver);
+
+        return $am;
+    }

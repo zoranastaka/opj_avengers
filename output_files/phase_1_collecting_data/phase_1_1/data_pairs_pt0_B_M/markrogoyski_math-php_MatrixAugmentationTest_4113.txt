@@ -1,0 +1,24 @@
+    /**
+     * @test   It is an error to augment a matrix from above if the column count does not match
+     * @throws \Exception
+     */
+
+    public function testAugmentAboveExceptionColumnsDoNotMatch()
+    {
+        // Given
+        $A = MatrixFactory::create([
+            [1, 2, 3],
+            [2, 3, 4],
+            [3, 4, 5],
+        ]);
+        $B = MatrixFactory::create([
+            [4, 5],
+            [5, 6],
+        ]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $A->augmentAbove($B);
+    }

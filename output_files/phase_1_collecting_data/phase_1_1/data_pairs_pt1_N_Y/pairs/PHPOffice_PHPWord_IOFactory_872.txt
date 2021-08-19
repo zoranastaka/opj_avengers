@@ -1,0 +1,13 @@
+    /**
+     * Check if it's a concrete class (not abstract nor interface)
+     *
+     * @param string $class
+     * @return bool
+     */
+
+    private static function isConcreteClass($class)
+    {
+        $reflection = new \ReflectionClass($class);
+
+        return !$reflection->isAbstract() && !$reflection->isInterface();
+    }

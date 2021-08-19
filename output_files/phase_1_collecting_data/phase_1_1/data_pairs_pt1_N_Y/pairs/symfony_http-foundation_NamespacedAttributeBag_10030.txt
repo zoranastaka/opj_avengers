@@ -1,0 +1,16 @@
+    /**
+     * Resolves the key from the name.
+     *
+     * This is the last part in a dot separated string.
+     *
+     * @return string
+     */
+
+    protected function resolveKey(string $name)
+    {
+        if (false !== $pos = strrpos($name, $this->namespaceCharacter)) {
+            $name = substr($name, $pos + 1);
+        }
+
+        return $name;
+    }

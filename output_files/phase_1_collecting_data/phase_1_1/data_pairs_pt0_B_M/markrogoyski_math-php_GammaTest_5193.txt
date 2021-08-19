@@ -1,0 +1,14 @@
+    /**
+     * Data provider for mean
+     * @return array [k, θ, μ]
+     */
+
+    public function dataProviderForMean(): array
+    {
+        return [
+            [1, 1, 1.0],
+            [1, 2, 2.0],
+            [2, 1, 2.0],
+            [9, 0.5, 4.5],
+        ];
+    }

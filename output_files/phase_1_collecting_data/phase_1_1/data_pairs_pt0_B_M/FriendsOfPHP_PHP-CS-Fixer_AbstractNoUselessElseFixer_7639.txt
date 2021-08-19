@@ -1,0 +1,9 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getPriority(): int
+    {
+        // should be run before NoWhitespaceInBlankLineFixer, NoExtraBlankLinesFixer, BracesFixer and after NoEmptyStatementFixer.
+        return 39;
+    }

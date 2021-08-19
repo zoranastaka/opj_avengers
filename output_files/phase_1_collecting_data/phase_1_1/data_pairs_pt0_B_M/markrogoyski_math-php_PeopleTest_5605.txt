@@ -1,0 +1,12 @@
+    /**
+     * @test 32 wine observations
+     */
+
+    public function testNumberOfWine()
+    {
+        // When
+        $observations = $this->people->getWine();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

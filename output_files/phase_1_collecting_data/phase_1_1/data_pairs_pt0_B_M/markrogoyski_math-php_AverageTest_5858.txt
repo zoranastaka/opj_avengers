@@ -1,0 +1,18 @@
+    /**
+     * @test         weightedMovingAverage
+     * @dataProvider dataProviderForWeightedMovingAverage
+     * @param        array $numbers
+     * @param        int   $n
+     * @param        array $weights
+     * @param        array $expectedWma
+     * @throws       \Exception
+     */
+
+    public function testWeightedMovingAverage(array $numbers, int $n, array $weights, array $expectedWma)
+    {
+        // When
+        $wma = Average::weightedMovingAverage($numbers, $n, $weights);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedWma, $wma, 0.001);
+    }

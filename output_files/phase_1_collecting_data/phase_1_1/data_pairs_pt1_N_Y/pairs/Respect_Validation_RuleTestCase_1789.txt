@@ -1,0 +1,11 @@
+    /**
+     * @param mixed $input
+     */
+
+    public static function assertValidInput(Validatable $rule, $input): void
+    {
+        self::assertTrue(
+            $rule->validate($input),
+            sprintf('Validation with input %s is expected to pass', stringify($input))
+        );
+    }

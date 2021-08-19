@@ -1,0 +1,3 @@
+/*---string---*/
+
+function str_path($path){

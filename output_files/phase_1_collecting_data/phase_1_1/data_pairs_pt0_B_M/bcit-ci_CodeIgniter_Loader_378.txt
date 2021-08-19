@@ -1,0 +1,29 @@
+	/**
+	 * Prepare variables for _ci_vars, to be later extract()-ed inside views
+	 *
+	 * Converts objects to associative arrays and filters-out internal
+	 * variable names (i.e. keys prefixed with '_ci_').
+	 *
+	 * @param	mixed	$vars
+	 * @return	array
+	 */
+
+	protected function _ci_prepare_view_vars($vars)
+	{
+		if ( ! is_array($vars))
+		{
+			$vars = is_object($vars)
+				? get_object_vars($vars)
+				: array();
+		}
+
+		foreach (array_keys($vars) as $key)
+		{
+			if (strncmp($key, '_ci_', 4) === 0)
+			{
+				unset($vars[$key]);
+			}
+		}
+
+		return $vars;
+	}

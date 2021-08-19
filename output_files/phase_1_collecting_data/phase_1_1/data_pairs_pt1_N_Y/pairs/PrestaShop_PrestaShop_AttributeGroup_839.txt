@@ -1,0 +1,20 @@
+    /**
+     * Reorder group attribute position
+     * Call it after deleting a group attribute.
+     *
+     * @return bool $return
+     */
+
+    public static function cleanPositions()
+    {
+        $return = true;
+        Db::getInstance()->execute('SET @i = -1', false);
+        $return = Db::getInstance()->execute(
+            '
+				UPDATE `' . _DB_PREFIX_ . 'attribute_group`
+				SET `position` = @i:=@i+1
+				ORDER BY `position`'
+        );
+
+        return $return;
+    }

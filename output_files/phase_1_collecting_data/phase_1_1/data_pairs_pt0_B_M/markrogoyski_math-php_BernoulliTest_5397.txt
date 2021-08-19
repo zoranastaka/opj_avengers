@@ -1,0 +1,19 @@
+    /**
+     * @test         cdf
+     * @dataProvider dataProviderForCDF
+     * @param        int $k
+     * @param        float $p
+     * @param        float $expectedCdf
+     */
+
+    public function testCdf(int $k, float $p, $expectedCdf)
+    {
+        // Given
+        $bernoulli = new Bernoulli($p);
+
+        // When
+        $cdf = $bernoulli->cdf($k);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedCdf, $cdf, 0.000001);
+    }

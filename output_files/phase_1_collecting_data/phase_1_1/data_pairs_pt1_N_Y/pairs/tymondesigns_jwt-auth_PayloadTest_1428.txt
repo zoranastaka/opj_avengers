@@ -1,0 +1,9 @@
+    /** @test */
+
+    public function it_should_match_strict_values()
+    {
+        $values = $this->payload->toArray();
+
+        $this->assertTrue($this->payload->matchesStrict($values));
+        $this->assertTrue($this->payload->matches($values, true));
+    }

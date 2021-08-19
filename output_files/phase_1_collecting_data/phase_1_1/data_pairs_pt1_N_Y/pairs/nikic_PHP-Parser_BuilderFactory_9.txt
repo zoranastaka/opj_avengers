@@ -1,0 +1,9 @@
+    /**
+     * Creates an interface builder.
+     *
+     * @param string $name Name of the interface
+     *
+     * @return Builder\Interface_ The created interface builder
+     */
+
+    public function interface(string $name) : Builder\Interface_ {

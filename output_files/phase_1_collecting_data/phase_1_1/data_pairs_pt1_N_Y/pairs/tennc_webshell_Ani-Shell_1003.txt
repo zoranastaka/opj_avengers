@@ -1,0 +1,7 @@
+/**
+ * Get the directory size
+ * @param directory $directory
+ * @return integer
+ */
+
+function dirSize($directory) {

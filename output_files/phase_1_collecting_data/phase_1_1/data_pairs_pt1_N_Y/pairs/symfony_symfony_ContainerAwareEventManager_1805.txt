@@ -1,0 +1,14 @@
+    /**
+     * {@inheritdoc}
+     *
+     * @return bool
+     */
+
+    public function hasListeners($event)
+    {
+        if (!$this->initializedSubscribers) {
+            $this->initializeSubscribers();
+        }
+
+        return isset($this->listeners[$event]) && $this->listeners[$event];
+    }

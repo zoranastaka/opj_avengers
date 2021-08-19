@@ -1,0 +1,10 @@
+    /**
+     * Freezes stream.
+     *
+     * @return $this
+     */
+
+    public function freeze(): self
+    {
+        return $this;
+    }

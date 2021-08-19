@@ -1,0 +1,11 @@
+    /**
+     * Get the debuglog for this claculation engine instance
+     *
+     * @access    public
+     * @return PHPExcel_CalcEngine_Logger
+     */
+
+    public function getDebugLog()
+    {
+        return $this->_debugLog;
+    }

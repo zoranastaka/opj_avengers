@@ -1,0 +1,14 @@
+    /**
+     * @param int|string $offset
+     * @param mixed $value
+     */
+
+    public function offsetSet($offset, $value)
+    {
+        if ($this->gettersVariable) {
+            $var = $this->gettersVariable;
+            $this->{$var}[$offset] = $value;
+        } else {
+            $this->{$offset} = $value;
+        }
+    }

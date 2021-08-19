@@ -1,0 +1,24 @@
+    /** @test */
+
+    public function it_calls_fallback_without_closures()
+    {
+        $botman = $this->getBot([
+            'event' => [
+                'user' => 'U0X12345',
+                'text' => 'foo',
+            ],
+        ]);
+
+        $called = false;
+        TestFallback::$called = false;
+
+        $botman->fallback(TestFallback::class.'@foo');
+
+        $botman->hears('bar', function ($bot) use (&$called) {
+            $called = true;
+        });
+
+        $botman->listen();
+        $this->assertFalse($called);
+        $this->assertTrue(TestFallback::$called);
+    }

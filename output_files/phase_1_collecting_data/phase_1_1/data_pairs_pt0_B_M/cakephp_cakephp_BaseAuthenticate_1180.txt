@@ -1,0 +1,9 @@
+    /**
+     * Authenticate a user based on the request information.
+     *
+     * @param \Cake\Http\ServerRequest $request Request to get authentication information from.
+     * @param \Cake\Http\Response $response A response object that can have headers added.
+     * @return array|false Either false on failure, or an array of user data on success.
+     */
+
+    abstract public function authenticate(ServerRequest $request, Response $response);

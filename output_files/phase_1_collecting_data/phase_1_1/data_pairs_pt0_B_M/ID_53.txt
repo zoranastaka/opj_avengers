@@ -1,0 +1,48 @@
+    /**
+     * Encoding and charset tests.
+     */
+
+    public function testEncodings()
+    {
+        $this->Mail->CharSet = PHPMailer::CHARSET_ISO88591;
+        self::assertEquals(
+            '=A1Hola!_Se=F1or!',
+            $this->Mail->encodeQ("\xa1Hola! Se\xf1or!", 'text'),
+            'Q Encoding (text) failed'
+        );
+        self::assertEquals(
+            '=A1Hola!_Se=F1or!',
+            $this->Mail->encodeQ("\xa1Hola! Se\xf1or!", 'comment'),
+            'Q Encoding (comment) failed'
+        );
+        self::assertEquals(
+            '=A1Hola!_Se=F1or!',
+            $this->Mail->encodeQ("\xa1Hola! Se\xf1or!", 'phrase'),
+            'Q Encoding (phrase) failed'
+        );
+        $this->Mail->CharSet = 'UTF-8';
+        self::assertEquals(
+            '=C2=A1Hola!_Se=C3=B1or!',
+            $this->Mail->encodeQ("\xc2\xa1Hola! Se\xc3\xb1or!", 'text'),
+            'Q Encoding (text) failed'
+        );
+        //Strings containing '=' are a special case
+        self::assertEquals(
+            'Nov=C3=A1=3D',
+            $this->Mail->encodeQ("Nov\xc3\xa1=", 'text'),
+            'Q Encoding (text) failed 2'
+        );
+
+        self::assertEquals(
+            'hello',
+            $this->Mail->encodeString('hello', 'binary'),
+            'Binary encoding changed input'
+        );
+        $this->Mail->ErrorInfo = '';
+        $this->Mail->encodeString('hello', 'asdfghjkl');
+        self::assertNotEmpty($this->Mail->ErrorInfo, 'Invalid encoding not detected');
+        self::assertMatchesRegularExpression(
+            '/' . base64_encode('hello') . '/',
+            $this->Mail->encodeString('hello')
+        );
+    }

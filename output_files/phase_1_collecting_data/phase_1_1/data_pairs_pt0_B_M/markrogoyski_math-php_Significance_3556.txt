@@ -1,0 +1,24 @@
+    /**
+     * t-test - one sample or two sample tests
+     * https://en.wikipedia.org/wiki/Student%27s_t-test
+     *
+     * @param array $a sample set 1
+     * @param float|array $b population mean for one sample t test; sample set 2 for two sample t-test
+     *
+     * @return array
+     *
+     * @throws Exception\BadParameterException
+     * @throws Exception\OutOfBoundsException
+     */
+
+    public static function tTest(array $a, $b): array
+    {
+        if (\is_numeric($b)) {
+            return self::tTestOneSample($a, $b);
+        }
+        if (\is_array($b)) {
+            return self::tTestTwoSample($a, $b);
+        }
+
+        throw new Exception\BadParameterException('Second parameter must be numeric for one-sample t-test, or an array for two-sample t-test');
+    }

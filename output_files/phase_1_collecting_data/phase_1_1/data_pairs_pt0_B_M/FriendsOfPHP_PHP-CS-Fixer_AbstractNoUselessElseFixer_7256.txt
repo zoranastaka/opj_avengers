@@ -1,0 +1,18 @@
+    /**
+     * Return the first and last token index of the previous block.
+     *
+     * [0] First is either T_IF, T_ELSE or T_ELSEIF
+     * [1] Last is either '}' or ';' / T_CLOSE_TAG for short notation blocks
+     *
+     * @param int $index T_IF, T_ELSE, T_ELSEIF
+     *
+     * @return int[]
+     */
+
+    private function getPreviousBlock(Tokens $tokens, int $index): array
+    {
+        $close = $previous = $tokens->getPrevMeaningfulToken($index);
+        // short 'if' detection
+        if ($tokens[$close]->equals('}')) {
+            $previous = $tokens->findBlockStart(Tokens::BLOCK_TYPE_CURLY_BRACE, $close);
+        }

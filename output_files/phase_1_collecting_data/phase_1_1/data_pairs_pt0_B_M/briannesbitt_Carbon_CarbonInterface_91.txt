@@ -1,0 +1,7 @@
+    /**
+     * Returns true if the current class/instance is immutable.
+     *
+     * @return bool
+     */
+
+    public static function isImmutable();

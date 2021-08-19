@@ -1,0 +1,7 @@
+	/**
+	 * Tests for end-of-file on a file pointer.
+	 *
+	 * @return bool TRUE if the read/write position is at the end of the stream and if no more data is available to be read, or FALSE otherwise.
+	 */
+
+	public function stream_eof() {

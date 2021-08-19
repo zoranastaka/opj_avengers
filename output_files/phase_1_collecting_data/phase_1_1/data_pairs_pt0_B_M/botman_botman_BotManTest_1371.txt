@@ -1,0 +1,20 @@
+    /** @test */
+
+    public function it_hears_matching_commands_from_array()
+    {
+        $called = 0;
+
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => ['Foo', 'Bar'],
+        ]);
+
+        $botman->hears(['Foo', 'Bar'], function ($bot) use (&$called) {
+            $called++;
+        });
+
+        $botman->listen();
+
+        $this->assertEquals(2, $called);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * @since 0.13.0
+     *
+     * @param bool $outputEscapingEnabled
+     */
+
+    public static function setOutputEscapingEnabled($outputEscapingEnabled)
+    {
+        self::$outputEscapingEnabled = $outputEscapingEnabled;
+    }

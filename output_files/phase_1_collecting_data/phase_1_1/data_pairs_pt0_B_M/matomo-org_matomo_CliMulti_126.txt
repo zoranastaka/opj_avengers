@@ -1,0 +1,25 @@
+    /**
+     * What is missing under windows? Detection whether a process is still running in Process::isProcessStillRunning
+     * and how to send a process into background in start()
+     */
+
+    public function supportsAsync()
+    {
+        $supportsAsync = Process::isSupported() && !Common::isPhpCgiType() && $this->findPhpBinary();
+
+        /**
+         * Triggered to allow plugins to force the usage of async cli multi execution or to disable it.
+         *
+         * **Example**
+         *
+         *     public function supportsAsync(&$supportsAsync)
+         *     {
+         *         $supportsAsync = false; // do not allow async climulti execution
+         *     }
+         *
+         * @param bool &$supportsAsync Whether async is supported or not.
+         */
+        Piwik::postEvent('CliMulti.supportsAsync', array(&$supportsAsync));
+
+        return $supportsAsync;
+    }

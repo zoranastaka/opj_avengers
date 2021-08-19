@@ -1,0 +1,37 @@
+    /**
+     * Returns interval values as an array where key are the unit names and values the counts
+     * from the biggest non-zero one the the smallest non-zero one.
+     *
+     * @return int[]
+     */
+
+    public function getValuesSequence()
+    {
+        $nonZeroValues = $this->getNonZeroValues();
+
+        if ($nonZeroValues === []) {
+            return [];
+        }
+
+        $keys = array_keys($nonZeroValues);
+        $firstKey = $keys[0];
+        $lastKey = $keys[\count($keys) - 1];
+        $values = [];
+        $record = false;
+
+        foreach ($this->toArray() as $unit => $count) {
+            if ($unit === $firstKey) {
+                $record = true;
+            }
+
+            if ($record) {
+                $values[$unit] = $count;
+            }
+
+            if ($unit === $lastKey) {
+                $record = false;
+            }
+        }
+
+        return $values;
+    }

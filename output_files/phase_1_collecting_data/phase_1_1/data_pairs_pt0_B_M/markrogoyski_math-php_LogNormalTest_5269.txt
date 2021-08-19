@@ -1,0 +1,19 @@
+    /**
+     * @test         mean
+     * @dataProvider dataProviderForMean
+     * @param        float $μ
+     * @param        float $σ
+     * @param        float $expected_mean
+     */
+
+    public function testMean(float $μ, float $σ, float $expected_mean)
+    {
+        // Given
+        $log_normal = new LogNormal($μ, $σ);
+
+        // When
+        $mean = $log_normal->mean();
+
+        // Then
+        $this->assertEqualsWithDelta($expected_mean, $mean, 0.000001);
+    }

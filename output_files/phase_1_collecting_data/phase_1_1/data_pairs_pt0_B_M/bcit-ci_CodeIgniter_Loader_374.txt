@@ -1,0 +1,12 @@
+	/**
+	 * Get Variables
+	 *
+	 * Retrieves all loaded variables.
+	 *
+	 * @return	array
+	 */
+
+	public function get_vars()
+	{
+		return $this->_ci_cached_vars;
+	}

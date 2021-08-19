@@ -1,0 +1,25 @@
+	// --------------------------------------------------------------------
+
+	public function test_load_view()
+	{
+		// Create view in VFS
+		$view = 'unit_test_view';
+		$var = 'hello';
+		$value = 'World!';
+		$content = 'This is my test page.  ';
+		$this->ci_vfs_create($view, $content.'<?php echo $'.$var.';', $this->ci_app_root, 'views');
+
+		// Test returning view
+		$out = $this->load->view($view, array($var => $value), TRUE);
+		$this->assertEquals($content.$value, $out);
+
+		// Mock output class
+		$output = $this->getMockBuilder('CI_Output')->setMethods(array('append_output'))->getMock();
+		$output->expects($this->once())->method('append_output')->with($content.$value);
+		$this->ci_instance_var('output', $output);
+
+		// Test view output and $vars as an object
+		$vars = new stdClass();
+		$vars->$var = $value;
+		$this->assertInstanceOf('CI_Loader', $this->load->view($view, $vars));
+	}

@@ -1,0 +1,10 @@
+    /**
+     * @return array
+     */
+
+    protected function getOptions()
+    {
+        return [
+            ['database', null, InputOption::VALUE_OPTIONAL, 'Database', null],
+        ];
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Modify to end of current minute, seconds become 59
+     *
+     * @example
+     * ```
+     * echo Carbon::parse('2018-07-25 12:45:16')->endOfMinute();
+     * ```
+     *
+     * @return static
+     */
+
+    public function endOfMinute();

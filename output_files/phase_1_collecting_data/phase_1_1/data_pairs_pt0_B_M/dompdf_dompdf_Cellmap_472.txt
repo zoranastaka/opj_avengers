@@ -1,0 +1,12 @@
+    /**
+     * @param Frame $frame
+     *
+     * @return bool
+     */
+
+    public function frame_exists_in_cellmap(Frame $frame)
+    {
+        $key = $frame->get_id();
+
+        return isset($this->_frames[$key]);
+    }

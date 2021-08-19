@@ -1,0 +1,18 @@
+    /**
+     * Get the vector as a 1xn row matrix
+     *
+     * Example:
+     *  V = [1, 2, 3]
+     *  R = [
+     *   [1, 2, 3]
+     *  ]
+     *
+     * @return NumericMatrix
+     *
+     * @throws Exception\MathException
+     */
+
+    public function asRowMatrix(): NumericMatrix
+    {
+        return new NumericMatrix([$this->A]);
+    }

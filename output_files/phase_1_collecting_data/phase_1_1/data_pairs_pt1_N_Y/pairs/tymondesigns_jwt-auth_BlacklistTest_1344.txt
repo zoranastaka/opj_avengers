@@ -1,0 +1,23 @@
+    /** @test */
+
+    public function it_should_set_a_custom_unique_key_for_the_blacklist()
+    {
+        $claims = [
+            new Subject(1),
+            new Issuer('http://example.com'),
+            new Expiration($this->testNowTimestamp + 3600),
+            new NotBefore($this->testNowTimestamp),
+            new IssuedAt($this->testNowTimestamp),
+            new JwtId('foobar'),
+        ];
+        $collection = Collection::make($claims);
+
+        $this->validator->shouldReceive('setRefreshFlow->check')->andReturn($collection);
+
+        $payload = new Payload($collection, $this->validator);
+
+        $this->storage->shouldReceive('get')->with(1)->once()->andReturn(['valid_until' => $this->testNowTimestamp]);
+
+        $this->assertTrue($this->blacklist->setKey('sub')->has($payload));
+        $this->assertSame(1, $this->blacklist->getKey($payload));
+    }

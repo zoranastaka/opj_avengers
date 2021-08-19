@@ -1,0 +1,5 @@
+	/**
+	 * Try to set some values to the required ownCloud default
+	 */
+
+	public static function setRequiredIniValues() {

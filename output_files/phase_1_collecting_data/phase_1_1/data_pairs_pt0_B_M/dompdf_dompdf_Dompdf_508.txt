@@ -1,0 +1,10 @@
+    /**
+     * @param FrameTree $tree
+     * @return $this
+     */
+
+    public function setTree(FrameTree $tree)
+    {
+        $this->tree = $tree;
+        return $this;
+    }

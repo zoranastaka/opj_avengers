@@ -1,0 +1,14 @@
+    /**
+     * Test this denial of service attack.
+     *
+     * @see http://www.cybsec.com/vuln/PHPMailer-DOS.pdf
+     */
+
+    public function testDenialOfServiceAttack()
+    {
+        $this->Mail->Body = 'This should no longer cause a denial of service.';
+        $this->buildBody();
+
+        $this->Mail->Subject = substr(str_repeat('0123456789', 100), 0, 998);
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+    }

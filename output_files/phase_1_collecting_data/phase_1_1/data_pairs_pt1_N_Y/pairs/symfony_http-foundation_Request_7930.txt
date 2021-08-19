@@ -1,0 +1,33 @@
+    /**
+     * Returns the port on which the request is made.
+     *
+     * This method can read the client port from the "X-Forwarded-Port" header
+     * when trusted proxies were set via "setTrustedProxies()".
+     *
+     * The "X-Forwarded-Port" header must contain the client port.
+     *
+     * @return int|string can be a string if fetched from the server bag
+     */
+
+    public function getPort()
+    {
+        if ($this->isFromTrustedProxy() && $host = $this->getTrustedValues(self::HEADER_X_FORWARDED_PORT)) {
+            $host = $host[0];
+        } elseif ($this->isFromTrustedProxy() && $host = $this->getTrustedValues(self::HEADER_X_FORWARDED_HOST)) {
+            $host = $host[0];
+        } elseif (!$host = $this->headers->get('HOST')) {
+            return $this->server->get('SERVER_PORT');
+        }
+
+        if ('[' === $host[0]) {
+            $pos = strpos($host, ':', strrpos($host, ']'));
+        } else {
+            $pos = strrpos($host, ':');
+        }
+
+        if (false !== $pos && $port = substr($host, $pos + 1)) {
+            return (int) $port;
+        }
+
+        return 'https' === $this->getScheme() ? 443 : 80;
+    }

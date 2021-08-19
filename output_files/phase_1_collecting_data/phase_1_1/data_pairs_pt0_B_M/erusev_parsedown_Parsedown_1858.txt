@@ -1,0 +1,10 @@
+    #
+    # Setters
+    #
+
+    function setBreaksEnabled($breaksEnabled)
+    {
+        $this->breaksEnabled = $breaksEnabled;
+
+        return $this;
+    }

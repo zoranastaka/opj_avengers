@@ -1,0 +1,10 @@
+    /**
+     * @covers Whoops\Run::sendHttpCode
+     */
+
+    public function testSendHttpCodeWrongCode()
+    {
+        $this->expectExceptionOfType('InvalidArgumentException');
+
+        $this->getRunInstance()->sendHttpCode(1337);
+    }

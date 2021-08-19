@@ -1,0 +1,58 @@
+    /**
+     * Returns the visibility and implementation properties of a class.
+     *
+     * The format of the return value is:
+     * <code>
+     *   array(
+     *    'is_abstract' => false, // true if the abstract keyword was found.
+     *    'is_final'    => false, // true if the final keyword was found.
+     *   );
+     * </code>
+     *
+     * @param int $stackPtr The position in the stack of the T_CLASS token to
+     *                      acquire the properties for.
+     *
+     * @return array
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If the specified position is not a
+     *                                                      T_CLASS token.
+     */
+
+    public function getClassProperties($stackPtr)
+    {
+        if ($this->tokens[$stackPtr]['code'] !== T_CLASS) {
+            throw new RuntimeException('$stackPtr must be of type T_CLASS');
+        }
+
+        $valid = [
+            T_FINAL       => T_FINAL,
+            T_ABSTRACT    => T_ABSTRACT,
+            T_WHITESPACE  => T_WHITESPACE,
+            T_COMMENT     => T_COMMENT,
+            T_DOC_COMMENT => T_DOC_COMMENT,
+        ];
+
+        $isAbstract = false;
+        $isFinal    = false;
+
+        for ($i = ($stackPtr - 1); $i > 0; $i--) {
+            if (isset($valid[$this->tokens[$i]['code']]) === false) {
+                break;
+            }
+
+            switch ($this->tokens[$i]['code']) {
+            case T_ABSTRACT:
+                $isAbstract = true;
+                break;
+
+            case T_FINAL:
+                $isFinal = true;
+                break;
+            }
+        }//end for
+
+        return [
+            'is_abstract' => $isAbstract,
+            'is_final'    => $isFinal,
+        ];
+
+    }//end getClassProperties()

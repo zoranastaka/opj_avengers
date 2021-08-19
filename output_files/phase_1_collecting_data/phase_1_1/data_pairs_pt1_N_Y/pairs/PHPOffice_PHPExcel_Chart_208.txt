@@ -1,0 +1,14 @@
+    /**
+     * Get xAxis
+     *
+     * @return PHPExcel_Chart_Axis
+     */
+
+    public function getChartAxisX()
+    {
+        if ($this->xAxis !== null) {
+            return $this->xAxis;
+        }
+
+        return new PHPExcel_Chart_Axis();
+    }

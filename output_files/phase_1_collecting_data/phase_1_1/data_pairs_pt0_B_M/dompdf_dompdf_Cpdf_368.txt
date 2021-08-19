@@ -1,0 +1,12 @@
+    /**
+     * Callback method used by smallCaps
+     *
+     * @param array $matches
+     *
+     * @return string
+     */
+
+    function toUpper($matches)
+    {
+        return mb_strtoupper($matches[0]);
+    }

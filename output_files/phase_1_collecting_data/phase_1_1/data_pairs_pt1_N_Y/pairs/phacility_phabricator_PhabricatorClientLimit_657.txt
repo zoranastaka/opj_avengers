@@ -1,0 +1,7 @@
+  /**
+   * Get the score to add when a client connects.
+   *
+   * @return double Connection score.
+   */
+
+  abstract protected function getConnectScore();

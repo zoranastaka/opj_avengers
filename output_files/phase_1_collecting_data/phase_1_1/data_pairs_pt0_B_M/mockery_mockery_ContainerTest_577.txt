@@ -1,0 +1,6 @@
+    /** @group issue/162 */
+
+    public function testMockeryDoesntTryAndMockLowercaseToString()
+    {
+        $this->assertInstanceOf(MockInterface::class, mock('MockeryTest_Lowercase_ToString'));
+    }

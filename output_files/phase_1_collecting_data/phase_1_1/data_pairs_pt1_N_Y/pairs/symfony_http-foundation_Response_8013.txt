@@ -1,0 +1,17 @@
+    /**
+     * Marks the response as "private".
+     *
+     * It makes the response ineligible for serving other clients.
+     *
+     * @return $this
+     *
+     * @final
+     */
+
+    public function setPrivate(): object
+    {
+        $this->headers->removeCacheControlDirective('public');
+        $this->headers->addCacheControlDirective('private');
+
+        return $this;
+    }

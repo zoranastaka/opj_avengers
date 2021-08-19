@@ -1,0 +1,12 @@
+    /**
+     * @test     cohensQ R out of bounds
+     */
+
+    public function testCohensQExceptionROutOfBounds()
+    {
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        EffectSize::cohensQ(0.1, 2);
+    }

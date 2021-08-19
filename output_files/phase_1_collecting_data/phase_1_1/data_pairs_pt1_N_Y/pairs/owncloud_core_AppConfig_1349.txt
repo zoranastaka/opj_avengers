@@ -1,0 +1,5 @@
+	/**
+	 * @param IDBConnection $conn
+	 */
+
+	public function __construct(IDBConnection $conn) {

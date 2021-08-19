@@ -1,0 +1,18 @@
+    /**
+     * Map addition
+     *
+     * @param  array $xs
+     * @param  number $k Number to add to each element
+     *
+     * @return array
+     */
+
+    public static function add(array $xs, $k): array
+    {
+        return \array_map(
+            function ($x) use ($k) {
+                return $x + $k;
+            },
+            $xs
+        );
+    }

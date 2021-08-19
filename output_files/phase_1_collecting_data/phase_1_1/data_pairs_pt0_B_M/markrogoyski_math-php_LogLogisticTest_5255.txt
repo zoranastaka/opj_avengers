@@ -1,0 +1,13 @@
+    /**
+     * @return array [α, β, μ]
+     */
+
+    public function dataProviderForMean(): array
+    {
+        return [
+            [1, 2, 1.570795],
+            [2, 2, 3.14159],
+            [3, 3, 3.62759751692],
+            [5, 4, 5.55360266602],
+        ];
+    }

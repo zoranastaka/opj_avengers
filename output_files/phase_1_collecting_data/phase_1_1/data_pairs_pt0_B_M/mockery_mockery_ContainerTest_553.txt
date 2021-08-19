@@ -1,0 +1,10 @@
+    /**
+     * @group issue/15
+     */
+
+    public function testCanMockMultipleInterfaces()
+    {
+        $m = mock('MockeryTest_Interface1, MockeryTest_Interface2');
+        $this->assertInstanceOf(MockeryTest_Interface1::class, $m);
+        $this->assertInstanceOf(MockeryTest_Interface2::class, $m);
+    }

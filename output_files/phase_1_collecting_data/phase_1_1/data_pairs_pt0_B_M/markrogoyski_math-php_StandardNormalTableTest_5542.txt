@@ -1,0 +1,16 @@
+    /**
+     * @test         confidence interval score
+     * @dataProvider dataProviderForZScoresForConfidenceInterval
+     * @param        mixed $cl
+     * @param        float  $Z
+     * @throws       \Exception
+     */
+
+    public function testGetZScoreForConfidenceInterval($cl, float $Z)
+    {
+        // When
+        $score = StandardNormal::getZScoreForConfidenceInterval($cl);
+
+        // Then
+        $this->assertEqualsWithDelta($Z, $score, 0.01);
+    }

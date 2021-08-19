@@ -1,0 +1,12 @@
+    /**
+     * Extracts the key from the first argument of a command instance.
+     *
+     * @param CommandInterface $command Command instance.
+     *
+     * @return string
+     */
+
+    protected function getKeyFromFirstArgument(CommandInterface $command)
+    {
+        return $command->getArgument(0);
+    }

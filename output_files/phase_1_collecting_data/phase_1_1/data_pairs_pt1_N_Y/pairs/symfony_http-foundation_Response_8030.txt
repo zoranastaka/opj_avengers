@@ -1,0 +1,62 @@
+    /**
+     * Sets the response's cache headers (validation and/or expiration).
+     *
+     * Available options are: must_revalidate, no_cache, no_store, no_transform, public, private, proxy_revalidate, max_age, s_maxage, immutable, last_modified and etag.
+     *
+     * @return $this
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @final
+     */
+
+    public function setCache(array $options): object
+    {
+        if ($diff = array_diff(array_keys($options), array_keys(self::HTTP_RESPONSE_CACHE_CONTROL_DIRECTIVES))) {
+            throw new \InvalidArgumentException(sprintf('Response does not support the following options: "%s".', implode('", "', $diff)));
+        }
+
+        if (isset($options['etag'])) {
+            $this->setEtag($options['etag']);
+        }
+
+        if (isset($options['last_modified'])) {
+            $this->setLastModified($options['last_modified']);
+        }
+
+        if (isset($options['max_age'])) {
+            $this->setMaxAge($options['max_age']);
+        }
+
+        if (isset($options['s_maxage'])) {
+            $this->setSharedMaxAge($options['s_maxage']);
+        }
+
+        foreach (self::HTTP_RESPONSE_CACHE_CONTROL_DIRECTIVES as $directive => $hasValue) {
+            if (!$hasValue && isset($options[$directive])) {
+                if ($options[$directive]) {
+                    $this->headers->addCacheControlDirective(str_replace('_', '-', $directive));
+                } else {
+                    $this->headers->removeCacheControlDirective(str_replace('_', '-', $directive));
+                }
+            }
+        }
+
+        if (isset($options['public'])) {
+            if ($options['public']) {
+                $this->setPublic();
+            } else {
+                $this->setPrivate();
+            }
+        }
+
+        if (isset($options['private'])) {
+            if ($options['private']) {
+                $this->setPrivate();
+            } else {
+                $this->setPublic();
+            }
+        }
+
+        return $this;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Set an update checker service instance.
+     *
+     * @param Checker $checker
+     */
+
+    public function setChecker(Checker $checker)
+    {
+        $this->checker = $checker;
+    }

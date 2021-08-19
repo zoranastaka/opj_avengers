@@ -1,0 +1,11 @@
+    /**
+    * Remove all macros, certificate from spreadsheet
+    *
+    */
+
+    public function discardMacros()
+    {
+        $this->hasMacros=false;
+        $this->macrosCode=null;
+        $this->macrosCertificate=null;
+    }

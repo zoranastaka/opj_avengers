@@ -1,0 +1,26 @@
+    /**
+     * Regularized lower incomplete gamma function - P(s,x)
+     * https://en.wikipedia.org/wiki/Incomplete_gamma_function#Regularized_Gamma_functions_and_Poisson_random_variables
+     *
+     *          γ(s,x)
+     * P(s,x) = ------
+     *           Γ(s)
+     *
+     * P(s,x) is the cumulative distribution function for Gamma random variables with shape parameter s and scale parameter 1
+     *
+     *
+     * @param float $s > 0
+     * @param float $x ≥ 0
+     *
+     * @return float
+     *
+     * @throws Exception\OutOfBoundsException
+     */
+
+    public static function regularizedLowerIncompleteGamma(float $s, float $x): float
+    {
+        $γ⟮s、x⟯ = self::lowerIncompleteGamma($s, $x);
+        $Γ⟮s⟯    = self::gamma($s);
+
+        return $γ⟮s、x⟯ / $Γ⟮s⟯;
+    }

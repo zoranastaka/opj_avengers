@@ -1,0 +1,10 @@
+    /**
+     * Calculate the current aspect ratio
+     *
+     * @return float
+     */
+
+    public function getRatio()
+    {
+        return $this->width / $this->height;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * @after
+     */
+
+    public function clearProperties()
+    {
+        $this->traverser = null;
+        $this->parser = null;
+        $this->printer = null;
+    }

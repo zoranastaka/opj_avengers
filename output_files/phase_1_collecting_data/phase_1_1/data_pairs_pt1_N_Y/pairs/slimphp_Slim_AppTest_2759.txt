@@ -1,0 +1,27 @@
+    /********************************************************************************
+     * Runner
+     *******************************************************************************/
+
+    public function testInvokeReturnMethodNotAllowed()
+    {
+        $this->expectException(HttpMethodNotAllowedException::class);
+
+        $responseFactoryProphecy = $this->prophesize(ResponseFactoryInterface::class);
+        $app = new App($responseFactoryProphecy->reveal());
+        $app->get('/', function () {
+        });
+
+        $uriProphecy = $this->prophesize(UriInterface::class);
+        $uriProphecy->getPath()->willReturn('/');
+
+        $requestProphecy = $this->prophesize(ServerRequestInterface::class);
+        $requestProphecy->getMethod()->willReturn('POST');
+        $requestProphecy->getUri()->willReturn($uriProphecy->reveal());
+        $requestProphecy->getAttribute(RouteContext::ROUTING_RESULTS)->willReturn(null);
+        $requestProphecy->withAttribute(Argument::type('string'), Argument::any())->will(function ($args) {
+            $this->getAttribute($args[0])->willReturn($args[1]);
+            return $this;
+        });
+
+        $app->handle($requestProphecy->reveal());
+    }

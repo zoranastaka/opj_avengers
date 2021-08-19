@@ -1,0 +1,12 @@
+    /**
+     * @test Scaled center
+     */
+
+    public function testGetScaledCenter()
+    {
+        // When
+        $scaledCenter = $this->cereal->getScaledCenter();
+
+        // Then
+        $this->assertCount(6, $scaledCenter);
+    }

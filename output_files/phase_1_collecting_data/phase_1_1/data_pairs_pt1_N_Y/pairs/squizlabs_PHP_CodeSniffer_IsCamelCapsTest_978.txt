@@ -1,0 +1,12 @@
+    /**
+     * Test valid public function/method names.
+     *
+     * @return void
+     */
+
+    public function testValidNotClassFormatPublic()
+    {
+        $this->assertTrue(Common::isCamelCaps('thisIsCamelCaps', false, true, true));
+        $this->assertTrue(Common::isCamelCaps('thisISCamelCaps', false, true, false));
+
+    }//end testValidNotClassFormatPublic()

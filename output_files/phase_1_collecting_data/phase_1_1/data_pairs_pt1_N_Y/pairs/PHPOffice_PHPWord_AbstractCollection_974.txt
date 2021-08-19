@@ -1,0 +1,10 @@
+    /**
+     * Get item count
+     *
+     * @return int
+     */
+
+    public function countItems()
+    {
+        return count($this->items);
+    }

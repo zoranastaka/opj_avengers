@@ -1,0 +1,18 @@
+    /**
+     * Returns a Uuid created from the provided byte string
+     *
+     * Uses the configured builder and codec and the provided byte string to
+     * construct a Uuid object.
+     *
+     * @param string $bytes The byte string from which to construct a UUID
+     *
+     * @return UuidInterface An instance of UuidInterface, created from the
+     *     provided bytes
+     *
+     * @psalm-pure
+     */
+
+    public function uuid(string $bytes): UuidInterface
+    {
+        return $this->uuidBuilder->build($this->codec, $bytes);
+    }

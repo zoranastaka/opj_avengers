@@ -1,0 +1,7 @@
+    /**
+     * Gets the charset of the application.
+     *
+     * @return string The charset
+     */
+
+    public function getCharset();

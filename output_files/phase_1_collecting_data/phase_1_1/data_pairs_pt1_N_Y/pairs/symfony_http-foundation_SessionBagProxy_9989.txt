@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getStorageKey(): string
+    {
+        return $this->bag->getStorageKey();
+    }

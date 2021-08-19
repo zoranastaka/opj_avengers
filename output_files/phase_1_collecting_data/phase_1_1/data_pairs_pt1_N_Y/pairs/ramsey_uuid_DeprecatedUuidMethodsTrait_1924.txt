@@ -1,0 +1,14 @@
+    /**
+     * @deprecated Use {@see UuidInterface::getFields()} to get a
+     *     {@see FieldsInterface} instance. If it is a {@see Rfc4122FieldsInterface}
+     *     instance, you may call {@see Rfc4122FieldsInterface::getTimestamp()}.
+     */
+
+    public function getTimestampHex(): string
+    {
+        if ($this->fields->getVersion() !== 1) {
+            throw new UnsupportedOperationException('Not a time-based UUID');
+        }
+
+        return $this->fields->getTimestamp()->toString();
+    }

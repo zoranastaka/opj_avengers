@@ -1,0 +1,13 @@
+    /**
+     * Creates a cookie copy with a new domain that the cookie is available to.
+     *
+     * @return static
+     */
+
+    public function withDomain(?string $domain): self
+    {
+        $cookie = clone $this;
+        $cookie->domain = $domain;
+
+        return $cookie;
+    }

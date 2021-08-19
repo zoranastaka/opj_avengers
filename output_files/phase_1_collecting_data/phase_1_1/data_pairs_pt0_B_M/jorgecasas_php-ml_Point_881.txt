@@ -1,0 +1,10 @@
+    /**
+     * @param mixed $offset
+     *
+     * @return mixed
+     */
+
+    public function offsetGet($offset)
+    {
+        return $this->coordinates[$offset];
+    }

@@ -1,0 +1,11 @@
+    /**
+     * New instance.
+     */
+
+    public function __construct(Iterator $records, array $header)
+    {
+        $this->validateHeader($header);
+
+        $this->records = $records;
+        $this->header = $header;
+    }

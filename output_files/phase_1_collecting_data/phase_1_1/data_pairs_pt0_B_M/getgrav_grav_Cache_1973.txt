@@ -1,0 +1,10 @@
+    /**
+     * Returns the current enabled state
+     *
+     * @return bool
+     */
+
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }

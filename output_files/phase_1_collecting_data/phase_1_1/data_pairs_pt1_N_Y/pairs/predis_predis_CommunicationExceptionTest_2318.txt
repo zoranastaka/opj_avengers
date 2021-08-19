@@ -1,0 +1,11 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testShouldResetConnectionIsTrue(): void
+    {
+        $connection = $this->getMockConnection();
+        $exception = $this->createMockException($connection, 'Communication error message');
+
+        $this->assertTrue($exception->shouldResetConnection());
+    }

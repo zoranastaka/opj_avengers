@@ -1,0 +1,7 @@
+	/**
+	 * Add order item via ajax. Used on the edit order screen in WP Admin.
+	 *
+	 * @throws Exception If order is invalid.
+	 */
+
+	public static function add_order_item() {

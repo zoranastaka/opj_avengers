@@ -1,0 +1,7 @@
+  /**
+   * Sends a HELO/EHLO command.
+   * @access private
+   * @return bool
+   */
+
+  private function SendHello($hello, $host) {

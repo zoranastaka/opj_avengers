@@ -1,0 +1,22 @@
+    /**
+     * @test         Axiom: If A is square matrix, then it is invertible only if rank = n (full rank)
+     * @dataProvider dataProviderForSquareMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testSquareMatrixInvertibleIfFullRank(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $rank = $A->rank();
+
+        // Then
+        if ($rank === $A->getM()) {
+            $this->assertTrue($A->isInvertible());
+        } else {
+            $this->assertFalse($A->isInvertible());
+        }
+    }

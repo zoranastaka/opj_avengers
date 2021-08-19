@@ -1,0 +1,28 @@
+    /**
+     * @covers ::createFromPath
+     * @covers ::current
+     * @covers ::getCurrentRecord
+     */
+
+    public function testCreateStreamFromPathWithContext(): void
+    {
+        /** @var resource $fp */
+        $fp = fopen('php://temp', 'r+');
+        $expected = [
+            ['john', 'doe', 'john.doe@example.com'],
+            ['john', 'doe', 'john.doe@example.com'],
+        ];
+
+        foreach ($expected as $row) {
+            fputcsv($fp, $row);
+        }
+
+        $stream = Stream::createFromPath(
+            StreamWrapper::PROTOCOL.'://stream',
+            'r+',
+            stream_context_create([StreamWrapper::PROTOCOL => ['stream' => $fp]])
+        );
+        $stream->setFlags(SplFileObject::READ_AHEAD | SplFileObject::READ_CSV);
+        $stream->rewind();
+        self::assertIsArray($stream->current());
+    }

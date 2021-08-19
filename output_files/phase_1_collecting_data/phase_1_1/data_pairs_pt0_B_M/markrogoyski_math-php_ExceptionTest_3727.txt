@@ -1,0 +1,12 @@
+    /**
+     * @test OutOfBoundsException
+     */
+
+    public function testOutOfBoundsException()
+    {
+        // Given
+        $e = new Exception\OutOfBoundsException('message');
+
+        // Then
+        $this->assertInstanceOf(Exception\MathException::class, $e);
+    }

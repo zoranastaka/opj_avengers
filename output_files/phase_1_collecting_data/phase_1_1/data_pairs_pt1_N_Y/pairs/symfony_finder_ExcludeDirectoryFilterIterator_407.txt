@@ -1,0 +1,8 @@
+    /**
+     * @return bool
+     */
+
+    public function hasChildren()
+    {
+        return $this->isRecursive && $this->iterator->hasChildren();
+    }

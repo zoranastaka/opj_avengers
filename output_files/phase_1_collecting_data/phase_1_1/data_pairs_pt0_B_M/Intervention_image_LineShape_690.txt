@@ -1,0 +1,11 @@
+    /**
+     * Set current line width in pixels
+     *
+     * @param  int $width
+     * @return void
+     */
+
+    public function width($width)
+    {
+        $this->width = $width;
+    }

@@ -1,0 +1,13 @@
+    /**
+     * Initiates color object from given ImagickPixel object
+     *
+     * @param  ImagickPixel $value
+     * @return \Intervention\Image\AbstractColor
+     */
+
+    public function initFromObject($value)
+    {
+        throw new NotSupportedException(
+            "GD colors cannot init from ImagickPixel objects."
+        );
+    }

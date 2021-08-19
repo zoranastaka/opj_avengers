@@ -1,0 +1,10 @@
+    /**
+     * Set the most recent output from evaluated code.
+     *
+     * @param string $lastStdout
+     */
+
+    public function setLastStdout($lastStdout)
+    {
+        $this->lastStdout = $lastStdout;
+    }

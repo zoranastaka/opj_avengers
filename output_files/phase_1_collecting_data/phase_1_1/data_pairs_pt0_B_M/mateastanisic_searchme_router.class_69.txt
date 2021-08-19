@@ -1,0 +1,12 @@
+	// Sprema putanju do kontrolera u $this->path.
+
+	function setPath( $path ) 
+	{
+		// Provjeri je li u $path zaista spremljena putanja (niz direktorija).
+		if( is_dir( $path ) == false )
+		{
+			throw new Exception ( 'Invalid controller path: `' . $path . '`' );
+		}
+
+		$this->path = $path;
+	}

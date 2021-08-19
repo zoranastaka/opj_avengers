@@ -1,0 +1,17 @@
+    /**
+     * @test         upperIncompleteGamma returns the expected value
+     * @dataProvider dataProviderForUpperIncompleteGamma
+     * @param        float $s
+     * @param        float $x
+     * @param        float $uig
+     * @throws       \Exception
+     */
+
+    public function testUpperIncompleteGamma(float $s, float $x, float $uig)
+    {
+        // When
+        $upperIncompleteGamma = Special::upperIncompleteGamma($s, $x);
+
+        // Then
+        $this->assertEqualsWithDelta($uig, $upperIncompleteGamma, 0.00001);
+    }

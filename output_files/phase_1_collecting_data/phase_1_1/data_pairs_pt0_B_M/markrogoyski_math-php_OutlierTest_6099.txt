@@ -1,0 +1,16 @@
+    /**
+     * @test         Grubbs' statistic for one-sided upper test
+     * @dataProvider dataProviderForGrubbsStatisticOneSidedUpper
+     * @param        array $data
+     * @param        float $expectedG
+     * @throws       \Exception
+     */
+
+    public function testGrubbsStatisticOneSidedUpper(array $data, float $expectedG)
+    {
+        // When
+        $G = Outlier::grubbsStatistic($data, 'upper');
+
+        // Then
+        $this->assertEqualsWithDelta($expectedG, $G, 0.0001);
+    }

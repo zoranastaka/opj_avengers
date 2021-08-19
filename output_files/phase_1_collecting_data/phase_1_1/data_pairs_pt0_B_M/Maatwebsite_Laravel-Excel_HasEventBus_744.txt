@@ -1,0 +1,11 @@
+    /**
+     * Register a global event listener.
+     *
+     * @param string   $event
+     * @param callable $listener
+     */
+
+    public static function listen(string $event, callable $listener)
+    {
+        static::$globalEvents[$event][] = $listener;
+    }

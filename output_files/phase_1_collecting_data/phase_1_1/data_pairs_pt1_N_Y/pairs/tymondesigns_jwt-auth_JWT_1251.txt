@@ -1,0 +1,18 @@
+    /**
+     * Get the token.
+     *
+     * @return \Tymon\JWTAuth\Token|null
+     */
+
+    public function getToken()
+    {
+        if ($this->token === null) {
+            try {
+                $this->parseToken();
+            } catch (JWTException $e) {
+                $this->token = null;
+            }
+        }
+
+        return $this->token;
+    }

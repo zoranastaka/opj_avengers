@@ -1,0 +1,30 @@
+    /**
+     * Writes the output buffer in the log file
+     *
+     * @return void
+     */
+
+    private function write_log()
+    {
+        $log_output_file = $this->getOptions()->getLogOutputFile();
+        if (!$log_output_file || !is_writable($log_output_file)) {
+            return;
+        }
+
+        $frames = Frame::$ID_COUNTER;
+        $memory = memory_get_peak_usage(true) / 1024;
+        $time = (microtime(true) - $this->startTime) * 1000;
+
+        $out = sprintf(
+            "<span style='color: #000' title='Frames'>%6d</span>" .
+            "<span style='color: #009' title='Memory'>%10.2f KB</span>" .
+            "<span style='color: #900' title='Time'>%10.2f ms</span>" .
+            "<span  title='Quirksmode'>  " .
+            ($this->quirksmode ? "<span style='color: #d00'> ON</span>" : "<span style='color: #0d0'>OFF</span>") .
+            "</span><br />", $frames, $memory, $time);
+
+        $out .= ob_get_contents();
+        ob_clean();
+
+        file_put_contents($log_output_file, $out);
+    }

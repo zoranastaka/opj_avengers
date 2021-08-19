@@ -1,0 +1,10 @@
+    /**
+     * Returns the stylesheet
+     *
+     * @return Stylesheet
+     */
+
+    public function getCss()
+    {
+        return $this->css;
+    }

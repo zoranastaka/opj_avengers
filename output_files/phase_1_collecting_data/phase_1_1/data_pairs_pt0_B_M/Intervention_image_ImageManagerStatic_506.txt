@@ -1,0 +1,10 @@
+    /**
+     * Get or create new ImageManager instance
+     *
+     * @return ImageManager
+     */
+
+    public static function getManager()
+    {
+        return self::$manager ? self::$manager : new ImageManager;
+    }

@@ -1,0 +1,5 @@
+  /**
+   * @task hook
+   */
+
+  public static function didShutdown() {

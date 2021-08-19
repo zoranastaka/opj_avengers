@@ -1,0 +1,18 @@
+    /**
+     * @test         length
+     * @dataProvider dataProviderForSingleSet
+     * @param array $members
+     */
+
+    public function testLength(array $members)
+    {
+        // Given
+        $set           = new Set($members);
+        $expectedCount = count($members);
+
+        // When
+        $length = $set->length();
+
+        // Then
+        $this->assertEquals($expectedCount, $length);
+    }

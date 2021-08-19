@@ -1,0 +1,7 @@
+    /** @test */
+
+    public function it_should_empty_the_blacklist()
+    {
+        $this->storage->shouldReceive('flush');
+        $this->assertTrue($this->blacklist->clear());
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @test 150 observations
+     */
+
+    public function testDataHas150Observations()
+    {
+        // When
+        $data = $this->iris->getData();
+
+        // Then
+        $this->assertCount(150, $data);
+    }

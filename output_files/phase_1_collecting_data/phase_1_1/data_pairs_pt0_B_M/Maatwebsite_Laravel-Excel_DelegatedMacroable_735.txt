@@ -1,0 +1,5 @@
+    /**
+     * @return object
+     */
+
+    abstract public function getDelegate();

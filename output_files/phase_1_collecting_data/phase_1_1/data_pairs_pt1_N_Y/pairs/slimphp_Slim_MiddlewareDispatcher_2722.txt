@@ -1,0 +1,7 @@
+    /**
+     * @param RequestHandlerInterface        $kernel
+     * @param CallableResolverInterface|null $callableResolver
+     * @param ContainerInterface|null        $container
+     */
+
+    public function __construct(

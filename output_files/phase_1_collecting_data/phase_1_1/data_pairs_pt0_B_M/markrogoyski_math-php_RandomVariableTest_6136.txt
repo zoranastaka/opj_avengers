@@ -1,0 +1,13 @@
+    /**
+     * @test   sampleKurtosis error when array is empty
+     * @throws \Exception
+     */
+
+    public function testSampleKurtosisErrorWhenEmptyArray()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        RandomVariable::sampleKurtosis(array());
+    }

@@ -1,0 +1,14 @@
+    /**
+     * Associates a format with mime types.
+     *
+     * @param string|array $mimeTypes The associated mime types (the preferred one must be the first as it will be used as the content type)
+     */
+
+    public function setFormat(?string $format, $mimeTypes)
+    {
+        if (null === static::$formats) {
+            static::initializeFormats();
+        }
+
+        static::$formats[$format] = \is_array($mimeTypes) ? $mimeTypes : [$mimeTypes];
+    }

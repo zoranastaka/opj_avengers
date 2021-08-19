@@ -1,0 +1,10 @@
+    /**
+     * Get width of an internal font character
+     *
+     * @return int
+     */
+
+    private function getInternalFontWidth()
+    {
+        return $this->getInternalFont() + 4;
+    }

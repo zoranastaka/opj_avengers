@@ -1,0 +1,16 @@
+    /**
+     * @test         isSubintervalsMultiple when not a multiple of m
+     * @dataProvider dataProviderForSubintervalsNotMultiple
+     * @param        array $points
+     * @param        int   $m
+     * @throws       \Exception
+     */
+
+    public function testIsSubintervalsMultipleNotMultiple(array $points, int $m)
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Validation::isSubintervalsMultiple($points, $m);
+    }

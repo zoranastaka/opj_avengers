@@ -1,0 +1,22 @@
+    /**
+     * Remove a timer.
+     *
+     * @param mixed $timer_id
+     * @return bool
+     */
+
+    public static function del($timer_id)
+    {
+        if (self::$_event) {
+            return self::$_event->del($timer_id, EventInterface::EV_TIMER);
+        }
+
+        foreach(self::$_tasks as $run_time => $task_data) 
+        {
+            if(array_key_exists($timer_id, $task_data)) unset(self::$_tasks[$run_time][$timer_id]);
+        }
+
+        if(array_key_exists($timer_id, self::$_status)) unset(self::$_status[$timer_id]);
+
+        return true;
+    }

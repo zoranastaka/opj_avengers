@@ -1,0 +1,20 @@
+    /**
+     * Return whether given instance or name is in the filter stack.
+     *
+     * @param callable|string $filter
+     *
+     * @return bool
+     */
+
+    public function hasFilter($filter)
+    {
+        $key = \is_callable($filter) ? 0 : 1;
+
+        foreach ($this->filters as $tuple) {
+            if ($tuple[$key] === $filter) {
+                return true;
+            }
+        }
+
+        return false;
+    }

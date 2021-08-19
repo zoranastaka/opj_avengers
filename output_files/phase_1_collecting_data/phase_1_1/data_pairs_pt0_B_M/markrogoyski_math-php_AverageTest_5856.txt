@@ -1,0 +1,15 @@
+    /**
+     * @test         cumulativeMovingAverage
+     * @dataProvider dataProviderForCumulativeMovingAverage
+     * @param        array $numbers
+     * @param        array $expectredCma
+     */
+
+    public function testCumulativeMovingAverage(array $numbers, array $expectredCma)
+    {
+        // When
+        $cma = Average::cumulativeMovingAverage($numbers);
+
+        // Then
+        $this->assertEqualsWithDelta($expectredCma, $cma, 0.001);
+    }

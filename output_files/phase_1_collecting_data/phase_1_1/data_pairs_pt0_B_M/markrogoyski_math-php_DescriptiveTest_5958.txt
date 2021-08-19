@@ -1,0 +1,17 @@
+    /**
+     * @test         quartiles
+     * @dataProvider dataProviderForQuartiles
+     * @param        array  $numbers
+     * @param        string $method
+     * @param        array  $expectedQuartiles
+     * @throws       \Exception
+     */
+
+    public function testQuartiles(array $numbers, string $method, array $expectedQuartiles)
+    {
+        // When
+        $quartiles = Descriptive::quartiles($numbers, $method);
+
+        // Then
+        $this->assertEquals($expectedQuartiles, $quartiles);
+    }

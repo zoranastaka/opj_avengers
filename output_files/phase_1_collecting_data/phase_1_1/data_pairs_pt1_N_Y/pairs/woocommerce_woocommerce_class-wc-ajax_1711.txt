@@ -1,0 +1,84 @@
+	/**
+	 * Add order item via AJAX. This is refactored for better unit testing.
+	 *
+	 * @param int          $order_id     ID of order to add items to.
+	 * @param string|array $items        Existing items in order. Empty string if no items to add.
+	 * @param array        $items_to_add Array of items to add.
+	 *
+	 * @return array     Fragments to render and notes HTML.
+	 * @throws Exception When unable to add item.
+	 */
+
+	private static function maybe_add_order_item( $order_id, $items, $items_to_add ) {
+		try {
+			$order = wc_get_order( $order_id );
+
+			if ( ! $order ) {
+				throw new Exception( __( 'Invalid order', 'woocommerce' ) );
+			}
+
+			if ( ! empty( $items ) ) {
+				$save_items = array();
+				parse_str( $items, $save_items );
+				wc_save_order_items( $order->get_id(), $save_items );
+			}
+
+			// Add items to order.
+			$order_notes = array();
+
+			foreach ( $items_to_add as $item ) {
+				if ( ! isset( $item['id'], $item['qty'] ) || empty( $item['id'] ) ) {
+					continue;
+				}
+				$product_id = absint( $item['id'] );
+				$qty        = wc_stock_amount( $item['qty'] );
+				$product    = wc_get_product( $product_id );
+
+				if ( ! $product ) {
+					throw new Exception( __( 'Invalid product ID', 'woocommerce' ) . ' ' . $product_id );
+				}
+				if ( 'variable' === $product->get_type() ) {
+					/* translators: %s product name */
+					throw new Exception( sprintf( __( '%s is a variable product parent and cannot be added.', 'woocommerce' ), $product->get_name() ) );
+				}
+				$validation_error = new WP_Error();
+				$validation_error = apply_filters( 'woocommerce_ajax_add_order_item_validation', $validation_error, $product, $order, $qty );
+
+				if ( $validation_error->get_error_code() ) {
+					/* translators: %s: error message */
+					throw new Exception( sprintf( __( 'Error: %s', 'woocommerce' ), $validation_error->get_error_message() ) );
+				}
+				$item_id                 = $order->add_product( $product, $qty );
+				$item                    = apply_filters( 'woocommerce_ajax_order_item', $order->get_item( $item_id ), $item_id, $order, $product );
+				$added_items[ $item_id ] = $item;
+				$order_notes[ $item_id ] = $product->get_formatted_name();
+
+				// We do not perform any stock operations here because they will be handled when order is moved to a status where stock operations are applied (like processing, completed etc).
+
+				do_action( 'woocommerce_ajax_add_order_item_meta', $item_id, $item, $order );
+			}
+
+			/* translators: %s item name. */
+			$order->add_order_note( sprintf( __( 'Added line items: %s', 'woocommerce' ), implode( ', ', $order_notes ) ), false, true );
+
+			do_action( 'woocommerce_ajax_order_items_added', $added_items, $order );
+
+			$data = get_post_meta( $order_id );
+
+			// Get HTML to return.
+			ob_start();
+			include __DIR__ . '/admin/meta-boxes/views/html-order-items.php';
+			$items_html = ob_get_clean();
+
+			ob_start();
+			$notes = wc_get_order_notes( array( 'order_id' => $order_id ) );
+			include __DIR__ . '/admin/meta-boxes/views/html-order-notes.php';
+			$notes_html = ob_get_clean();
+
+			return array(
+				'html'       => $items_html,
+				'notes_html' => $notes_html,
+			);
+		} catch ( Exception $e ) {
+			throw $e; // Forward exception to caller.
+		}

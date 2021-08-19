@@ -1,0 +1,8 @@
+    /**
+     * @return self
+     */
+
+    public static function nestedNot()
+    {
+        return new self('Got nested ::not().');
+    }

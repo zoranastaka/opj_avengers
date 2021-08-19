@@ -1,0 +1,9 @@
+    /**
+     * Tells whether the stream filter write capabilities can be used.
+     */
+
+    public function supportsStreamFilterOnWrite(): bool
+    {
+        return $this->document instanceof Stream
+            && ((static::STREAM_FILTER_MODE & STREAM_FILTER_WRITE) === STREAM_FILTER_WRITE);
+    }

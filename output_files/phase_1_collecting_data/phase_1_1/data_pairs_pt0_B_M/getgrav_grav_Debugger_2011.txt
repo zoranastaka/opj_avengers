@@ -1,0 +1,18 @@
+    /**
+     * @return array
+     */
+
+    protected function getDeprecations(): array
+    {
+        if (!$this->deprecations) {
+            return [];
+        }
+
+        $list = [];
+        /** @var array $deprecated */
+        foreach ($this->deprecations as $deprecated) {
+            $list[] = $this->getDepracatedMessage($deprecated)[0];
+        }
+
+        return $list;
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Scores 7 if callback returns true, false otherwise.
+     *
+     * @param $argument
+     *
+     * @return bool|int
+     */
+
+    public function scoreArgument($argument)
+    {
+        return call_user_func($this->callback, $argument) ? 7 : false;
+    }

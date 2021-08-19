@@ -1,0 +1,10 @@
+    /**
+     * @group partial
+     */
+
+    public function testCanUseBlacklistAndExpectionOnNonBlacklistedMethod()
+    {
+        $m = mock('MockeryTest_PartialNormalClass2[!foo]');
+        $m->shouldReceive('bar')->andReturn('test')->once();
+        $this->assertSame('test', $m->bar());
+    }

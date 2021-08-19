@@ -1,0 +1,14 @@
+    /**
+     * Mark this expectation as being a default
+     *
+     * @return self
+     */
+
+    public function byDefault()
+    {
+        $director = $this->_mock->mockery_getExpectationsFor($this->_name);
+        if (!empty($director)) {
+            $director->makeExpectationDefault($this);
+        }
+        return $this;
+    }

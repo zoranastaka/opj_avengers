@@ -1,0 +1,15 @@
+    /**
+     * @test         HarmonicNumber produces the expected sequence
+     * @dataProvider dataProviderForHarmonicNumbers
+     * @param        int   $n
+     * @param        array $expectedSequence
+     */
+
+    public function testHarmonicNumbers(int $n, array $expectedSequence)
+    {
+        // When
+        $harmonicSequence = NonInteger::Harmonic($n);
+
+        // Then
+        $this->assertEquals($expectedSequence, $harmonicSequence);
+    }

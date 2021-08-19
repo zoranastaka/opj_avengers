@@ -1,0 +1,12 @@
+    /**
+     * Return instance of HASVALUE matcher.
+     *
+     * @param mixed $val
+     *
+     * @return \Mockery\Matcher\HasValue
+     */
+
+    public static function hasValue($val)
+    {
+        return new \Mockery\Matcher\HasValue($val);
+    }

@@ -1,0 +1,47 @@
+    /**
+     * @test Points and values not sorted
+     *
+     * >>> xs = [1, 2, 3]
+     * >>> ys = [1, 2, 3]
+     * >>> zs = [1, 2, 3]
+     * >>>
+     * >>> def func(x, y, z):
+     * ...     return 2 * x + 3 * y - z
+     * ...
+     * >>>
+     * >>> values = [[[func(x, y, z) for z in [3, 2, 1]] for y in [3, 2, 1]] for x in [3, 2, 1]]
+     * >>>
+     * >>> my_interpolating_function = RegularGridInterpolator((xs, ys, zs), values, method='linear')
+     * >>> my_interpolating_function([1, 1, 2])
+     * array([13.])
+     */
+
+    public function testPointsAndValuesNotSorted()
+    {
+        // Given
+        $xs = [1, 2, 3];
+        $ys = [1, 2, 3];
+        $zs = [1, 2, 3];
+
+        // And
+        $func = function ($x, $y, $z) {
+            return 2 * $x + 3 * $y - $z;
+        };
+
+        // And
+        $data = [];
+        foreach ([3, 2, 1] as $i => $x) {
+            foreach ([3, 2, 1] as $j => $y) {
+                foreach ([3, 2, 1] as $k => $z) {
+                    $data[$i][$j][$k] = $func($x, $y, $z);
+                }
+            }
+        }
+
+        // When
+        $interp = new RegularGridInterpolator([$xs, $ys, $zs], $data, 'linear');
+        $result = $interp([1, 1, 2]);
+
+        // Then
+        $this->assertEqualsWithDelta(13, $result, 0.00001);
+    }

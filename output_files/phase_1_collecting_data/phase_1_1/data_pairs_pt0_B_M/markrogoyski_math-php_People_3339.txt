@@ -1,0 +1,8 @@
+    /**
+     * @return int[]
+     */
+
+    public function getShowSize(): array
+    {
+        return \array_combine($this->getNames(), \array_column(self::DATA, 3));
+    }

@@ -1,0 +1,5 @@
+    /**
+     * id-left "@" id-right
+     */
+
+    abstract protected function parseRightFromAt() : Result;

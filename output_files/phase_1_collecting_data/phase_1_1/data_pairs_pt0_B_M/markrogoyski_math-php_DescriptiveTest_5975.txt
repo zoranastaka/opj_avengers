@@ -1,0 +1,15 @@
+    /**
+     * @test         describe will return null ses for values of n < 3
+     * @dataProvider dataProviderForDescribeNullSes
+     * @param        array $numbers
+     * @throws       \Exception
+     */
+
+    public function testDescribeSesNullForSmallN(array $numbers)
+    {
+        // When
+        $stats = Descriptive::describe($numbers);
+
+        // Then
+        $this->assertNull($stats['ses']);
+    }

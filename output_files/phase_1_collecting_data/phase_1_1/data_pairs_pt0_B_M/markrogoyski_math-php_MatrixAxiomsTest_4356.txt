@@ -1,0 +1,16 @@
+    /**
+     * @test Axiom: Zero matrix has rank of 0
+     * @throws   \Exception
+     */
+
+    public function testZeroMatrixHasRankOfZero()
+    {
+        foreach (\range(1, 10) as $m) {
+            foreach (\range(1, 10) as $n) {
+                // Given
+                $A = MatrixFactory::zero($m, $n);
+                // Then
+                $this->assertEquals(0, $A->rank());
+            }
+        }
+    }

@@ -1,0 +1,13 @@
+    /**
+     * Get the current update check interval.
+     *
+     * One of 'always', 'daily', 'weekly', 'monthly' or 'never'. If none is
+     * explicitly set, default to 'weekly'.
+     *
+     * @return string
+     */
+
+    public function getUpdateCheck()
+    {
+        return isset($this->updateCheck) ? $this->updateCheck : Checker::WEEKLY;
+    }

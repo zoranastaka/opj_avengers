@@ -1,0 +1,14 @@
+    /**
+     * Removes a header.
+     */
+
+    public function remove(string $key)
+    {
+        $key = strtr($key, self::UPPER, self::LOWER);
+
+        unset($this->headers[$key]);
+
+        if ('cache-control' === $key) {
+            $this->cacheControl = [];
+        }
+    }

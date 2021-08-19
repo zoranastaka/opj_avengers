@@ -1,0 +1,27 @@
+    /**
+     * Sets callbacks for events like rendering of pages and elements.
+     * The callbacks array contains arrays with 'event' set to 'begin_page',
+     * 'end_page', 'begin_frame', or 'end_frame' and 'f' set to a function or
+     * object plus method to be called.
+     *
+     * The function 'f' must take an array as argument, which contains info
+     * about the event.
+     *
+     * @param array $callbacks the set of callbacks to set
+     */
+
+    public function setCallbacks($callbacks)
+    {
+        if (is_array($callbacks)) {
+            $this->callbacks = [];
+            foreach ($callbacks as $c) {
+                if (is_array($c) && isset($c['event']) && isset($c['f'])) {
+                    $event = $c['event'];
+                    $f = $c['f'];
+                    if (is_callable($f) && is_string($event)) {
+                        $this->callbacks[$event][] = $f;
+                    }
+                }
+            }
+        }
+    }

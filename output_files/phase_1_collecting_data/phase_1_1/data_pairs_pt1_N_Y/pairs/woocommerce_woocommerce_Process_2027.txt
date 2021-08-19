@@ -1,0 +1,7 @@
+	/**
+	 * Return properties of executed command as a string.
+	 *
+	 * @return string
+	 */
+
+	public function __toString() {

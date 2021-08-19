@@ -1,0 +1,9 @@
+    /**
+     * Creates a trait builder.
+     *
+     * @param string $name Name of the trait
+     *
+     * @return Builder\Trait_ The created trait builder
+     */
+
+    public function trait(string $name) : Builder\Trait_ {

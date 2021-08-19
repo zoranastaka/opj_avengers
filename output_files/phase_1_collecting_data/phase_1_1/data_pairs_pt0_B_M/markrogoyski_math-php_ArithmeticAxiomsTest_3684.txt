@@ -1,0 +1,17 @@
+    /**
+     * @test Axiom: dr(a×b) = dr(dr(a) × dr(b))
+     * The digital root of a × b is digital root of the product of the digital root of a and the digital root of b.
+     * @dataProvider dataProviderDigitalRootArithmetic
+     * @param        int $a
+     * @param        int $b
+     */
+
+    public function testDigitalRootProduct(int $a, int $b)
+    {
+        // When
+        $dr⟮ab⟯        = Arithmetic::digitalRoot($a * $b);
+        $dr⟮dr⟮a⟯×dr⟮b⟯⟯ = Arithmetic::digitalRoot(Arithmetic::digitalRoot($a) * Arithmetic::digitalRoot($b));
+
+        // Then
+        $this->assertEquals($dr⟮ab⟯, $dr⟮dr⟮a⟯×dr⟮b⟯⟯);
+    }

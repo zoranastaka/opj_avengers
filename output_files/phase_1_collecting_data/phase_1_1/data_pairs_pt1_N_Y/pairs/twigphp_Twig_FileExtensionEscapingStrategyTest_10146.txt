@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider getGuessData
+     */
+
+    public function testGuess($strategy, $filename)
+    {
+        $this->assertSame($strategy, FileExtensionEscapingStrategy::guess($filename));
+    }

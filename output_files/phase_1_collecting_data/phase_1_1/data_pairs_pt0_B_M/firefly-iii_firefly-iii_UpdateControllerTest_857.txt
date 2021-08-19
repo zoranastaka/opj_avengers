@@ -1,0 +1,32 @@
+    /**
+     * @return array
+     */
+
+    public function updateDataProvider(): array
+    {
+        $configuration = new TestConfiguration;
+
+        // optional field sets (for all test configs)
+        $fieldSet             = new FieldSet;
+        $fieldSet->parameters = [1];
+        $fieldSet->addField(Field::createBasic('filename', 'uuid'));
+        $configuration->addOptionalFieldSet('filename', $fieldSet);
+
+        $fieldSet             = new FieldSet;
+        $fieldSet->parameters = [1];
+        $fieldSet->addField(Field::createBasic('title', 'uuid'));
+        $configuration->addOptionalFieldSet('title', $fieldSet);
+
+        $fieldSet             = new FieldSet;
+        $fieldSet->parameters = [1];
+        $fieldSet->addField(Field::createBasic('notes', 'uuid'));
+        $configuration->addOptionalFieldSet('notes', $fieldSet);
+
+        $fieldSet             = new FieldSet;
+        $fieldSet->parameters = [1];
+        $fieldSet->addField(Field::createBasic('attachable_type', 'static-journal-type'));
+        $fieldSet->addField(Field::createBasic('attachable_id', 'random-journal-id'));
+        $configuration->addOptionalFieldSet('attachable_type', $fieldSet);
+
+        return $configuration->generateAll();
+    }

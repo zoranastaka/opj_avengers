@@ -1,0 +1,20 @@
+    /**
+     * @param $block
+     * @param $key
+     * @param $line
+     * @return bool
+     */
+
+    private function parseBlockFootnote($block, $key, $line)
+    {
+        if (preg_match("/^\[\^((?:[^\]]|\\]|\\[)+?)\]:/", $line, $matches)) {
+            $space = strlen($matches[0]) - 1;
+            $this->startBlock('footnote', $key, array(
+                $space, $matches[1]
+            ));
+
+            return false;
+        }
+
+        return true;
+    }

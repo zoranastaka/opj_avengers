@@ -1,0 +1,16 @@
+    /**
+     * Retrieve the current set of rules.
+     *
+     * @deprecated since version 2.6.9
+     *
+     * @return array
+     */
+
+    public function getRules()
+    {
+        if ($this->detectionType == self::DETECTION_TYPE_EXTENDED) {
+            return self::getMobileDetectionRulesExtended();
+        } else {
+            return self::getMobileDetectionRules();
+        }
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Gets the memory.
+     *
+     * @return int The memory
+     */
+
+    public function getMemory()
+    {
+        return $this->data['memory'];
+    }

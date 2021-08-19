@@ -1,0 +1,26 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testTransactionWithArrayAndCallableExecutesMultiExec(): void
+    {
+        // We use CAS here as we don't care about the actual MULTI/EXEC context.
+        $options = array('cas' => true, 'retry' => 3);
+
+        $connection = $this->getMockBuilder('Predis\Connection\NodeConnectionInterface')->getMock();
+        $connection
+            ->expects($this->once())
+            ->method('executeCommand')
+            ->willReturn(new Response\Status('QUEUED'));
+
+        $callable = $this->getMockBuilder('stdClass')
+            ->addMethods(array('__invoke'))
+            ->getMock();
+        $callable
+            ->expects($this->once())
+            ->method('__invoke')
+            ->willReturnCallback(function ($tx) { $tx->ping(); });
+
+        $client = new Client($connection);
+        $client->transaction($options, $callable);
+    }

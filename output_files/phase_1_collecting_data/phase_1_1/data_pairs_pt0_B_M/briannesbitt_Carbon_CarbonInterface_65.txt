@@ -1,0 +1,7 @@
+    /**
+     * Returns current local settings.
+     *
+     * @return array
+     */
+
+    public function getSettings();

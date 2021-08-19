@@ -1,0 +1,21 @@
+    /**
+     * Calculate the mean average of a list of numbers
+     *
+     *     ∑⟮xᵢ⟯
+     * x̄ = -----
+     *       n
+     *
+     * @param float[] $numbers
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException if the input array of numbers is empty
+     */
+
+    public static function mean(array $numbers): float
+    {
+        if (empty($numbers)) {
+            throw new Exception\BadDataException('Cannot find the average of an empty list of numbers');
+        }
+        return \array_sum($numbers) / \count($numbers);
+    }

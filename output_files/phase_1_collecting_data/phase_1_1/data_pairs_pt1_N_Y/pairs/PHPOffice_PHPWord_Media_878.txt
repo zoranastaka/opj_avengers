@@ -1,0 +1,16 @@
+    /**
+     * Get Footer Media Elements Count
+     *
+     * @deprecated 0.10.0
+     *
+     * @param string $key
+     *
+     * @return int
+     *
+     * @codeCoverageIgnore
+     */
+
+    public static function countFooterMediaElements($key)
+    {
+        return self::countElements($key);
+    }

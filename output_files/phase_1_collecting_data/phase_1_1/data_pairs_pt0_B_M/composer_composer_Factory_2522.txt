@@ -1,0 +1,14 @@
+    /**
+     * @throws \RuntimeException
+     * @return string
+     */
+
+    private static function getUserDir()
+    {
+        $home = getenv('HOME');
+        if (!$home) {
+            throw new \RuntimeException('The HOME or COMPOSER_HOME environment variable must be set for composer to run correctly');
+        }
+
+        return rtrim(strtr($home, '\\', '/'), '/');
+    }

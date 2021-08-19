@@ -1,0 +1,17 @@
+    /**
+     * @param resource $in
+     * @param resource $out
+     * @param int      $consumed
+     * @param bool     $closing
+     */
+
+    public function filter($in, $out, &$consumed, $closing): int
+    {
+        while ($res = stream_bucket_make_writeable($in)) {
+            $res->data = str_replace($this->params['sequence'], '', $res->data);
+            $consumed += $res->datalen;
+            stream_bucket_append($out, $res);
+        }
+
+        return PSFS_PASS_ON;
+    }

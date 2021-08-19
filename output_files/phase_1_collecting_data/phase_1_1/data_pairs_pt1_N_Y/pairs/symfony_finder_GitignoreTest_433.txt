@@ -1,0 +1,36 @@
+    /**
+     * @dataProvider provider
+     * @dataProvider providerExtended
+     */
+
+    public function testToRegex(array $gitignoreLines, array $matchingCases, array $nonMatchingCases)
+    {
+        $patterns = implode("\n", $gitignoreLines);
+
+        $regex = Gitignore::toRegex($patterns);
+        $this->assertSame($regex, Gitignore::toRegex(implode("\r\n", $gitignoreLines)));
+        $this->assertSame($regex, Gitignore::toRegex(implode("\r", $gitignoreLines)));
+
+        foreach ($matchingCases as $matchingCase) {
+            $this->assertMatchesRegularExpression(
+                $regex,
+                $matchingCase,
+                sprintf(
+                    "Failed asserting path:\n%s\nmatches gitignore patterns:\n%s",
+                    preg_replace('~^~m', '    ', $matchingCase),
+                    preg_replace('~^~m', '    ', $patterns)
+                )
+            );
+        }
+
+        foreach ($nonMatchingCases as $nonMatchingCase) {
+            $this->assertDoesNotMatchRegularExpression(
+                $regex,
+                $nonMatchingCase,
+                sprintf("Failed asserting path:\n%s\nNOT matching gitignore patterns:\n%s",
+                    preg_replace('~^~m', '    ', $nonMatchingCase),
+                    preg_replace('~^~m', '    ', $patterns)
+                )
+            );
+        }
+    }

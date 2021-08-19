@@ -1,0 +1,10 @@
+    /**
+     * Get a List of Custom Property Names
+     *
+     * @return array of string
+     */
+
+    public function getCustomProperties()
+    {
+        return array_keys($this->customProperties);
+    }

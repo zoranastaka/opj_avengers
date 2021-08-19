@@ -1,0 +1,8 @@
+    /**
+     * Removes a parameter.
+     */
+
+    public function remove(string $key)
+    {
+        unset($this->parameters[$key]);
+    }

@@ -1,0 +1,20 @@
+    /**
+     * @test Axiom: UU is upper triangular
+     * Product of two upper triangular matrices is upper triangular
+     * @dataProvider dataProviderForUpperTriangularMatrix
+     * @param        array $U
+     * @throws       \Exception
+     */
+
+    public function testProductOfTwoUpperTriangularMatricesIsUpperTriangular(array $U)
+    {
+        // Given
+        $U = MatrixFactory::create($U);
+
+        // When
+        $UU = $U->multiply($U);
+
+        // Then
+        $this->assertTrue($U->isUpperTriangular());
+        $this->assertTrue($UU->isUpperTriangular());
+    }

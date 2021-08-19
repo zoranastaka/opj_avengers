@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider getFailingTestsForAssignment
+     */
+
+    public function testCanOnlyAssignToNames($template)
+    {
+        $this->expectException(SyntaxError::class);
+
+        $env = new Environment($this->createMock(LoaderInterface::class), ['cache' => false, 'autoescape' => false]);
+        $parser = new Parser($env);
+        $parser->parse($env->tokenize(new Source($template, 'index')));
+    }

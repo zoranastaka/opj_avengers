@@ -1,0 +1,12 @@
+    /**
+     * Variance of the distribution
+     *
+     * σ² = λ
+     *
+     * @return float
+     */
+
+    public function variance(): float
+    {
+        return $this->λ;
+    }

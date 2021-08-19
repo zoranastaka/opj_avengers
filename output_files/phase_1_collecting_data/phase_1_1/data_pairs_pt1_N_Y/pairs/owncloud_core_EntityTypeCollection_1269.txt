@@ -1,0 +1,13 @@
+/**
+ * Class EntityTypeCollection
+ *
+ * This is collection on the type of things a user can leave comments on, for
+ * example: 'files'.
+ *
+ * Its children are instances of EntityCollection (representing a specific
+ * object, for example the file by id).
+ *
+ * @package OCA\Comments\Dav
+ */
+
+class EntityTypeCollection extends RootCollection {

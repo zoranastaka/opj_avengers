@@ -1,0 +1,10 @@
+    /**
+     * Tests if an attribute exists.
+     *
+     * @return bool
+     */
+
+    public function hasAttribute(string $name)
+    {
+        return isset($this->attributes[$name]);
+    }

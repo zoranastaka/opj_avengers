@@ -1,0 +1,14 @@
+// funkcija za određivanje nedovršenih zadataka
+
+function nedovrseni_zadaci($to_do_id)
+{
+    global $nedovrseni_zadaci;
+
+    $nedovrseno = $GLOBALS['con']->prepare(' select count(status) from zadaci where lista_id = :lista_id and status = 0 ');
+    $nedovrseno->execute([
+        ':lista_id' => $to_do_id
+    ]);
+    $nedovrseni_zadaci = $nedovrseno->fetchColumn();
+
+    return $nedovrseni_zadaci;
+}

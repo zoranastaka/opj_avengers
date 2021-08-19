@@ -1,0 +1,19 @@
+    /**
+     * @test         Multiplication throws the proper exceptions
+     * @dataProvider dataProviderForArithmeticExceptions
+     * @param array            $A
+     * @param ObjectArithmetic $B
+     * @param string           $exception
+     */
+
+    public function testMatrixMultiplyException(array $A, ObjectArithmetic $B, string $exception)
+    {
+        // Given
+        $A = new ObjectSquareMatrix($A);
+
+        // Then
+        $this->expectException($exception);
+
+        // When
+        $C = $A->multiply($B);
+    }

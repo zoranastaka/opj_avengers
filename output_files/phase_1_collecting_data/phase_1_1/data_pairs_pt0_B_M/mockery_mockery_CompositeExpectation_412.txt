@@ -1,0 +1,15 @@
+    /**
+     * Intercept any expectation calls and direct against all expectations
+     *
+     * @param string $method
+     * @param array $args
+     * @return self
+     */
+
+    public function __call($method, array $args)
+    {
+        foreach ($this->_expectations as $expectation) {
+            call_user_func_array(array($expectation, $method), $args);
+        }
+        return $this;
+    }

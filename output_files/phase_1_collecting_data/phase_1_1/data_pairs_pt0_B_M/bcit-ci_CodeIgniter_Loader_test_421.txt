@@ -1,0 +1,12 @@
+	// --------------------------------------------------------------------
+
+	public function test_bad_library()
+	{
+		$lib = 'bad_test_lib';
+		$this->ci_vfs_create(ucfirst($lib), '', $this->ci_app_root, 'libraries');
+		$this->setExpectedException(
+			'RuntimeException',
+			'CI Error: Non-existent class: '.ucfirst($lib)
+		);
+		$this->assertInstanceOf('CI_Loader', $this->load->library($lib));
+	}

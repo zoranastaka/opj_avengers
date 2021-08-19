@@ -1,0 +1,27 @@
+    /**
+     * Number-of-divisors function
+     *
+     * Notations:
+     * d(n)  v(n)  τ(n)  tau(n)  sigma_0(n)  σ₀(n)
+     *
+     * @see    https://en.wikipedia.org/wiki/Divisor_function
+     * @see    https://oeis.org/A000005
+     *
+     * @param  int $n
+     *
+     * @return int number of divisors
+     *
+     * @throws Exception\OutOfBoundsException if n is < 1.
+     */
+
+    public static function numberOfDivisors(int $n): int
+    {
+        $factors = self::primeFactorization($n);
+        $product = 1;
+
+        foreach (\array_count_values($factors) as $factor => $exponent) {
+            $product *= $exponent + 1;
+        }
+
+        return $product;
+    }

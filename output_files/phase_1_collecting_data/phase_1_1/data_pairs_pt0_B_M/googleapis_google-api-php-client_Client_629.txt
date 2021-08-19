@@ -1,0 +1,11 @@
+  /**
+   * If this is provided with the value true, and the authorization request is
+   * granted, the authorization will include any previous authorizations
+   * granted to this user/application combination for other scopes.
+   * @param $include boolean - the URL-space to use.
+   */
+
+  public function setIncludeGrantedScopes($include)
+  {
+    $this->config['include_granted_scopes'] = $include;
+  }

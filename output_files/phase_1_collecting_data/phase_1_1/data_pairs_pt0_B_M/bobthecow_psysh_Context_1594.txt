@@ -1,0 +1,10 @@
+    /**
+     * Get command-scope magic variables: $__class, $__file, etc.
+     *
+     * @return array
+     */
+
+    public function getCommandScopeVariables()
+    {
+        return $this->commandScopeVariables;
+    }

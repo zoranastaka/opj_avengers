@@ -1,0 +1,10 @@
+    /**
+     * Gets the current response content.
+     *
+     * @return string|false
+     */
+
+    public function getContent()
+    {
+        return $this->content;
+    }

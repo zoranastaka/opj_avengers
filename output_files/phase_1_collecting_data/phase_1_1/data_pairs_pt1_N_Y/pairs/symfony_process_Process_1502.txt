@@ -1,0 +1,17 @@
+    /**
+     * Creates the descriptors needed by the proc_open.
+     */
+
+    private function getDescriptors(): array
+    {
+        if ($this->input instanceof \Iterator) {
+            $this->input->rewind();
+        }
+        if ('\\' === \DIRECTORY_SEPARATOR) {
+            $this->processPipes = new WindowsPipes($this->input, !$this->outputDisabled || $this->hasCallback);
+        } else {
+            $this->processPipes = new UnixPipes($this->isTty(), $this->isPty(), $this->input, !$this->outputDisabled || $this->hasCallback);
+        }
+
+        return $this->processPipes->getDescriptors();
+    }

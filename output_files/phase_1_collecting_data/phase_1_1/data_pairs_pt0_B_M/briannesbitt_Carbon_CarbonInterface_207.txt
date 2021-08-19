@@ -1,0 +1,7 @@
+    /**
+     * Set the instance's timezone to UTC.
+     *
+     * @return static
+     */
+
+    public function utc();

@@ -1,0 +1,22 @@
+    /**
+     * Create Installer
+     *
+     * @param  IOInterface $io
+     * @param  Composer    $composer
+     * @return Installer
+     */
+
+    public static function create(IOInterface $io, Composer $composer)
+    {
+        return new static(
+            $io,
+            $composer->getConfig(),
+            $composer->getPackage(),
+            $composer->getDownloadManager(),
+            $composer->getRepositoryManager(),
+            $composer->getLocker(),
+            $composer->getInstallationManager(),
+            $composer->getEventDispatcher(),
+            $composer->getAutoloadGenerator()
+        );
+    }

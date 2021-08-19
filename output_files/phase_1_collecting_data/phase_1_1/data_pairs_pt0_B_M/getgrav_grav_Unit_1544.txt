@@ -1,0 +1,9 @@
+    /**
+     * HOOK: before each suite
+     *
+     * @param Codeception\TestCase $test
+     */
+
+    public function _before(Codeception\TestCase $test)
+    {
+    }

@@ -1,0 +1,8 @@
+    /**
+     * Is the value callable?
+     */
+
+    function callableValue()
+    {
+        return \Hamcrest\Type\IsCallable::callableValue();
+    }

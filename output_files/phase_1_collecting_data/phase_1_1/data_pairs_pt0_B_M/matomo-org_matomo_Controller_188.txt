@@ -1,0 +1,19 @@
+   /**
+    * Returns a page
+    *
+    * @param  string    Page ID
+    * @return HTML_QuickForm2_Controller_Page
+    * @throws HTML_QuickForm2_NotFoundException if there is no page with
+    *           the given ID
+    */
+
+    public function getPage($pageId)
+    {
+        if (!empty($this->pages[$pageId])) {
+            return $this->pages[$pageId];
+        } else {
+            throw new HTML_QuickForm2_NotFoundException(
+                "Unknown page '{$pageId}'"
+            );
+        }
+    }

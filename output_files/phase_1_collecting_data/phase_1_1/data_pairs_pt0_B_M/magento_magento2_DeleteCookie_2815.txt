@@ -1,0 +1,11 @@
+    /**
+     *
+     * @return \Magento\Framework\App\ResponseInterface
+     */
+
+    public function execute()
+    {
+        $cookieName = $this->request->getParam('cookie_name');
+        $this->getCookieManager()->deleteCookie($cookieName);
+        return $this->_response;
+    }

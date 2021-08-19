@@ -1,0 +1,22 @@
+    /**
+     * @test Axiom: kU is upper triangular
+     * Product of a upper triangular matrix by a constant is upper triangular
+     * @dataProvider dataProviderForUpperTriangularMatrix
+     * @param        array $U
+     * @throws       \Exception
+     */
+
+    public function testProductOfUpperTriangularMatrixByConstantIsUpperTriangular(array $U)
+    {
+        // Given
+        $U = MatrixFactory::create($U);
+        $this->assertTrue($U->isUpperTriangular());
+
+        foreach (\range(1, 10) as $k) {
+            // When
+            $kU = $U->scalarMultiply($k);
+
+            // Then
+            $this->assertTrue($kU->isUpperTriangular());
+        }
+    }

@@ -1,0 +1,5 @@
+/**
+ * Class to combine all the configuration options ownCloud offers
+ */
+
+class AllConfig implements IConfig {

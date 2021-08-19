@@ -1,0 +1,10 @@
+    /**
+     * Enable or disable raw output.
+     *
+     * @param bool $rawOutput
+     */
+
+    public function setRawOutput($rawOutput)
+    {
+        $this->rawOutput = (bool) $rawOutput;
+    }

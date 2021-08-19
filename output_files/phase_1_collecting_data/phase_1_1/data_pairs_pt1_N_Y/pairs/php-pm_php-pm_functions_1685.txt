@@ -1,0 +1,10 @@
+/**
+ * Checks that PCNTL extension is installed and loaded in this installation.
+ *
+ * @return bool
+ */
+
+function pcntl_installed()
+{
+    return \extension_loaded('pcntl');
+}

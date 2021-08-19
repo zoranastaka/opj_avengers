@@ -1,0 +1,10 @@
+    /**
+     * @test
+     * @group issue/339
+     */
+
+    public function canMockClassesThatImplementSerializable()
+    {
+        $mock = mock("MockeryTest_ClassThatImplementsSerializable");
+        $this->assertInstanceOf("Serializable", $mock);
+    }

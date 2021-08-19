@@ -1,0 +1,11 @@
+	/**
+	 * Do the two texts share a mb_substring which is at least half the length of the
+	 * longer text?
+	 * @param {string} text1 First string.
+	 * @param {string} text2 Second string.
+	 * @return {Array.<string>?} Five element Array, containing the prefix of
+	 *     text1, the suffix of text1, the prefix of text2, the suffix of
+	 *     text2 and the common middle.  Or null if there was no match.
+	 */
+
+	function diff_halfMatch($text1, $text2) {

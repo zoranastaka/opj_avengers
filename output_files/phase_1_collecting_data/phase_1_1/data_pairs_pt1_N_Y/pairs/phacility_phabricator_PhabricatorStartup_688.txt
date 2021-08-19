@@ -1,0 +1,10 @@
+  /**
+   * Apply configured rate limits.
+   *
+   * If any limit is exceeded, this method terminates the request.
+   *
+   * @return void
+   * @task ratelimit
+   */
+
+  private static function connectRateLimits() {

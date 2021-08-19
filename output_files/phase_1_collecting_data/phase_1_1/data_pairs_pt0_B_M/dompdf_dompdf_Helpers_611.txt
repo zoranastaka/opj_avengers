@@ -1,0 +1,92 @@
+      /**
+     * builds a full url given a protocol, hostname, base path and url
+     *
+     * @param string $protocol
+     * @param string $host
+     * @param string $base_path
+     * @param string $url
+     * @return string
+     *
+     * Initially the trailing slash of $base_path was optional, and conditionally appended.
+     * However on dynamically created sites, where the page is given as url parameter,
+     * the base path might not end with an url.
+     * Therefore do not append a slash, and **require** the $base_url to ending in a slash
+     * when needed.
+     * Vice versa, on using the local file system path of a file, make sure that the slash
+     * is appended (o.k. also for Windows)
+     */
+
+    public static function build_url($protocol, $host, $base_path, $url)
+    {
+        $protocol = mb_strtolower($protocol);
+        if (strlen($url) == 0) {
+            //return $protocol . $host . rtrim($base_path, "/\\") . "/";
+            return $protocol . $host . $base_path;
+        }
+
+        // Is the url already fully qualified, a Data URI, or a reference to a named anchor?
+        // File-protocol URLs may require additional processing (e.g. for URLs with a relative path)
+        if ((mb_strpos($url, "://") !== false && substr($url, 0, 7) !== "file://") || mb_substr($url, 0, 1) === "#" || mb_strpos($url, "data:") === 0 || mb_strpos($url, "mailto:") === 0 || mb_strpos($url, "tel:") === 0) {
+            return $url;
+        }
+
+        if (strpos($url, "file://") === 0) {
+            $url = substr($url, 7);
+            $protocol = "";
+        }
+
+        $ret = "";
+        if ($protocol != "file://") {
+            $ret = $protocol;
+        }
+
+        if (!in_array(mb_strtolower($protocol), ["http://", "https://", "ftp://", "ftps://"])) {
+            //On Windows local file, an abs path can begin also with a '\' or a drive letter and colon
+            //drive: followed by a relative path would be a drive specific default folder.
+            //not known in php app code, treat as abs path
+            //($url[1] !== ':' || ($url[2]!=='\\' && $url[2]!=='/'))
+            if ($url[0] !== '/' && (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN' || (mb_strlen($url) > 1 && $url[0] !== '\\' && $url[1] !== ':'))) {
+                // For rel path and local access we ignore the host, and run the path through realpath()
+                $ret .= realpath($base_path) . '/';
+            }
+            $ret .= $url;
+            $ret = preg_replace('/\?(.*)$/', "", $ret);
+            return $ret;
+        }
+
+        // Protocol relative urls (e.g. "//example.org/style.css")
+        if (strpos($url, '//') === 0) {
+            $ret .= substr($url, 2);
+            //remote urls with backslash in html/css are not really correct, but lets be genereous
+        } elseif ($url[0] === '/' || $url[0] === '\\') {
+            // Absolute path
+            $ret .= $host . $url;
+        } else {
+            // Relative path
+            //$base_path = $base_path !== "" ? rtrim($base_path, "/\\") . "/" : "";
+            $ret .= $host . $base_path . $url;
+        }
+
+        // URL should now be complete, final cleanup
+        $parsed_url = parse_url($ret);
+
+        // reproduced from https://www.php.net/manual/en/function.parse-url.php#106731
+        $scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
+        $host     = isset($parsed_url['host']) ? $parsed_url['host'] : '';
+        $port     = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
+        $user     = isset($parsed_url['user']) ? $parsed_url['user'] : '';
+        $pass     = isset($parsed_url['pass']) ? ':' . $parsed_url['pass']  : '';
+        $pass     = ($user || $pass) ? "$pass@" : '';
+        $path     = isset($parsed_url['path']) ? $parsed_url['path'] : '';
+        $query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
+        $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
+        
+        // partially reproduced from https://stackoverflow.com/a/1243431/264628
+        /* replace '//' or '/./' or '/foo/../' with '/' */
+        $re = array('#(/\.?/)#', '#/(?!\.\.)[^/]+/\.\./#');
+        for($n=1; $n>0; $path=preg_replace($re, '/', $path, -1, $n)) {}
+
+        $ret = "$scheme$user$pass$host$port$path$query$fragment";
+
+        return $ret;
+    }

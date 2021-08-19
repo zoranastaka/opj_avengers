@@ -1,0 +1,16 @@
+    /** @test */
+
+    public function it_should_throw_an_exception_if_an_invalid_token_is_provided()
+    {
+        $this->expectException(UserNotDefinedException::class);
+        $this->expectExceptionMessage('An error occurred');
+
+        $this->jwt->shouldReceive('setRequest')->andReturn($this->jwt);
+        $this->jwt->shouldReceive('getToken')->twice()->andReturn('invalid.token.here');
+        $this->jwt->shouldReceive('check')->twice()->andReturn(false);
+        $this->jwt->shouldReceive('getPayload->get')->never();
+        $this->provider->shouldReceive('retrieveById')->never();
+
+        $this->assertFalse($this->guard->check()); // once
+        $this->guard->userOrFail(); // twice, throws the exception
+    }

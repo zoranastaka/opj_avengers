@@ -1,0 +1,16 @@
+    /**
+     * @test         Axiom: Lower bidiagonal matrix is upper Hessenberg
+     * @dataProvider dataProviderForLowerBidiagonalMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testLowerBidiagonalMatrixIsUpperHessenberg(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isLowerBidiagonal());
+        $this->assertTrue($A->isUpperHessenberg());
+    }

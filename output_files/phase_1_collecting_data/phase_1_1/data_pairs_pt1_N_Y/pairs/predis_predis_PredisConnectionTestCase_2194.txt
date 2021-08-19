@@ -1,0 +1,10 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testSupportsSchemeTCP(): void
+    {
+        $connection = $this->createConnectionWithParams(array('scheme' => 'tcp'));
+
+        $this->assertInstanceOf('Predis\Connection\NodeConnectionInterface', $connection);
+    }

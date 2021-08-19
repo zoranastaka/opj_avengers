@@ -1,0 +1,15 @@
+    /**
+     * @test         not perfectPowers
+     * @dataProvider dataProviderForNotPerfectPowers
+     * @param        int $n
+     * @param        array $expected_not_perfect_powers
+     */
+
+    public function testNotPerfectPowers(int $n, array $expected_not_perfect_powers)
+    {
+        // When
+        $not_perfect_powers = Advanced::notPerfectPowers($n);
+
+        // Then
+        $this->assertEquals($expected_not_perfect_powers, $not_perfect_powers);
+    }

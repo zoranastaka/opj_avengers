@@ -1,0 +1,29 @@
+    /**
+     * Handles -ERR responses returned by Redis.
+     *
+     * @param CommandInterface       $command  Redis command that generated the error.
+     * @param ErrorResponseInterface $response Instance of the error response.
+     *
+     * @throws ServerException
+     *
+     * @return mixed
+     */
+
+    protected function onErrorResponse(CommandInterface $command, ErrorResponseInterface $response)
+    {
+        if ($command instanceof ScriptCommand && $response->getErrorType() === 'NOSCRIPT') {
+            $response = $this->executeCommand($command->getEvalCommand());
+
+            if (!$response instanceof ResponseInterface) {
+                $response = $command->parseResponse($response);
+            }
+
+            return $response;
+        }
+
+        if ($this->options->exceptions) {
+            throw new ServerException($response->getMessage());
+        }
+
+        return $response;
+    }

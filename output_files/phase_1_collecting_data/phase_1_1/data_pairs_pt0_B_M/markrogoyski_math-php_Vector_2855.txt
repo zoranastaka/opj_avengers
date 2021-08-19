@@ -1,0 +1,9 @@
+    /**
+     * @param mixed $i
+     * @return mixed
+     */
+
+    public function offsetGet($i)
+    {
+        return $this->A[$i];
+    }

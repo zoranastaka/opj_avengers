@@ -1,0 +1,18 @@
+    /**
+     * Returns values that are not considered as "undefined"
+     *
+     * @return mixed[][]
+     */
+
+    public function providerForNotUndefined(): array
+    {
+        return [
+            [0],
+            [0.0],
+            ['0'],
+            [false],
+            [true],
+            [' '],
+            [[]],
+        ];
+    }

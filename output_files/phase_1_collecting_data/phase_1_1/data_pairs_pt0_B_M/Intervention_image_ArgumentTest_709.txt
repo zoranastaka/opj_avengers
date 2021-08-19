@@ -1,0 +1,9 @@
+    /**
+     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     */
+
+    public function testBetweenFail()
+    {
+        $arg = new Argument($this->getMockedCommand([-1000]));
+        $arg->between(-100, 100);
+    }

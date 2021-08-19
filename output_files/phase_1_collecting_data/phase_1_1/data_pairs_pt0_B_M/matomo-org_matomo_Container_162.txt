@@ -1,0 +1,10 @@
+   /**
+    * Returns an array of this container's elements
+    *
+    * @return   array   Container elements
+    */
+
+    public function getElements()
+    {
+        return $this->elements;
+    }

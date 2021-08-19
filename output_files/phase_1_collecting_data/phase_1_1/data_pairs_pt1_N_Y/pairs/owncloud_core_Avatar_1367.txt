@@ -1,0 +1,13 @@
+	/**
+	 * Check if an avatar exists for the user
+	 *
+	 * @return bool
+	 */
+
+	public function exists() {
+		try {
+			return $this->storage->file_exists("{$this->path}/avatar.jpg")
+				|| $this->storage->file_exists("{$this->path}/avatar.png");
+		} catch (StorageNotAvailableException $e) {
+			return false;
+		}

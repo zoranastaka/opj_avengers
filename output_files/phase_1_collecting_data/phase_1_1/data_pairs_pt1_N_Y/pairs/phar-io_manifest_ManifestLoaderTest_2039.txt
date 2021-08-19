@@ -1,0 +1,5 @@
+    /**
+     * @uses \PharIo\Manifest\ManifestDocumentLoadingException
+     */
+
+    public function testLoadingInvalidXmlThrowsException(): void {

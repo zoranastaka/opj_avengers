@@ -1,0 +1,30 @@
+    /**
+     * Probability mass function
+     *
+     *               / x + r - 1 \
+     * b(k; r, p) = |             | (1 - p)ˣ pʳ
+     *               \     x     /
+     *
+     *
+     *            = ₓ₊ᵣ₋₁Cₓ (1 - p)ˣ pʳ
+     *
+     * @param  int $x number of successes
+     *
+     * @return float
+     *
+     * @throws MathException
+     */
+
+    public function pmf(int $x): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['x' => $x]);
+
+        $r = $this->r;
+        $p = $this->p;
+
+        $ₓ₊ᵣ₋₁Cₓ = Combinatorics::combinations($x + $r - 1, $x);
+        $⟮1 − p⟯ˣ = \pow(1 - $p, $x);
+        $pʳ      = \pow($p, $r);
+
+        return $ₓ₊ᵣ₋₁Cₓ * $⟮1 − p⟯ˣ * $pʳ;
+    }

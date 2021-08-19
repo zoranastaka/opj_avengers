@@ -1,0 +1,26 @@
+    /**
+     * Standard Error of Skewness (SES)
+     *
+     *         _____________________
+     *        /      6n(n - 1)
+     * SES = / --------------------
+     *      √  (n - 2)(n + 1)(n + 3)
+     *
+     * @param int $n Sample size
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException if n < 3
+     */
+
+    public static function ses(int $n): float
+    {
+        if ($n < 3) {
+            throw new Exception\BadDataException("SES requires a dataset of n > 2. N of $n given.");
+        }
+
+        $６n⟮n − 1⟯           = 6 * $n * ($n - 1);
+        $⟮n − 2⟯⟮n ＋ 1⟯⟮n ＋ 2⟯ = ($n - 2) * ($n + 1) * ($n + 3);
+
+        return \sqrt($６n⟮n − 1⟯ / $⟮n − 2⟯⟮n ＋ 1⟯⟮n ＋ 2⟯);
+    }

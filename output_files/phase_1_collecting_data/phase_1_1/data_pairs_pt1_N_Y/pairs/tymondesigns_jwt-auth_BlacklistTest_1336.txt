@@ -1,0 +1,20 @@
+    /** @test */
+
+    public function it_should_add_a_token_with_no_exp_to_the_blacklist_forever()
+    {
+        $claims = [
+            new Subject(1),
+            new Issuer('http://example.com'),
+            new NotBefore($this->testNowTimestamp),
+            new IssuedAt($this->testNowTimestamp),
+            new JwtId('foo'),
+        ];
+        $collection = Collection::make($claims);
+
+        $this->validator->shouldReceive('setRefreshFlow->check')->andReturn($collection);
+
+        $payload = new Payload($collection, $this->validator);
+
+        $this->storage->shouldReceive('forever')->with('foo', 'forever')->once();
+        $this->blacklist->add($payload);
+    }

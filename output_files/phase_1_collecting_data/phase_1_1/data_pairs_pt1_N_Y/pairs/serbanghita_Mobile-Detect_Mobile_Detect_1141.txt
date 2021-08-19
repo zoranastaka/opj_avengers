@@ -1,0 +1,10 @@
+    /**
+     * Retrieve the list of known browsers. Specifically, the user agents.
+     *
+     * @return array List of browsers / user agents.
+     */
+
+    public static function getBrowsers()
+    {
+        return self::$browsers;
+    }

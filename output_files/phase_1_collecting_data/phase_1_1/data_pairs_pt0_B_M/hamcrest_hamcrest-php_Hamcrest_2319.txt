@@ -1,0 +1,9 @@
+    /**
+     * An array with elements that match the given matchers.
+     */
+
+    function containsInAnyOrder(/* args... */)
+    {
+        $args = func_get_args();
+        return call_user_func_array(array('\Hamcrest\Arrays\IsArrayContainingInAnyOrder', 'arrayContainingInAnyOrder'), $args);
+    }

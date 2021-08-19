@@ -1,0 +1,3 @@
+            // Klasicno crtanje "palice" na osnovu podataka iz prosledjenog igraca
+
+            function drawPaddle(context, player) {

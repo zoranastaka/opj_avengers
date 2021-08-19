@@ -1,0 +1,14 @@
+    /**
+     * a filled rectangle, note that it is the width and height of the rectangle which are the secondary parameters, not
+     * the coordinates of the upper-right corner
+     *
+     * @param $x1
+     * @param $y1
+     * @param $width
+     * @param $height
+     */
+
+    function filledRectangle($x1, $y1, $width, $height)
+    {
+        $this->addContent(sprintf("\n%.3F %.3F %.3F %.3F re f", $x1, $y1, $width, $height));
+    }

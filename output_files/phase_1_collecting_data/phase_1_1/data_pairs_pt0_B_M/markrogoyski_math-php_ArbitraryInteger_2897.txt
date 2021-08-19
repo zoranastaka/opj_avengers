@@ -1,0 +1,20 @@
+    /**
+     * Convert ArbitraryInteger to an int
+     *
+     * @return int
+     */
+
+    public function toInt(): int
+    {
+        $number      = \str_split(\strrev($this->base256));
+        $place_value = 1;
+        $int         = \ord($number[0]);
+        unset($number[0]);
+
+        foreach ($number as $digit) {
+            $place_value *= 256;
+            $int         += \ord($digit) * $place_value;
+        }
+
+        return $int * ($this->isPositive ? 1 : -1);
+    }

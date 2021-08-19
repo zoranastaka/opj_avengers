@@ -1,0 +1,16 @@
+    /**
+     * @test
+     */
+
+    public function can_import_only_heading_row()
+    {
+        $import = new HeadingRowImport();
+
+        $headings = $import->toArray('import-users-with-headings.xlsx');
+
+        $this->assertEquals([
+            [
+                ['name', 'email'],
+            ],
+        ], $headings);
+    }

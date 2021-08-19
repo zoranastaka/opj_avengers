@@ -1,0 +1,10 @@
+    /**
+     * Get the refresh time limit.
+     *
+     * @return int
+     */
+
+    public function getRefreshTTL()
+    {
+        return $this->refreshTTL;
+    }

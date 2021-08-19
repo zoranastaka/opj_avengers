@@ -1,0 +1,36 @@
+    /**
+     * @return array (model, data)
+     */
+
+    public function dataProviderForLabeledData(): array
+    {
+        return [
+            [
+                'Alabama',
+                [
+                    'murder'   => 13.2,
+                    'assault'  => 236,
+                    'urbanPop' => 58,
+                    'rape'     => 21.2,
+                ]
+            ],
+            [
+                'New York',
+                [
+                    'murder'   => 11.1,
+                    'assault'  => 254,
+                    'urbanPop' => 86,
+                    'rape'     => 26.1,
+                ]
+            ],
+            [
+                'Wyoming',
+                [
+                    'murder'   => 6.8,
+                    'assault'  => 161,
+                    'urbanPop' => 60,
+                    'rape'     => 15.6,
+                ]
+            ],
+        ];
+    }

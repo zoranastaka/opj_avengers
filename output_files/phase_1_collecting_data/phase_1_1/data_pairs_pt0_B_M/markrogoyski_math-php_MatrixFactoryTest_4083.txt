@@ -1,0 +1,20 @@
+    /**
+     * @test         zero
+     * @dataProvider dataProviderForZero
+     * @param        int   $m
+     * @param        int   $n
+     * @param        array $R
+     * @throws       \Exception
+     */
+
+    public function testZero(int $m, int $n, array $R)
+    {
+        // Given
+        $R = MatrixFactory::create($R);
+
+        // When
+        $Z = MatrixFactory::zero($m, $n);
+
+        // Then
+        $this->assertEquals($R, $Z);
+    }

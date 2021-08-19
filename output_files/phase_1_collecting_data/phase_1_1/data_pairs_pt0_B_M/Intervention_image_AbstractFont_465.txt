@@ -1,0 +1,13 @@
+    /**
+     * Set horizontal text alignment
+     *
+     * @param  string $align
+     * @return void
+     */
+
+    public function align($align)
+    {
+        $this->align = $align;
+
+        return $this;
+    }

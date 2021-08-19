@@ -1,0 +1,32 @@
+    /** @test */
+
+    public function it_picks_up_conversations_using_this()
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('called conversation');
+
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'Hi Julia',
+        ]);
+
+        $botman->hears('Hi Julia', function ($botman) {
+            $conversation = new TestConversation();
+
+            $botman->storeConversation($conversation, function (Answer $answer) use (&$called) {
+                throw new \Exception('called conversation');
+            });
+        });
+        $botman->listen();
+
+        /*
+         * Now that the first message is saved, fake a reply
+         */
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'Hello again',
+        ]);
+        $botman->listen();
+    }

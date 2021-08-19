@@ -1,0 +1,14 @@
+    /**
+     * @throws SyntaxError if the header syntax is invalid
+     */
+
+    protected function validateHeader(array $header): void
+    {
+        if ($header !== ($filtered_header = array_filter($header, 'is_string'))) {
+            throw SyntaxError::dueToInvalidHeaderColumnNames();
+        }
+
+        if ($header !== array_unique($filtered_header)) {
+            throw SyntaxError::dueToDuplicateHeaderColumnNames($header);
+        }
+    }

@@ -1,0 +1,10 @@
+    /**
+     * League CSV formatter hook.
+     *
+     * @see escapeRecord
+     */
+
+    public function __invoke(array $record): array
+    {
+        return $this->escapeRecord($record);
+    }

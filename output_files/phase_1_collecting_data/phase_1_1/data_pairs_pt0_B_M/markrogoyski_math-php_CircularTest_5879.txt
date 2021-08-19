@@ -1,0 +1,15 @@
+    /**
+     * @test         meanResultantLength
+     * @dataProvider dataProviderForMeanResultantLength
+     * @param        array $angles
+     * @param        float $expected
+     */
+
+    public function testMeanResultantLength(array $angles, float $expected)
+    {
+        // When
+        $length = Circular::meanResultantLength($angles);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $length, 0.000001);
+    }

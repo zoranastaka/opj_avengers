@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider binaryStepProvider
+     *
+     * @param float|int $value
+     */
+
+    public function testBinaryStepActivationFunction(float $expected, $value): void
+    {
+        $binaryStep = new BinaryStep();
+
+        self::assertEquals($expected, $binaryStep->compute($value));
+    }

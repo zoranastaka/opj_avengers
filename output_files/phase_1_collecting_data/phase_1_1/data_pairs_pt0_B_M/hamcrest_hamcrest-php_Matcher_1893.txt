@@ -1,0 +1,12 @@
+    /**
+     * Evaluates the matcher for argument <var>$item</var>.
+     *
+     * @param mixed $item the object against which the matcher is evaluated.
+     *
+     * @return boolean <code>true</code> if <var>$item</var> matches,
+     *   otherwise <code>false</code>.
+     *
+     * @see Hamcrest\BaseMatcher
+     */
+
+    public function matches($item);

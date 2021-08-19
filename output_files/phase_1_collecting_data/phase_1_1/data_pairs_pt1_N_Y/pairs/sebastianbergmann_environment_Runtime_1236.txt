@@ -1,0 +1,8 @@
+    /**
+     * Returns true when the runtime used is PHP with the PHPDBG SAPI.
+     */
+
+    public function isPHPDBG(): bool
+    {
+        return PHP_SAPI === 'phpdbg' && !$this->isHHVM();
+    }

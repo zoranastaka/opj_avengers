@@ -1,0 +1,8 @@
+    /**
+     * @param Decomposition\Cholesky $cholesky
+     */
+
+    public function addCholeskyDecomposition(Decomposition\Cholesky $cholesky): void
+    {
+        $this->cholesky = $cholesky;
+    }

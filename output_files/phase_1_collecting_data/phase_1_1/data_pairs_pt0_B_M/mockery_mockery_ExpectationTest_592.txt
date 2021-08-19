@@ -1,0 +1,10 @@
+    /**
+     * Argument Constraint Tests
+     */
+
+    public function testAnyConstraintMatchesAnyArg()
+    {
+        $this->mock->shouldReceive('foo')->with(1, Mockery::any())->twice();
+        $this->mock->foo(1, 2);
+        $this->mock->foo(1, 'str');
+    }

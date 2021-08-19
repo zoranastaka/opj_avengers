@@ -1,0 +1,13 @@
+    /**
+     * Mix 2 parts together using another different method
+     *
+     * @param string $part1 The first part to mix
+     * @param string $part2 The second part to mix
+     *
+     * @return string The mixed data
+     */
+
+    protected function mixParts2($part1, $part2)
+    {
+        return hash_hmac($this->hash, $part2, $part1, true);
+    }

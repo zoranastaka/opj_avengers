@@ -1,0 +1,10 @@
+    /**
+     * Get security
+     *
+     * @return PHPExcel_DocumentSecurity
+     */
+
+    public function getSecurity()
+    {
+        return $this->security;
+    }

@@ -1,0 +1,60 @@
+    /**
+     * Data provider.
+     *
+     * @see testCommenting()
+     *
+     * @return array
+     */
+
+    public function dataCommenting()
+    {
+        return [
+            'ignore: single sniff'                                                                         => [
+                'code'             => '
+                    // phpcs:ignore Generic.Commenting.Todo -- Because reasons
+                    $var = FALSE; //TODO: write some code
+                    $var = FALSE; //TODO: write some code',
+                'expectedErrors'   => 2,
+                'expectedWarnings' => 1,
+            ],
+            'disable: single sniff; enable: same sniff - test whitespace handling around reason delimiter' => [
+                'code'             => '
+                    // phpcs:disable Generic.Commenting.Todo --Because reasons
+                    $var = FALSE;
+                    //TODO: write some code
+                    // phpcs:enable Generic.Commenting.Todo   --  Because reasons
+                    //TODO: write some code',
+                'expectedErrors'   => 1,
+                'expectedWarnings' => 1,
+            ],
+            'disable: single sniff, multi-line comment'                                                    => [
+                'code'             => '
+                    /*
+                        Disable some checks
+                        phpcs:disable Generic.Commenting.Todo
+                    */
+                    $var = FALSE;
+                    //TODO: write some code',
+                'expectedErrors'   => 1,
+                'expectedWarnings' => 0,
+            ],
+            'ignore: single sniff, multi-line slash comment'                                               => [
+                'code'             => '
+                    // Turn off a check for the next line of code.
+                    // phpcs:ignore Generic.Commenting.Todo
+                    $var = FALSE; //TODO: write some code
+                    $var = FALSE; //TODO: write some code',
+                'expectedErrors'   => 2,
+                'expectedWarnings' => 1,
+            ],
+            'enable before disable, sniff not in standard'                                                 => [
+                'code'             => '
+                    // phpcs:enable Generic.PHP.NoSilencedErrors -- Because reasons
+                    $var = @delete( $filename );
+                    ',
+                'expectedErrors'   => 0,
+                'expectedWarnings' => 0,
+            ],
+        ];
+
+    }//end dataCommenting()

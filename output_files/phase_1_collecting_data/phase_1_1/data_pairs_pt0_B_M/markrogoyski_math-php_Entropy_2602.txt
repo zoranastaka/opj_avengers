@@ -1,0 +1,41 @@
+    /**
+     * Shannon entropy (bit entropy)
+     * The average minimum number of bits needed to encode a string of symbols, based on the probability of the symbols.
+     * https://en.wikipedia.org/wiki/Entropy_(information_theory)
+     *
+     * H = -∑ pᵢlog₂(pᵢ)
+     *
+     * H is in shannons, or bits.
+     *
+     * @param  array $p probability distribution
+     *
+     * @return float average minimum number of bits
+     *
+     * @throws Exception\BadDataException if probability distribution p does not add up to 1
+     */
+
+    public static function shannonEntropy(array $p)
+    {
+        // Probability distribution must add up to 1.0
+        if (\abs(\array_sum($p) - 1) > self::ONE_TOLERANCE) {
+            throw new Exception\BadDataException('Probability distribution p must add up to 1; p adds up to: ' . \array_sum($p));
+        }
+
+        // Defensive measure against taking the log of 0 which would be -∞
+        $p = \array_map(
+            function ($pᵢ) {
+                return $pᵢ == 0 ? 1e-15 : $pᵢ;
+            },
+            $p
+        );
+
+        // ∑ pᵢlog₂(pᵢ)
+        $∑pᵢlog₂⟮pᵢ⟯ = \array_sum(\array_map(
+            function ($pᵢ) {
+                return $pᵢ * \log($pᵢ, 2);
+            },
+            $p
+        ));
+
+        return -$∑pᵢlog₂⟮pᵢ⟯;
+    }

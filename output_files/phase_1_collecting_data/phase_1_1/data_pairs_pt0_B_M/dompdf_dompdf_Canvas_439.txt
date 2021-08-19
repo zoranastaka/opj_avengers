@@ -1,0 +1,9 @@
+    /**
+     * Rotate
+     *
+     * @param float $angle angle in degrees for counter-clockwise rotation
+     * @param float $x     Origin abscissa
+     * @param float $y     Origin ordinate
+     */
+
+    function rotate($angle, $x, $y);

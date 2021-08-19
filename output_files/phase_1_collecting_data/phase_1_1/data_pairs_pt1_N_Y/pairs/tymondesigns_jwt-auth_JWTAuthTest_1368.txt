@@ -1,0 +1,9 @@
+    /** @test */
+
+    public function it_should_retrieve_the_token_from_the_request()
+    {
+        $this->parser->shouldReceive('parseToken')->andReturn('foo.bar.baz');
+
+        $this->assertInstanceOf(Token::class, $this->jwtAuth->parseToken()->getToken());
+        $this->assertEquals($this->jwtAuth->getToken(), 'foo.bar.baz');
+    }

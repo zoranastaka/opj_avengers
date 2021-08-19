@@ -1,0 +1,10 @@
+    /**
+     * Execute the console command.
+     *
+     * @return void
+     */
+
+    public function handle(): void
+    {
+        $this->comment(PHP_EOL.Inspiring::quote().PHP_EOL);
+    }

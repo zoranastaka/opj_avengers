@@ -1,0 +1,9 @@
+	/**
+	 * Handle submissions from assets/js/wc-shipping-zones.js Backbone model.
+	 */
+
+	public static function shipping_zones_save_changes() {
+		if ( ! isset( $_POST['wc_shipping_zones_nonce'], $_POST['changes'] ) ) {
+			wp_send_json_error( 'missing_fields' );
+			wp_die();
+		}

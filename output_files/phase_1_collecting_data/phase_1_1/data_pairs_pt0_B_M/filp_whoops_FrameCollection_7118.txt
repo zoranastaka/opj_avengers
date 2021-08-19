@@ -1,0 +1,9 @@
+    /**
+     * @see Serializable::unserialize
+     * @param string $serializedFrames
+     */
+
+    public function unserialize($serializedFrames)
+    {
+        $this->frames = unserialize($serializedFrames);
+    }

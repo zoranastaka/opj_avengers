@@ -1,0 +1,17 @@
+    /**
+     * @test   weightedSampleVariance is zero when there is only one number.
+     * @throws Exception\BadDataException
+     */
+
+    public function testWeightedSampleVarianceSetOfOne()
+    {
+        // Given
+        $numbers = [4];
+        $weights = [1];
+
+        // When
+        $variance = Descriptive::weightedSampleVariance($numbers, $weights);
+
+        // Then
+        $this->assertEquals(0, $variance);
+    }

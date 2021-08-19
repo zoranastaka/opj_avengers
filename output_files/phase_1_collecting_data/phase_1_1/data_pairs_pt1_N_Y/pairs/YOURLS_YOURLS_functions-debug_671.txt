@@ -1,0 +1,8 @@
+/**
+ * Return YOURLS debug mode
+ *
+ * @since 1.7.7
+ * @return bool
+ */
+
+function yourls_get_debug_mode() {

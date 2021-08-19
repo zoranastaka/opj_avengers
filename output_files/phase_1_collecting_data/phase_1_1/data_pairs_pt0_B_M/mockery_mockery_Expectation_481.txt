@@ -1,0 +1,10 @@
+    /**
+     * Indicates that this expectation is expected exactly twice
+     *
+     * @return self
+     */
+
+    public function twice()
+    {
+        return $this->times(2);
+    }

@@ -1,0 +1,20 @@
+    /**
+     * @test Axiom: Dᵀ is diagonal
+     * Transpose of a diagonal matrix is diagonal
+     * @dataProvider dataProviderForDiagonalMatrix
+     * @param        array $D
+     * @throws       \Exception
+     */
+
+    public function testTransposeOfDiagonalMatrixIsDiagonal(array $D)
+    {
+        // Given
+        $D = MatrixFactory::create($D);
+
+        // When
+        $Dᵀ = $D->Transpose();
+
+        // Then
+        $this->assertTrue($D->isDiagonal());
+        $this->assertTrue($Dᵀ->isDiagonal());
+    }

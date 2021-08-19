@@ -1,0 +1,17 @@
+    /**
+     * @group connected
+     * @group slow
+     */
+
+    public function testThrowsExceptionOnConnectionTimeoutIPv6(): void
+    {
+        $this->expectException('Predis\Connection\ConnectionException');
+        $this->expectExceptionMessageMatches('/.* \[tcp:\/\/\[0:0:0:0:0:ffff:a9fe:a0a\]:6379\]/');
+
+        $connection = $this->createConnectionWithParams(array(
+            'host' => '0:0:0:0:0:ffff:a9fe:a0a',
+            'timeout' => 0.1,
+        ), false);
+
+        $connection->connect();
+    }

@@ -1,0 +1,26 @@
+    /**
+     * Assert that the callback returns true for each variable.
+     *
+     * Skip checking null variable values.
+     *
+     * @param callable(string):bool $callback
+     * @param string                $message
+     *
+     * @throws \Dotenv\Exception\ValidationException
+     *
+     * @return \Dotenv\Validator
+     */
+
+    public function assertNullable(callable $callback, string $message)
+    {
+        return $this->assert(
+            static function (?string $value) use ($callback) {
+                if ($value === null) {
+                    return true;
+                }
+
+                return $callback($value);
+            },
+            $message
+        );
+    }

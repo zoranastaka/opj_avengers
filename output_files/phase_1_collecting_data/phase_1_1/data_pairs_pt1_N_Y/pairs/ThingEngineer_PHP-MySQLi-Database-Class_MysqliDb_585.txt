@@ -1,0 +1,15 @@
+    /**
+     * Transaction commit
+     *
+     * @uses mysqli->commit();
+     * @uses mysqli->autocommit(true);
+     * @throws Exception
+     */
+
+    public function commit()
+    {
+        $result = $this->mysqli()->commit();
+        $this->_transaction_in_progress = false;
+        $this->mysqli()->autocommit(true);
+        return $result;
+    }

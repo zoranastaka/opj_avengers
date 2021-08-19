@@ -1,0 +1,12 @@
+    /**
+     * Returns the {@link Parameters} object containing the site, period and segment we're archiving
+     * data for.
+     *
+     * @return Parameters
+     * @api
+     */
+
+    public function getParams()
+    {
+        return $this->params;
+    }

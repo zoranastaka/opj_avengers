@@ -1,0 +1,10 @@
+    /**
+     * Checks if the cookie value should be sent with no url encoding.
+     *
+     * @return bool
+     */
+
+    public function isRaw()
+    {
+        return $this->raw;
+    }

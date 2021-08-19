@@ -1,0 +1,112 @@
+    /**
+     * Print progress information for a single processed file.
+     *
+     * @param \PHP_CodeSniffer\Files\File $file         The file that was processed.
+     * @param int                         $numFiles     The total number of files to process.
+     * @param int                         $numProcessed The number of files that have been processed,
+     *                                                  including this one.
+     *
+     * @return void
+     */
+
+    public function printProgress(File $file, $numFiles, $numProcessed)
+    {
+        if (PHP_CODESNIFFER_VERBOSITY > 0
+            || $this->config->showProgress === false
+        ) {
+            return;
+        }
+
+        // Show progress information.
+        if ($file->ignored === true) {
+            echo 'S';
+        } else {
+            $errors   = $file->getErrorCount();
+            $warnings = $file->getWarningCount();
+            $fixable  = $file->getFixableCount();
+            $fixed    = $file->getFixedCount();
+
+            if (PHP_CODESNIFFER_CBF === true) {
+                // Files with fixed errors or warnings are F (green).
+                // Files with unfixable errors or warnings are E (red).
+                // Files with no errors or warnings are . (black).
+                if ($fixable > 0) {
+                    if ($this->config->colors === true) {
+                        echo "\033[31m";
+                    }
+
+                    echo 'E';
+
+                    if ($this->config->colors === true) {
+                        echo "\033[0m";
+                    }
+                } else if ($fixed > 0) {
+                    if ($this->config->colors === true) {
+                        echo "\033[32m";
+                    }
+
+                    echo 'F';
+
+                    if ($this->config->colors === true) {
+                        echo "\033[0m";
+                    }
+                } else {
+                    echo '.';
+                }//end if
+            } else {
+                // Files with errors are E (red).
+                // Files with fixable errors are E (green).
+                // Files with warnings are W (yellow).
+                // Files with fixable warnings are W (green).
+                // Files with no errors or warnings are . (black).
+                if ($errors > 0) {
+                    if ($this->config->colors === true) {
+                        if ($fixable > 0) {
+                            echo "\033[32m";
+                        } else {
+                            echo "\033[31m";
+                        }
+                    }
+
+                    echo 'E';
+
+                    if ($this->config->colors === true) {
+                        echo "\033[0m";
+                    }
+                } else if ($warnings > 0) {
+                    if ($this->config->colors === true) {
+                        if ($fixable > 0) {
+                            echo "\033[32m";
+                        } else {
+                            echo "\033[33m";
+                        }
+                    }
+
+                    echo 'W';
+
+                    if ($this->config->colors === true) {
+                        echo "\033[0m";
+                    }
+                } else {
+                    echo '.';
+                }//end if
+            }//end if
+        }//end if
+
+        $numPerLine = 60;
+        if ($numProcessed !== $numFiles && ($numProcessed % $numPerLine) !== 0) {
+            return;
+        }
+
+        $percent = round(($numProcessed / $numFiles) * 100);
+        $padding = (strlen($numFiles) - strlen($numProcessed));
+        if ($numProcessed === $numFiles
+            && $numFiles > $numPerLine
+            && ($numProcessed % $numPerLine) !== 0
+        ) {
+            $padding += ($numPerLine - ($numFiles - (floor($numFiles / $numPerLine) * $numPerLine)));
+        }
+
+        echo str_repeat(' ', $padding)." $numProcessed / $numFiles ($percent%)".PHP_EOL;
+
+    }//end printProgress()

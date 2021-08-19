@@ -1,0 +1,10 @@
+    /**
+     * Initiates color object from given R, G and B values
+     *
+     * @param  int $r
+     * @param  int $g
+     * @param  int $b
+     * @return \Intervention\Image\AbstractColor
+     */
+
+    abstract public function initFromRgb($r, $g, $b);

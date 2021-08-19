@@ -1,0 +1,10 @@
+   /**
+    * Returns an Iterator for the form's pages
+    *
+    * @return   ArrayIterator
+    */
+
+    public function getIterator()
+    {
+        return new ArrayIterator($this->pages);
+    }

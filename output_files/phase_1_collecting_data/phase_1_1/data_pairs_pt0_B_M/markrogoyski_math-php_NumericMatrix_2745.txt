@@ -1,0 +1,24 @@
+    /**
+     * Is the matrix normal?
+     *  - It is a square matrix
+     *  - AAᴴ = AᴴA
+     *
+     * https://en.wikipedia.org/wiki/Normal_matrix
+     * @return bool
+     *
+     * @throws Exception\MathException
+     */
+
+    public function isNormal(): bool
+    {
+        if (!$this->isSquare()) {
+            return false;
+        }
+
+        // AAᴴ = AᴴA
+        $Aᴴ  = $this->conjugateTranspose();
+        $AAᴴ = $this->multiply($Aᴴ);
+        $AᴴA = $Aᴴ->multiply($this);
+
+        return $AAᴴ->isEqual($AᴴA);
+    }

@@ -1,0 +1,10 @@
+  /**
+   * Correctly encodes and wraps long multibyte strings for mail headers
+   * without breaking lines within a character.
+   * Adapted from a function by paravoid at http://uk.php.net/manual/en/function.mb-encode-mimeheader.php
+   * @access public
+   * @param string $str multi-byte text to wrap encode
+   * @return string
+   */
+
+  public function Base64EncodeWrapMB($str) {

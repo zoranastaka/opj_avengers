@@ -1,0 +1,5 @@
+	/**
+	 * AJAX remove from cart.
+	 */
+
+	public static function remove_from_cart() {

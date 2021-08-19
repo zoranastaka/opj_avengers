@@ -1,0 +1,21 @@
+    /**
+     * Catch and proxy all generator calls with arguments but return only valid values
+     * @param string $name
+     * @param array $arguments
+     *
+     * @return mixed
+     */
+
+    public function __call($name, $arguments)
+    {
+        $i = 0;
+        do {
+            $res = call_user_func_array(array($this->generator, $name), $arguments);
+            $i++;
+            if ($i > $this->maxRetries) {
+                throw new \OverflowException(sprintf('Maximum retries of %d reached without finding a valid value', $this->maxRetries));
+            }
+        } while (!call_user_func($this->validator, $res));
+
+        return $res;
+    }

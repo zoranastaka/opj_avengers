@@ -1,0 +1,10 @@
+    /**
+     * Returns the region name for the current language.
+     *
+     * @return string|null
+     */
+
+    public function getRegionName(): ?string
+    {
+        return $this->region ? (static::regions()[$this->region] ?? $this->region) : null;
+    }

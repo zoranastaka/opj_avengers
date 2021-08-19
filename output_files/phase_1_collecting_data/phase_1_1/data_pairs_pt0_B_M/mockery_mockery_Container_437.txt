@@ -1,0 +1,10 @@
+    /**
+     * Fetch array of ordered groups
+     *
+     * @return array
+     */
+
+    public function mockery_getGroups()
+    {
+        return $this->_groups;
+    }

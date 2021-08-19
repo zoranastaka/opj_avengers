@@ -1,0 +1,9 @@
+    /**
+     * @test   checkLimits bad data
+     * @throws \Exception
+     */
+
+    public function testCheckLimitsUpperLimitEndpointException()
+    {
+        // Given
+        $limits = ['x' => '(0,1}'];

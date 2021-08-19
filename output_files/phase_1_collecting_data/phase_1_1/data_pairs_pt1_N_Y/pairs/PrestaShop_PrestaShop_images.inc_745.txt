@@ -1,0 +1,10 @@
+/**
+ * @deprecated 1.5.0
+ */
+
+function createSrcImage($type, $filename)
+{
+    Tools::displayAsDeprecated();
+
+    return ImageManager::create($type, $filename);
+}

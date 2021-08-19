@@ -1,0 +1,9 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getBuildDir(): string
+    {
+        // Returns $this->getCacheDir() for backward compatibility
+        return $this->getCacheDir();
+    }

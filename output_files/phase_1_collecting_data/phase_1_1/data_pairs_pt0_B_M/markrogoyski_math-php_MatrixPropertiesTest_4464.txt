@@ -1,0 +1,14 @@
+    /**
+     * @test         isLowerBidiagonal returns false for a non lower bidiagonal matrix
+     * @dataProvider dataProviderForNotLowerBidiagonalMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsNotLowerBidiagonal(array $A)
+    {
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isLowerBidiagonal());
+    }

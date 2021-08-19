@@ -1,0 +1,3 @@
+        // keep track of the last sent data to detect if slave exited abnormally
+
+        $this->connection->on('data', function ($data) {

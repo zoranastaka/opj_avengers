@@ -1,0 +1,16 @@
+    /**
+     * @test         testNumberOfDivisors
+     * @dataProvider dataProviderForNumberOfDivisors
+     * @param        int $n
+     * @param        int $expected
+     * @throws       \Exception
+     */
+
+    public function testNumberOfDivisors(int $n, int $expected)
+    {
+        // When
+        $actual = Integer::numberOfDivisors($n);
+
+        // Then
+        $this->assertEquals($expected, $actual);
+    }

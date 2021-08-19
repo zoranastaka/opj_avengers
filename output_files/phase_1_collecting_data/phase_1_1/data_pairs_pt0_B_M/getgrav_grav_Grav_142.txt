@@ -1,0 +1,22 @@
+    /**
+     * Initialize and return a Grav instance
+     *
+     * @param  array $values
+     * @return static
+     */
+
+    protected static function load(array $values)
+    {
+        $container = new static($values);
+
+        $container['debugger'] = new Debugger();
+        $container['grav'] = function (Container $container) {
+            user_error('Calling $grav[\'grav\'] or {{ grav.grav }} is deprecated since Grav 1.6, just use $grav or {{ grav }}', E_USER_DEPRECATED);
+
+            return $container;
+        };
+
+        $container->registerServices();
+
+        return $container;
+    }

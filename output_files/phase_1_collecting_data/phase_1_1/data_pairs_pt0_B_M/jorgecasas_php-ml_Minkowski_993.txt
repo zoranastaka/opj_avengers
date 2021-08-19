@@ -1,0 +1,9 @@
+/**
+ * Class Minkowski
+ *
+ * L^n Metric.
+ */
+
+class Minkowski extends Distance
+{
+}

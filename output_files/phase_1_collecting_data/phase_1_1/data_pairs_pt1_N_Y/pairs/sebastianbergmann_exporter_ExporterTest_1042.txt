@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider shortenedRecursiveExportProvider
+     */
+
+    public function testShortenedRecursiveExport(array $value, string $expected): void
+    {
+        $this->assertEquals($expected, $this->exporter->shortenedRecursiveExport($value));
+    }

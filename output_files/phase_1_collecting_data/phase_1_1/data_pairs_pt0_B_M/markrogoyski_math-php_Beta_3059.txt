@@ -1,0 +1,24 @@
+    /**
+     * Probability density function
+     *
+     *       xᵃ⁻¹(1 - x)ᵝ⁻¹
+     * pdf = --------------
+     *           B(α,β)
+     *
+     * @param float $x x ∈ (0,1)
+     *
+     * @return float
+     */
+
+    public function pdf(float $x): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['x' => $x]);
+
+        $α = $this->α;
+        $β = $this->β;
+
+        $xᵃ⁻¹ = \pow($x, $α - 1);
+        $⟮1 − x⟯ᵝ⁻¹ = \pow(1 - $x, $β - 1);
+        $B⟮α、β⟯ = Special::beta($α, $β);
+        return ($xᵃ⁻¹ * $⟮1 − x⟯ᵝ⁻¹) / $B⟮α、β⟯;
+    }

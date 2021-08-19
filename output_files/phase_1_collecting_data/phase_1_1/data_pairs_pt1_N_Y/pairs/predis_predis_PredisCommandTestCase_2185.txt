@@ -1,0 +1,7 @@
+    /**
+     * Returns the expected command ID for tests.
+     *
+     * @return string
+     */
+
+    abstract protected function getExpectedId(): string;

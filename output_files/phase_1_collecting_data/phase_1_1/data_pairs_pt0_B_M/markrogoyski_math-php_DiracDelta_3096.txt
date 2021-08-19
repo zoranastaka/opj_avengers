@@ -1,0 +1,10 @@
+    /**
+     * Median of the distribution
+     *
+     * @return int
+     */
+
+    public function median(): int
+    {
+        return 0;
+    }

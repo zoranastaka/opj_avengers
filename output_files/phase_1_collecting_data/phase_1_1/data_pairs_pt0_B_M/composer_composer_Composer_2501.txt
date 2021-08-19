@@ -1,0 +1,8 @@
+    /**
+     * @param EventDispatcher $eventDispatcher
+     */
+
+    public function setEventDispatcher(EventDispatcher $eventDispatcher)
+    {
+        $this->eventDispatcher = $eventDispatcher;
+    }

@@ -1,0 +1,22 @@
+    /**
+     * @test Axiom: A - B is symmetric
+     * If A and B are symmetric matrices with the sme size, then A - B is symmetric
+     * @dataProvider dataProviderForSymmetricMatrix
+     * @param        array $M
+     * @throws       \Exception
+     */
+
+    public function testSymmetricMatricesDifferenceIsSymmetric(array $M)
+    {
+        // Given
+        $A = MatrixFactory::create($M);
+        $B = MatrixFactory::create($M);
+
+        // When
+        $A−B = $A->subtract($B);
+
+        // Then
+        $this->assertTrue($A->isSymmetric());
+        $this->assertTrue($B->isSymmetric());
+        $this->assertTrue($A−B->isSymmetric());
+    }

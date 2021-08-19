@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function jsonSerialize(): array
+    {
+        return iterator_to_array($this->records, false);
+    }

@@ -1,0 +1,17 @@
+    /**
+     * Assert that each variable is not empty.
+     *
+     * @throws \Dotenv\Exception\ValidationException
+     *
+     * @return \Dotenv\Validator
+     */
+
+    public function notEmpty()
+    {
+        return $this->assertNullable(
+            static function (string $value) {
+                return Str::len(\trim($value)) > 0;
+            },
+            'is empty'
+        );
+    }

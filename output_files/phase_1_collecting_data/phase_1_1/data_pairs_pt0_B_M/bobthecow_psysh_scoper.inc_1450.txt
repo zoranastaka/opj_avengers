@@ -1,0 +1,6 @@
+        // PHP-Parser patches
+
+        static function (string $filePath, string $prefix, string $contents): string {
+            if ('vendor/nikic/php-parser/lib/PhpParser/JsonDecoder.php' !== $filePath) {
+                return $contents;
+            }

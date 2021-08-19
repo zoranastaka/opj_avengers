@@ -1,0 +1,5 @@
+	/**
+	 * AJAX add to cart.
+	 */
+
+	public static function add_to_cart() {

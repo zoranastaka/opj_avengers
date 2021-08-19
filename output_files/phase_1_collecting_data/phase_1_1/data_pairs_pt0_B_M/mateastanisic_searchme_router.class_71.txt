@@ -1,0 +1,27 @@
+	// Analiziraj $_GET['rt'], odredi ime controllera i akcije.
+
+	private function getController() 
+	{
+		// Dohvati $_GET['rt']
+		$route = ( empty( $_GET['rt'] ) ) ? '' : $_GET['rt'];
+
+		if( empty( $route ) )
+			$route = 'index';
+		else
+		{
+			// Ako $_GET['rt'] nije prazan, podijeli ga na controller i akciju.
+			$parts = explode( '/', $route );
+			$this->controller = $parts[0];
+			if( isset( $parts[1] ) )
+				$this->action = $parts[1];
+		}
+
+		if( empty( $this->controller ) )
+			$this->controller = 'index';
+
+		if( empty( $this->action ) )
+			$this->action = 'index';
+
+		// Sad imamo putanju do controllera.
+		$this->file = $this->path .'/'. $this->controller . 'Controller.php';
+	}

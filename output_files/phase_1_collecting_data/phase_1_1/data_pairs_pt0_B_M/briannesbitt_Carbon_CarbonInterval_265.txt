@@ -1,0 +1,14 @@
+    /**
+     * Determines if the instance is less (shorter) than another
+     *
+     * @param CarbonInterval|DateInterval|mixed $interval
+     *
+     * @see lessThan()
+     *
+     * @return bool
+     */
+
+    public function lt($interval): bool
+    {
+        return $this->lessThan($interval);
+    }

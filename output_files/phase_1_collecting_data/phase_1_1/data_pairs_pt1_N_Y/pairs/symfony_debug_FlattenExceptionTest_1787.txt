@@ -1,0 +1,15 @@
+    /**
+     * @dataProvider flattenDataProvider
+     */
+
+    public function testPrevious(\Throwable $exception)
+    {
+        $flattened = FlattenException::createFromThrowable($exception);
+        $flattened2 = FlattenException::createFromThrowable($exception);
+
+        $flattened->setPrevious($flattened2);
+
+        $this->assertSame($flattened2, $flattened->getPrevious());
+
+        $this->assertSame([$flattened2], $flattened->getAllPrevious());
+    }

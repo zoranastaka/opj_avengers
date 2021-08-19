@@ -1,0 +1,10 @@
+    /**
+     * Compute the method name.
+     *
+     * @return string
+     */
+
+    public function getMethod()
+    {
+        return $this->method;
+    }

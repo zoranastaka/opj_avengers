@@ -1,0 +1,12 @@
+    /**
+     * @test 32 wt observations
+     */
+
+    public function testNumberOfWts()
+    {
+        // When
+        $observations = $this->mtCars->getWt();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

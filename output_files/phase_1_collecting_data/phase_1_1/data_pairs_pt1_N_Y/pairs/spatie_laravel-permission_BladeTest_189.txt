@@ -1,0 +1,11 @@
+    /** @test */
+
+    public function the_hasanyrole_directive_will_evaluate_true_when_the_logged_in_user_does_have_some_of_the_required_roles()
+    {
+        $roles = ['member', 'writer', 'intern'];
+
+        auth()->setUser($this->getMember());
+
+        $this->assertEquals('does have some of the roles', $this->renderView('hasAnyRole', compact('roles')));
+        $this->assertEquals('does have some of the roles', $this->renderView('hasAnyRole', ['roles' => implode('|', $roles)]));
+    }

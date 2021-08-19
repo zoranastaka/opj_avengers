@@ -1,0 +1,18 @@
+    /**
+     * Filters the iterator values.
+     *
+     * @return bool true if the value should be kept, false otherwise
+     */
+
+    public function accept()
+    {
+        $fileinfo = $this->current();
+
+        foreach ($this->filters as $filter) {
+            if (false === $filter($fileinfo)) {
+                return false;
+            }
+        }
+
+        return true;
+    }

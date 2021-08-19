@@ -1,0 +1,6 @@
+    /**
+     * @deprecated In ramsey/uuid version 5.0.0, this will be removed from the
+     *     interface. It is available at {@see UuidV1::getDateTime()}.
+     */
+
+    public function getDateTime(): DateTimeInterface;

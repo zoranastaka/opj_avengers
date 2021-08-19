@@ -1,0 +1,17 @@
+    /**
+     * @group connected
+     */
+
+    public function testReadsBulkResponses(): void
+    {
+        $commands = $this->getCommandFactory();
+        $connection = $this->createConnection(true);
+
+        $connection->executeCommand($commands->create('set', array('foo', 'bar')));
+
+        $connection->writeRequest($commands->create('get', array('foo')));
+        $this->assertSame('bar', $connection->read());
+
+        $connection->writeRequest($commands->create('get', array('hoge')));
+        $this->assertNull($connection->read());
+    }

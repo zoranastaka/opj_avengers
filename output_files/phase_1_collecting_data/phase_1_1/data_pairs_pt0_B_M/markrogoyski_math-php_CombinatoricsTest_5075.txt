@@ -1,0 +1,17 @@
+    /**
+     * @test         combinations
+     * @dataProvider dataProviderForCombinations
+     * @param        int   $n
+     * @param        int   $r
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testCombinations(int $n, int $r, float $expected)
+    {
+        // When
+        $combinations = Combinatorics::combinations($n, $r);
+
+        // Then
+        $this->assertEquals($expected, $combinations);
+    }

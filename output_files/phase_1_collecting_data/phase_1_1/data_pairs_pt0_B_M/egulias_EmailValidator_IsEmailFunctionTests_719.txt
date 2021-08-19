@@ -1,0 +1,15 @@
+    /**
+     * @dataProvider isEmailTestSuite
+     */
+
+    public function testAgainstIsEmailTestSuite($email)
+    {
+        $validator = new EmailValidator();
+        $validations = new MultipleValidationWithAnd([
+            new NoRFCWarningsValidation(),
+            new DNSCheckValidation()
+        ]);
+
+        $this->assertFalse($validator->isValid($email, $validations), "Tested email " . $email);
+
+    }

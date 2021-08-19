@@ -1,0 +1,6 @@
+	// --------------------------------------------------------------------
+
+	public function test_memory_usage()
+	{
+		$this->assertEquals('{memory_usage}', $this->benchmark->memory_usage());
+	}

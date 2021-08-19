@@ -1,0 +1,21 @@
+    /**
+     * Provide static proxy for instance aliases.
+     *
+     * @param string $method
+     * @param array  $parameters
+     *
+     * @return mixed
+     */
+
+    public static function __callStatic($method, $parameters)
+    {
+        $date = new static();
+
+        if (static::hasMacro($method)) {
+            return static::bindMacroContext(null, function () use (&$method, &$parameters, &$date) {
+                return $date->callMacro($method, $parameters);
+            });
+        }
+
+        return $date->$method(...$parameters);
+    }

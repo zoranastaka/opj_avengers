@@ -1,0 +1,3 @@
+	// ---------------------  UPDATE PROFIL  -------------------------
+
+	function update_student_password($id, $pass){

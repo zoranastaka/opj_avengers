@@ -1,0 +1,7 @@
+	/**
+	 * Retrieve the Body from a MIME part from file
+	 * @return String Mime Body Part
+	 * @param $part Array
+	 */
+
+	private function getPartBodyFromFile(&$part) {

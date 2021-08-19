@@ -1,0 +1,22 @@
+    /**
+     * {@inheritdoc}
+     *
+     * @todo Improve output using diff when expected and actual do not match.
+     */
+
+    public function toString(): string
+    {
+        $exporter = new Exporter();
+        $string = 'is a Redis command';
+
+        if ($this->commandID) {
+            $string .= " with ID '{$this->commandID}'";
+        }
+
+        if ($this->arguments) {
+            $string .= " and the following arguments:\n\n";
+            $string .= $exporter->export($this->arguments);
+        }
+
+        return $string;
+    }

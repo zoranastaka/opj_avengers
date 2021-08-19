@@ -1,0 +1,8 @@
+    /**
+     * Trust X-Sendfile-Type header.
+     */
+
+    public static function trustXSendfileTypeHeader()
+    {
+        self::$trustXSendfileTypeHeader = true;
+    }

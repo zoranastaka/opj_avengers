@@ -1,0 +1,17 @@
+    /**
+     * Remove elements from the set
+     * Does nothing if the element does not exist in the set.
+     *
+     * @param  array $x
+     *
+     * @return Set (this set)
+     */
+
+    public function removeMulti(array $x): Set
+    {
+        foreach ($x as $member) {
+            unset($this->A[$this->getKey($member)]);
+        }
+
+        return $this;
+    }

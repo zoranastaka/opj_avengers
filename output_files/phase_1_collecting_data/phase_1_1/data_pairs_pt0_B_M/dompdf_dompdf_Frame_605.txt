@@ -1,0 +1,12 @@
+    /**
+     * @return bool
+     */
+
+    public function is_block()
+    {
+        if (isset($this->_is_cache["block"])) {
+            return $this->_is_cache["block"];
+        }
+
+        return $this->_is_cache["block"] = in_array($this->get_style()->display, Style::$BLOCK_TYPES);
+    }

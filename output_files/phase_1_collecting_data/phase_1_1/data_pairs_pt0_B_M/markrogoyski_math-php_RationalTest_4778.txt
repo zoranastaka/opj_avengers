@@ -1,0 +1,20 @@
+    /**
+     * @test         __toString returns the proper string representation of a rational number
+     * @dataProvider dataProviderForToString
+     * @param        number $w
+     * @param        number $n
+     * @param        number $d
+     * @param        string $string
+     */
+
+    public function testToString($w, $n, $d, string $string)
+    {
+        // Given
+        $number = new Rational($w, $n, $d);
+
+        // When
+        $stringRepresentation = (string) $number;
+
+        // Then
+        $this->assertSame($string, $stringRepresentation);
+    }

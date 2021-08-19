@@ -1,0 +1,20 @@
+    /** @test */
+
+    public function it_can_reset_the_cache_with_artisan_command()
+    {
+        Artisan::call('permission:create-permission', ['name' => 'new-permission']);
+        $this->assertCount(1, \Spatie\Permission\Models\Permission::where('name', 'new-permission')->get());
+
+        $this->resetQueryCount();
+        // retrieve permissions, and assert that the cache had to be loaded
+        $this->registrar->getPermissions();
+        $this->assertQueryCount($this->cache_init_count + $this->cache_load_count + $this->cache_run_count);
+
+        // reset the cache
+        Artisan::call('permission:cache-reset');
+
+        $this->resetQueryCount();
+        $this->registrar->getPermissions();
+        // assert that the cache had to be reloaded
+        $this->assertQueryCount($this->cache_init_count + $this->cache_load_count + $this->cache_run_count);
+    }

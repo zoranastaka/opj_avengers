@@ -1,0 +1,16 @@
+    /**
+     * @test         standardErrorOfTheMean
+     * @dataProvider dataProviderForStandardErrorOfTheMean
+     * @param        array $X
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testSem(array $X, float $expected)
+    {
+        // When
+        $sem = RandomVariable::sem($X);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $sem, 0.0001);
+    }

@@ -1,0 +1,5 @@
+    /**
+     * Shutdowns the Bundle.
+     */
+
+    public function shutdown();

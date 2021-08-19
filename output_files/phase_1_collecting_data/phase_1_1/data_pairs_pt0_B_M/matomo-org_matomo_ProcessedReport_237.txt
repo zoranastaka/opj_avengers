@@ -1,0 +1,26 @@
+    /**
+     * Translates the given metric in case the report exists and in case the metric actually belongs to the report.
+     *
+     * @param string $metric     For example 'nb_visits'
+     * @param int    $idSite
+     * @param string $apiMethodUniqueId  For example 'MultiSites_getAll'
+     *
+     * @return null|string
+     */
+
+    public function translateMetric($metric, $idSite, $apiMethodUniqueId)
+    {
+        $report = $this->getReportMetadataByUniqueId($idSite, $apiMethodUniqueId);
+
+        if (empty($report)) {
+            return;
+        }
+
+        $properties = array('metrics', 'processedMetrics', 'processedMetricsGoal');
+
+        foreach ($properties as $prop) {
+            if (!empty($report[$prop]) && is_array($report[$prop]) && array_key_exists($metric, $report[$prop])) {
+                return $report[$prop][$metric];
+            }
+        }
+    }

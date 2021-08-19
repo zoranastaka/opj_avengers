@@ -1,0 +1,18 @@
+    /**
+     * @test         subtract
+     * @dataProvider dataProviderForSubtract
+     */
+
+    public function testSubtract(array $A, array $B, array $R)
+    {
+        // Given
+        $A  = MatrixFactory::create($A);
+        $B  = MatrixFactory::create($B);
+        $R  = MatrixFactory::create($R);
+
+        // When
+        $R2 = $A->subtract($B);
+
+        // Then
+        $this->assertEquals($R, $R2);
+    }

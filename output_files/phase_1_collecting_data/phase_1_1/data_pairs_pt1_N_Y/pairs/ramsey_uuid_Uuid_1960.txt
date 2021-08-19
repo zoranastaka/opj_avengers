@@ -1,0 +1,8 @@
+    /**
+     * @psalm-return non-empty-string
+     */
+
+    public function getBytes(): string
+    {
+        return $this->codec->encodeBinary($this);
+    }

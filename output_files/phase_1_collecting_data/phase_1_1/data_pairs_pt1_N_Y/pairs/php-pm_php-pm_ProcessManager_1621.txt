@@ -1,0 +1,25 @@
+    /**
+     * @param Slave $slave
+     */
+
+    private function terminateSlave($slave)
+    {
+        // set closed and remove from pool
+        $slave->close();
+
+        try {
+            $this->slaves->remove($slave);
+        } catch (\Exception $ignored) {
+        }
+
+        /** @var Process */
+        $process = $slave->getProcess();
+        if ($process->isRunning()) {
+            $process->terminate();
+        }
+
+        $pid = $slave->getPid();
+        if (\is_int($pid)) {
+            \posix_kill($pid, SIGKILL); // make sure it's really dead
+        }
+    }

@@ -1,0 +1,11 @@
+    /**
+     * @covers Whoops\Exception\Frame::getLine
+     */
+
+    public function testGetLine()
+    {
+        $data  = $this->getFrameData();
+        $frame = $this->getFrameInstance($data);
+
+        $this->assertEquals($frame->getLine(), $data['line']);
+    }

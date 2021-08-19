@@ -1,0 +1,5 @@
+    /**
+     * Save current state
+     */
+
+    function save();

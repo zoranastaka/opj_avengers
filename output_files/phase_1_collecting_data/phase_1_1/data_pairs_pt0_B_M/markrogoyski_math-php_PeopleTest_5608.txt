@@ -1,0 +1,12 @@
+    /**
+     * @test 32 region observations
+     */
+
+    public function testNumberOfRegion()
+    {
+        // When
+        $observations = $this->people->getRegion();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

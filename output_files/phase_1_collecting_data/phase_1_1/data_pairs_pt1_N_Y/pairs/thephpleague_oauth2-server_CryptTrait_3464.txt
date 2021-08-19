@@ -1,0 +1,26 @@
+    /**
+     * Decrypt data with encryptionKey.
+     *
+     * @param string $encryptedData
+     *
+     * @throws LogicException
+     *
+     * @return string
+     */
+
+    protected function decrypt($encryptedData)
+    {
+        try {
+            if ($this->encryptionKey instanceof Key) {
+                return Crypto::decrypt($encryptedData, $this->encryptionKey);
+            }
+
+            if (\is_string($this->encryptionKey)) {
+                return Crypto::decryptWithPassword($encryptedData, $this->encryptionKey);
+            }
+
+            throw new LogicException('Encryption key not set when attempting to decrypt');
+        } catch (Exception $e) {
+            throw new LogicException($e->getMessage(), 0, $e);
+        }
+    }

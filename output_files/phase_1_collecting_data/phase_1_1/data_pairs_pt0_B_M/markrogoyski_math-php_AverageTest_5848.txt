@@ -1,0 +1,17 @@
+    /**
+     * @test   generalizedMean with a p of negative one is the harmonic mean
+     * @throws \Exception
+     */
+
+    public function testGeneralizedMeanPEqualsNegativeOneIsHarmonicMean()
+    {
+        // Given
+        $numbers = [3, 6, 2, 9, 1, 7, 2];
+        $p       = -1;
+
+        // When
+        $mean = Average::generalizedMean($numbers, $p);
+
+        // Then
+        $this->assertEquals(Average::harmonicMean($numbers), $mean);
+    }

@@ -1,0 +1,20 @@
+    /**
+     * parseFootnote
+     *
+     * @param array $lines
+     * @param array $value
+     * @return string
+     */
+
+    private function parseFootnote(array $lines, array $value)
+    {
+        list($space, $note) = $value;
+        $index = array_search($note, $this->_footnotes);
+
+        if (false !== $index) {
+            $lines[0] = preg_replace("/^\[\^((?:[^\]]|\\]|\\[)+?)\]:/", '', $lines[0]);
+            $this->_footnotes[$index] = $lines;
+        }
+
+        return '';
+    }

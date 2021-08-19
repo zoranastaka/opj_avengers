@@ -1,0 +1,10 @@
+    /**
+     * Returns the target URL.
+     *
+     * @return string target URL
+     */
+
+    public function getTargetUrl()
+    {
+        return $this->targetUrl;
+    }

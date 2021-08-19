@@ -1,0 +1,10 @@
+    /**
+     * @return string
+     */
+
+    public function getHomeDataDir()
+    {
+        $path = getenv('XDG_DATA_HOME') ?: $this->getHomeDir() . DIRECTORY_SEPARATOR . '.local' . DIRECTORY_SEPARATOR . 'share';
+
+        return $path;
+    }

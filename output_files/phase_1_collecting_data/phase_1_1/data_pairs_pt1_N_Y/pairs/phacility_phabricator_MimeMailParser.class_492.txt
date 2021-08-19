@@ -1,0 +1,7 @@
+	/**
+	 * Parse the Message into parts
+	 * @return void
+	 * @private
+	 */
+
+	private function parse() {

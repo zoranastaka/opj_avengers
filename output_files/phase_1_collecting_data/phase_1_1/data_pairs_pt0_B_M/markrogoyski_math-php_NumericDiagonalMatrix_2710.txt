@@ -1,0 +1,9 @@
+    /**
+     * Diagonal matrix must be diagonal
+     * @inheritDoc
+     */
+
+    public function isDiagonal(): bool
+    {
+        return true;
+    }

@@ -1,0 +1,26 @@
+    /**
+     * Check the nonce to ensure it is valid and not expired.
+     *
+     * @param string $nonce The nonce value to check.
+     * @return bool
+     */
+
+    protected function validNonce(string $nonce): bool
+    {
+        $value = base64_decode($nonce);
+        if ($value === false) {
+            return false;
+        }
+        $parts = explode(':', $value);
+        if (count($parts) !== 2) {
+            return false;
+        }
+        [$expires, $checksum] = $parts;
+        if ($expires < microtime(true)) {
+            return false;
+        }
+        $secret = $this->getConfig('secret');
+        $check = hash_hmac('sha256', $expires . ':' . $secret, $secret);
+
+        return hash_equals($check, $checksum);
+    }

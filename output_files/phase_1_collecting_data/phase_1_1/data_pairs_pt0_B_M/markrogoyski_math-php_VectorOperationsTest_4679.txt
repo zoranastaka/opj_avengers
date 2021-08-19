@@ -1,0 +1,18 @@
+    /**
+     * @test         normalize
+     * @dataProvider dataProviderForNormalize
+     */
+
+    public function testNormalize(array $A, array $expected)
+    {
+        // Given
+        $A        = new Vector($A);
+        $expected = new Vector($expected);
+
+        // When
+        $Â = $A->normalize();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $Â, 0.00000001);
+        $this->assertEqualsWithDelta($expected->getVector(), $Â->getVector(), 0.00000001);
+    }

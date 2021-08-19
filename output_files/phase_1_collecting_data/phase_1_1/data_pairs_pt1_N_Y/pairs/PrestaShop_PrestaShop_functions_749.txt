@@ -1,0 +1,36 @@
+/**
+ * Returns a new Tab object
+ *
+ * @param string $tab class name
+ * @return mixed(AdminTab, bool) tab object or false if failed
+ */
+
+function checkingTab($tab)
+{
+    $tab_lowercase = Tools::strtolower(trim($tab));
+    if (!Validate::isTabName($tab)) {
+        return false;
+    }
+    $row = Db::getInstance(_PS_USE_SQL_SLAVE_)->getRow('SELECT id_tab, module, class_name FROM `'._DB_PREFIX_.'tab` WHERE LOWER(class_name) = \''.pSQL($tab).'\'');
+    if (!$row['id_tab']) {
+        echo sprintf(Tools::displayError('Page %s cannot be found.'), $tab);
+
+        return false;
+    }
+
+    // Class file is included in Dispatcher::dispatch() function
+    if (!class_exists($tab, false)) {
+        echo sprintf(Tools::displayError('The class %s cannot be found.'), $tab);
+
+        return false;
+    }
+    $admin_obj = new $tab();
+    if (!$admin_obj->viewAccess() && ($admin_obj->table != 'employee' || Context::getContext()->employee->id != Tools::getValue('id_employee') || !Tools::isSubmit('updateemployee'))) {
+        $admin_obj->_errors = array(Tools::displayError('Access denied.'));
+        echo $admin_obj->displayErrors();
+
+        return false;
+    }
+
+    return $admin_obj;
+}

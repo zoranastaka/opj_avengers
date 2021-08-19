@@ -1,0 +1,20 @@
+    /**
+     * @test   rowAdd row greater than m
+     * @throws \Exception
+     */
+
+    public function testRowAddExceptionRowGreaterThanM()
+    {
+        // Given
+        $A = MatrixFactory::create([
+            [1, 2, 3],
+            [2, 3, 4],
+            [3, 4, 5],
+        ]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $A->rowAdd(4, 5, 2);
+    }

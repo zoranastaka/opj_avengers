@@ -1,0 +1,12 @@
+    /**
+     * @group partial
+     */
+
+    public function testCanPartiallyMockANormalClass()
+    {
+        $m = mock('MockeryTest_PartialNormalClass[foo]');
+        $this->assertInstanceOf(MockeryTest_PartialNormalClass::class, $m);
+        $m->shouldReceive('foo')->andReturn('cba');
+        $this->assertEquals('abc', $m->bar());
+        $this->assertEquals('cba', $m->foo());
+    }

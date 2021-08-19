@@ -1,0 +1,13 @@
+    /**
+     * This can be considered as the default cache to use in case you don't know which one to pick. It does not support
+     * the caching of any objects though. Only boolean, numbers, strings and arrays are supported. Whenever you request
+     * an entry from the cache it will fetch the entry. Cache entries might be persisted but not necessarily. It
+     * depends on the configured backend.
+     *
+     * @return \Matomo\Cache\Lazy
+     */
+
+    public static function getLazyCache()
+    {
+        return StaticContainer::get('Matomo\Cache\Lazy');
+    }

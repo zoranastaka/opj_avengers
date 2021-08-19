@@ -1,0 +1,3 @@
+	//ako se stisnuo button login/register
+
+	public function check_button_choice(){

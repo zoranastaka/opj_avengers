@@ -1,0 +1,11 @@
+    /**
+     * @group partial
+     */
+
+    public function testCantCallMethodWhenUsingBlacklistAndNoExpectation()
+    {
+        $m = mock('MockeryTest_PartialNormalClass2[!foo]');
+        $this->expectException(BadMethodCallException::class);
+        $this->expectExceptionMessageRegEx('/::bar\(\), but no expectations were specified/');
+        $m->bar();
+    }

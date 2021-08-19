@@ -1,0 +1,21 @@
+    /**
+     * @group connected
+     */
+
+    public function testWritesCommandToServer(): void
+    {
+        $commands = $this->getCommandFactory();
+
+        /** @var CommandInterface|MockObject */
+        $cmdEcho = $this->getMockBuilder($commands->getCommandClass('echo'))
+            ->onlyMethods(array('parseResponse'))
+            ->getMock();
+        $cmdEcho->setArguments(array('ECHOED'));
+        $cmdEcho
+            ->expects($this->never())
+            ->method('parseResponse');
+
+        $connection = $this->createConnection();
+        $connection->writeRequest($cmdEcho);
+        $connection->disconnect();
+    }

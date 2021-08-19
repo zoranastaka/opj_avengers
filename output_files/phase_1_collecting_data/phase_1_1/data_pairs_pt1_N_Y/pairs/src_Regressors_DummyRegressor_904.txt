@@ -1,0 +1,16 @@
+    /**
+     * Fit the training set to the given guessing strategy.
+     *
+     * @param \Rubix\ML\Datasets\Labeled $dataset
+     */
+
+    public function train(Dataset $dataset) : void
+    {
+        SpecificationChain::with([
+            new DatasetIsLabeled($dataset),
+            new DatasetIsNotEmpty($dataset),
+            new LabelsAreCompatibleWithLearner($dataset, $this),
+        ])->check();
+
+        $this->strategy->fit($dataset->labels());
+    }

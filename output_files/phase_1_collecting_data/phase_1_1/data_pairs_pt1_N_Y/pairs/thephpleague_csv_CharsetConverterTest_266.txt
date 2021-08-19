@@ -1,0 +1,10 @@
+    /**
+     * @covers ::inputEncoding
+     * @covers ::filterEncoding
+     */
+
+    public function testCharsetConverterTriggersException(): void
+    {
+        $this->expectException(OutOfRangeException::class);
+        (new CharsetConverter())->inputEncoding('');
+    }

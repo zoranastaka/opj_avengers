@@ -1,0 +1,17 @@
+    /**
+     * @test         subtract two arrays
+     * @dataProvider dataProviderForSubtractTwoArrays
+     * @param        array $xs
+     * @param        array $ys
+     * @param        array $expected
+     * @throws       \Exception
+     */
+
+    public function testSubtractTwoArrays(array $xs, array $ys, array $expected)
+    {
+        // When
+        $differences = Multi::subtract($xs, $ys);
+
+        // Then
+        $this->assertEquals($expected, $differences);
+    }

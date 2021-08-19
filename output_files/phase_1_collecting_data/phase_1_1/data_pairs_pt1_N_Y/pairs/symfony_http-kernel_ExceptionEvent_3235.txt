@@ -1,0 +1,10 @@
+    /**
+     * Replaces the thrown exception.
+     *
+     * This exception will be thrown if no response is set in the event.
+     */
+
+    public function setThrowable(\Throwable $exception): void
+    {
+        $this->throwable = $exception;
+    }

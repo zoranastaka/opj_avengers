@@ -1,0 +1,28 @@
+    /** @test */
+
+    public function it_should_exclude_the_exp_claim_when_setting_ttl_to_null()
+    {
+        // these are added from default claims
+        $this->claimFactory->shouldReceive('make')->twice()->with('iss')->andReturn(new Issuer('/foo'));
+        $this->claimFactory->shouldReceive('make')->twice()->with('jti')->andReturn(new JwtId('foo'));
+        $this->claimFactory->shouldReceive('make')->twice()->with('nbf')->andReturn(new NotBefore(123));
+        $this->claimFactory->shouldReceive('make')->twice()->with('iat')->andReturn(new IssuedAt(123));
+
+        // custom claims that override
+        $this->claimFactory->shouldReceive('get')->twice()->with('sub', 1)->andReturn(new Subject(1));
+
+        $this->claimFactory->shouldReceive('setTTL')->with(null)->andReturn($this->claimFactory);
+        $this->claimFactory->shouldReceive('getTTL')->andReturn(null);
+
+        // once
+        $claims = $this->factory->setTTL(null)->sub(1)->buildClaimsCollection();
+
+        $this->validator->shouldReceive('setRefreshFlow->check')->andReturn($claims);
+
+        // twice
+        $payload = $this->factory->setTTL(null)->sub(1)->make();
+
+        $this->assertNull($payload->get('exp'));
+
+        $this->assertInstanceOf(Payload::class, $payload);
+    }

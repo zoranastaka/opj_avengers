@@ -1,0 +1,7 @@
+        // https://github.com/humbug/php-scoper/issues/294
+        // https://github.com/humbug/php-scoper/issues/286
+
+        static function (string $filePath, string $prefix, string $contents): string {
+            if (!\in_array($filePath, ['src/Formatter/DocblockFormatter.php', 'src/Output/ShellOutput.php'], true)) {
+                return $contents;
+            }

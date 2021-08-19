@@ -1,0 +1,18 @@
+    /**
+     * Lexical catchable patterns.
+     *
+     * @return string[]
+     */
+
+    protected function getCatchablePatterns()
+    {
+        return array(
+            '[a-zA-Z]+[46]?', //ASCII and domain literal
+            '[^\x00-\x7F]',  //UTF-8
+            '[0-9]+',
+            '\r\n',
+            '::',
+            '\s+?',
+            '.',
+            );
+    }

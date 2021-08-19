@@ -1,0 +1,11 @@
+    /**
+     * Listening for files attachment.
+     *
+     * @param $callback
+     * @return Command
+     */
+
+    public function receivesFiles($callback)
+    {
+        return $this->hears(File::PATTERN, $callback);
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @param Decomposition\LU $LU
+     */
+
+    public function addLuDecomposition(Decomposition\LU $LU): void
+    {
+        $this->LU = $LU;
+    }

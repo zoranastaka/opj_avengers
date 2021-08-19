@@ -1,0 +1,17 @@
+    /**
+     * Map square root
+     *
+     * @param  array  $xs
+     *
+     * @return array
+     */
+
+    public static function sqrt(array $xs): array
+    {
+        return \array_map(
+            function ($x) {
+                return \sqrt($x);
+            },
+            $xs
+        );
+    }

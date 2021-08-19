@@ -1,0 +1,8 @@
+	/**
+	 * Set additional nocache headers.
+	 *
+	 * @param array $headers Header names and field values.
+	 * @since 3.6.0
+	 */
+
+	public static function additional_nocache_headers( $headers ) {

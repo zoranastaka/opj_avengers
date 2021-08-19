@@ -1,0 +1,8 @@
+    /**
+     * An error occurred.
+     */
+
+    public function addError(Test $test, \Throwable $t, float $time): void
+    {
+        //
+    }

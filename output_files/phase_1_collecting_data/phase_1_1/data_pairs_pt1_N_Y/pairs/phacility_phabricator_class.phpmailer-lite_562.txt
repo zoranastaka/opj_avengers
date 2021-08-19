@@ -1,0 +1,8 @@
+  /**
+   * Strips newlines to prevent header injection.
+   * @access public
+   * @param string $str String
+   * @return string
+   */
+
+  public function SecureHeader($str) {

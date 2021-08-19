@@ -1,0 +1,14 @@
+    /**
+     * @return bool
+     */
+
+    public function is_positionned()
+    {
+        if (isset($this->_is_cache["positionned"])) {
+            return $this->_is_cache["positionned"];
+        }
+
+        $position = $this->get_style()->position;
+
+        return $this->_is_cache["positionned"] = in_array($position, Style::$POSITIONNED_TYPES);
+    }

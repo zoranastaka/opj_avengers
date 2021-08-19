@@ -1,0 +1,18 @@
+    /**
+     * @test Axiom: The sum of two skew-symmetric matrices is skew-symmetric
+     * @dataProvider dataProviderForSkewSymmetricMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testSumOfTwoSkewSymmetricMatricesIsSkewSymmetric(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $B = $A->add($A);
+
+        // Then
+        $this->assertTrue($B->isSkewSymmetric());
+    }

@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}.
+     */
+
+    public function register(Container $app)
+    {
+        $app['jssdk'] = function ($app) {
+            return new Client($app);
+        };
+    }

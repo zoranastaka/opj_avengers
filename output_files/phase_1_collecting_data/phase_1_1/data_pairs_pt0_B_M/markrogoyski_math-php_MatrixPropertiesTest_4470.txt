@@ -1,0 +1,14 @@
+    /**
+     * @test         isUpperHessenberg returns true for an upper Hessenberg matrix
+     * @dataProvider dataProviderForUpperHessenbergMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsUpperHessenberg(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        $this->assertTrue($A->isUpperHessenberg());
+    }

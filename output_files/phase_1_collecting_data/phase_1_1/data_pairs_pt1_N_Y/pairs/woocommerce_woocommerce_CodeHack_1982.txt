@@ -1,0 +1,9 @@
+	/**
+	 * Check if a token is of a given type.
+	 *
+	 * @param mixed $token Token to check.
+	 * @param int   $type Type of token to check (see https://www.php.net/manual/en/tokens.php).
+	 * @return bool True if it's a token of the given type, false otherwise.
+	 */
+
+	protected function is_token_of_type( $token, $type ) {

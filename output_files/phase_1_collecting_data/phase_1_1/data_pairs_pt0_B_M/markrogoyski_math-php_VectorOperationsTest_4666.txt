@@ -1,0 +1,18 @@
+    /**
+     * @test         outer product
+     * @dataProvider dataProviderForOuterProduct
+     */
+
+    public function testOuterProduct(array $A, array $B, array $R)
+    {
+        // Given
+        $A = new Vector($A);
+        $B = new Vector($B);
+        $R = new NumericMatrix($R);
+
+        // When
+        $outerProduct = $A->outerProduct($B)->getMatrix();
+
+        // Then
+        $this->assertEquals($R->getMatrix(), $outerProduct);
+    }

@@ -1,0 +1,64 @@
+    /**
+     * Loads and stores sniffs objects used for sniffing files.
+     *
+     * @param array $files        Paths to the sniff files to register.
+     * @param array $restrictions The sniff class names to restrict the allowed
+     *                            listeners to.
+     * @param array $exclusions   The sniff class names to exclude from the
+     *                            listeners list.
+     *
+     * @return void
+     */
+
+    public function registerSniffs($files, $restrictions, $exclusions)
+    {
+        $listeners = [];
+
+        foreach ($files as $file) {
+            // Work out where the position of /StandardName/Sniffs/... is
+            // so we can determine what the class will be called.
+            $sniffPos = strrpos($file, DIRECTORY_SEPARATOR.'Sniffs'.DIRECTORY_SEPARATOR);
+            if ($sniffPos === false) {
+                continue;
+            }
+
+            $slashPos = strrpos(substr($file, 0, $sniffPos), DIRECTORY_SEPARATOR);
+            if ($slashPos === false) {
+                continue;
+            }
+
+            $className   = Autoload::loadFile($file);
+            $compareName = Util\Common::cleanSniffClass($className);
+
+            // If they have specified a list of sniffs to restrict to, check
+            // to see if this sniff is allowed.
+            if (empty($restrictions) === false
+                && isset($restrictions[$compareName]) === false
+            ) {
+                continue;
+            }
+
+            // If they have specified a list of sniffs to exclude, check
+            // to see if this sniff is allowed.
+            if (empty($exclusions) === false
+                && isset($exclusions[$compareName]) === true
+            ) {
+                continue;
+            }
+
+            // Skip abstract classes.
+            $reflection = new \ReflectionClass($className);
+            if ($reflection->isAbstract() === true) {
+                continue;
+            }
+
+            $listeners[$className] = $className;
+
+            if (PHP_CODESNIFFER_VERBOSITY > 2) {
+                echo "Registered $className".PHP_EOL;
+            }
+        }//end foreach
+
+        $this->sniffs = $listeners;
+
+    }//end registerSniffs()

@@ -1,0 +1,19 @@
+    /**
+     * @test         beta returns the expected value
+     * @dataProvider dataProviderForBeta
+     * @param        float $x
+     * @param        float $y
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testBeta(float $x, float $y, float $expected)
+    {
+        // When
+        $beta = Special::beta($x, $y);
+        $β    = Special::β($y, $x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $beta, 0.0000001);
+        $this->assertEqualsWithDelta($expected, $β, 0.0000001);
+    }

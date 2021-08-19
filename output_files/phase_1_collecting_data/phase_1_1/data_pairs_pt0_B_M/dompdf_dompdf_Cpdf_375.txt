@@ -1,0 +1,15 @@
+    /**
+     * restore an object from its stored representation. Returns its new object id.
+     *
+     * @param $obj
+     * @return int
+     */
+
+    function restoreSerializedObject($obj)
+    {
+        $obj_id = $this->openObject();
+        $this->objects[$obj_id] = unserialize($obj);
+        $this->closeObject();
+
+        return $obj_id;
+    }

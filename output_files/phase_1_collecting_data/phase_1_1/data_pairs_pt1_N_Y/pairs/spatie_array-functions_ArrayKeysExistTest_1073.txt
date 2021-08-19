@@ -1,0 +1,9 @@
+    /**
+     * @test
+     */
+
+    public function it_returns_true_when_a_single_array_key_exists()
+    {
+        $this->assertTrue(array_keys_exist('a', ['a' => 'foo', 'b' => 'bar', 'c' => 'baz']));
+        $this->assertTrue(array_keys_exist(['a'], ['a' => 'foo', 'b' => 'bar', 'c' => 'baz']));
+    }

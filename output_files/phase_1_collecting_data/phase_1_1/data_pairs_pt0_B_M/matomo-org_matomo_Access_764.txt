@@ -1,0 +1,16 @@
+    /**
+     * Returns an array of ID sites for which the user has an ADMIN access.
+     *
+     * @return array  Example if the user is ADMIN for 4 and 8
+     *                and has VIEW access for 1 and 7, it returns array(4, 8);
+     */
+
+    public function getSitesIdWithAdminAccess()
+    {
+        $this->loadSitesIfNeeded();
+
+        return array_unique(array_merge(
+                $this->idsitesByAccess['admin'],
+                $this->idsitesByAccess['superuser'])
+        );
+    }

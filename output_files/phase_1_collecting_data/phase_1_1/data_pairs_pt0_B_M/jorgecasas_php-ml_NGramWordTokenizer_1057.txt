@@ -1,0 +1,17 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function tokenize(string $text): array
+    {
+        preg_match_all('/\w\w+/u', $text, $words);
+
+        $words = $words[0];
+
+        $nGrams = [];
+        for ($j = $this->minGram; $j <= $this->maxGram; $j++) {
+            $nGrams = array_merge($nGrams, $this->getNgrams($words, $j));
+        }
+
+        return $nGrams;
+    }

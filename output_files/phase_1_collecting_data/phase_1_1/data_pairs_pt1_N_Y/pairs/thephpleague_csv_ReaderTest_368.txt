@@ -1,0 +1,25 @@
+    /**
+     * @covers ::resetProperties
+     * @covers ::computeHeader
+     * @covers ::getIterator
+     * @covers ::getRecords
+     * @covers ::combineHeader
+     */
+
+    public function testGetIterator(): void
+    {
+        $this->csv->setHeaderOffset(0);
+        foreach ($this->csv as $record) {
+            self::assertCount(4, $record);
+        }
+
+        $this->csv->setHeaderOffset(1);
+        foreach ($this->csv as $record) {
+            self::assertCount(3, $record);
+        }
+
+        $this->csv->setHeaderOffset(null);
+        foreach ($this->csv->getRecords() as $record) {
+            self::assertContains(count($record), [3, 4]);
+        }
+    }

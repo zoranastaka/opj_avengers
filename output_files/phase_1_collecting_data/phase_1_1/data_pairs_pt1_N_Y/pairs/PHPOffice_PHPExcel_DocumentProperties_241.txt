@@ -1,0 +1,10 @@
+    /**
+     * Get Subject
+     *
+     * @return string
+     */
+
+    public function getSubject()
+    {
+        return $this->subject;
+    }

@@ -1,0 +1,16 @@
+    /**
+     * Sends the data through the HTTP headers
+     *
+     * @return $this
+     */
+
+    public function sendDataInHeaders()
+    {
+        if ($this->enabled && $this->debugbar) {
+            $this->addMeasures();
+            $this->addDeprecations();
+            $this->debugbar->sendDataInHeaders();
+        }
+
+        return $this;
+    }

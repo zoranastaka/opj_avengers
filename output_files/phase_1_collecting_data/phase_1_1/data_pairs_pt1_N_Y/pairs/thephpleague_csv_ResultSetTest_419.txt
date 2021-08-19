@@ -1,0 +1,10 @@
+    /**
+     * @covers ::fetchOne
+     */
+
+    public function testfetchOne(): void
+    {
+        self::assertSame($this->expected[0], $this->stmt->process($this->csv)->fetchOne(0));
+        self::assertSame($this->expected[1], $this->stmt->process($this->csv)->fetchOne(1));
+        self::assertSame([], $this->stmt->process($this->csv)->fetchOne(35));
+    }

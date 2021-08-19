@@ -1,0 +1,18 @@
+    /**
+     * Get a list of all pages that shall be shown in a Matomo UI including a list of all widgets that shall
+     * be shown within each page.
+     *
+     * @param int $idSite
+     * @return array
+     */
+
+    public function getReportPagesMetadata($idSite)
+    {
+        Piwik::checkUserHasViewAccess($idSite);
+
+        $widgetsList  = WidgetsList::get();
+        $categoryList = CategoryList::get();
+        $metadata     = new WidgetMetadata();
+
+        return $metadata->getPagesMetadata($categoryList, $widgetsList);
+    }

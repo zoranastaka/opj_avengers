@@ -1,0 +1,25 @@
+    /**
+     * Set the update check interval.
+     *
+     * @throws \InvalidArgumentException if the update check interval is unknown
+     *
+     * @param string $interval
+     */
+
+    public function setUpdateCheck($interval)
+    {
+        $validIntervals = [
+            Checker::ALWAYS,
+            Checker::DAILY,
+            Checker::WEEKLY,
+            Checker::MONTHLY,
+            Checker::NEVER,
+        ];
+
+        if (!\in_array($interval, $validIntervals)) {
+            // @todo Fix capitalization for 0.11.0
+            throw new \InvalidArgumentException('invalid update check interval: '.$interval);
+        }
+
+        $this->updateCheck = $interval;
+    }

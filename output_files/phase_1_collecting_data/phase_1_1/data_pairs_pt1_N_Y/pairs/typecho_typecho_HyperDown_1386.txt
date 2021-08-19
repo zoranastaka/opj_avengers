@@ -1,0 +1,11 @@
+    /**
+     * endBlock
+     *
+     * @return $this
+     */
+
+    private function endBlock()
+    {
+        $this->_current = 'normal';
+        return $this;
+    }

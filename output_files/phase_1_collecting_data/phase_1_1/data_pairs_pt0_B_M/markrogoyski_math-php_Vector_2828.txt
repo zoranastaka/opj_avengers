@@ -1,0 +1,25 @@
+    /**
+     * Dot product (inner product) (A⋅B)
+     * https://en.wikipedia.org/wiki/Dot_product
+     *
+     * @param Vector $B
+     *
+     * @return number
+     *
+     * @throws Exception\VectorException
+     */
+
+    public function dotProduct(Vector $B)
+    {
+        if ($B->getN() !== $this->n) {
+            throw new Exception\VectorException('Vectors have different number of items');
+        }
+
+        return \array_sum(\array_map(
+            function ($a, $b) {
+                return $a * $b;
+            },
+            $this->A,
+            $B->getVector()
+        ));
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @return string[]
+     */
+
+    public static function getFunctions(): array
+    {
+        return [
+
+EOT;
+
+foreach ($resourceFunctions as $function) {
+    $buffer .= sprintf("            '%s',\n", $function);
+}
+
+$buffer .= <<< EOT
+        ];
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Constructor
+     *
+     * @param string $name
+     * @param \Mockery\LegacyMockInterface $mock
+     */
+
+    public function __construct($name, \Mockery\LegacyMockInterface $mock)
+    {
+        $this->_name = $name;
+        $this->_mock = $mock;
+    }

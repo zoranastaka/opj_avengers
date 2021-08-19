@@ -1,0 +1,31 @@
+    /**
+     * Test addressing.
+     */
+
+    public function testAddressing()
+    {
+        self::assertFalse($this->Mail->addAddress(''), 'Empty address accepted');
+        self::assertFalse($this->Mail->addAddress('', 'Nobody'), 'Empty address with name accepted');
+        self::assertFalse($this->Mail->addAddress('a@example..com'), 'Invalid address accepted');
+        self::assertTrue($this->Mail->addAddress('a@example.com'), 'Addressing failed');
+        self::assertFalse($this->Mail->addAddress('a@example.com'), 'Duplicate addressing failed');
+        self::assertTrue($this->Mail->addCC('b@example.com'), 'CC addressing failed');
+        self::assertFalse($this->Mail->addCC('b@example.com'), 'CC duplicate addressing failed');
+        self::assertFalse($this->Mail->addCC('a@example.com'), 'CC duplicate addressing failed (2)');
+        self::assertTrue($this->Mail->addBCC('c@example.com'), 'BCC addressing failed');
+        self::assertFalse($this->Mail->addBCC('c@example.com'), 'BCC duplicate addressing failed');
+        self::assertFalse($this->Mail->addBCC('a@example.com'), 'BCC duplicate addressing failed (2)');
+        self::assertTrue($this->Mail->addReplyTo('a@example.com'), 'Replyto Addressing failed');
+        self::assertFalse($this->Mail->addReplyTo('a@example..com'), 'Invalid Replyto address accepted');
+        self::assertTrue($this->Mail->setFrom('a@example.com', 'some name'), 'setFrom failed');
+        self::assertFalse($this->Mail->setFrom('a@example.com.', 'some name'), 'setFrom accepted invalid address');
+        $this->Mail->Sender = '';
+        $this->Mail->setFrom('a@example.com', 'some name', true);
+        self::assertEquals($this->Mail->Sender, 'a@example.com', 'setFrom failed to set sender');
+        $this->Mail->Sender = '';
+        $this->Mail->setFrom('a@example.com', 'some name', false);
+        self::assertEquals($this->Mail->Sender, '', 'setFrom should not have set sender');
+        $this->Mail->clearCCs();
+        $this->Mail->clearBCCs();
+        $this->Mail->clearReplyTos();
+    }

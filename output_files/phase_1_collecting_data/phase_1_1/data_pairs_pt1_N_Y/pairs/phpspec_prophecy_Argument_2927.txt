@@ -1,0 +1,12 @@
+    /**
+     * Checks that argument is in array.
+     *
+     * @param array $value
+     *
+     * @return Token\InArrayToken
+     */
+
+    public static function in($value)
+    {
+        return new Token\InArrayToken($value);
+    }

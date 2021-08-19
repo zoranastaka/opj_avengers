@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getUsingCache(): bool
+    {
+        return $this->usingCache;
+    }

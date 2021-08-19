@@ -1,0 +1,10 @@
+    /**
+     * Get slave status
+     *
+     * @return int status
+     */
+
+    public function getStatus()
+    {
+        return $this->status;
+    }

@@ -1,0 +1,17 @@
+    /**
+     * Adds casters for resources and objects.
+     *
+     * Maps resources or objects types to a callback.
+     * Types are in the key, with a callable caster for value.
+     * Resource types are to be prefixed with a `:`,
+     * see e.g. static::$defaultCasters.
+     *
+     * @param callable[] $casters A map of casters
+     */
+
+    public function addCasters(array $casters)
+    {
+        foreach ($casters as $type => $callback) {
+            $this->casters[$type][] = $callback;
+        }
+    }

@@ -1,0 +1,11 @@
+    /**
+     * HTML tr record offset attribute setter.
+     */
+
+    public function tr(string $record_offset_attribute_name): self
+    {
+        $clone = clone $this;
+        $clone->xml_converter = $this->xml_converter->recordElement('tr', $record_offset_attribute_name);
+
+        return $clone;
+    }

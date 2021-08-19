@@ -1,0 +1,13 @@
+    /**
+     * Add numbering style
+     *
+     * @param string $styleName
+     * @param array|\PhpOffice\PhpWord\Style\AbstractStyle $styleValues
+     * @return \PhpOffice\PhpWord\Style\Numbering
+     * @since 0.10.0
+     */
+
+    public static function addNumberingStyle($styleName, $styleValues)
+    {
+        return self::setStyleValues($styleName, new Numbering(), $styleValues);
+    }

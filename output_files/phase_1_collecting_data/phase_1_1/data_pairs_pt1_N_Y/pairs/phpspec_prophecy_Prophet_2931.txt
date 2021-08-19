@@ -1,0 +1,10 @@
+    /**
+     * Returns all created object prophecies.
+     *
+     * @return ObjectProphecy[]
+     */
+
+    public function getProphecies()
+    {
+        return $this->prophecies;
+    }

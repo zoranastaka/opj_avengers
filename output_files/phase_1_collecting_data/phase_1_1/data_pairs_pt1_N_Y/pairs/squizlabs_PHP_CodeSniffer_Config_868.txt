@@ -1,0 +1,50 @@
+    /**
+     * Set the command line values.
+     *
+     * @param array $args An array of command line arguments to set.
+     *
+     * @return void
+     */
+
+    public function setCommandLineValues($args)
+    {
+        $this->cliArgs = $args;
+        $numArgs       = count($args);
+
+        for ($i = 0; $i < $numArgs; $i++) {
+            $arg = $this->cliArgs[$i];
+            if ($arg === '') {
+                continue;
+            }
+
+            if ($arg[0] === '-') {
+                if ($arg === '-') {
+                    // Asking to read from STDIN.
+                    $this->stdin = true;
+                    self::$overriddenDefaults['stdin'] = true;
+                    continue;
+                }
+
+                if ($arg === '--') {
+                    // Empty argument, ignore it.
+                    continue;
+                }
+
+                if ($arg[1] === '-') {
+                    $this->processLongArgument(substr($arg, 2), $i);
+                } else {
+                    $switches = str_split($arg);
+                    foreach ($switches as $switch) {
+                        if ($switch === '-') {
+                            continue;
+                        }
+
+                        $this->processShortArgument($switch, $i);
+                    }
+                }
+            } else {
+                $this->processUnknownArgument($arg, $i);
+            }//end if
+        }//end for
+
+    }//end setCommandLineValues()

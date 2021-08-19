@@ -1,0 +1,16 @@
+    /**
+     * @test   quartilesInclusive when the array is empty
+     * @throws \Exception
+     */
+
+    public function testQuartilesInclusiveExceptionWhenEmptyArray()
+    {
+        // Given
+        $numbers = [];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Descriptive::quartilesInclusive($numbers);
+    }

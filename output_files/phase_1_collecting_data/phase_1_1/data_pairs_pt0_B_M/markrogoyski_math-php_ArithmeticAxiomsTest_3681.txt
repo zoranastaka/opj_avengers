@@ -1,0 +1,16 @@
+    /**
+     * @test Axiom: dr(n) = n ⇔ n ∈ {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+     * The digital root of n is n itself if and only if the number has exactly one digit.
+     */
+
+    public function testDigitalRootEqualsN()
+    {
+        // Given
+        for ($n = 0; $n < 10; $n++) {
+            // When
+            $digitalRoot = Arithmetic::digitalRoot($n);
+
+            // Then
+            $this->assertEquals($n, $digitalRoot);
+        }
+    }

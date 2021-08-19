@@ -1,0 +1,11 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getDependencies()
+    {
+        return [
+            EntryFixtures::class,
+            UserFixtures::class,
+        ];
+    }

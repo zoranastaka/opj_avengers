@@ -1,0 +1,15 @@
+    /**
+     * @test Matrix implements \ArrayAccess
+     */
+
+    public function testArrayAccessInterfaceOffsetSet()
+    {
+        // Given
+        $this->assertTrue($this->matrix->offsetExists(0));
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $this->matrix[0] = [4, 3, 5];
+    }

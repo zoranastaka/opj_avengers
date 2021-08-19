@@ -1,0 +1,14 @@
+/**
+ * Helper function : return instance of the DB
+ *
+ * Instead of:
+ *     global $ydb;
+ *     $ydb->do_stuff()
+ * Prefer :
+ *     yourls_get_db()->do_stuff()
+ *
+ * @since  1.7.10
+ * @return \YOURLS\Database\YDB
+ */
+
+function yourls_get_db() {

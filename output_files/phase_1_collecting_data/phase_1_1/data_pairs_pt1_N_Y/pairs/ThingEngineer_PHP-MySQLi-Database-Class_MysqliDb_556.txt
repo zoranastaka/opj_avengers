@@ -1,0 +1,27 @@
+    /**
+     * This method sets the current table lock method.
+     *
+     * @author Jonas Barascu
+     *
+     * @param  string $method The table lock method. Can be READ or WRITE.
+     *
+     * @throws Exception
+     * @return MysqliDb
+     */
+
+	public function setLockMethod($method)
+	{
+		// Switch the uppercase string
+		switch(strtoupper($method)) {
+			// Is it READ or WRITE?
+			case "READ" || "WRITE":
+				// Succeed
+				$this->_tableLockMethod = $method;
+				break;
+			default:
+				// Else throw an exception
+				throw new Exception("Bad lock type: Can be either READ or WRITE");
+				break;
+		}
+		return $this;
+	}

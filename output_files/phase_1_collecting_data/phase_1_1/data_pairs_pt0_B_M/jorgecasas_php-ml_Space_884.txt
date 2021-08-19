@@ -1,0 +1,28 @@
+    /**
+     * @return array|bool
+     */
+
+    public function getBoundaries()
+    {
+        if (count($this) === 0) {
+            return false;
+        }
+
+        $min = $this->newPoint(array_fill(0, $this->dimension, null));
+        $max = $this->newPoint(array_fill(0, $this->dimension, null));
+
+        /** @var Point $point */
+        foreach ($this as $point) {
+            for ($n = 0; $n < $this->dimension; ++$n) {
+                if ($min[$n] === null || $min[$n] > $point[$n]) {
+                    $min[$n] = $point[$n];
+                }
+
+                if ($max[$n] === null || $max[$n] < $point[$n]) {
+                    $max[$n] = $point[$n];
+                }
+            }
+        }
+
+        return [$min, $max];
+    }

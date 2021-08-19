@@ -1,0 +1,14 @@
+            /**
+             * @return array
+             */
+
+            public function getCsvSettings(): array
+            {
+                return [
+                    'line_ending'            => PHP_EOL,
+                    'enclosure'              => '"',
+                    'delimiter'              => ';',
+                    'include_separator_line' => true,
+                    'excel_compatibility'    => false,
+                ];
+            }

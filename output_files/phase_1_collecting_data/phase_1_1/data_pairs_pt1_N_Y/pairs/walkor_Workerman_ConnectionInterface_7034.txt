@@ -1,0 +1,7 @@
+    /**
+     * Get local port.
+     *
+     * @return int
+     */
+
+    abstract public function getLocalPort();

@@ -1,0 +1,13 @@
+    /**
+     * Element-wise <b>multiplication</b> of a vector with a scalar
+     */
+
+    public static function muls(array $m1, float $m2): array
+    {
+        $res = [];
+        foreach ($m1 as $val) {
+            $res[] = $val * $m2;
+        }
+
+        return $res;
+    }

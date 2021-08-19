@@ -1,0 +1,22 @@
+    /**
+     * Train the learner with a dataset.
+     *
+     * @param \Rubix\ML\Datasets\Dataset $dataset
+     */
+
+    public function train(Dataset $dataset) : void
+    {
+        SpecificationChain::with([
+            new DatasetIsNotEmpty($dataset),
+            new SamplesAreCompatibleWithEstimator($dataset, $this),
+        ])->check();
+
+        $this->centroids = $this->seeder->seed($dataset, $this->k);
+
+        $sizes = array_fill(0, $this->k, 0);
+        $sizes[0] = $dataset->numSamples();
+
+        $this->sizes = $sizes;
+
+        $this->partial($dataset);
+    }

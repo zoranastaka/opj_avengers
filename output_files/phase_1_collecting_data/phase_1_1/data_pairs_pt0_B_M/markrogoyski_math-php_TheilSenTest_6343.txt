@@ -1,0 +1,15 @@
+    /**
+     * @test getPoints
+     */
+
+    public function testGetPoints()
+    {
+        // Given
+        $points = [ [1,2], [2,3], [4,5], [5,7], [6,8] ];
+
+        // When
+        $regression = new TheilSen($points);
+
+        // Then
+        $this->assertEquals($points, $regression->getPoints());
+    }

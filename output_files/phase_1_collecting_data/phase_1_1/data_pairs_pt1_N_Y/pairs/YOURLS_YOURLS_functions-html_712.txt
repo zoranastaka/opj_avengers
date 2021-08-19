@@ -1,0 +1,6 @@
+/**
+ * Echo the main table head
+ *
+ */
+
+function yourls_table_head() {

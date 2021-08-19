@@ -1,0 +1,30 @@
+    /**
+     * Standard error of the mean (SEM)
+     * The standard deviation of the sample-mean's estimate of a population mean.
+     * https://en.wikipedia.org/wiki/Standard_error
+     *
+     *       s
+     * SEₓ = --
+     *       √n
+     *
+     * s = sample standard deviation
+     * n = size (number of observations) of the sample
+     *
+     * @param float[] $X list of numbers (random variable X)
+     *
+     * @return float
+     *
+     * @throws Exception\OutOfBoundsException
+     * @throws Exception\BadDataException if the input array of numbers is empty
+     */
+
+    public static function standardErrorOfTheMean(array $X): float
+    {
+        if (empty($X)) {
+            throw new Exception\BadDataException('Cannot find the SEM of an empty list of numbers');
+        }
+
+        $s  = Descriptive::standardDeviation($X, Descriptive::SAMPLE);
+        $√n = \sqrt(\count($X));
+        return $s / $√n;
+    }

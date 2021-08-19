@@ -1,0 +1,10 @@
+    /**
+     * Get slave pid
+     *
+     * @return int slave pid
+     */
+
+    public function getPid()
+    {
+        return $this->pid;
+    }

@@ -1,0 +1,3 @@
+	//vraća ime tvrtke s poslanim oib-om
+
+	function get_companyname_by_oib($oib){

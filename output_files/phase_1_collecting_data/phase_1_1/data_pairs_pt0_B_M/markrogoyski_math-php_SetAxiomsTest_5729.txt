@@ -1,0 +1,20 @@
+    /**
+     * @test Axiom: (A ∪ B) × C = (A × C) ∪ (B × C)
+     * A union B cross C is the union of A cross C and B cross C
+     *
+     * @dataProvider dataProviderForThreeSets
+     * @param        Set $A
+     * @param        Set $B
+     * @param        Set $C
+     */
+
+    public function testAUnionBCrossCEqualsUnsionOfACRossCAndBCrossC(Set $A, Set $B, Set $C)
+    {
+        // Given
+        $⟮A∪B⟯×C = $A->union($B)->cartesianProduct($C);
+        $⟮A×C⟯∪⟮B×C⟯ = $A->cartesianProduct($C)->union($B->cartesianProduct($C));
+
+        // Then
+        $this->assertEquals($⟮A∪B⟯×C, $⟮A×C⟯∪⟮B×C⟯);
+        $this->assertEquals($⟮A∪B⟯×C->asArray(), $⟮A×C⟯∪⟮B×C⟯->asArray());
+    }

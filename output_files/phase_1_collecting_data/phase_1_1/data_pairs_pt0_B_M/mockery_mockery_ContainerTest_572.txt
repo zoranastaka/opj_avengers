@@ -1,0 +1,12 @@
+    /**
+     * @group traversable2
+     */
+
+    public function testCanMockInterfacesAlongsideTraversable()
+    {
+        $mock = mock('stdClass, ArrayAccess, Countable, Traversable');
+        $this->assertInstanceOf('stdClass', $mock);
+        $this->assertInstanceOf('ArrayAccess', $mock);
+        $this->assertInstanceOf('Countable', $mock);
+        $this->assertInstanceOf('Traversable', $mock);
+    }

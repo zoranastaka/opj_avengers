@@ -1,0 +1,25 @@
+    /**
+     * Set index for sheet by sheet name.
+     *
+     * @param  string $sheetName Sheet name to modify index for
+     * @param  int $newIndex New index for the sheet
+     * @return int New sheet index
+     * @throws PHPExcel_Exception
+     */
+
+    public function setIndexByName($sheetName, $newIndex)
+    {
+        $oldIndex = $this->getIndex($this->getSheetByName($sheetName));
+        $pSheet = array_splice(
+            $this->workSheetCollection,
+            $oldIndex,
+            1
+        );
+        array_splice(
+            $this->workSheetCollection,
+            $newIndex,
+            0,
+            $pSheet
+        );
+        return $newIndex;
+    }

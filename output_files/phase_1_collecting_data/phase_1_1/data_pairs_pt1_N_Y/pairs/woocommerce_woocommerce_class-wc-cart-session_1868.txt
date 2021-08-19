@@ -1,0 +1,14 @@
+	/**
+	 * Save the persistent cart when the cart is updated.
+	 */
+
+	public function persistent_cart_update() {
+		if ( get_current_user_id() && apply_filters( 'woocommerce_persistent_cart_enabled', true ) ) {
+			update_user_meta(
+				get_current_user_id(),
+				'_woocommerce_persistent_cart_' . get_current_blog_id(),
+				array(
+					'cart' => $this->get_cart_for_session(),
+				)
+			);
+		}

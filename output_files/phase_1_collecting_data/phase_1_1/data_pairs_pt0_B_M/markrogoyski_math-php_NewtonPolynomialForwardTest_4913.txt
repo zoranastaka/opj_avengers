@@ -1,0 +1,50 @@
+    /**
+     * @test         Solve
+     * @dataProvider dataProviderForSolve
+     * @param        float $x
+     * @throws       \Exception
+     *
+     * f(x) = x⁴ + 8x³ -13x² -92x + 96
+     *
+     * The error is bounded by:
+     * |f(x)-p(x)| = tol <= (max f⁽ⁿ⁺¹⁾(x))*(x-x₀)*...*(x-xn)/(n+1)!
+     *
+     * f'(x)  = 4x³ +24x² -26x - 92
+     * f''(x) = 12x² - 48x - 26
+     * f'''(x) = 24x - 48
+     * f⁽⁴⁾(x) = 24
+     *
+     * So, tol <= 24*(x-x₀)*...*(x-xn)/(4!) = (x-x₀)*...*(x-xn) where
+     *
+     * p(x) agrees with f(x) at x = $_
+     */
+
+    public function testSolveNonZeroError($x)
+    {
+        // f(x) = x⁴ + 8x³ -13x² -92x + 96
+        $f = function ($x) {
+            return $x ** 4 + 8 * $x ** 3 - 13 * $x ** 2 - 92 * $x + 96;
+        };
+
+        // And
+        $a = 0;
+        $b = 10;
+        $n = 5;
+
+        // and
+        $x₀  = 0;
+        $x₁  = 3;
+        $x₂  = 6;
+        $x₃  = 9;
+        $tol = \abs(($x - $x₀) * ($x - $x₁) * ($x - $x₂) * ($x - $x₃));
+
+        // And
+        $p        = NewtonPolynomialForward::interpolate($f, $a, $b, $n);
+        $expected = $f($x);
+
+        // When
+        $actual = $p($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $actual, $tol);
+    }

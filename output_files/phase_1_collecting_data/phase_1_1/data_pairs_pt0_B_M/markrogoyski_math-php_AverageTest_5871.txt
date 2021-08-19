@@ -1,0 +1,17 @@
+    /**
+     * @test         identricMean
+     * @dataProvider dataProviderForIdentricMean
+     * @param        float $x
+     * @param        float $y
+     * @param        float $expectedMean
+     * @throws       \Exception
+     */
+
+    public function testIdentricMean(float $x, float $y, float $expectedMean)
+    {
+        // When
+        $mean = Average::identricMean($x, $y);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedMean, $mean, 0.001);
+    }

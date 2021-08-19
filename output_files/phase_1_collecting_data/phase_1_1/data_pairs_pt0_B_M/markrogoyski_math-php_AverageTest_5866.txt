@@ -1,0 +1,11 @@
+    /**
+     * @test arithmeticGeometricMean negative
+     */
+
+    public function testArithmeticGeometricMeanNegativeNAN()
+    {
+        $this->assertNan(Average::arithmeticGeometricMean(-32, 45));
+        $this->assertNan(Average::arithmeticGeometricMean(32, -45));
+        $this->assertNan(Average::agm(-32, 45));
+        $this->assertNan(Average::agm(32, -45));
+    }

@@ -1,0 +1,16 @@
+    /**
+     * Return the settings of the hyper-parameters in an associative array.
+     *
+     * @internal
+     *
+     * @return mixed[]
+     */
+
+    public function params() : array
+    {
+        return [
+            'radius' => $this->radius,
+            'weighted' => $this->weighted,
+            'tree' => $this->tree,
+        ];
+    }

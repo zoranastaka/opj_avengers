@@ -1,0 +1,12 @@
+    /**
+     * @throws ExpressionErrorException
+     */
+
+    public function nodeToXPath(NodeInterface $node): XPathExpr
+    {
+        if (!isset($this->nodeTranslators[$node->getNodeName()])) {
+            throw new ExpressionErrorException(sprintf('Node "%s" not supported.', $node->getNodeName()));
+        }
+
+        return $this->nodeTranslators[$node->getNodeName()]($node, $this);
+    }

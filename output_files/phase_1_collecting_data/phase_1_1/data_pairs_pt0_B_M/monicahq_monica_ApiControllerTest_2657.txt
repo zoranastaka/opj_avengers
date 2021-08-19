@@ -1,0 +1,18 @@
+    /** @test */
+
+    public function it_gets_the_sort_criteria()
+    {
+        $apiController = new ApiController;
+
+        $this->assertEquals(
+            'created_at',
+            $apiController->getSortCriteria()
+        );
+
+        $apiController->setSortCriteria('created_at');
+
+        $this->assertEquals(
+            'created_at',
+            $apiController->getSortCriteria()
+        );
+    }

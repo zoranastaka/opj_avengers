@@ -1,0 +1,10 @@
+    /**
+     * Push a header on the stack
+     *
+     * @param array $header
+     */
+
+    public static function push(array $header)
+    {
+        self::$data[] = $header;
+    }

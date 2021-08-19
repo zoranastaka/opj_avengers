@@ -1,0 +1,12 @@
+    /**
+     * Ensures the process is running or terminated, throws a LogicException if the process has a not started.
+     *
+     * @throws LogicException if the process has not run
+     */
+
+    private function requireProcessIsStarted(string $functionName)
+    {
+        if (!$this->isStarted()) {
+            throw new LogicException(sprintf('Process must be started before calling "%s()".', $functionName));
+        }
+    }

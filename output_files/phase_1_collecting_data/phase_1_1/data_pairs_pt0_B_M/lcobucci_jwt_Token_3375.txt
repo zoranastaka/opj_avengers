@@ -1,0 +1,5 @@
+    /**
+     * Returns if the token was issued by any of given issuers
+     */
+
+    public function hasBeenIssuedBy(string ...$issuers): bool;

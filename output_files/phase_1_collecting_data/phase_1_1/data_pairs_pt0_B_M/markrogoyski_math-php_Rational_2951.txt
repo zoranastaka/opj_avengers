@@ -1,0 +1,19 @@
+    /**
+     * Inverse of a rational number
+     *
+     * @return Rational
+     *
+     * @throws Exception\DivisionByZeroException if R is zero
+     */
+
+    public function inverse(): Rational
+    {
+        $w = $this->whole;
+        $n = $this->numerator;
+        $d = $this->denominator;
+
+        if ($w == 0 && $n == 0) {
+            throw new Exception\DivisionByZeroException('Cannot take the inverse of zero.');
+        }
+        return new Rational(0, $d, $d * $w + $n);
+    }

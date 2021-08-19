@@ -1,0 +1,16 @@
+    /**
+     * @test         brayCurtis
+     * @dataProvider dataProviderForBrayCurtis
+     * @param        array $u
+     * @param        array $v
+     * @param        float $expected
+     */
+
+    public function testBrayCurtis(array $u, array $v, float $expected)
+    {
+        // When
+        $distance = Distance::brayCurtis($u, $v);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $distance, 0.0001);
+    }

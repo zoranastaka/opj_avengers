@@ -1,0 +1,11 @@
+    /**
+     * Returns a new string starting with $string.
+     *
+     * @param  string $string The string to append
+     * @return static Object with appended $string
+     */
+
+    public function prepend($string)
+    {
+        return static::create($string . $this->str, $this->encoding);
+    }

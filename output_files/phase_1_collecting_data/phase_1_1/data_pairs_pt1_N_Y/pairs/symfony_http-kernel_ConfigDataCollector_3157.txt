@@ -1,0 +1,10 @@
+    /**
+     * Gets the PHP version extra part.
+     *
+     * @return string|null The extra part
+     */
+
+    public function getPhpVersionExtra()
+    {
+        return $this->data['php_version_extra'] ?? null;
+    }

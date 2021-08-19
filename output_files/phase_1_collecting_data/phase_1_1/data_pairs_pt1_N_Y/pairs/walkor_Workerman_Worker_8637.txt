@@ -1,0 +1,11 @@
+    /**
+     * Unlock.
+     *
+     * @return void
+     */
+
+    protected static function unlock()
+    {
+        $fd = \fopen(static::$_startFile, 'r');
+        $fd && flock($fd, \LOCK_UN);
+    }

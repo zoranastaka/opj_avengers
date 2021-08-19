@@ -1,0 +1,19 @@
+// funkcija za dohvat zadataka u listi
+
+function zadaci_liste($to_do_id, $page, $npp, $group, $value)
+{
+    global $zadaci;
+    
+    $lista_zadaci = $GLOBALS['con']->prepare('  select a.naziv, a.status, a.prioritet_id, a.rok , b.naziv as "naziv_prioriteta", a.zadatak_id 
+                                                from zadaci as a inner join prioriteti as b on a.prioritet_id = b.prioritet_id 
+                                                where lista_id = :to_do_id
+                                                order by ' . $group .  ' ' . $value .'
+                                                limit '  . (($page * $npp / $npp)<=0 ? 0 : ($page * $npp - $npp)) . ', ' . $npp
+                                                );
+    $lista_zadaci->execute([
+        ':to_do_id' => $to_do_id
+    ]);
+    $zadaci = $lista_zadaci->fetchAll(PDO::FETCH_OBJ);
+
+    return $zadaci;
+}

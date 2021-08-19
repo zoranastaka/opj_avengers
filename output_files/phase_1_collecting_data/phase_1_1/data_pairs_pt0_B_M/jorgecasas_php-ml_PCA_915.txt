@@ -1,0 +1,21 @@
+    /**
+     * Transforms the given sample to a lower dimensional vector by using
+     * the eigenVectors obtained in the last run of <code>fit</code>.
+     *
+     * @throws InvalidOperationException
+     */
+
+    public function transform(array $sample): array
+    {
+        if (!$this->fit) {
+            throw new InvalidOperationException('PCA has not been fitted with respect to original dataset, please run PCA::fit() first');
+        }
+
+        if (!is_array($sample[0])) {
+            $sample = [$sample];
+        }
+
+        $sample = $this->normalize($sample, count($sample[0]));
+
+        return $this->reduce($sample);
+    }

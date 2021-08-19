@@ -1,0 +1,12 @@
+    /**
+     * Get regression equation (y = V * X / (K + X))
+     *
+     * @param array $params
+     *
+     * @return string
+     */
+
+    public function getModelEquation(array $params): string
+    {
+        return \sprintf('y = %fx/(%f+x)', $params[self::$V], $params[self::$K]);
+    }

@@ -1,0 +1,10 @@
+    /** @test */
+
+    public function gifts_delete_error()
+    {
+        $user = $this->signin();
+
+        $response = $this->json('DELETE', '/api/gifts/0');
+
+        $response->assertStatus(422);
+    }

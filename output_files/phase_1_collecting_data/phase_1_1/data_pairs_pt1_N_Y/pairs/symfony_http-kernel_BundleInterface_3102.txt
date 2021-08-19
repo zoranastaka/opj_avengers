@@ -1,0 +1,7 @@
+    /**
+     * Gets the Bundle namespace.
+     *
+     * @return string The Bundle namespace
+     */
+
+    public function getNamespace();

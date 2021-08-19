@@ -1,0 +1,18 @@
+    /**
+     * @test         Axiom: L is lower triangular (Cholesky decomposition)
+     * @dataProvider dataProviderForPositiveDefiniteMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testCholeskyDecompositionLIsLowerTriangular(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $cholesky = $A->choleskyDecomposition();
+
+        // Then
+        $this->assertTrue($cholesky->L->isLowerTriangular());
+    }

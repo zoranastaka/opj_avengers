@@ -1,0 +1,13 @@
+    /**
+     * @return array [points, beta0, beta1]
+     */
+
+    public function dataProviderForTProbability(): array
+    {
+        return [
+            [
+                [ [1,2], [2,3], [4,5], [5,7], [6,8] ],
+                0.999652136, 0.913994632,
+            ],
+        ];
+    }

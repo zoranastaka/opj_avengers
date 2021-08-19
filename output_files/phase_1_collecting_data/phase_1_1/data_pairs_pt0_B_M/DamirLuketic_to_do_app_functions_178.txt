@@ -1,0 +1,14 @@
+// funkcija za broj stranica zadataka
+
+function broj_stranica_zadataka($to_do_id, $npp)
+{
+    global $pages;
+
+    $total = $GLOBALS['con']->prepare(' select count(naziv) from zadaci where lista_id = :to_do_id ');
+    $total->execute([
+        ':to_do_id' => $to_do_id
+    ]);
+    $pages = ceil($total->fetchColumn() / $npp);
+
+    return $pages;
+}

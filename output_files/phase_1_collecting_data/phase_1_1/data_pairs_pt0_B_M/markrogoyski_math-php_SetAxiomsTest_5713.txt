@@ -1,0 +1,18 @@
+    /**
+     * @test Axiom: A ⊆ (A ∪ B)
+     * A is a subset of A union B
+     *
+     * @dataProvider dataProviderForTwoSets
+     * @param        Set $A
+     * @param        Set $B
+     */
+
+    public function testAIsSubsetOfAUnionB(Set $A, Set $B)
+    {
+        // Given
+        $A∪B = $A->union($B);
+
+        // Then
+        $this->assertTrue($A->isSubset($A∪B));
+        $this->assertTrue($B->isSubset($A∪B));
+    }

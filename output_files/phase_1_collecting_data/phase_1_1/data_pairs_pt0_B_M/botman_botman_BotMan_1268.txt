@@ -1,0 +1,12 @@
+    /**
+     * Retrieve the chat message that are sent from bots.
+     *
+     * @return array
+     */
+
+    public function getBotMessages()
+    {
+        return Collection::make($this->getDriver()->getMessages())->filter(function (IncomingMessage $message) {
+            return $message->isFromBot();
+        })->toArray();
+    }

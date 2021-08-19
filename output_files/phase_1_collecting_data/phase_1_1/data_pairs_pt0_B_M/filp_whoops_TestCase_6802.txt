@@ -1,0 +1,11 @@
+    /**
+     * @return Run
+     */
+
+    protected function getRunInstance()
+    {
+        $run = new Run();
+        $run->allowQuit(false);
+
+        return $run;
+    }

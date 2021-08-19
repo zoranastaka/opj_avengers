@@ -1,0 +1,13 @@
+    /**
+     * @codeCoverageIgnore
+     * Send the password reset notification.
+     *
+     * @param string $token
+     */
+
+    public function sendPasswordResetNotification($token): void
+    {
+        $ipAddress = Request::ip();
+
+        event(new RequestedNewPassword($this, $token, $ipAddress));
+    }

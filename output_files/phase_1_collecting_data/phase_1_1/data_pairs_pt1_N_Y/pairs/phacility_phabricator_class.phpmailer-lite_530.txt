@@ -1,0 +1,7 @@
+  /**
+   * Creates recipient headers.
+   * @access public
+   * @return string
+   */
+
+  public function AddrAppend($type, $addr) {

@@ -1,0 +1,10 @@
+    /**
+     * Sets a parameter by name.
+     *
+     * @param mixed $value The value
+     */
+
+    public function set(string $key, $value)
+    {
+        $this->parameters[$key] = $value;
+    }

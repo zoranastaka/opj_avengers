@@ -1,0 +1,16 @@
+    /**
+     * Get Header Media Elements Count
+     *
+     * @deprecated 0.10.0
+     *
+     * @param string $key
+     *
+     * @return int
+     *
+     * @codeCoverageIgnore
+     */
+
+    public static function countHeaderMediaElements($key)
+    {
+        return self::countElements($key);
+    }

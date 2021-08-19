@@ -1,0 +1,16 @@
+    /**
+     * Initiates color object from given R, G and B values
+     *
+     * @param  int $r
+     * @param  int $g
+     * @param  int $b
+     * @return \Intervention\Image\AbstractColor
+     */
+
+    public function initFromRgb($r, $g, $b)
+    {
+        $this->r = intval($r);
+        $this->g = intval($g);
+        $this->b = intval($b);
+        $this->a = 0;
+    }

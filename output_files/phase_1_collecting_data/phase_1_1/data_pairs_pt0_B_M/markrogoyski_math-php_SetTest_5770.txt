@@ -1,0 +1,18 @@
+    /**
+     * @test         String representation
+     * @dataProvider dataProviderForToString
+     * @param        array  $members
+     * @param        string $expected
+     */
+
+    public function testToString(array $members, string $expected)
+    {
+        // Given
+        $set = new Set($members);
+
+        // When
+        $stringRepresentation = (string) $set;
+
+        // Then
+        $this->assertSame($expected, $stringRepresentation);
+    }

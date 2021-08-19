@@ -1,0 +1,9 @@
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+
+    public function testPadException()
+    {
+        $stringy = S::create('foo');
+        $result = $stringy->pad(5, 'foo', 'bar');
+    }

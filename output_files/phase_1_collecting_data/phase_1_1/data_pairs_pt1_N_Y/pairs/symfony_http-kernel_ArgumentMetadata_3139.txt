@@ -1,0 +1,10 @@
+    /**
+     * Returns whether the argument accepts null values.
+     *
+     * @return bool
+     */
+
+    public function isNullable()
+    {
+        return $this->isNullable;
+    }

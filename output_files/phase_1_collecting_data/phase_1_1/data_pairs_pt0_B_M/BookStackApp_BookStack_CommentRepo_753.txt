@@ -1,0 +1,12 @@
+    /**
+     * Update an existing comment.
+     */
+
+    public function update(Comment $comment, string $text): Comment
+    {
+        $comment->updated_by = user()->id;
+        $comment->text = $text;
+        $comment->html = $this->commentToHtml($text);
+        $comment->save();
+        return $comment;
+    }

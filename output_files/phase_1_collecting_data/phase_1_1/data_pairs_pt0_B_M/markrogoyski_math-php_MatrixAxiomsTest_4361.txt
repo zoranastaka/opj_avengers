@@ -1,0 +1,17 @@
+    /**
+     * @test         Axiom: A matrix that is both upper Hessenberg and lower Hessenberg is a tridiagonal matrix
+     * @dataProvider dataProviderForTridiagonalMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testTridiagonalMatrixIsUpperAndLowerHessenberg(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isTridiagonal());
+        $this->assertTrue($A->isUpperHessenberg());
+        $this->assertTrue($A->isLowerHessenberg());
+    }

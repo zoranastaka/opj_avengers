@@ -1,0 +1,15 @@
+    /**
+     * Traverses a node and calls the registered visitors.
+     */
+
+    public function traverse(Node $node): Node
+    {
+        ksort($this->visitors);
+        foreach ($this->visitors as $visitors) {
+            foreach ($visitors as $visitor) {
+                $node = $this->traverseForVisitor($visitor, $node);
+            }
+        }
+
+        return $node;
+    }

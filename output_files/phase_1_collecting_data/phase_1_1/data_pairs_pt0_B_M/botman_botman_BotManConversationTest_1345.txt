@@ -1,0 +1,17 @@
+    /** @test */
+
+    public function it_calls_custom_repeat_method_on_invalid_contact_answers()
+    {
+        $this->botman->hears('Hello', function (BotMan $bot) {
+            $bot->startConversation(new TestDataConversation());
+        });
+
+        $this->replyWithFakeMessage('Hello');
+        static::assertEquals('What do you want to test?', $this->fakeDriver->getBotMessages()[0]->getText());
+
+        $this->replyWithFakeMessage('custom_contact_repeat');
+        static::assertEquals('Please supply a contact', $this->fakeDriver->getBotMessages()[1]->getText());
+
+        $this->replyWithFakeMessage('not_a_contact');
+        static::assertEquals('That is not a contact...', $this->fakeDriver->getBotMessages()[2]->getText());
+    }

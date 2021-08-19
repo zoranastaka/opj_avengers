@@ -1,0 +1,10 @@
+    /**
+     * Returns the user.
+     *
+     * @return string|null
+     */
+
+    public function getUser()
+    {
+        return $this->headers->get('PHP_AUTH_USER');
+    }

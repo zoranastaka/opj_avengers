@@ -1,0 +1,10 @@
+    /**
+     * Returns whether this frame belongs to the application or not.
+     *
+     * @return boolean
+     */
+
+    public function isApplication()
+    {
+        return $this->application;
+    }

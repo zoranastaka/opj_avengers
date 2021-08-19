@@ -1,0 +1,13 @@
+    /**
+     * @test
+     * @throws \Exception
+     */
+
+    public function testGetTwoSidedTValueFromConfidenceLevelExceptionBadDF()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        TDistribution::getTwoSidedTValueFromConfidenceLevel(1234, 99);
+    }

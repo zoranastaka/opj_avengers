@@ -1,0 +1,10 @@
+    /**
+     * Class constructor.
+     */
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        Swoft::setAlias('@database', dirname(__DIR__) . '/database');
+    }

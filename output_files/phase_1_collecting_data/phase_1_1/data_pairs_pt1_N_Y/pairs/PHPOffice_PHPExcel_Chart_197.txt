@@ -1,0 +1,13 @@
+    /**
+     * Set Title
+     *
+     * @param    PHPExcel_Chart_Title $title
+     * @return    PHPExcel_Chart
+     */
+
+    public function setTitle(PHPExcel_Chart_Title $title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }

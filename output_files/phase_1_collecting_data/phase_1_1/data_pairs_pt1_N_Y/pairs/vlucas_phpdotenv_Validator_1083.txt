@@ -1,0 +1,19 @@
+    /**
+     * Assert that each variable is amongst the given choices.
+     *
+     * @param string[] $choices
+     *
+     * @throws \Dotenv\Exception\ValidationException
+     *
+     * @return \Dotenv\Validator
+     */
+
+    public function allowedValues(array $choices)
+    {
+        return $this->assertNullable(
+            static function (string $value) use ($choices) {
+                return \in_array($value, $choices, true);
+            },
+            \sprintf('is not one of [%s]', \implode(', ', $choices))
+        );
+    }

@@ -1,0 +1,14 @@
+    /**
+     * @covers ::onCreate
+     * @covers ::isValidSequence
+     * @dataProvider wrongParamProvider
+     *
+     * @param array<string> $params
+     */
+
+    public function testOnCreateFailedWithWrongParams(array $params): void
+    {
+        $filter = new EncloseField();
+        $filter->params = $params;
+        self::assertFalse($filter->onCreate());
+    }

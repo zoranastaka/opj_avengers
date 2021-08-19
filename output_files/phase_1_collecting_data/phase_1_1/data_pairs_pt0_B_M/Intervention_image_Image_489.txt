@@ -1,0 +1,10 @@
+    /**
+     * Returns current image resource/obj
+     *
+     * @return mixed
+     */
+
+    public function getCore()
+    {
+        return $this->core;
+    }

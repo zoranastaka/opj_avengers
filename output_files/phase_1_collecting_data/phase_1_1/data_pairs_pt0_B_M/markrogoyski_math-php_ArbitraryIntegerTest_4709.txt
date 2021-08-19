@@ -1,0 +1,18 @@
+    /**
+     * @test         Binary representation
+     * @dataProvider dataProviderForIntToInt
+     * @param        int $int
+     * @throws       \Exception
+     */
+
+    public function testIntToBinary(int $int)
+    {
+        // Given
+        $obj = new ArbitraryInteger($int);
+
+        // When
+        $binaryRepresentation = $obj->toBinary();
+
+        // Then
+        $this->assertNotEmpty($binaryRepresentation);
+    }

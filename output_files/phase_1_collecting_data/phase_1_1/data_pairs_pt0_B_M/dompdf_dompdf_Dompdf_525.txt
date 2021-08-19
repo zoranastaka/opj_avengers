@@ -1,0 +1,10 @@
+    /**
+     * @param resource $http_context
+     * @return $this
+     * @deprecated
+     */
+
+    public function set_http_context($http_context)
+    {
+        return $this->setHttpContext($http_context);
+    }

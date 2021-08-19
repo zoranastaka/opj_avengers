@@ -1,0 +1,20 @@
+    /**
+     * Circular variance
+     * https://en.wikipedia.org/wiki/Directional_statistics#Measures_of_location_and_spread
+     * https://www.ebi.ac.uk/thornton-srv/software/PROCHECK/nmr_manual/man_cv.html
+     * https://ncss-wpengine.netdna-ssl.com/wp-content/themes/ncss/pdf/Procedures/NCSS/Circular_Data_Analysis.pdf
+     *              _
+     * Var(θ) = 1 - R
+     * Var(θ) = 1 - ρ
+     *
+     * @param  array $angles
+     *
+     * @return float
+     */
+
+    public static function variance(array $angles): float
+    {
+        $ρ = self::meanResultantLength($angles);
+
+        return 1 - $ρ;
+    }

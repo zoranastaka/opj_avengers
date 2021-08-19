@@ -1,0 +1,3 @@
+	//samo preusmjeri na dashboard
+
+	public function index() {

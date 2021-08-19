@@ -1,0 +1,46 @@
+    /**
+     * @return Cluster[]
+     */
+
+    protected function initializeKMPPClusters(int $clustersNumber): array
+    {
+        $clusters = [];
+        $this->rewind();
+
+        /** @var Point $current */
+        $current = $this->current();
+
+        $clusters[] = new Cluster($this, $current->getCoordinates());
+
+        $distances = new SplObjectStorage();
+
+        for ($i = 1; $i < $clustersNumber; ++$i) {
+            $sum = 0;
+            /** @var Point $point */
+            foreach ($this as $point) {
+                $closest = $point->getClosest($clusters);
+                if ($closest === null) {
+                    continue;
+                }
+
+                $distance = $point->getDistanceWith($closest);
+                $sum += $distances[$point] = $distance;
+            }
+
+            $sum = random_int(0, (int) $sum);
+            /** @var Point $point */
+            foreach ($this as $point) {
+                $sum -= $distances[$point];
+
+                if ($sum > 0) {
+                    continue;
+                }
+
+                $clusters[] = new Cluster($this, $point->getCoordinates());
+
+                break;
+            }
+        }
+
+        return $clusters;
+    }

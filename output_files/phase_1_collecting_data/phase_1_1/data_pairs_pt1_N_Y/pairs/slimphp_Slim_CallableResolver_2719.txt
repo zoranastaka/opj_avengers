@@ -1,0 +1,20 @@
+    /**
+     * @param mixed $resolved
+     * @param mixed $toResolve
+     *
+     * @throws RuntimeException
+     *
+     * @return callable
+     */
+
+    private function assertCallable($resolved, $toResolve): callable
+    {
+        if (!is_callable($resolved)) {
+            throw new RuntimeException(sprintf(
+                '%s is not resolvable',
+                is_callable($toResolve) || is_object($toResolve) || is_array($toResolve) ?
+                    json_encode($toResolve) : $toResolve
+            ));
+        }
+        return $resolved;
+    }

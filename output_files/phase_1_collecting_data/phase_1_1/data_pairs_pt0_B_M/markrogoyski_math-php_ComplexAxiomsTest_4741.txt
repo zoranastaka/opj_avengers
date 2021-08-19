@@ -1,0 +1,29 @@
+    /**
+     * @test Axiom: z(u + v) = zu + zv
+     * Distributed Law.
+     * @dataProvider dataProviderForThreeComplexNumbers
+     * @param        int $r₁
+     * @param        int $i₁
+     * @param        int $r₂
+     * @param        int $i₂
+     * @param        int $r₃
+     * @param        int $i₃
+     * @throws       \Exception
+     */
+
+    public function testDistributedLaw(int $r₁, int $i₁, int $r₂, int $i₂, int $r₃, int $i₃)
+    {
+        // Given
+        $z = new Complex($r₁, $i₁);
+        $u = new Complex($r₂, $i₂);
+        $v = new Complex($r₃, $i₃);
+
+        // When
+        $z⟮u ＋ v⟯ = $z->multiply($u->add($v));
+        $zu ＋ zv = $z->multiply($u)->add($z->multiply($v));
+
+        $this->assertTrue($z⟮u ＋ v⟯->equals($zu ＋ zv));
+        $this->assertTrue($zu ＋ zv->equals($z⟮u ＋ v⟯));
+        $this->assertEquals($z⟮u ＋ v⟯->r, $zu ＋ zv->r);
+        $this->assertEquals($z⟮u ＋ v⟯->i, $zu ＋ zv->i);
+    }

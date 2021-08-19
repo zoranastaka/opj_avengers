@@ -1,0 +1,19 @@
+    /**
+     * @test         median
+     * @dataProvider dataProviderForMedian
+     * @param        float $μ
+     * @param        float $σ
+     * @param        float $expected_median
+     */
+
+    public function testMedian(float $μ, float $σ, float $expected_median)
+    {
+        // Given
+        $log_normal = new LogNormal($μ, $σ);
+
+        // When
+        $median = $log_normal->median();
+
+        // Then
+        $this->assertEqualsWithDelta($expected_median, $median, 0.000001);
+    }

@@ -1,0 +1,13 @@
+    /**
+     * Scalar divide
+     * kA = [k / a₁, k / a₂, k / a₃ ...]
+     *
+     * @param number $k Scale factor
+     *
+     * @return Vector
+     */
+
+    public function scalarDivide($k): Vector
+    {
+        return new Vector(Map\Single::divide($this->A, $k));
+    }

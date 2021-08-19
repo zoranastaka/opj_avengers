@@ -1,0 +1,9 @@
+    /**
+     * Creates nested Concat nodes from a list of expressions.
+     *
+     * @param Expr|string ...$exprs Expressions or literal strings
+     *
+     * @return Concat
+     */
+
+    public function concat(...$exprs) : Concat {

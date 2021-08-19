@@ -1,0 +1,16 @@
+    /**
+     * @test         median
+     * @dataProvider dataProviderForMedian
+     * @param        array $numbers
+     * @param        float $expectedMedian
+     * @throws       \Exception
+     */
+
+    public function testMedian(array $numbers, float $expectedMedian)
+    {
+        // When
+        $median = Average::median($numbers);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedMedian, $median, 0.01);
+    }

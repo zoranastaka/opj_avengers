@@ -1,0 +1,8 @@
+    /**
+     * @expectedException \Intervention\Image\Exception\NotReadableException
+     */
+
+    public function testParseUnknown()
+    {
+        $c = new Color('xxxxxxxxxxxxxxxxxxxx');
+    }

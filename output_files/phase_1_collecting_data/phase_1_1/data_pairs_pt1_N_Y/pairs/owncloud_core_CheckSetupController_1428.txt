@@ -1,0 +1,11 @@
+	/**
+	 * Checks if the correct memcache module for PHP is installed. Only
+	 * fails if memcached is configured and the working module is not installed.
+	 *
+	 * @return bool
+	 */
+
+	private function isCorrectMemcachedPHPModuleInstalled() {
+		if ($this->config->getSystemValue('memcache.distributed', null) !== '\OC\Memcache\Memcached') {
+			return true;
+		}

@@ -1,0 +1,8 @@
+    /**
+     * @test Limits constant is correct format
+     */
+
+    public function testParetoSupportLimits()
+    {
+        $this->limitTest(Continuous\Pareto::SUPPORT_LIMITS);
+    }

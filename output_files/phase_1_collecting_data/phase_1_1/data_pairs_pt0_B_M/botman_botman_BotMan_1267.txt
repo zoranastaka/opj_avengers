@@ -1,0 +1,10 @@
+    /**
+     * Retrieve the chat message.
+     *
+     * @return array
+     */
+
+    public function getMessages()
+    {
+        return $this->getDriver()->getMessages();
+    }

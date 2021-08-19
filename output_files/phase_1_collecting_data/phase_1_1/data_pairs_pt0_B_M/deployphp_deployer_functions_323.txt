@@ -1,0 +1,13 @@
+/**
+ * Run test command locally.
+ * Example:
+ *
+ *     testLocally('[ -d {{local_release_path}} ]')
+ *
+ * @throws RunException
+ */
+
+function testLocally(string $command): bool
+{
+    return runLocally("if $command; then echo 'true'; fi") === 'true';
+}

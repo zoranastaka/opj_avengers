@@ -1,0 +1,22 @@
+    /**
+     * @test         approximate using callback (http://mathfaculty.fullerton.edu/mathews/n2003/BooleRuleMod.html)
+     * @dataProvider dataProviderForCallback3
+     * @throws       \Exception
+     */
+
+    public function testApproximatePolynomialCallback3(int $n, float $expected)
+    {
+        // Given 1 + e^-x  sin(8x^2/3)
+        $func = function ($x) {
+            return 1 + M_E ** -$x *  \sin(8 * $x ** (2 / 3));
+        };
+        $start    = 0;
+        $end      = 2;
+        $tol      = 0.000001;
+
+        // When
+        $x = BoolesRule::approximate($func, $start, $end, $n);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $x, $tol);
+    }

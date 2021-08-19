@@ -1,0 +1,25 @@
+    /**
+     * Remove a filter by instance or name.
+     *
+     * @param callable|string $filter
+     *
+     * @return $this
+     */
+
+    public function removeFilter($filter)
+    {
+        $key = \is_callable($filter) ? 0 : 1;
+
+        $this->filters = array_values(array_filter(
+            $this->filters,
+            function ($tuple) use ($key, $filter) {
+                return $tuple[$key] !== $filter;
+            }
+        ));
+
+        $this->updateInternalState();
+
+        $this->handleChangedParameters();
+
+        return $this;
+    }

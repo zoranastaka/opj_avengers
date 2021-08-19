@@ -1,0 +1,47 @@
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+
+    public function handle()
+    {
+        $this->logMessage('Running InitLookup...');
+
+        config(['database.default' => DB_NINJA_LOOKUP]);
+
+        $database = $this->option('database');
+        $dbServer = DbServer::whereName($database)->first();
+
+        if ($this->option('subdomain')) {
+            $this->logMessage('Updating subdomains...');
+            $this->popuplateSubdomains();
+        } else if ($this->option('truncate')) {
+            $this->logMessage('Truncating data...');
+            $this->truncateTables();
+        } else {
+            config(['database.default' => $this->option('database')]);
+
+            $count = DB::table('companies')
+                        ->where('id', '>=', $this->option('company_id') ?: 1)
+                        ->count();
+
+            for ($i=0; $i<$count; $i += (int) $this->option('page_size')) {
+                $this->initCompanies($dbServer->id, $i);
+            }
+        }
+
+        $this->logMessage('Results: ' . ($this->isValid ? RESULT_SUCCESS : RESULT_FAILURE));
+
+        if ($this->option('validate')) {
+            if ($errorEmail = env('ERROR_EMAIL')) {
+                Mail::raw($this->log, function ($message) use ($errorEmail, $database) {
+                    $message->to($errorEmail)
+                            ->from(CONTACT_EMAIL)
+                            ->subject("Check-Lookups [{$database}]: " . strtoupper($this->isValid ? RESULT_SUCCESS : RESULT_FAILURE));
+                });
+            } elseif (! $this->isValid) {
+                throw new Exception('Check lookups failed!!');
+            }
+        }
+    }

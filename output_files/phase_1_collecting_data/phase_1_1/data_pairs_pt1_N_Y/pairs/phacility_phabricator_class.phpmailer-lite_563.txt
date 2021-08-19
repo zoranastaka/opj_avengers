@@ -1,0 +1,9 @@
+  /**
+   * Set the private key file and password to sign the message.
+   *
+   * @access public
+   * @param string $key_filename Parameter File Name
+   * @param string $key_pass Password for private key
+   */
+
+  public function Sign($cert_filename, $key_filename, $key_pass) {

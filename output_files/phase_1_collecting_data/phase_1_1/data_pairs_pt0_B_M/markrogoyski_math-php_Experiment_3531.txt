@@ -1,0 +1,40 @@
+    /**
+     * Likelihood ratio
+     * Computes positive and negative likelihood ratios from sensitivity and specificity.
+     *
+     * Used to analyze the goodness of a diagnostic tests.
+     * https://en.wikipedia.org/wiki/Likelihood_ratios_in_diagnostic_testing
+     *
+     *         sensitivity
+     * LL+ = ---------------
+     *       1 - specificity
+     *
+     *       1 - sensitivity
+     * LL- = ---------------
+     *         specificity
+     *
+     * @param  float $sensitivity
+     * @param  float $specificity
+     *
+     * @return array [ LL+, LL- ]
+     *
+     * @throws Exception\OutOfBoundsException if sensitivity or specificity are > 1.0
+     */
+
+    public static function likelihoodRatioSS(float $sensitivity, float $specificity): array
+    {
+        if ($sensitivity > 1.0 || $specificity > 1.0) {
+            throw new Exception\OutOfBoundsException('Sensitivity and specificity must be <= 1.0');
+        }
+
+        // LL+ Positive likelihood ratio
+        $LL＋ = $sensitivity / (1 - $specificity);
+
+        // LL- Negative likelihood ratio
+        $LL− = (1 - $sensitivity) / $specificity;
+
+        return [
+            'LL+' => $LL＋,
+            'LL-' => $LL−,
+        ];
+    }

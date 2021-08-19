@@ -1,0 +1,11 @@
+    /** @test */
+
+    public function the_hasanyrole_directive_will_evaluate_true_when_the_logged_in_user_does_have_some_of_the_required_roles_for_the_given_guard()
+    {
+        $roles = ['super-admin', 'moderator'];
+        $guard = 'admin';
+
+        auth('admin')->setUser($this->getSuperAdmin());
+
+        $this->assertEquals('does have some of the roles', $this->renderView('guardHasAnyRole', compact('roles', 'guard')));
+    }

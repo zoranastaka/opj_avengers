@@ -1,0 +1,22 @@
+    /**
+     * @dataProvider data
+     * @param $test
+     * @param $dir
+     */
+
+    function test_($test, $dir)
+    {
+        $markdown = file_get_contents($dir . $test . '.md');
+
+        $expectedMarkup = file_get_contents($dir . $test . '.html');
+
+        $expectedMarkup = str_replace("\r\n", "\n", $expectedMarkup);
+        $expectedMarkup = str_replace("\r", "\n", $expectedMarkup);
+
+        $this->Parsedown->setSafeMode(substr($test, 0, 3) === 'xss');
+        $this->Parsedown->setStrictMode(substr($test, 0, 6) === 'strict');
+
+        $actualMarkup = $this->Parsedown->text($markdown);
+
+        $this->assertEquals($expectedMarkup, $actualMarkup);
+    }

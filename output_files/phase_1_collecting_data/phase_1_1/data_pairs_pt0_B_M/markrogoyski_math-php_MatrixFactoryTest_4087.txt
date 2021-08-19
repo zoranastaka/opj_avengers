@@ -1,0 +1,10 @@
+    /**
+     * @test   one exception - rows less than one
+     * @throws \Exception
+     */
+
+    public function testOneExceptionRowsLessThanOne()
+    {
+        $this->expectException(Exception\OutOfBoundsException::class);
+        MatrixFactory::one(0, 2);
+    }

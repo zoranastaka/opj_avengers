@@ -1,0 +1,6 @@
+    /**
+     * @param string $headers
+     * @return \Psr\Http\Message\RequestInterface
+     */
+
+    public function parse($headers) {

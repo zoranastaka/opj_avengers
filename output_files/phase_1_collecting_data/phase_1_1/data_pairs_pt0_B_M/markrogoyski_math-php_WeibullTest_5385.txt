@@ -1,0 +1,20 @@
+    /**
+     * @test         inverse of cdf is x
+     * @dataProvider dataProviderForInverseOfCdf
+     * @param        float $x
+     * @param        float $k
+     * @param        float $λ
+     */
+
+    public function testInverseOfCdf(float $x, float $k, float $λ)
+    {
+        // Given
+        $weibull = new Weibull($k, $λ);
+        $cdf = $weibull->cdf($x);
+
+        // When
+        $inverse_of_cdf = $weibull->inverse($cdf);
+
+        // Then
+        $this->assertEqualsWithDelta($x, $inverse_of_cdf, 0.000001);
+    }

@@ -1,0 +1,7 @@
+    /**
+     * Gets the log directory.
+     *
+     * @return string The log directory
+     */
+
+    public function getLogDir();

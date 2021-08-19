@@ -1,0 +1,10 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testTransactionWithoutArgumentsReturnsMultiExec(): void
+    {
+        $client = new Client();
+
+        $this->assertInstanceOf('Predis\Transaction\MultiExec', $client->transaction());
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get the instance of the Cache Store.
+     *
+     * @return \Illuminate\Contracts\Cache\Store
+     */
+
+    public function getCacheStore(): \Illuminate\Contracts\Cache\Store
+    {
+        return $this->cache->getStore();
+    }

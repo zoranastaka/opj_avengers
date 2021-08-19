@@ -1,0 +1,8 @@
+  /**
+   * Generate DKIM Canonicalization Header
+   *
+   * @access public
+   * @param string $s Header
+   */
+
+  public function DKIM_HeaderC($s) {

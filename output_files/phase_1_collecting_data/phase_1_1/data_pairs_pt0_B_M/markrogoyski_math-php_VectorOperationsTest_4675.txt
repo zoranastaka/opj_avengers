@@ -1,0 +1,17 @@
+    /**
+     * @test   Multiply size mismatch
+     * @throws \Exception
+     */
+
+    public function testMultiplyExceptionSizeMismatch()
+    {
+        // Given
+        $A = new Vector([1, 2, 3]);
+        $B = new Vector([1, 2]);
+
+        // Then
+        $this->expectException(Exception\VectorException::class);
+
+        // Then
+        $A->multiply($B);
+    }

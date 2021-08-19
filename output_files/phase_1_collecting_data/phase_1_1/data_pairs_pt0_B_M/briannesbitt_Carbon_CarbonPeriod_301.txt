@@ -1,0 +1,10 @@
+    /**
+     * Returns true if the end date should be excluded.
+     *
+     * @return bool
+     */
+
+    public function isEndExcluded()
+    {
+        return ($this->options & static::EXCLUDE_END_DATE) !== 0;
+    }

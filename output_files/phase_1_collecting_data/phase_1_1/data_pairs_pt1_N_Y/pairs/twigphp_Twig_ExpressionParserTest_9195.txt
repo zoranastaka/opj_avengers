@@ -1,0 +1,15 @@
+    /**
+     * @dataProvider getMacroDefinitionSupportsConstantDefaultValues
+     */
+
+    public function testMacroDefinitionSupportsConstantDefaultValues($template)
+    {
+        $env = new Environment($this->createMock(LoaderInterface::class), ['cache' => false, 'autoescape' => false]);
+        $parser = new Parser($env);
+
+        $parser->parse($env->tokenize(new Source($template, 'index')));
+
+        // add a dummy assertion here to satisfy PHPUnit, the only thing we want to test is that the code above
+        // can be executed without throwing any exceptions
+        $this->addToAssertionCount(1);
+    }

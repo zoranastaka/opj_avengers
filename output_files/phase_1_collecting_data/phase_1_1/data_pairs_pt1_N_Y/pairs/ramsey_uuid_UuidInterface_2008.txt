@@ -1,0 +1,17 @@
+    /**
+     * Returns -1, 0, or 1 if the UUID is less than, equal to, or greater than
+     * the other UUID
+     *
+     * The first of two UUIDs is greater than the second if the most
+     * significant field in which the UUIDs differ is greater for the first
+     * UUID.
+     *
+     * * Q. What's the value of being able to sort UUIDs?
+     * * A. Use them as keys in a B-Tree or similar mapping.
+     *
+     * @param UuidInterface $other The UUID to compare
+     *
+     * @return int -1, 0, or 1 if the UUID is less than, equal to, or greater than $other
+     */
+
+    public function compareTo(UuidInterface $other): int;

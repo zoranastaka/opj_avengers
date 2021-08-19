@@ -1,0 +1,23 @@
+    /**
+     * Probability mass function
+     *
+     *                              λᵏℯ^⁻λ
+     * P(k events in an interval) = ------
+     *                                k!
+     *
+     * @param  int   $k events in the interval
+     *
+     * @return float The Poisson probability of observing k successful events in an interval
+     */
+
+    public function pmf(int $k): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['k' => $k]);
+
+        $λ = $this->λ;
+
+        $λᵏℯ＾−λ = \pow($λ, $k) * \exp(-$λ);
+        $k！     = Combinatorics::factorial($k);
+
+        return $λᵏℯ＾−λ / $k！;
+    }

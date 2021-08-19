@@ -1,0 +1,5 @@
+	/**
+	 * Init the API by setting up action and filter hooks.
+	 */
+
+	public function init() {

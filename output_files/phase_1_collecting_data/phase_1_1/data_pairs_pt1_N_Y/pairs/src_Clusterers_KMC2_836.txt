@@ -1,0 +1,46 @@
+    /**
+     * Seed k cluster centroids from a dataset.
+     *
+     * @internal
+     *
+     * @param \Rubix\ML\Datasets\Dataset $dataset
+     * @param int $k
+     * @return list<list<string|int|float>>
+     */
+
+    public function seed(Dataset $dataset, int $k) : array
+    {
+        DatasetIsNotEmpty::with($dataset)->check();
+
+        $centroids = $dataset->randomSubset(1)->samples();
+
+        $max = getrandmax();
+
+        while (count($centroids) < $k) {
+            $candidates = $dataset->randomSubsetWithReplacement($this->m)->samples();
+
+            $x = array_pop($candidates) ?? [];
+
+            $target = end($centroids) ?: [];
+
+            $xDistance = $this->kernel->compute($x, $target) ?: EPSILON;
+
+            foreach ($candidates as $candidate) {
+                $yDistance = $this->kernel->compute($candidate, $target);
+
+                $density = min(1.0, $yDistance / $xDistance);
+
+                $threshold = rand() / $max;
+
+                if ($density > $threshold) {
+                    $xDistance = $yDistance;
+
+                    $x = $candidate;
+                }
+            }
+
+            $centroids[] = $x;
+        }
+
+        return $centroids;
+    }

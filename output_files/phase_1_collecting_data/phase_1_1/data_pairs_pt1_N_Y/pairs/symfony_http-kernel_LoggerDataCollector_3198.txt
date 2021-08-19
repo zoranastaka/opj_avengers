@@ -1,0 +1,11 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function reset()
+    {
+        if ($this->logger instanceof DebugLoggerInterface) {
+            $this->logger->clear();
+        }
+        $this->data = [];
+    }

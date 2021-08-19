@@ -1,0 +1,10 @@
+    /**
+     * Returns PTY state.
+     *
+     * @return bool
+     */
+
+    public function isPty()
+    {
+        return $this->pty;
+    }

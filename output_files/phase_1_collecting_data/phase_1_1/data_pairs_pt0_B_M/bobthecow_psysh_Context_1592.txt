@@ -1,0 +1,10 @@
+    /**
+     * Get the bound class (self) for the interactive shell.
+     *
+     * @return string|null
+     */
+
+    public function getBoundClass()
+    {
+        return $this->boundClass;
+    }

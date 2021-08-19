@@ -1,0 +1,10 @@
+    /**
+     *    Get parent worksheet
+     *
+     *    @return PHPExcel_CachedObjectStorage_CacheBase
+     */
+
+    public function getParent()
+    {
+        return $this->parent;
+    }

@@ -1,0 +1,5 @@
+    /**
+     * Returns the token headers
+     */
+
+    public function headers(): DataSet;

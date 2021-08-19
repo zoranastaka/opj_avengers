@@ -1,0 +1,15 @@
+  /**
+   * This is an optional command for SMTP that this class does not
+   * support. This method is here to make the RFC821 Definition
+   * complete for this class and __may__ be implimented in the future
+   *
+   * Implements from rfc 821: TURN <CRLF>
+   *
+   * SMTP CODE SUCCESS: 250
+   * SMTP CODE FAILURE: 502
+   * SMTP CODE ERROR  : 500, 503
+   * @access public
+   * @return bool
+   */
+
+  public function Turn() {

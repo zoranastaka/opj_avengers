@@ -1,0 +1,18 @@
+    /**
+     * {@inheritDoc}
+     */
+
+    public function add($B): Matrix
+    {
+        if (!$B instanceof Matrix) {
+            throw new Exception\IncorrectTypeException('Can only do matrix addition with a Matrix');
+        }
+        $this->checkEqualSizes($B);
+        $R = [];
+        for ($i = 0; $i < $this->m; $i++) {
+            for ($j = 0; $j < $this->n; $j++) {
+                $R[$i][$j] = $this->A[$i][$j]->add($B[$i][$j]);
+            }
+        }
+        return MatrixFactory::create($R);
+    }

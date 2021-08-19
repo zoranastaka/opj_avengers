@@ -1,0 +1,17 @@
+/**
+ * Run test command.
+ * Example:
+ *
+ * ```php
+ * if (test('[ -d {{release_path}} ]')) {
+ * ...
+ * }
+ * ```
+ *
+ * @throws RunException
+ */
+
+function test(string $command): bool
+{
+    return run("if $command; then echo 'true'; fi") === 'true';
+}

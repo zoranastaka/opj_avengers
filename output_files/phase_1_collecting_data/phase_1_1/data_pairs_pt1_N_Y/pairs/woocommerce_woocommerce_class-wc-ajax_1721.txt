@@ -1,0 +1,5 @@
+	/**
+	 * Load order items via ajax.
+	 */
+
+	public static function load_order_items() {

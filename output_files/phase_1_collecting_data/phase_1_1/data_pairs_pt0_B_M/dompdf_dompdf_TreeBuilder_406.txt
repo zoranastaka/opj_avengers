@@ -1,0 +1,5 @@
+    /**
+     * @return bool
+     */
+
+    private function reconstructActiveFormattingElements() {

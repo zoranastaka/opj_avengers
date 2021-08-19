@@ -1,0 +1,8 @@
+    /**
+     * @return \Whoops\Handler\JsonResponseHandler
+     */
+
+    private function getHandler()
+    {
+        return new JsonResponseHandler();
+    }

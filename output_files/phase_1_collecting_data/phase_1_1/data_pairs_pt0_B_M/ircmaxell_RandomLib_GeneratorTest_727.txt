@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider provideGenerateInt
+     */
+
+    public function testGenerateInt($min, $max, $expect)
+    {
+        $this->assertEquals($expect, $this->generator->generateInt($min, $max));
+    }

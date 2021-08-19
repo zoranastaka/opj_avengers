@@ -1,0 +1,15 @@
+    /**
+     * Returns an array consisting of the characters in the string.
+     *
+     * @return array An array of string chars
+     */
+
+    public function chars()
+    {
+        $chars = [];
+        for ($i = 0, $l = $this->length(); $i < $l; $i++) {
+            $chars[] = $this->at($i)->str;
+        }
+
+        return $chars;
+    }

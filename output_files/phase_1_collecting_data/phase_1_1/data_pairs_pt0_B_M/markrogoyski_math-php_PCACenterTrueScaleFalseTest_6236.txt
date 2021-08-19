@@ -1,0 +1,23 @@
+    /**
+     * @test The class returns the correct Q residuals
+     *
+     * library(mdatools)
+     *   new = matrix(c(1:9), 1, 9)
+     *   result = predict(model, new)
+     *   result$Q
+     *
+     * @throws \Exception
+     */
+
+    public function testQWithNewData()
+    {
+        // Given
+        $expected = [[1972.229, 1158.265, 311.4343, 71.73161, 53.49752, 15.75576, 14.58816, 11.84291, 4.90987e-27]];
+        $newData  = MatrixFactory::create([[1,2,3,4,5,6,7,8,9]]);
+
+        // When
+        $qResiduals = self::$pca->getQResiduals($newData)->getMatrix();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $qResiduals, .001);
+    }

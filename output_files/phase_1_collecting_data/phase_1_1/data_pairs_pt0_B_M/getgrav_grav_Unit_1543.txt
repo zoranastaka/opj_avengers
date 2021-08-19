@@ -1,0 +1,9 @@
+    /**
+     * HOOK: after each step
+     *
+     * @param Codeception\Step $step
+     */
+
+    public function _afterStep(Codeception\Step $step)
+    {
+    }

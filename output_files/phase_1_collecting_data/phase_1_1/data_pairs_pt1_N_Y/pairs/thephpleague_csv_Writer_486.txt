@@ -1,0 +1,10 @@
+    /**
+     * Get the flush threshold.
+     *
+     * @return int|null
+     */
+
+    public function getFlushThreshold()
+    {
+        return $this->flush_threshold;
+    }

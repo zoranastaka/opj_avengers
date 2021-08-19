@@ -1,0 +1,19 @@
+    /**
+     * @test         add
+     * @dataProvider dataProviderForAdd
+     */
+
+    public function testAdd(array $A, array $B, array $R)
+    {
+        // Given
+        $A    = new Vector($A);
+        $B    = new Vector($B);
+        $R    = new Vector($R);
+
+        // When
+        $A＋B = $A->add($B);
+
+        // Then
+        $this->assertEquals($R, $A＋B);
+        $this->assertEquals($R->getVector(), $A＋B->getVector());
+    }

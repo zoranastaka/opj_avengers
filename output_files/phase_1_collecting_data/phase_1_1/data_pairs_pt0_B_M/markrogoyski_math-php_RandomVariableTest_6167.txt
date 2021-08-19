@@ -1,0 +1,16 @@
+    /**
+     * @test         sumOfSquares
+     * @dataProvider dataProviderForSumOfSquares
+     * @param        array  $numbers
+     * @param        number $expected
+     * @throws       \Exception
+     */
+
+    public function testSumOfSquares(array $numbers, $expected)
+    {
+        // When
+        $sos = RandomVariable::sumOfSquares($numbers);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $sos, 0.001);
+    }

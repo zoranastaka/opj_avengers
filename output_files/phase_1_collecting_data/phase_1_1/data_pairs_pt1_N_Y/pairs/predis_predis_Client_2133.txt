@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function __call($commandID, $arguments)
+    {
+        return $this->executeCommand(
+            $this->createCommand($commandID, $arguments)
+        );
+    }

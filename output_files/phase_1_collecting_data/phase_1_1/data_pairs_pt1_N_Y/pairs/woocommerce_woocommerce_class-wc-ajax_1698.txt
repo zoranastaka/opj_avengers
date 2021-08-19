@@ -1,0 +1,13 @@
+	/**
+	 * Toggle Featured status of a product from admin.
+	 */
+
+	public static function feature_product() {
+		if ( current_user_can( 'edit_products' ) && check_admin_referer( 'woocommerce-feature-product' ) && isset( $_GET['product_id'] ) ) {
+			$product = wc_get_product( absint( $_GET['product_id'] ) );
+
+			if ( $product ) {
+				$product->set_featured( ! $product->get_featured() );
+				$product->save();
+			}
+		}

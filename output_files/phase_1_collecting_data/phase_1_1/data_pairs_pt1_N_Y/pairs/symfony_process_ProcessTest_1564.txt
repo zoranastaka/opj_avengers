@@ -1,0 +1,17 @@
+    /**
+     * @requires extension pcntl
+     */
+
+    public function testSignal()
+    {
+        $process = $this->getProcess([self::$phpBin, __DIR__.'/SignalListener.php']);
+        $process->start();
+
+        while (false === strpos($process->getOutput(), 'Caught')) {
+            usleep(1000);
+        }
+        $process->signal(\SIGUSR1);
+        $process->wait();
+
+        $this->assertEquals('Caught SIGUSR1', $process->getOutput());
+    }

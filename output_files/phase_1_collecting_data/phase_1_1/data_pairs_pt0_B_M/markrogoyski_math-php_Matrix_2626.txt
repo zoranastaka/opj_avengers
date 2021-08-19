@@ -1,0 +1,9 @@
+    /**
+     * Get row count (m)
+     * @return int number of rows
+     */
+
+    public function getM(): int
+    {
+        return $this->m;
+    }

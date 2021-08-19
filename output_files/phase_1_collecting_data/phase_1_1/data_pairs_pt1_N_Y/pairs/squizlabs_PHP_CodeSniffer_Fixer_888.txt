@@ -1,0 +1,36 @@
+    /**
+     * Stop recording actions for a changeset, and discard logged changes.
+     *
+     * @return void
+     */
+
+    public function rollbackChangeset()
+    {
+        $this->inChangeset = false;
+        $this->inConflict  = false;
+
+        if (empty($this->changeset) === false) {
+            if (PHP_CODESNIFFER_VERBOSITY > 1) {
+                $bt = debug_backtrace();
+                if ($bt[1]['class'] === 'PHP_CodeSniffer\Fixer') {
+                    $sniff = $bt[2]['class'];
+                    $line  = $bt[1]['line'];
+                } else {
+                    $sniff = $bt[1]['class'];
+                    $line  = $bt[0]['line'];
+                }
+
+                $sniff = Util\Common::getSniffCode($sniff);
+
+                $numChanges = count($this->changeset);
+
+                @ob_end_clean();
+                echo "\t\tR: $sniff:$line rolled back the changeset ($numChanges changes)".PHP_EOL;
+                echo "\t=> Changeset rolled back".PHP_EOL;
+                ob_start();
+            }
+
+            $this->changeset = [];
+        }//end if
+
+    }//end rollbackChangeset()

@@ -1,0 +1,10 @@
+    /**
+     * Checks whether the cookie will be made accessible only through the HTTP protocol.
+     *
+     * @return bool
+     */
+
+    public function isHttpOnly()
+    {
+        return $this->httpOnly;
+    }

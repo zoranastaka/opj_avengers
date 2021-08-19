@@ -1,0 +1,21 @@
+    /**
+     * The constructor follows performs all the same checks as the parent, but also checks that
+     * all of the elements in the array are of the same data type.
+     *
+     * @param ObjectArithmetic[][] $A m x n matrix of objects
+     *
+     * @throws Exception\BadDataException if any rows have a different column count
+     * @throws Exception\IncorrectTypeException if all elements are not the same class
+     * @throws Exception\IncorrectTypeException if The class does not implement the ObjectArithmetic interface
+     * @throws Exception\MathException
+     */
+
+    public function __construct(array $A)
+    {
+        $this->A       = $A;
+        $this->m       = \count($A);
+        $this->n       = $this->m > 0 ? \count($A[0]) : 0;
+        $this->catalog = new MatrixCatalog();
+
+        $this->validateMatrixData();
+    }

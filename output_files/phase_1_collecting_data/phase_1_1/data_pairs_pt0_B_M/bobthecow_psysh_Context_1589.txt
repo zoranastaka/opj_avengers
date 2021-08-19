@@ -1,0 +1,13 @@
+    /**
+     * Set the bound object ($this variable) for the interactive shell.
+     *
+     * Note that this unsets the bound class, if any exists.
+     *
+     * @param object|null $boundObject
+     */
+
+    public function setBoundObject($boundObject)
+    {
+        $this->boundObject = \is_object($boundObject) ? $boundObject : null;
+        $this->boundClass = null;
+    }

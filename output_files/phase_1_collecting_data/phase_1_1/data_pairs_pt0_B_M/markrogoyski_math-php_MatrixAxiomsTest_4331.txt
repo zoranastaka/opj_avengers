@@ -1,0 +1,20 @@
+    /**
+     * @test Axiom: D + D is diagonal
+     * Sum of two diagonal matrices is diagonal
+     * @dataProvider dataProviderForDiagonalMatrix
+     * @param        array $D
+     * @throws       \Exception
+     */
+
+    public function testSumOfTwoDiagonalMatricesIsDiagonal(array $D)
+    {
+        // Given
+        $D = MatrixFactory::create($D);
+
+        // When
+        $D＋D = $D->add($D);
+
+        // Then
+        $this->assertTrue($D->isDiagonal());
+        $this->assertTrue($D＋D->isDiagonal());
+    }

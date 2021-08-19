@@ -1,0 +1,18 @@
+    /**
+     * @test         mode
+     * @dataProvider dataProviderForMode
+     * @param        float $p
+     * @param        float $expected
+     */
+
+    public function testMode(float $p, float $expected)
+    {
+        // Given
+        $geometric = new Geometric($p);
+
+        // When
+        $mode = $geometric->mode();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $mode, 0.000001);
+    }

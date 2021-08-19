@@ -1,0 +1,16 @@
+    /**
+     * Gets the full HTML content associated with the given exception.
+     *
+     * @param \Exception|FlattenException $exception An \Exception or FlattenException instance
+     *
+     * @return string The HTML content as a string
+     */
+
+    public function getHtml($exception)
+    {
+        if (!$exception instanceof FlattenException) {
+            $exception = FlattenException::create($exception);
+        }
+
+        return $this->decorate($this->getContent($exception), $this->getStylesheet($exception));
+    }

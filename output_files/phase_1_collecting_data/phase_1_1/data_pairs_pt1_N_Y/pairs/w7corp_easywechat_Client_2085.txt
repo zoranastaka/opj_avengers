@@ -1,0 +1,12 @@
+    /**
+     * @return string
+     */
+
+    public function dictionaryOrderSignature()
+    {
+        $params = func_get_args();
+
+        sort($params, SORT_STRING);
+
+        return sha1(implode('', $params));
+    }

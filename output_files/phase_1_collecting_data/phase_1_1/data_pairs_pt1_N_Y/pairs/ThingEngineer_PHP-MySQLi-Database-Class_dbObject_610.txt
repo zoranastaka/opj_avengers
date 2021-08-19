@@ -1,0 +1,7 @@
+    /**
+     * Converts object data to a JSON string.
+     *
+     * @return string Converted data
+     */
+
+    public function __toString () {

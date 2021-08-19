@@ -1,0 +1,29 @@
+    /**
+     * The probabilty associated with the regression F Statistic
+     *
+     * F probability = F distribution CDF(F,d₁,d₂)
+     *
+     *  where:
+     *    F  = F statistic
+     *    d₁ = degrees of freedom 1
+     *    d₂ = degrees of freedom 2
+     *
+     *    ν  = degrees of freedom
+     *
+     * @return float
+     */
+
+    public function fProbability(): float
+    {
+        $F = $this->fStatistic();
+        $n = $this->n;
+
+        // Degrees of freedom
+        // Need to make sure the 1 in $d₁ should not be $this->fit_parameters;
+        $ν  = $this->ν;
+        $d₁ = $n - $ν - 1;
+        $d₂ = $ν;
+
+        $fDist = new F($d₁, $d₂);
+        return ($fDist->cdf($F));
+    }

@@ -1,0 +1,21 @@
+    /**
+     * @test         kroneckerProduct returns the expected Vector
+     * @dataProvider dataProviderForKroneckerProduct
+     * @param        array $A
+     * @param        array $B
+     * @param        array $expected
+     */
+
+    public function testKroneckerProduct(array $A, array $B, array $expected)
+    {
+        // Given
+        $A = new Vector($A);
+        $B = new Vector($B);
+        $R = new Vector($expected);
+
+        // When
+        $A⨂B = $A->kroneckerProduct($B);
+
+        // Then
+        $this->assertEquals($R, $A⨂B);
+    }

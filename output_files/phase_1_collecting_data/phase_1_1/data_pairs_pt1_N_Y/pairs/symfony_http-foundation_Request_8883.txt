@@ -1,0 +1,14 @@
+    /**
+     * Gets a list of charsets acceptable by the client browser.
+     *
+     * @return array List of charsets in preferable order
+     */
+
+    public function getCharsets()
+    {
+        if (null !== $this->charsets) {
+            return $this->charsets;
+        }
+
+        return $this->charsets = array_keys(AcceptHeader::fromString($this->headers->get('Accept-Charset'))->all());
+    }

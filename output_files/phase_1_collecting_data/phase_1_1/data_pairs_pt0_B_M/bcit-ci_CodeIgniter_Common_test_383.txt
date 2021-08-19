@@ -1,0 +1,18 @@
+	// ------------------------------------------------------------------------
+
+	public function test_stringify_attributes()
+	{
+		$this->assertEquals(' class="foo" id="bar"', _stringify_attributes(array('class' => 'foo', 'id' => 'bar')));
+
+		$atts = new stdClass;
+		$atts->class = 'foo';
+		$atts->id = 'bar';
+		$this->assertEquals(' class="foo" id="bar"', _stringify_attributes($atts));
+
+		$atts = new stdClass;
+		$this->assertEquals('', _stringify_attributes($atts));
+
+		$this->assertEquals(' class="foo" id="bar"', _stringify_attributes('class="foo" id="bar"'));
+
+		$this->assertEquals('', _stringify_attributes(array()));
+	}

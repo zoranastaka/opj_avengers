@@ -1,0 +1,8 @@
+    /**
+     * @return boolean
+     */
+
+    public function isPopulateServer()
+    {
+        return $this->config['populate-server-var'];
+    }

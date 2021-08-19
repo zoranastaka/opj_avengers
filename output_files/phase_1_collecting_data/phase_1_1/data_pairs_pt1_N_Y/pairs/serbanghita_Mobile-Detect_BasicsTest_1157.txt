@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider headersProvider
+     * @param $headers
+     */
+
+    public function testInvalidHeader($headers)
+    {
+        $md = new Mobile_Detect($headers);
+        $this->assertNull($md->getHttpHeader('garbage_is_Garbage'));
+    }

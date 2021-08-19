@@ -1,0 +1,12 @@
+    /**
+     * Resets the classifier and the vars internally used by OneVsRest to create multiple classifiers.
+     */
+
+    public function reset(): void
+    {
+        $this->classifiers = [];
+        $this->allLabels = [];
+        $this->costValues = [];
+
+        $this->resetBinary();
+    }

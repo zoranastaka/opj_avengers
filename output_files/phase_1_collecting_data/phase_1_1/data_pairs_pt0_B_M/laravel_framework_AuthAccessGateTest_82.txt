@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider notCallableDataProvider
+     */
+
+    public function testDefineSecondParameterShouldBeStringOrCallable($callback)
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        $gate = $this->getBasicGate();
+
+        $gate->define('foo', $callback);
+    }

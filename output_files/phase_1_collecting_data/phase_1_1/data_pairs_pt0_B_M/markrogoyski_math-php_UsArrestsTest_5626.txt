@@ -1,0 +1,16 @@
+    /**
+     * @test State names
+     */
+
+    public function testStateNames()
+    {
+        // Given
+        $sampleOfStateNames = ['Alabama', 'Alaska', 'Texas', 'Wyoming'];
+        $states              = $this->usArrests->getStates();
+
+        // When
+        foreach ($sampleOfStateNames as $state) {
+            // Then
+            $this->assertTrue(\in_array($state, $states));
+        }
+    }

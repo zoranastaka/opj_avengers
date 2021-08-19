@@ -1,0 +1,15 @@
+    /**
+     * Get a filename suitable for a FIFO pipe of $type for process $pid.
+     *
+     * The pipe will be created inside the current temporary directory.
+     *
+     * @param string $type
+     * @param int    $pid
+     *
+     * @return string Pipe name
+     */
+
+    public function getPipe($type, $pid)
+    {
+        return \sprintf('%s/%s_%s', $this->getRuntimeDir(), $type, $pid);
+    }

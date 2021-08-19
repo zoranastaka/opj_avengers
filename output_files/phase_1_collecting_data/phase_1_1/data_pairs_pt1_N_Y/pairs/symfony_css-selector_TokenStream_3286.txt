@@ -1,0 +1,10 @@
+    /**
+     * Returns used tokens.
+     *
+     * @return Token[]
+     */
+
+    public function getUsed(): array
+    {
+        return $this->used;
+    }

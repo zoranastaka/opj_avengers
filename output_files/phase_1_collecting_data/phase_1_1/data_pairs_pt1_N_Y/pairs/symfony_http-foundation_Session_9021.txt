@@ -1,0 +1,20 @@
+    /**
+     * @internal
+     */
+
+    public function isEmpty(): bool
+    {
+        if ($this->isStarted()) {
+            ++$this->usageIndex;
+            if ($this->usageReporter && 0 <= $this->usageIndex) {
+                ($this->usageReporter)();
+            }
+        }
+        foreach ($this->data as &$data) {
+            if (!empty($data)) {
+                return false;
+            }
+        }
+
+        return true;
+    }

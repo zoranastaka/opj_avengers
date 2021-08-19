@@ -1,0 +1,14 @@
+    /**
+     * @covers ::create
+     * @covers ::rootElement
+     * @covers ::filterAttributeName
+     * @covers ::filterElementName
+     */
+
+    public function testXmlElementTriggersException(): void
+    {
+        $this->expectException(DOMException::class);
+        XMLConverter::create()
+            ->recordElement('record', '')
+            ->rootElement('   ');
+    }

@@ -1,0 +1,18 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testGetClientByMethodReturnsInstanceOfSubclass(): void
+    {
+        /** @var Client */
+        $client = $this->getMockBuilder('Predis\Client')
+            ->onlyMethods(array())
+            ->setConstructorArgs(array(
+                array('tcp://host1?alias=node01', 'tcp://host2?alias=node02'),
+                array('cluster' => 'predis'),
+            ))
+            ->setMockClassName('SubclassedClient')
+            ->getMock();
+
+        $this->assertInstanceOf('SubclassedClient', $client->getClientBy('alias', 'node02'));
+    }

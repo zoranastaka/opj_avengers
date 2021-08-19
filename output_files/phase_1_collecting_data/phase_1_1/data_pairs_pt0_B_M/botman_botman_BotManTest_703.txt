@@ -1,0 +1,9 @@
+    /** @test */
+
+    public function it_does_not_allow_sendRequest_method()
+    {
+        $botman = $this->getBot([]);
+        $botman->setDriver(new FakeDriver());
+        $this->expectException(BadMethodCallException::class);
+        $botman->sendRequest('foo', []);
+    }

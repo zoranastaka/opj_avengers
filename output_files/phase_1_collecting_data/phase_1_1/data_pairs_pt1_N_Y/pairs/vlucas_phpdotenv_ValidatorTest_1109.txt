@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider validIntegerValuesDataProvider
+     * @doesNotPerformAssertions
+     */
+
+    public function testCanValidateIntegers(string $integer)
+    {
+        $dotenv = Dotenv::createImmutable(self::$folder, 'integers.env');
+        $dotenv->load();
+        $dotenv->required($integer)->isInteger();
+    }

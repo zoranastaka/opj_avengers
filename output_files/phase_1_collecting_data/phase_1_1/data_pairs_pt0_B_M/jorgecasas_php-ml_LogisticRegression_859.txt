@@ -1,0 +1,16 @@
+    /**
+     * Initalize a Logistic Regression classifier with maximum number of iterations
+     * and learning rule to be applied <br>
+     *
+     * Maximum number of iterations can be an integer value greater than 0 <br>
+     * If normalizeInputs is set to true, then every input given to the algorithm will be standardized
+     * by use of standard deviation and mean calculation <br>
+     *
+     * Cost function can be 'log' for log-likelihood and 'sse' for sum of squared errors <br>
+     *
+     * Penalty (Regularization term) can be 'L2' or empty string to cancel penalty term
+     *
+     * @throws InvalidArgumentException
+     */
+
+    public function __construct(

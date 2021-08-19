@@ -1,0 +1,19 @@
+    /**
+     * @test
+     */
+
+    public function can_store_an_export_object_on_default_disk()
+    {
+        $export = new EmptyExport;
+        $name   = 'filename.xlsx';
+        $path   = FileHelper::absolutePath($name, 'local');
+
+        @unlink($path);
+
+        $this->assertFileMissing($path);
+
+        $response = $this->SUT->store($export, $name);
+
+        $this->assertTrue($response);
+        $this->assertFileExists($path);
+    }

@@ -1,0 +1,15 @@
+    /**
+     * Allow setting of weeks and days to be cumulative.
+     *
+     * @param int $weeks Number of weeks to set
+     * @param int $days  Number of days to set
+     *
+     * @return static
+     */
+
+    public function weeksAndDays($weeks, $days)
+    {
+        $this->dayz = ($weeks * static::getDaysPerWeek()) + $days;
+
+        return $this;
+    }

@@ -1,0 +1,8 @@
+    /**
+     * Returns the escape character.
+     */
+
+    public function getEscape(): string
+    {
+        return $this->escape;
+    }

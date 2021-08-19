@@ -1,0 +1,39 @@
+    /**
+     * Convert a condition and value into the sql string
+     *
+     * @param  String       $operator The where constraint operator
+     * @param  String|array $val      The where constraint value
+     */
+
+    private function conditionToSql($operator, $val) {
+        switch (strtolower ($operator)) {
+            case 'not in':
+            case 'in':
+                $comparison = ' ' . $operator. ' (';
+                if (is_object ($val)) {
+                    $comparison .= $this->_buildPair ("", $val);
+                } else {
+                    foreach ($val as $v) {
+                        $comparison .= ' ?,';
+                        $this->_bindParam ($v);
+                    }
+                }
+                $this->_query .= rtrim($comparison, ',').' ) ';
+                break;
+            case 'not between':
+            case 'between':
+                $this->_query .= " $operator ? AND ? ";
+                $this->_bindParams ($val);
+                break;
+            case 'not exists':
+            case 'exists':
+                $this->_query.= $operator . $this->_buildPair ("", $val);
+                break;
+            default:
+                if (is_array ($val))
+                    $this->_bindParams ($val);
+                else if ($val === null)
+                    $this->_query .= $operator . " NULL";
+                else if ($val != 'DBNULL' || $val == '0')
+                    $this->_query .= $this->_buildPair ($operator, $val);
+        }

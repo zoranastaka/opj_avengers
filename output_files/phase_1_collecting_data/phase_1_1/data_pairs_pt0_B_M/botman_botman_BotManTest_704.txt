@@ -1,0 +1,29 @@
+    /** @test */
+
+    public function it_returns_images_as_second_argument()
+    {
+        $called = false;
+
+        $message = new IncomingMessage(Image::PATTERN, '', '');
+        $message->setImages([
+            'http://foo.com/bar.png',
+        ]);
+
+        $botman = $this->getBot([]);
+
+        $driver = m::mock(FakeDriver::class)->makePartial();
+        $driver->shouldReceive('getMessages')
+            ->andReturn([
+                $message,
+            ]);
+
+        $botman->setDriver($driver);
+
+        $botman->receivesImages(function ($bot, $data) use (&$called) {
+            $called = true;
+            $this->assertCount(1, $data);
+            $this->assertSame(['http://foo.com/bar.png'], $data);
+        });
+        $botman->listen();
+        $this->assertTrue($called);
+    }

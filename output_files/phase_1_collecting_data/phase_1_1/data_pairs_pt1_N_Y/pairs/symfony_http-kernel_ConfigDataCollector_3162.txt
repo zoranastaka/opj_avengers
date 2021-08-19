@@ -1,0 +1,10 @@
+    /**
+     * Returns true if the debug is enabled.
+     *
+     * @return bool|string true if debug is enabled, false otherwise or a string if no kernel was set
+     */
+
+    public function isDebug()
+    {
+        return $this->data['debug'];
+    }

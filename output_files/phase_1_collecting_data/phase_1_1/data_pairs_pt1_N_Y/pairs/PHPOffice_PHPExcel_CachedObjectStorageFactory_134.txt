@@ -1,0 +1,11 @@
+    /**
+     * Clear the cache storage
+     *
+     **/
+
+    public static function finalize()
+    {
+        self::$cacheStorageMethod = null;
+        self::$cacheStorageClass = null;
+        self::$storageMethodParameters = array();
+    }

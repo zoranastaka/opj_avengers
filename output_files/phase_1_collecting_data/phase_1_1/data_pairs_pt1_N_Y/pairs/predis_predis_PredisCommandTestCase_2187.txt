@@ -1,0 +1,10 @@
+    /**
+     * Verifies if the command implements the prefixable interface.
+     *
+     * @return bool
+     */
+
+    protected function isPrefixable(): bool
+    {
+        return $this->getCommand() instanceof Command\PrefixableCommandInterface;
+    }

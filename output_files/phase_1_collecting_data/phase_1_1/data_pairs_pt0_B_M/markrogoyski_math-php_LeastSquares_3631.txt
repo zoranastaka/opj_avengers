@@ -1,0 +1,37 @@
+    /**
+     * The confidence interval of the regression for Simple Linear Regression
+     *                      ______________
+     *                     /1   (x - x̄)²
+     * CI(x,p) = t * sy * / - + --------
+     *                   √  n     SSx
+     *
+     * Where:
+     *   t is the critical t for the p value
+     *   sy is the estimated standard deviation of y
+     *   n is the number of data points
+     *   x̄ is the average of the x values
+     *   SSx = ∑(x - x̄)²
+     *
+     * If $p = .05, then we can say we are 95% confidence the actual regression line
+     * will be within an interval of evaluate($x) ± CI($x, .05).
+     *
+     * @param float $x
+     * @param float $p:  0 < p < 1 The P value to use
+     *
+     * @return float
+     *
+     * @throws Exception\MatrixException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function ci(float $x, float $p): float
+    {
+        $V  = $this->regressionVariance($x);
+        $σ² = $this->meanSquareResidual();
+
+        // The t-value
+        $studentT = new StudentT($this->ν);
+        $t = $studentT->inverse2Tails($p);
+
+        return $t * \sqrt($σ² * $V);
+    }

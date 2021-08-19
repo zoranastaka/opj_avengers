@@ -1,0 +1,19 @@
+    /**
+     * @covers ::parse
+     * @covers ::extractRecord
+     * @covers ::extractFieldContent
+     * @covers ::extractEnclosedFieldContent
+     */
+
+    public function testReadingOnlyStream(): void
+    {
+        $expected = [
+            ['john', 'doe', 'john.doe@example.com'],
+            [null],
+        ];
+
+        $stream = Stream::createFromPath(__DIR__.'/../../test_files/foo_readonly.csv');
+        foreach (EmptyEscapeParser::parse($stream) as $offset => $record) {
+            self::assertSame($expected[$offset], $record);
+        }
+    }

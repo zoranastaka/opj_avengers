@@ -1,0 +1,23 @@
+    /**
+     * @test         fullIntdiv calculates the correct whole and remainder
+     * @dataProvider dataProviderForIntDivLargeDivisor
+     * @param        string $dividend
+     * @param        string $divisor
+     * @param        string $expectedQuotient
+     * @param        string $expectedMod
+     * @throws       \Exception
+     */
+
+    public function testFullIntDivLargeDivisor(string $dividend, string $divisor, string $expectedQuotient, string $expectedMod)
+    {
+        // Given
+        $obj     = new ArbitraryInteger($dividend);
+        $divisor = new ArbitraryInteger($divisor);
+
+        // When
+        [$quotient, $mod] = $obj->fullIntdiv($divisor);
+
+        // Then
+        $this->assertEquals($expectedQuotient, (string) $quotient);
+        $this->assertEquals($expectedMod, (string) $mod);
+    }

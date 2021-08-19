@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider providerHEX2BIN
+     */
+
+    public function testHEX2BIN()
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','HEXTOBIN'), $args);
+        $this->assertEquals($expectedResult, $result, null);
+    }

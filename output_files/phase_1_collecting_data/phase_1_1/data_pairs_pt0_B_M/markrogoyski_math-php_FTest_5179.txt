@@ -1,0 +1,19 @@
+    /**
+     * @test         mode
+     * @dataProvider dataProviderForMode
+     * @param        int   $d₁
+     * @param        int   $d₂
+     * @param        float $μ
+     */
+
+    public function testMode(int $d₁, int $d₂, float $μ)
+    {
+        // Given
+        $f = new F($d₁, $d₂);
+
+        // When
+        $mode = $f->mode();
+
+        // Then
+        $this->assertEqualsWithDelta($μ, $mode, 0.0001);
+    }

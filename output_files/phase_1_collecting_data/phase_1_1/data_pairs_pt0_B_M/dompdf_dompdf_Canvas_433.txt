@@ -1,0 +1,13 @@
+    /**
+     * Draws a filled rectangle at x1,y1 with width w and height h
+     *
+     * See {@link Style::munge_color()} for the format of the color array.
+     *
+     * @param float $x1
+     * @param float $y1
+     * @param float $w
+     * @param float $h
+     * @param array $color
+     */
+
+    function filled_rectangle($x1, $y1, $w, $h, $color);

@@ -1,0 +1,19 @@
+    /**
+     * @test         roots
+     * @dataProvider dataProviderForRoots
+     * @param        array $polynomialA
+     * @param        array $expected_roots
+     * @throws       \Exception
+     */
+
+    public function testRoots(array $polynomialA, array $expected_roots)
+    {
+        // Given
+        $polynomialA = new Polynomial($polynomialA);
+
+        // When
+        $roots = $polynomialA->roots();
+
+        // Then
+        $this->assertEquals($expected_roots, $roots);
+    }

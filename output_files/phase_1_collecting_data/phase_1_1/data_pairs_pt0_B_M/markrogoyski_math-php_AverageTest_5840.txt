@@ -1,0 +1,17 @@
+    /**
+     * @test   lehmerMean with a p of one half is the geometric mean
+     * @throws \Exception
+     */
+
+    public function testLehmerMeanPEqualsOneHalfIsGeometricMean()
+    {
+        // Given
+        $numbers = [3, 6];
+        $p       = 1 / 2;
+
+        // When
+        $mean = Average::lehmerMean($numbers, $p);
+
+        // Then
+        $this->assertEquals(Average::geometricMean($numbers), $mean);
+    }

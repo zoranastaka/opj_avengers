@@ -1,0 +1,8 @@
+	/**
+	 * Perform a post upgrade check (specific to the command line tool)
+	 *
+	 * @param InputInterface $input input interface
+	 * @param OutputInterface $output output interface
+	 */
+
+	protected function postUpgradeCheck(InputInterface $input, OutputInterface $output) {

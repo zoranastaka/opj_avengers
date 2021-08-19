@@ -1,0 +1,9 @@
+	/**
+	 * Truncate stream.
+	 *
+	 * @param int $new_size The new size.
+	 *
+	 * @return bool TRUE on success or FALSE on failure.
+	 */
+
+	public function stream_truncate( $new_size ) {

@@ -1,0 +1,8 @@
+    /**
+     * @return \Dompdf\FrameDecorator\AbstractFrameDecorator
+     */
+
+    public function get_decorator()
+    {
+        return $this->_decorator;
+    }

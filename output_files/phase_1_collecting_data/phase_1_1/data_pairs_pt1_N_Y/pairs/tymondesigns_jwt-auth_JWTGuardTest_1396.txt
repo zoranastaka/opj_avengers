@@ -1,0 +1,11 @@
+    /** @test */
+
+    public function it_should_not_generate_a_token_by_id()
+    {
+        $this->provider->shouldReceive('retrieveById')
+                       ->once()
+                       ->with(1)
+                       ->andReturn(null);
+
+        $this->assertNull($this->guard->tokenById(1));
+    }

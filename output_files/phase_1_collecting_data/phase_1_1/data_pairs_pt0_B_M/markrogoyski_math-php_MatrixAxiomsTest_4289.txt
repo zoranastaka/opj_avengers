@@ -1,0 +1,19 @@
+    /**
+     * @test         Axiom: A is a real skew-symmetric matrix, then I+A is invertible, where I is the identity matrix
+     * @dataProvider dataProviderForSkewSymmetricMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testSkewSymmetricMatrixAddedToIdentityIsInvertible(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $I = MatrixFactory::identity($A->getN());
+
+        // When
+        $I＋A = $I->add($A);
+
+        // Then
+        $this->assertTrue($I＋A->isInvertible());
+    }

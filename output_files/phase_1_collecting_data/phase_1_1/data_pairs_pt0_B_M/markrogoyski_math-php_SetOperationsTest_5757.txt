@@ -1,0 +1,29 @@
+    /**
+     * @test
+     * @dataProvider dataProviderForCartesianProduct
+     */
+
+    public function testCartesianProduct(array $A, array $B, array $A×B, Set $R)
+    {
+        // Given
+        $setA      = new Set($A);
+        $setB      = new Set($B);
+
+        // When
+        $setA×B    = $setA->cartesianProduct($setB);
+        $A×B_array = $setA×B->asArray();
+
+        // Then
+        $this->assertEquals($R, $setA×B);
+        $this->assertEquals($A×B, $A×B_array);
+        $this->assertEquals(count($setA×B), count($A×B));
+
+        foreach ($setA×B as $key => $value) {
+            $this->assertInstanceOf(Set::class, $value);
+            $this->assertEquals(2, count($value));
+        }
+        foreach ($A×B_array as $key => $value) {
+            $this->assertInstanceOf(Set::class, $value);
+            $this->assertEquals(2, count($value));
+        }
+    }

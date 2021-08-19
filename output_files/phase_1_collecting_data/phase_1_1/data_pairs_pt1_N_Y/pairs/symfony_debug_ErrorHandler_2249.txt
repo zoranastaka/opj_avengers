@@ -1,0 +1,141 @@
+    /**
+     * Handles errors by filtering then logging them according to the configured bit fields.
+     *
+     * @param int    $type    One of the E_* constants
+     * @param string $message
+     * @param string $file
+     * @param int    $line
+     *
+     * @return bool Returns false when no handling happens so that the PHP engine can handle the error itself
+     *
+     * @throws \ErrorException When $this->thrownErrors requests so
+     *
+     * @internal
+     */
+
+    public function handleError($type, $message, $file, $line)
+    {
+        if (\PHP_VERSION_ID >= 70300 && \E_WARNING === $type && '"' === $message[0] && false !== strpos($message, '" targeting switch is equivalent to "break')) {
+            $type = \E_DEPRECATED;
+        }
+
+        // Level is the current error reporting level to manage silent error.
+        $level = error_reporting();
+        $silenced = 0 === ($level & $type);
+        // Strong errors are not authorized to be silenced.
+        $level |= \E_RECOVERABLE_ERROR | \E_USER_ERROR | \E_DEPRECATED | \E_USER_DEPRECATED;
+        $log = $this->loggedErrors & $type;
+        $throw = $this->thrownErrors & $type & $level;
+        $type &= $level | $this->screamedErrors;
+
+        if (!$type || (!$log && !$throw)) {
+            return !$silenced && $type && $log;
+        }
+        $scope = $this->scopedErrors & $type;
+
+        if (false !== strpos($message, "@anonymous\0")) {
+            $logMessage = $this->levels[$type].': '.(new FlattenException())->setMessage($message)->getMessage();
+        } else {
+            $logMessage = $this->levels[$type].': '.$message;
+        }
+
+        if (null !== self::$toStringException) {
+            $errorAsException = self::$toStringException;
+            self::$toStringException = null;
+        } elseif (!$throw && !($type & $level)) {
+            if (!isset(self::$silencedErrorCache[$id = $file.':'.$line])) {
+                $lightTrace = $this->tracedErrors & $type ? $this->cleanTrace(debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS, 5), $type, $file, $line, false) : [];
+                $errorAsException = new SilencedErrorContext($type, $file, $line, isset($lightTrace[1]) ? [$lightTrace[0]] : $lightTrace);
+            } elseif (isset(self::$silencedErrorCache[$id][$message])) {
+                $lightTrace = null;
+                $errorAsException = self::$silencedErrorCache[$id][$message];
+                ++$errorAsException->count;
+            } else {
+                $lightTrace = [];
+                $errorAsException = null;
+            }
+
+            if (100 < ++self::$silencedErrorCount) {
+                self::$silencedErrorCache = $lightTrace = [];
+                self::$silencedErrorCount = 1;
+            }
+            if ($errorAsException) {
+                self::$silencedErrorCache[$id][$message] = $errorAsException;
+            }
+            if (null === $lightTrace) {
+                return true;
+            }
+        } else {
+            $errorAsException = new \ErrorException($logMessage, 0, $type, $file, $line);
+
+            if ($throw || $this->tracedErrors & $type) {
+                $backtrace = $errorAsException->getTrace();
+                $lightTrace = $this->cleanTrace($backtrace, $type, $file, $line, $throw);
+                $this->traceReflector->setValue($errorAsException, $lightTrace);
+            } else {
+                $this->traceReflector->setValue($errorAsException, []);
+                $backtrace = [];
+            }
+        }
+
+        if ($throw) {
+            if (\PHP_VERSION_ID < 70400 && \E_USER_ERROR & $type) {
+                for ($i = 1; isset($backtrace[$i]); ++$i) {
+                    if (isset($backtrace[$i]['function'], $backtrace[$i]['type'], $backtrace[$i - 1]['function'])
+                        && '__toString' === $backtrace[$i]['function']
+                        && '->' === $backtrace[$i]['type']
+                        && !isset($backtrace[$i - 1]['class'])
+                        && ('trigger_error' === $backtrace[$i - 1]['function'] || 'user_error' === $backtrace[$i - 1]['function'])
+                    ) {
+                        // Here, we know trigger_error() has been called from __toString().
+                        // PHP triggers a fatal error when throwing from __toString().
+                        // A small convention allows working around the limitation:
+                        // given a caught $e exception in __toString(), quitting the method with
+                        // `return trigger_error($e, E_USER_ERROR);` allows this error handler
+                        // to make $e get through the __toString() barrier.
+
+                        $context = 4 < \func_num_args() ? (func_get_arg(4) ?: []) : [];
+
+                        foreach ($context as $e) {
+                            if ($e instanceof \Throwable && $e->__toString() === $message) {
+                                self::$toStringException = $e;
+
+                                return true;
+                            }
+                        }
+
+                        // Display the original error message instead of the default one.
+                        $this->handleException($errorAsException);
+
+                        // Stop the process by giving back the error to the native handler.
+                        return false;
+                    }
+                }
+            }
+
+            throw $errorAsException;
+        }
+
+        if ($this->isRecursive) {
+            $log = 0;
+        } else {
+            if (\PHP_VERSION_ID < (\PHP_VERSION_ID < 70400 ? 70316 : 70404)) {
+                $currentErrorHandler = set_error_handler('var_dump');
+                restore_error_handler();
+            }
+
+            try {
+                $this->isRecursive = true;
+                $level = ($type & $level) ? $this->loggers[$type][1] : LogLevel::DEBUG;
+                $this->loggers[$type][0]->log($level, $logMessage, $errorAsException ? ['exception' => $errorAsException] : []);
+            } finally {
+                $this->isRecursive = false;
+
+                if (\PHP_VERSION_ID < (\PHP_VERSION_ID < 70400 ? 70316 : 70404)) {
+                    set_error_handler($currentErrorHandler);
+                }
+            }
+        }
+
+        return !$silenced && $type && $log;
+    }

@@ -1,0 +1,6 @@
+    /**
+     * @param $token
+     * @return mixed
+     */
+
+    public function adjustForeignAttributes($token) {

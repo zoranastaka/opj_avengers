@@ -1,0 +1,20 @@
+    /**
+     * @test         negate
+     * @dataProvider dataProviderForNegate
+     * @param        array $A
+     * @param        array $expected
+     * @throws       \Exception
+     */
+
+    public function testNegate(array $A, array $expected)
+    {
+        // Given
+        $A        = MatrixFactory::create($A);
+        $expected = MatrixFactory::create($expected);
+
+        // When
+        $−A = $A->negate();
+
+        // Then
+        $this->assertEquals($expected, $−A);
+    }

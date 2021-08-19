@@ -1,0 +1,16 @@
+    /**
+     * Gets the registered Filters.
+     *
+     * Be warned that this method cannot return filters defined with registerUndefinedFilterCallback.
+     *
+     * @return TwigFilter[]
+     *
+     * @see registerUndefinedFilterCallback
+     *
+     * @internal
+     */
+
+    public function getFilters(): array
+    {
+        return $this->extensionSet->getFilters();
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get the current width
+     *
+     * @return int
+     */
+
+    public function getWidth()
+    {
+        return $this->width;
+    }

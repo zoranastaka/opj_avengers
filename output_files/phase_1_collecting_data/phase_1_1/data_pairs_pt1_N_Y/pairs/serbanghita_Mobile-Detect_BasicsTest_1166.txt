@@ -1,0 +1,18 @@
+    /**
+     * @dataProvider versionDataProvider
+     */
+
+    public function testVersionExtraction($userAgent, $property, $stringVersion, $floatVersion)
+    {
+        $md = new Mobile_Detect(array('HTTP_USER_AGENT' => $userAgent));
+        $prop = $md->version($property);
+
+        $this->assertSame($stringVersion, $prop);
+
+        $prop = $md->version($property, 'float');
+        $this->assertSame($floatVersion, $prop);
+
+        //assert that garbage data is always === false
+        $prop = $md->version('garbage input is always garbage');
+        $this->assertFalse($prop);
+    }

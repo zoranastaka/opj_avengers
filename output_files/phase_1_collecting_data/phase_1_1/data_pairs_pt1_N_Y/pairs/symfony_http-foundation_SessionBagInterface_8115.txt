@@ -1,0 +1,5 @@
+    /**
+     * Initializes the Bag.
+     */
+
+    public function initialize(array &$array);

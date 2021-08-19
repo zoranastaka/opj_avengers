@@ -1,0 +1,30 @@
+    /**
+     * Add a recurrences filter (set maximum number of recurrences).
+     *
+     * @param int|float|null $recurrences
+     *
+     * @throws InvalidArgumentException
+     *
+     * @return $this
+     */
+
+    public function setRecurrences($recurrences)
+    {
+        if (!is_numeric($recurrences) && !\is_null($recurrences) || $recurrences < 0) {
+            throw new InvalidPeriodParameterException('Invalid number of recurrences.');
+        }
+
+        if ($recurrences === null) {
+            return $this->removeFilter(static::RECURRENCES_FILTER);
+        }
+
+        $this->recurrences = $recurrences === INF ? INF : (int) $recurrences;
+
+        if (!$this->hasFilter(static::RECURRENCES_FILTER)) {
+            return $this->addFilter(static::RECURRENCES_FILTER);
+        }
+
+        $this->handleChangedParameters();
+
+        return $this;
+    }

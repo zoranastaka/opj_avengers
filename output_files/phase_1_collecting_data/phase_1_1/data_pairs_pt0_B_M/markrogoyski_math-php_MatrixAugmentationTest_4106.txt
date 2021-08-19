@@ -1,0 +1,15 @@
+    /**
+     * @test         Augment with identity
+     * @dataProvider dataProviderForAugmentIdentity
+     * @throws       \Exception
+     */
+
+    public function testAugmentIdentity(array $C, array $⟮C∣I⟯)
+    {
+        // Given
+        $C    = MatrixFactory::create($C);
+        $⟮C∣I⟯ = MatrixFactory::create($⟮C∣I⟯);
+
+        // Then
+        $this->assertEquals($⟮C∣I⟯, $C->augmentIdentity());
+    }

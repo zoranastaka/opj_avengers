@@ -1,0 +1,12 @@
+    /**
+     * Returns the result of the calculation (x - m)T.(x - m)
+     */
+
+    protected function calculateVar(array $row, array $means): Matrix
+    {
+        $x = new Matrix($row, false);
+        $m = new Matrix($means, false);
+        $diff = $x->subtract($m);
+
+        return $diff->transpose()->multiply($diff);
+    }

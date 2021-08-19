@@ -1,0 +1,13 @@
+    /**
+     * Determines if the instance is not equal to another.
+     * Warning: if options differ, instances wil never be equal.
+     *
+     * @param mixed $period
+     *
+     * @return bool
+     */
+
+    public function notEqualTo($period): bool
+    {
+        return !$this->eq($period);
+    }

@@ -1,0 +1,10 @@
+    /** @test */
+
+    public function generateSkipsAllowsMethodIfAlreadyExists()
+    {
+        $stub = m::mock("test\Mockery\ClassWithAllowsMethod");
+
+        $stub->shouldReceive('allows')->andReturn(123);
+
+        $this->assertEquals(123, $stub->allows());
+    }

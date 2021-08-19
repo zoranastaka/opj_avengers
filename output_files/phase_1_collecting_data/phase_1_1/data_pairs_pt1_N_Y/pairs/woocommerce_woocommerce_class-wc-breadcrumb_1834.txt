@@ -1,0 +1,8 @@
+	/**
+	 * Add crumbs for a term.
+	 *
+	 * @param int    $term_id  Term ID.
+	 * @param string $taxonomy Taxonomy.
+	 */
+
+	protected function term_ancestors( $term_id, $taxonomy ) {

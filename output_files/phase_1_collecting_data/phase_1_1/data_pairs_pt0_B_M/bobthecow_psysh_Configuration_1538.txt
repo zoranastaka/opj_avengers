@@ -1,0 +1,10 @@
+    /**
+     * @deprecated Nothing should be using this anymore
+     *
+     * @return array
+     */
+
+    public function getTabCompletionMatchers()
+    {
+        return [];
+    }

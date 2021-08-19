@@ -1,0 +1,14 @@
+    /**
+     * Validate submitted post data
+     *
+     * @return bool
+     */
+
+    protected function _validate()
+    {
+        $email = preg_match(
+            '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/',
+            $this->postData['email']
+        );
+        return ($this->postData['firstName'] && $this->postData['lastName'] && $email);
+    }

@@ -1,0 +1,11 @@
+    /**
+     * @param object $object
+     */
+
+    public function __construct($object, ?\Throwable $error)
+    {
+        $this->object = $object;
+        $this->error = $error;
+        $this->stringable = \is_callable([$object, '__toString']);
+        $this->class = \get_class($object);
+    }

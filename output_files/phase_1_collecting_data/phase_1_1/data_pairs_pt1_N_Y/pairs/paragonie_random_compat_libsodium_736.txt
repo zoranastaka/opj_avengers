@@ -1,0 +1,12 @@
+        /**
+         * Generate a string of random bytes
+         * /dev/urandom
+         *
+         * @param int $length
+         * @return string
+         */
+
+        public static function randombytes_buf($length)
+        {
+            return '';
+        }

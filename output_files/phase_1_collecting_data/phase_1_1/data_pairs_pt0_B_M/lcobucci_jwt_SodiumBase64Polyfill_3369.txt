@@ -1,0 +1,14 @@
+    /** @throws CannotDecodeContent */
+
+    public static function base642bin(string $encoded, int $variant): string
+    {
+        if (! function_exists('sodium_base642bin')) {
+            return self::base642binFallback($encoded, $variant); // @codeCoverageIgnore
+        }
+
+        try {
+            return sodium_base642bin($encoded, $variant, '');
+        } catch (SodiumException $sodiumException) {
+            throw CannotDecodeContent::invalidBase64String();
+        }
+    }

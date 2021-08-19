@@ -1,0 +1,10 @@
+    /**
+     * Returns all attributes.
+     *
+     * @return array
+     */
+
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }

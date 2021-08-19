@@ -1,0 +1,15 @@
+    /**
+     * Checks if this expectation is eligible for additional calls
+     *
+     * @return bool
+     */
+
+    public function isEligible()
+    {
+        foreach ($this->_countValidators as $validator) {
+            if (!$validator->isEligible($this->_actualCount)) {
+                return false;
+            }
+        }
+        return true;
+    }

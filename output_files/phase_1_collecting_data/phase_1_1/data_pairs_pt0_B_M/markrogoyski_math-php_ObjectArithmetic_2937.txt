@@ -1,0 +1,9 @@
+    /*
+     * Multiply two objects together
+     *
+     * @param mixed $object_or_scalar value to be multiplied
+     *
+     * @return ObjectArithmetic product.
+     */
+
+    public function multiply($object_or_scalar);

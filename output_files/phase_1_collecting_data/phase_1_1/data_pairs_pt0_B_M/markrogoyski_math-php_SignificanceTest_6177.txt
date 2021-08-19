@@ -1,0 +1,16 @@
+    /**
+     * @test         sem
+     * @dataProvider dataProviderForSem
+     * @param        float $σ
+     * @param        int   $n
+     * @param        float $expected
+     */
+
+    public function testSem(float $σ, int $n, float $expected)
+    {
+        // When
+        $sem = Significance::sem($σ, $n);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $sem, 0.0001);
+    }

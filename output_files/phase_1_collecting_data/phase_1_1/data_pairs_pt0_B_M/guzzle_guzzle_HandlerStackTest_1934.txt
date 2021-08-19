@@ -1,0 +1,12 @@
+    /**
+     * @doesNotPerformAssertions
+     */
+
+    public function testCanSetDifferentHandlerAfterConstruction()
+    {
+        $f = static function () {
+        };
+        $h = new HandlerStack();
+        $h->setHandler($f);
+        $h->resolve();
+    }

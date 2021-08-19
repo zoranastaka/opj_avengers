@@ -1,0 +1,12 @@
+    /**
+     * Empty the claims collection.
+     *
+     * @return $this
+     */
+
+    public function emptyClaims()
+    {
+        $this->claims = new Collection;
+
+        return $this;
+    }

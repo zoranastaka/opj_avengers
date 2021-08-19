@@ -1,0 +1,12 @@
+    /**
+     * A glossary of all metrics and their definition
+     *
+     * @param $idSite
+     * @return array
+     */
+
+    public function getGlossaryMetrics($idSite)
+    {
+        $glossary = StaticContainer::get('Piwik\Plugins\API\Glossary');
+        return $glossary->metricsGlossary($idSite);
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @covers ::getEnclosure
+     * @covers ::setEnclosure
+     */
+
+    public function testEnclosure(): void
+    {
+        $this->csv->setEnclosure('o');
+        self::assertSame('o', $this->csv->getEnclosure());
+        self::assertSame($this->csv, $this->csv->setEnclosure('o'));
+
+        $this->expectException(InvalidArgument::class);
+
+        $this->csv->setEnclosure('foo');
+    }

@@ -1,0 +1,16 @@
+    /**
+     * Ensure that a token is available in the request.
+     *
+     * @throws \Tymon\JWTAuth\Exceptions\JWTException
+     *
+     * @return \Tymon\JWTAuth\JWT
+     */
+
+    protected function requireToken()
+    {
+        if (! $this->jwt->setRequest($this->getRequest())->getToken()) {
+            throw new JWTException('Token could not be parsed from the request.');
+        }
+
+        return $this->jwt;
+    }

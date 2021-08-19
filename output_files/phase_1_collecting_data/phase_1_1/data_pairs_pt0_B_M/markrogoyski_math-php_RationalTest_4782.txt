@@ -1,0 +1,12 @@
+    /**
+     * @test normalization throws an Exception\BadDataException if the denominator is zero
+     */
+
+    public function testNormalizeException()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $number = new Rational(1, 1, 0);
+    }

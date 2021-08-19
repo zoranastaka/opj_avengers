@@ -1,0 +1,11 @@
+    /** @test */
+
+    public function it_throws_if_it_was_called_less_than_the_number_of_times_we_expected()
+    {
+        $spy = spy(function () {});
+
+        $spy();
+
+        $this->expectException(InvalidCountException::class);
+        $spy->shouldHaveBeenCalled()->twice();
+    }

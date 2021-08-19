@@ -1,0 +1,11 @@
+    /**
+     * 获取错误代码
+     *
+     * @access public
+     * @return void
+     */
+
+    public function __getErrorCode()
+    {
+        return $this->error->code;
+    }

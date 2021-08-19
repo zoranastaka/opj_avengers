@@ -1,0 +1,10 @@
+    /**
+     * Checks, if running in verbose mode.
+     *
+     * @return bool
+     */
+
+    public function isVerbose()
+    {
+        return $this->verbose;
+    }

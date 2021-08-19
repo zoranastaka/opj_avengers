@@ -1,0 +1,9 @@
+    /**
+     * Lambda (λ) parameter of regularization term. If 0 is given,
+     * then the regularization term is cancelled
+     */
+
+    public function setLambda(float $lambda): void
+    {
+        $this->lambda = $lambda;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * The inverse of the CDF function
+     *
+     * @return int
+     */
+
+    public function inverse(float $p): int
+    {
+        return 0;
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @test Axiom: A ∩ A = A
+     * A intersection A equals A
+     *
+     * @dataProvider dataProviderForSingleSet
+     * @param        Set $A
+     */
+
+    public function testAIntersectionAEqualsA(Set $A)
+    {
+        // Given
+        $A∩A = $A->intersect($A);
+
+        // Then
+        $this->assertEquals($A, $A∩A);
+        $this->assertEquals($A->asArray(), $A∩A->asArray());
+    }

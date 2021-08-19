@@ -1,0 +1,12 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getNamespace()
+    {
+        if (null === $this->namespace) {
+            $this->parseClassName();
+        }
+
+        return $this->namespace;
+    }

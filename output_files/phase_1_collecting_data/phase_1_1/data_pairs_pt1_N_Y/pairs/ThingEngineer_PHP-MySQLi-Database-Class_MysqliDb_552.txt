@@ -1,0 +1,14 @@
+    /**
+     * Insert method to add new row
+     *
+     * @param string $tableName  The name of the table.
+     * @param array  $insertData Data containing information for inserting into the DB.
+     *
+     * @return bool Boolean indicating whether the insert query was completed successfully.
+     * @throws Exception
+     */
+
+    public function insert($tableName, $insertData)
+    {
+        return $this->_buildInsert($tableName, $insertData, 'INSERT');
+    }

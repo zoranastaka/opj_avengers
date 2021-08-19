@@ -1,0 +1,21 @@
+    /**
+     * Encrypts a block using the suppied key
+     *
+     * @param string $input Plaintext to encrypt
+     * @param string $key   Encryption key
+     *
+     * @return string Resulting ciphertext
+     */
+
+    private function encryptBlock($input, $key)
+    {
+        if (!$input && !$key) {
+            return '';
+        }
+
+        $this->prepareCipher($key);
+        $result = mcrypt_generic($this->mcrypt, $input);
+        mcrypt_generic_deinit($this->mcrypt);
+
+        return $result;
+    }

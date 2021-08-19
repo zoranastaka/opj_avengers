@@ -1,0 +1,15 @@
+    #[ReturnTypeWillChange]
+
+    public static function createFromDateString($time)
+    {
+        $interval = @parent::createFromDateString(strtr($time, [
+            ',' => ' ',
+            ' and ' => ' ',
+        ]));
+
+        if ($interval instanceof DateInterval) {
+            $interval = static::instance($interval);
+        }
+
+        return $interval;
+    }

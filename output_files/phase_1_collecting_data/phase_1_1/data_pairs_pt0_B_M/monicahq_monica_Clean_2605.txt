@@ -1,0 +1,16 @@
+    /**
+     * Execute the console command.
+     *
+     * @return void
+     */
+
+    public function handle(): void
+    {
+        Event::listen(TokenDeleteEvent::class, function ($event) {
+            $this->handleTokenDelete($event->token);
+        });
+
+        app(TokenClean::class)->execute([
+            'dryrun' => (bool) $this->option('dry-run'),
+        ]);
+    }

@@ -1,0 +1,16 @@
+    /**
+     * @test Axiom: A = B iff A ⊆ B and B ⊆ A
+     * Sets are equal if and only if they are both subsets of each other.
+     * @dataProvider dataProviderForSingleSet
+     */
+
+    public function testEqualSetsAreSubsetsInBothDirections(Set $A)
+    {
+        // Given
+        $B = $A;
+        $this->assertEquals($A, $A);
+
+        // Then
+        $this->assertTrue($A->isSubset($B));
+        $this->assertTrue($B->isSubset($A));
+    }

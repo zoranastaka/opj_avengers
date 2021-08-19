@@ -1,0 +1,22 @@
+    /**
+     * Mean of the distribution
+     *            _
+     *           /ν Γ((ν - 1)/2)
+     * E[T] = μ / - ------------    if ν > 1
+     *         √  2    Γ(ν/2)
+     *
+     *      = Does not exist        if ν ≤ 1
+     *
+     * @return float
+     */
+
+    public function mean(): float
+    {
+        $ν = $this->ν;
+        $μ = $this->μ;
+
+        if ($ν == 1) {
+            return \NAN;
+        }
+        return $μ * \sqrt($ν / 2) * Special::gamma(($ν - 1) / 2) / Special::gamma($ν / 2);
+    }

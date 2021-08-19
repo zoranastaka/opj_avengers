@@ -1,0 +1,24 @@
+    /**
+     * Circular standard deviation
+     * https://en.wikipedia.org/wiki/Directional_statistics#Measures_of_location_and_spread
+     * https://ncss-wpengine.netdna-ssl.com/wp-content/themes/ncss/pdf/Procedures/NCSS/Circular_Data_Analysis.pdf
+     *
+     *       _______
+     *      /     _
+     * ν = √ -2ln(R)
+     *
+     *       _
+     * Where R = ρ = mean resultant length
+     *
+     * @param  array $angles
+     *
+     * @return float
+     */
+
+    public static function standardDeviation(array $angles): float
+    {
+        $ρ       = self::meanResultantLength($angles);
+        $√⟮−2ln⟮R⟯⟯ = \sqrt(-2 * \log($ρ));
+
+        return $√⟮−2ln⟮R⟯⟯;
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @test         pellNumber
+     * @dataProvider dataProviderForPellNumber
+     * @param        int $n
+     * @param        array $expected_pell
+     */
+
+    public function testPellNumber(int $n, array $expected_pell)
+    {
+        // When
+        $pell = Advanced::pellNumber($n);
+
+        // Then
+        $this->assertEquals($expected_pell, $pell);
+    }

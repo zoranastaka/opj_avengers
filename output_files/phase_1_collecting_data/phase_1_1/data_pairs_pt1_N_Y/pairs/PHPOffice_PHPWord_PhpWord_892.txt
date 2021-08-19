@@ -1,0 +1,10 @@
+    /**
+     * Set default font name.
+     *
+     * @param string $fontName
+     */
+
+    public function setDefaultFontName($fontName)
+    {
+        Settings::setDefaultFontName($fontName);
+    }

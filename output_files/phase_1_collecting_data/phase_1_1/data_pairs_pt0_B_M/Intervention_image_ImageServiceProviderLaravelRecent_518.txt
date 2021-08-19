@@ -1,0 +1,3 @@
+        // create image
+
+        $app->singleton('image', function ($app) {

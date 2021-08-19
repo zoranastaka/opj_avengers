@@ -1,0 +1,12 @@
+    /**
+     * Checks that argument is of specific type or instance of specific class.
+     *
+     * @param string $type Type name (`integer`, `string`) or full class name
+     *
+     * @return Token\TypeToken
+     */
+
+    public static function type($type)
+    {
+        return new Token\TypeToken($type);
+    }

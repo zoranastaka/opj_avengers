@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function loop()
+    {
+        \event_base_loop($this->_eventBase);
+    }

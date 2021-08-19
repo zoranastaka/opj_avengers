@@ -1,0 +1,34 @@
+    /**
+     * Determine if the passed token has a condition of one of the passed types.
+     *
+     * @param int              $stackPtr The position of the token we are checking.
+     * @param int|string|array $types    The type(s) of tokens to search for.
+     *
+     * @return boolean
+     */
+
+    public function hasCondition($stackPtr, $types)
+    {
+        // Check for the existence of the token.
+        if (isset($this->tokens[$stackPtr]) === false) {
+            return false;
+        }
+
+        // Make sure the token has conditions.
+        if (isset($this->tokens[$stackPtr]['conditions']) === false) {
+            return false;
+        }
+
+        $types      = (array) $types;
+        $conditions = $this->tokens[$stackPtr]['conditions'];
+
+        foreach ($types as $type) {
+            if (in_array($type, $conditions, true) === true) {
+                // We found a token with the required type.
+                return true;
+            }
+        }
+
+        return false;
+
+    }//end hasCondition()

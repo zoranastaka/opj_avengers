@@ -1,0 +1,17 @@
+    /**
+     * Simple multipart/alternative test.
+     */
+
+    public function testAltBody()
+    {
+        $this->Mail->Body = 'This is the <strong>HTML</strong> part of the email.';
+        $this->Mail->AltBody = 'Here is the plain text body of this message. ' .
+            'It should be quite a few lines. It should be wrapped at ' .
+            '40 characters.  Make sure that it is.';
+        $this->Mail->WordWrap = 40;
+        $this->addNote('This is a multipart/alternative email');
+        $this->Mail->Subject .= ': AltBody + Word Wrap';
+
+        $this->buildBody();
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+    }

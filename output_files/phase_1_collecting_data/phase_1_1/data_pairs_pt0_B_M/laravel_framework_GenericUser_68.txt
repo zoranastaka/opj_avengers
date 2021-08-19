@@ -1,0 +1,11 @@
+    /**
+     * Dynamically unset a value on the user.
+     *
+     * @param  string  $key
+     * @return void
+     */
+
+    public function __unset($key)
+    {
+        unset($this->attributes[$key]);
+    }

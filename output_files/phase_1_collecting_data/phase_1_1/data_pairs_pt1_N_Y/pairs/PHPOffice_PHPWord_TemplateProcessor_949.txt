@@ -1,0 +1,30 @@
+    /**
+     * Saves the result document.
+     *
+     * @throws \PhpOffice\PhpWord\Exception\Exception
+     *
+     * @return string
+     */
+
+    public function save()
+    {
+        foreach ($this->tempDocumentHeaders as $index => $xml) {
+            $this->savePartWithRels($this->getHeaderName($index), $xml);
+        }
+
+        $this->savePartWithRels($this->getMainPartName(), $this->tempDocumentMainPart);
+        $this->savePartWithRels($this->getSettingsPartName(), $this->tempDocumentSettingsPart);
+
+        foreach ($this->tempDocumentFooters as $index => $xml) {
+            $this->savePartWithRels($this->getFooterName($index), $xml);
+        }
+
+        $this->zipClass->addFromString($this->getDocumentContentTypesName(), $this->tempDocumentContentTypes);
+
+        // Close zip file
+        if (false === $this->zipClass->close()) {
+            throw new Exception('Could not close zip file.'); // @codeCoverageIgnore
+        }
+
+        return $this->tempDocumentFilename;
+    }

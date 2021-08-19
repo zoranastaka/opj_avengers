@@ -1,0 +1,16 @@
+    /**
+     * Creates a UUID from a 128-bit integer string
+     *
+     * @param string $integer String representation of 128-bit integer
+     *
+     * @return UuidInterface A UuidInterface instance created from the string
+     *     representation of a 128-bit integer
+     *
+     * @psalm-pure note: changing the internal factory is an edge case not covered by purity invariants,
+     *             but under constant factory setups, this method operates in functionally pure manners
+     */
+
+    public static function fromInteger(string $integer): UuidInterface
+    {
+        return self::getFactory()->fromInteger($integer);
+    }

@@ -1,0 +1,54 @@
+    /**
+     * Make an assertion and throw {@link Hamcrest\AssertionError} if it fails.
+     *
+     * The first parameter may optionally be a string identifying the assertion
+     * to be included in the failure message.
+     *
+     * If the third parameter is not a matcher it is passed to
+     * {@link Hamcrest\Core\IsEqual#equalTo} to create one.
+     *
+     * Example:
+     * <pre>
+     * // With an identifier
+     * assertThat("apple flavour", $apple->flavour(), equalTo("tasty"));
+     * // Without an identifier
+     * assertThat($apple->flavour(), equalTo("tasty"));
+     * // Evaluating a boolean expression
+     * assertThat("some error", $a > $b);
+     * assertThat($a > $b);
+     * </pre>
+     */
+
+    public static function assertThat(/* $args ... */)
+    {
+        $args = func_get_args();
+        switch (count($args)) {
+            case 1:
+                self::$_count++;
+                if (!$args[0]) {
+                    throw new AssertionError();
+                }
+                break;
+
+            case 2:
+                self::$_count++;
+                if ($args[1] instanceof Matcher) {
+                    self::doAssert('', $args[0], $args[1]);
+                } elseif (!$args[1]) {
+                    throw new AssertionError($args[0]);
+                }
+                break;
+
+            case 3:
+                self::$_count++;
+                self::doAssert(
+                    $args[0],
+                    $args[1],
+                    Util::wrapValueWithIsEqual($args[2])
+                );
+                break;
+
+            default:
+                throw new \InvalidArgumentException('assertThat() requires one to three arguments');
+        }
+    }

@@ -1,0 +1,5 @@
+    /**
+     * Registers a SessionBagInterface with the session.
+     */
+
+    public function registerBag(SessionBagInterface $bag);

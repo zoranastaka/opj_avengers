@@ -1,0 +1,16 @@
+    /**
+     * Set the shell's config directory location.
+     *
+     * @param string $dir
+     */
+
+    public function setConfigDir($dir)
+    {
+        $this->configDir = (string) $dir;
+
+        $this->configPaths->overrideDirs([
+            'configDir'  => $this->configDir,
+            'dataDir'    => $this->dataDir,
+            'runtimeDir' => $this->runtimeDir,
+        ]);
+    }

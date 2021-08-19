@@ -1,0 +1,8 @@
+    /**
+     * @inheritdoc
+     */
+
+    public function addFilter(Filter $filter)
+    {
+        return null;
+    }

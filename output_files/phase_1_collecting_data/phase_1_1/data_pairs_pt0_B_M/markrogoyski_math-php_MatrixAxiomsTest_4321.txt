@@ -1,0 +1,20 @@
+    /**
+     * @test Axiom: L + L is lower triangular
+     * Sum of two lower triangular matrices is lower triangular
+     * @dataProvider dataProviderForLowerTriangularMatrix
+     * @param        array $L
+     * @throws       \Exception
+     */
+
+    public function testSumOfTwoLowerTriangularMatricesIsLowerTriangular(array $L)
+    {
+        // Given
+        $L = MatrixFactory::create($L);
+
+        // When
+        $L＋L = $L->add($L);
+
+        // Then
+        $this->assertTrue($L->isLowerTriangular());
+        $this->assertTrue($L＋L->isLowerTriangular());
+    }

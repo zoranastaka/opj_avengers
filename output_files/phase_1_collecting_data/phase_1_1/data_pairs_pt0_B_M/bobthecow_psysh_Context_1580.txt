@@ -1,0 +1,10 @@
+    /**
+     * Get all defined variables.
+     *
+     * @return array
+     */
+
+    public function getAll()
+    {
+        return \array_merge($this->scopeVariables, $this->getSpecialVariables());
+    }

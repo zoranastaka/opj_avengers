@@ -1,0 +1,15 @@
+    /** @test */
+
+    public function it_can_scope_users_using_an_object()
+    {
+        $user1 = User::create(['email' => 'user1@test.com']);
+        $user1->givePermissionTo($this->testUserPermission->name);
+
+        $scopedUsers1 = User::permission($this->testUserPermission)->get();
+        $scopedUsers2 = User::permission([$this->testUserPermission])->get();
+        $scopedUsers3 = User::permission(collect([$this->testUserPermission]))->get();
+
+        $this->assertEquals(1, $scopedUsers1->count());
+        $this->assertEquals(1, $scopedUsers2->count());
+        $this->assertEquals(1, $scopedUsers3->count());
+    }

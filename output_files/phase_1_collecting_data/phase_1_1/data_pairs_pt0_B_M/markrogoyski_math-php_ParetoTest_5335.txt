@@ -1,0 +1,13 @@
+    /**
+     * @return array [a, b, median]
+     */
+
+    public function dataProviderForMedian(): array
+    {
+        return [
+            [1, 1, 2],
+            [1, 2, 1.414213562373095],
+            [2, 1, 4],
+            [4, 5, 4.59479341998814],
+        ];
+    }

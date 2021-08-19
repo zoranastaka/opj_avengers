@@ -1,0 +1,9 @@
+    /**
+     * @covers ::getTempDir
+     * @test
+     */
+
+    public function testPhpTempDirIsUsedByDefault()
+    {
+        $this->assertEquals(sys_get_temp_dir(), Settings::getTempDir());
+    }

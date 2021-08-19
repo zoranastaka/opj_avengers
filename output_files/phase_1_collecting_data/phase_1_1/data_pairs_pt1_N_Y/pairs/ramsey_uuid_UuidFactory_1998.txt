@@ -1,0 +1,33 @@
+    /**
+     * Returns an RFC 4122 variant Uuid, created from the provided bytes and version
+     *
+     * @param string $bytes The byte string to convert to a UUID
+     * @param int $version The RFC 4122 version to apply to the UUID
+     *
+     * @return UuidInterface An instance of UuidInterface, created from the
+     *     byte string and version
+     *
+     * @psalm-pure
+     */
+
+    private function uuidFromBytesAndVersion(string $bytes, int $version): UuidInterface
+    {
+        /** @var array $unpackedTime */
+        $unpackedTime = unpack('n*', substr($bytes, 6, 2));
+        $timeHi = (int) $unpackedTime[1];
+        $timeHiAndVersion = pack('n*', BinaryUtils::applyVersion($timeHi, $version));
+
+        /** @var array $unpackedClockSeq */
+        $unpackedClockSeq = unpack('n*', substr($bytes, 8, 2));
+        $clockSeqHi = (int) $unpackedClockSeq[1];
+        $clockSeqHiAndReserved = pack('n*', BinaryUtils::applyVariant($clockSeqHi));
+
+        $bytes = substr_replace($bytes, $timeHiAndVersion, 6, 2);
+        $bytes = substr_replace($bytes, $clockSeqHiAndReserved, 8, 2);
+
+        if ($this->isDefaultFeatureSet) {
+            return LazyUuidFromString::fromBytes($bytes);
+        }
+
+        return $this->uuid($bytes);
+    }

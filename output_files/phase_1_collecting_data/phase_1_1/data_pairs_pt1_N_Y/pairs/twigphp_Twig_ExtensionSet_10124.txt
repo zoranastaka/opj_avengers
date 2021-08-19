@@ -1,0 +1,12 @@
+    /**
+     * @return TwigFilter[]
+     */
+
+    public function getFilters(): array
+    {
+        if (!$this->initialized) {
+            $this->initExtensions();
+        }
+
+        return $this->filters;
+    }

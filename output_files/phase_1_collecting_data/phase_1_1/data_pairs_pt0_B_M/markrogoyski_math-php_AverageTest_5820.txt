@@ -1,0 +1,16 @@
+    /**
+     * @test   quadraticMean with empty list of numbers
+     * @throws \Exception
+     */
+
+    public function testQuadraticMeanExceptionWhenEmptyList()
+    {
+        // Given
+        $numbers = [];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Average::quadraticMean($numbers);
+    }

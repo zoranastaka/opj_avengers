@@ -1,0 +1,10 @@
+    /**
+     * Returns the message for testing the requirement.
+     *
+     * @return string The test message
+     */
+
+    public function getTestMessage()
+    {
+        return $this->testMessage;
+    }

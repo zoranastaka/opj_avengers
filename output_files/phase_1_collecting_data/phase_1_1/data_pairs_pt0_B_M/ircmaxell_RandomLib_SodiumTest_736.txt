@@ -1,0 +1,15 @@
+    /**
+     * @dataProvider provideGenerate
+     */
+
+    public function testGenerate($length, $not)
+    {
+        if (!extension_loaded('libsodium')) {
+            $this->markTestSkipped('The libsodium extension is not loaded');
+        }
+
+        $rand = new Sodium();
+        $stub = $rand->generate($length);
+        $this->assertEquals($length, strlen($stub));
+        $this->assertNotEquals($not, $stub);
+    }

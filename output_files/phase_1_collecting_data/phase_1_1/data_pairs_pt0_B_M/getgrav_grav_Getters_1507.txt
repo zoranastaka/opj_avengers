@@ -1,0 +1,11 @@
+    /**
+     * Magic setter method
+     *
+     * @param int|string $offset Medium name value
+     * @param mixed $value  Medium value
+     */
+
+    public function __set($offset, $value)
+    {
+        $this->offsetSet($offset, $value);
+    }

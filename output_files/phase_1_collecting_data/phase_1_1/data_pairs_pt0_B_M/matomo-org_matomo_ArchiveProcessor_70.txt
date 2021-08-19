@@ -1,0 +1,13 @@
+    /**
+     * Note: public only for use in closure in PHP 5.3.
+     *
+     * @param $table
+     * @return \Piwik\Period
+     */
+
+    public function areColumnsNotAlreadyRenamed($table)
+    {
+        $period = $table->getMetadata(DataTableFactory::TABLE_METADATA_PERIOD_INDEX);
+
+        return !$period || $period->getLabel() === 'day';
+    }

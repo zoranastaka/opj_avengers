@@ -1,0 +1,17 @@
+    /**
+     * @test         checkNumericOrPolynomial returns a Polynomial for numeric and Polynomial inputs
+     * @dataProvider dataProviderForCheckNumericOrPolynomial
+     */
+
+    public function testCheckNumericOrPolynomialNumericInput($input)
+    {
+        // Given
+        $method = new \ReflectionMethod(Polynomial::class, 'checkNumericOrPolynomial');
+        $method->setAccessible(true);
+
+        // When
+        $polynomial = $method->invokeArgs(new Polynomial([1]), [$input]);
+
+        // Then
+        $this->assertInstanceOf(Polynomial::class, $polynomial);
+    }

@@ -1,0 +1,32 @@
+    /**
+     * @test
+     * @dataProvider dataProviderForUnionMultipleSets
+     */
+
+    public function testUnionMultipleSets(array $A, array $B, array $C, array $A∪B∪C, Set $R)
+    {
+        // Given
+        $setA        = new Set($A);
+        $setB        = new Set($B);
+        $setC        = new Set($C);
+        $expected    = new Set($A∪B∪C);
+
+        // When
+        $union       = $setA->union($setB, $setC);
+        $union_array = $union->asArray();
+
+        // Then
+        $this->assertEquals($R, $union);
+        $this->assertEquals($expected, $union);
+        $this->assertEquals(count($A∪B∪C), count($union));
+        foreach ($A∪B∪C as $member) {
+            $this->assertArrayHasKey("$member", $union_array);
+        }
+        foreach ($A∪B∪C as $_ => $value) {
+            if ($value instanceof Set) {
+                $this->assertEquals($value, $union_array["$value"]);
+            } else {
+                $this->assertContains("$value", $union_array);
+            }
+        }
+    }

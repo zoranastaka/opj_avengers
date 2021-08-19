@@ -1,0 +1,13 @@
+    /**
+     * Format a record.
+     *
+     * The returned array must contain
+     *   - scalar types values,
+     *   - NULL values,
+     *   - or objects implementing the __toString() method.
+     */
+
+    protected function formatRecord(array $record, callable $formatter): array
+    {
+        return $formatter($record);
+    }

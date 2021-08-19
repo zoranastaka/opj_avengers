@@ -1,0 +1,10 @@
+    /**
+     * Retrieve the list of known tablet devices.
+     *
+     * @return array List of tablet devices.
+     */
+
+    public static function getTabletDevices()
+    {
+        return self::$tabletDevices;
+    }

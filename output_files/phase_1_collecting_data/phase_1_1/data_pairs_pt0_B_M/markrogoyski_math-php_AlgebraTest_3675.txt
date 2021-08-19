@@ -1,0 +1,27 @@
+    /**
+     * @test         quartic with two complex roots - set to return complex
+     * @dataProvider dataProviderForQuarticTwoComplex
+     * @param        int $a
+     * @param        int $b
+     * @param        int $c
+     * @param        int $d
+     * @param        int $e
+     * @param        array $quartic expected roots
+     * @throws       \Exception
+     */
+
+    public function testQuarticTwoComplex($a, $b, $c, $d, $e, $quartic)
+    {
+        // Given
+        $complex0 = new Number\Complex($quartic[2]['r'], $quartic[2]['i']);
+        $complex1 = new Number\Complex($quartic[3]['r'], $quartic[3]['i']);
+
+        // When
+        [$z₁, $z₂, $z₃, $z₄] = Algebra::quartic($a, $b, $c, $d, $e, true);
+
+        // Then
+        $this->assertEqualsWithDelta($quartic[0], \floatval($z₁), 0.00000001);
+        $this->assertEqualsWithDelta($quartic[1], \floatval($z₂), 0.00000001);
+        $this->assertTrue($z₃->equals($complex0), "Expecting $complex0 but saw $z₃, complex conjugate is $z₄");
+        $this->assertTrue($z₄->equals($complex1), "Expecting $complex1 but saw $z₄, complex conjugate is $z₃");
+    }

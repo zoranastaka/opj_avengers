@@ -1,0 +1,10 @@
+    /**
+     * Returns the code of the locale "en"/"fr".
+     *
+     * @return string
+     */
+
+    public function getCode(): string
+    {
+        return $this->code;
+    }

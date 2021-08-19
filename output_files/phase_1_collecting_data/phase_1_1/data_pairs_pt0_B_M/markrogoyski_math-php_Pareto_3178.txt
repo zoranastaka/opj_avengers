@@ -1,0 +1,26 @@
+    /**
+     * Inverse CDF (quantile)
+     *
+     *             b
+     * F⁻¹(P) = -------
+     *          (1 - P)¹/ᵃ
+     *
+     * @param float $p
+     *
+     * @return float
+     */
+
+    public function inverse(float $p): float
+    {
+        $a = $this->a;
+        $b = $this->b;
+
+        if ($p == 0) {
+            return -\INF;
+        }
+        if ($p == 1) {
+            return \INF;
+        }
+
+        return $b / ((1 - $p) ** (1 / $a));
+    }

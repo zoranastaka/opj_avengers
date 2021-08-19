@@ -1,0 +1,15 @@
+    /**
+     * @test         isNotRefactorableNumber returns true if n is not a refactorable number
+     * @dataProvider dataProviderForNonRefactorableNumbers
+     * @param        int   $n
+     * @throws       \Exception
+     */
+
+    public function testIsNotRefactorableNumber(int $n)
+    {
+        // When
+        $isRefactorableNumber = Integer::isRefactorableNumber($n);
+
+        // Then
+        $this->assertFalse($isRefactorableNumber);
+    }

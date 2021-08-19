@@ -1,0 +1,56 @@
+  /**
+   * @return FetchAuthTokenCache
+   */
+
+  private function createApplicationDefaultCredentials()
+  {
+    $scopes = $this->prepareScopes();
+    $sub = $this->config['subject'];
+    $signingKey = $this->config['signing_key'];
+
+    // create credentials using values supplied in setAuthConfig
+    if ($signingKey) {
+      $serviceAccountCredentials = array(
+        'client_id' => $this->config['client_id'],
+        'client_email' => $this->config['client_email'],
+        'private_key' => $signingKey,
+        'type' => 'service_account',
+        'quota_project_id' => $this->config['quota_project'],
+      );
+      $credentials = CredentialsLoader::makeCredentials(
+          $scopes,
+          $serviceAccountCredentials
+      );
+    } else {
+      // When $sub is provided, we cannot pass cache classes to ::getCredentials
+      // because FetchAuthTokenCache::setSub does not exist.
+      // The result is when $sub is provided, calls to ::onGce are not cached.
+      $credentials = ApplicationDefaultCredentials::getCredentials(
+          $scopes,
+          null,
+          $sub ? null : $this->config['cache_config'],
+          $sub ? null : $this->getCache(),
+          $this->config['quota_project']
+      );
+    }
+
+    // for service account domain-wide authority (impersonating a user)
+    // @see https://developers.google.com/identity/protocols/OAuth2ServiceAccount
+    if ($sub) {
+      if (!$credentials instanceof ServiceAccountCredentials) {
+        throw new DomainException('domain-wide authority requires service account credentials');
+      }
+
+      $credentials->setSub($sub);
+    }
+
+    // If we are not using FetchAuthTokenCache yet, create it now
+    if (!$credentials instanceof FetchAuthTokenCache) {
+      $credentials = new FetchAuthTokenCache(
+          $credentials,
+          $this->config['cache_config'],
+          $this->getCache()
+      );
+    }
+    return $credentials;
+  }

@@ -1,0 +1,9 @@
+    /**
+     * Check if the registered expectation is an ArgumentListMatcher
+     * @return bool
+     */
+
+    private function isArgumentListMatcher()
+    {
+        return (count($this->_expectedArgs) === 1 && ($this->_expectedArgs[0] instanceof ArgumentListMatcher));
+    }

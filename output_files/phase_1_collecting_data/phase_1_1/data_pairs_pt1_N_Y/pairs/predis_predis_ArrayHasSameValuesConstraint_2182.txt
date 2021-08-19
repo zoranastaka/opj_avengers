@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    protected function failureDescription($other): string
+    {
+        return $this->toString();
+    }

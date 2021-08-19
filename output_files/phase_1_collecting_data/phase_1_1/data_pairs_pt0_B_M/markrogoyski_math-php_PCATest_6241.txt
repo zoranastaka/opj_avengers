@@ -1,0 +1,13 @@
+    /**
+     * @return array (center, scale)
+     */
+
+    public function dataProviderForConstructorParameters(): array
+    {
+        return [
+            [true, true],
+            [true, false],
+            [false, true],
+            [false, false],
+        ];
+    }

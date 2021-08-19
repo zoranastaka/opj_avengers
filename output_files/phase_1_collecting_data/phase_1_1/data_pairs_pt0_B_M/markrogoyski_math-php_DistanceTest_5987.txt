@@ -1,0 +1,16 @@
+    /**
+     * @test hellinger when the arrays are different lengths
+     */
+
+    public function testHellingerDistanceExceptionArraysDifferentLength()
+    {
+        // Given
+        $p = [0.4, 0.5, 0.1];
+        $q = [0.2, 0.8];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Distance::hellinger($p, $q);
+    }

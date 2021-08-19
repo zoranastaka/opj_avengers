@@ -1,0 +1,10 @@
+    /**
+     * Get the interval_spec string.
+     *
+     * @return string
+     */
+
+    public function spec()
+    {
+        return static::getDateIntervalSpec($this);
+    }

@@ -1,0 +1,9 @@
+    /** @test */
+
+    public function it_should_throw_an_exception_when_not_providing_a_token()
+    {
+        $this->expectException(JWTException::class);
+        $this->expectExceptionMessage('A token is required');
+
+        $this->jwtAuth->toUser();
+    }

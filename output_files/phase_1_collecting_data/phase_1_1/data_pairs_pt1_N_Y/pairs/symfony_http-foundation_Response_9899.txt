@@ -1,0 +1,25 @@
+    /**
+     * Modifies the response so that it conforms to the rules defined for a 304 status code.
+     *
+     * This sets the status, removes the body, and discards any headers
+     * that MUST NOT be included in 304 responses.
+     *
+     * @return $this
+     *
+     * @see https://tools.ietf.org/html/rfc2616#section-10.3.5
+     *
+     * @final
+     */
+
+    public function setNotModified(): object
+    {
+        $this->setStatusCode(304);
+        $this->setContent(null);
+
+        // remove headers that MUST NOT be included with 304 Not Modified responses
+        foreach (['Allow', 'Content-Encoding', 'Content-Language', 'Content-Length', 'Content-MD5', 'Content-Type', 'Last-Modified'] as $header) {
+            $this->headers->remove($header);
+        }
+
+        return $this;
+    }

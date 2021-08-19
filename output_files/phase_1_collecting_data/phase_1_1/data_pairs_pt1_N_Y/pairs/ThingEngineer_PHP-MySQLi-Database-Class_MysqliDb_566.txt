@@ -1,0 +1,40 @@
+    /**
+     * Internal function to build and execute INSERT/REPLACE calls
+     *
+     * @param string $tableName  The name of the table.
+     * @param array  $insertData Data containing information for inserting into the DB.
+     * @param string $operation  Type of operation (INSERT, REPLACE)
+     *
+     * @return bool Boolean indicating whether the insert query was completed successfully.
+     * @throws Exception
+     */
+
+    private function _buildInsert($tableName, $insertData, $operation)
+    {
+        if ($this->isSubQuery) {
+            return;
+        }
+
+        $this->_query = $operation . " " . implode(' ', $this->_queryOptions) . " INTO " . self::$prefix . $tableName;
+        $stmt = $this->_buildQuery(null, $insertData);
+        $status = $stmt->execute();
+        $this->_stmtError = $stmt->error;
+        $this->_stmtErrno = $stmt->errno;
+        $haveOnDuplicate = !empty ($this->_updateColumns);
+        $this->reset();
+        $this->count = $stmt->affected_rows;
+
+        if ($stmt->affected_rows < 1) {
+            // in case of onDuplicate() usage, if no rows were inserted
+            if ($status && $haveOnDuplicate) {
+                return true;
+            }
+            return false;
+        }
+
+        if ($stmt->insert_id > 0) {
+            return $stmt->insert_id;
+        }
+
+        return true;
+    }

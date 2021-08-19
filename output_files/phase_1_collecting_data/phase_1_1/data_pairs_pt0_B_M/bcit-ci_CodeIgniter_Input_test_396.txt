@@ -1,0 +1,11 @@
+	// --------------------------------------------------------------------
+
+	public function test_get_exist_with_xss_clean()
+	{
+		$_SERVER['REQUEST_METHOD'] = 'GET';
+		$_GET['harm'] = "Hello, i try to <script>alert('Hack');</script> your site";
+
+		$this->assertArrayHasKey('harm', $this->input->get());
+		$this->assertEquals("Hello, i try to <script>alert('Hack');</script> your site", $this->input->get('harm'));
+		$this->assertEquals("Hello, i try to [removed]alert&#40;'Hack'&#41;;[removed] your site", $this->input->get('harm', TRUE));
+	}

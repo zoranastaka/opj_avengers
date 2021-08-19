@@ -1,0 +1,16 @@
+    /**
+     * @test   reciprocal when there are zeros
+     * @throws Exception\BadDataException
+     */
+
+    public function testReciprocalWithZeros()
+    {
+        // Given
+        $xs = [1, 2, 0, 3, 0];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Single::reciprocal($xs);
+    }

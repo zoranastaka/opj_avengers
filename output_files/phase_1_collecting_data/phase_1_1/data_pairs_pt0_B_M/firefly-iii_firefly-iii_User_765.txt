@@ -1,0 +1,11 @@
+    /**
+     * @codeCoverageIgnore
+     * Link to transaction journals.
+     *
+     * @return HasMany
+     */
+
+    public function transactionJournals(): HasMany
+    {
+        return $this->hasMany(TransactionJournal::class);
+    }

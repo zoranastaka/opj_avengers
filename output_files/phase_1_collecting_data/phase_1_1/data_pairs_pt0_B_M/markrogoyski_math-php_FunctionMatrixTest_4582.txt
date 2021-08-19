@@ -1,0 +1,36 @@
+    /**
+     * @test   evaluate
+     * @throws \Exception
+     */
+
+    public function testConstructionExceptionDifferenceDimensions()
+    {
+        // Given
+        $A = [
+            [
+                function ($params) {
+                    $x = $params['x'];
+                    $y = $params['y'];
+                    return $x ** 2 * $y;
+                },
+                function ($params) {
+                    $x = $params['x'];
+                    $y = $params['y'];
+                    return $x ** 2 * $y;
+                },
+            ],
+            [
+                function ($params) {
+                    $x = $params['x'];
+                    $y = $params['y'];
+                    return 5 * $x +  \sin($y);
+                }
+            ],
+        ];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $M  = new FunctionMatrix($A);
+    }

@@ -1,0 +1,13 @@
+    /**
+     * Tear down the test case.
+     */
+
+    public function tearDown(): void
+    {
+        $this->finish();
+        parent::tearDown();
+        if ($container = \Mockery::getContainer()) {
+            $this->addToAssertionCount($container->Mockery_getExpectationCount());
+        }
+        \Mockery::close();
+    }

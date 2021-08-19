@@ -1,0 +1,22 @@
+    /**
+     * @test
+     * @requires PHP 7
+     */
+
+    public function it_reflects_return_typehints()
+    {
+        $class = new \ReflectionClass('Fixtures\Prophecy\WithReturnTypehints');
+
+        $mirror = new ClassMirror();
+
+        $classNode = $mirror->reflect($class, array());
+
+        $this->assertCount(3, $classNode->getMethods());
+        $this->assertTrue($classNode->hasMethod('getName'));
+        $this->assertTrue($classNode->hasMethod('getSelf'));
+        $this->assertTrue($classNode->hasMethod('getParent'));
+
+        $this->assertEquals(new ReturnTypeNode('string'), $classNode->getMethod('getName')->getReturnTypeNode());
+        $this->assertEquals(new ReturnTypeNode('\Fixtures\Prophecy\WithReturnTypehints'), $classNode->getMethod('getSelf')->getReturnTypeNode());
+        $this->assertEquals(new ReturnTypeNode('\Fixtures\Prophecy\EmptyClass'), $classNode->getMethod('getParent')->getReturnTypeNode());
+    }

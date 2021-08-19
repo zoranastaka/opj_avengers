@@ -1,0 +1,10 @@
+    /**
+     * Returns the name as given in PHP, $foo would yield "foo".
+     *
+     * @return string
+     */
+
+    public function getName()
+    {
+        return $this->name;
+    }

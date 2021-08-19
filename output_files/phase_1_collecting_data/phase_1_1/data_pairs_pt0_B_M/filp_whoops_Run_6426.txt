@@ -1,0 +1,10 @@
+    /**
+     * Removes the last handler.
+     *
+     * @return void
+     */
+
+    public function removeLastHandler()
+    {
+        array_shift($this->handlerStack);
+    }

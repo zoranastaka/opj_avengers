@@ -1,0 +1,10 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testRemoveOnEmptyRingDoesNotThrowException(): void
+    {
+        $distributor = $this->getDistributorInstance();
+
+        $this->assertNull($distributor->remove('node'));
+    }

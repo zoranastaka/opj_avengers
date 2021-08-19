@@ -1,0 +1,11 @@
+    /**
+     * 获取Widget_Options对象
+     *
+     * @access public
+     * @return Widget_Options
+     */
+
+    public static function options()
+    {
+        return Typecho_Widget::widget('Widget_Options');
+    }

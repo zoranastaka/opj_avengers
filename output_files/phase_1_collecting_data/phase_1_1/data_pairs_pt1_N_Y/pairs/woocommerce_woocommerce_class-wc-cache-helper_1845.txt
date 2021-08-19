@@ -1,0 +1,7 @@
+	/**
+	 * Increment group cache prefix (invalidates cache).
+	 *
+	 * @param string $group Group of cache to clear.
+	 */
+
+	public static function incr_cache_prefix( $group ) {

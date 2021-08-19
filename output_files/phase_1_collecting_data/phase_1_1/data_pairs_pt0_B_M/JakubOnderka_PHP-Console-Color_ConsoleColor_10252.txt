@@ -1,0 +1,22 @@
+    /**
+     * @param string $style
+     * @return string
+     */
+
+    private function styleSequence($style)
+    {
+        if (array_key_exists($style, $this->styles)) {
+            return $this->styles[$style];
+        }
+
+        if (!$this->are256ColorsSupported()) {
+            return null;
+        }
+
+        preg_match(self::COLOR256_REGEXP, $style, $matches);
+
+        $type = $matches[1] === 'bg_' ? self::BACKGROUND : self::FOREGROUND;
+        $value = $matches[2];
+
+        return "$type;5;$value";
+    }

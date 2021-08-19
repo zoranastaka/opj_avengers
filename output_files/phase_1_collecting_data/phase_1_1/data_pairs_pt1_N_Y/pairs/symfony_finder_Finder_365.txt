@@ -1,0 +1,18 @@
+    /**
+     * Sorts files and directories by the last accessed time.
+     *
+     * This is the time that the file was last accessed, read or written to.
+     *
+     * This can be slow as all the matching files and directories must be retrieved for comparison.
+     *
+     * @return $this
+     *
+     * @see SortableIterator
+     */
+
+    public function sortByAccessedTime()
+    {
+        $this->sort = Iterator\SortableIterator::SORT_BY_ACCESSED_TIME;
+
+        return $this;
+    }

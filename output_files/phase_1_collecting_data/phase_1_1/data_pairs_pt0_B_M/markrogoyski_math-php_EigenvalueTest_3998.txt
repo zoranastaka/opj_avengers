@@ -1,0 +1,20 @@
+    /**
+     * @test         Matrix eigenvalues using jacobiMethod returns the expected eigenvalues
+     * @dataProvider dataProviderForSymmetricEigenvalues
+     * @dataProvider dataProviderForSymmetricEigenvalueEdgeCases
+     * @param        array $A
+     * @param        array $S
+     * @throws       \Exception
+     */
+
+    public function testJacobiMethodViaMatrix(array $A, array $S)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $eigenvalues = $A->eigenvalues(Eigenvalue::JACOBI_METHOD);
+
+        // Then
+        $this->assertEqualsWithDelta($S, $eigenvalues, 0.0001);
+    }

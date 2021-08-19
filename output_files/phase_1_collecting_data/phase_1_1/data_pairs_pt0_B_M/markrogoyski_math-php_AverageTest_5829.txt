@@ -1,0 +1,16 @@
+    /**
+     * @test         iqm
+     * @dataProvider dataProviderForInterquartileMean
+     * @param        array $numbers
+     * @param        float $expectedIqm
+     * @throws       \Exception
+     */
+
+    public function testIqm(array $numbers, float $expectedIqm)
+    {
+        // When
+        $iqm = Average::iqm($numbers);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedIqm, $iqm, 0.01);
+    }

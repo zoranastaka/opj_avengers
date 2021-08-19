@@ -1,0 +1,12 @@
+    /**
+     * Appends a rejection handler callback to the promise, and returns a new
+     * promise resolving to the return value of the callback if it is called,
+     * or to its original fulfillment value if the promise is instead
+     * fulfilled.
+     *
+     * @param callable $onRejected Invoked when the promise is rejected.
+     *
+     * @return PromiseInterface
+     */
+
+    public function otherwise(callable $onRejected);

@@ -1,0 +1,14 @@
+/**
+ * @covers \SebastianBergmann\ResourceOperations\ResourceOperations
+ */
+
+final class ResourceOperationsTest extends TestCase
+{
+    public function testGetFunctions(): void
+    {
+        $functions = ResourceOperations::getFunctions();
+
+        $this->assertIsArray($functions);
+        $this->assertContains('fopen', $functions);
+    }
+}

@@ -1,0 +1,5 @@
+    /**
+     * @uses \PharIo\Manifest\ExtensionElement
+     */
+
+    public function testInvalidCompatibleConstraintThrowsException(): void {

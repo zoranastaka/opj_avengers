@@ -1,0 +1,11 @@
+    /**
+     * Normalizes a node to a statement.
+     *
+     * Expressions are wrapped in a Stmt\Expression node.
+     *
+     * @param Node|Builder $node The node to normalize
+     *
+     * @return Stmt The normalized statement node
+     */
+
+    public static function normalizeStmt($node) : Stmt {

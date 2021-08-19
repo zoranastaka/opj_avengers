@@ -1,0 +1,9 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    protected function configure()
+    {
+        $this->addArgument('packages', InputArgument::IS_ARRAY | InputArgument::REQUIRED, '[Package name]:[Version constraint]');
+        $this->addOption('prefer-source', null, InputOption::VALUE_NONE, 'Forces installation from package sources when possible, including VCS information.');
+    }

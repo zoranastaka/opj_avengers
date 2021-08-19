@@ -1,0 +1,24 @@
+    /**
+     * @test         qrDecomposition property A = QR
+     * @dataProvider dataProviderForQrDecompositionSquareMatricesWithSpecificResults
+     * @dataProvider dataProviderForQrDecompositionNonSquareMatricesWithSpecificResults
+     * @dataProvider dataProviderForSingularMatrix
+     * @dataProvider dataProviderForNonsingularMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testQrDecompositionPropertyAEqualsQR(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // And
+        $qrDecomposition = $A->qrDecomposition();
+
+        // When
+        $QR = $qrDecomposition->Q->multiply($qrDecomposition->R);
+
+        // Then A = QR
+        $this->assertEqualsWithDelta($A->getMatrix(), $QR->getMatrix(), 0.00001);
+    }

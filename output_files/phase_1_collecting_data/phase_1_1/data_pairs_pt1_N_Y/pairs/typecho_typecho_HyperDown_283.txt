@@ -1,0 +1,13 @@
+    /**
+     * @param $str
+     * @return string
+     */
+
+    public function makeHolder($str)
+    {
+        $key = "\r" . $this->_uniqid . $this->_id . "\r";
+        $this->_id ++;
+        $this->_holders[$key] = $str;
+
+        return $key;
+    }

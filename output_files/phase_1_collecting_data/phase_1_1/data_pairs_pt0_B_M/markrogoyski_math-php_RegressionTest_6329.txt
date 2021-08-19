@@ -1,0 +1,15 @@
+    /**
+     * @test         r2
+     * @dataProvider dataProviderForR2
+     * @param        array $points
+     * @param        float $r2
+     */
+
+    public function testR2(array $points, float $r2)
+    {
+        // Given
+        $regression = new Linear($points);
+
+        // Then
+        $this->assertEqualsWithDelta($r2, $regression->r2($points), 0.001);
+    }

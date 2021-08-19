@@ -1,0 +1,10 @@
+    /**
+    * The workbook has macros ?
+    *
+    * @return boolean true if workbook has macros, false if not
+    */
+
+    public function hasMacros()
+    {
+        return $this->hasMacros;
+    }

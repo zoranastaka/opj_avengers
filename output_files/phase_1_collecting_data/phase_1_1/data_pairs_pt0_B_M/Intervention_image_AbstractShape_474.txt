@@ -1,0 +1,10 @@
+    /**
+     * Determines if current shape has border
+     *
+     * @return boolean
+     */
+
+    public function hasBorder()
+    {
+        return ($this->border_width >= 1);
+    }

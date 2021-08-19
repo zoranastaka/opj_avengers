@@ -1,0 +1,30 @@
+    /**
+     * Dumps a string representation of the stack.
+     *
+     * @return string
+     */
+
+    public function __toString()
+    {
+        $depth = 0;
+        $stack = [];
+
+        if ($this->handler !== null) {
+            $stack[] = "0) Handler: " . $this->debugCallable($this->handler);
+        }
+
+        $result = '';
+        foreach (\array_reverse($this->stack) as $tuple) {
+            $depth++;
+            $str = "{$depth}) Name: '{$tuple[1]}', ";
+            $str .= "Function: " . $this->debugCallable($tuple[0]);
+            $result = "> {$str}\n{$result}";
+            $stack[] = $str;
+        }
+
+        foreach (\array_keys($stack) as $k) {
+            $result .= "< {$stack[$k]}\n";
+        }
+
+        return $result;
+    }

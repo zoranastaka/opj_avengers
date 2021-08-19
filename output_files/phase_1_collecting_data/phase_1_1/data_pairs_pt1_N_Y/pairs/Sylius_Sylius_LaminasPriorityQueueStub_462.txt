@@ -1,0 +1,16 @@
+    /**
+     * Does the queue have an item with the given priority?
+     *
+     * @param  int $priority
+     * @return bool
+     */
+
+    public function hasPriority($priority)
+    {
+        foreach ($this->items as $item) {
+            if ($item['priority'] === $priority) {
+                return true;
+            }
+        }
+        return false;
+    }

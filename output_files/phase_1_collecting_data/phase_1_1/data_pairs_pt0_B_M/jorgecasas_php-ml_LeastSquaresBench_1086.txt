@@ -1,0 +1,10 @@
+    /**
+     * @Revs(1)
+     * @Iterations(5)
+     */
+
+    public function benchLeastSquaresTrain(): void
+    {
+        $leastSqueares = new LeastSquares();
+        $leastSqueares->train($this->dataset->getSamples(), $this->dataset->getTargets());
+    }

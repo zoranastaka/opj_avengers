@@ -1,0 +1,10 @@
+	// --------------------------------------------------------------------
+
+	public function test_post_exist()
+	{
+		$_SERVER['REQUEST_METHOD'] = 'POST';
+		$_POST['foo'] = 'bar';
+
+		$this->assertArrayHasKey('foo', $this->input->post());
+		$this->assertEquals('bar', $this->input->post('foo'));
+	}

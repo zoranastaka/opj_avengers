@@ -1,0 +1,20 @@
+    /**
+     * Applies the RFC 4122 variant field to the 16-bit clock sequence
+     *
+     * @link http://tools.ietf.org/html/rfc4122#section-4.1.1 RFC 4122, § 4.1.1: Variant
+     *
+     * @param int $clockSeq The 16-bit clock sequence value before the RFC 4122
+     *     variant is applied
+     *
+     * @return int The 16-bit clock sequence multiplexed with the UUID variant
+     *
+     * @psalm-pure
+     */
+
+    public static function applyVariant(int $clockSeq): int
+    {
+        $clockSeq = $clockSeq & 0x3fff;
+        $clockSeq |= 0x8000;
+
+        return $clockSeq;
+    }

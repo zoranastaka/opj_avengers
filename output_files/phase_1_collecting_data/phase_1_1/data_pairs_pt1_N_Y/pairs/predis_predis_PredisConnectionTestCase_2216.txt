@@ -1,0 +1,20 @@
+    /**
+     * @group connected
+     */
+
+    public function testReadsStatusResponses(): void
+    {
+        $commands = $this->getCommandFactory();
+        $connection = $this->createConnection(true);
+
+        $connection->writeRequest($commands->create('set', array('foo', 'bar')));
+        $this->assertInstanceOf('Predis\Response\Status', $connection->read());
+
+        $connection->writeRequest($commands->create('ping'));
+        $this->assertInstanceOf('Predis\Response\Status', $connection->read());
+
+        $connection->writeRequest($commands->create('multi'));
+        $connection->writeRequest($commands->create('ping'));
+        $this->assertInstanceOf('Predis\Response\Status', $connection->read());
+        $this->assertInstanceOf('Predis\Response\Status', $connection->read());
+    }

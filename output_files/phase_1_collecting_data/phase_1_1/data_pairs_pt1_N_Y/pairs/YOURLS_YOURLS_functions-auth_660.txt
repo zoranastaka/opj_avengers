@@ -1,0 +1,12 @@
+/**
+ * Get YOURLS_COOKIE_LIFE value (ie the life span of an auth cookie in seconds)
+ *
+ * Use this function instead of directly using the constant. This way, its value can be modified by plugins
+ * on a per case basis
+ *
+ * @since 1.7.7
+ * @see includes/Config/Config.php
+ * @return integer     cookie life span, in seconds
+ */
+
+function yourls_get_cookie_life() {

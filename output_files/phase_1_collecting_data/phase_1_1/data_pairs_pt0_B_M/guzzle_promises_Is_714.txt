@@ -1,0 +1,10 @@
+    /**
+     * Returns true if a promise is rejected.
+     *
+     * @return bool
+     */
+
+    public static function rejected(PromiseInterface $promise)
+    {
+        return $promise->getState() === PromiseInterface::REJECTED;
+    }

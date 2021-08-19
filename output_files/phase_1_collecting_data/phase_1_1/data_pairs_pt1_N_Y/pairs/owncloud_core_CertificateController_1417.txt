@@ -1,0 +1,7 @@
+	/**
+	 * Add a new personal root certificate to the system's trust store
+	 *
+	 * @return array
+	 */
+
+	public function addSystemRootCertificate() {

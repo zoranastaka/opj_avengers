@@ -1,0 +1,11 @@
+    /**
+     * Gross horsepower observations for all models
+     * ['Mazda RX4' => 110, 'Honda civic' => 52, ... ]
+     *
+     * @return number[]
+     */
+
+    public function getHp(): array
+    {
+        return \array_column(self::DATA, 3);
+    }

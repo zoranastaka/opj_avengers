@@ -1,0 +1,13 @@
+    /**
+     * @test   getRow throws Exception\MatrixException if the row does not exist
+     * @throws \Exception
+     */
+
+    public function testGetRowException()
+    {
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $this->matrix->getRow(8);
+    }

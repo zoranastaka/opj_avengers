@@ -1,0 +1,10 @@
+    /**
+     * Setter for the $_generator static property.
+     *
+     * @param \Mockery\Generator\Generator $generator
+     */
+
+    public static function setGenerator(Generator $generator)
+    {
+        self::$_generator = $generator;
+    }

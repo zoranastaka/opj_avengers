@@ -1,0 +1,16 @@
+    /** @test */
+
+    public function it_can_serialize_closures_using_the_bot()
+    {
+        $conversation = new TestConversation();
+
+        $bot = app('botman');
+        $bot->hears('foo', function () {
+        });
+        BotMan::storeConversation($conversation, function ($answer) {
+        });
+
+        $cached = Cache::get('conversation-'.sha1(null).'-'.sha1(null));
+        $this->assertEquals($conversation, $cached['conversation']);
+        $this->assertTrue(is_string($cached['next']));
+    }

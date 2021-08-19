@@ -1,0 +1,16 @@
+    /**
+     * @test         getMatrix returns the expected array
+     * @dataProvider dataProviderMulti
+     * @param        array $A
+     * @param        array $R
+     * @throws       \Exception
+     */
+
+    public function testGetMatrix(array $A, array $R)
+    {
+        // Given
+        $D = MatrixFactory::diagonal($A);
+
+        // Then
+        $this->assertEquals($R, $D->getMatrix());
+    }

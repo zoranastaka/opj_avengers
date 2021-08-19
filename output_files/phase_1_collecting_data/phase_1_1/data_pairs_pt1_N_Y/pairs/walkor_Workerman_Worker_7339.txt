@@ -1,0 +1,10 @@
+    /**
+     * Get global event-loop instance.
+     *
+     * @return EventInterface
+     */
+
+    public static function getEventLoop()
+    {
+        return static::$globalEvent;
+    }

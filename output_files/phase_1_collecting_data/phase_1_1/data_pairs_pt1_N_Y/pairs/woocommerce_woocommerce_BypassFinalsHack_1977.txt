@@ -1,0 +1,5 @@
+	/**
+	 * Revert the hack to its initial state - nothing to do since finals can't be reverted.
+	 */
+
+	public function reset() {

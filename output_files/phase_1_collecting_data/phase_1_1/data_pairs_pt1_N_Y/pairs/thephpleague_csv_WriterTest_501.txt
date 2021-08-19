@@ -1,0 +1,14 @@
+    /**
+     * @covers ::insertOne
+     */
+
+    public function testInsert(): void
+    {
+        $expected = [
+            ['john', 'doe', 'john.doe@example.com'],
+        ];
+        foreach ($expected as $row) {
+            $this->csv->insertOne($row);
+        }
+        self::assertStringContainsString('john,doe,john.doe@example.com', $this->csv->toString());
+    }

@@ -1,0 +1,17 @@
+    /**
+     * Mean of the distribution
+     *
+     * μ = 0 if ν > 1
+     * otherwise undefined
+     *
+     * @return float
+     */
+
+    public function mean(): float
+    {
+        if ($this->ν > 1) {
+            return 0;
+        }
+
+        return \NAN;
+    }

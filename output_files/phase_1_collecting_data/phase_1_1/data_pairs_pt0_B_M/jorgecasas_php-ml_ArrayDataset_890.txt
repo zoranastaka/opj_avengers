@@ -1,0 +1,13 @@
+    /**
+     * @throws InvalidArgumentException
+     */
+
+    public function __construct(array $samples, array $targets)
+    {
+        if (count($samples) !== count($targets)) {
+            throw new InvalidArgumentException('Size of given arrays does not match');
+        }
+
+        $this->samples = $samples;
+        $this->targets = $targets;
+    }

@@ -1,0 +1,67 @@
+    /**
+     * Parse a string into a new CarbonInterval object according to the specified format.
+     *
+     * @example
+     * ```
+     * echo Carboninterval::createFromFormat('H:i', '1:30');
+     * ```
+     *
+     * @param string $format   Format of the $interval input string
+     * @param string $interval Input string to convert into an interval
+     *
+     * @throws Exception when the $interval cannot be parsed as an interval.
+     *
+     * @return static
+     */
+
+    public static function createFromFormat(string $format, ?string $interval)
+    {
+        $instance = new static(0);
+        $length = mb_strlen($format);
+
+        if (preg_match('/s([,.])([uv])$/', $format, $match)) {
+            $interval = explode($match[1], $interval);
+            $index = \count($interval) - 1;
+            $interval[$index] = str_pad($interval[$index], $match[2] === 'v' ? 3 : 6, '0');
+            $interval = implode($match[1], $interval);
+        }
+
+        $interval = $interval ?? '';
+
+        for ($index = 0; $index < $length; $index++) {
+            $expected = mb_substr($format, $index, 1);
+            $nextCharacter = mb_substr($interval, 0, 1);
+            $unit = static::$formats[$expected] ?? null;
+
+            if ($unit) {
+                if (!preg_match('/^-?\d+/', $interval, $match)) {
+                    throw new ParseErrorException('number', $nextCharacter);
+                }
+
+                $interval = mb_substr($interval, mb_strlen($match[0]));
+                $instance->$unit += \intval($match[0]);
+
+                continue;
+            }
+
+            if ($nextCharacter !== $expected) {
+                throw new ParseErrorException(
+                    "'$expected'",
+                    $nextCharacter,
+                    'Allowed substitutes for interval formats are '.implode(', ', array_keys(static::$formats))."\n".
+                    'See https://php.net/manual/en/function.date.php for their meaning'
+                );
+            }
+
+            $interval = mb_substr($interval, 1);
+        }
+
+        if ($interval !== '') {
+            throw new ParseErrorException(
+                'end of string',
+                $interval
+            );
+        }
+
+        return $instance;
+    }

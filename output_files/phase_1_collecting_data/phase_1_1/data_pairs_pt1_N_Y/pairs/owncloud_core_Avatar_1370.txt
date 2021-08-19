@@ -1,0 +1,5 @@
+	/**
+	 * @inheritdoc
+	 */
+
+	public function getFile($size) {

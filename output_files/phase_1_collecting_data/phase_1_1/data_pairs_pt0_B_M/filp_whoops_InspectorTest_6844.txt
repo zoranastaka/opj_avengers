@@ -1,0 +1,12 @@
+    /**
+     * @covers Whoops\Exception\Inspector::getPreviousExceptions
+     */
+
+    public function testGetPreviousExceptionsReturnsEmptyListIfThereAreNoPreviousExceptions()
+    {
+        $exception         = $this->getException('My exception');
+        $inspector         = $this->getInspectorInstance($exception);
+
+        $previousExceptions = $inspector->getPreviousExceptions();
+        $this->assertCount(0, $previousExceptions);
+    }

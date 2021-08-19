@@ -1,0 +1,16 @@
+    /**
+     * Verfies whether the given metric belongs to the given report.
+     *
+     * @param int $idSite
+     * @param string $metric     For example 'nb_visits'
+     * @param string $apiMethodUniqueId  For example 'MultiSites_getAll'
+     *
+     * @return bool
+     */
+
+    public function isValidMetricForReport($metric, $idSite, $apiMethodUniqueId)
+    {
+        $translation = $this->translateMetric($metric, $idSite, $apiMethodUniqueId);
+
+        return !empty($translation);
+    }

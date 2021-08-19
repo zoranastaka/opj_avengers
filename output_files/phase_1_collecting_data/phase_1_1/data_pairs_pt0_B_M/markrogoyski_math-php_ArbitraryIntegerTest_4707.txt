@@ -1,0 +1,18 @@
+    /**
+     * @test         Int representation
+     * @dataProvider dataProviderForIntToInt
+     * @param        int $int
+     * @throws       \Exception
+     */
+
+    public function testIntToInt(int $int)
+    {
+        // Given
+        $obj = new ArbitraryInteger($int);
+
+        // When
+        $intRepresentation = $obj->toInt();
+
+        // Then
+        $this->assertSame($int, $intRepresentation);
+    }

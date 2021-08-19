@@ -1,0 +1,10 @@
+    /**
+     * Returns an array with silent errors in path configuration.
+     *
+     * @return array
+     */
+
+    public function getSilenceErrorsInPaths()
+    {
+        return $this->silencedPatterns;
+    }

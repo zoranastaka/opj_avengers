@@ -1,0 +1,15 @@
+    /**
+     * @param ConsoleColor $color
+     * @throws \JakubOnderka\PhpConsoleColor\InvalidStyleException
+     */
+
+    public function __construct(ConsoleColor $color)
+    {
+        $this->color = $color;
+
+        foreach ($this->defaultTheme as $name => $styles) {
+            if (!$this->color->hasTheme($name)) {
+                $this->color->addTheme($name, $styles);
+            }
+        }
+    }

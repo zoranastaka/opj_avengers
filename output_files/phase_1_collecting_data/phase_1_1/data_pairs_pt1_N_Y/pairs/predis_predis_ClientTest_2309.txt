@@ -1,0 +1,11 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testMonitorReturnsMonitorConsumer(): void
+    {
+        $connection = $this->getMockBuilder('Predis\Connection\NodeConnectionInterface')->getMock();
+        $client = new Client($connection);
+
+        $this->assertInstanceOf('Predis\Monitor\Consumer', $monitor = $client->monitor());
+    }

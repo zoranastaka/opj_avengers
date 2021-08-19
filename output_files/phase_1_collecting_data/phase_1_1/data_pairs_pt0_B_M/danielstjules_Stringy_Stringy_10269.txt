@@ -1,0 +1,10 @@
+    /**
+     * Returns the encoding used by the Stringy object.
+     *
+     * @return string The current value of the $encoding property
+     */
+
+    public function getEncoding()
+    {
+        return $this->encoding;
+    }

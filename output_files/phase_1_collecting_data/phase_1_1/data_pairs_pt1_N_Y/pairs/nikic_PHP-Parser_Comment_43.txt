@@ -1,0 +1,7 @@
+    /**
+     * Gets the file offset the comment started on.
+     *
+     * @return int File offset (or -1 if not available)
+     */
+
+    public function getStartFilePos() : int {

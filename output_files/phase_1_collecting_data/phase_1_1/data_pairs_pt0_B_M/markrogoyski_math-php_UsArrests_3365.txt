@@ -1,0 +1,11 @@
+    /**
+     * Assault observations for all states
+     * ['Alabama' => 236, 'Alaska' => 263, ... ]
+     *
+     * @return number[]
+     */
+
+    public function getAssault(): array
+    {
+        return \array_combine($this->getStates(), \array_column(self::DATA, 1));
+    }

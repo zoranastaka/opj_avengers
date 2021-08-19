@@ -1,0 +1,6 @@
+  /**
+   * @param float Request start time, from `microtime(true)`.
+   * @task hook
+   */
+
+  public static function didStartup($start_time) {

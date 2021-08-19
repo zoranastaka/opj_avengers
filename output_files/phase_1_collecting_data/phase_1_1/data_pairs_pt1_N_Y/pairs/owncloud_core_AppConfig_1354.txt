@@ -1,0 +1,62 @@
+	/**
+	 * Sets a value. If the key did not exist before it will be created.
+	 *
+	 * @param string $app app
+	 * @param string $key key
+	 * @param string|float|int $value value
+	 * @return bool True if the value was inserted or updated, false if the value was the same
+	 */
+
+	public function setValue($app, $key, $value) {
+		return $this->emittingCall(function (&$afterArray) use (&$app, &$key, &$value) {
+			if (!$this->hasKey($app, $key)) {
+				$inserted = (bool) $this->conn->insertIfNotExist('*PREFIX*appconfig', [
+					'appid' => $app,
+					'configkey' => $key,
+					'configvalue' => $value,
+				], [
+					'appid',
+					'configkey',
+				]);
+
+				if ($inserted) {
+					if (!isset($this->cache[$app])) {
+						$this->cache[$app] = [];
+					}
+
+					$this->cache[$app][$key] = $value;
+					return true;
+				}
+			}
+
+			$sql = $this->conn->getQueryBuilder();
+			$sql->update('appconfig')
+				->set('configvalue', $sql->createParameter('configvalue'))
+				->where($sql->expr()->eq('appid', $sql->createParameter('app')))
+				->andWhere($sql->expr()->eq('configkey', $sql->createParameter('configkey')))
+				->setParameter('configvalue', $value)
+				->setParameter('app', $app)
+				->setParameter('configkey', $key);
+
+			/*
+			 * Only limit to the existing value for non-Oracle DBs:
+			 * http://docs.oracle.com/cd/E11882_01/server.112/e26088/conditions002.htm#i1033286
+			 * > Large objects (LOBs) are not supported in comparison conditions.
+			 */
+			if (!($this->conn instanceof \OC\DB\OracleConnection)) {
+				// Only update the value when it is not the same
+				$sql->andWhere($sql->expr()->neq('configvalue', $sql->createParameter('configvalue')))
+					->setParameter('configvalue', $value);
+			}
+
+			if (isset($this->cache[$app], $this->cache[$app][$key])) {
+				$afterArray['update'] = true;
+				$afterArray['oldvalue'] = $this->cache[$app][$key];
+			}
+
+			$changedRow = (bool) $sql->execute();
+
+			$this->cache[$app][$key] = $value;
+
+			return $changedRow;
+		}, [

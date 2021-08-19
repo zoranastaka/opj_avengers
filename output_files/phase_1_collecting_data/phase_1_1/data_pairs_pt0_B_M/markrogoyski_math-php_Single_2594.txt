@@ -1,0 +1,17 @@
+    /**
+     * Map cube
+     *
+     * @param  array  $xs
+     *
+     * @return array
+     */
+
+    public static function cube(array $xs): array
+    {
+        return \array_map(
+            function ($x) {
+                return $x ** 3;
+            },
+            $xs
+        );
+    }

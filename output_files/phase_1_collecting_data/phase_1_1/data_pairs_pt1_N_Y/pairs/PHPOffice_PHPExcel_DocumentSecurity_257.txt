@@ -1,0 +1,10 @@
+    /**
+     * Get RevisionsPassword (hashed)
+     *
+     * @return string
+     */
+
+    public function getRevisionsPassword()
+    {
+        return $this->revisionsPassword;
+    }

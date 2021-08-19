@@ -1,0 +1,12 @@
+    /**
+     * Method returns a copy of a mysqlidb subquery object
+     *
+     * @return MysqliDb new mysqlidb object
+     */
+
+    public function copy()
+    {
+        $copy = unserialize(serialize($this));
+        $copy->_mysqli = array();
+        return $copy;
+    }

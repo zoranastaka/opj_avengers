@@ -1,0 +1,7 @@
+    /**
+     * Get the default translator instance in use.
+     *
+     * @return \Symfony\Component\Translation\TranslatorInterface
+     */
+
+    public static function getTranslator();

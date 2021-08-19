@@ -1,0 +1,8 @@
+	/**
+	 * Add a new root certificate to a trust store
+	 *
+	 * @param ICertificateManager $certificateManager
+	 * @return array
+	 */
+
+	private function addCertificate(ICertificateManager $certificateManager) {

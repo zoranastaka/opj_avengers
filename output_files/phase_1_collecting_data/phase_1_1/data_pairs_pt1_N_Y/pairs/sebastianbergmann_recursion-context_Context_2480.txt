@@ -1,0 +1,10 @@
+    /**
+     * @return false|int
+     */
+
+    private function containsArray(array &$array)
+    {
+        $end = array_slice($array, -2);
+
+        return isset($end[1]) && $end[1] === $this->objects ? $end[0] : false;
+    }

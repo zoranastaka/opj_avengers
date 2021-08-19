@@ -1,0 +1,14 @@
+    /**
+     * Test data made with: http://keisan.casio.com/exec/system/1180573201
+     * @return array
+     */
+
+    public function dataProviderForMean(): array
+    {
+        return [
+            [50, 5, 10, 1],
+            [100, 80, 50, 40],
+            [48, 6, 15, 1.875],
+            [100, 30, 20, 6],
+        ];
+    }

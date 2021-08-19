@@ -1,0 +1,9 @@
+    /**
+     * Forwards the given configuration options to the PHP cli command.
+     * @param string $phpCliOptions  eg "-d memory_limit=8G -c=path/to/php.ini"
+     */
+
+    public function setPhpCliConfigurationOptions($phpCliOptions)
+    {
+        $this->phpCliOptions = (string) $phpCliOptions;
+    }

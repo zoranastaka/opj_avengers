@@ -1,0 +1,40 @@
+    /**
+     * @param $values
+     *
+     * @return array
+     */
+
+    private function getMostFrequentValues($values)
+    {
+        // remove false values (while keeping zeros)
+        $values = array_filter($values, 'strlen');
+
+        // array_count_values requires strings or integer, convert floats to string (mysqli)
+        foreach ($values as &$value) {
+            if (is_numeric($value)) {
+                $value = (string)round($value, 3);
+            }
+        }
+        // we have a list of all values. let's show the most frequently used first.
+        $values = array_count_values($values);
+
+        // Sort this list by converting and sorting the array with custom method, so the result doesn't differ between PHP versions
+        $sortArray = [];
+
+        foreach ($values as $value => $count) {
+            $sortArray[] = [
+                'value' => $value,
+                'count' => $count
+            ];
+        }
+
+        usort($sortArray, function($a, $b) {
+            if ($a['count'] == $b['count']) {
+                return strcmp($a['value'], $b['value']);
+            }
+
+            return $a['count'] > $b['count'] ? -1 : 1;
+        });
+
+        return array_column($sortArray, 'value');
+    }

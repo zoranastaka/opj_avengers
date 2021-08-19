@@ -1,0 +1,11 @@
+    /**
+     * @covers Whoops\Exception\Inspector::getFrames
+     */
+
+    public function testGetFramesReturnsCollection()
+    {
+        $exception = $this->getException();
+        $inspector = $this->getInspectorInstance($exception);
+
+        $this->assertInstanceOf('Whoops\\Exception\\FrameCollection', $inspector->getFrames());
+    }

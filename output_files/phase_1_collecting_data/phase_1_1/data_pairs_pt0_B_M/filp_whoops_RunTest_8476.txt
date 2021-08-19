@@ -1,0 +1,10 @@
+    /**
+     * @covers Whoops\Run::sendExitCode
+     */
+
+    public function testSendExitCodeWrongCode()
+    {
+        $this->expectExceptionOfType('InvalidArgumentException');
+
+        $this->getRunInstance()->sendExitCode(255);
+    }

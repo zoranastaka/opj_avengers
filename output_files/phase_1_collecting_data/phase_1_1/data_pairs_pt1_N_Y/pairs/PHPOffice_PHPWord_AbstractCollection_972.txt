@@ -1,0 +1,13 @@
+    /**
+     * Set item.
+     *
+     * @param int $index
+     * @param \PhpOffice\PhpWord\Element\AbstractContainer $item
+     */
+
+    public function setItem($index, $item)
+    {
+        if (array_key_exists($index, $this->items)) {
+            $this->items[$index] = $item;
+        }
+    }

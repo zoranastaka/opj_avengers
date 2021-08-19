@@ -1,0 +1,9 @@
+    /**
+     * @param DOMNode $node
+     * @deprecated
+     */
+
+    public static function remove_text_nodes(DOMNode $node)
+    {
+        self::removeTextNodes($node);
+    }

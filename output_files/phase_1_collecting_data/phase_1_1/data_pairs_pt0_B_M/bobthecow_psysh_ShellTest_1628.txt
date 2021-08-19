@@ -1,0 +1,13 @@
+    /**
+     * @dataProvider badErrors
+     */
+
+    public function testThrowsBadErrors($errno)
+    {
+        $this->expectException(\Psy\Exception\ErrorException::class);
+
+        $shell = new Shell($this->getConfig());
+        $shell->handleError($errno, 'wheee', null, 13);
+
+        $this->fail();
+    }

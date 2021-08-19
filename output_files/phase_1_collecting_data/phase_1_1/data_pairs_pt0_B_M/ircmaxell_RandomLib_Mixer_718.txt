@@ -1,0 +1,10 @@
+    /**
+     * Test to see if the mixer is available
+     *
+     * @return bool If the mixer is available on the system
+     */
+
+    public static function test()
+    {
+        return static::$test;
+    }

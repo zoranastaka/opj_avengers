@@ -1,0 +1,17 @@
+    /** @test */
+
+    public function it_returns_the_location()
+    {
+        $this->botman->hears('Hello', function (BotMan $bot) {
+            $bot->startConversation(new TestDataConversation());
+        });
+        $this->replyWithFakeMessage('Hello');
+        static::assertEquals('What do you want to test?', $this->fakeDriver->getBotMessages()[0]->getText());
+        $this->replyWithFakeMessage('location');
+        static::assertEquals('Please supply a location', $this->fakeDriver->getBotMessages()[1]->getText());
+        $message = new IncomingMessage(Location::PATTERN, 'helloman', '#helloworld');
+        $location = new Location(41.123, -12.123);
+        $message->setLocation($location);
+        $this->replyWithFakeMessage($message);
+        static::assertEquals('41.123:-12.123', $this->fakeDriver->getBotMessages()[2]->getText());
+    }

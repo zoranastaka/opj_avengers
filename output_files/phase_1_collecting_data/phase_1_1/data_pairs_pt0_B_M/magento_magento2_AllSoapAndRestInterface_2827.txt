@@ -1,0 +1,6 @@
+    /**
+     * @param int $itemId
+     * @return \Magento\TestModule1\Service\V1\Entity\Item
+     */
+
+    public function item($itemId);

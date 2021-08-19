@@ -1,0 +1,8 @@
+    /** @test */
+
+    public function it_should_allow_array_access_on_the_payload()
+    {
+        $this->assertTrue(isset($this->payload['iat']));
+        $this->assertSame($this->payload['sub'], 1);
+        $this->assertArrayHasKey('exp', $this->payload);
+    }

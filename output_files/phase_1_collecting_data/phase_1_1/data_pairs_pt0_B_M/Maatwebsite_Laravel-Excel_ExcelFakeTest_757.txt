@@ -1,0 +1,19 @@
+    /**
+     * @test
+     */
+
+    public function can_assert_against_a_fake_queued_export()
+    {
+        ExcelFacade::fake();
+
+        $response = ExcelFacade::queue($this->givenExport(), 'queued-filename.csv', 's3');
+
+        $this->assertInstanceOf(PendingDispatch::class, $response);
+
+        ExcelFacade::assertQueued('queued-filename.csv', 's3');
+        ExcelFacade::assertQueued('queued-filename.csv', 's3', function (FromCollection $export) {
+            return $export->collection()->contains('foo');
+        });
+        ExcelFacade::matchByRegex();
+        ExcelFacade::assertQueued('/\w{6}-\w{8}\.csv/', 's3');
+    }

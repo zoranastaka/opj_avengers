@@ -1,0 +1,11 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function reset()
+    {
+        $this->data = [
+            'memory' => 0,
+            'memory_limit' => $this->convertToBytes(ini_get('memory_limit')),
+        ];
+    }

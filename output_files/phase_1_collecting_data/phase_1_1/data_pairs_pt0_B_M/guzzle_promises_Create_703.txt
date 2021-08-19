@@ -1,0 +1,16 @@
+    /**
+     * Create an exception for a rejected promise value.
+     *
+     * @param mixed $reason
+     *
+     * @return \Exception|\Throwable
+     */
+
+    public static function exceptionFor($reason)
+    {
+        if ($reason instanceof \Exception || $reason instanceof \Throwable) {
+            return $reason;
+        }
+
+        return new RejectionException($reason);
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @test         fallingFactorial
+     * @dataProvider dataProviderForFallingFactorial
+     * @param        int   $x
+     * @param        int   $n
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testFallingFactorial(int $x, int $n, float $expected)
+    {
+        // When
+        $fallingFactorial = Combinatorics::fallingFactorial($x, $n);
+
+        // Then
+        $this->assertEquals($expected, $fallingFactorial);
+    }

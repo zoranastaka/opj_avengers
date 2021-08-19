@@ -1,0 +1,6 @@
+/**
+ * Display the admin menu
+ *
+ */
+
+function yourls_html_menu() {

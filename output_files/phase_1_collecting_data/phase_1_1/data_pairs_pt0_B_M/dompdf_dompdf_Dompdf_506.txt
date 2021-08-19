@@ -1,0 +1,11 @@
+    /**
+     * @param array $options
+     * @return $this
+     * @deprecated
+     */
+
+    public function set_options(array $options)
+    {
+        $this->options->set($options);
+        return $this;
+    }

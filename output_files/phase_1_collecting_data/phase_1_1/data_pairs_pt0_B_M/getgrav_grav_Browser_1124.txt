@@ -1,0 +1,29 @@
+    /**
+     * Get the current browser identifier
+     *
+     * Currently detected browsers:
+     *
+     * Android Browser
+     * BlackBerry Browser
+     * Camino
+     * Kindle / Silk
+     * Firefox / Iceweasel
+     * Safari
+     * Internet Explorer
+     * IEMobile
+     * Chrome
+     * Opera
+     * Midori
+     * Vivaldi
+     * TizenBrowser
+     * Lynx
+     * Wget
+     * Curl
+     *
+     * @return string the lowercase browser name
+     */
+
+    public function getBrowser()
+    {
+        return strtolower($this->useragent['browser']);
+    }

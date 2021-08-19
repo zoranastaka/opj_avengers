@@ -1,0 +1,25 @@
+    /**
+     * Get a single config value.
+     *
+     * @param string $key The name of the config value.
+     *
+     * @return string|null
+     * @see    setConfigData()
+     * @see    getAllConfigData()
+     */
+
+    public static function getConfigData($key)
+    {
+        $phpCodeSnifferConfig = self::getAllConfigData();
+
+        if ($phpCodeSnifferConfig === null) {
+            return null;
+        }
+
+        if (isset($phpCodeSnifferConfig[$key]) === false) {
+            return null;
+        }
+
+        return $phpCodeSnifferConfig[$key];
+
+    }//end getConfigData()

@@ -1,0 +1,14 @@
+    /**
+     * @return array
+     */
+
+    private function getFrameData()
+    {
+        return [
+            'file'     => __DIR__ . '/../../fixtures/frame.lines-test.php',
+            'line'     => 0,
+            'function' => 'test',
+            'class'    => 'MyClass',
+            'args'     => [true, 'hello'],
+        ];
+    }

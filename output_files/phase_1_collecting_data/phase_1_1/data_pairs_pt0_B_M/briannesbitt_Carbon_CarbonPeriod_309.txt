@@ -1,0 +1,18 @@
+    /**
+     * Set filters stack.
+     *
+     * @param array $filters
+     *
+     * @return $this
+     */
+
+    public function setFilters(array $filters)
+    {
+        $this->filters = $filters;
+
+        $this->updateInternalState();
+
+        $this->handleChangedParameters();
+
+        return $this;
+    }

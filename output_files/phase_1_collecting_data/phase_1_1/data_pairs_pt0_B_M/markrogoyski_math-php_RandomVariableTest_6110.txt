@@ -1,0 +1,13 @@
+    /**
+     * @test   centralMoment error if X is empty
+     * @throws \Exception
+     */
+
+    public function testCentralMomentNullIfXEmpty()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        RandomVariable::centralMoment(array(), 3);
+    }

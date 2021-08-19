@@ -1,0 +1,18 @@
+    /**
+     * Map multiply
+     *
+     * @param  array $xs
+     * @param  number $k Number to multiply to each element
+     *
+     * @return array
+     */
+
+    public static function multiply(array $xs, $k): array
+    {
+        return \array_map(
+            function ($x) use ($k) {
+                return $x * $k;
+            },
+            $xs
+        );
+    }

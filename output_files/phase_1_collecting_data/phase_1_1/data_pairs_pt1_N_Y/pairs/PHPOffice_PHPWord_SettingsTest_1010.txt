@@ -1,0 +1,10 @@
+    /**
+     * Test set/get compatibity option
+     */
+
+    public function testSetGetCompatibility()
+    {
+        $this->assertTrue(Settings::hasCompatibility());
+        $this->assertTrue(Settings::setCompatibility(false));
+        $this->assertFalse(Settings::hasCompatibility());
+    }

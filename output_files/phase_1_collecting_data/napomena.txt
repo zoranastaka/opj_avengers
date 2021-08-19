@@ -1,0 +1,1 @@
+nekonzistentni su fajlovi u phase_1_1 i phase_1_2. Treba pregledati koji su parovi korišćeni, i onda one koji nisu izbrisati iz phase_1_1. 

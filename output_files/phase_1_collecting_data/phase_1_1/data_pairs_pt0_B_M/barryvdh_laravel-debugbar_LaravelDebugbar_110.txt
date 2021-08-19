@@ -1,0 +1,16 @@
+    /**
+     * @param  \Symfony\Component\HttpFoundation\Request $request
+     * @return bool
+     */
+
+    protected function isJsonRequest(Request $request)
+    {
+        // If XmlHttpRequest or Live, return true
+        if ($request->isXmlHttpRequest() || $request->headers->get('X-Livewire')) {
+            return true;
+        }
+
+        // Check if the request wants Json
+        $acceptable = $request->getAcceptableContentTypes();
+        return (isset($acceptable[0]) && $acceptable[0] == 'application/json');
+    }

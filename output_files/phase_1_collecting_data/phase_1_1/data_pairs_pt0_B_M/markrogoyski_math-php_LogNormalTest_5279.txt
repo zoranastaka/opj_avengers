@@ -1,0 +1,20 @@
+    /**
+     * @test         inverse of CDF is original x
+     * @dataProvider dataProviderForCdf
+     * @param        float $x
+     * @param        float $μ
+     * @param        float $σ
+     */
+
+    public function testInverseOfCdf(float $x, float $μ, float $σ)
+    {
+        // Given
+        $log_normal = new LogNormal($μ, $σ);
+        $cdf        = $log_normal->cdf($x);
+
+        // When
+        $inverse_of_cdf = $log_normal->inverse($cdf);
+
+        // Then
+        $this->assertEqualsWithDelta($x, $inverse_of_cdf, 0.001);
+    }

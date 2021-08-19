@@ -1,0 +1,24 @@
+    /**
+     * @test Axiom: A ⊗ (B + C) = A ⊗ B + A ⊗ C
+     * Kronecker product bilinearity
+     * @dataProvider dataProviderForThreeMatrices
+     * @param        array $A
+     * @param        array $B
+     * @param        array $C
+     * @throws       \Exception
+     */
+
+    public function testKroneckerProductBilinearity1(array $A, array $B, array $C)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $B = MatrixFactory::create($B);
+        $C = MatrixFactory::create($C);
+
+        // When
+        $A⊗⟮B＋C⟯  = $A->kroneckerProduct($B->add($C));
+        $A⊗B＋A⊗C = $A->kroneckerProduct($B)->add($A->kroneckerProduct($C));
+
+        // Then
+        $this->assertEquals($A⊗⟮B＋C⟯->getMatrix(), $A⊗B＋A⊗C->getMatrix());
+    }

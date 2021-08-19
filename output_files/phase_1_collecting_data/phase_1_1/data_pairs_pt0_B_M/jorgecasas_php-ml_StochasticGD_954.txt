@@ -1,0 +1,9 @@
+    /**
+     * Returns the list of cost values for each iteration executed in
+     * last run of the optimization
+     */
+
+    public function getCostValues(): array
+    {
+        return $this->costValues;
+    }

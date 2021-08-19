@@ -1,0 +1,13 @@
+    /**
+     * @codeCoverageIgnore
+     */
+
+    public function __destruct()
+    {
+        foreach ($this->arrays as &$array) {
+            if (is_array($array)) {
+                array_pop($array);
+                array_pop($array);
+            }
+        }
+    }

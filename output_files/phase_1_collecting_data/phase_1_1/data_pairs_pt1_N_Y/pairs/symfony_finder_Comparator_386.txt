@@ -1,0 +1,10 @@
+    /**
+     * Gets the target value.
+     *
+     * @return string The target value
+     */
+
+    public function getTarget()
+    {
+        return $this->target;
+    }

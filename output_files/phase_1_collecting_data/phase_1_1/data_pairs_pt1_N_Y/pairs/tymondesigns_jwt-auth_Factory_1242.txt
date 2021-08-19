@@ -1,0 +1,14 @@
+    /**
+     * Helper to set the ttl.
+     *
+     * @param  int  $ttl
+     *
+     * @return $this
+     */
+
+    public function setTTL($ttl)
+    {
+        $this->claimFactory->setTTL($ttl);
+
+        return $this;
+    }

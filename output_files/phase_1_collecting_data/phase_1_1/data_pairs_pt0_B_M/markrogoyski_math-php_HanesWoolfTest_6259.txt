@@ -1,0 +1,14 @@
+    /**
+     * @return array [points, x, expected y]
+     */
+
+    public function dataProviderForEvaluate(): array
+    {
+        return [
+            [
+                [[.038, .05], [.194, .127], [.425, .094], [.626, .2122], [1.253, .2729], [2.5, .2665], [3.740, .3317]],
+                5,
+                0.3254417
+            ],
+        ];
+    }

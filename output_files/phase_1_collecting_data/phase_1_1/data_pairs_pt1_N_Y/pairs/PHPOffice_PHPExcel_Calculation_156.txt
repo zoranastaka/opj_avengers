@@ -1,0 +1,47 @@
+    /**
+     * Ensure that paired matrix operands are both matrices of the same size
+     *
+     * @param    mixed        &$matrix1    First matrix operand
+     * @param    mixed        &$matrix2    Second matrix operand
+     * @param    integer        $matrix1Rows    Row size of first matrix operand
+     * @param    integer        $matrix1Columns    Column size of first matrix operand
+     * @param    integer        $matrix2Rows    Row size of second matrix operand
+     * @param    integer        $matrix2Columns    Column size of second matrix operand
+     */
+
+    private static function resizeMatricesExtend(&$matrix1, &$matrix2, $matrix1Rows, $matrix1Columns, $matrix2Rows, $matrix2Columns)
+    {
+        if (($matrix2Columns < $matrix1Columns) || ($matrix2Rows < $matrix1Rows)) {
+            if ($matrix2Columns < $matrix1Columns) {
+                for ($i = 0; $i < $matrix2Rows; ++$i) {
+                    $x = $matrix2[$i][$matrix2Columns-1];
+                    for ($j = $matrix2Columns; $j < $matrix1Columns; ++$j) {
+                        $matrix2[$i][$j] = $x;
+                    }
+                }
+            }
+            if ($matrix2Rows < $matrix1Rows) {
+                $x = $matrix2[$matrix2Rows-1];
+                for ($i = 0; $i < $matrix1Rows; ++$i) {
+                    $matrix2[$i] = $x;
+                }
+            }
+        }
+
+        if (($matrix1Columns < $matrix2Columns) || ($matrix1Rows < $matrix2Rows)) {
+            if ($matrix1Columns < $matrix2Columns) {
+                for ($i = 0; $i < $matrix1Rows; ++$i) {
+                    $x = $matrix1[$i][$matrix1Columns-1];
+                    for ($j = $matrix1Columns; $j < $matrix2Columns; ++$j) {
+                        $matrix1[$i][$j] = $x;
+                    }
+                }
+            }
+            if ($matrix1Rows < $matrix2Rows) {
+                $x = $matrix1[$matrix1Rows-1];
+                for ($i = 0; $i < $matrix2Rows; ++$i) {
+                    $matrix1[$i] = $x;
+                }
+            }
+        }
+    }

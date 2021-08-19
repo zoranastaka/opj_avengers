@@ -1,0 +1,37 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testReplicationOptionHasPrecedenceOverAggregateOption(): void
+    {
+        $arg1 = array('tcp://host1', 'tcp://host2');
+
+        $connection = $this->getMockBuilder('Predis\Connection\AggregateConnectionInterface')->getMock();
+
+        $fnreplication = $this->getMockBuilder('stdClass')
+            ->addMethods(array('__invoke'))
+            ->getMock();
+        $fnreplication
+            ->expects($this->once())
+            ->method('__invoke')
+            ->with(
+                $arg1,
+                $this->isInstanceOf('Predis\Configuration\OptionsInterface'),
+                $this->isInstanceOf('Predis\Configuration\OptionInterface')
+            )
+            ->willReturn($connection);
+
+        $fnaggregate = $this->getMockBuilder('stdClass')
+            ->addMethods(array('__invoke'))
+            ->getMock();
+        $fnaggregate
+            ->expects($this->never())
+            ->method('__invoke');
+
+        $arg2 = array(
+            'replication' => $fnreplication,
+            'aggregate' => $fnaggregate,
+        );
+
+        $client = new Client($arg1, $arg2);
+    }

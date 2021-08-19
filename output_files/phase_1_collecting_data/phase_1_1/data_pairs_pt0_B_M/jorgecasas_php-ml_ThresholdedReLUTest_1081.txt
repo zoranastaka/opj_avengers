@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider thresholdDerivativeProvider
+     *
+     * @param float|int $value
+     */
+
+    public function testThresholdedReLUDerivative(float $theta, float $expected, $value): void
+    {
+        $thresholdedReLU = new ThresholdedReLU($theta);
+        $activatedValue = $thresholdedReLU->compute($value);
+        self::assertEquals($expected, $thresholdedReLU->differentiate($value, $activatedValue));
+    }

@@ -1,0 +1,16 @@
+    /**
+     * @test         quartilesInclusive
+     * @dataProvider dataProviderForQuartilesInclusive
+     * @param        array $numbers
+     * @param        array $expectedQuartiles
+     * @throws       \Exception
+     */
+
+    public function testQuartilesInclusive(array $numbers, array $expectedQuartiles)
+    {
+        // When
+        $quartiles = Descriptive::quartilesInclusive($numbers);
+
+        // Then
+        $this->assertEquals($expectedQuartiles, $quartiles);
+    }

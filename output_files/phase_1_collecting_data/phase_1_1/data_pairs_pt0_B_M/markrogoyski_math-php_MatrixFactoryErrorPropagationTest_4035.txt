@@ -1,0 +1,12 @@
+    /**
+     * @test diagonal propagates error tolerance to resultant matrix
+     */
+
+    public function testDiagonal()
+    {
+        // When
+        $R = $this->A->diagonal();
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

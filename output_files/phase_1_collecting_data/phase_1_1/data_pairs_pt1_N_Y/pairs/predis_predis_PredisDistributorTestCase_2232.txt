@@ -1,0 +1,18 @@
+    /**
+     * Returns a distributor instance with the specified nodes added.
+     *
+     * @param array $nodes Nodes to add to the distributor.
+     *
+     * @return DistributorInterface
+     */
+
+    protected function getSampleDistribution(array $nodes): DistributorInterface
+    {
+        $distributor = $this->getDistributorInstance();
+
+        foreach ($nodes as $node) {
+            $distributor->add($node);
+        }
+
+        return $distributor;
+    }

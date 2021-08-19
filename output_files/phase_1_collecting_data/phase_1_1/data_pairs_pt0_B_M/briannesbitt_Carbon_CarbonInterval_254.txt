@@ -1,0 +1,12 @@
+    /**
+     * Comparing with passed interval.
+     *
+     * @param DateInterval $interval
+     *
+     * @return int
+     */
+
+    public function compare(DateInterval $interval)
+    {
+        return static::compareDateIntervals($this, $interval);
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @test         pentagonalNumber
+     * @dataProvider dataProviderForPentagonalNumber
+     * @param        int $n
+     * @param        array $expected_pentagonal
+     */
+
+    public function testPentagonalNumber(int $n, array $expected_pentagonal)
+    {
+        // When
+        $pentagonal = Advanced::pentagonalNumber($n);
+
+        // Then
+        $this->assertEquals($expected_pentagonal, $pentagonal);
+    }

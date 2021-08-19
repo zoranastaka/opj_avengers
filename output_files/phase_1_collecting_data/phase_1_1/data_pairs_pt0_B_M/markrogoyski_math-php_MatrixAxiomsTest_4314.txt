@@ -1,0 +1,15 @@
+    /**
+     * @test Axiom: Zero matrix is lower triangular
+     * @throws   \Exception
+     */
+
+    public function testZeroMatrixIsLowerTriangular()
+    {
+        foreach (\range(1, 20) as $m) {
+            // Given
+            $L = MatrixFactory::zero($m, $m);
+
+            // Then
+            $this->assertTrue($L->isLowerTriangular());
+        }
+    }

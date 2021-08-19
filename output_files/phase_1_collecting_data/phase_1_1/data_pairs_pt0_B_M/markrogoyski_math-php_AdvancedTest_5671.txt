@@ -1,0 +1,15 @@
+    /**
+     * @test         lazyCaterers
+     * @dataProvider dataProviderForLazyCaterers
+     * @param        int $n
+     * @param        array $expected_lazy_caterers
+     */
+
+    public function testLazyCaterers(int $n, array $expected_lazy_caterers)
+    {
+        // When
+        $lazy_caterers = Advanced::lazyCaterers($n);
+
+        // Then
+        $this->assertEquals($expected_lazy_caterers, $lazy_caterers);
+    }

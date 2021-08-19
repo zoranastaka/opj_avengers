@@ -1,0 +1,20 @@
+    /**
+     * One-sample Z-test
+     * Convenience method for zTestOneSample()
+     *
+     * @param float $Hₐ Alternate hypothesis (M Sample mean)
+     * @param int   $n  Sample size
+     * @param float $H₀ Null hypothesis (μ Population mean)
+     * @param float $σ  SD of population (Standard error of the mean)
+     *
+     * @return array [
+     *   z  => z score
+     *   p1 => one-tailed p value (left or right tail depends on how Hₐ differs from H₀)
+     *   p2 => two-tailed p value
+     * ]
+     */
+
+    public static function zTest(float $Hₐ, int $n, float $H₀, float $σ): array
+    {
+        return self::zTestOneSample($Hₐ, $n, $H₀, $σ);
+    }

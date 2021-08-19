@@ -1,0 +1,16 @@
+    /**
+     * Returns true if the child process has been stopped by a signal.
+     *
+     * It always returns false on Windows.
+     *
+     * @return bool
+     *
+     * @throws LogicException In case the process is not terminated
+     */
+
+    public function hasBeenStopped()
+    {
+        $this->requireProcessIsTerminated(__FUNCTION__);
+
+        return $this->processInformation['stopped'];
+    }

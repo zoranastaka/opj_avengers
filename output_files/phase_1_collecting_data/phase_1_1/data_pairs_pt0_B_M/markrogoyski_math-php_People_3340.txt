@@ -1,0 +1,8 @@
+    /**
+     * @return number[]
+     */
+
+    public function getAge(): array
+    {
+        return \array_combine($this->getNames(), \array_column(self::DATA, 4));
+    }

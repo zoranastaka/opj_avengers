@@ -1,0 +1,17 @@
+    /**
+     * @test   kthSmallest when the input array is empty
+     * @throws \Exception
+     */
+
+    public function testKthSmallestExceptionWhenEmptyArray()
+    {
+        // Given
+        $numbers = [];
+        $k       = 1;
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Average::kthSmallest($numbers, $k);
+    }

@@ -1,0 +1,7 @@
+	/**
+	 * Add a path to the list of valid php roots for auto loading
+	 *
+	 * @param string $root
+	 */
+
+	public function addValidRoot($root) {

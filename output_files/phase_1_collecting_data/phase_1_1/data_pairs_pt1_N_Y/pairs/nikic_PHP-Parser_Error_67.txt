@@ -1,0 +1,11 @@
+    /**
+     * Gets the end column (1-based) into the line where the error ended.
+     *
+     * @param string $code Source code of the file
+     * @return int
+     */
+
+    public function getEndColumn(string $code) : int {
+        if (!$this->hasColumnInfo()) {
+            throw new \RuntimeException('Error does not have column information');
+        }

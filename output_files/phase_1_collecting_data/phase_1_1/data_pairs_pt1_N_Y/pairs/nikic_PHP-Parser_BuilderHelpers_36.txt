@@ -1,0 +1,23 @@
+    /**
+     * Normalizes a type: Converts plain-text type names into proper AST representation.
+     *
+     * In particular, builtin types become Identifiers, custom types become Names and nullables
+     * are wrapped in NullableType nodes.
+     *
+     * @param string|Name|Identifier|NullableType|UnionType $type The type to normalize
+     *
+     * @return Name|Identifier|NullableType|UnionType The normalized type
+     */
+
+    public static function normalizeType($type) {
+        if (!is_string($type)) {
+            if (
+                !$type instanceof Name && !$type instanceof Identifier &&
+                !$type instanceof NullableType && !$type instanceof UnionType
+            ) {
+                throw new \LogicException(
+                    'Type must be a string, or an instance of Name, Identifier, NullableType or UnionType'
+                );
+            }
+            return $type;
+        }

@@ -1,0 +1,10 @@
+    /**
+     *    Get cell coordinate
+     *
+     *    @return    string
+     */
+
+    public function getCoordinate()
+    {
+        return $this->parent->getCurrentAddress();
+    }

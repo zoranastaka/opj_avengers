@@ -1,0 +1,13 @@
+    /**
+     * Output only. The False Positive Rate when only considering the label that
+     * has the highest prediction score and not below the confidence threshold
+     * for each example.
+     *
+     * Generated from protobuf field <code>float false_positive_rate_at1 = 9;</code>
+     * @return float
+     */
+
+    public function getFalsePositiveRateAt1()
+    {
+        return $this->false_positive_rate_at1;
+    }

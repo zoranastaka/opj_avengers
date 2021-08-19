@@ -1,0 +1,12 @@
+    /**
+     * @test
+     */
+
+    public function can_get_raw_export_contents()
+    {
+        $export = new EmptyExport;
+
+        $response = $this->SUT->raw($export, Excel::XLSX);
+
+        $this->assertNotEmpty($response);
+    }

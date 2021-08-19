@@ -1,0 +1,48 @@
+    /**
+     * Less Than
+     *
+     * Test if one ArbitraryInteger is less than another
+     *
+     * @param int|string|ArbitraryInteger $int
+     *
+     * @return bool
+     *
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function lessThan($int): bool
+    {
+        $int          = self::create($int);
+        $base_256     = $this->base256;
+        $int_256      = $int->toBinary();
+        $my_len       = \strlen($base_256);
+        $int_len      = \strlen($int_256);
+        $my_positive  = $this->isPositive;
+        $int_positive = $int->isPositive();
+
+        // Check if signs differ
+        if ($my_positive && !$int_positive) {
+            return false;
+        }
+        if ($int_positive && !$my_positive) {
+            return true;
+        }
+
+        // If one number has more digits, its absolute value is larger.
+        if ($my_len > $int_len) {
+            return !$my_positive;
+        } elseif ($int_len > $my_len) {
+            return $my_positive;
+        } else {
+            // Test each digit from most significant to least.
+            for ($i = 0; $i < $my_len; $i++) {
+                if ($base_256[$i] !== $int_256[$i]) {
+                    $test = \ord($base_256[$i]) < \ord($int_256[$i]);
+                    return $my_positive ? $test : !$test;
+                }
+            }
+            // Must be equal
+            return false;
+        }
+    }

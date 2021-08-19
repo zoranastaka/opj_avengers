@@ -1,0 +1,11 @@
+    /**
+     * In strict mode, an exception should be shown if XDG_RUNTIME_DIR does not exist
+     *
+     * @expectedException \RuntimeException
+     */
+
+    public function testGetRuntimeDirShouldThrowException()
+    {
+        putenv('XDG_RUNTIME_DIR=');
+        $this->getXdg()->getRuntimeDir(true);
+    }

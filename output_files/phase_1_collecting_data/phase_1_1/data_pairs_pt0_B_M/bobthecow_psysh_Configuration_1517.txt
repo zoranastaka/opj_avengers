@@ -1,0 +1,14 @@
+    /**
+     * Check whether to require semicolons on all statements.
+     *
+     * By default, PsySH will automatically insert semicolons at the end of
+     * statements if they're missing. To strictly require semicolons, set
+     * `requireSemicolons` to true.
+     *
+     * @return bool
+     */
+
+    public function requireSemicolons()
+    {
+        return $this->requireSemicolons;
+    }

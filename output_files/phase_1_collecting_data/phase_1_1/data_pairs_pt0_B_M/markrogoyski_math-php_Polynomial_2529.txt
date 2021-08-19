@@ -1,0 +1,10 @@
+    /**
+     * Zero value: 0
+     *
+     * @return Polynomial
+     */
+
+    public static function createZeroValue(): ObjectArithmetic
+    {
+        return new Polynomial([0]);
+    }

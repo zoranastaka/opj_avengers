@@ -1,0 +1,103 @@
+    /**
+     * @param array $lines
+     * @param array $value
+     * @param int $start
+     * @return string
+     */
+
+    private function parseTable(array $lines, array $value, $start)
+    {
+        list($ignores, $aligns) = $value;
+        $head = count($ignores) > 0 && array_sum($ignores) > 0;
+
+        $html = '<table>';
+        $body = $head ? NULL : true;
+        $output = false;
+
+        foreach ($lines as $key => $line) {
+            if (in_array($key, $ignores)) {
+                if ($head && $output) {
+                    $head = false;
+                    $body = true;
+                }
+
+                continue;
+            }
+
+            $line = trim($line);
+            $output = true;
+
+            if ($line[0] == '|') {
+                $line = substr($line, 1);
+
+                if ($line[strlen($line) - 1] == '|') {
+                    $line = substr($line, 0, -1);
+                }
+            }
+
+
+            $rows = array_map(function ($row) {
+                if (preg_match("/^\s*$/", $row)) {
+                    return ' ';
+                } else {
+                    return trim($row);
+                }
+            }, explode('|', $line));
+            $columns = array();
+            $last = -1;
+
+            foreach ($rows as $row) {
+                if (strlen($row) > 0) {
+                    $last ++;
+                    $columns[$last] = array(
+                        isset($columns[$last]) ? $columns[$last][0] + 1 : 1,  $row
+                    );
+                } elseif (isset($columns[$last])) {
+                    $columns[$last][0] ++;
+                } else {
+                    $columns[0] = array(1, $row);
+                }
+            }
+
+            if ($head) {
+                $html .= '<thead>';
+            } elseif ($body) {
+                $html .= '<tbody>';
+            }
+
+            $html .= '<tr' . ($this->_line ? ' class="line" data-start="'
+                    . ($start + $key) . '" data-end="' . ($start + $key)
+                    . '" data-id="' . $this->_uniqid . '"' : '') . '>';
+
+            foreach ($columns as $key => $column) {
+                list($num, $text) = $column;
+                $tag = $head ? 'th' : 'td';
+
+                $html .= "<{$tag}";
+                if ($num > 1) {
+                    $html .= " colspan=\"{$num}\"";
+                }
+
+                if (isset($aligns[$key]) && $aligns[$key] != 'none') {
+                    $html .= " align=\"{$aligns[$key]}\"";
+                }
+
+                $html .= '>' . $this->parseInline($text) . "</{$tag}>";
+            }
+
+            $html .= '</tr>';
+
+            if ($head) {
+                $html .= '</thead>';
+            } elseif ($body) {
+                $body = false;
+            }
+        }
+
+        if ($body !== NULL) {
+            $html .= '</tbody>';
+        }
+
+        $html .= '</table>';
+        return $html;
+    }

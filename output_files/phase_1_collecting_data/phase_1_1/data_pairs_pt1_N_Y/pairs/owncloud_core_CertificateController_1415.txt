@@ -1,0 +1,13 @@
+	/**
+	 * Removes a personal root certificate from the users' trust store
+	 *
+	 * @NoAdminRequired
+	 * @NoSubadminRequired
+	 * @param string $certificateIdentifier
+	 * @return DataResponse
+	 */
+
+	public function removePersonalRootCertificate($certificateIdentifier) {
+		if ($this->isCertificateImportAllowed() === false) {
+			return new DataResponse('Individual certificate management disabled', Http::STATUS_FORBIDDEN);
+		}

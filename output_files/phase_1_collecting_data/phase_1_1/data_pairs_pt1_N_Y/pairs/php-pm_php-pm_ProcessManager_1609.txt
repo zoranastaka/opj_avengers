@@ -1,0 +1,45 @@
+    /**
+     * A slave sent a `ready` commands which basically says that the slave bootstrapped successfully the
+     * application and is ready to accept connections.
+     *
+     * @param array      $data
+     * @param ConnectionInterface $conn
+     */
+
+    protected function commandReady(array $data, ConnectionInterface $conn)
+    {
+        try {
+            $slave = $this->slaves->getByConnection($conn);
+        } catch (\Exception $e) {
+            $this->output->writeln(
+                '<error>A ready command was sent by a worker with no connection. This was unexpected. ' .
+                'Not your fault, please create a ticket at github.com/php-pm/php-pm with ' .
+                'the output of `ppm start -vv`.</error>'
+            );
+            return;
+        }
+
+        $slave->ready();
+
+        if ($this->output->isVeryVerbose()) {
+            $this->output->writeln(\sprintf('Worker #%d ready.', $slave->getPort()));
+        }
+
+        if ($this->allSlavesReady()) {
+            if ($this->status === self::STATE_EMERGENCY) {
+                $this->output->writeln("<info>Emergency survived. Workers up and running again.</info>");
+            } else {
+                $this->output->writeln(
+                    \sprintf(
+                        "<info>%d workers (starting at %d) up and ready. Application is ready at http://%s:%s/</info>",
+                        $this->slaveCount,
+                        self::CONTROLLER_PORT+1,
+                        $this->host,
+                        $this->port
+                    )
+                );
+            }
+
+            $this->status = self::STATE_RUNNING;
+        }
+    }

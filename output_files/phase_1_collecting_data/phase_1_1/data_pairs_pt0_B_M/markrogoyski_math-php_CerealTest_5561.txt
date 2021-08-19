@@ -1,0 +1,14 @@
+    /**
+     * @test Ysc variables
+     */
+
+    public function testYscDataVariables()
+    {
+        // When
+        $Ysc = $this->cereal->getYscData();
+
+        // Then
+        foreach ($Ysc as $observation) {
+            $this->assertCount(6, $observation);
+        }
+    }

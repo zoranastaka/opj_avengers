@@ -1,0 +1,18 @@
+    /**
+     * @test         combinations with large floating point overflow result
+     * @dataProvider dataProviderForCombinationsWithLargeFloatingPointOverflowResult
+     * @param        int   $n
+     * @param        int   $r
+     * @param        float $expected
+     * @param        float ε
+     * @throws       \Exception
+     */
+
+    public function testCombinationsWithLargeFloatingPointOverflowResult(int $n, int $r, float $expected, float $ε)
+    {
+        // When
+        $combinations = Combinatorics::combinations($n, $r);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $combinations, $ε);
+    }

@@ -1,0 +1,19 @@
+    /**
+     * Superset (A ⊇ B)
+     * Is the set a superset of the other set?
+     * In other words, does the the set contain all the elements of the other set?
+     *
+     * @param  Set $B
+     *
+     * @return boolean
+     */
+
+    public function isSuperset(Set $B): bool
+    {
+        $B_array  = $B->asArray();
+
+        $A∩B = \array_intersect_key($this->A, $B_array);
+        $A∖B = \array_diff_key($B_array, $this->A);
+
+        return (\count($A∩B) === $B->length()) && (empty($A∖B));
+    }

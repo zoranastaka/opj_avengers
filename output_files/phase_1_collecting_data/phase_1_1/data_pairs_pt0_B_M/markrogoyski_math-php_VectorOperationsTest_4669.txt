@@ -1,0 +1,18 @@
+    /**
+     * @test         scalar divide
+     * @dataProvider dataProviderForScalarDivide
+     */
+
+    public function testScalarDivide(array $A, $k, array $R)
+    {
+        // Given
+        $A    = new Vector($A);
+        $R    = new Vector($R);
+
+        // When
+        $A／k = $A->scalarDivide($k);
+
+        // Then
+        $this->assertEquals($R, $A／k);
+        $this->assertEquals($R->getVector(), $A／k->getVector());
+    }

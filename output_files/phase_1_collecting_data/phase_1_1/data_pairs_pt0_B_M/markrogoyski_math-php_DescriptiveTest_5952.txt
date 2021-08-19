@@ -1,0 +1,16 @@
+    /**
+     * @test         quartilesExclusive
+     * @dataProvider dataProviderForQuartilesExclusive
+     * @param        array $numbers
+     * @param        array $expectedQuartiles
+     * @throws       \Exception
+     */
+
+    public function testQuartilesExclusive(array $numbers, array $expectedQuartiles)
+    {
+        // When
+        $quartiles = Descriptive::quartilesExclusive($numbers);
+
+        // Then
+        $this->assertEquals($expectedQuartiles, $quartiles);
+    }

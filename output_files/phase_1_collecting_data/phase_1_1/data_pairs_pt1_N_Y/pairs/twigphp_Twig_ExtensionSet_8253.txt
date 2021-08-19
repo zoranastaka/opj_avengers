@@ -1,0 +1,10 @@
+    /**
+     * @param ExtensionInterface[] $extensions
+     */
+
+    public function setExtensions(array $extensions): void
+    {
+        foreach ($extensions as $extension) {
+            $this->addExtension($extension);
+        }
+    }

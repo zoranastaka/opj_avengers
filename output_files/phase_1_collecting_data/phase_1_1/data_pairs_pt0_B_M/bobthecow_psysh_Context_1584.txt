@@ -1,0 +1,10 @@
+    /**
+     * Get the most recent return value.
+     *
+     * @return mixed
+     */
+
+    public function getReturnValue()
+    {
+        return $this->returnValue;
+    }

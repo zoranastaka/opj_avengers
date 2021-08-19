@@ -1,0 +1,12 @@
+    /**
+     * Returns all items.
+     *
+     * @return AcceptHeaderItem[]
+     */
+
+    public function all()
+    {
+        $this->sort();
+
+        return $this->items;
+    }

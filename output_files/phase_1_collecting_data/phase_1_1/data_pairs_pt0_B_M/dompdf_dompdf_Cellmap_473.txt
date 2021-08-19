@@ -1,0 +1,36 @@
+    /**
+     * @param Frame $frame
+     *
+     * @return array
+     * @throws Exception
+     */
+
+    public function get_frame_position(Frame $frame)
+    {
+        global $_dompdf_warnings;
+
+        $key = $frame->get_id();
+
+        if (!isset($this->_frames[$key])) {
+            throw new Exception("Frame not found in cellmap");
+        }
+
+        $col = $this->_frames[$key]["columns"][0];
+        $row = $this->_frames[$key]["rows"][0];
+
+        if (!isset($this->_columns[$col])) {
+            $_dompdf_warnings[] = "Frame not found in columns array.  Check your table layout for missing or extra TDs.";
+            $x = 0;
+        } else {
+            $x = $this->_columns[$col]["x"];
+        }
+
+        if (!isset($this->_rows[$row])) {
+            $_dompdf_warnings[] = "Frame not found in row array.  Check your table layout for missing or extra TDs.";
+            $y = 0;
+        } else {
+            $y = $this->_rows[$row]["y"];
+        }
+
+        return [$x, $y, "x" => $x, "y" => $y];
+    }

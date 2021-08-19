@@ -1,0 +1,32 @@
+    /**
+     * Creates symlinks to framework and extension sources for the application.
+     * @param string $dir application directory
+     * @param string $base Yii sources base directory
+     *
+     * @return int
+     */
+
+    protected function linkFrameworkAndExtensions($dir, $base)
+    {
+        if (is_dir($link = "$dir/vendor/yiisoft/yii2")) {
+            $this->stdout("Removing dir $link.\n");
+            FileHelper::removeDirectory($link);
+            $this->stdout("Creating symlink for $link.\n");
+            symlink("$base/framework", $link);
+        }
+        $extensions = $this->findDirs("$dir/vendor/yiisoft");
+        foreach ($extensions as $ext) {
+            if (is_dir($link = "$dir/vendor/yiisoft/yii2-$ext")) {
+                $this->stdout("Removing dir $link.\n");
+                FileHelper::removeDirectory($link);
+                $this->stdout("Creating symlink for $link.\n");
+                if (!file_exists("$base/extensions/$ext")) {
+                    $ret = $this->actionExt($ext);
+                    if ($ret !== 0) {
+                        return $ret;
+                    }
+                }
+                symlink("$base/extensions/$ext", $link);
+            }
+        }
+    }

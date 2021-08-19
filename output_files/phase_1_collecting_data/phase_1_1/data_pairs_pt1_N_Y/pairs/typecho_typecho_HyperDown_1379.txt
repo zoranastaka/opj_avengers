@@ -1,0 +1,13 @@
+    /**
+     * parseHr
+     *
+     * @param array $lines
+     * @param array $value
+     * @param int $start
+     * @return string
+     */
+
+    private function parseHr($lines, $value, $start)
+    {
+        return $this->_line ? '<hr class="line" data-start="' . $start . '" data-end="' . $start . '">' : '<hr>';
+    }

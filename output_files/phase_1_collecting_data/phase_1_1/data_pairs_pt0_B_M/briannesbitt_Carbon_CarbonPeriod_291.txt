@@ -1,0 +1,24 @@
+    /**
+     * Set the iteration item class.
+     *
+     * @param string $dateClass
+     *
+     * @return $this
+     */
+
+    public function setDateClass(string $dateClass)
+    {
+        if (!is_a($dateClass, CarbonInterface::class, true)) {
+            throw new NotACarbonClassException($dateClass);
+        }
+
+        $this->dateClass = $dateClass;
+
+        if (is_a($dateClass, Carbon::class, true)) {
+            $this->toggleOptions(static::IMMUTABLE, false);
+        } elseif (is_a($dateClass, CarbonImmutable::class, true)) {
+            $this->toggleOptions(static::IMMUTABLE, true);
+        }
+
+        return $this;
+    }

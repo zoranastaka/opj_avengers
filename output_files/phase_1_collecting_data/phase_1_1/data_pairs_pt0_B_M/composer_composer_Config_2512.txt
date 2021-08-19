@@ -1,0 +1,16 @@
+    /**
+     * Used by long-running custom scripts in composer.json
+     *
+     * "scripts": {
+     *   "watch": [
+     *     "Composer\\Config::disableProcessTimeout",
+     *     "vendor/bin/long-running-script --watch"
+     *   ]
+     * }
+     */
+
+    public static function disableProcessTimeout()
+    {
+        // Override global timeout set earlier by environment or config
+        ProcessExecutor::setTimeout(0);
+    }

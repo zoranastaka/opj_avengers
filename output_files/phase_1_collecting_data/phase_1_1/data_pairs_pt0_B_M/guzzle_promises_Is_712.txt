@@ -1,0 +1,10 @@
+    /**
+     * Returns true if a promise is fulfilled or rejected.
+     *
+     * @return bool
+     */
+
+    public static function settled(PromiseInterface $promise)
+    {
+        return $promise->getState() !== PromiseInterface::PENDING;
+    }

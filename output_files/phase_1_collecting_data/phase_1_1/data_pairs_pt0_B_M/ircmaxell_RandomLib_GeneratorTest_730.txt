@@ -1,0 +1,9 @@
+    /**
+     * @dataProvider provideGenerateStringTest
+     */
+
+    public function testGenerateString($length, $chars, $expected)
+    {
+        $n = $this->generator->generateString($length, $chars);
+        $this->assertEquals($expected, $n);
+    }

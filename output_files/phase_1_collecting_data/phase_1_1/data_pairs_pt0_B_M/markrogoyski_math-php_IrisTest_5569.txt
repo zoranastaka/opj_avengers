@@ -1,0 +1,12 @@
+    /**
+     * @test 150 sepal length observations
+     */
+
+    public function testNumberOfSepalLength()
+    {
+        // When
+        $observations = $this->iris->getSepalLength();
+
+        // Then
+        $this->assertCount(150, $observations);
+    }

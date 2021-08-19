@@ -1,0 +1,13 @@
+    /**
+     * @return int
+     */
+
+    public function count()
+    {
+        if ($this->gettersVariable) {
+            $var = $this->gettersVariable;
+            return count($this->{$var});
+        }
+
+        return count($this->toArray());
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @test         Constructor throws an exception when given a float
+     * @dataProvider dataProviderForTestIncorrectTypeException
+     * @param        mixed $number
+     * @throws       \Exception
+     */
+
+    public function testIncorrectTypeException($number)
+    {
+        // Then
+        $this->expectException(Exception\IncorrectTypeException::class);
+
+        // When
+        $int = new ArbitraryInteger($number);
+    }

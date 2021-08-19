@@ -1,0 +1,8 @@
+	/**
+	 * Creates a new subdirectory
+	 *
+	 * @param string $name
+	 * @throws Forbidden
+	 */
+
+	public function createDirectory($name) {

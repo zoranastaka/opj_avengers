@@ -1,0 +1,21 @@
+    /**
+     * Filter encoding charset.
+     *
+     * @throws OutOfRangeException if the charset is malformed or unsupported
+     */
+
+    protected static function filterEncoding(string $encoding): string
+    {
+        static $encoding_list;
+        if (null === $encoding_list) {
+            $list = mb_list_encodings();
+            $encoding_list = array_combine(array_map('strtolower', $list), $list);
+        }
+
+        $key = strtolower($encoding);
+        if (isset($encoding_list[$key])) {
+            return $encoding_list[$key];
+        }
+
+        throw new OutOfRangeException('The submitted charset '.$encoding.' is not supported by the mbstring extension.');
+    }

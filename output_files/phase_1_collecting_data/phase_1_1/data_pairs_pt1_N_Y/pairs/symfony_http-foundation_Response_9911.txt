@@ -1,0 +1,10 @@
+    /**
+     * Is the response a not found error?
+     *
+     * @final
+     */
+
+    public function isNotFound(): bool
+    {
+        return 404 === $this->statusCode;
+    }

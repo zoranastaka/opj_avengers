@@ -1,0 +1,39 @@
+    /**
+     * Add a new middleware to the stack
+     *
+     * Middleware are organized as a stack. That means middleware
+     * that have been added before will be executed after the newly
+     * added one (last in, first out).
+     *
+     * @param MiddlewareInterface $middleware
+     * @return MiddlewareDispatcherInterface
+     */
+
+    public function addMiddleware(MiddlewareInterface $middleware): MiddlewareDispatcherInterface
+    {
+        $next = $this->tip;
+        $this->tip = new class ($middleware, $next) implements RequestHandlerInterface {
+            /**
+             * @var MiddlewareInterface
+             */
+            private $middleware;
+
+            /**
+             * @var RequestHandlerInterface
+             */
+            private $next;
+
+            public function __construct(MiddlewareInterface $middleware, RequestHandlerInterface $next)
+            {
+                $this->middleware = $middleware;
+                $this->next = $next;
+            }
+
+            public function handle(ServerRequestInterface $request): ResponseInterface
+            {
+                return $this->middleware->process($request, $this->next);
+            }
+        };
+
+        return $this;
+    }

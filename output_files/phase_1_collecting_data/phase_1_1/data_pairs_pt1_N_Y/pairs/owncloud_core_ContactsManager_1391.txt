@@ -1,0 +1,5 @@
+		/**
+		 * @param \OCP\IAddressBook $addressBook
+		 */
+
+		public function unregisterAddressBook(\OCP\IAddressBook $addressBook) {

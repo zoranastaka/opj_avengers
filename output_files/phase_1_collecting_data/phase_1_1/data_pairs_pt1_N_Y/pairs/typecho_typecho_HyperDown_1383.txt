@@ -1,0 +1,18 @@
+    /**
+     * parseHtml
+     *
+     * @param array $lines
+     * @param string $type
+     * @param int $start
+     * @return string
+     */
+
+    private function parseHtml(array $lines, $type, $start)
+    {
+        foreach ($lines as &$line) {
+            $line = $this->parseInline($line,
+                isset($this->_specialWhiteList[$type]) ? $this->_specialWhiteList[$type] : '');
+        }
+
+        return implode("\n", $this->markLines($lines, $start));
+    }

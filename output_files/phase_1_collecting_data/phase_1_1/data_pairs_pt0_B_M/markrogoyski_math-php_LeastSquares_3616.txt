@@ -1,0 +1,12 @@
+    /**
+     * Error Standard Deviation
+     *
+     * Also called the standard error of the residuals
+     *
+     * @return float
+     */
+
+    public function errorSd(): float
+    {
+        return \sqrt($this->meanSquareResidual());
+    }

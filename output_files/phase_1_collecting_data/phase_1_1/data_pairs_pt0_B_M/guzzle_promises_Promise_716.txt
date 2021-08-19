@@ -1,0 +1,6 @@
+    /**
+     * @param callable $waitFn   Fn that when invoked resolves the promise.
+     * @param callable $cancelFn Fn that when invoked cancels the promise.
+     */
+
+    public function __construct(

@@ -1,0 +1,35 @@
+    /** @test */
+
+    public function it_gets_all_the_gifts()
+    {
+        $user = $this->signin();
+        $contact1 = factory(Contact::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+        $gift1 = factory(Gift::class)->create([
+            'account_id' => $user->account_id,
+            'contact_id' => $contact1->id,
+        ]);
+        $contact2 = factory(Contact::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+        $gift2 = factory(Gift::class)->create([
+            'account_id' => $user->account_id,
+            'contact_id' => $contact2->id,
+        ]);
+
+        $response = $this->json('GET', '/api/gifts');
+
+        $response->assertStatus(200);
+        $response->assertJsonStructure([
+            'data' => ['*' => $this->jsonGift],
+        ]);
+        $response->assertJsonFragment([
+            'object' => 'gift',
+            'id' => $gift1->id,
+        ]);
+        $response->assertJsonFragment([
+            'object' => 'gift',
+            'id' => $gift2->id,
+        ]);
+    }

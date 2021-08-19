@@ -1,0 +1,10 @@
+    /**
+     * Valid (Iterator interface)
+     *
+     * @return boolean
+     */
+
+    public function valid(): bool
+    {
+        return isset($this->A[$this->iterator_position]);
+    }

@@ -1,0 +1,13 @@
+    /**
+     * @group connected
+     */
+
+    public function testExecutesCommandWithHolesInArguments(): void
+    {
+        $commands = $this->getCommandFactory();
+        $cmdDel = $commands->create('mget', array(0 => 'key:0', 2 => 'key:2'));
+
+        $connection = $this->createConnection();
+
+        $this->assertSame(array(null, null), $connection->executeCommand($cmdDel));
+    }

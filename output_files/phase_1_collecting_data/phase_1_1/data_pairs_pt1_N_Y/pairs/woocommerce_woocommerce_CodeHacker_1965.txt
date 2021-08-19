@@ -1,0 +1,9 @@
+	/**
+	 *  Change stream options.
+	 *
+	 * @param int $option STREAM_OPTION_BLOCKING, STREAM_OPTION_READ_TIMEOUT, or STREAM_OPTION_WRITE_BUFFER.
+	 * @param int $arg1 Depends on $option.
+	 * @param int $arg2 Depends on $option.
+	 */
+
+	public function stream_set_option( $option, $arg1, $arg2 ) {

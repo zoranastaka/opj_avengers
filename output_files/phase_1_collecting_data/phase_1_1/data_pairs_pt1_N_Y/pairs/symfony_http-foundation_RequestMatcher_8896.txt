@@ -1,0 +1,10 @@
+    /**
+     * Adds a check for the HTTP scheme.
+     *
+     * @param string|string[]|null $scheme An HTTP scheme or an array of HTTP schemes
+     */
+
+    public function matchScheme($scheme)
+    {
+        $this->schemes = null !== $scheme ? array_map('strtolower', (array) $scheme) : [];
+    }

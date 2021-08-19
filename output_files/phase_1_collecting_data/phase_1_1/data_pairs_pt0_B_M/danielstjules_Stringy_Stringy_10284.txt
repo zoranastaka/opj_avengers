@@ -1,0 +1,18 @@
+    /**
+     * Returns the last $n characters of the string.
+     *
+     * @param  int    $n Number of characters to retrieve from the end
+     * @return static Object with its $str being the last $n chars
+     */
+
+    public function last($n)
+    {
+        $stringy = static::create($this->str, $this->encoding);
+
+        if ($n <= 0) {
+            $stringy->str = '';
+            return $stringy;
+        }
+
+        return $stringy->substr(-$n);
+    }

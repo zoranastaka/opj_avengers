@@ -1,0 +1,7 @@
+    /**
+     * Returns whether or not the stream is readable.
+     *
+     * @return bool
+     */
+
+    public function isReadable();

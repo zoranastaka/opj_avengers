@@ -1,0 +1,17 @@
+    /**
+     * @param \Rubix\ML\Datasets\Labeled $dataset
+     */
+
+    public function train(Dataset $dataset) : void
+    {
+        SpecificationChain::with([
+            new DatasetIsLabeled($dataset),
+            new DatasetIsNotEmpty($dataset),
+            new SamplesAreCompatibleWithEstimator($dataset, $this),
+            new LabelsAreCompatibleWithLearner($dataset, $this),
+        ])->check();
+
+        $this->featureCount = $dataset->numFeatures();
+
+        $this->tree->grow($dataset);
+    }

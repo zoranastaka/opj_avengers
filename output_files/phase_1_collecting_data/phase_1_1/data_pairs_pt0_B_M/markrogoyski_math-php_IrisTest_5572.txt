@@ -1,0 +1,12 @@
+    /**
+     * @test 150 petal width observations
+     */
+
+    public function testNumberOfPetalWidth()
+    {
+        // When
+        $observations = $this->iris->getPetalWidth();
+
+        // Then
+        $this->assertCount(150, $observations);
+    }

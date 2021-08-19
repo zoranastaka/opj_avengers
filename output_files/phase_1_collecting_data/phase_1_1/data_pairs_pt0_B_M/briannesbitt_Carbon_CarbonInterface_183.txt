@@ -1,0 +1,12 @@
+    /**
+     * Format the instance as COOKIE
+     *
+     * @example
+     * ```
+     * echo Carbon::now()->toCookieString();
+     * ```
+     *
+     * @return string
+     */
+
+    public function toCookieString();

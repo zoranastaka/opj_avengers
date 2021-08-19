@@ -1,0 +1,25 @@
+    /**
+     * Fork some worker processes.
+     *
+     * @return void
+     */
+
+    protected static function forkWorkersForLinux()
+    {
+
+        foreach (static::$_workers as $worker) {
+            if (static::$_status === static::STATUS_STARTING) {
+                if (empty($worker->name)) {
+                    $worker->name = $worker->getSocketName();
+                }
+                $worker_name_length = \strlen($worker->name);
+                if (static::$_maxWorkerNameLength < $worker_name_length) {
+                    static::$_maxWorkerNameLength = $worker_name_length;
+                }
+            }
+
+            while (\count(static::$_pidMap[$worker->workerId]) < $worker->count) {
+                static::forkOneWorkerForLinux($worker);
+            }
+        }
+    }

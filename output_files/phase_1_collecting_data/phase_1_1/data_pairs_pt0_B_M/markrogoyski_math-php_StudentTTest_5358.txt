@@ -1,0 +1,18 @@
+    /**
+     * @test         median
+     * @dataProvider dataProviderForMedianAndMode
+     * @param        float $ν
+     * @param        float $expected
+     */
+
+    public function testMedian(float $ν, float $expected)
+    {
+        // Given
+        $studentT = new StudentT($ν);
+
+        // When
+        $median = $studentT->median();
+
+        // Then
+        $this->assertEquals($expected, $median);
+    }

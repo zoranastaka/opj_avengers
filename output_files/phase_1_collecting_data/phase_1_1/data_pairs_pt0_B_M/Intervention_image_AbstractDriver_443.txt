@@ -1,0 +1,17 @@
+    /**
+     * Executes named command on given image
+     *
+     * @param  Image  $image
+     * @param  string $name
+     * @param  array $arguments
+     * @return \Intervention\Image\Commands\AbstractCommand
+     */
+
+    public function executeCommand($image, $name, $arguments)
+    {
+        $commandName = $this->getCommandClassName($name);
+        $command = new $commandName($arguments);
+        $command->execute($image);
+
+        return $command;
+    }

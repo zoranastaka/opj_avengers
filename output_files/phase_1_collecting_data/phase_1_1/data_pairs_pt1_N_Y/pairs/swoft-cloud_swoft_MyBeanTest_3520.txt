@@ -1,0 +1,18 @@
+/**
+ * Class MyBeanTest
+ *
+ * @package AppTest\Unit\Common
+ */
+
+class MyBeanTest extends TestCase
+{
+    public function testMyMethod2(): void
+    {
+        $bean = bean(MyBean::class);
+
+        vdump('test message');
+        Log::info('test message');
+
+        $this->assertSame(MyBean::class . '::myMethod2', $bean->myMethod2());
+    }
+}

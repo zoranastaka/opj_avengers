@@ -1,0 +1,16 @@
+    /**
+     * @test         evaluate
+     * @dataProvider dataProviderForEvaluate
+     * @param        array $points
+     * @param        float $x
+     * @param        float $y
+     */
+
+    public function testEvaluate(array $points, float $x, float $y)
+    {
+        // Given
+        $regression = new Linear($points);
+
+        // Then
+        $this->assertEqualsWithDelta($y, $regression->evaluate($x), 0.01);
+    }

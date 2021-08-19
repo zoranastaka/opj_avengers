@@ -1,0 +1,31 @@
+    /**
+     * Start recording actions for a changeset.
+     *
+     * @return void
+     */
+
+    public function beginChangeset()
+    {
+        if ($this->inConflict === true) {
+            return false;
+        }
+
+        if (PHP_CODESNIFFER_VERBOSITY > 1) {
+            $bt = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+            if ($bt[1]['class'] === __CLASS__) {
+                $sniff = 'Fixer';
+            } else {
+                $sniff = Util\Common::getSniffCode($bt[1]['class']);
+            }
+
+            $line = $bt[0]['line'];
+
+            @ob_end_clean();
+            echo "\t=> Changeset started by $sniff:$line".PHP_EOL;
+            ob_start();
+        }
+
+        $this->changeset   = [];
+        $this->inChangeset = true;
+
+    }//end beginChangeset()

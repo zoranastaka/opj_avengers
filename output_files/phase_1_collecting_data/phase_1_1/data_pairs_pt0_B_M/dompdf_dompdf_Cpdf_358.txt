@@ -1,0 +1,24 @@
+    /**
+     * scale
+     *
+     * @param float $s_x scaling factor for width as percent
+     * @param float $s_y scaling factor for height as percent
+     * @param float $x   Origin abscissa
+     * @param float $y   Origin ordinate
+     */
+
+    function scale($s_x, $s_y, $x, $y)
+    {
+        $y = $this->currentPageSize["height"] - $y;
+
+        $tm = [
+            $s_x,
+            0,
+            0,
+            $s_y,
+            $x * (1 - $s_x),
+            $y * (1 - $s_y)
+        ];
+
+        $this->transform($tm);
+    }

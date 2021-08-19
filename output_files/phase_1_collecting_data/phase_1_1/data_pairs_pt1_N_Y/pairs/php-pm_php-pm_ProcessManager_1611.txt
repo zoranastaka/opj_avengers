@@ -1,0 +1,42 @@
+    /**
+     * Register client files for change tracking
+     *
+     * @param array      $data
+     * @param ConnectionInterface $conn
+     */
+
+    protected function commandFiles(array $data, ConnectionInterface $conn)
+    {
+        try {
+            $slave = $this->slaves->getByConnection($conn);
+
+            $start = \microtime(true);
+
+            \clearstatcache();
+
+            $newFilesCount = 0;
+            $knownFiles = \array_keys($this->filesLastMTime);
+            $recentlyIncludedFiles = \array_diff($data['files'], $knownFiles);
+            foreach ($recentlyIncludedFiles as $filePath) {
+                if (\file_exists($filePath) && !\is_dir($filePath)) {
+                    $this->filesLastMTime[$filePath] = \filemtime($filePath);
+                    $this->filesLastMd5[$filePath] = \md5_file($filePath);
+                    $newFilesCount++;
+                }
+            }
+
+            if ($this->output->isVeryVerbose()) {
+                $this->output->writeln(
+                    \sprintf(
+                        'Received %d new files from %d. Stats collection cycle: %u files, %.3f ms',
+                        $newFilesCount,
+                        $slave->getPort(),
+                        \count($this->filesLastMTime),
+                        (\microtime(true) - $start) * 1000
+                    )
+                );
+            }
+        } catch (\Exception $e) {
+            // silent
+        }
+    }

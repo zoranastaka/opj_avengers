@@ -1,0 +1,14 @@
+    /**
+     * Returns frequent item sets only.
+     *
+     * @param mixed[][] $samples
+     *
+     * @return mixed[][]
+     */
+
+    private function frequent(array $samples): array
+    {
+        return array_values(array_filter($samples, function ($entry): bool {
+            return $this->support($entry) >= $this->support;
+        }));
+    }

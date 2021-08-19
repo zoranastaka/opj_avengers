@@ -1,0 +1,16 @@
+    /**
+     * @dataProvider providePeriods
+     */
+
+    public function testDumpPeriod($start, $interval, $end, $options, $expected)
+    {
+        $p = new \DatePeriod(new \DateTime($start), new \DateInterval($interval), \is_int($end) ? $end : new \DateTime($end), $options);
+
+        $xDump = <<<EODUMP
+DatePeriod {
+  period: $expected
+%A}
+EODUMP;
+
+        $this->assertDumpMatchesFormat($xDump, $p);
+    }

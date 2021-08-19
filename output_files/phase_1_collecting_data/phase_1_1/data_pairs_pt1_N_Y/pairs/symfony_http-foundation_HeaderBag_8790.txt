@@ -1,0 +1,10 @@
+    /**
+     * Returns the number of headers.
+     *
+     * @return int The number of headers
+     */
+
+    public function count()
+    {
+        return \count($this->headers);
+    }

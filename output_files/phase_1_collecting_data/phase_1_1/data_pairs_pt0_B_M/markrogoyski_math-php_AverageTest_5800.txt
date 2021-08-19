@@ -1,0 +1,16 @@
+    /**
+     * @test   median when the input array is empty
+     * @throws \Exception
+     */
+
+    public function testMedianExceptionWhenEmptyArray()
+    {
+        // Given
+        $numbers = [];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Average::median($numbers);
+    }

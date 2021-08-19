@@ -1,0 +1,16 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function has(string $name)
+    {
+        // reference mismatch: if fixed, re-introduced in array_key_exists; keep as it is
+        $attributes = $this->resolveAttributePath($name);
+        $name = $this->resolveKey($name);
+
+        if (null === $attributes) {
+            return false;
+        }
+
+        return \array_key_exists($name, $attributes);
+    }

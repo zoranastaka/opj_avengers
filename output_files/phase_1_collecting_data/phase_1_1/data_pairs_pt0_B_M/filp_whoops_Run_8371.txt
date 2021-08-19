@@ -1,0 +1,16 @@
+    /**
+     * Register your handler as the last of all currently registered handlers (to be executed first).
+     * Prefer using appendHandler and prependHandler for clarity.
+     *
+     * @param Callable|HandlerInterface $handler
+     *
+     * @return Run
+     *
+     * @throws InvalidArgumentException If argument is not callable or instance of HandlerInterface.
+     */
+
+    public function pushHandler($handler)
+    {
+        $this->handlerStack[] = $this->resolveHandler($handler);
+        return $this;
+    }

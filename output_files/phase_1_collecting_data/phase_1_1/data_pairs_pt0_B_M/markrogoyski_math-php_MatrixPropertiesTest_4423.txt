@@ -1,0 +1,15 @@
+    /**
+     * @test         isNonsingular returns true for a nonsingular matrix.
+     * @dataProvider dataProviderForNonsingularMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsNonsingular(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isNonsingular());
+    }

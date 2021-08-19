@@ -1,0 +1,6 @@
+/**
+ * Sanitize an IP address
+ *
+ */
+
+function yourls_sanitize_ip( $ip ) {

@@ -1,0 +1,21 @@
+    /**
+     * Get upper triangular factor.
+     *
+     * @return Matrix Upper triangular factor
+     */
+
+    public function getU(): Matrix
+    {
+        $U = [];
+        for ($i = 0; $i < $this->n; ++$i) {
+            for ($j = 0; $j < $this->n; ++$j) {
+                if ($i <= $j) {
+                    $U[$i][$j] = $this->LU[$i][$j];
+                } else {
+                    $U[$i][$j] = 0.0;
+                }
+            }
+        }
+
+        return new Matrix($U);
+    }

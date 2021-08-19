@@ -1,0 +1,14 @@
+    /**
+     * Add a random number source to the generator
+     *
+     * @param Source $source The random number source to add
+     *
+     * @return Generator $this The current generator instance
+     */
+
+    public function addSource(Source $source)
+    {
+        $this->sources[] = $source;
+
+        return $this;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Test create/get section
+     */
+
+    public function testCreateGetSections()
+    {
+        $phpWord = new PhpWord();
+        $phpWord->addSection();
+        $this->assertCount(1, $phpWord->getSections());
+    }

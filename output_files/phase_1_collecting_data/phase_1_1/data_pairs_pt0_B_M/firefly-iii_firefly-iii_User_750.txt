@@ -1,0 +1,11 @@
+    /**
+     * @codeCoverageIgnore
+     * Link to bills.
+     *
+     * @return HasMany
+     */
+
+    public function bills(): HasMany
+    {
+        return $this->hasMany(Bill::class);
+    }

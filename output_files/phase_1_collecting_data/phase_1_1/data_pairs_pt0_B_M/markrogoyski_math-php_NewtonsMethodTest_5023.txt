@@ -1,0 +1,26 @@
+    /**
+     * @test   Solve f(x) = x³ - x + 1
+     *         Polynomial has a root of approximately -1.324717
+     * @throws \Exception
+     */
+
+    public function testXCubedSubtractXPlusOne()
+    {
+        // Given
+        $func = function ($x) {
+            return $x ** 3 - $x + 1;
+        };
+
+        // And
+        $expected = -1.324717;
+        $args     = [-1];
+        $target   = 0;
+        $position = 0;
+        $tol      = 0.00001;
+
+        // When
+        $root = NewtonsMethod::solve($func, $args, $target, $tol, $position);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $root, $tol);
+    }

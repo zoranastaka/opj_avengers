@@ -1,0 +1,10 @@
+    /**
+     * @return bool
+     */
+
+    protected function ws_keep()
+    {
+        $whitespace = $this->get_style()->white_space;
+
+        return in_array($whitespace, ["pre", "pre-wrap", "pre-line"]);
+    }

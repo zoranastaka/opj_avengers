@@ -1,0 +1,14 @@
+    /**
+     * Method to call mysqli->ping() to keep unused connections open on
+     * long-running scripts, or to reconnect timed out connections (if php.ini has
+     * global mysqli.reconnect set to true). Can't do this directly using object
+     * since _mysqli is protected.
+     *
+     * @return bool True if connection is up
+     * @throws Exception
+     */
+
+    public function ping()
+    {
+        return $this->mysqli()->ping();
+    }

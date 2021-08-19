@@ -1,0 +1,8 @@
+    /**
+     * @return bool
+     */
+
+    public function hasCholeskyDecomposition(): bool
+    {
+        return isset($this->cholesky);
+    }

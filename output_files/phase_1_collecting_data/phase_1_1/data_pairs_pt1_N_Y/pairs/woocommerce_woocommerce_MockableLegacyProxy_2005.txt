@@ -1,0 +1,5 @@
+	/**
+	 * Reset the instance to its initial state by removing all the mocks.
+	 */
+
+	public function reset() {

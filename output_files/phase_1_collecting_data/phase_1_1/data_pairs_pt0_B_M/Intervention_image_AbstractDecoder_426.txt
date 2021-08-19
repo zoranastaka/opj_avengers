@@ -1,0 +1,10 @@
+    /**
+     * Determines if current data is Symfony UploadedFile component
+     *
+     * @return boolean
+     */
+
+    public function isSymfonyUpload()
+    {
+        return is_a($this->data, 'Symfony\Component\HttpFoundation\File\UploadedFile');
+    }

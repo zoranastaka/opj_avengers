@@ -1,0 +1,8 @@
+    /** @test */
+
+    public function allowsCanTakeAString()
+    {
+        $stub = m::mock();
+        $stub->allows("foo")->andReturns("bar");
+        $this->assertEquals("bar", $stub->foo());
+    }

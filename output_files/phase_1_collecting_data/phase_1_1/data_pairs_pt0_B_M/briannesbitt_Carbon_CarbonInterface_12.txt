@@ -1,0 +1,11 @@
+    /**
+     * Get a part of the Carbon object
+     *
+     * @param string $name
+     *
+     * @throws UnknownGetterException
+     *
+     * @return string|int|bool|DateTimeZone|null
+     */
+
+    public function __get($name);

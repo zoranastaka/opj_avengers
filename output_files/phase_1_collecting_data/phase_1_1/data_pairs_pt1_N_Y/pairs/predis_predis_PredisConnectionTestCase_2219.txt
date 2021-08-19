@@ -1,0 +1,17 @@
+    /**
+     * @group connected
+     */
+
+    public function testReadsErrorResponsesAsResponseErrorObjects(): void
+    {
+        $commands = $this->getCommandFactory();
+        $connection = $this->createConnection(true);
+
+        $connection->executeCommand($commands->create('set', array('foo', 'bar')));
+        $connection->writeRequest($commands->create('rpush', array('foo', 'baz')));
+
+        $this->assertInstanceOf('Predis\Response\Error', $error = $connection->read());
+        $this->assertMatchesRegularExpression(
+            '/[ERR|WRONGTYPE] Operation against a key holding the wrong kind of value/', $error->getMessage()
+        );
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Register local event listeners.
+     *
+     * @param array $listeners
+     */
+
+    public function registerListeners(array $listeners)
+    {
+        foreach ($listeners as $event => $listener) {
+            $this->events[$event][] = $listener;
+        }
+    }

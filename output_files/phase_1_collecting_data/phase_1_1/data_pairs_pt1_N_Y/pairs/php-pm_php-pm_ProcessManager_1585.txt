@@ -1,0 +1,8 @@
+    /**
+     * @param string $phpCgiExecutable
+     */
+
+    public function setPhpCgiExecutable($phpCgiExecutable)
+    {
+        $this->phpCgiExecutable = $phpCgiExecutable;
+    }

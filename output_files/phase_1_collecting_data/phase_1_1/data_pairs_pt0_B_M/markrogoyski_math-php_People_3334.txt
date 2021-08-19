@@ -1,0 +1,10 @@
+    /**
+     * People names
+     *
+     * @return string[]
+     */
+
+    public function getNames(): array
+    {
+        return \array_keys(self::DATA);
+    }

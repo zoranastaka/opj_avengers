@@ -1,0 +1,36 @@
+    /** @test */
+
+    public function it_can_show_permission_tables()
+    {
+        Artisan::call('permission:show');
+
+        $output = Artisan::output();
+
+        $this->assertTrue(strpos($output, 'Guard: web') !== false);
+        $this->assertTrue(strpos($output, 'Guard: admin') !== false);
+
+        if (method_exists($this, 'assertMatchesRegularExpression')) {
+            // |               | testRole | testRole2 |
+            $this->assertMatchesRegularExpression('/\|\s+\|\s+testRole\s+\|\s+testRole2\s+\|/', $output);
+
+            // | edit-articles |  ·       |  ·        |
+            $this->assertMatchesRegularExpression('/\|\s+edit-articles\s+\|\s+·\s+\|\s+·\s+\|/', $output);
+        } else { // phpUnit 9/8
+            $this->assertRegExp('/\|\s+\|\s+testRole\s+\|\s+testRole2\s+\|/', $output);
+            $this->assertRegExp('/\|\s+edit-articles\s+\|\s+·\s+\|\s+·\s+\|/', $output);
+        }
+
+        Role::findByName('testRole')->givePermissionTo('edit-articles');
+        $this->reloadPermissions();
+
+        Artisan::call('permission:show');
+
+        $output = Artisan::output();
+
+        // | edit-articles |  ·       |  ·        |
+        if (method_exists($this, 'assertMatchesRegularExpression')) {
+            $this->assertMatchesRegularExpression('/\|\s+edit-articles\s+\|\s+✔\s+\|\s+·\s+\|/', $output);
+        } else {
+            $this->assertRegExp('/\|\s+edit-articles\s+\|\s+✔\s+\|\s+·\s+\|/', $output);
+        }
+    }

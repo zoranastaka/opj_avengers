@@ -1,0 +1,20 @@
+    /**
+     * @test         Get variable
+     * @dataProvider dataProviderForGetVariable
+     * @param array $args
+     * @param string $expected
+     */
+
+    public function testGetVariable(array $args, string $expected)
+    {
+        // Given
+        $coefficients = $args[0];
+        $variable     = $args[1] ?? "x";
+        $polynomial   = new Polynomial($coefficients, $variable);
+
+        // When
+        $result = $polynomial->getVariable();
+
+        // Then
+        $this->assertEquals($expected, $result);
+    }

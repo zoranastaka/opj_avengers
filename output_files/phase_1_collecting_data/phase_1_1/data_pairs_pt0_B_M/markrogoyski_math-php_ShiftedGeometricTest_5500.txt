@@ -1,0 +1,18 @@
+    /**
+     * @test         variance
+     * @dataProvider dataProviderForVariance
+     * @param        float $p
+     * @param        float $σ²
+     */
+
+    public function testVariance(float $p, float $σ²)
+    {
+        // Given
+        $shiftedGeometric = new ShiftedGeometric($p);
+
+        // When
+        $mode = $shiftedGeometric->variance();
+
+        // Then
+        $this->assertEqualsWithDelta($σ², $mode, 0.000001);
+    }

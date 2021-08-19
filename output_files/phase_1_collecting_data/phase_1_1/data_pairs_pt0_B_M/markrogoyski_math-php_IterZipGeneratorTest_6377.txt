@@ -1,0 +1,21 @@
+    /**
+     * @test         zip with two generators of the same size
+     * @dataProvider dataProviderForZipTwoGeneratorsSameSize
+     * @param        \Generator $generator1
+     * @param        \Generator $generator2
+     * @param        array      $expected
+     */
+
+    public function testZipTwoGeneratorsSameSize(\Generator $generator1, \Generator $generator2, array $expected)
+    {
+        // Given
+        $result = [];
+
+        // When
+        foreach (Iter::zip($generator1, $generator2) as [$value1, $value2]) {
+            $result[] = [$value1, $value2];
+        }
+
+        // Then
+        $this->assertEquals($expected, $result);
+    }

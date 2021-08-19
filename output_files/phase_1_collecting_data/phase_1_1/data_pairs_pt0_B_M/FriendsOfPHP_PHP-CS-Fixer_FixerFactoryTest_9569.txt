@@ -1,0 +1,12 @@
+    /**
+     * @dataProvider provideConflictingFixersCases
+     */
+
+    public function testConflictingFixers(RuleSet $ruleSet): void
+    {
+        $this->expectException(\UnexpectedValueException::class);
+        $this->expectExceptionMessageMatches('#^Rule contains conflicting fixers:\n#');
+
+        (new FixerFactory())
+            ->registerBuiltInFixers()->useRuleSet($ruleSet);
+    }

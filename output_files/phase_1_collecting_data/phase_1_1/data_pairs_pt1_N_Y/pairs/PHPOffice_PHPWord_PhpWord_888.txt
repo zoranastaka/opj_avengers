@@ -1,0 +1,10 @@
+    /**
+     * Get all sections
+     *
+     * @return \PhpOffice\PhpWord\Element\Section[]
+     */
+
+    public function getSections()
+    {
+        return $this->sections;
+    }

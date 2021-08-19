@@ -1,0 +1,16 @@
+    /**
+     * @test         min
+     * @dataProvider dataProviderForMin
+     * @param        array $xs
+     * @param        mixed $value
+     * @param        array $expected
+     */
+
+    public function testMin(array $xs, $value, array $expected)
+    {
+        // When
+        $mins = Single::min($xs, $value);
+
+        // Then
+        $this->assertEquals($expected, $mins);
+    }

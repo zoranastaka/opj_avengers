@@ -1,0 +1,12 @@
+    /**
+     * Sets options used while encoding data to JSON.
+     *
+     * @return $this
+     */
+
+    public function setEncodingOptions(int $encodingOptions)
+    {
+        $this->encodingOptions = $encodingOptions;
+
+        return $this->setData(json_decode($this->data));
+    }

@@ -1,0 +1,8 @@
+	/**
+	 * Assigns default product category for products
+	 * that have no categories.
+	 *
+	 * @return void
+	 */
+
+	public function maybe_assign_default_product_cat() {

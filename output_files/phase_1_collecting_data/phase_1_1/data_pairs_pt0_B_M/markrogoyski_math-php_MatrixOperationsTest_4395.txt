@@ -1,0 +1,17 @@
+    /**
+     * @test         diagonal
+     * @dataProvider dataProviderForDiagonal
+     */
+
+    public function testDiagonal(array $A, array $R)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $R = MatrixFactory::create($R);
+
+        // When
+        $diagonal = $A->diagonal();
+
+        // Then
+        $this->assertEquals($R, $diagonal);
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @test         isRectangularDiagonal returns false appropriately
+     * @dataProvider dataProviderForNotRectangularDiagonalMatrix
+     * @param        array $D
+     * @throws       \Exception
+     */
+
+    public function testIsNotRectangularDiagonal(array $D)
+    {
+        // Given
+        $D = MatrixFactory::create($D);
+
+        // Then
+        $this->assertFalse($D->isRectangularDiagonal());
+    }

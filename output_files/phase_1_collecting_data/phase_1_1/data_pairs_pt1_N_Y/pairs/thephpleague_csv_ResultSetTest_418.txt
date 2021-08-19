@@ -1,0 +1,21 @@
+    /**
+     * @covers ::fetchColumn
+     * @covers ::getColumnIndex
+     * @covers ::getColumnIndexByKey
+     */
+
+    public function testFetchColumnEmptyCol(): void
+    {
+        $raw = [
+            ['john', 'doe'],
+            ['lara', 'croft'],
+        ];
+
+        $file = new SplTempFileObject();
+        foreach ($raw as $row) {
+            $file->fputcsv($row);
+        }
+        $csv = Reader::createFromFileObject($file);
+        $res = $this->stmt->process($csv)->fetchColumn(2);
+        self::assertCount(0, iterator_to_array($res));
+    }

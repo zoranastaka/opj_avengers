@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider assertEqualsFailsProvider
+     */
+
+    public function testAssertEqualsFails($expected, $actual, $message): void
+    {
+        $this->expectException(ComparisonFailure::class);
+        $this->expectExceptionMessage($message);
+
+        $this->comparator->assertEquals($expected, $actual);
+    }

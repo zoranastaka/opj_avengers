@@ -1,0 +1,16 @@
+    /**
+     * Determines if the instance is equal to another
+     *
+     * @example
+     * ```
+     * Carbon::parse('2018-07-25 12:45:16')->equalTo('2018-07-25 12:45:16'); // true
+     * Carbon::parse('2018-07-25 12:45:16')->equalTo(Carbon::parse('2018-07-25 12:45:16')); // true
+     * Carbon::parse('2018-07-25 12:45:16')->equalTo('2018-07-25 12:45:17'); // false
+     * ```
+     *
+     * @param \Carbon\Carbon|\DateTimeInterface|mixed $date
+     *
+     * @return bool
+     */
+
+    public function equalTo($date): bool;

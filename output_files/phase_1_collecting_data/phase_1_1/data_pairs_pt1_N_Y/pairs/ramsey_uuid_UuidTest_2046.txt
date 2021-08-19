@@ -1,0 +1,25 @@
+    /**
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingTraversableTypeHintSpecification
+     */
+
+    public function provideVariousVariantUuids(): array
+    {
+        return [
+            ['ff6f8cb0-c57d-11e1-0b21-0800200c9a66', Uuid::RESERVED_NCS],
+            ['ff6f8cb0-c57d-11e1-1b21-0800200c9a66', Uuid::RESERVED_NCS],
+            ['ff6f8cb0-c57d-11e1-2b21-0800200c9a66', Uuid::RESERVED_NCS],
+            ['ff6f8cb0-c57d-11e1-3b21-0800200c9a66', Uuid::RESERVED_NCS],
+            ['ff6f8cb0-c57d-11e1-4b21-0800200c9a66', Uuid::RESERVED_NCS],
+            ['ff6f8cb0-c57d-11e1-5b21-0800200c9a66', Uuid::RESERVED_NCS],
+            ['ff6f8cb0-c57d-11e1-6b21-0800200c9a66', Uuid::RESERVED_NCS],
+            ['ff6f8cb0-c57d-11e1-7b21-0800200c9a66', Uuid::RESERVED_NCS],
+            ['ff6f8cb0-c57d-11e1-8b21-0800200c9a66', Uuid::RFC_4122],
+            ['ff6f8cb0-c57d-11e1-9b21-0800200c9a66', Uuid::RFC_4122],
+            ['ff6f8cb0-c57d-11e1-ab21-0800200c9a66', Uuid::RFC_4122],
+            ['ff6f8cb0-c57d-11e1-bb21-0800200c9a66', Uuid::RFC_4122],
+            ['ff6f8cb0-c57d-11e1-cb21-0800200c9a66', Uuid::RESERVED_MICROSOFT],
+            ['ff6f8cb0-c57d-11e1-db21-0800200c9a66', Uuid::RESERVED_MICROSOFT],
+            ['ff6f8cb0-c57d-11e1-eb21-0800200c9a66', Uuid::RESERVED_FUTURE],
+            ['ff6f8cb0-c57d-11e1-fb21-0800200c9a66', Uuid::RESERVED_FUTURE],
+        ];
+    }

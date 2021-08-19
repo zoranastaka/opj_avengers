@@ -1,0 +1,10 @@
+    /**
+     * Determines if current source data is url
+     *
+     * @return boolean
+     */
+
+    public function isUrl()
+    {
+        return (bool) filter_var($this->data, FILTER_VALIDATE_URL);
+    }

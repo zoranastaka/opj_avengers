@@ -1,0 +1,82 @@
+    /**
+     * DFFITS
+     * Measures the effect on the regression if each data point is excluded.
+     * https://en.wikipedia.org/wiki/DFFITS
+     *
+     *          ŷᵢ - ŷᵢ₍ᵢ₎
+     * DFFITS = ----------
+     *          s₍ᵢ₎ √hᵢᵢ
+     *
+     *   where ŷᵢ    is the prediction for point i with i included in the regression
+     *         ŷᵢ₍ᵢ₎ is the prediction for point i without i included in the regression
+     *         s₍ᵢ₎  is the standard error estimated without the point in question
+     *         hᵢᵢ   is the leverage for the point
+     *
+     * Putting it another way:
+     *
+     * sᵢ is the studentized residual
+     *
+     *             eᵢ
+     * sᵢ = --------------
+     *        √(MSₑ(1 - hᵢ))
+     *
+     *   where eᵢ  is the residual
+     *         MSₑ is the mean squares residual
+     *
+     * Then, s₍ᵢ₎ is the studentized residual with the i-th observation removed:
+     *
+     *               eᵢ
+     * s₍ᵢ₎ = -----------------
+     *        √(MSₑ₍ᵢ₎(1 - hᵢ))
+     *
+     * where
+     *          _                _
+     *         |           eᵢ²    |   ν
+     * MSₑ₍ᵢ₎ =|  MSₑ - --------  | -----
+     *         |_       (1 - h)ν _| ν - 1
+     *
+     * Then,
+     *                  ______
+     *                 /  hᵢ
+     * DFFITS = s₍ᵢ₎  / ------
+     *               √  1 - hᵢ
+     *
+     * @return array
+     */
+
+    public function dffits(): array
+    {
+        $ν   = $this->ν;
+        $h   = $this->leverages();
+        $e   = $this->residuals();
+        $MSₑ = $this->meanSquareResidual();
+
+        // Mean square residuals with the the i-th observation removed
+        $MSₑ₍ᵢ₎ = \array_map(
+            function ($eᵢ, $hᵢ) use ($MSₑ, $ν) {
+                return ($MSₑ - ($eᵢ ** 2 / ((1 - $hᵢ) * $ν))) * ($ν / ($ν - 1));
+            },
+            $e,
+            $h
+        );
+
+        // Studentized residual with the i-th observation removed
+        $s = \array_map(
+            function ($eᵢ, $mseᵢ, $hᵢ) {
+                return $eᵢ / \sqrt($mseᵢ * (1 - $hᵢ));
+            },
+            $e,
+            $MSₑ₍ᵢ₎,
+            $h
+        );
+
+        $DFFITS = \array_map(
+            function ($s₍ᵢ₎, $hᵢ) {
+                return $s₍ᵢ₎ * \sqrt($hᵢ / (1 - $hᵢ));
+            },
+            $s,
+            $h
+        );
+
+        return $DFFITS;
+    }

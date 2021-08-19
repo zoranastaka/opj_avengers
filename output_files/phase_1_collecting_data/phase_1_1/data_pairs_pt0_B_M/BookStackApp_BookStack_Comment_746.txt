@@ -1,0 +1,8 @@
+    /**
+     * Get the entity that this comment belongs to
+     */
+
+    public function entity(): MorphTo
+    {
+        return $this->morphTo('entity');
+    }

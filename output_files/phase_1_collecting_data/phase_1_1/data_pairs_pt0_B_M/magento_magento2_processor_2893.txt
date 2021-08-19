@@ -1,0 +1,10 @@
+    /**
+     * Redirect to a base url
+     * @return void
+     */
+
+    private function redirectToBaseUrl()
+    {
+        header("Location: " . $this->getBaseUrl());
+        die();
+    }

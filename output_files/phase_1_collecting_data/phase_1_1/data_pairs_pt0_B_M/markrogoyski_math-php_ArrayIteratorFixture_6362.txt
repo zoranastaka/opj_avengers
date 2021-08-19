@@ -1,0 +1,8 @@
+    /**
+     * @return mixed
+     */
+
+    public function current()
+    {
+        return $this->values[$this->i];
+    }

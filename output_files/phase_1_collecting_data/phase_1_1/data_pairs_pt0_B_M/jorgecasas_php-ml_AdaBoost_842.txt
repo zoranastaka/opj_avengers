@@ -1,0 +1,17 @@
+    /**
+     * Evaluates the classifier and returns the classification error rate
+     */
+
+    protected function evaluateClassifier(Classifier $classifier): float
+    {
+        $total = (float) array_sum($this->weights);
+        $wrong = 0;
+        foreach ($this->samples as $index => $sample) {
+            $predicted = $classifier->predict($sample);
+            if ($predicted != $this->targets[$index]) {
+                $wrong += $this->weights[$index];
+            }
+        }
+
+        return $wrong / $total;
+    }

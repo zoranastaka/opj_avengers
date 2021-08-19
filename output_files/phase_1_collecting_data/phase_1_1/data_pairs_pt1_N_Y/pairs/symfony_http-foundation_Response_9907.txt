@@ -1,0 +1,10 @@
+    /**
+     * Is there a client error?
+     *
+     * @final
+     */
+
+    public function isClientError(): bool
+    {
+        return $this->statusCode >= 400 && $this->statusCode < 500;
+    }

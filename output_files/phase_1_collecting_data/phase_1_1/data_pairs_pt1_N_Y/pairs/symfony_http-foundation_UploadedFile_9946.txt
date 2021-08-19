@@ -1,0 +1,13 @@
+    /**
+     * Returns the upload error.
+     *
+     * If the upload was successful, the constant UPLOAD_ERR_OK is returned.
+     * Otherwise one of the other UPLOAD_ERR_XXX constants is returned.
+     *
+     * @return int The upload error
+     */
+
+    public function getError()
+    {
+        return $this->error;
+    }

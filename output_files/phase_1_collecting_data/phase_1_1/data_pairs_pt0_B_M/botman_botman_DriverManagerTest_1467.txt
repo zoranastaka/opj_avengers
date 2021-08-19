@@ -1,0 +1,10 @@
+    /**
+     * @test
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+
+    public function it_can_get_configured_drivers()
+    {
+        $this->assertCount(0, DriverManager::getConfiguredDrivers([]));
+    }

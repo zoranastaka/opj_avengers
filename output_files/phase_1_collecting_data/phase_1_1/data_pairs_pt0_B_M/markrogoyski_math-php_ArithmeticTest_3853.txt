@@ -1,0 +1,12 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForMultipleProducts(): array
+    {
+        return [
+            'Π(0) = 0'     => [0, 0],
+            'Π(5) = -140'  => [5, -140],
+            'Π(-5) = -210' => [-5, -210],
+        ];
+    }

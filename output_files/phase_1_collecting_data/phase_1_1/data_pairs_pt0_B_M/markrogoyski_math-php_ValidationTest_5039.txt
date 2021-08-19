@@ -1,0 +1,15 @@
+    /**
+     * @test         Tolerance is not negative
+     * @dataProvider dataProviderForPositiveTolerance
+     * @param        float $tolerance
+     * @throws       \Exception
+     */
+
+    public function testToleranceNotNegative(float $tolerance)
+    {
+        // Given
+        Validation::tolerance($tolerance);
+
+        // Then no exception is thrown
+        $this->assertTrue(true);
+    }

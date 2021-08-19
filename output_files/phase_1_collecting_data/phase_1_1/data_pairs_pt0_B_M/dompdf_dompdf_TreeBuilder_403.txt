@@ -1,0 +1,8 @@
+    /**
+     * @param $data
+     */
+
+    private function insertText($data) {
+        if ($data === '') {
+            return;
+        }

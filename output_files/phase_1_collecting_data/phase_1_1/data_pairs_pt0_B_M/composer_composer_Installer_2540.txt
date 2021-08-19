@@ -1,0 +1,23 @@
+    /**
+     * @return DefaultPolicy
+     */
+
+    private function createPolicy($forUpdate)
+    {
+        $preferStable = null;
+        $preferLowest = null;
+        if (!$forUpdate) {
+            $preferStable = $this->locker->getPreferStable();
+            $preferLowest = $this->locker->getPreferLowest();
+        }
+        // old lock file without prefer stable/lowest will return null
+        // so in this case we use the composer.json info
+        if (null === $preferStable) {
+            $preferStable = $this->preferStable || $this->package->getPreferStable();
+        }
+        if (null === $preferLowest) {
+            $preferLowest = $this->preferLowest;
+        }
+
+        return new DefaultPolicy($preferStable, $preferLowest);
+    }

@@ -1,0 +1,13 @@
+    /**
+     * @covers Whoops\Run::clearHandlers
+     */
+
+    public function testClearHandlers()
+    {
+        $run = $this->getRunInstance();
+        $run->clearHandlers();
+
+        $handlers = $run->getHandlers();
+
+        $this->assertEmpty($handlers);
+    }

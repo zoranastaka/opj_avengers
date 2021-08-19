@@ -1,0 +1,17 @@
+    /**
+     * @covers ::setCsvControl
+     * @covers ::getCsvControl
+     * @covers ::filterControl
+     * @covers \League\Csv\InvalidArgument::dueToInvalidDelimiterCharacter
+     */
+
+    public function testCsvControl(): void
+    {
+        $doc = Stream::createFromString('foo,bar');
+        self::assertSame([',', '"', '\\'], $doc->getCsvControl());
+        $expected = [';', '|', '"'];
+        $doc->setCsvControl(...$expected);
+        self::assertSame($expected, $doc->getCsvControl());
+        $this->expectException(InvalidArgument::class);
+        $doc->setCsvControl(...['foo']);
+    }

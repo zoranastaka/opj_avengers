@@ -1,0 +1,32 @@
+    /**
+     * Returns the server version of the Redis instance used by the test suite.
+     *
+     * @throws RuntimeException When the client cannot retrieve the current server version
+     *
+     * @return string
+     */
+
+    protected function getRedisServerVersion(): string
+    {
+        if (isset($this->redisServerVersion)) {
+            return $this->redisServerVersion;
+        }
+
+        $client = $this->createClient(null, null, true);
+        $info = array_change_key_case($client->info());
+
+        if (isset($info['server']['redis_version'])) {
+            // Redis >= 2.6
+            $version = $info['server']['redis_version'];
+        } elseif (isset($info['redis_version'])) {
+            // Redis < 2.6
+            $version = $info['redis_version'];
+        } else {
+            $connection = $client->getConnection();
+            throw new RuntimeException("Unable to retrieve a valid server info payload from $connection");
+        }
+
+        $this->redisServerVersion = $version;
+
+        return $version;
+    }

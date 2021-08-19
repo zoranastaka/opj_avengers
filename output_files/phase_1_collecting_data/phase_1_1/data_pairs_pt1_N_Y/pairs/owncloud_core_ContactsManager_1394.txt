@@ -1,0 +1,8 @@
+		/**
+		 * In order to improve lazy loading a closure can be registered which will be called in case
+		 * address books are actually requested
+		 *
+		 * @param \Closure $callable
+		 */
+
+		public function register(\Closure $callable) {

@@ -1,0 +1,26 @@
+    /**
+     * @param string $toResolve
+     *
+     * @throws RuntimeException
+     *
+     * @return array<object|string|null> [Instance, Method Name]
+     */
+
+    private function resolveSlimNotation(string $toResolve): array
+    {
+        preg_match(CallableResolver::$callablePattern, $toResolve, $matches);
+        [$class, $method] = $matches ? [$matches[1], $matches[2]] : [$toResolve, null];
+
+        if ($this->container && $this->container->has($class)) {
+            $instance = $this->container->get($class);
+        } else {
+            if (!class_exists($class)) {
+                if ($method) {
+                    $class .= '::' . $method . '()';
+                }
+                throw new RuntimeException(sprintf('Callable %s does not exist', $class));
+            }
+            $instance = new $class($this->container);
+        }
+        return [$instance, $method];
+    }

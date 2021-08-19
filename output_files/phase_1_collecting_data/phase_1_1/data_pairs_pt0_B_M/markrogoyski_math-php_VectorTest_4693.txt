@@ -1,0 +1,18 @@
+    /**
+     * @test         Get N
+     * @dataProvider dataProviderForGetN
+     * @param        array $A
+     * @param        int $expected
+     */
+
+    public function testGetN(array $A, int $expected)
+    {
+        // Given
+        $V = new Vector($A);
+
+        // When
+        $n = $V->getN();
+
+        // Then
+        $this->assertEquals($expected, $n);
+    }

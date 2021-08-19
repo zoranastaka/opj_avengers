@@ -1,0 +1,20 @@
+    /**
+     * @test         openClosed interval
+     * @dataProvider dataProviderForOpenClosed
+     * @param        bool $aOpen
+     * @param        bool $bOpen
+     * @param        bool $expected
+     */
+
+    public function testOpenClosed(bool $aOpen, bool $bOpen, bool $expected)
+    {
+        // Given
+        $openOpen = new \ReflectionMethod(Piecewise::class, 'openClosed');
+        $openOpen->setAccessible(true);
+
+        // When
+        $result = $openOpen->invokeArgs($this->piecewise, [$aOpen, $bOpen]);
+
+        // Then
+        $this->assertSame($expected, $result);
+    }

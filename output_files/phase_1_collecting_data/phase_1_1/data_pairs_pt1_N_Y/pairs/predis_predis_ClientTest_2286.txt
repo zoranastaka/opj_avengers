@@ -1,0 +1,24 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testRawCommandNeverAppliesPrefix(): void
+    {
+        $connection = $this->getMockBuilder('Predis\Connection\ConnectionInterface')->getMock();
+        $connection
+            ->expects($this->exactly(2))
+            ->method('executeCommand')
+            ->withConsecutive(
+                array($this->isRedisCommand('SET', array('foo', 'bar'))),
+                array($this->isRedisCommand('GET', array('foo')))
+            )
+            ->willReturnOnConsecutiveCalls(
+                new Response\Status('OK'),
+                'bar'
+            );
+
+        $client = new Client($connection, array('prefix' => 'predis:'));
+
+        $this->assertSame('OK', $client->executeRaw(array('SET', 'foo', 'bar')));
+        $this->assertSame('bar', $client->executeRaw(array('GET', 'foo')));
+    }

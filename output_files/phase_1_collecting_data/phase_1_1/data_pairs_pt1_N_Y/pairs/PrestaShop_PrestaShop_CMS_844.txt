@@ -1,0 +1,26 @@
+    /**
+     * @param $idCategory
+     *
+     * @return bool
+     */
+
+    public static function cleanPositions($idCategory)
+    {
+        $sql = '
+		SELECT `id_cms`
+		FROM `' . _DB_PREFIX_ . 'cms`
+		WHERE `id_cms_category` = ' . (int) $idCategory . '
+		ORDER BY `position`';
+
+        $result = Db::getInstance()->executeS($sql);
+
+        for ($i = 0, $total = count($result); $i < $total; ++$i) {
+            $sql = 'UPDATE `' . _DB_PREFIX_ . 'cms`
+					SET `position` = ' . (int) $i . '
+					WHERE `id_cms_category` = ' . (int) $idCategory . '
+						AND `id_cms` = ' . (int) $result[$i]['id_cms'];
+            Db::getInstance()->execute($sql);
+        }
+
+        return true;
+    }

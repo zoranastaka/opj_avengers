@@ -1,0 +1,13 @@
+    /**
+     * Closed-open interval
+     *
+     * @param  bool $aOpen
+     * @param  bool $bOpen
+     *
+     * @return bool
+     */
+
+    private function closedOpen(bool $aOpen, bool $bOpen): bool
+    {
+        return !$aOpen && $bOpen;
+    }

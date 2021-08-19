@@ -1,0 +1,10 @@
+    /**
+     * @expectedException ImagickException
+     */
+
+    public function testDestroy()
+    {
+        $img = $this->manager()->make('tests/images/trim.png');
+        $img->destroy();
+        $img->getCore()->getImageWidth(); // try to get width (should throw exception)
+    }

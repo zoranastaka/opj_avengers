@@ -1,0 +1,10 @@
+    /**
+     * @covers ::getInputBOM
+     *
+     * @dataProvider bomProvider
+     */
+
+    public function testGetInputBOM(string $expected, string $str, string $delimiter): void
+    {
+        self::assertSame($expected, Reader::createFromString($str)->setDelimiter($delimiter)->getInputBOM());
+    }

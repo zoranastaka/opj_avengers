@@ -1,0 +1,12 @@
+    /**
+     * @test upperIncompleteGamma throws an OutOfBoundsException if s is less than 0
+     */
+
+    public function testUpperIncompleteGammaExceptionSLessThanZero()
+    {
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Special::upperIncompleteGamma(-1, 1);
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @return TokenInterface
+     */
+
+    public function getValue()
+    {
+        return $this->value;
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Mode of the distribution
+     *
+     * mode = μ
+     *
+     * @return float
+     */
+
+    public function mode(): float
+    {
+        return $this->μ;
+    }

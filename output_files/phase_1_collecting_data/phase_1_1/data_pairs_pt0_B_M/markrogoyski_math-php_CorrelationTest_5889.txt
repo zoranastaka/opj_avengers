@@ -1,0 +1,18 @@
+    /**
+     * @test         weightedCovariance
+     * @dataProvider dataProviderForWeightedCovariance
+     * @param        array $X
+     * @param        array $Y
+     * @param        array $w
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testWeightedCovariance(array $X, array $Y, array $w, float $expected)
+    {
+        // When
+        $covariance = Correlation::weightedCovariance($X, $Y, $w);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $covariance, 0.001);
+    }

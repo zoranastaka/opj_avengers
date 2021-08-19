@@ -1,0 +1,16 @@
+	// --------------------------------------------------------------------
+
+	public function test_non_alpha_idiom()
+	{
+		// Non-alpha idiom (should act the same as unspecified language)
+		// test with existing file
+		$this->ci_vfs_clone('system/language/english/number_lang.php');
+		$this->ci_vfs_clone('system/language/english/number_lang.php', 'system/language/123funny/');
+		$this->assertTrue($this->lang->load('number', '123funny'));
+		$this->assertEquals('Bytes', $this->lang->language['bytes']);
+
+		// test without existing file
+		$this->ci_vfs_clone('system/language/english/email_lang.php');
+		$this->assertTrue($this->lang->load('email', '456funny'));
+		$this->assertEquals('You did not specify a SMTP hostname.', $this->lang->language['email_no_hostname']);
+	}

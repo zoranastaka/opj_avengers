@@ -1,0 +1,10 @@
+/**
+ * Return flag URL from 2 letter country code
+ * @param string $code
+ * @return string
+ */
+
+function yourls_geo_get_flag( $code ) {
+    if ( !file_exists( YOURLS_INC.'/geo/flags/flag_'.strtolower( $code ).'.gif' ) ) {
+        $code = '';
+    }

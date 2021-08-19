@@ -1,0 +1,14 @@
+    /**
+     * @covers \League\Csv\Statement::limit
+     * @covers \League\Csv\Statement::offset
+     * @covers \League\Csv\Statement::process
+     */
+
+    public function testIntervalThrowException(): void
+    {
+        $this->expectException(OutOfBoundsException::class);
+        iterator_to_array($this->stmt
+            ->offset(1)
+            ->limit(0)
+            ->process($this->csv));
+    }

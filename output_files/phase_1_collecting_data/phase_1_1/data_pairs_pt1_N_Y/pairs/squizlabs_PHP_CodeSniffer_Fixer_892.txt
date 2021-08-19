@@ -1,0 +1,14 @@
+    /**
+     * Adds a newline to the start of a token's content.
+     *
+     * @param int $stackPtr The position of the token in the token stack.
+     *
+     * @return bool If the change was accepted.
+     */
+
+    public function addNewlineBefore($stackPtr)
+    {
+        $current = $this->getTokenContent($stackPtr);
+        return $this->replaceToken($stackPtr, $this->currentFile->eolChar.$current);
+
+    }//end addNewlineBefore()

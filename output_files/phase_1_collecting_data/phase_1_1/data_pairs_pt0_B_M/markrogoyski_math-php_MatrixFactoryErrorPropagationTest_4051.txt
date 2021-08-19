@@ -1,0 +1,12 @@
+    /**
+     * @test transpose propagates error tolerance to resultant matrix
+     */
+
+    public function testTranspose()
+    {
+        // When
+        $R = $this->A->transpose();
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

@@ -1,0 +1,16 @@
+    /**
+     * @test         divide multiple arrays
+     * @dataProvider dataProviderForDivideMulti
+     * @param        array $expected
+     * @param        array[] $arrays
+     * @throws       \Exception
+     */
+
+    public function testDivideMulti(array $expected, array ...$arrays)
+    {
+        // When
+        $quotients = Multi::divide(...$arrays);
+
+        // Then
+        $this->assertEquals($expected, $quotients);
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @param object $event
+     *
+     * @return callable[]
+     */
+
+    public function listeners($event): array
+    {
+        $name = \get_class($event);
+
+        $localListeners  = $this->events[$name] ?? [];
+        $globalListeners = static::$globalEvents[$name] ?? [];
+
+        return array_merge($globalListeners, $localListeners);
+    }

@@ -1,0 +1,23 @@
+    /**
+     * @test   Solve with negative tolerance
+     * @throws \Exception
+     */
+
+    public function testExceptionNegativeTolerance()
+    {
+        // Given
+        $func = function ($x) {
+            return $x ** 4 + 8 * $x ** 3 - 13 * $x ** 2 - 92 * $x + 96;
+        };
+
+        // And
+        $tol      = -0.00001;
+        $p₀       = -1;
+        $p₁       = 2;
+
+        // Then
+        $this->expectException('\Exception');
+
+        // When
+        $x = SecantMethod::solve($func, $p₀, $p₁, $tol);
+    }

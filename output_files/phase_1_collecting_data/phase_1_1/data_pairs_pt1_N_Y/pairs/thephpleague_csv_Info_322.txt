@@ -1,0 +1,16 @@
+    /**
+     * Returns the BOM sequence found at the start of the string.
+     *
+     * If no valid BOM sequence is found an empty string is returned
+     */
+
+    public static function fetchBOMSequence(string $str): ?string
+    {
+        foreach (self::BOM_SEQUENCE_LIST as $sequence) {
+            if (0 === strpos($str, $sequence)) {
+                return $sequence;
+            }
+        }
+
+        return null;
+    }

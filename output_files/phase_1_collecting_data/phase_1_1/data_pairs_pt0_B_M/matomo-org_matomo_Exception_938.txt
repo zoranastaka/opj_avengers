@@ -1,0 +1,22 @@
+/**
+ * Exception that denotes some resource was not found
+ *
+ * One example is trying to instantiate a nonexistent class in Factory
+ * <code>
+ * try {
+ *     HTML_QuickForm2_Factory::registerElement('missing', 'NonExistent');
+ *     $el = HTML_QuickForm2_Factory::createElement('missing');
+ * } catch (HTML_QuickForm2_NotFoundException $e) {
+ *     echo $e->getMessage();
+ * }
+ * </code>
+ * This code fill output "Class 'NonExistent' does not exist and no file to load"
+ *
+ * @category   HTML
+ * @package    HTML_QuickForm2
+ * @version    Release: @package_version@
+ */
+
+class HTML_QuickForm2_NotFoundException extends HTML_QuickForm2_Exception
+{
+}

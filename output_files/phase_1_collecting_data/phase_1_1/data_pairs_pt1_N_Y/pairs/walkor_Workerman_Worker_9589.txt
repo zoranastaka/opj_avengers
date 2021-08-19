@@ -1,0 +1,13 @@
+    /**
+     * Reload all worker instances.
+     *
+     * @return void
+     */
+
+    public static function reloadAllWorkers()
+    {
+        static::init();
+        static::initWorkers();
+        static::displayUI();
+        static::$_status = static::STATUS_RELOADING;
+    }

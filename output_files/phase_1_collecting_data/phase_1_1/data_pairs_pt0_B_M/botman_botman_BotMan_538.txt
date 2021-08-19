@@ -1,0 +1,11 @@
+    /**
+     * Listening for image files.
+     *
+     * @param $callback
+     * @return Command
+     */
+
+    public function receivesImages($callback)
+    {
+        return $this->hears(Image::PATTERN, $callback);
+    }

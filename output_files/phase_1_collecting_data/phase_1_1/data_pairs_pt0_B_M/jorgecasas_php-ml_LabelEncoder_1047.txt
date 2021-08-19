@@ -1,0 +1,8 @@
+    /**
+     * @return string[]
+     */
+
+    public function classes(): array
+    {
+        return array_keys($this->classes);
+    }

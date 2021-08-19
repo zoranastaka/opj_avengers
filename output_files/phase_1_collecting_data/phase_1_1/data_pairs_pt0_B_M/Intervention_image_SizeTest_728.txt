@@ -1,0 +1,9 @@
+    /**
+     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     */
+
+    public function testInvalidResize()
+    {
+        $size = new Size(800, 600);
+        $size->resize(null, null);
+    }

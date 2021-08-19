@@ -1,0 +1,12 @@
+    /**
+     * @return array [data, x, expected]
+     */
+
+    public function dataProviderForKernelDensity(): array
+    {
+        return [
+            [ $this->data, 1, 0.236055582 ],
+            [ $this->data, .1, 0.421356196 ],
+            [ $this->data, -1, 0.232277743 ],
+        ];
+    }

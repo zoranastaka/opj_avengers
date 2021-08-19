@@ -1,0 +1,10 @@
+    /**
+     * Return the unique ID value assigned to this spreadsheet workbook
+     *
+     * @return string
+     */
+
+    public function getID()
+    {
+        return $this->uniqueID;
+    }

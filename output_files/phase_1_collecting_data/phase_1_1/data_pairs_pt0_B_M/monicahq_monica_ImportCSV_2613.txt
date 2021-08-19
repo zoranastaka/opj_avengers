@@ -1,0 +1,15 @@
+    /**
+     * Get the default contact field email id for the account.
+     *
+     * @return int
+     */
+
+    private function contactFieldEmailId()
+    {
+        if (! $this->contactFieldEmailId) {
+            $contactFieldType = ContactFieldType::where('type', 'email')->first();
+            $this->contactFieldEmailId = $contactFieldType->id;
+        }
+
+        return $this->contactFieldEmailId;
+    }

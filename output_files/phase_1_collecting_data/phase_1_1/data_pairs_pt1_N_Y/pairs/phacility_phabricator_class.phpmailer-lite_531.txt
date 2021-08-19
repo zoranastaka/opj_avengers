@@ -1,0 +1,12 @@
+  /**
+   * Formats an address correctly.
+   * @access public
+   * @return string
+   */
+
+  public function AddrFormat($addr) {
+    if (empty($addr[1])) {
+      return $this->SecureHeader($addr[0]);
+    } else {
+      return $this->EncodeHeader($this->SecureHeader($addr[1]), 'phrase') . " <" . $this->SecureHeader($addr[0]) . ">";
+    }

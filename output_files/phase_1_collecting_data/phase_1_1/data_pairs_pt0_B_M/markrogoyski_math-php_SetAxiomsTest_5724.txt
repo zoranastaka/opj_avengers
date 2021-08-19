@@ -1,0 +1,19 @@
+    /**
+     * @test Axiom: A ∖ B ≠ B ∖ A for A ≠ B
+     * A diff B does not equal B diff A if A and B are different sets
+     *
+     * @dataProvider dataProviderForTwoSetsDifferent
+     * @param        Set $A
+     * @param        Set $B
+     */
+
+    public function testADiffBDifferentFromBDiffAWhenNotEqual(Set $A, Set $B)
+    {
+        // Given
+        $A∖B = $A->difference($B);
+        $B∖A = $B->difference($A);
+
+        // Then
+        $this->assertNotEquals($A∖B, $B∖A);
+        $this->assertNotEquals($A∖B->asArray(), $B∖A->asArray());
+    }

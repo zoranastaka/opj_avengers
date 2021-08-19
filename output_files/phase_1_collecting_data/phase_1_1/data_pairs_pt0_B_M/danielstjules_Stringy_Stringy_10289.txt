@@ -1,0 +1,49 @@
+    /**
+     * Returns the longest common substring between the string and $otherStr.
+     * In the case of ties, it returns that which occurs first.
+     *
+     * @param  string $otherStr Second string for comparison
+     * @return static Object with its $str being the longest common substring
+     */
+
+    public function longestCommonSubstring($otherStr)
+    {
+        // Uses dynamic programming to solve
+        // http://en.wikipedia.org/wiki/Longest_common_substring_problem
+        $encoding = $this->encoding;
+        $stringy = static::create($this->str, $encoding);
+        $strLength = $stringy->length();
+        $otherLength = \mb_strlen($otherStr, $encoding);
+
+        // Return if either string is empty
+        if ($strLength == 0 || $otherLength == 0) {
+            $stringy->str = '';
+            return $stringy;
+        }
+
+        $len = 0;
+        $end = 0;
+        $table = array_fill(0, $strLength + 1,
+            array_fill(0, $otherLength + 1, 0));
+
+        for ($i = 1; $i <= $strLength; $i++) {
+            for ($j = 1; $j <= $otherLength; $j++) {
+                $strChar = \mb_substr($stringy->str, $i - 1, 1, $encoding);
+                $otherChar = \mb_substr($otherStr, $j - 1, 1, $encoding);
+
+                if ($strChar == $otherChar) {
+                    $table[$i][$j] = $table[$i - 1][$j - 1] + 1;
+                    if ($table[$i][$j] > $len) {
+                        $len = $table[$i][$j];
+                        $end = $i;
+                    }
+                } else {
+                    $table[$i][$j] = 0;
+                }
+            }
+        }
+
+        $stringy->str = \mb_substr($stringy->str, $end - $len, $len, $encoding);
+
+        return $stringy;
+    }

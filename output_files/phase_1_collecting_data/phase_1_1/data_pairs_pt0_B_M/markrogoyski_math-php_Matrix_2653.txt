@@ -1,0 +1,30 @@
+    /**
+     * Minor matrix
+     * Submatrix formed by deleting the iᵗʰ row and jᵗʰ column.
+     * Used in computing the minor Mᵢⱼ.
+     *
+     * @param int $mᵢ Row to exclude
+     * @param int $nⱼ Column to exclude
+     *
+     * @return Matrix with row mᵢ and column nⱼ removed
+     *
+     * @throws Exception\MatrixException if matrix is not square
+     * @throws Exception\MatrixException if row to exclude for minor matrix does not exist
+     * @throws Exception\MatrixException if column to exclude for minor matrix does not exist
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function minorMatrix(int $mᵢ, int $nⱼ): Matrix
+    {
+        if (!$this->isSquare()) {
+            throw new Exception\MatrixException('Matrix is not square; cannot get minor Matrix of a non-square matrix');
+        }
+        if ($mᵢ >= $this->m || $mᵢ < 0) {
+            throw new Exception\MatrixException('Row to exclude for minor Matrix does not exist');
+        }
+        if ($nⱼ >= $this->n || $nⱼ < 0) {
+            throw new Exception\MatrixException('Column to exclude for minor Matrix does not exist');
+        }
+
+        return $this->rowExclude($mᵢ)->columnExclude($nⱼ);
+    }

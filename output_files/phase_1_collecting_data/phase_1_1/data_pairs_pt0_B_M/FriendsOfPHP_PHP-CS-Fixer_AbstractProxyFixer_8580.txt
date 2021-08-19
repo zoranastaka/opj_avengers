@@ -1,0 +1,14 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function setWhitespacesConfig(WhitespacesFixerConfig $config): void
+    {
+        parent::setWhitespacesConfig($config);
+
+        foreach ($this->proxyFixers as $fixer) {
+            if ($fixer instanceof WhitespacesAwareFixerInterface) {
+                $fixer->setWhitespacesConfig($config);
+            }
+        }
+    }

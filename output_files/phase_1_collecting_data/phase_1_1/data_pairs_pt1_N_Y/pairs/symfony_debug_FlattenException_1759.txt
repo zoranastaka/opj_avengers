@@ -1,0 +1,10 @@
+    /**
+     * @return $this
+     */
+
+    public function setLine($line)
+    {
+        $this->line = $line;
+
+        return $this;
+    }

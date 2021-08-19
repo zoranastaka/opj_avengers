@@ -1,0 +1,22 @@
+    /**
+     * Print the matrix as a string
+     * Format is as a matrix, not as the underlying array structure.
+     * Ex:
+     *  [1, 2, 3]
+     *  [2, 3, 4]
+     *  [3, 4, 5]
+     *
+     * @return string
+     */
+
+    public function __toString()
+    {
+        return \trim(\array_reduce(\array_map(
+            function ($mᵢ) {
+                return '[' . \implode(', ', $mᵢ) . ']';
+            },
+            $this->A
+        ), function ($A, $mᵢ) {
+            return $A . \PHP_EOL . $mᵢ;
+        }));
+    }

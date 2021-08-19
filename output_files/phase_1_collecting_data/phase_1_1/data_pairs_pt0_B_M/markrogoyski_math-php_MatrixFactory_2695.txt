@@ -1,0 +1,19 @@
+    /**
+     * Upshift permutation matrix - Dᵀ
+     * Pushes the components of a vector up one notch with wraparound
+     *
+     * @param  int $n
+     *
+     * @return Matrix
+     *
+     * @throws Exception\BadDataException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MathException
+     * @throws Exception\MatrixException
+     * @throws Exception\OutOfBoundsException
+     */
+
+    public static function upshiftPermutation(int $n): Matrix
+    {
+        return self::downshiftPermutation($n)->transpose();
+    }

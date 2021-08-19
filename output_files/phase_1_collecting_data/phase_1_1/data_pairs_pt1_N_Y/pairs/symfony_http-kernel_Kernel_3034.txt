@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function reboot(?string $warmupDir)
+    {
+        $this->shutdown();
+        $this->warmupDir = $warmupDir;
+        $this->boot();
+    }

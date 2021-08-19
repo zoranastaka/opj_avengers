@@ -1,0 +1,15 @@
+    /**
+     * @test         isTridiagonal returns false for a non tridiagonal matrix
+     * @dataProvider dataProviderForNotTridiagonalMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsNotTridiagonal(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isTridiagonal());
+    }

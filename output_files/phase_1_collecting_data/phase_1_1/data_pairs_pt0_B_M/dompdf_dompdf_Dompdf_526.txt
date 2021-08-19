@@ -1,0 +1,12 @@
+    /**
+     * Sets the HTTP context
+     *
+     * @param resource $httpContext
+     * @return $this
+     */
+
+    public function setHttpContext($httpContext)
+    {
+        $this->httpContext = $httpContext;
+        return $this;
+    }

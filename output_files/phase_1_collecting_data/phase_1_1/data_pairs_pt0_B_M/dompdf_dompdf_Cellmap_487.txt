@@ -1,0 +1,30 @@
+    /**
+     * Used for debugging:
+     *
+     * @return string
+     */
+
+    public function __toString()
+    {
+        $str = "";
+        $str .= "Columns:<br/>";
+        $str .= Helpers::pre_r($this->_columns, true);
+        $str .= "Rows:<br/>";
+        $str .= Helpers::pre_r($this->_rows, true);
+
+        $str .= "Frames:<br/>";
+        $arr = [];
+        foreach ($this->_frames as $key => $val) {
+            $arr[$key] = ["columns" => $val["columns"], "rows" => $val["rows"]];
+        }
+
+        $str .= Helpers::pre_r($arr, true);
+
+        if (php_sapi_name() == "cli") {
+            $str = strip_tags(str_replace(["<br/>", "<b>", "</b>"],
+                ["\n", chr(27) . "[01;33m", chr(27) . "[0m"],
+                $str));
+        }
+
+        return $str;
+    }

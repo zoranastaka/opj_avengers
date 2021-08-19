@@ -1,0 +1,13 @@
+    /**
+     * Set the bound class (self) for the interactive shell.
+     *
+     * Note that this unsets the bound object, if any exists.
+     *
+     * @param string|null $boundClass
+     */
+
+    public function setBoundClass($boundClass)
+    {
+        $this->boundClass = (\is_string($boundClass) && $boundClass !== '') ? $boundClass : null;
+        $this->boundObject = null;
+    }

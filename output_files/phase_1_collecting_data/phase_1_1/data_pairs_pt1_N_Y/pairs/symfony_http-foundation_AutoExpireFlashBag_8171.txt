@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function has(string $type)
+    {
+        return \array_key_exists($type, $this->flashes['display']) && $this->flashes['display'][$type];
+    }

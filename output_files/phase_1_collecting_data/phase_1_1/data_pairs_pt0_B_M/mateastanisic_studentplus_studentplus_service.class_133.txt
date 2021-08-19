@@ -1,0 +1,8 @@
+	//vraća lozinku nekog studenta
+
+	function get_password_by_username($username){
+		try{
+			$db = DB::getConnection();
+			$st = $db->prepare( 'SELECT password FROM studentplus_students WHERE username=:username' );
+			$st->execute( array( 'username' => $username ) );
+		}

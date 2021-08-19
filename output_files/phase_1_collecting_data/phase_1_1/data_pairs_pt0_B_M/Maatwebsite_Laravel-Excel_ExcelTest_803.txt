@@ -1,0 +1,11 @@
+            /**
+             * @param array $array
+             */
+
+            public function array(array $array)
+            {
+                Assert::assertEquals([
+                    ['test', 'test'],
+                    ['test', 'test'],
+                ], $array);
+            }

@@ -1,0 +1,20 @@
+    /**
+     * Extracts the key from EVAL and EVALSHA commands.
+     *
+     * @param CommandInterface $command Command instance.
+     *
+     * @return string|null
+     */
+
+    protected function getKeyFromScriptingCommands(CommandInterface $command)
+    {
+        if ($command instanceof ScriptCommand) {
+            $keys = $command->getKeys();
+        } else {
+            $keys = array_slice($args = $command->getArguments(), 2, $args[1]);
+        }
+
+        if ($keys && $this->checkSameSlotForKeys($keys)) {
+            return $keys[0];
+        }
+    }

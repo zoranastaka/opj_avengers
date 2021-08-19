@@ -1,0 +1,17 @@
+    /**
+     * @internal
+     */
+
+    public function _handleFailure($reason)
+    {
+        unset($this->currentPromise);
+        try {
+            $nextYield = $this->generator->throw(Create::exceptionFor($reason));
+            // The throw was caught, so keep iterating on the coroutine
+            $this->nextCoroutine($nextYield);
+        } catch (Exception $exception) {
+            $this->result->reject($exception);
+        } catch (Throwable $throwable) {
+            $this->result->reject($throwable);
+        }
+    }

@@ -1,0 +1,5 @@
+	/**
+	 * Ajax request handling for categories ordering.
+	 */
+
+	public static function term_ordering() {

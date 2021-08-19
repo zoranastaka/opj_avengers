@@ -1,0 +1,30 @@
+    /**
+     * Mean resultant length - MRL (ρ)
+     * https://en.wikipedia.org/wiki/Directional_statistics#Moments
+     * https://ncss-wpengine.netdna-ssl.com/wp-content/themes/ncss/pdf/Procedures/NCSS/Circular_Data_Analysis.pdf
+     *
+     * S  = ∑sin θᵢ
+     * C  = ∑cos θᵢ
+     * R² = S² + C²
+     * R  = √(S² + C²)
+     *
+     * _    R
+     * R  = -
+     *      n
+     *
+     *      _
+     * ρ  = R
+     *
+     * @param  array $angles
+     *
+     * @return float
+     */
+
+    public static function meanResultantLength(array $angles): float
+    {
+        $n = \count($angles);
+        $R = self::resultantLength($angles);
+        $ρ = $R / $n;
+
+        return $ρ;
+    }

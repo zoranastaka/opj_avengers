@@ -1,0 +1,49 @@
+    /**
+     * Override processAdd to change SaveAndStay button action.
+     *
+     * @see classes/AdminControllerCore::processUpdate()
+     */
+
+    public function processAdd()
+    {
+        if ($this->table == 'attribute') {
+            /** @var AttributeGroup $object */
+            $object = new $this->className();
+            foreach (Language::getLanguages(false) as $language) {
+                if ($object->isAttribute(
+                    (int) Tools::getValue('id_attribute_group'),
+                    Tools::getValue('name_' . $language['id_lang']),
+                    $language['id_lang']
+                )) {
+                    $this->errors['name_' . $language['id_lang']] = $this->trans(
+                        'The attribute value "%1$s" already exist for %2$s language',
+                        [
+                            Tools::getValue('name_' . $language['id_lang']),
+                            $language['name'],
+                        ],
+                        'Admin.Catalog.Notification'
+                    );
+                }
+            }
+
+            if (!empty($this->errors)) {
+                return $object;
+            }
+        }
+
+        $object = parent::processAdd();
+
+        if (Tools::isSubmit('submitAdd' . $this->table . 'AndStay') && !count($this->errors)) {
+            if ($this->display == 'add') {
+                $this->redirect_after = self::$currentIndex . '&' . $this->identifier . '=&conf=3&update' . $this->table . '&token=' . $this->token;
+            } else {
+                $this->redirect_after = self::$currentIndex . '&id_attribute_group=' . (int) Tools::getValue('id_attribute_group') . '&conf=3&update' . $this->table . '&token=' . $this->token;
+            }
+        }
+
+        if (count($this->errors)) {
+            $this->setTypeAttribute();
+        }
+
+        return $object;
+    }

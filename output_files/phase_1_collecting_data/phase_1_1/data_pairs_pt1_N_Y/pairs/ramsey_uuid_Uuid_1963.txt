@@ -1,0 +1,16 @@
+    /**
+     * Sets the factory used to create UUIDs
+     *
+     * @param UuidFactoryInterface $factory A factory that will be used by this
+     *     class to create UUIDs
+     */
+
+    public static function setFactory(UuidFactoryInterface $factory): void
+    {
+        // Note: non-strict equality is intentional here. If the factory is configured differently, every assumption
+        //       around purity is broken, and we have to internally decide everything differently.
+        // phpcs:ignore SlevomatCodingStandard.Operators.DisallowEqualOperators.DisallowedNotEqualOperator
+        self::$factoryReplaced = ($factory != new UuidFactory());
+
+        self::$factory = $factory;
+    }

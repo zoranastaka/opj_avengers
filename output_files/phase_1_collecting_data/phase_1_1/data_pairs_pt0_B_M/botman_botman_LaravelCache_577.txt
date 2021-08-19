@@ -1,0 +1,16 @@
+    /**
+     * Store an item in the cache.
+     *
+     * @param  string $key
+     * @param  mixed $value
+     * @param  \DateTime|int $minutes
+     * @return void
+     */
+
+    public function put($key, $value, $minutes)
+    {
+        if (! $minutes instanceof \DateTime) {
+            $minutes = $minutes * 60;
+        }
+        Cache::put($key, $value, $minutes);
+    }

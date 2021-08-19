@@ -1,0 +1,15 @@
+    /**
+     * Run the migrations.
+     *
+     * @SuppressWarnings(PHPMD.ShortMethodName)
+     */
+
+    public function up(): void
+    {
+        Schema::table(
+            'transactions',
+            static function (Blueprint $table) {
+                $table->smallInteger('identifier', false, true)->default(0);
+            }
+        );
+    }

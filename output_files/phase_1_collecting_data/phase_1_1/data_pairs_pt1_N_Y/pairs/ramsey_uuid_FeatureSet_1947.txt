@@ -1,0 +1,15 @@
+    /**
+     * Returns a node provider configured for this environment
+     */
+
+    private function buildNodeProvider(): NodeProviderInterface
+    {
+        if ($this->ignoreSystemNode) {
+            return new RandomNodeProvider();
+        }
+
+        return new FallbackNodeProvider(new NodeProviderCollection([
+            new SystemNodeProvider(),
+            new RandomNodeProvider(),
+        ]));
+    }

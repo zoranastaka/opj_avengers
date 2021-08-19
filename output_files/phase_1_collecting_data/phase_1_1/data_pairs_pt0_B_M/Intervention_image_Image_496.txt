@@ -1,0 +1,10 @@
+    /**
+     * Calculates current image width
+     *
+     * @return int
+     */
+
+    public function getWidth()
+    {
+        return $this->getSize()->width;
+    }

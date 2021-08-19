@@ -1,0 +1,17 @@
+    /**
+     * @test   insert exception - matrix is not the same type.
+     * @throws \Exception
+     */
+
+    public function testInsertExceptionTypeMismatch()
+    {
+        // Given
+        $A    = MatrixFactory::create([[1]]);
+        $B    = MatrixFactory::create([[new Polynomial([1,1])]]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $A->insert($B, 0, 0);
+    }

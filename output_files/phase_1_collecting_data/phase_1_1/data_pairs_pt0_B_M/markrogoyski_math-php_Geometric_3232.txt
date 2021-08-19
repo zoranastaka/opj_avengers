@@ -1,0 +1,23 @@
+    /**
+     * Cumulative distribution function (lower cumulative)
+     *
+     * The probability distribution of the number Y = X − 1 of failures
+     * before the first success, supported on the set { 0, 1, 2, 3, ... }
+     *
+     * k failures where k ∈ {0, 1, 2, 3, ...}
+     *
+     * pmf = 1 - (1 - p)ᵏ⁺¹
+     *
+     * @param  int   $k number of trials     k ≥ 0
+     *
+     * @return float
+     */
+
+    public function cdf(int $k): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['k' => $k]);
+        $p = $this->p;
+
+        $⟮1 − p⟯ᵏ⁺¹ = \pow(1 - $p, $k + 1);
+        return 1 - $⟮1 − p⟯ᵏ⁺¹;
+    }

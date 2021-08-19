@@ -1,0 +1,8 @@
+    /**
+     * @test Limits constant is correct format
+     */
+
+    public function testFParameterLimits()
+    {
+        $this->limitTest(Continuous\F::PARAMETER_LIMITS);
+    }

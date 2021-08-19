@@ -1,0 +1,15 @@
+    /**
+     * @test         canberra NAN
+     * @dataProvider dataProviderForCanberraNan
+     * @param        array $u
+     * @param        array $v
+     */
+
+    public function testCanberraNan(array $u, array $v)
+    {
+        // When
+        $distance = Distance::canberra($u, $v);
+
+        // Then
+        $this->assertNan($distance);
+    }

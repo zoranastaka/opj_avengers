@@ -1,0 +1,23 @@
+    /**
+     * Generates and prints final versions of all reports.
+     *
+     * Returns TRUE if any of the reports output content to the screen
+     * or FALSE if all reports were silently printed to a file.
+     *
+     * @return bool
+     */
+
+    public function printReports()
+    {
+        $toScreen = false;
+        foreach ($this->reports as $type => $report) {
+            if ($report['output'] === null) {
+                $toScreen = true;
+            }
+
+            $this->printReport($type);
+        }
+
+        return $toScreen;
+
+    }//end printReports()

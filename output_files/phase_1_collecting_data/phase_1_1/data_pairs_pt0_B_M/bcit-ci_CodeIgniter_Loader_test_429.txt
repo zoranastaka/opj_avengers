@@ -1,0 +1,18 @@
+	// --------------------------------------------------------------------
+
+	public function test_invalid_model()
+	{
+		$this->ci_set_core_class('model', 'CI_Model');
+
+		// Create model in VFS
+		$model = 'Unit_test_invalid_model';
+		$content = '<?php class '.$model.' {} ';
+		$this->ci_vfs_create($model, $content, $this->ci_app_root, 'models');
+
+		// Test no extending
+		$this->setExpectedException(
+			'RuntimeException',
+			'Class '.$model.' doesn\'t extend CI_Model'
+		);
+		$this->load->model($model);
+	}

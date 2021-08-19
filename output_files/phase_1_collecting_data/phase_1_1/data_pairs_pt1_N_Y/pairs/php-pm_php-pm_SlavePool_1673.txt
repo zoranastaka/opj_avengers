@@ -1,0 +1,24 @@
+    /**
+     * Add slave to pool
+     *
+     * Slave is in CREATED state
+     *
+     * @param Slave $slave
+     *
+     * @return void
+     */
+
+    public function add(Slave $slave)
+    {
+        $port = $slave->getPort();
+
+        if (isset($this->slaves[$port])) {
+            throw new \Exception("Slave port $port already occupied.");
+        }
+
+        if ($slave->getPort() !== $port) {
+            throw new \Exception("Slave mis-assigned.");
+        }
+
+        $this->slaves[$port] = $slave;
+    }

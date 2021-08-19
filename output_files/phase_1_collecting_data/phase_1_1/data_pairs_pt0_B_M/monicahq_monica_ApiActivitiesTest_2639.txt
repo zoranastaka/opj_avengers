@@ -1,0 +1,10 @@
+    /** @test */
+
+    public function activities_get_one_error()
+    {
+        $this->signin();
+
+        $response = $this->json('GET', '/api/activities/0');
+
+        $this->expectNotFound($response);
+    }

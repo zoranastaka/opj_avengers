@@ -1,0 +1,9 @@
+    /**
+     * Magic getter function
+     *
+     * @param $name Variable name
+     *
+     * @return mixed
+     */
+
+    public function __get ($name) {

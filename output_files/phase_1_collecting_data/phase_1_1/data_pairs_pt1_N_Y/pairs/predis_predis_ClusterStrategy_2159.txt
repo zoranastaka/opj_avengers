@@ -1,0 +1,8 @@
+    /**
+     *
+     */
+
+    public function __construct()
+    {
+        $this->commands = $this->getDefaultCommands();
+    }

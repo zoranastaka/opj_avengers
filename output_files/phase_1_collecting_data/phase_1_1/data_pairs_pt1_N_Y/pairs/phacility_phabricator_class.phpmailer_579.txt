@@ -1,0 +1,12 @@
+  /**
+   * Closes the active SMTP session if one exists.
+   * @return void
+   */
+
+  public function SmtpClose() {
+    if(!is_null($this->smtp)) {
+      if($this->smtp->Connected()) {
+        $this->smtp->Quit();
+        $this->smtp->Close();
+      }
+    }

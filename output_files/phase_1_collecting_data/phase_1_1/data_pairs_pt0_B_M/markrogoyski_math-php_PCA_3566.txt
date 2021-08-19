@@ -1,0 +1,10 @@
+    /**
+     * The loadings are the unit eigenvectors of the correlation matrix
+     *
+     * @return NumericMatrix
+     */
+
+    public function getLoadings(): NumericMatrix
+    {
+        return $this->EVec;
+    }

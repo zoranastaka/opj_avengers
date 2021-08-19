@@ -1,0 +1,10 @@
+    /**
+     * @param string $value
+     *
+     * @return Token\StringContainsToken
+     */
+
+    public static function containingString($value)
+    {
+        return new Token\StringContainsToken($value);
+    }

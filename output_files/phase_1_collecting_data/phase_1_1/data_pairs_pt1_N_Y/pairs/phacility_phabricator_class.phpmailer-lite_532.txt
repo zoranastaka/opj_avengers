@@ -1,0 +1,11 @@
+  /**
+   * Finds last character boundary prior to maxLength in a utf-8
+   * quoted (printable) encoded string.
+   * Original written by Colin Brown.
+   * @access public
+   * @param string $encodedText utf-8 QP text
+   * @param int    $maxLength   find last character boundary prior to this length
+   * @return int
+   */
+
+  public function UTF8CharBoundary($encodedText, $maxLength) {

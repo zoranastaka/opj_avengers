@@ -1,0 +1,14 @@
+    /**
+     * Get Footer Media Elements
+     *
+     * @deprecated 0.10.0
+     *
+     * @return array
+     *
+     * @codeCoverageIgnore
+     */
+
+    public static function getFooterMediaElements()
+    {
+        return self::getElements('footer');
+    }

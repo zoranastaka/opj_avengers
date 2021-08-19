@@ -1,0 +1,20 @@
+    /**
+     * @test         evaluate
+     * @dataProvider dataProviderForEvaluate
+     * @param        array $points
+     * @param        array $weights
+     * @param        float $x
+     * @param        float $expected_y
+     */
+
+    public function testEvaluate(array $points, array $weights, float $x, float $expected_y)
+    {
+        // Given
+        $regression = new WeightedLinear($points, $weights);
+
+        // When
+        $y = $regression->evaluate($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_y, $y, 0.0001);
+    }

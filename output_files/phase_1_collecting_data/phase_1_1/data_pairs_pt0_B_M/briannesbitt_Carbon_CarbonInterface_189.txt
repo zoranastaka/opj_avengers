@@ -1,0 +1,12 @@
+    /**
+     * Format the instance as a readable date
+     *
+     * @example
+     * ```
+     * echo Carbon::now()->toFormattedDateString();
+     * ```
+     *
+     * @return string
+     */
+
+    public function toFormattedDateString();

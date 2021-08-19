@@ -1,0 +1,9 @@
+    /**
+     * @param  RootPackageInterface $package
+     * @return void
+     */
+
+    public function setPackage(RootPackageInterface $package)
+    {
+        $this->package = $package;
+    }

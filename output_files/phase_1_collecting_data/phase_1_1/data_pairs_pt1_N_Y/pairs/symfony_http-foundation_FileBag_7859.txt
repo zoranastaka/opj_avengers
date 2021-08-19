@@ -1,0 +1,35 @@
+    /**
+     * Converts uploaded files to UploadedFile instances.
+     *
+     * @param array|UploadedFile $file A (multi-dimensional) array of uploaded file information
+     *
+     * @return UploadedFile[]|UploadedFile|null A (multi-dimensional) array of UploadedFile instances
+     */
+
+    protected function convertFileInformation($file)
+    {
+        if ($file instanceof UploadedFile) {
+            return $file;
+        }
+
+        if (\is_array($file)) {
+            $file = $this->fixPhpFilesArray($file);
+            $keys = array_keys($file);
+            sort($keys);
+
+            if (self::FILE_KEYS == $keys) {
+                if (\UPLOAD_ERR_NO_FILE == $file['error']) {
+                    $file = null;
+                } else {
+                    $file = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['error'], false);
+                }
+            } else {
+                $file = array_map([$this, 'convertFileInformation'], $file);
+                if (array_keys($keys) === $keys) {
+                    $file = array_filter($file);
+                }
+            }
+        }
+
+        return $file;
+    }

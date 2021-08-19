@@ -1,0 +1,19 @@
+    /**
+     * @test trace exception - not square
+     */
+
+    public function testTraceExceptionNotSquareMatrix()
+    {
+        // Given
+        $A = MatrixFactory::create([
+            [1, 2],
+            [2, 3],
+            [3, 4],
+        ]);
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $A->trace();
+    }

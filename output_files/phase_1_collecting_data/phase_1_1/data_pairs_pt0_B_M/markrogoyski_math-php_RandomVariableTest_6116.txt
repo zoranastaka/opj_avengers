@@ -1,0 +1,13 @@
+    /**
+     * @test   sampleSkewness errpr when array is empty
+     * @throws \Exception
+     */
+
+    public function testSampleSkewnessNullWhenEmptyArray()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        RandomVariable::sampleSkewness(array());
+    }

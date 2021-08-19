@@ -1,0 +1,28 @@
+    /**
+     * Set the shell output formatter styles.
+     *
+     * Accepts a map from style name to [fg, bg, options], for example:
+     *
+     *     [
+     *         'error' => ['white', 'red', ['bold']],
+     *         'warning' => ['black', 'yellow'],
+     *     ]
+     *
+     * Foreground, background or options can be null, or even omitted entirely.
+     *
+     * @see ShellOutput::initFormatters
+     *
+     * @param array $formatterStyles
+     */
+
+    public function setFormatterStyles(array $formatterStyles)
+    {
+        foreach ($formatterStyles as $name => $style) {
+            list($fg, $bg, $opts) = \array_pad($style, 3, null);
+            $this->formatterStyles[$name] = new OutputFormatterStyle($fg ?: null, $bg ?: null, $opts ?: []);
+        }
+
+        if (isset($this->output)) {
+            $this->applyFormatterStyles();
+        }
+    }

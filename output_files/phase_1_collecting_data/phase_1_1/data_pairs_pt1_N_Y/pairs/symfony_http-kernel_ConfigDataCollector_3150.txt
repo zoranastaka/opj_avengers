@@ -1,0 +1,10 @@
+    /**
+     * Gets the Symfony version.
+     *
+     * @return string The Symfony version
+     */
+
+    public function getSymfonyVersion()
+    {
+        return $this->data['symfony_version'];
+    }

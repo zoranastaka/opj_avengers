@@ -1,0 +1,10 @@
+    /**
+     * @return NodeVisitorInterface[]
+     *
+     * @internal
+     */
+
+    public function getNodeVisitors(): array
+    {
+        return $this->extensionSet->getNodeVisitors();
+    }

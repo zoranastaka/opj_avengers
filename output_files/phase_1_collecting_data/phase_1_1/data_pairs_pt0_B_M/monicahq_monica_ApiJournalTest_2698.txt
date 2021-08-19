@@ -1,0 +1,31 @@
+    /** @test */
+
+    public function it_creates_a_journal_entry()
+    {
+        $user = $this->signin();
+
+        $response = $this->json('POST', '/api/journal', [
+            'title' => 'my title',
+            'post' => 'content post',
+        ]);
+
+        $response->assertStatus(201);
+        $response->assertJsonStructure([
+            'data' => $this->jsonJournal,
+        ]);
+        $entryId = $response->json('data.id');
+        $response->assertJsonFragment([
+            'object' => 'entry',
+            'id' => $entryId,
+            'title' => 'my title',
+            'post' => 'content post',
+        ]);
+
+        $this->assertGreaterThan(0, $entryId);
+        $this->assertDatabaseHas('entries', [
+            'account_id' => $user->account_id,
+            'id' => $entryId,
+            'title' => 'my title',
+            'post' => 'content post',
+        ]);
+    }

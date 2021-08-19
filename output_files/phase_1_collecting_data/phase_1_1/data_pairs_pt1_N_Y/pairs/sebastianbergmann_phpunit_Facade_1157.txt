@@ -1,0 +1,13 @@
+    /**
+     * @throws EventFacadeIsSealedException
+     * @throws UnknownSubscriberTypeException
+     */
+
+    public static function registerSubscriber(Subscriber $subscriber): void
+    {
+        if (self::$sealed) {
+            throw new EventFacadeIsSealedException;
+        }
+
+        self::dispatcher()->registerSubscriber($subscriber);
+    }

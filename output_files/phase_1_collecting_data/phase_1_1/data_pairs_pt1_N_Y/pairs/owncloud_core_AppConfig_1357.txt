@@ -1,0 +1,12 @@
+	/**
+	 * get multiple values, either the app or key can be used as wildcard by setting it to false
+	 *
+	 * @param string|false $app
+	 * @param string|false $key
+	 * @return array|false
+	 */
+
+	public function getValues($app, $key) {
+		if (($app !== false) === ($key !== false)) {
+			return false;
+		}

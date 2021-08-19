@@ -1,0 +1,16 @@
+    /**
+     * @test         constructor exception b < a
+     * @dataProvider dataProviderForOutOfBoundsParameters
+     * @param        float $a
+     * @param        float $b
+     * @throws       \Exception
+     */
+
+    public function testConstructorExceptionBLessThanA(float $a, float $b)
+    {
+        // Then
+        $this->expectException(OutOfBoundsException::class);
+
+        // When
+        $uniform = new Uniform($a, $b);
+    }

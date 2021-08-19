@@ -1,0 +1,8 @@
+    /**
+     * Returns the test data.
+     */
+
+    public function getTests(): array
+    {
+        return $this->tests;
+    }

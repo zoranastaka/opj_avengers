@@ -1,0 +1,15 @@
+	/**
+	 * Retrieve the file extension
+	 * @return String
+	 */
+
+	public function getFileExtension() {
+		if (!$this->extension) {
+			$ext = substr(strrchr($this->filename, '.'), 1);
+			if ($ext == 'gz') {
+				// special case, tar.gz
+				// todo: other special cases?
+				$ext = preg_match("/\.tar\.gz$/i", $ext) ? 'tar.gz' : 'gz';
+			}
+			$this->extension = $ext;
+		}

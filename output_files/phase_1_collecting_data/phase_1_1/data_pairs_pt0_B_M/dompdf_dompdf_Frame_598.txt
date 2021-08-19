@@ -1,0 +1,10 @@
+    /**
+     * @param $opacity
+     */
+
+    public function set_opacity($opacity)
+    {
+        $parent = $this->get_parent();
+        $base_opacity = (($parent && $parent->_opacity !== null) ? $parent->_opacity : 1.0);
+        $this->_opacity = $base_opacity * $opacity;
+    }

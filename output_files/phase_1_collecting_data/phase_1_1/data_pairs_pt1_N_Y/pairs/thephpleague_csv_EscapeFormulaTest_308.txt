@@ -1,0 +1,16 @@
+    /**
+     * @covers ::__invoke
+     * @covers ::escapeRecord
+     * @covers ::escapeField
+     * @covers ::isStringable
+     */
+
+    public function testFormatterOnWriter(): void
+    {
+        $record = ['2', '2017-07-25', 'Important Client', '=2+5', 240, null];
+        $expected = "2,2017-07-25,\"Important Client\",\"\t=2+5\",240,\n";
+        $csv = Writer::createFromFileObject(new SplTempFileObject());
+        $csv->addFormatter(new EscapeFormula());
+        $csv->insertOne($record);
+        self::assertStringContainsString($expected, $csv->getContent());
+    }

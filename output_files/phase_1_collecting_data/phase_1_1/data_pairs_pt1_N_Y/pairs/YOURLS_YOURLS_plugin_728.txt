@@ -1,0 +1,4 @@
+/* This says: when YOURLS does action 'admin_menu', call function 'ozh_sample_add_menu'
+ */
+
+function ozh_sample_add_menu() {

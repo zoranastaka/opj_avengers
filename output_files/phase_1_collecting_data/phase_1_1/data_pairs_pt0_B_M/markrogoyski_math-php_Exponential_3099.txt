@@ -1,0 +1,10 @@
+    /**
+     * Constructor
+     *
+     * @param float $λ often called the rate parameter
+     */
+
+    public function __construct(float $λ)
+    {
+        parent::__construct($λ);
+    }

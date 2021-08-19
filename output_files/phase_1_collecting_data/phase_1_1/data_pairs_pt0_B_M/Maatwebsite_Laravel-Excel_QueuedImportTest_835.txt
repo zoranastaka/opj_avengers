@@ -1,0 +1,22 @@
+    /**
+     * @test
+     */
+
+    public function cannot_automatically_delete_temp_file_on_failure_when_using_local_disk()
+    {
+        $tempFile = '';
+
+        Queue::exceptionOccurred(function (JobExceptionOccurred $event) use (&$tempFile) {
+            if ($event->job->resolveName() === ReadChunk::class) {
+                $tempFile = $this->inspectJobProperty($event->job, 'temporaryFile');
+            }
+        });
+
+        try {
+            (new QueuedImportWithFailure())->queue('import-batches.xlsx');
+        } catch (Throwable $e) {
+            $this->assertEquals('Something went wrong in the chunk', $e->getMessage());
+        }
+
+        $this->assertTrue($tempFile->exists());
+    }

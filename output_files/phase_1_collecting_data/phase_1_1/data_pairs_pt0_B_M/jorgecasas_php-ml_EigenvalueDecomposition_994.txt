@@ -1,0 +1,30 @@
+    /**
+     * Constructor: Check for symmetry, then construct the eigenvalue decomposition
+     */
+
+    public function __construct(array $arg)
+    {
+        $this->n = count($arg[0]);
+        $symmetric = true;
+
+        for ($j = 0; ($j < $this->n) & $symmetric; ++$j) {
+            for ($i = 0; ($i < $this->n) & $symmetric; ++$i) {
+                $symmetric = $arg[$i][$j] == $arg[$j][$i];
+            }
+        }
+
+        if ($symmetric) {
+            $this->V = $arg;
+            // Tridiagonalize.
+            $this->tred2();
+            // Diagonalize.
+            $this->tql2();
+        } else {
+            $this->H = $arg;
+            $this->ort = [];
+            // Reduce to Hessenberg form.
+            $this->orthes();
+            // Reduce Hessenberg to real Schur form.
+            $this->hqr2();
+        }
+    }

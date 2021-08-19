@@ -1,0 +1,10 @@
+    /**
+     * @return void
+     */
+
+    public function reset()
+    {
+        $this->hasInvalidTokens = false;
+        parent::reset();
+        $this->previous = $this->token = self::$nullToken;
+    }

@@ -1,0 +1,17 @@
+    /**
+     * Retrieve the filtered file list as an array.
+     *
+     * @return array
+     */
+
+    public function getList()
+    {
+        $fileList = [];
+
+        foreach ($this->fileIterator as $file) {
+            $fileList[] = str_replace($this->rootPath, '', $file);
+        }
+
+        return $fileList;
+
+    }//end getList()

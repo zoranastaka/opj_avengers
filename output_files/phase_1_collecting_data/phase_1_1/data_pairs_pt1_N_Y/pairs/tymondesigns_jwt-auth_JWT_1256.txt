@@ -1,0 +1,12 @@
+    /**
+     * Create a Payload instance.
+     *
+     * @param  \Tymon\JWTAuth\Contracts\JWTSubject  $subject
+     *
+     * @return \Tymon\JWTAuth\Payload
+     */
+
+    public function makePayload(JWTSubject $subject)
+    {
+        return $this->factory()->customClaims($this->getClaimsArray($subject))->make();
+    }

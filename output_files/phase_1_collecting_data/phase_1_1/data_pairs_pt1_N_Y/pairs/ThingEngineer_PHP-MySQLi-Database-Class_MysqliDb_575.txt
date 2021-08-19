@@ -1,0 +1,21 @@
+    /**
+     * Abstraction method that will build the LIMIT part of the WHERE statement
+     *
+     * @param int|array $numRows     Array to define SQL limit in format Array ($offset, $count)
+     *                               or only $count
+     *
+     * @return void
+     */
+
+    protected function _buildLimit($numRows)
+    {
+        if (!isset($numRows)) {
+            return;
+        }
+
+        if (is_array($numRows)) {
+            $this->_query .= ' LIMIT ' . (int) $numRows[0] . ', ' . (int) $numRows[1];
+        } else {
+            $this->_query .= ' LIMIT ' . (int) $numRows;
+        }
+    }

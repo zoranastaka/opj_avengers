@@ -1,0 +1,17 @@
+    /**
+     * Return the list of all available cache storage methods
+     *
+     * @return string[]
+     **/
+
+    public static function getCacheStorageMethods()
+    {
+        $activeMethods = array();
+        foreach (self::$storageMethods as $storageMethod) {
+            $cacheStorageClass = 'PHPExcel_CachedObjectStorage_' . $storageMethod;
+            if (call_user_func(array($cacheStorageClass, 'cacheMethodIsAvailable'))) {
+                $activeMethods[] = $storageMethod;
+            }
+        }
+        return $activeMethods;
+    }

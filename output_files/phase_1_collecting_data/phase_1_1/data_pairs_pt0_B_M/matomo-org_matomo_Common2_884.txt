@@ -1,0 +1,24 @@
+   /**
+    * Adds the given CSS class(es) to the element
+    *
+    * @param    string|array    Class name, multiple class names separated by
+    *                           whitespace, array of class names
+    * @return   HTML_Common2
+    */
+
+    public function addClass($class)
+    {
+        if (!is_array($class)) {
+            $class = preg_split('/\s+/', $class, null, PREG_SPLIT_NO_EMPTY);
+        }
+        $curClass = preg_split('/\s+/', $this->getAttribute('class'),
+                               null, PREG_SPLIT_NO_EMPTY);
+        foreach ($class as $c) {
+            if (!in_array($c, $curClass)) {
+                $curClass[] = $c;
+            }
+        }
+        $this->setAttribute('class', implode(' ', $curClass));
+
+        return $this;
+    }

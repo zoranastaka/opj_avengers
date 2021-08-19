@@ -1,0 +1,36 @@
+    /** @test */
+
+    public function activities_get_contact_all()
+    {
+        $user = $this->signin();
+        $contact1 = factory(Contact::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+        $activity1 = factory(Activity::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+        $activity1->contacts()->attach($contact1, ['account_id' => $user->account_id]);
+
+        $contact2 = factory(Contact::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+        $activity2 = factory(Activity::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+        $activity2->contacts()->attach($contact2, ['account_id' => $user->account_id]);
+
+        $response = $this->json('GET', '/api/contacts/'.$contact1->id.'/activities');
+
+        $response->assertStatus(200);
+        $response->assertJsonStructure([
+            'data' => ['*' => $this->jsonActivity],
+        ]);
+        $response->assertJsonFragment([
+            'object' => 'activity',
+            'id' => $activity1->id,
+        ]);
+        $response->assertJsonMissingExact([
+            'object' => 'activity',
+            'id' => $activity2->id,
+        ]);
+    }

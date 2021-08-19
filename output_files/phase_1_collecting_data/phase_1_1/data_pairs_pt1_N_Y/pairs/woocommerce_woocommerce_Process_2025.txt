@@ -1,0 +1,5 @@
+/**
+ * Results of an executed command.
+ */
+
+class ProcessRun {

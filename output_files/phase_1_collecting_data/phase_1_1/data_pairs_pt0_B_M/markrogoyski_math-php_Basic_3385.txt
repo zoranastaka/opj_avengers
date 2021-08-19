@@ -1,0 +1,42 @@
+    /**
+     * Geometric progression
+     * A sequence of numbers where each term after the first is found by multiplying
+     * the previous one by a fixed, non-zero number called the common ratio.
+     * https://en.wikipedia.org/wiki/Geometric_progression
+     *
+     * an = arⁿ⁻¹
+     *
+     * Example:
+     *  n = 4
+     *  a = 2
+     *  r = 3
+     *  Sequence:    2(3)⁰, 2(3)¹, 2(3)², 2(3)³
+     *  Sequence:    2,     6,     18,    54
+     *  Array index: 0      1      2      3
+     *
+     * @param  int    $n How many numbers in the sequence
+     * @param  number $a Scalar value
+     * @param  number $r Common ratio
+     *
+     * @return array Indexed from 0 (indexes are powers of common ratio)
+     *
+     * @throws Exception\BadParameterException
+     */
+
+    public static function geometricProgression(int $n, $a, $r): array
+    {
+        if ($r === 0) {
+            throw new Exception\BadParameterException('Common ratio r cannot be 0');
+        }
+
+        $progression = [];
+        if ($n < 0) {
+            return $progression;
+        }
+
+        for ($i = 0; $i < $n; $i++) {
+            $progression[] = $a * $r ** $i;
+        }
+
+        return $progression;
+    }

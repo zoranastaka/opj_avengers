@@ -1,0 +1,13 @@
+    /**
+     * @test   subfactorial n less than zero
+     * @throws \Exception
+     */
+
+    public function testSubactorialExceptionNLessThanZero()
+    {
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Combinatorics::subfactorial(-1);
+    }

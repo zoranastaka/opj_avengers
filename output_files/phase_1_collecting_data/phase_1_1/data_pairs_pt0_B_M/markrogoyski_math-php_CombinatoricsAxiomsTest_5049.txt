@@ -1,0 +1,16 @@
+    /**
+     * @testCase Axiom: L(n,2) = (n - 1)n! / 2
+     * Lah number identity when k is 2
+     *
+     * @dataProvider dataProivderForLahNumberIdentitiesGreaterThanOne
+     * @param        int $n
+     * @throws       \Exception
+     */
+
+    public function testLahNumberIdentityKEqualsTwo(int $n)
+    {
+        $L⟮n、1⟯     = Combinatorics::lahNumber($n, 2);
+        $⟮n−1⟯n！／2 = (($n - 1) * Combinatorics::factorial($n)) / 2;
+
+        $this->assertEquals($L⟮n、1⟯, $⟮n−1⟯n！／2);
+    }

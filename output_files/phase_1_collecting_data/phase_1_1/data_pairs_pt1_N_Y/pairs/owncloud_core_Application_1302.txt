@@ -1,0 +1,5 @@
+		/**
+		 * Core class wrappers
+		 */
+
+		$container->registerService('IsEncryptionEnabled', static function (SimpleContainer $c) {

@@ -1,0 +1,25 @@
+	/**
+	 * Clean term caches added by WooCommerce.
+	 *
+	 * @since 3.3.4
+	 * @param array|int $ids Array of ids or single ID to clear cache for.
+	 * @param string    $taxonomy Taxonomy name.
+	 */
+
+	public static function clean_term_cache( $ids, $taxonomy ) {
+		if ( 'product_cat' === $taxonomy ) {
+			$ids = is_array( $ids ) ? $ids : array( $ids );
+
+			$clear_ids = array( 0 );
+
+			foreach ( $ids as $id ) {
+				$clear_ids[] = $id;
+				$clear_ids   = array_merge( $clear_ids, get_ancestors( $id, 'product_cat', 'taxonomy' ) );
+			}
+
+			$clear_ids = array_unique( $clear_ids );
+
+			foreach ( $clear_ids as $id ) {
+				wp_cache_delete( 'product-category-hierarchy-' . $id, 'product_cat' );
+			}
+		}

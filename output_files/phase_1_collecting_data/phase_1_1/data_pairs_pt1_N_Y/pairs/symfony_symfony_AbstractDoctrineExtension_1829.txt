@@ -1,0 +1,37 @@
+    /**
+     * If this is a bundle controlled mapping all the missing information can be autodetected by this method.
+     *
+     * Returns false when autodetection failed, an array of the completed information otherwise.
+     *
+     * @return array|false
+     */
+
+    protected function getMappingDriverBundleConfigDefaults(array $bundleConfig, \ReflectionClass $bundle, ContainerBuilder $container)
+    {
+        $bundleDir = \dirname($bundle->getFileName());
+
+        if (!$bundleConfig['type']) {
+            $bundleConfig['type'] = $this->detectMetadataDriver($bundleDir, $container);
+        }
+
+        if (!$bundleConfig['type']) {
+            // skip this bundle, no mapping information was found.
+            return false;
+        }
+
+        if (!$bundleConfig['dir']) {
+            if (\in_array($bundleConfig['type'], ['annotation', 'staticphp', 'attribute'])) {
+                $bundleConfig['dir'] = $bundleDir.'/'.$this->getMappingObjectDefaultName();
+            } else {
+                $bundleConfig['dir'] = $bundleDir.'/'.$this->getMappingResourceConfigDirectory();
+            }
+        } else {
+            $bundleConfig['dir'] = $bundleDir.'/'.$bundleConfig['dir'];
+        }
+
+        if (!$bundleConfig['prefix']) {
+            $bundleConfig['prefix'] = $bundle->getNamespaceName().'\\'.$this->getMappingObjectDefaultName();
+        }
+
+        return $bundleConfig;
+    }

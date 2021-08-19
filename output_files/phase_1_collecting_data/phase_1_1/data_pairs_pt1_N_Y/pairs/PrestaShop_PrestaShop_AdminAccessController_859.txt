@@ -1,0 +1,56 @@
+    /**
+     * AdminController::renderForm() override.
+     *
+     * @see AdminController::renderForm()
+     */
+
+    public function renderForm()
+    {
+        $current_profile = (int) $this->getCurrentProfileId();
+        $profiles = Profile::getProfiles($this->context->language->id);
+        $tabs = Tab::getTabs($this->context->language->id);
+
+        $accesses = [];
+        foreach ($profiles as $profile) {
+            $accesses[$profile['id_profile']] = Profile::getProfileAccesses($profile['id_profile']);
+        }
+
+        // Deleted id_tab that do not have access
+        foreach ($tabs as $key => $tab) {
+            // Don't allow permissions for unnamed tabs (ie. AdminLogin)
+            if (empty($tab['name'])) {
+                unset($tabs[$key]);
+            }
+
+            foreach ($this->accesses_black_list as $id_tab) {
+                if ($tab['id_tab'] == (int) $id_tab) {
+                    unset($tabs[$key]);
+                }
+            }
+        }
+
+        $modules = [];
+        foreach ($profiles as $profile) {
+            $modules[$profile['id_profile']] = Module::getModulesAccessesByIdProfile($profile['id_profile']);
+            uasort($modules[$profile['id_profile']], [$this, 'sortModuleByName']);
+        }
+
+        $this->fields_form = [''];
+        $this->tpl_form_vars = [
+            'profiles' => $profiles,
+            'accesses' => $accesses,
+            'id_tab_parentmodule' => (int) Tab::getIdFromClassName('AdminParentModules'),
+            'id_tab_module' => (int) Tab::getIdFromClassName('AdminModules'),
+            'tabs' => $this->displayTabs($tabs),
+            'current_profile' => (int) $current_profile,
+            'admin_profile' => (int) _PS_ADMIN_PROFILE_,
+            'access_edit' => $this->access('edit'),
+            'perms' => ['view', 'add', 'edit', 'delete'],
+            'id_perms' => ['view' => 0, 'add' => 1, 'edit' => 2, 'delete' => 3, 'all' => 4],
+            'modules' => $modules,
+            'link' => $this->context->link,
+            'employee_profile_id' => (int) $this->context->employee->id_profile,
+        ];
+
+        return parent::renderForm();
+    }

@@ -1,0 +1,20 @@
+    /**
+     * Should dependencies of packages marked for update be updated?
+     *
+     * Depending on the chosen constant this will either only update the directly named packages, all transitive
+     * dependencies which are not root requirement or all transitive dependencies including root requirements
+     *
+     * @param  int       $updateAllowTransitiveDependencies One of the UPDATE_ constants on the Request class
+     * @return Installer
+     */
+
+    public function setUpdateAllowTransitiveDependencies($updateAllowTransitiveDependencies)
+    {
+        if (!in_array($updateAllowTransitiveDependencies, array(Request::UPDATE_ONLY_LISTED, Request::UPDATE_LISTED_WITH_TRANSITIVE_DEPS_NO_ROOT_REQUIRE, Request::UPDATE_LISTED_WITH_TRANSITIVE_DEPS), true)) {
+            throw new \RuntimeException("Invalid value for updateAllowTransitiveDependencies supplied");
+        }
+
+        $this->updateAllowTransitiveDependencies = $updateAllowTransitiveDependencies;
+
+        return $this;
+    }

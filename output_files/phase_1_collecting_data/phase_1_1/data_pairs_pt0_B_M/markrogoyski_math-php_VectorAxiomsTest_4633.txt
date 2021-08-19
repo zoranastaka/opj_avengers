@@ -1,0 +1,19 @@
+    /**
+     * @test Axiom: -1A = -A
+     * Additive inverse
+     * @dataProvider dataProviderForAdditiveInverse
+     */
+
+    public function testScalarMultiplyNegativeOneIdentity(array $A, array $R)
+    {
+        // Given
+        $A = new Vector($A);
+
+        // When
+        $ーA  = $A->scalarMultiply(-1);
+        $R    = new Vector($R);
+
+        // Then
+        $this->assertEquals($R, $ーA);
+        $this->assertEquals($R->getVector(), $ーA->getVector());
+    }

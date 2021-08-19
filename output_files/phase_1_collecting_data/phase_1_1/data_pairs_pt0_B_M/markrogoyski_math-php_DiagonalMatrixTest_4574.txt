@@ -1,0 +1,15 @@
+    /**
+     * @test         isUpperTriangular returns true
+     * @dataProvider dataProviderMulti
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsUpperTriangular(array $A)
+    {
+        // Given
+        $D = MatrixFactory::diagonal($A);
+
+        // Then
+        $this->assertTrue($D->isUpperTriangular());
+    }

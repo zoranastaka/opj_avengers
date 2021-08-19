@@ -1,0 +1,26 @@
+    /**
+     * Returns the header to be used for iteration.
+     *
+     * @param string[] $header
+     *
+     * @throws Exception If the header contains non unique column name
+     *
+     * @return string[]
+     */
+
+    protected function computeHeader(array $header)
+    {
+        if ([] === $header) {
+            $header = $this->getHeader();
+        }
+
+        if ($header !== ($filtered_header = array_filter($header, 'is_string'))) {
+            throw SyntaxError::dueToInvalidHeaderColumnNames();
+        }
+
+        if ($header !== array_unique($filtered_header)) {
+            throw SyntaxError::dueToDuplicateHeaderColumnNames($header);
+        }
+
+        return $header;
+    }

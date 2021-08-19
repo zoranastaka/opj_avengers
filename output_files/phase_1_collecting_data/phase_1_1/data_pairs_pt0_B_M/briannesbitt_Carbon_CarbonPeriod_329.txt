@@ -1,0 +1,31 @@
+    /**
+     * @return CarbonInterface|null
+     */
+
+    private function getEndFromRecurrences()
+    {
+        if ($this->recurrences === null) {
+            throw new UnreachableException(
+                "Could not calculate period end without either explicit end or recurrences.\n".
+                "If you're looking for a forever-period, use ->setRecurrences(INF)."
+            );
+        }
+
+        if ($this->recurrences === INF) {
+            $start = $this->getStartDate();
+
+            return $start < $start->avoidMutation()->add($this->getDateInterval())
+                ? CarbonImmutable::endOfTime()
+                : CarbonImmutable::startOfTime();
+        }
+
+        if ($this->filters === [[static::RECURRENCES_FILTER, null]]) {
+            return $this->getStartDate()->avoidMutation()->add(
+                $this->getDateInterval()->times(
+                    $this->recurrences - ($this->isStartExcluded() ? 0 : 1)
+                )
+            );
+        }
+
+        return null;
+    }

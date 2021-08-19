@@ -1,0 +1,20 @@
+    /**
+     * Joins another XPathExpr with a combiner.
+     *
+     * @return $this
+     */
+
+    public function join(string $combiner, self $expr): self
+    {
+        $path = $this->__toString().$combiner;
+
+        if ('*/' !== $expr->path) {
+            $path .= $expr->path;
+        }
+
+        $this->path = $path;
+        $this->element = $expr->element;
+        $this->condition = $expr->condition;
+
+        return $this;
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @return string
+     */
+
+    public function toString()
+    {
+        return $this->message . $this->getDiff();
+    }

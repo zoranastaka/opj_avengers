@@ -1,0 +1,7 @@
+    /**
+     * Get the container. This will be removed in favour of getContainer returning Container in next major release.
+     *
+     * @return Container
+     */
+
+    public function getLeagueContainer() : Container;

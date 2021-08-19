@@ -1,0 +1,23 @@
+    /**
+     * @param Frame $frame
+     *
+     * @return int
+     * @throws Exception
+     */
+
+    public function get_frame_width(Frame $frame)
+    {
+        $key = $frame->get_id();
+
+        if (!isset($this->_frames[$key])) {
+            throw new Exception("Frame not found in cellmap");
+        }
+
+        $cols = $this->_frames[$key]["columns"];
+        $w = 0;
+        foreach ($cols as $i) {
+            $w += $this->_columns[$i]["used-width"];
+        }
+
+        return $w;
+    }

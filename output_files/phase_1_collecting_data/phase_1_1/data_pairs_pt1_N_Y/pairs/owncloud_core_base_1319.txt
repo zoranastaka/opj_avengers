@@ -1,0 +1,5 @@
+	/**
+	 * @return string
+	 */
+
+	private static function getSessionLifeTime() {

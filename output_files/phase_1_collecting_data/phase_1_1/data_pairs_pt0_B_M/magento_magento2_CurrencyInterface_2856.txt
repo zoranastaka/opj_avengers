@@ -1,0 +1,7 @@
+    /**
+     * Returns true when a cache is set
+     *
+     * @return boolean
+     */
+
+    public static function hasCache();

@@ -1,0 +1,22 @@
+    /**
+     * Mode of the distribution
+     *
+     * i such that pᵢ = \max(p₁, ... pk)
+     *
+     * @return mixed Category name/number. Only returns one category in case on multimodal scenario.
+     */
+
+    public function mode()
+    {
+        $category = null;
+        $pmax     = 0;
+
+        foreach ($this->probabilities as $i => $pᵢ) {
+            if ($pᵢ > $pmax) {
+                $pmax     = $pᵢ;
+                $category = $i;
+            }
+        }
+
+        return $category;
+    }

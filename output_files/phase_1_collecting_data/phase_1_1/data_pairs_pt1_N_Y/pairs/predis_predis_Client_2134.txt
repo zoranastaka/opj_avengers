@@ -1,0 +1,18 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function executeCommand(CommandInterface $command)
+    {
+        $response = $this->connection->executeCommand($command);
+
+        if ($response instanceof ResponseInterface) {
+            if ($response instanceof ErrorResponseInterface) {
+                $response = $this->onErrorResponse($command, $response);
+            }
+
+            return $response;
+        }
+
+        return $command->parseResponse($response);
+    }

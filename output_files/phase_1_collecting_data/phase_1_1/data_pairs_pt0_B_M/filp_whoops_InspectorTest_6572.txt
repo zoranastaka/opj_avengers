@@ -1,0 +1,17 @@
+    /**
+     * @covers Whoops\Exception\Inspector::getPreviousExceptionMessages
+     */
+
+    public function testGetPreviousExceptionMessages()
+    {
+        $exception1        = $this->getException('My first exception');
+        $exception2        = $this->getException('My second exception', 0, $exception1);
+        $exception3        = $this->getException('And the third one', 0, $exception2);
+
+        $inspector         = $this->getInspectorInstance($exception3);
+
+        $previousExceptions = $inspector->getPreviousExceptionMessages();
+
+        $this->assertEquals($exception2->getMessage(), $previousExceptions[0]);
+        $this->assertEquals($exception1->getMessage(), $previousExceptions[1]);
+    }

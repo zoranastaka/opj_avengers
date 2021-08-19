@@ -1,0 +1,10 @@
+    /**
+     * Determines if Intervention Imagecache is installed
+     *
+     * @return boolean
+     */
+
+    private function cacheIsInstalled()
+    {
+        return class_exists('Intervention\\Image\\ImageCache');
+    }

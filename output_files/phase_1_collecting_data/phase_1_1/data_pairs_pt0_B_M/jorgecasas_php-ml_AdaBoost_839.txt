@@ -1,0 +1,14 @@
+    /**
+     * @return mixed
+     */
+
+    public function predictSample(array $sample)
+    {
+        $sum = 0;
+        foreach ($this->alpha as $index => $alpha) {
+            $h = $this->classifiers[$index]->predict($sample);
+            $sum += $h * $alpha;
+        }
+
+        return $this->labels[$sum > 0 ? 1 : -1];
+    }

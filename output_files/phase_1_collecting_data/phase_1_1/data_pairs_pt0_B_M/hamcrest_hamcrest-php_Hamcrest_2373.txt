@@ -1,0 +1,9 @@
+    /**
+     * Matches if value contains $substrings in a constrained order.
+     */
+
+    function stringContainsInOrder(/* args... */)
+    {
+        $args = func_get_args();
+        return call_user_func_array(array('\Hamcrest\Text\StringContainsInOrder', 'stringContainsInOrder'), $args);
+    }

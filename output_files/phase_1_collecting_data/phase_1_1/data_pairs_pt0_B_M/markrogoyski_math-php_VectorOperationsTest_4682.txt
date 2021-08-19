@@ -1,0 +1,17 @@
+    /**
+     * @test         perp dot product
+     * @dataProvider dataProviderForPerpDotProduct
+     */
+
+    public function testPerpDotProduct(array $A, array $B, $expected)
+    {
+        // Given
+        $A = new Vector($A);
+        $B = new Vector($B);
+
+        // When
+        $A⊥⋅B = $A->perpDotProduct($B);
+
+        // Then
+        $this->assertEquals($expected, $A⊥⋅B);
+    }

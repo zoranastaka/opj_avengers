@@ -1,0 +1,17 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testConstructorWithClusterArgument(): void
+    {
+        $cluster = new Connection\Cluster\PredisCluster();
+
+        $factory = new Connection\Factory();
+        $cluster->add($factory->create('tcp://localhost:7000'));
+        $cluster->add($factory->create('tcp://localhost:7001'));
+
+        $client = new Client($cluster);
+
+        $this->assertInstanceOf('Predis\Connection\Cluster\ClusterInterface', $client->getConnection());
+        $this->assertSame($cluster, $client->getConnection());
+    }

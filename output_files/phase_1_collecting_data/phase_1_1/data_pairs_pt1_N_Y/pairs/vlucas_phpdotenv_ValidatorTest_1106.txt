@@ -1,0 +1,14 @@
+    /**
+     * @dataProvider invalidBooleanValuesDataProvider
+     */
+
+    public function testCanInvalidateNonBooleansIfPresent(string $boolean)
+    {
+        $dotenv = Dotenv::createImmutable(self::$folder, 'booleans.env');
+        $dotenv->load();
+
+        $this->expectException(ValidationException::class);
+        $this->expectExceptionMessage('One or more environment variables failed assertions: INVALID_');
+
+        $dotenv->ifPresent($boolean)->isBoolean();
+    }

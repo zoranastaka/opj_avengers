@@ -1,0 +1,12 @@
+    /**
+     * @test variance
+     */
+
+    public function testVariance()
+    {
+        // When
+        $variance = $this->standardNormal->variance();
+
+        // Then
+        $this->assertEquals(1, $variance);
+    }

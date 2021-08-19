@@ -1,0 +1,13 @@
+    /**
+     * @test
+     * @depends builderCanGenerateAToken
+     */
+
+    public function parserCanReadAToken(Token $generated): void
+    {
+        $read = $this->config->parser()->parse($generated->toString());
+        assert($read instanceof Token\Plain);
+
+        self::assertEquals($generated, $read);
+        self::assertEquals('testing', $read->claims()->get('user')['name']);
+    }

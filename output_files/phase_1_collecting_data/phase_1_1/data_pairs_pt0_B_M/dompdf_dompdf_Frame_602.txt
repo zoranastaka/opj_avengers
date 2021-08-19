@@ -1,0 +1,14 @@
+    /**
+     * Tells if the frame is a text node
+     *
+     * @return bool
+     */
+
+    public function is_text_node()
+    {
+        if (isset($this->_is_cache["text_node"])) {
+            return $this->_is_cache["text_node"];
+        }
+
+        return $this->_is_cache["text_node"] = ($this->get_node()->nodeName === "#text");
+    }

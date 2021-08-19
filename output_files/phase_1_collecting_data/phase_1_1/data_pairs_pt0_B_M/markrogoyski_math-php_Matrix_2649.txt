@@ -1,0 +1,29 @@
+    /**
+     * Exclude a row from the result matrix
+     *
+     * @param int $mᵢ Row to exclude
+     *
+     * @return Matrix with row mᵢ excluded
+     *
+     * @throws Exception\MatrixException if row to exclude does not exist
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function rowExclude(int $mᵢ): Matrix
+    {
+        if ($mᵢ >= $this->m || $mᵢ < 0) {
+            throw new Exception\MatrixException('Row to exclude does not exist');
+        }
+
+        $m = $this->m;
+        $R = [];
+
+        for ($i = 0; $i < $m; $i++) {
+            if ($i === $mᵢ) {
+                continue;
+            }
+            $R[$i] = $this->A[$i];
+        }
+
+        return MatrixFactory::create(\array_values($R), $this->ε);
+    }

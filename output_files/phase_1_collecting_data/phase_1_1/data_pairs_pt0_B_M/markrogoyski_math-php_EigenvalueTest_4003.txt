@@ -1,0 +1,18 @@
+    /**
+     * @test         closedFormPolynomialRootMethod throws a BadDataException if the matrix is not the correct size (2x2 or 3x3)
+     * @dataProvider dataProviderForEigenvalueException
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testClosedFormPolynomialRootMethodExceptionMatrixNotCorrectSize(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Eigenvalue::closedFormPolynomialRootMethod($A);
+    }

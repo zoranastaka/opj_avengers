@@ -1,0 +1,18 @@
+    /**
+     * Find annotations for entry id.
+     *
+     * @param int $entryId
+     * @param int $userId
+     *
+     * @return array
+     */
+
+    public function findAnnotationsByPageId($entryId, $userId)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.entry = :entryId')->setParameter('entryId', $entryId)
+            ->andwhere('a.user = :userId')->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult()
+        ;
+    }

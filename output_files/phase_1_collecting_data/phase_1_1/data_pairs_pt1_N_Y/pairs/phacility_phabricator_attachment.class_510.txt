@@ -1,0 +1,6 @@
+	/**
+	 * retrieve the attachment filename
+	 * @return String
+	 */
+
+	public function getFilename() {

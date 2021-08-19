@@ -1,0 +1,11 @@
+    /**
+     * Returns the human redable date when this Symfony version ends its
+     * maintenance period.
+     *
+     * @return string
+     */
+
+    public function getSymfonyEom()
+    {
+        return $this->data['symfony_eom'];
+    }

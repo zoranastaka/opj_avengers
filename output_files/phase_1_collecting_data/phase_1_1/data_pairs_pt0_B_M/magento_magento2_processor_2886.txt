@@ -1,0 +1,12 @@
+    /**
+     * Load xml file
+     *
+     * @param string $xmlFile
+     * @return \SimpleXMLElement
+     */
+
+    protected function _loadXml($xmlFile)
+    {
+        $configPath = $this->_getFilePath($xmlFile);
+        return ($configPath) ? simplexml_load_file($configPath) : null;
+    }

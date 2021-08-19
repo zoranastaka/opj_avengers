@@ -1,0 +1,14 @@
+    /**
+     * Returns the tabular data records as an iterator object.
+     *
+     * Each record is represented as a simple array containing strings or null values.
+     *
+     * If the CSV document has a header record then each record is combined
+     * to the header record and the header record is removed from the iterator.
+     *
+     * If the CSV document is inconsistent. Missing record fields are
+     * filled with null values while extra record fields are strip from
+     * the returned object.
+     */
+
+    public function getIterator(): Iterator;

@@ -1,0 +1,9 @@
+    /**
+     * @dataProvider provideVariousVariantUuids
+     */
+
+    public function testGetVariantForVariousVariantUuids(string $uuid, int $variant): void
+    {
+        $uuid = Uuid::fromString($uuid);
+        $this->assertSame($variant, $uuid->getVariant());
+    }

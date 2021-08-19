@@ -1,0 +1,12 @@
+    /**
+     * Enable or disable strict requirement of semicolons.
+     *
+     * @see self::requireSemicolons()
+     *
+     * @param bool $requireSemicolons
+     */
+
+    public function setRequireSemicolons($requireSemicolons)
+    {
+        $this->requireSemicolons = (bool) $requireSemicolons;
+    }

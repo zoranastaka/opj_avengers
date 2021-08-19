@@ -1,0 +1,19 @@
+    /** @test */
+
+    public function it_applies_received_middlewares()
+    {
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'foo',
+        ]);
+        $botman->middleware->received(new TestMiddleware());
+
+        $botman->hears('foo', function ($bot) {
+            $this->assertSame([
+                'driver_name' => 'Fake',
+                'test' => 'successful',
+            ], $bot->getMessage()->getExtras());
+        });
+        $botman->listen();
+    }

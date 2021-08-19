@@ -1,0 +1,12 @@
+    /**
+     * @param Frame $frame
+     */
+
+    public function render(Frame $frame)
+    {
+        if (!$this->_dompdf->getOptions()->getIsJavascriptEnabled()) {
+            return;
+        }
+
+        $this->insert($frame->get_node()->nodeValue);
+    }

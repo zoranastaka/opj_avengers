@@ -1,0 +1,8 @@
+    /**
+     * @param Matrix $Aᵀ
+     */
+
+    public function addTranspose(Matrix $Aᵀ): void
+    {
+        $this->Aᵀ = $Aᵀ;
+    }

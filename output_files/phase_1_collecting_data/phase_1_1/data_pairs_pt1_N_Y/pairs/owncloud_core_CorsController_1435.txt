@@ -1,0 +1,10 @@
+	/**
+	 * Gets all White-listed domains
+	 *
+	 * @NoAdminRequired
+	 * @NoSubadminRequired
+	 *
+	 * @return JSONResponse All the White-listed domains
+	 */
+
+	public function getDomains() {

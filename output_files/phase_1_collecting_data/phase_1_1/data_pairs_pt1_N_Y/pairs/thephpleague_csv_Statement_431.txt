@@ -1,0 +1,11 @@
+    /**
+     * Set an Iterator sorting callable function.
+     */
+
+    public function orderBy(callable $order_by): self
+    {
+        $clone = clone $this;
+        $clone->order_by[] = $order_by;
+
+        return $clone;
+    }

@@ -1,0 +1,9 @@
+    /**
+     * @expectedException \Intervention\Image\Exception\RuntimeException
+     */
+
+    public function testGetBackupWithoutBackuo()
+    {
+        $image = $this->getTestImage();
+        $image->getBackup();
+    }

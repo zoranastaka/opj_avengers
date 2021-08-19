@@ -1,0 +1,22 @@
+    /**
+     * @test Axiom: kA is symmetric
+     * If A is a symmetric matrix, kA is symmetric
+     * @dataProvider dataProviderForSymmetricMatrix
+     * @param        array $M
+     * @throws       \Exception
+     */
+
+    public function testSymmetricMatricesTimesScalarIsSymmetric(array $M)
+    {
+        // Given
+        $A   = MatrixFactory::create($M);
+        $this->assertTrue($A->isSymmetric());
+
+        foreach (\range(1, 10) as $k) {
+            // When
+            $kA = $A->scalarMultiply($k);
+
+            // Then
+            $this->assertTrue($kA->isSymmetric());
+        }
+    }

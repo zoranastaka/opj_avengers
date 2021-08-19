@@ -1,0 +1,22 @@
+    /**
+     * Returns the root URL from which this request is executed.
+     *
+     * The base URL never ends with a /.
+     *
+     * This is similar to getBasePath(), except that it also includes the
+     * script filename (e.g. index.php) if one exists.
+     *
+     * @return string The raw URL (i.e. not urldecoded)
+     */
+
+    public function getBaseUrl()
+    {
+        $trustedPrefix = '';
+
+        // the proxy prefix must be prepended to any prefix being needed at the webserver level
+        if ($this->isFromTrustedProxy() && $trustedPrefixValues = $this->getTrustedValues(self::HEADER_X_FORWARDED_PREFIX)) {
+            $trustedPrefix = rtrim($trustedPrefixValues[0], '/');
+        }
+
+        return $trustedPrefix.$this->getBaseUrlReal();
+    }

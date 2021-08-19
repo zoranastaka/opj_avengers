@@ -1,0 +1,7 @@
+	// --------------------------------------------------------------------
+
+	public function test_user_agent()
+	{
+		$_SERVER['HTTP_USER_AGENT'] = 'test';
+		$this->assertEquals('test', $this->input->user_agent());
+	}

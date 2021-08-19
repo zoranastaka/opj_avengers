@@ -1,0 +1,5 @@
+/**
+ * @package OC\Settings\Controller
+ */
+
+class CertificateController extends Controller {

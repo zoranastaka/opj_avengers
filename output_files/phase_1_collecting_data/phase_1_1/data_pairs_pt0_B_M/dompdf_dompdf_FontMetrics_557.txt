@@ -1,0 +1,13 @@
+    /**
+     * Calculates font height
+     *
+     * @param string $font
+     * @param float $size
+     *
+     * @return float
+     */
+
+    public function getFontHeight($font, $size)
+    {
+        return $this->getCanvas()->get_font_height($font, $size);
+    }

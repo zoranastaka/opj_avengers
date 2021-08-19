@@ -1,0 +1,20 @@
+    /**
+     * Register a mixing strategy for this factory instance
+     *
+     * @param string $name  The name of the stategy
+     * @param string $class The class name of the implementation
+     *
+     * @return Factory $this The current factory instance
+     */
+
+    public function registerMixer($name, $class)
+    {
+        $this->registerType(
+            'mixers',
+            __NAMESPACE__ . '\\Mixer',
+            $name,
+            $class
+        );
+
+        return $this;
+    }

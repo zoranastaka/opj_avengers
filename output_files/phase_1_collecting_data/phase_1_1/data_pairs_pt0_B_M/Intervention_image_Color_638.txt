@@ -1,0 +1,10 @@
+    /**
+     * Returns RGB blue value of current color
+     *
+     * @return int
+     */
+
+    public function getBlueValue()
+    {
+        return intval(round($this->pixel->getColorValue(\Imagick::COLOR_BLUE) * 255));
+    }

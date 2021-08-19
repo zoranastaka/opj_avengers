@@ -1,0 +1,18 @@
+    /**
+     * @test         Countable interface
+     * @dataProvider dataProviderForCountable
+     * @param        array $A
+     * @param        int $n
+     */
+
+    public function testCountableInterface(array $A, int $n)
+    {
+        // Given
+        $V = new Vector($A);
+
+        // When
+        $count = count($V);
+
+        // Then
+        $this->assertEquals($n, $count);
+    }

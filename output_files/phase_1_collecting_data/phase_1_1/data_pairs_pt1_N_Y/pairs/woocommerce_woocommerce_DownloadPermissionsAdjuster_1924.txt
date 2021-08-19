@@ -1,0 +1,5 @@
+/**
+ * Class to adjust download permissions on product save.
+ */
+
+class DownloadPermissionsAdjuster {

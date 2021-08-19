@@ -1,0 +1,10 @@
+    /**
+     * @param object $event
+     */
+
+    public function raise($event)
+    {
+        foreach ($this->listeners($event) as $listener) {
+            $listener($event);
+        }
+    }

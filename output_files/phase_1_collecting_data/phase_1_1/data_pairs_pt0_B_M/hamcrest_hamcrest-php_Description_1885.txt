@@ -1,0 +1,10 @@
+    /**
+     * Appends the description of a {@link Hamcrest\SelfDescribing} value to
+     * this description.
+     *
+     * @param \Hamcrest\SelfDescribing $value
+     *
+     * @return \Hamcrest\Description
+     */
+
+    public function appendDescriptionOf(SelfDescribing $value);

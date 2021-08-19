@@ -1,0 +1,19 @@
+    /**
+     * @test         mean
+     * @dataProvider dataProviderForMean
+     * @param        float $α
+     * @param        float $β
+     * @param        float $μ
+     */
+
+    public function testMean(float $α, float $β, float $μ)
+    {
+        // Given
+        $logLogistic = new LogLogistic($α, $β);
+
+        // When
+        $mean = $logLogistic->mean();
+
+        // Then
+        $this->assertEqualsWithDelta($μ, $mean, 0.00001);
+    }

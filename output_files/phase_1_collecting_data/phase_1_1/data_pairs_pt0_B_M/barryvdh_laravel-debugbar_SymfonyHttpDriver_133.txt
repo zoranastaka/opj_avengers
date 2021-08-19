@@ -1,0 +1,12 @@
+    /**
+     * {@inheritDoc}
+     */
+
+    public function isSessionStarted()
+    {
+        if (!$this->session->isStarted()) {
+            $this->session->start();
+        }
+
+        return $this->session->isStarted();
+    }

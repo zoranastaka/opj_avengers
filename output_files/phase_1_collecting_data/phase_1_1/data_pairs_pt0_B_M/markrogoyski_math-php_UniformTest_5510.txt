@@ -1,0 +1,20 @@
+    /**
+     * @test         variance
+     * @dataProvider dataProviderForVariance
+     * @param        int   $a
+     * @param        int   $b
+     * @param        float $expectedVariance
+     * @throws       \Exception
+     */
+
+    public function testVariance(int $a, int $b, float $expectedVariance)
+    {
+        // Given
+        $uniform = new Uniform($a, $b);
+
+        // When
+        $variance = $uniform->variance();
+
+        // Then
+        $this->assertEqualsWithDelta($expectedVariance, $variance, 0.0001);
+    }

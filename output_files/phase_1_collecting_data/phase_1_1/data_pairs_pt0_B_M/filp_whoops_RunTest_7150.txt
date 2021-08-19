@@ -1,0 +1,19 @@
+    /**
+     * @return Handler
+     */
+
+    protected function getHandler()
+    {
+        return m::mock('Whoops\\Handler\\Handler')
+            ->shouldReceive('setRun')
+                ->andReturn(null)
+            ->mock()
+
+            ->shouldReceive('setInspector')
+                ->andReturn(null)
+            ->mock()
+
+            ->shouldReceive('setException')
+                ->andReturn(null)
+            ->mock();
+    }

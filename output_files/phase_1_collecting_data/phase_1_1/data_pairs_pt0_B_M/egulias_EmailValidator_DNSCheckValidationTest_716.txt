@@ -1,0 +1,9 @@
+    /**
+     * @dataProvider validEmailsProvider
+     */
+
+    public function testValidDNS($validEmail)
+    {
+        $validation = new DNSCheckValidation();
+        $this->assertTrue($validation->isValid($validEmail, new EmailLexer()));
+    }

@@ -1,0 +1,10 @@
+    /**
+     * @param string                 $name
+     * @param ServerRequestInterface $request
+     */
+
+    public function __construct($name, ServerRequestInterface $request, RefreshTokenEntityInterface $refreshToken)
+    {
+        parent::__construct($name, $request);
+        $this->refreshToken = $refreshToken;
+    }

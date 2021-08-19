@@ -1,0 +1,19 @@
+    /**
+     * @test         transpose of transpose is the original matrix
+     * @dataProvider dataProviderForTranspose
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testTransposeOfTransposeIsOriginalMatrix(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $Aᵀ  = $A->transpose();
+        $Aᵀᵀ = $Aᵀ->transpose();
+
+        // Then
+        $this->assertEquals($A->getMatrix(), $Aᵀᵀ->getMatrix());
+    }

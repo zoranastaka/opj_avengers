@@ -1,0 +1,12 @@
+    /**
+     * Create a new instance from an array of parameters.
+     *
+     * @param array $params
+     *
+     * @return static
+     */
+
+    public static function createFromArray(array $params)
+    {
+        return new static(...$params);
+    }

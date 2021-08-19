@@ -1,0 +1,19 @@
+    /**
+     * Inverse CDF (quantile)
+     *
+     * @param float $p
+     *
+     * @return float
+     */
+
+    public function inverse(float $p): float
+    {
+        if ($p == 0) {
+            return -\INF;
+        }
+        if ($p == 1) {
+            return \INF;
+        }
+
+        return parent::inverse($p);
+    }

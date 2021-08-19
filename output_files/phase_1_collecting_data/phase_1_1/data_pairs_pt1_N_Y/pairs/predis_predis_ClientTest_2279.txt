@@ -1,0 +1,29 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testExecuteCommandReturnsParsedResponses(): void
+    {
+        $commands = $this->getCommandFactory();
+
+        $ping = $commands->create('ping', array());
+        $hgetall = $commands->create('hgetall', array('metavars', 'foo', 'hoge'));
+
+        $connection = $this->getMockBuilder('Predis\Connection\ConnectionInterface')->getMock();
+        $connection
+            ->expects($this->exactly(2))
+            ->method('executeCommand')
+            ->withConsecutive(
+                array($ping),
+                array($hgetall)
+            )
+            ->willReturnOnConsecutiveCalls(
+                new Response\Status('PONG'),
+                array('foo', 'bar', 'hoge', 'piyo')
+            );
+
+        $client = new Client($connection);
+
+        $this->assertEquals('PONG', $client->executeCommand($ping));
+        $this->assertSame(array('foo' => 'bar', 'hoge' => 'piyo'), $client->executeCommand($hgetall));
+    }

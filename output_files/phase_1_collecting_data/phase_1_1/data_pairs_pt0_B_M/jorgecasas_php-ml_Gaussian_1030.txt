@@ -1,0 +1,8 @@
+    /**
+     * @param float|int $value
+     */
+
+    public function compute($value): float
+    {
+        return exp(- $value ** 2);
+    }

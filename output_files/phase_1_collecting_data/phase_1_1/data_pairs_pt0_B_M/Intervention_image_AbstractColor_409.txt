@@ -1,0 +1,7 @@
+    /**
+     * Calculates integer value of current color instance
+     *
+     * @return int
+     */
+
+    abstract public function getInt();

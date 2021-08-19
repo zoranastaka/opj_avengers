@@ -1,0 +1,10 @@
+    /**
+     * Serialize the data structure
+     *
+     * @return string
+     */
+
+    public function serialize()
+    {
+        return serialize($this->items);
+    }

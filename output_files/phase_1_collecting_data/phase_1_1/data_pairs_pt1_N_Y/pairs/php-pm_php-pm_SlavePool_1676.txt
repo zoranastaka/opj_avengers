@@ -1,0 +1,21 @@
+    /**
+     * Get slave slaves by connection
+     *
+     * @param ConnectionInterface $connection
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+
+    public function getByConnection(ConnectionInterface $connection)
+    {
+        $hash = \spl_object_hash($connection);
+
+        foreach ($this->slaves as $slave) {
+            if ($slave->getConnection() && $hash === \spl_object_hash($slave->getConnection())) {
+                return $slave;
+            }
+        }
+
+        throw new \Exception("Slave connection not registered.");
+    }

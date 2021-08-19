@@ -1,0 +1,10 @@
+    /**
+     * Set up mock Piecewise
+     */
+
+    public function setUp(): void
+    {
+        $this->piecewise = $this->getMockBuilder(Piecewise::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+    }

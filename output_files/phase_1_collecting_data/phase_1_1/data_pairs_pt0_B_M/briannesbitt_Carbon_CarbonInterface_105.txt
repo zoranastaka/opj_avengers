@@ -1,0 +1,13 @@
+    /**
+     * Determines if the instance is a weekend day.
+     *
+     * @example
+     * ```
+     * Carbon::parse('2019-07-14')->isWeekend(); // true
+     * Carbon::parse('2019-07-15')->isWeekend(); // false
+     * ```
+     *
+     * @return bool
+     */
+
+    public function isWeekend();

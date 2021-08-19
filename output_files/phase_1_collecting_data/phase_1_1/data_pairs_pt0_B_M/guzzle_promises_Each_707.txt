@@ -1,0 +1,13 @@
+    /**
+     * Like limit, but ensures that no promise in the given $iterable argument
+     * is rejected. If any promise is rejected, then the aggregate promise is
+     * rejected with the encountered rejection.
+     *
+     * @param mixed        $iterable
+     * @param int|callable $concurrency
+     * @param callable     $onFulfilled
+     *
+     * @return PromiseInterface
+     */
+
+    public static function ofLimitAll(

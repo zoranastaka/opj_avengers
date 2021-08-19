@@ -1,0 +1,10 @@
+    /**
+     * @param mixed $toResolve
+     *
+     * @return bool
+     */
+
+    private function isRoute($toResolve): bool
+    {
+        return $toResolve instanceof RequestHandlerInterface;
+    }

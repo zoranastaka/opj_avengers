@@ -1,0 +1,15 @@
+    /**
+     * @deprecated To avoid conflict between different third-party libraries, static setters should not be used.
+     *             Use $weekStartsAt optional parameter instead when using startOfWeek, floorWeek, ceilWeek
+     *             or roundWeek method. You can also use the 'first_day_of_week' locale setting to change the
+     *             start of week according to current locale selected and implicitly the end of week.
+     *
+     * Set the last day of week
+     *
+     * @param int|string $day week end day (or 'auto' to get the day before the first day of week
+     *                        from Carbon::getLocale() culture).
+     *
+     * @return void
+     */
+
+    public static function setWeekEndsAt($day);

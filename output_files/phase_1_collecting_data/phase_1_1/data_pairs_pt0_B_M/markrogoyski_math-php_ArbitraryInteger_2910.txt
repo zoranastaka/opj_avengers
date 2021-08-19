@@ -1,0 +1,16 @@
+    /**
+     * Mod - Returns the remainder from integer division
+     *
+     * @param int|string|ArbitraryInteger $divisor
+     *
+     * @return ArbitraryInteger
+     *
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function mod($divisor): ArbitraryInteger
+    {
+        [$int, $mod] = $this->fullIntdiv($divisor);
+        return $mod;
+    }

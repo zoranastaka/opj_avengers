@@ -1,0 +1,14 @@
+    /**
+     * @group partial
+     */
+
+    public function testCanPartiallyMockAnAbstractClassWith2Methods()
+    {
+        $m = mock('MockeryTest_PartialAbstractClass2[foo,baz]');
+        $this->assertInstanceOf(MockeryTest_PartialAbstractClass2::class, $m);
+        $m->shouldReceive('foo')->andReturn('cba');
+        $m->shouldReceive('baz')->andReturn('cba');
+        $this->assertEquals('abc', $m->bar());
+        $this->assertEquals('cba', $m->foo());
+        $this->assertEquals('cba', $m->baz());
+    }

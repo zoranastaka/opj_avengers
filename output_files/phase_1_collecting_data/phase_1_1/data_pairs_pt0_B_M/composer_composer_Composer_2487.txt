@@ -1,0 +1,8 @@
+    /**
+     * @param Locker $locker
+     */
+
+    public function setLocker(Locker $locker)
+    {
+        $this->locker = $locker;
+    }

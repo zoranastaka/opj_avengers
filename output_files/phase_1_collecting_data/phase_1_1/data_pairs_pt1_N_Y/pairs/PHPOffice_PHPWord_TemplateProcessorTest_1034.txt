@@ -1,0 +1,16 @@
+    /**
+     * @covers ::setValue
+     * @test
+     */
+
+    public function testSetValue()
+    {
+        $templateProcessor = new TemplateProcessor(__DIR__ . '/_files/templates/clone-merge.docx');
+        Settings::setOutputEscapingEnabled(true);
+        $helloworld = "hello\nworld";
+        $templateProcessor->setValue('userName', $helloworld);
+        $this->assertEquals(
+            array('tableHeader', 'userId', 'userLocation'),
+            $templateProcessor->getVariables()
+        );
+    }

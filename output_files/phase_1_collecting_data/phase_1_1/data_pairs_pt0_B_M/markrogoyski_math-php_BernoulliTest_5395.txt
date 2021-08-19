@@ -1,0 +1,13 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForPMF(): array
+    {
+        return [
+            [0, 0.6, 0.4],
+            [1, 0.6, 0.6],
+            [0, 0.3, 0.7],
+            [1, 0.3, 0.3],
+        ];
+    }

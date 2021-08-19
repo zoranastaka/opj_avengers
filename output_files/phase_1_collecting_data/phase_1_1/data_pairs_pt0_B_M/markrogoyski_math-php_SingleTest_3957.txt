@@ -1,0 +1,16 @@
+    /**
+     * @test         reciprocal
+     * @dataProvider dataProviderForReciprocal
+     * @param        array $xs
+     * @param        array $expectedReciprocals
+     * @throws       \Exception
+     */
+
+    public function testReciprocal(array $xs, array $expectedReciprocals)
+    {
+        // When
+        $reciprocals = Single::reciprocal($xs);
+
+        // Then
+        $this->assertEquals($expectedReciprocals, $reciprocals);
+    }

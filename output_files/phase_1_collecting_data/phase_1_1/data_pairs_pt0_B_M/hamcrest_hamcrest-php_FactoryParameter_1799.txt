@@ -1,0 +1,31 @@
+    /**
+     * Compute the declaration code.
+     *
+     * @return string
+     */
+
+    public function getDeclaration()
+    {
+        $code = $this->getTypeCode() . $this->getInvocation();
+
+        if ($this->reflector->isOptional()) {
+            $default = $this->reflector->getDefaultValue();
+            if (is_null($default)) {
+                $default = 'null';
+            } elseif (is_bool($default)) {
+                $default = $default ? 'true' : 'false';
+            } elseif (is_string($default)) {
+                $default = "'" . $default . "'";
+            } elseif (is_numeric($default)) {
+                $default = strval($default);
+            } elseif (is_array($default)) {
+                $default = 'array()';
+            } else {
+                echo 'Warning: unknown default type for ' . $this->getMethod()->getFullName() . "\n";
+                var_dump($default);
+                $default = 'null';
+            }
+            $code .= ' = ' . $default;
+        }
+        return $code;
+    }

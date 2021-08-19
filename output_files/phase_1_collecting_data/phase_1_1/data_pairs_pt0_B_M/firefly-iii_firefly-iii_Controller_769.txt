@@ -1,0 +1,43 @@
+    /**
+     * Method to grab all parameters from the URI.
+     *
+     * @return ParameterBag
+     */
+
+    private function getParameters(): ParameterBag
+    {
+        $bag  = new ParameterBag;
+        $page = (int)request()->get('page');
+        if (0 === $page) {
+            $page = 1;
+        }
+        $bag->set('page', $page);
+
+        // some date fields:
+        $dates = ['start', 'end', 'date'];
+        foreach ($dates as $field) {
+            $date = request()->query->get($field);
+            $obj  = null;
+            if (null !== $date) {
+                try {
+                    $obj = Carbon::parse($date);
+                } catch (InvalidDateException $e) {
+                    // don't care
+                    Log::error(sprintf('Invalid date exception in API controller: %s', $e->getMessage()));
+                }
+            }
+            $bag->set($field, $obj);
+        }
+
+        // integer fields:
+        $integers = ['limit'];
+        foreach ($integers as $integer) {
+            $value = request()->query->get($integer);
+            if (null !== $value) {
+                $bag->set($integer, (int)$value);
+            }
+        }
+
+        return $bag;
+
+    }

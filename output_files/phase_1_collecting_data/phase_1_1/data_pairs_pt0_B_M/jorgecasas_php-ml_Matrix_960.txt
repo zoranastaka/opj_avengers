@@ -1,0 +1,20 @@
+    /**
+     * @return float|int
+     *
+     * @throws MatrixException
+     */
+
+    public function getDeterminant()
+    {
+        if ($this->determinant !== null) {
+            return $this->determinant;
+        }
+
+        if (!$this->isSquare()) {
+            throw new MatrixException('Matrix is not square matrix');
+        }
+
+        $lu = new LUDecomposition($this);
+
+        return $this->determinant = $lu->det();
+    }

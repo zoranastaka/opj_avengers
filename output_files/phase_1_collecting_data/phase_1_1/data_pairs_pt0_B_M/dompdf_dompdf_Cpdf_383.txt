@@ -1,0 +1,53 @@
+    /**
+     * a few functions which should allow the document to be treated transactionally.
+     *
+     * @param $action
+     */
+
+    function transaction($action)
+    {
+        switch ($action) {
+            case 'start':
+                // store all the data away into the checkpoint variable
+                $data = get_object_vars($this);
+                $this->checkpoint = $data;
+                unset($data);
+                break;
+
+            case 'commit':
+                if (is_array($this->checkpoint) && isset($this->checkpoint['checkpoint'])) {
+                    $tmp = $this->checkpoint['checkpoint'];
+                    $this->checkpoint = $tmp;
+                    unset($tmp);
+                } else {
+                    $this->checkpoint = '';
+                }
+                break;
+
+            case 'rewind':
+                // do not destroy the current checkpoint, but move us back to the state then, so that we can try again
+                if (is_array($this->checkpoint)) {
+                    // can only abort if were inside a checkpoint
+                    $tmp = $this->checkpoint;
+
+                    foreach ($tmp as $k => $v) {
+                        if ($k !== 'checkpoint') {
+                            $this->$k = $v;
+                        }
+                    }
+                    unset($tmp);
+                }
+                break;
+
+            case 'abort':
+                if (is_array($this->checkpoint)) {
+                    // can only abort if were inside a checkpoint
+                    $tmp = $this->checkpoint;
+                    foreach ($tmp as $k => $v) {
+                        $this->$k = $v;
+                    }
+                    unset($tmp);
+                }
+                break;
+        }
+    }

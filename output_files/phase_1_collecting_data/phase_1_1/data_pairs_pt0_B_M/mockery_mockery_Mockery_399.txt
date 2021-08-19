@@ -1,0 +1,15 @@
+    /**
+     * Lazy loader and Getter for the global
+     * configuration container.
+     *
+     * @return \Mockery\Configuration
+     */
+
+    public static function getConfiguration()
+    {
+        if (is_null(self::$_config)) {
+            self::$_config = new \Mockery\Configuration();
+        }
+
+        return self::$_config;
+    }

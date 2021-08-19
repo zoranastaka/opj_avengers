@@ -1,0 +1,8 @@
+    /**
+     * Incomplete test.
+     */
+
+    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
+    {
+        //
+    }

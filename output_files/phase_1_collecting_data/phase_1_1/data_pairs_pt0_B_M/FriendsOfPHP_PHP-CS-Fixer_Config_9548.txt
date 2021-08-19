@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function setFinder(iterable $finder): ConfigInterface
+    {
+        $this->finder = $finder;
+
+        return $this;
+    }

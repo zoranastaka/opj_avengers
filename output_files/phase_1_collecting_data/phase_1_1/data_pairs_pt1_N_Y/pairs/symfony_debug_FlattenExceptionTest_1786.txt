@@ -1,0 +1,15 @@
+    /**
+     * @dataProvider flattenDataProvider
+     */
+
+    public function testFlattenHttpException(\Throwable $exception)
+    {
+        $flattened = FlattenException::createFromThrowable($exception);
+        $flattened2 = FlattenException::createFromThrowable($exception);
+
+        $flattened->setPrevious($flattened2);
+
+        $this->assertEquals($exception->getMessage(), $flattened->getMessage(), 'The message is copied from the original exception.');
+        $this->assertEquals($exception->getCode(), $flattened->getCode(), 'The code is copied from the original exception.');
+        $this->assertInstanceOf($flattened->getClass(), $exception, 'The class is set to the class of the original exception');
+    }

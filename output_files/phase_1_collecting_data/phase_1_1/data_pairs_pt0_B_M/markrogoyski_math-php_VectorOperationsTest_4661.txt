@@ -1,0 +1,17 @@
+    /**
+     * @test         dot product
+     * @dataProvider dataProviderForDotProduct
+     */
+
+    public function testDotProduct(array $A, array $B, $expected)
+    {
+        // Given
+        $A  = new Vector($A);
+        $B  = new Vector($B);
+
+        // When
+        $dotProduct = $A->dotProduct($B);
+
+        // Then
+        $this->assertEquals($expected, $dotProduct);
+    }

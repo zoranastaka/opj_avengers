@@ -1,0 +1,6 @@
+/**
+ * Return array for API stat requests
+ *
+ */
+
+function yourls_api_url_stats( $shorturl ) {

@@ -1,0 +1,10 @@
+    /**
+     * Get the state of the promise ("pending", "rejected", or "fulfilled").
+     *
+     * The three states can be checked against the constants defined on
+     * PromiseInterface: PENDING, FULFILLED, and REJECTED.
+     *
+     * @return string
+     */
+
+    public function getState();

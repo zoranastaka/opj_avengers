@@ -1,0 +1,22 @@
+    /**
+     * Check errors when current process exited.
+     *
+     * @return void
+     */
+
+    public static function checkErrors()
+    {
+        if (static::STATUS_SHUTDOWN !== static::$_status) {
+            $error_msg = static::$_OS === \OS_TYPE_LINUX ? 'Worker['. \posix_getpid() .'] process terminated' : 'Worker process terminated';
+            $errors    = error_get_last();
+            if ($errors && ($errors['type'] === \E_ERROR ||
+                    $errors['type'] === \E_PARSE ||
+                    $errors['type'] === \E_CORE_ERROR ||
+                    $errors['type'] === \E_COMPILE_ERROR ||
+                    $errors['type'] === \E_RECOVERABLE_ERROR)
+            ) {
+                $error_msg .= ' with ERROR: ' . static::getErrorType($errors['type']) . " \"{$errors['message']} in {$errors['file']} on line {$errors['line']}\"";
+            }
+            static::log($error_msg);
+        }
+    }

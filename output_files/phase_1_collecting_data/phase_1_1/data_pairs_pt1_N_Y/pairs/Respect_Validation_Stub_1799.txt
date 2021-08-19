@@ -1,0 +1,10 @@
+    /**
+     * Initializes the rule.
+     *
+     * @param bool[] ...$validations
+     */
+
+    public function __construct(bool ...$validations)
+    {
+        $this->validations = $validations;
+    }

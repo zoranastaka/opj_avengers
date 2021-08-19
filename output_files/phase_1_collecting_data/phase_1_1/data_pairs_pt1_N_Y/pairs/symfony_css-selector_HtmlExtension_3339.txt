@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function getFunctionTranslators(): array
+    {
+        return [
+            'lang' => [$this, 'translateLang'],
+        ];
+    }

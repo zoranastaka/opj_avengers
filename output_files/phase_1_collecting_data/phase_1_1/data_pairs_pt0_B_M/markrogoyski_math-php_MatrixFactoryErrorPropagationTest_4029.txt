@@ -1,0 +1,18 @@
+    /**
+     * @test directSum propagates error tolerance to resultant matrix
+     */
+
+    public function testDirectSum()
+    {
+        // Given
+        $B = MatrixFactory::createNumeric([
+            [3, 4],
+            [5, 6]
+        ]);
+
+        // When
+        $R = $this->A->directSum($B);
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

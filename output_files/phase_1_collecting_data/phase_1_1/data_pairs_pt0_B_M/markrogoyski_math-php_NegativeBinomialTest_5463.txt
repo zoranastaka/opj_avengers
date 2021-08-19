@@ -1,0 +1,10 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForMean(): array
+    {
+        return [
+            [4, 0.05, 0.21052631578947],
+        ];
+    }

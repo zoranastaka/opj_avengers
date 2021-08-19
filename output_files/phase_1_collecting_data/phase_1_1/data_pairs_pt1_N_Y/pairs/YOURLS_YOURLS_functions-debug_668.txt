@@ -1,0 +1,8 @@
+/**
+ * Get the debug log
+ *
+ * @since  1.7.3
+ * @return array
+ */
+
+function yourls_get_debug_log() {

@@ -1,0 +1,10 @@
+    /**
+     * Set current pivot point
+     *
+     * @param Point $point
+     */
+
+    public function setPivot(Point $point)
+    {
+        $this->pivot = $point;
+    }

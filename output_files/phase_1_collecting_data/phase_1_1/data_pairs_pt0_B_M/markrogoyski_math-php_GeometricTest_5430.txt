@@ -1,0 +1,18 @@
+    /**
+     * @test         mean
+     * @dataProvider dataProviderForMean
+     * @param        float $p
+     * @param        float $μ
+     */
+
+    public function testMean(float $p, float $μ)
+    {
+        // Given
+        $geometric = new Geometric($p);
+
+        // When
+        $mean = $geometric->mean();
+
+        // Then
+        $this->assertEqualsWithDelta($μ, $mean, 0.000001);
+    }

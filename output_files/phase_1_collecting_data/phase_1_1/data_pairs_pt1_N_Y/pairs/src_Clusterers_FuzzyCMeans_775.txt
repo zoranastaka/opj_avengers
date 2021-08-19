@@ -1,0 +1,22 @@
+    /**
+     * Calculate the  sum of distances between all samples and their closest centroid.
+     *
+     * @param array[] $samples
+     * @param array[] $memberships
+     * @return float
+     */
+
+    protected function inertia(array $samples, array $memberships) : float
+    {
+        $inertia = 0.0;
+
+        foreach ($samples as $i => $sample) {
+            $membership = $memberships[$i];
+
+            foreach ($this->centroids as $cluster => $centroid) {
+                $inertia += $membership[$cluster] * $this->kernel->compute($sample, $centroid);
+            }
+        }
+
+        return $inertia;
+    }

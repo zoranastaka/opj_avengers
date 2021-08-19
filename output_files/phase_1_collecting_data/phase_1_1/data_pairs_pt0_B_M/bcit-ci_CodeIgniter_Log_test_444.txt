@@ -1,0 +1,15 @@
+	// --------------------------------------------------------------------
+
+	public function test_format_line()
+	{
+		$this->ci_set_config('log_path', '');
+		$this->ci_set_config('log_threshold', 0);
+		$instance = new CI_Log();
+
+		$format_line = new ReflectionMethod($instance, '_format_line');
+		$format_line->setAccessible(TRUE);
+		$this->assertEquals(
+			$format_line->invoke($instance, 'LEVEL', 'Timestamp', 'Message'),
+			"LEVEL - Timestamp --> Message".PHP_EOL
+		);
+	}

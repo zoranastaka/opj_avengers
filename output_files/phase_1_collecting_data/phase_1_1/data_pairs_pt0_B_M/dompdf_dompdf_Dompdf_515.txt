@@ -1,0 +1,9 @@
+    /**
+     * @param string $host
+     * @deprecated
+     */
+
+    public function set_host($host)
+    {
+        $this->setBaseHost($host);
+    }

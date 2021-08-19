@@ -1,0 +1,10 @@
+    /**
+     * Creates a property fetch node.
+     *
+     * @param Expr                   $var  Variable holding object
+     * @param string|Identifier|Expr $name Property name
+     *
+     * @return Expr\PropertyFetch
+     */
+
+    public function propertyFetch(Expr $var, $name) : Expr\PropertyFetch {

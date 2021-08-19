@@ -1,0 +1,28 @@
+    /**
+     * @test   Solve f(x) = x⁴ + 8x³ -13x² -92x + 96
+     *         Polynomial has 4 roots: 3, 1, -8 and -4
+     *         Uses \Closure object
+     * @dataProvider dataProviderForPolynomial
+     * @param        float[] $args
+     * @param        int     $expected
+     * @throws       \Exception
+     */
+
+    public function testSolvePolynomialWithFourRootsUsingClosure(array $args, int $expected)
+    {
+        // Given
+        $func = function ($x) {
+            return $x ** 4 + 8 * $x ** 3 - 13 * $x ** 2 - 92 * $x + 96;
+        };
+
+        // And
+        $target   = 0;
+        $position = 0;
+        $tol      = 0.00001;
+
+        // When solving for f(x) = 0 where x is $expected
+        $x = NewtonsMethod::solve($func, $args, $target, $tol, $position);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $x, $tol);
+    }

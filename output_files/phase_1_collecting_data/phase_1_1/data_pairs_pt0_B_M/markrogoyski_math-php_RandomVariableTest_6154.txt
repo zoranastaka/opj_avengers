@@ -1,0 +1,10 @@
+    /**
+     * @return array [data]
+     */
+
+    public function dataProviderForPlatykurtic(): array
+    {
+        return [
+            [[2, 2, 4, 6, 8, 10, 10]],
+        ];
+    }

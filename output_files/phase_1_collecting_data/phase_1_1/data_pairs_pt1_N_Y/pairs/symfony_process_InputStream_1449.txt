@@ -1,0 +1,8 @@
+    /**
+     * Closes the write buffer.
+     */
+
+    public function close()
+    {
+        $this->open = false;
+    }

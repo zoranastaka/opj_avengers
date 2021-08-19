@@ -1,0 +1,15 @@
+    /**
+     * @test         factorial produces the expected sequence
+     * @dataProvider dataProviderForFactorial
+     * @param        int   $n
+     * @param        array $expected
+     */
+
+    public function testFactorial(int $n, array $expected)
+    {
+        // When
+        $powers = Basic::factorial($n);
+
+        // Then
+        $this->assertEquals($expected, $powers);
+    }

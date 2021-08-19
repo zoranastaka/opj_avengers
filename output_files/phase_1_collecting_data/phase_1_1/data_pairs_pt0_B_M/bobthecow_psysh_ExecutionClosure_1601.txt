@@ -1,0 +1,17 @@
+    /**
+     * Set the closure instance.
+     *
+     * @param Shell    $shell
+     * @param \Closure $closure
+     */
+
+    protected function setClosure(Shell $shell, \Closure $closure)
+    {
+        $that = $shell->getBoundObject();
+
+        if (\is_object($that)) {
+            $this->closure = $closure->bindTo($that, \get_class($that));
+        } else {
+            $this->closure = $closure->bindTo(null, $shell->getBoundClass());
+        }
+    }

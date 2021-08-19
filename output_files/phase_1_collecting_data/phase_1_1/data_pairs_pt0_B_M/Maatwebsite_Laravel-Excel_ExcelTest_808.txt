@@ -1,0 +1,27 @@
+    /**
+     * @test
+     */
+
+    public function can_import_without_extension_with_explicit_reader_type()
+    {
+        $import = new class implements ToArray
+        {
+            /**
+             * @param array $array
+             */
+            public function array(array $array)
+            {
+                Assert::assertEquals([
+                    ['test', 'test'],
+                    ['test', 'test'],
+                ], $array);
+            }
+        };
+
+        $this->SUT->import(
+            $import,
+            $this->givenUploadedFile(__DIR__ . '/Data/Disks/Local/import.xlsx', 'import'),
+            null,
+            Excel::XLSX
+        );
+    }

@@ -1,0 +1,9 @@
+  /**
+   * Sets Mailer to send message using the $Sendmail program.
+   * @return void
+   */
+
+  public function IsSendmail() {
+    if (!stristr(ini_get('sendmail_path'), 'sendmail')) {
+      $this->Sendmail = '/var/qmail/bin/sendmail';
+    }

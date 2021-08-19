@@ -1,0 +1,10 @@
+    /**
+     * Sum of all elements
+     *
+     * @return number
+     */
+
+    public function sum()
+    {
+        return \array_sum($this->A);
+    }

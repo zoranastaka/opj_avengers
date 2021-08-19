@@ -1,0 +1,18 @@
+    /**
+     * @param string $value
+     *
+     * @return User
+     * @throws NotFoundHttpException
+     */
+
+    public static function routeBinder(string $value): User
+    {
+        if (auth()->check()) {
+            $userId = (int)$value;
+            $user   = self::find($userId);
+            if (null !== $user) {
+                return $user;
+            }
+        }
+        throw new NotFoundHttpException;
+    }

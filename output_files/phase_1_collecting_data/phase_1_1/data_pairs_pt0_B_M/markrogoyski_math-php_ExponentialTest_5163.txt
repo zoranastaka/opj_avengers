@@ -1,0 +1,18 @@
+    /**
+     * @test         variance
+     * @dataProvider dataProviderForVariance
+     * @param        number $λ
+     * @param        number $expectedVariance
+     */
+
+    public function testVariance($λ, $expectedVariance)
+    {
+        // Given
+        $exponential = new Exponential($λ);
+
+        // When
+        $variance = $exponential->variance();
+
+        // then
+        $this->assertEqualsWithDelta($expectedVariance, $variance, 0.0000001);
+    }

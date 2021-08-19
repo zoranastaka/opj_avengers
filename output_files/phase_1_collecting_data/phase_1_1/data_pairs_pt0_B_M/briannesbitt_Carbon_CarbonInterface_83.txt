@@ -1,0 +1,9 @@
+    /**
+     * Create a Carbon instance from a DateTime one.
+     *
+     * @param DateTimeInterface $date
+     *
+     * @return static
+     */
+
+    public static function instance($date);

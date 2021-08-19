@@ -1,0 +1,17 @@
+    /**
+     * @test   lahNumber n less than k
+     * @throws \Exception
+     */
+
+    public function testLahNumberExceptionNLessThanK()
+    {
+        // Given
+        $k = 4;
+        $n = 2;
+
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Combinatorics::lahNumber($n, $k);
+    }

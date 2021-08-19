@@ -1,0 +1,10 @@
+    /**
+     * Get socket name.
+     *
+     * @return string
+     */
+
+    public function getSocketName()
+    {
+        return $this->_socketName ? \lcfirst($this->_socketName) : 'none';
+    }

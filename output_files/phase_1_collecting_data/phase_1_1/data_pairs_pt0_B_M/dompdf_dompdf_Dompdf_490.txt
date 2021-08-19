@@ -1,0 +1,21 @@
+    /**
+     * Restore the system's locale configuration
+     */
+
+    private function restorePhpConfig()
+    {
+        if (!empty($this->systemLocale)) {
+            setlocale(LC_NUMERIC, $this->systemLocale);
+            $this->systemLocale = null;
+        }
+
+        if (!empty($this->pcreJit)) {
+            @ini_set('pcre.jit', $this->pcreJit);
+            $this->pcreJit = null;
+        }
+
+        if (!empty($this->mbstringEncoding)) {
+            mb_internal_encoding($this->mbstringEncoding);
+            $this->mbstringEncoding = null;
+        }
+    }

@@ -1,0 +1,24 @@
+    /**
+     * Return the importance scores of each feature column of the training set.
+     *
+     * @throws \Rubix\ML\Exceptions\RuntimeException
+     * @return float[]
+     */
+
+    public function featureImportances() : array
+    {
+        if (!$this->network) {
+            throw new RuntimeException('Estimator has not been trained.');
+        }
+
+        $layer = current($this->network->hidden());
+
+        if (!$layer instanceof Dense) {
+            throw new RuntimeException('Weight layer is missing.');
+        }
+
+        return $layer->weights()
+            ->rowAsVector(0)
+            ->abs()
+            ->asArray();
+    }

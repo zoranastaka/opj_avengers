@@ -1,0 +1,16 @@
+    /**
+     * @dataProvider provideDateTimes
+     */
+
+    public function testDumpDateTime($time, $timezone, $xDate, $xTimestamp)
+    {
+        $date = new \DateTime($time, new \DateTimeZone($timezone));
+
+        $xDump = <<<EODUMP
+DateTime @$xTimestamp {
+  date: $xDate
+}
+EODUMP;
+
+        $this->assertDumpEquals($xDump, $date);
+    }

@@ -1,0 +1,22 @@
+    /**
+     * @test    pdf throws an Exception\BadDataException if x and μ don't have the same number of elements
+     * @throws \Exception
+     */
+
+    public function testPdfXAndMuDifferentNumberOfElementsException()
+    {
+        // Given
+        $μ = [0, 0];
+        $∑ = MatrixFactory::create([
+            [1, 0],
+            [0, 1],
+        ]);
+        $x      = [0, 0, 0];
+        $normal = new Normal($μ, $∑);
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $pdf = $normal->pdf($x);
+    }

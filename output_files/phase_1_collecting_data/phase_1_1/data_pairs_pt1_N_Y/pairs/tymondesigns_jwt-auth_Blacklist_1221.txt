@@ -1,0 +1,18 @@
+    /**
+     * Get the number of minutes until the token expiry.
+     *
+     * @param  \Tymon\JWTAuth\Payload  $payload
+     *
+     * @return int
+     */
+
+    protected function getMinutesUntilExpired(Payload $payload)
+    {
+        $exp = Utils::timestamp($payload['exp']);
+        $iat = Utils::timestamp($payload['iat']);
+
+        // get the latter of the two expiration dates and find
+        // the number of minutes until the expiration date,
+        // plus 1 minute to avoid overlap
+        return $exp->max($iat->addMinutes($this->refreshTTL))->addMinute()->diffInRealMinutes();
+    }

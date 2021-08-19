@@ -1,0 +1,10 @@
+    /**
+     * Set the Shell AutoCompleter service.
+     *
+     * @param AutoCompleter $autoCompleter
+     */
+
+    public function setAutoCompleter(AutoCompleter $autoCompleter)
+    {
+        $this->autoCompleter = $autoCompleter;
+    }

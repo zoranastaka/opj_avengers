@@ -1,0 +1,11 @@
+    /**
+     * Utility function to measure the execution of a Closure
+     *
+     * @param string $label
+     * @param \Closure $closure
+     */
+
+    function measure($label, \Closure $closure)
+    {
+        debugbar()->measure($label, $closure);
+    }

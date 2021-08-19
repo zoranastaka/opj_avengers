@@ -1,0 +1,8 @@
+    /**
+     * Is the value a particular built-in type?
+     */
+
+    function typeOf($theType)
+    {
+        return \Hamcrest\Core\IsTypeOf::typeOf($theType);
+    }

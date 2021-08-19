@@ -1,0 +1,10 @@
+    /**
+    * Return the macros code
+    *
+    * @return string|null
+    */
+
+    public function getMacrosCode()
+    {
+        return $this->macrosCode;
+    }

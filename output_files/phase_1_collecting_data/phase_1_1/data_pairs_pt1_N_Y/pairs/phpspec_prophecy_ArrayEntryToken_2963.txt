@@ -1,0 +1,10 @@
+    /**
+     * Returns key
+     *
+     * @return TokenInterface
+     */
+
+    public function getKey()
+    {
+        return $this->key;
+    }

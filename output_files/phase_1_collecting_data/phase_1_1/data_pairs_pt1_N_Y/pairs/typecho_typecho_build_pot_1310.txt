@@ -1,0 +1,7 @@
+/**
+ * output lang
+ * 
+ * @param string $str
+ */
+
+function output_lang($str) {

@@ -1,0 +1,8 @@
+	/**
+	 * Handle
+	 *
+	 * Pass each queue item to the task handler, while remaining
+	 * within server memory and time limit constraints.
+	 */
+
+	protected function handle() {

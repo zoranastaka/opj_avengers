@@ -1,0 +1,11 @@
+    /**
+     * @covers ::parse
+     * @covers ::filterDocument
+     */
+
+    public function testConstructorThrowsTypeErrorWithUnknownDocument(): void
+    {
+        $this->expectException(TypeError::class);
+        $records = EmptyEscapeParser::parse(new stdClass());
+        $records->rewind();
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Add paragraph style
+     *
+     * @param string $styleName
+     * @param array|\PhpOffice\PhpWord\Style\AbstractStyle $styles
+     * @return \PhpOffice\PhpWord\Style\Paragraph
+     */
+
+    public static function addParagraphStyle($styleName, $styles)
+    {
+        return self::setStyleValues($styleName, new Paragraph(), $styles);
+    }

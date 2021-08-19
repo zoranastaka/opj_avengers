@@ -1,0 +1,14 @@
+    /**
+     * Set the grace period.
+     *
+     * @param  int  $gracePeriod
+     *
+     * @return $this
+     */
+
+    public function setGracePeriod($gracePeriod)
+    {
+        $this->gracePeriod = (int) $gracePeriod;
+
+        return $this;
+    }

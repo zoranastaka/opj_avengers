@@ -1,0 +1,18 @@
+    /**
+     * @test         create numeric matrix
+     * @dataProvider dataProviderForSquareMatrix
+     * @dataProvider dataProviderForNotSquareMatrix
+     * @dataProvider dataProviderForSingularMatrix
+     * @dataProvider dataProviderForNonsingularMatrix
+     * @dataProvider dataProviderForMatrixWithWeirdNumbers
+     */
+
+    public function testCreateNumericMatrix(array $A)
+    {
+        // When
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertInstanceOf(NumericMatrix::class, $A);
+        $this->assertInstanceOf(Matrix::class, $A);
+    }

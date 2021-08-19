@@ -1,0 +1,18 @@
+    /**
+     * @covers ::convert
+     * @covers ::filterEncoding
+     * @covers ::encodeField
+     * @covers ::inputEncoding
+     * @covers ::__invoke
+     */
+
+    public function testCharsetConverterDoesNothing(): void
+    {
+        $converter = new CharsetConverter();
+        $expected = new ArrayIterator([['a' => 'bé']]);
+        /** @var array $record */
+        $record = $expected[0];
+        self::assertEquals($expected, $converter->convert($expected));
+        self::assertEquals($record, ($converter)($record));
+        self::assertNotEquals($record, ($converter->outputEncoding('utf-16'))($record));
+    }

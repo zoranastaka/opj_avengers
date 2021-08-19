@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider providerRangeBoundaries
+     */
+
+    public function testRangeBoundaries()
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(array('PHPExcel_Cell','rangeBoundaries'), $args);
+        $this->assertEquals($expectedResult, $result);
+    }

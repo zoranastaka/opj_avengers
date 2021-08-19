@@ -1,0 +1,22 @@
+    /**
+     * @param Row $row
+     * @param string $apiModule
+     * @param string $apiAction
+     * @param bool $labelUseAbsoluteUrl
+     * @return bool|string
+     */
+
+    private function getRowUrlForEvolutionLabel($row, $apiModule, $apiAction, $labelUseAbsoluteUrl)
+    {
+        $url = $row->getMetadata('url');
+        if ($url
+            && ($apiModule == 'Actions'
+                || ($apiModule == 'Referrers'
+                    && $apiAction == 'getWebsites'))
+            && $labelUseAbsoluteUrl
+        ) {
+            $actualLabel = preg_replace(';^http(s)?://(www.)?;i', '', $url);
+            return $actualLabel;
+        }
+        return false;
+    }

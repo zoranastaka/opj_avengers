@@ -1,0 +1,27 @@
+    /**
+     * Record a metric about the file being examined.
+     *
+     * @param int    $stackPtr The stack position where the metric was recorded.
+     * @param string $metric   The name of the metric being recorded.
+     * @param string $value    The value of the metric being recorded.
+     *
+     * @return boolean
+     */
+
+    public function recordMetric($stackPtr, $metric, $value)
+    {
+        if (isset($this->metrics[$metric]) === false) {
+            $this->metrics[$metric] = ['values' => [$value => 1]];
+            $this->metricTokens[$metric][$stackPtr] = true;
+        } else if (isset($this->metricTokens[$metric][$stackPtr]) === false) {
+            $this->metricTokens[$metric][$stackPtr] = true;
+            if (isset($this->metrics[$metric]['values'][$value]) === false) {
+                $this->metrics[$metric]['values'][$value] = 1;
+            } else {
+                $this->metrics[$metric]['values'][$value]++;
+            }
+        }
+
+        return true;
+
+    }//end recordMetric()

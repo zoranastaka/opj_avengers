@@ -1,0 +1,15 @@
+    /** @test */
+
+    public function it_returns_the_matches()
+    {
+        $called = false;
+
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'I am Gandalf',
+        ]);
+
+        $botman->hears('I am {name}', function ($bot, $name) use (&$called) {
+            $called = true;
+        });

@@ -1,0 +1,10 @@
+  /**
+   * Get the domain which cookies should be set on for this request, or null
+   * if the request does not correspond to a valid cookie domain.
+   *
+   * @return PhutilURI|null   Domain URI, or null if no valid domain exists.
+   *
+   * @task cookie
+   */
+
+  private function getCookieDomainURI() {

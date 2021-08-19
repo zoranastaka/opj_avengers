@@ -1,0 +1,23 @@
+  /**
+   * Checks the POP3 server response for +OK or -ERR
+   * @access private
+   * @param string $string
+   * @return boolean
+   */
+
+  private function checkResponse ($string) {
+    if (substr($string, 0, 3) !== '+OK') {
+      $this->error = array(
+        'error' => "Server reported an error: $string",
+        'errno' => 0,
+        'errstr' => ''
+      );
+
+      if ($this->do_debug >= 1) {
+        $this->displayErrors();
+      }
+
+      return false;
+    } else {
+      return true;
+    }

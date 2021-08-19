@@ -1,0 +1,7 @@
+	/**
+	 * returns a list of all possible property names
+	 *
+	 * @return array
+	 */
+
+	public static function getPropertyNames() {

@@ -1,0 +1,6 @@
+    //metoda koja ubacuje novog hr zaposlenog, U INSERT FORMI ZA REGISTRACIJU
+
+    public function insert_hr($vrednosti){
+        if($this->postoji_u_bazi($vrednosti["korisnicko_ime"])==true){
+            return false;
+        }

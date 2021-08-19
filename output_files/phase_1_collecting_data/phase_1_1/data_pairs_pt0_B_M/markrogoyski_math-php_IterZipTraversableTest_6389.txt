@@ -1,0 +1,20 @@
+    /**
+     * @test         zip with two traversable objects of the different sizes
+     * @dataProvider dataProviderForZipTwoTraversableDifferentSize
+     * @param        \Traversable $iter1
+     * @param        \Traversable $iter2
+     * @param        array     $expected
+     */
+
+    public function testZipTwoTraversableDifferentSize(\Traversable $iter1, \Traversable $iter2, array $expected)
+    {
+        // Given
+        $result = [];
+
+        foreach (Iter::zip($iter1, $iter2) as [$value1, $value2]) {
+            $result[] = [$value1, $value2];
+        }
+
+        // Then
+        $this->assertEquals($expected, $result);
+    }

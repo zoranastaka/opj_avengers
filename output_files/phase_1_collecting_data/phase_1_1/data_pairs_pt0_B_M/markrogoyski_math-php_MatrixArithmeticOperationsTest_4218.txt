@@ -1,0 +1,18 @@
+    /**
+     * @test         multiply vector
+     * @dataProvider dataProviderForMultiplyVector
+     */
+
+    public function testMultiplyVector(array $A, array $B, array $R)
+    {
+        // Given
+        $A  = MatrixFactory::create($A);
+        $B  = new Vector($B);
+        $R  = MatrixFactory::create($R);
+
+        // When
+        $R2 = $A->multiply($B);
+
+        // Then
+        $this->assertEquals($R, $R2);
+    }

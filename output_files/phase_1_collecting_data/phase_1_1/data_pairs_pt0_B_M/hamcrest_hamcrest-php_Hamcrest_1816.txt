@@ -1,0 +1,12 @@
+    /**
+     * Does array size satisfy a given matcher?
+     *
+     * @param \Hamcrest\Matcher|int $size as a {@link Hamcrest\Matcher} or a value.
+     *
+     * @return \Hamcrest\Arrays\IsArrayWithSize
+     */
+
+    function arrayWithSize($size)
+    {
+        return \Hamcrest\Arrays\IsArrayWithSize::arrayWithSize($size);
+    }

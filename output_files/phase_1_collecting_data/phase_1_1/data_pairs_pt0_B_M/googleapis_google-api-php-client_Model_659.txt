@@ -1,0 +1,33 @@
+  /**
+   * Create a simplified object suitable for straightforward
+   * conversion to JSON. This is relatively expensive
+   * due to the usage of reflection, but shouldn't be called
+   * a whole lot, and is the most straightforward way to filter.
+   */
+
+  public function toSimpleObject()
+  {
+    $object = new stdClass();
+
+    // Process all other data.
+    foreach ($this->modelData as $key => $val) {
+      $result = $this->getSimpleValue($val);
+      if ($result !== null) {
+        $object->$key = $this->nullPlaceholderCheck($result);
+      }
+    }
+
+    // Process all public properties.
+    $reflect = new ReflectionObject($this);
+    $props = $reflect->getProperties(ReflectionProperty::IS_PUBLIC);
+    foreach ($props as $member) {
+      $name = $member->getName();
+      $result = $this->getSimpleValue($this->$name);
+      if ($result !== null) {
+        $name = $this->getMappedName($name);
+        $object->$name = $this->nullPlaceholderCheck($result);
+      }
+    }
+
+    return $object;
+  }

@@ -1,0 +1,10 @@
+    /**
+     * Set the readline history file path.
+     *
+     * @param string $file
+     */
+
+    public function setHistoryFile($file)
+    {
+        $this->historyFile = ConfigPaths::touchFileWithMkdir($file);
+    }

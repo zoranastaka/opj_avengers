@@ -1,0 +1,8 @@
+    /**
+     * @return Frame
+     */
+
+    public function get_last_child()
+    {
+        return $this->_last_child;
+    }

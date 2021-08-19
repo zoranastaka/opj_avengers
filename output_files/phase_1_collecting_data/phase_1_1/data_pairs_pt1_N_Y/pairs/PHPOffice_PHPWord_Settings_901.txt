@@ -1,0 +1,16 @@
+    /**
+     * Set the compatibility option used by the XMLWriter
+     *
+     * This sets the setIndent and setIndentString for better compatibility
+     *
+     * @param bool $compatibility
+     * @return bool
+     */
+
+    public static function setCompatibility($compatibility)
+    {
+        $compatibility = (bool) $compatibility;
+        self::$xmlWriterCompatibility = $compatibility;
+
+        return true;
+    }

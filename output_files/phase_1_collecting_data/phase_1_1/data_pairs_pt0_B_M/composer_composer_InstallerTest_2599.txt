@@ -1,0 +1,9 @@
+    /**
+     * @group slow
+     * @dataProvider getSlowIntegrationTests
+     */
+
+    public function testSlowIntegration($file, $message, $condition, $composerConfig, $lock, $installed, $run, $expectLock, $expectInstalled, $expectOutput, $expect, $expectResult)
+    {
+        return $this->testIntegration($file, $message, $condition, $composerConfig, $lock, $installed, $run, $expectLock, $expectInstalled, $expectOutput, $expect, $expectResult);
+    }

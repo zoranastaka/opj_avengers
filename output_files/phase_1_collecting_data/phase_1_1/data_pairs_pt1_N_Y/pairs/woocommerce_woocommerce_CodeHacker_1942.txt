@@ -1,0 +1,20 @@
+/**
+ * CodeHacker - allows to hack (alter on the fly) the content of PHP code files.
+ *
+ * Based on BypassFinals: https://github.com/dg/bypass-finals
+ *
+ * How to use:
+ *
+ * 1. Register hacks using CodeHacker::add_hack(hack). A hack is either:
+ *    - A function with 'hack($code, $path)' signature, or
+ *    - An object having a public 'hack($code, $path)' method.
+ *
+ *    Where $code is a string containing the code to hack, and $path is the full path of the file
+ *    containing the code. The function/method must return a string with the code already hacked.
+ *
+ * 2. Run CodeHacker::enable()
+ *
+ * For using with PHPUnit, see CodeHackerTestHook.
+ */
+
+final class CodeHacker {

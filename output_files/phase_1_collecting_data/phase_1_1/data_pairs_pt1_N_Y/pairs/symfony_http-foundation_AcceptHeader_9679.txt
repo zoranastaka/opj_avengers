@@ -1,0 +1,10 @@
+    /**
+     * Returns given value's item, if exists.
+     *
+     * @return AcceptHeaderItem|null
+     */
+
+    public function get(string $value)
+    {
+        return $this->items[$value] ?? $this->items[explode('/', $value)[0].'/*'] ?? $this->items['*/*'] ?? $this->items['*'] ?? null;
+    }

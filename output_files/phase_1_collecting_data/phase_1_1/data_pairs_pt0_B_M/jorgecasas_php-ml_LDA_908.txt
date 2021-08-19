@@ -1,0 +1,19 @@
+    /**
+     * Transforms the given sample to a lower dimensional vector by using
+     * the eigenVectors obtained in the last run of <code>fit</code>.
+     *
+     * @throws InvalidOperationException
+     */
+
+    public function transform(array $sample): array
+    {
+        if (!$this->fit) {
+            throw new InvalidOperationException('LDA has not been fitted with respect to original dataset, please run LDA::fit() first');
+        }
+
+        if (!is_array($sample[0])) {
+            $sample = [$sample];
+        }
+
+        return $this->reduce($sample);
+    }

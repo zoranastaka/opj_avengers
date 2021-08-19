@@ -1,0 +1,14 @@
+    /**
+     * @test
+     * @dataProvider dataProviderForNotDisjoint
+     */
+
+    public function testNotDisjoint(array $A, array $B)
+    {
+        // Given
+        $setA = new Set($A);
+        $setB = new Set($B);
+
+        // Then
+        $this->assertFalse($setA->isDisjoint($setB));
+    }

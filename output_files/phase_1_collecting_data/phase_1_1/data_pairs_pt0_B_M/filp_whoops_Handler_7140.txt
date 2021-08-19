@@ -1,0 +1,8 @@
+    /**
+     * @param RunInterface $run
+     */
+
+    public function setRun(RunInterface $run)
+    {
+        $this->run = $run;
+    }

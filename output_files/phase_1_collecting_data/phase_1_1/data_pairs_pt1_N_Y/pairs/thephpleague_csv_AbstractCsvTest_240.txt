@@ -1,0 +1,15 @@
+    /**
+     * @covers \League\Csv\Stream
+     */
+
+    public function testSetCsvControlWithDocument(): void
+    {
+        $raw_csv = "john,doe,john.doe@example.com\njane,doe,jane.doe@example.com\n";
+        $csv = Reader::createFromString($raw_csv);
+        $csv
+            ->setDelimiter(',')
+            ->setEnclosure('"')
+            ->setEscape('|');
+
+        self::assertSame('|', $csv->getEscape());
+    }

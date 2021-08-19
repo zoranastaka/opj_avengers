@@ -1,0 +1,8 @@
+    /**
+     * Replaces default suffixes of executable.
+     */
+
+    public function setSuffixes(array $suffixes)
+    {
+        $this->suffixes = $suffixes;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get text to be written
+     *
+     * @return String
+     */
+
+    public function getText()
+    {
+        return $this->text;
+    }

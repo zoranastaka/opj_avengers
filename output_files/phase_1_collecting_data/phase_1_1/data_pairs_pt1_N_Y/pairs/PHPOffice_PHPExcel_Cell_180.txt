@@ -1,0 +1,10 @@
+    /**
+     *    Is this cell in a merge range
+     *
+     *    @return boolean
+     */
+
+    public function isInMergeRange()
+    {
+        return (boolean) $this->getMergeRange();
+    }

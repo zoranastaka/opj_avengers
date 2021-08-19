@@ -1,0 +1,17 @@
+    /**
+     * Constructor
+     *
+     * @param int $a lower boundary of the distribution
+     * @param int $b upper boundary of the distribution
+     *
+     * @throws Exception\BadDataException if b is ≤ a
+     */
+
+    public function __construct(int $a, int $b)
+    {
+        if ($b <= $a) {
+            throw new Exception\BadDataException("b must be > a (b:$b a:$a)");
+        }
+
+        parent::__construct($a, $b);
+    }

@@ -1,0 +1,8 @@
+    /**
+     *
+     */
+
+    public function lock_columns()
+    {
+        $this->_columns_locked = true;
+    }

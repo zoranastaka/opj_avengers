@@ -1,0 +1,8 @@
+    /**
+     * @param mixed ...$args
+     */
+
+    public function andReturn(...$args)
+    {
+        return $this->__call(__FUNCTION__, $args);
+    }

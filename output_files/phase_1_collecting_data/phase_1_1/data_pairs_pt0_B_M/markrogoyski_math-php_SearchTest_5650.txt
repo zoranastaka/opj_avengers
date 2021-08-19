@@ -1,0 +1,19 @@
+    /**
+     * Test data created with Python NumPy nanargmin
+     * @return array
+     */
+
+    public function dataProviderForNanArgMinWithNans(): array
+    {
+        return [
+            [[0, 1, 2, 3, \NAN], 0],
+            [[0, 1, 2, \NAN, 3], 0],
+            [[0, 1, \NAN, 2, 3], 0],
+            [[0, \NAN, 1, 2, 3], 0],
+            [[\NAN, 0, 1, 2, 3], 1],
+            [[\NAN, 0, \NAN, 1, 2, 3], 1],
+
+            [[\NAN, -\INF], 1],
+            [[-\INF, \NAN], 0],
+        ];
+    }

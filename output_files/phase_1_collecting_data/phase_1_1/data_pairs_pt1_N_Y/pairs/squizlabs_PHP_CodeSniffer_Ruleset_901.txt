@@ -1,0 +1,112 @@
+    /**
+     * Initialise the ruleset that the run will use.
+     *
+     * @param \PHP_CodeSniffer\Config $config The config data for the run.
+     *
+     * @return void
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If no sniffs were registered.
+     */
+
+    public function __construct(Config $config)
+    {
+        $this->config = $config;
+        $restrictions = $config->sniffs;
+        $exclusions   = $config->exclude;
+        $sniffs       = [];
+
+        $standardPaths = [];
+        foreach ($config->standards as $standard) {
+            $installed = Util\Standards::getInstalledStandardPath($standard);
+            if ($installed === null) {
+                $standard = Util\Common::realpath($standard);
+                if (is_dir($standard) === true
+                    && is_file(Util\Common::realpath($standard.DIRECTORY_SEPARATOR.'ruleset.xml')) === true
+                ) {
+                    $standard = Util\Common::realpath($standard.DIRECTORY_SEPARATOR.'ruleset.xml');
+                }
+            } else {
+                $standard = $installed;
+            }
+
+            $standardPaths[] = $standard;
+        }
+
+        foreach ($standardPaths as $standard) {
+            $ruleset = @simplexml_load_string(file_get_contents($standard));
+            if ($ruleset !== false) {
+                $standardName = (string) $ruleset['name'];
+                if ($this->name !== '') {
+                    $this->name .= ', ';
+                }
+
+                $this->name .= $standardName;
+
+                // Allow autoloading of custom files inside this standard.
+                if (isset($ruleset['namespace']) === true) {
+                    $namespace = (string) $ruleset['namespace'];
+                } else {
+                    $namespace = basename(dirname($standard));
+                }
+
+                Autoload::addSearchPath(dirname($standard), $namespace);
+            }
+
+            if (defined('PHP_CODESNIFFER_IN_TESTS') === true && empty($restrictions) === false) {
+                // In unit tests, only register the sniffs that the test wants and not the entire standard.
+                try {
+                    foreach ($restrictions as $restriction) {
+                        $sniffs = array_merge($sniffs, $this->expandRulesetReference($restriction, dirname($standard)));
+                    }
+                } catch (RuntimeException $e) {
+                    // Sniff reference could not be expanded, which probably means this
+                    // is an installed standard. Let the unit test system take care of
+                    // setting the correct sniff for testing.
+                    return;
+                }
+
+                break;
+            }
+
+            if (PHP_CODESNIFFER_VERBOSITY === 1) {
+                echo "Registering sniffs in the $standardName standard... ";
+                if (count($config->standards) > 1 || PHP_CODESNIFFER_VERBOSITY > 2) {
+                    echo PHP_EOL;
+                }
+            }
+
+            $sniffs = array_merge($sniffs, $this->processRuleset($standard));
+        }//end foreach
+
+        // Ignore sniff restrictions if caching is on.
+        if ($config->cache === true) {
+            $restrictions = [];
+            $exclusions   = [];
+        }
+
+        $sniffRestrictions = [];
+        foreach ($restrictions as $sniffCode) {
+            $parts     = explode('.', strtolower($sniffCode));
+            $sniffName = $parts[0].'\sniffs\\'.$parts[1].'\\'.$parts[2].'sniff';
+            $sniffRestrictions[$sniffName] = true;
+        }
+
+        $sniffExclusions = [];
+        foreach ($exclusions as $sniffCode) {
+            $parts     = explode('.', strtolower($sniffCode));
+            $sniffName = $parts[0].'\sniffs\\'.$parts[1].'\\'.$parts[2].'sniff';
+            $sniffExclusions[$sniffName] = true;
+        }
+
+        $this->registerSniffs($sniffs, $sniffRestrictions, $sniffExclusions);
+        $this->populateTokenListeners();
+
+        $numSniffs = count($this->sniffs);
+        if (PHP_CODESNIFFER_VERBOSITY === 1) {
+            echo "DONE ($numSniffs sniffs registered)".PHP_EOL;
+        }
+
+        if ($numSniffs === 0) {
+            throw new RuntimeException('No sniffs were registered');
+        }
+
+    }//end __construct()

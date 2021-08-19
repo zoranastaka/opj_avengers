@@ -1,0 +1,9 @@
+    /**
+     * @test ArrayAccess interface
+     */
+
+    public function testArrayAccessOffsetExists()
+    {
+        // Then
+        $this->assertTrue($this->V->offsetExists(0));
+    }

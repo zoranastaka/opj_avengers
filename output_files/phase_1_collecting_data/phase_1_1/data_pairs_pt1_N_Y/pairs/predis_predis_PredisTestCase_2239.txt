@@ -1,0 +1,12 @@
+    /**
+     * Returns a named array with default values for client options.
+     *
+     * @return array Default connection parameters
+     */
+
+    protected function getDefaultOptionsArray(): array
+    {
+        return array(
+            'commands' => new Command\RedisFactory(),
+        );
+    }

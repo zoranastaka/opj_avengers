@@ -1,0 +1,3 @@
+    /** @dataProvider provideTestColumnInfo */
+
+    public function testColumnInfo($code, $startPos, $endPos, $startColumn, $endColumn) {

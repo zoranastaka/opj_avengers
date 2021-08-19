@@ -1,0 +1,55 @@
+    /**
+     * S/MIME Signing tests (self-signed).
+     *
+     * @requires extension openssl
+     */
+
+    public function testSigning()
+    {
+        $this->Mail->Subject .= ': S/MIME signing';
+        $this->Mail->Body = 'This message is S/MIME signed.';
+        $this->buildBody();
+
+        $dn = [
+            'countryName' => 'UK',
+            'stateOrProvinceName' => 'Here',
+            'localityName' => 'There',
+            'organizationName' => 'PHP',
+            'organizationalUnitName' => 'PHPMailer',
+            'commonName' => 'PHPMailer Test',
+            'emailAddress' => 'phpmailer@example.com',
+        ];
+        $keyconfig = [
+            'digest_alg' => 'sha256',
+            'private_key_bits' => 2048,
+            'private_key_type' => OPENSSL_KEYTYPE_RSA,
+        ];
+        $password = 'password';
+        $certfile = 'certfile.pem';
+        $keyfile = 'keyfile.pem';
+
+        //Make a new key pair
+        $pk = openssl_pkey_new($keyconfig);
+        //Create a certificate signing request
+        $csr = openssl_csr_new($dn, $pk);
+        //Create a self-signed cert
+        $cert = openssl_csr_sign($csr, null, $pk, 1);
+        //Save the cert
+        openssl_x509_export($cert, $certout);
+        file_put_contents($certfile, $certout);
+        //Save the key
+        openssl_pkey_export($pk, $pkeyout, $password);
+        file_put_contents($keyfile, $pkeyout);
+
+        $this->Mail->sign(
+            $certfile,
+            $keyfile,
+            $password
+        );
+        self::assertTrue($this->Mail->send(), 'S/MIME signing failed');
+
+        $msg = $this->Mail->getSentMIMEMessage();
+        self::assertStringNotContainsString("\r\n\r\nMIME-Version:", $msg, 'Incorrect MIME headers');
+        unlink($certfile);
+        unlink($keyfile);
+    }

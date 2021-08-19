@@ -1,0 +1,28 @@
+    /**
+     * Change the period date interval.
+     *
+     * @param DateInterval|string $interval
+     *
+     * @throws InvalidIntervalException
+     *
+     * @return $this
+     */
+
+    public function setDateInterval($interval)
+    {
+        if (!$interval = CarbonInterval::make($interval)) {
+            throw new InvalidIntervalException('Invalid interval.');
+        }
+
+        if ($interval->spec() === 'PT0S' && !$interval->f && !$interval->getStep()) {
+            throw new InvalidIntervalException('Empty interval is not accepted.');
+        }
+
+        $this->dateInterval = $interval;
+
+        $this->isDefaultInterval = false;
+
+        $this->handleChangedParameters();
+
+        return $this;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get the Debugbar instance
+     *
+     * @return \Barryvdh\Debugbar\LaravelDebugbar
+     */
+
+    function debugbar()
+    {
+        return app(\Barryvdh\Debugbar\LaravelDebugbar::class);
+    }

@@ -1,0 +1,11 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function close()
+    {
+        foreach ($this->pipes as $pipe) {
+            fclose($pipe);
+        }
+        $this->pipes = [];
+    }

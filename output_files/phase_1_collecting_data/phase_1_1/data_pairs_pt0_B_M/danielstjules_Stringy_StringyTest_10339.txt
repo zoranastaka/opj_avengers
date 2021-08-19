@@ -1,0 +1,5 @@
+    /**
+     * @dataProvider longestCommonSubstringProvider()
+     */
+
+    public function testLongestCommonSubstring($expected, $str, $otherStr,

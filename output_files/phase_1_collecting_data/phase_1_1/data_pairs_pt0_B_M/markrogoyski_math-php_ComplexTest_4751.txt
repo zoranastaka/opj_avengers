@@ -1,0 +1,19 @@
+    /**
+     * @test         arg returns the expected value
+     * @dataProvider dataProviderForArg
+     * @param        number $r
+     * @param        number $i
+     * @param        number $expected
+     */
+
+    public function testArg($r, $i, $expected)
+    {
+        // Given
+        $c = new Complex($r, $i);
+
+        // When
+        $arg = $c->arg();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $arg, 0.00000001);
+    }

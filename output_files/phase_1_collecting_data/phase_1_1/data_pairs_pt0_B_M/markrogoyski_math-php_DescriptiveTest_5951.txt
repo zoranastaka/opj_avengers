@@ -1,0 +1,16 @@
+    /**
+     * @test   medianAbsoluteDeviation when array is empty
+     * @throws \Exception
+     */
+
+    public function testMedianAbsoluteDeviationExceptionWhenEmptyArray()
+    {
+        // Given
+        $numbers = [];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Descriptive::medianAbsoluteDeviation($numbers);
+    }

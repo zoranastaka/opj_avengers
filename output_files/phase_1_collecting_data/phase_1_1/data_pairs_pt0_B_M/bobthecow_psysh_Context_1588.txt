@@ -1,0 +1,16 @@
+    /**
+     * Get the most recent output from evaluated code.
+     *
+     * @throws \InvalidArgumentException If no output has happened yet
+     *
+     * @return string|null
+     */
+
+    public function getLastStdout()
+    {
+        if (!isset($this->lastStdout)) {
+            throw new \InvalidArgumentException('No most-recent output');
+        }
+
+        return $this->lastStdout;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Return the list of all possible cache storage methods
+     *
+     * @return string[]
+     **/
+
+    public static function getAllCacheStorageMethods()
+    {
+        return self::$storageMethods;
+    }

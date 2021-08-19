@@ -1,0 +1,7 @@
+    /**
+     * Gets the line number the comment ends on.
+     *
+     * @return int Line number (or -1 if not available)
+     */
+
+    public function getEndLine() : int {

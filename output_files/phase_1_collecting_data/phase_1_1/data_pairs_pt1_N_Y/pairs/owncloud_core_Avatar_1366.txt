@@ -1,0 +1,10 @@
+	/**
+	 * constructor
+	 *
+	 * @param IStorage $storage The storage where the avatars are
+	 * @param IL10N $l
+	 * @param User $user
+	 * @param ILogger $logger
+	 */
+
+	public function __construct(IStorage $storage, IL10N $l, User $user, ILogger $logger) {

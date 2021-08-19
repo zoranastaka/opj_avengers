@@ -1,0 +1,15 @@
+// @codeCoverageIgnoreStart
+
+Artisan::command('memcached:stats', function () {
+    if (config('cache.default') === 'memcached') {
+        /** @var \Illuminate\Console\Command */
+        $command = $this;
+        $hostStats = Cache::getMemcached()->getStats();
+        foreach ($hostStats as $host => $stats) {
+            $command->line('Host: '.$host);
+            foreach ($stats as $key => $value) {
+                $command->line($key.': '.$value);
+            }
+            $command->line('');
+        }
+    }

@@ -1,0 +1,21 @@
+    /**
+     * @test         map with a closure
+     * @dataProvider dataProviderForMapClosure
+     * @param        array    $A
+     * @param        \Closure $func
+     * @param        array    $expected
+     * @throws       \Exception
+     */
+
+    public function testMapWithClosure(array $A, \Closure $func, array $expected)
+    {
+        // Given
+        $A        = MatrixFactory::create($A);
+        $expected = MatrixFactory::create($expected);
+
+        // When
+        $R = $A->map($func);
+
+        // Then
+        $this->assertEquals($expected, $R);
+    }

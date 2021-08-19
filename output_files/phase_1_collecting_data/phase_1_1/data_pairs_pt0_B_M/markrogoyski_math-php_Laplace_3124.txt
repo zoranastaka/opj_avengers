@@ -1,0 +1,23 @@
+    /**
+     * Laplace distribution - probability density function
+     *
+     * https://en.wikipedia.org/wiki/Laplace_distribution
+     *
+     *            1      /  |x - μ| \
+     * f(x|μ,b) = -- exp| - -------  |
+     *            2b     \     b    /
+     *
+     * @param  float $x
+     *
+     * @return float
+     */
+
+    public function pdf(float $x): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['x' => $x]);
+
+        $μ = $this->μ;
+        $b = $this->b;
+
+        return (1 / (2 * $b)) * \exp(-(\abs($x - $μ) / $b));
+    }

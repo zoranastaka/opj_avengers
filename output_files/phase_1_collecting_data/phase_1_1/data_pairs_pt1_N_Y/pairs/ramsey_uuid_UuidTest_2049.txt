@@ -1,0 +1,30 @@
+    /**
+     * Tests that generated UUID's using timestamp last COMB are sequential
+     */
+
+    public function testUuid4TimestampLastComb(): void
+    {
+        $mock = $this->getMockBuilder(RandomGeneratorInterface::class)->getMock();
+        $mock->expects($this->any())
+            ->method('generate')
+            ->willReturnCallback(function ($length) {
+                // Makes first fields of UUIDs equal
+                return hex2bin(str_pad('', $length * 2, '0'));
+            });
+
+        $factory = new UuidFactory();
+        $generator = new CombGenerator($mock, $factory->getNumberConverter());
+        $codec = new TimestampLastCombCodec($factory->getUuidBuilder());
+        $factory->setRandomGenerator($generator);
+        $factory->setCodec($codec);
+
+        $previous = $factory->uuid4();
+
+        for ($i = 0; $i < 1000; $i++) {
+            usleep(100);
+            $uuid = $factory->uuid4();
+            $this->assertGreaterThan($previous->toString(), $uuid->toString());
+
+            $previous = $uuid;
+        }
+    }

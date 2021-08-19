@@ -1,0 +1,10 @@
+    /**
+     * Retrieve key pass phrase.
+     *
+     * @return null|string
+     */
+
+    public function getPassPhrase()
+    {
+        return $this->passPhrase;
+    }

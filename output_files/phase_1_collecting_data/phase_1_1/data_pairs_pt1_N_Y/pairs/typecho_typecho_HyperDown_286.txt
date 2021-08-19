@@ -1,0 +1,16 @@
+    /**
+     * @param array $lines
+     * @param $start
+     * @return string[]
+     */
+
+    public function markLines(array $lines, $start)
+    {
+        $i = -1;
+        $self = $this;
+
+        return $this->_line ? array_map(function ($line) use ($self, $start, &$i) {
+            $i ++;
+            return $self->markLine($start + $i) . $line;
+        }, $lines) : $lines;
+    }

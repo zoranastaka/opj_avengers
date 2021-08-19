@@ -1,0 +1,8 @@
+    /**
+     * @return bool
+     */
+
+    public function isReadOnly()
+    {
+        return $this->readOnly;
+    }

@@ -1,0 +1,16 @@
+    /**
+     * http://mathfaculty.fullerton.edu/mathews/n2003/boolerule/BooleRuleMod/Links/BooleRuleMod_lnk_12.html
+     * @return array
+     */
+
+    public function dataProviderForCallback3(): array
+    {
+        return [
+            [5, 1.553155],
+            [9, 1.963413],
+            [13, 2.001295],
+            [17, 2.007328],
+            [49, 2.014809],
+            [121, 2.015961],
+        ];
+    }

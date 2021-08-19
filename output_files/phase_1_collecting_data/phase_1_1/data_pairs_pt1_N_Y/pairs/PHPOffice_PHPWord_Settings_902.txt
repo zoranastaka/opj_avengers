@@ -1,0 +1,10 @@
+    /**
+     * Get zip handler class
+     *
+     * @return string
+     */
+
+    public static function getZipClass()
+    {
+        return self::$zipClass;
+    }

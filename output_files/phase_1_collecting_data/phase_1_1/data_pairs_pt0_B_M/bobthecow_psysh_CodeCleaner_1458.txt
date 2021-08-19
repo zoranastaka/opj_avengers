@@ -1,0 +1,10 @@
+    /**
+     * Get the current local namespace.
+     *
+     * @return array|null
+     */
+
+    public function getNamespace()
+    {
+        return $this->namespace;
+    }

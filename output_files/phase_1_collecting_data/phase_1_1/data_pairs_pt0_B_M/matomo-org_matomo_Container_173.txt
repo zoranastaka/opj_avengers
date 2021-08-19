@@ -1,0 +1,18 @@
+   /**
+    * Returns Javascript code for getting the element's value
+    *
+    * @return   string
+    */
+
+    public function getJavascriptValue()
+    {
+        $args = array();
+        foreach ($this as $child) {
+            if ($child instanceof HTML_QuickForm2_Container) {
+                $args[] = $child->getJavascriptValue();
+            } else {
+                $args[] = "'" . $child->getId() . "'";
+            }
+        }
+        return 'qf.form.getContainerValue(' . implode(', ', $args) . ')';
+    }

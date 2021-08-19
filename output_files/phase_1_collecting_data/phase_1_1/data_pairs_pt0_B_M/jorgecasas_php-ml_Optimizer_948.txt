@@ -1,0 +1,6 @@
+    /**
+     * Executes the optimization with the given samples & targets
+     * and returns the weights
+     */
+
+    abstract public function runOptimization(array $samples, array $targets, Closure $gradientCb): array;

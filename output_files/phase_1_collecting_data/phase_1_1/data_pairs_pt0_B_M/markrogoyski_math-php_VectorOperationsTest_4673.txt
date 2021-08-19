@@ -1,0 +1,17 @@
+    /**
+     * @test   subtract exception - size mismatch
+     * @throws \Exception
+     */
+
+    public function testSubtractExceptionSizeMismatch()
+    {
+        // Given
+        $A = new Vector([1, 2, 3]);
+        $B = new Vector([1, 2]);
+
+        // Then
+        $this->expectException(Exception\VectorException::class);
+
+        // When
+        $A->subtract($B);
+    }

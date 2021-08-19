@@ -1,0 +1,64 @@
+    /**
+     * @param array $metadata see getRowEvolutionMetaData()
+     * @param int $idSite
+     * @param string $period
+     * @param string $date
+     * @param string $apiModule
+     * @param string $apiAction
+     * @param string|bool $label
+     * @param string|bool $segment
+     * @param array $apiParameters
+     * @throws Exception
+     * @return DataTable\Map|DataTable
+     */
+
+    private function loadRowEvolutionDataFromAPI($metadata, $idSite, $period, $date, $apiModule, $apiAction, $label, $segment, $apiParameters)
+    {
+        if (!is_array($label)) {
+            $label = array($label);
+        }
+        $label = array_map('rawurlencode', $label);
+
+        $parameters = array(
+            'method'                   => $apiModule . '.' . $apiAction,
+            'label'                    => $label,
+            'idSite'                   => $idSite,
+            'period'                   => $period,
+            'date'                     => $date,
+            'format'                   => 'original',
+            'serialize'                => '0',
+            'segment'                  => $segment,
+            // data for row evolution should NOT be limited
+            'filter_limit'             => -1,
+
+            // if more than one label is used, we add metadata to ensure we know which
+            // row corresponds with which label (since the labels can change, and rows
+            // can be sorted in a different order)
+            'labelFilterAddLabelIndex' => count($label) > 1 ? 1 : 0,
+        );
+        if (!empty($apiParameters) && is_array($apiParameters)) {
+            foreach ($apiParameters as $param => $value) {
+                $parameters[$param] = $value;
+            }
+        }
+
+        // add "processed metrics" like actions per visit or bounce rate
+        // note: some reports should not be filtered with AddColumnProcessedMetrics
+        // specifically, reports without the Metrics::INDEX_NB_VISITS metric such as Goals.getVisitsUntilConversion & Goal.getDaysToConversion
+        // this is because the AddColumnProcessedMetrics filter removes all datable rows lacking this metric
+        if (isset($metadata['metrics']['nb_visits'])) {
+            $parameters['filter_add_columns_when_show_all_columns'] = '0';
+        }
+
+        $url = Url::getQueryStringFromParameters($parameters);
+
+        $request = new Request($url);
+
+        try {
+            $dataTable = $request->process();
+        } catch (Exception $e) {
+            throw new Exception("API returned an error: " . $e->getMessage() . "\n");
+        }
+
+        return $dataTable;
+    }

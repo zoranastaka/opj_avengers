@@ -1,0 +1,11 @@
+    /**
+     * @covers \PhpOffice\PhpWord\PhpWord::getSection
+     */
+
+    public function testGetNotExistingSection()
+    {
+        $phpWord = new PhpWord();
+        $section = $phpWord->getSection(0);
+
+        $this->assertNull($section);
+    }

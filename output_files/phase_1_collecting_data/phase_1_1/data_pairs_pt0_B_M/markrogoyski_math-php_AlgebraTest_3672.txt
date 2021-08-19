@@ -1,0 +1,20 @@
+    /**
+     * @test         quartic
+     * @dataProvider dataProviderForQuartic
+     * @param        int   $a
+     * @param        int   $b
+     * @param        int   $c
+     * @param        int   $d
+     * @param        int   $e
+     * @param        array $expected_quartic
+     * @throws       \Exception
+     */
+
+    public function testQuartic(int $a, int $b, int $c, int $d, int $e, array $expected_quartic)
+    {
+        // When
+        $quartic = Algebra::quartic($a, $b, $c, $d, $e);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_quartic, $quartic, 0.00000001);
+    }

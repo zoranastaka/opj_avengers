@@ -1,0 +1,9 @@
+  /**
+   * Callback tick function used by @{method:setDebugTimeLimit}.
+   *
+   * Fatals with a useful stack trace after the time limit expires.
+   *
+   * @return void
+   */
+
+  public static function onDebugTick() {

@@ -1,0 +1,8 @@
+    /**
+     * Constructor
+     */
+
+    public function __construct()
+    {
+        $this->_roleRegistry = new \Magento\Framework\Acl\Role\Registry();
+    }

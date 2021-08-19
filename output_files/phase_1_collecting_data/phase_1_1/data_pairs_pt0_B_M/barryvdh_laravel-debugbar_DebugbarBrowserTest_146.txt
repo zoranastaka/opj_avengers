@@ -1,0 +1,18 @@
+    /**
+     * @param Router $router
+     */
+
+    protected function addWebRoutes(Router $router)
+    {
+        $router->get('web/plain', [
+            'uses' => function () {
+                return 'PONG';
+            }
+        ]);
+
+        $router->get('web/html', [
+            'uses' => function () {
+                return '<html><head></head><body>HTMLPONG</body></html>';
+            }
+        ]);
+    }

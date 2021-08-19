@@ -1,0 +1,10 @@
+    /**
+     * Returns true if the response is marked as "immutable".
+     *
+     * @final
+     */
+
+    public function isImmutable(): bool
+    {
+        return $this->headers->hasCacheControlDirective('immutable');
+    }

@@ -1,0 +1,16 @@
+    /**
+     * @test Labeled X data
+     */
+
+    public function testLabeledXData()
+    {
+        // When
+        $X = $this->cereal->getLabeledXData();
+
+        // Then
+        $this->assertCount(15, $X);
+        foreach ($X as $label => $observation) {
+            $this->assertTrue(\in_array($label, SampleData\Cereal::CEREALS));
+            $this->assertCount(145, $observation);
+        }
+    }

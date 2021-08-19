@@ -1,0 +1,28 @@
+    /**
+     * @test Axiom: D is invertible iff diagonal is all non zero
+     * Diagonal matrix is invertible if and only if its diagonal entries are all non zero
+     * @dataProvider dataProviderForDiagonalMatrix
+     * @param        array $D
+     * @throws       \Exception
+     */
+
+    public function testDiagonalMatrixIsInvertibleIfAndOnlyIfDigaonalEntriesAreAllNonZero(array $D)
+    {
+        // Given
+        $D = MatrixFactory::create($D);
+        $this->assertTrue($D->isDiagonal());
+
+        $zeros = \array_filter(
+            $D->getDiagonalElements(),
+            function ($x) {
+                return $x == 0;
+            }
+        );
+
+        // Then
+        if (count($zeros) == 0) {
+            $this->assertTrue($D->isInvertible());
+        } else {
+            $this->assertFalse($D->isInvertible());
+        }
+    }

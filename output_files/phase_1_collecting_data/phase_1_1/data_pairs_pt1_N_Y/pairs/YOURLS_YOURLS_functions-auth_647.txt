@@ -1,0 +1,6 @@
+/**
+ * Check a submitted password sent in plain text against stored password which can be a salted hash
+ *
+ */
+
+function yourls_check_password_hash( $user, $submitted_password ) {

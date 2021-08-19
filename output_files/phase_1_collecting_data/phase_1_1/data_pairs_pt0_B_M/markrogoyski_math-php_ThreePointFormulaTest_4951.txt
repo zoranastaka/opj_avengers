@@ -1,0 +1,12 @@
+    /**
+     * @return array (x, tol)
+     */
+
+    public function dataProviderForTestDifferentiateNonZeroError(): array
+    {
+        return [
+            [0, 2],
+            [1, 1],
+            [2, 2],
+        ];
+    }

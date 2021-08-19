@@ -1,0 +1,6 @@
+    /** @test */
+
+    public function the_facade_works()
+    {
+        $this->assertFalse(BotMan::isBot());
+    }

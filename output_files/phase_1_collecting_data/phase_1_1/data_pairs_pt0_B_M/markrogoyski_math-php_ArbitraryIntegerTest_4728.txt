@@ -1,0 +1,20 @@
+    /**
+     * @test         not greaterThan
+     * @dataProvider dataProviderForNotGreaterThan
+     * @param        string $int1
+     * @param        string $int2
+     * @throws       \Exception
+     */
+
+    public function testNotGreaterThan(string $int1, string $int2)
+    {
+        // Given
+        $int1 = new ArbitraryInteger($int1);
+        $int2 = new ArbitraryInteger($int2);
+
+        // When
+        $greaterThan = $int1->greaterThan($int2);
+
+        // Then
+        $this->assertFalse($greaterThan);
+    }

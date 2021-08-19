@@ -1,0 +1,18 @@
+    /**
+     * Enables fetching output and error output from the underlying process.
+     *
+     * @return $this
+     *
+     * @throws RuntimeException In case the process is already running
+     */
+
+    public function enableOutput()
+    {
+        if ($this->isRunning()) {
+            throw new RuntimeException('Enabling output while the process is running is not possible.');
+        }
+
+        $this->outputDisabled = false;
+
+        return $this;
+    }

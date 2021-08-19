@@ -1,0 +1,12 @@
+    /**
+     * Creates variable node.
+     *
+     * @param string|Expr $name Name
+     *
+     * @return Expr\Variable
+     */
+
+    public function var($name) : Expr\Variable {
+        if (!\is_string($name) && !$name instanceof Expr) {
+            throw new \LogicException('Variable name must be string or Expr');
+        }

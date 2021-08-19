@@ -1,0 +1,10 @@
+    /**
+     * Returns the token_auth to authenticate the current user in the API
+     *
+     * @return string
+     */
+
+    public function getTokenAuth()
+    {
+        return $this->tokenAuth;
+    }

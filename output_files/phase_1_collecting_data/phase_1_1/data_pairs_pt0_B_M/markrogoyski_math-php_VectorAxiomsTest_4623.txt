@@ -1,0 +1,21 @@
+    /**
+     * @test Axiom: A x (B + C) = (A x B) + (A x C)
+     * Cross product distributivity
+     * @dataProvider dataProviderForCrossProductThreeVectors
+     */
+
+    public function testCrossProductDistributivity(array $A, array $B, array $C)
+    {
+        // Given
+        $A = new Vector($A);
+        $B = new Vector($B);
+        $C = new Vector($C);
+
+        // When
+        $Ax⟮B＋C⟯    = $A->crossProduct($B->add($C));
+        $⟮AxB⟯＋⟮AxC⟯ = $A->crossProduct($B)->add($A->crossProduct($C));
+
+        // Then
+        $this->assertEquals($Ax⟮B＋C⟯, $⟮AxB⟯＋⟮AxC⟯);
+        $this->assertEquals($Ax⟮B＋C⟯->getVector(), $⟮AxB⟯＋⟮AxC⟯->getVector());
+    }

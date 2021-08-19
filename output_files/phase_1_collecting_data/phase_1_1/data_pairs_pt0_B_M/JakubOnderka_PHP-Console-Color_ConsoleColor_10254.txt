@@ -1,0 +1,9 @@
+    /**
+     * @param string|int $value
+     * @return string
+     */
+
+    private function escSequence($value)
+    {
+        return "\033[{$value}m";
+    }

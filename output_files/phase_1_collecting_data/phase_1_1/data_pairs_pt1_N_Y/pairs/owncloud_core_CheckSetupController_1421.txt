@@ -1,0 +1,9 @@
+	/**
+	 * Checks if the ownCloud server can connect to the internet using HTTPS and HTTP
+	 * @return bool
+	 */
+
+	private function isInternetConnectionWorking() {
+		if ($this->config->getSystemValue('has_internet_connection', true) === false) {
+			return false;
+		}

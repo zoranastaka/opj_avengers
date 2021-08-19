@@ -1,0 +1,3 @@
+	//procesuiraj login
+
+	public function check_login_type(){

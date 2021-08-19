@@ -1,0 +1,11 @@
+        /**
+         * Generate a 16-bit integer
+         * /dev/urandom
+         *
+         * @return int
+         */
+
+        public static function randombytes_random16()
+        {
+            return '';
+        }

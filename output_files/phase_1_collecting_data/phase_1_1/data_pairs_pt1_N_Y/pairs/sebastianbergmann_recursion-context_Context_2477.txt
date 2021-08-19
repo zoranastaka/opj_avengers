@@ -1,0 +1,28 @@
+    /**
+     * Checks if the given value exists within the context.
+     *
+     * @param array|object $value the value to check
+     *
+     * @throws InvalidArgumentException Thrown if $value is not an array or object
+     *
+     * @return false|int|string the string or integer ID of the stored value if it has already been seen, or false if the value is not stored
+     *
+     * @psalm-template T
+     * @psalm-param T $value
+     * @param-out T $value
+     */
+
+    public function contains(&$value)
+    {
+        if (is_array($value)) {
+            return $this->containsArray($value);
+        }
+
+        if (is_object($value)) {
+            return $this->containsObject($value);
+        }
+
+        throw new InvalidArgumentException(
+            'Only arrays and objects are supported'
+        );
+    }

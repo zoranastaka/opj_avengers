@@ -1,0 +1,8 @@
+	// --------------------------------------------------------------------
+
+	public function test_load_config()
+	{
+		$cfg = 'someconfig';
+		$this->assertTrue($this->load->config($cfg, FALSE));
+		$this->assertContains($cfg, $this->ci_obj->config->loaded);
+	}

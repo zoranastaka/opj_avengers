@@ -1,0 +1,14 @@
+    /**
+     * @test
+     */
+
+    public function can_catch_failures()
+    {
+        $export = new QueuedExportWithFailedHook();
+        try {
+            $export->queue('queued-export.xlsx');
+        } catch (Throwable $e) {
+        }
+
+        $this->assertTrue(app('queue-has-failed'));
+    }

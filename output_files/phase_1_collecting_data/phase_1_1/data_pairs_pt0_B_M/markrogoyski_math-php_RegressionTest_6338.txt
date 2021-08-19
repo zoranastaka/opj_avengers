@@ -1,0 +1,15 @@
+    /**
+     * @test         sumOfSquaresResidual
+     * @dataProvider dataProviderForSumOfSquaresResidual
+     * @param        array $points
+     * @param        float $SSres
+     */
+
+    public function testSumOfSquareResidual(array $points, float $SSres)
+    {
+        // Given
+        $regression = new Linear($points);
+
+        // Then
+        $this->assertEqualsWithDelta($SSres, $regression->sumOfSquaresResidual(), 0.00001);
+    }

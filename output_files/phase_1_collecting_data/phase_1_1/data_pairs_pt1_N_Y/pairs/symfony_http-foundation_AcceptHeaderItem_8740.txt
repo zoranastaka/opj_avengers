@@ -1,0 +1,12 @@
+    /**
+     * Set the item quality.
+     *
+     * @return $this
+     */
+
+    public function setQuality(float $quality)
+    {
+        $this->quality = $quality;
+
+        return $this;
+    }

@@ -1,0 +1,23 @@
+    /**
+     * @testCase Axiom: x⁽ⁿ⁾ = L⟮n,k⟯ x₍k₎
+     * Rising factorial can be represented as the summation of Lah numbers and falling factorials
+     *
+     * @dataProvider dataProivderForLahNumbers
+     * @param        int $x
+     * @param        int $n
+     * @throws       \Exception
+     */
+
+    public function testRisingFactorialAsLahNumberAndFallingFactorial(int $x, int $n)
+    {
+        $x⁽ⁿ⁾  = Combinatorics::risingFactorial($x, $n);
+
+        $∑L⟮n、k⟯x₍k₎ = 0;
+        for ($k = 1; $k <= $n; $k++) {
+            $x₍k₎        = Combinatorics::fallingFactorial($x, $k);
+            $L⟮n、k⟯       = Combinatorics::lahNumber($n, $k);
+            $∑L⟮n、k⟯x₍k₎ += $L⟮n、k⟯ * $x₍k₎;
+        }
+
+        $this->assertEquals($x⁽ⁿ⁾, $∑L⟮n、k⟯x₍k₎);
+    }

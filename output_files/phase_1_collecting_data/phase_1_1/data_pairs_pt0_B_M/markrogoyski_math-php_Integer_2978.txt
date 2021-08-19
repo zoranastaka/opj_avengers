@@ -1,0 +1,58 @@
+    /**
+     * Prime factorization
+     * The prime factors of an integer.
+     * https://en.wikipedia.org/wiki/Prime_factor
+     *
+     * Algorithm
+     *  1) Let n be the ongoing remainder
+     *  2) Try prime factoring n with 2 and 3
+     *  3) Try prime factoring n with increasing ℕ of the form 6𝑘±1 up through √n (all other ℕ are divisible by 2 and/or 3)
+     *  4) If n is still > 1, the remainder is a prime factor
+     *
+     * @param  int $n
+     *
+     * @return int[] of prime factors
+     *
+     * @throws Exception\OutOfBoundsException if n is < 1.
+     */
+
+    public static function primeFactorization(int $n): array
+    {
+        if ($n < 1) {
+            throw new Exception\OutOfBoundsException("n must be ≥ 1. ($n provided)");
+        }
+
+        $remainder = $n;
+        $factors   = [];
+
+        foreach ([2, 3] as $divisor) {
+            while ($remainder % $divisor === 0) {
+                $factors[] = $divisor;
+                $remainder = \intdiv($remainder, $divisor);
+            }
+        }
+
+        $divisor = 5;
+        $√n = \sqrt($remainder);
+
+        while ($divisor <= $√n) {
+            while ($remainder % $divisor === 0) {
+                $factors[] = $divisor;
+                $remainder = \intdiv($remainder, $divisor);
+                $√n        = \sqrt($remainder);
+            }
+            $divisor += 2;
+            while ($remainder % $divisor === 0) {
+                $factors[] = $divisor;
+                $remainder = \intdiv($remainder, $divisor);
+                $√n        = \sqrt($remainder);
+            }
+            $divisor += 4;
+        }
+
+        if ($remainder > 1) {
+            $factors[] = $remainder;
+        }
+
+        return $factors;
+    }

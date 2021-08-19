@@ -1,0 +1,11 @@
+    /**
+     * Is calculation caching enabled?
+     *
+     * @access    public
+     * @return boolean
+     */
+
+    public function getCalculationCacheEnabled()
+    {
+        return $this->calculationCacheEnabled;
+    }

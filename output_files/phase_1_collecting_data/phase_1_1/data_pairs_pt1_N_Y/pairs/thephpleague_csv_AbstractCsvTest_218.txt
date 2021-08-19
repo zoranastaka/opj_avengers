@@ -1,0 +1,10 @@
+    /**
+     * @covers ::__clone
+     */
+
+    public function testCloningIsForbidden(): void
+    {
+        $this->expectException(UnavailableStream::class);
+
+        clone $this->csv;
+    }

@@ -1,0 +1,21 @@
+    /**
+     * @test         cofactor
+     * @dataProvider dataProviderForCofactor
+     * @param        array            $A
+     * @param        int              $mᵢ
+     * @param        int              $nⱼ
+     * @param        ArbitraryInteger $Cᵢⱼ
+     */
+
+    public function testCofactor(array $A, int $mᵢ, int $nⱼ, ArbitraryInteger $Cᵢⱼ)
+    {
+        // Given
+        $A = new ObjectMatrix($A);
+
+        // When
+        $cofactor = $A->cofactor($mᵢ, $nⱼ);
+
+        // Then
+        $this->assertEquals($Cᵢⱼ, $cofactor);
+        $this->assertEquals($Cᵢⱼ->toInt(), $cofactor->toInt());
+    }

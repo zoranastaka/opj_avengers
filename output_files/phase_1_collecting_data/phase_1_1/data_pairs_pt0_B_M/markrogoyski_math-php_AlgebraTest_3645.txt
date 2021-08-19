@@ -1,0 +1,20 @@
+    /**
+     * @test         extendedGCD returns the extended greatest common divisor of two integers.
+     * @dataProvider dataProviderForGcd
+     * @param        int $a
+     * @param        int $b
+     * @param        int $expected_gcd
+     * @param        int $expected_alpha
+     * @param        int $expected_beta
+     */
+
+    public function testExtendedGcd(int $a, int $b, int $expected_gcd, int $expected_alpha, int $expected_beta)
+    {
+        // When
+        [$gcd, $alpha, $beta] = Algebra::extendedGcd($a, $b);
+
+        // Then
+        $this->assertEquals($expected_gcd, $gcd);
+        $this->assertEquals($expected_alpha, $alpha);
+        $this->assertEquals($expected_beta, $beta);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * @doesNotPerformAssertions
+     */
+
+    public function testDotenvRequiredArrayEnvironmentVars()
+    {
+        $dotenv = self::createArrayDotenv()[1];
+        $dotenv->load();
+        $dotenv->required(['FOO', 'BAR']);
+    }

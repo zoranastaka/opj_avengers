@@ -1,0 +1,9 @@
+  /**
+   * Set the OAuth 2.0 Client ID.
+   * @param string $clientId
+   */
+
+  public function setClientId($clientId)
+  {
+    $this->config['client_id'] = $clientId;
+  }

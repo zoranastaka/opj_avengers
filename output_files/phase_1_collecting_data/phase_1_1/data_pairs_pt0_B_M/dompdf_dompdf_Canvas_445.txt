@@ -1,0 +1,11 @@
+    /**
+     * Add a link to the pdf
+     *
+     * @param string $url The url to link to
+     * @param float $x The x position of the link
+     * @param float $y The y position of the link
+     * @param float $width The width of the link
+     * @param float $height The height of the link
+     */
+
+    function add_link($url, $x, $y, $width, $height);

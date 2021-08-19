@@ -1,0 +1,14 @@
+    /**
+     * @dataProvider specialAndNotSpecialVariableNames
+     */
+
+    public function testIsSpecialVariableName($name, $isSpecial)
+    {
+        $context = new Context();
+
+        if ($isSpecial) {
+            $this->assertTrue($context->isSpecialVariableName($name));
+        } else {
+            $this->assertFalse($context->isSpecialVariableName($name));
+        }
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get Display Blanks as
+     *
+     * @return string
+     */
+
+    public function getDisplayBlanksAs()
+    {
+        return $this->displayBlanksAs;
+    }

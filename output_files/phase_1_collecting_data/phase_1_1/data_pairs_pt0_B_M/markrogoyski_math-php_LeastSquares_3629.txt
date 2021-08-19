@@ -1,0 +1,24 @@
+    /**
+     * The F statistic of the regression (F test)
+     *
+     *      MSm      SSᵣ/p
+     * F₀ = --- = -----------
+     *      MSₑ   SSₑ/(n - p - α)
+     *
+     *  where:
+     *    MSm = mean square model (regression mean square) = SSᵣ / df(SSᵣ) = SSᵣ/p
+     *    MSₑ = mean square error (estimate of variance σ² of the random error)
+     *        = SSₑ/(n - p - α)
+     *    p   = the order of the fitted polynomial
+     *    α   = 1 if the model includes a constant term, 0 otherwise. (p+α = total number of model parameters)
+     *    SSᵣ = sum of squares of the regression
+     *    SSₑ = sum of squares of residuals
+     *
+     * @return float
+     */
+
+    public function fStatistic(): float
+    {
+        $F = $this->meanSquareRegression() / $this->meanSquareResidual();
+        return $F;
+    }

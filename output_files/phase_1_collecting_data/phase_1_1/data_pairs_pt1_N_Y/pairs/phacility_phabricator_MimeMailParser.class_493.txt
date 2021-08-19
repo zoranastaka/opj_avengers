@@ -1,0 +1,11 @@
+	/**
+	 * Retrieve the Email Headers
+	 * @return Array
+	 */
+
+	public function getHeaders() {
+		if (isset($this->parts[1])) {
+			return $this->getPartHeaders($this->parts[1]);
+		} else {
+			throw new Exception('MimeMailParser::setPath() or MimeMailParser::setText() must be called before retrieving email headers.');
+		}

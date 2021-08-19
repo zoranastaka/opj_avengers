@@ -1,0 +1,7 @@
+    /**
+     * Helper function to create dbObject with Array return type
+     *
+     * @return dbObject
+     */
+
+    private function ArrayBuilder () {

@@ -1,0 +1,8 @@
+    /**
+     * Returns a matcher that matches when the method is never executed.
+     */
+
+    function never(): InvokedCountMatcher
+    {
+        return new InvokedCountMatcher(0);
+    }

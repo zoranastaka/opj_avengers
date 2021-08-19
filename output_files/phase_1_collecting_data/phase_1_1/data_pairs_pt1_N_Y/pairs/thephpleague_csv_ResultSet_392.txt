@@ -1,0 +1,10 @@
+    /**
+     * Returns the header associated with the result set.
+     *
+     * @return string[]
+     */
+
+    public function getHeader(): array
+    {
+        return $this->header;
+    }

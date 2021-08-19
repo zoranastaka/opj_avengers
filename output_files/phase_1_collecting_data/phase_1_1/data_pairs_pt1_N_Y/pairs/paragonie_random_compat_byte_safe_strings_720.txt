@@ -1,0 +1,23 @@
+        /**
+         * strlen() implementation that isn't brittle to mbstring.func_overload
+         *
+         * This version uses mb_strlen() in '8bit' mode to treat strings as raw
+         * binary rather than UTF-8, ISO-8859-1, etc
+         *
+         * @param string $binary_string
+         *
+         * @throws TypeError
+         *
+         * @return int
+         */
+
+        function RandomCompat_strlen($binary_string)
+        {
+            if (!is_string($binary_string)) {
+                throw new TypeError(
+                    'RandomCompat_strlen() expects a string'
+                );
+            }
+
+            return (int) mb_strlen($binary_string, '8bit');
+        }

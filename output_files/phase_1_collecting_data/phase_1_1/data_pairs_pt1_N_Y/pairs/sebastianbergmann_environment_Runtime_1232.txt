@@ -1,0 +1,49 @@
+    /**
+     * Returns the path to the binary of the current runtime.
+     * Appends ' --php' to the path when the runtime is HHVM.
+     */
+
+    public function getBinary(): string
+    {
+        // HHVM
+        if (self::$binary === null && $this->isHHVM()) {
+            // @codeCoverageIgnoreStart
+            if ((self::$binary = getenv('PHP_BINARY')) === false) {
+                self::$binary = PHP_BINARY;
+            }
+
+            self::$binary = escapeshellarg(self::$binary) . ' --php' .
+                ' -d hhvm.php7.all=1';
+            // @codeCoverageIgnoreEnd
+        }
+
+        if (self::$binary === null && PHP_BINARY !== '') {
+            self::$binary = escapeshellarg(PHP_BINARY);
+        }
+
+        if (self::$binary === null) {
+            // @codeCoverageIgnoreStart
+            $possibleBinaryLocations = [
+                PHP_BINDIR . '/php',
+                PHP_BINDIR . '/php-cli.exe',
+                PHP_BINDIR . '/php.exe',
+            ];
+
+            foreach ($possibleBinaryLocations as $binary) {
+                if (is_readable($binary)) {
+                    self::$binary = escapeshellarg($binary);
+
+                    break;
+                }
+            }
+            // @codeCoverageIgnoreEnd
+        }
+
+        if (self::$binary === null) {
+            // @codeCoverageIgnoreStart
+            self::$binary = 'php';
+            // @codeCoverageIgnoreEnd
+        }
+
+        return self::$binary;
+    }

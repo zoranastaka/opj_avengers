@@ -1,0 +1,12 @@
+    /**
+     * Returns the token array for current code.
+     *
+     * The token array is in the same format as provided by the
+     * token_get_all() function and does not discard tokens (i.e.
+     * whitespace and comments are included). The token position
+     * attributes are against this token array.
+     *
+     * @return array Array of tokens in token_get_all() format
+     */
+
+    public function getTokens() : array {

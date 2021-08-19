@@ -1,0 +1,24 @@
+    /**
+     * Default bandwidth for when one is not provided.
+     * Uses the normal distribution approximation bandwidth estimator.
+     * https://en.wikipedia.org/wiki/Kernel_density_estimation#A_rule-of-thumb_bandwidth_estimator
+     *
+     *             ⅕
+     *      / 4σ⁵ \
+     * h = |  ---  |
+     *      \ 3n  /
+     *
+     *
+     * @return float
+     *
+     * @throws Exception\OutOfBoundsException
+     */
+
+    private function getDefaultBandwidth(): float
+    {
+        $４σ⁵ = 4 * Descriptive::standardDeviation($this->data) ** 5;
+        $３n  = 3 * $this->n;
+        $⅕    = 0.2;
+
+        return ($４σ⁵ / $３n) ** $⅕;
+    }

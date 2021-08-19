@@ -1,0 +1,24 @@
+    /**
+     * @test Axiom: A is invertible, AAᵀ is inveritble
+     * If A is an invertible matrix, then the product of A and tranpose of A is also inveritble
+     * @dataProvider dataProviderForInverse
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIfMatrixIsInvertibleThenProductOfMatrixAndTransposeIsInvertible(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $Aᵀ  = $A->transpose();
+        $AAᵀ = $A->multiply($Aᵀ);
+
+        // then
+        if ($A->isInvertible()) {
+            $this->assertTrue($AAᵀ->isInvertible());
+        } else {
+            $this->assertFalse($AAᵀ->isInvertible());
+        }
+    }

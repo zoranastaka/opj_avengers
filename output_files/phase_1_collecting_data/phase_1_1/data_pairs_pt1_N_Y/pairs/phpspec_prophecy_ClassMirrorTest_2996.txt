@@ -1,0 +1,14 @@
+    /**
+     * @test
+     */
+
+    public function it_throws_an_exception_if_class_is_final()
+    {
+        $class = new \ReflectionClass('Fixtures\Prophecy\FinalClass');
+
+        $mirror = new ClassMirror();
+
+        $this->expectException(ClassMirrorException::class);
+
+        $mirror->reflect($class, array());
+    }

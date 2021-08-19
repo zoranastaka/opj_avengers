@@ -1,0 +1,16 @@
+    /**
+     * @test   harmonicMean when the input array is empty
+     * @throws \Exception
+     */
+
+    public function testHarmonicMeanNullWhenEmptyArray()
+    {
+        // Given
+        $numbers = [];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Average::harmonicMean($numbers);
+    }

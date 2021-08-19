@@ -1,0 +1,5 @@
+	/**
+	 * Calc line tax.
+	 */
+
+	public static function calc_line_taxes() {

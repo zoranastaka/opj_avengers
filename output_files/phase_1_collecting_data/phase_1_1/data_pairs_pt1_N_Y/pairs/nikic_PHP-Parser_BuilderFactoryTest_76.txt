@@ -1,0 +1,5 @@
+    /**
+     * @dataProvider provideTestFactory
+     */
+
+    public function testFactory($methodName, $className) {

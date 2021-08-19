@@ -1,0 +1,12 @@
+    /**
+     * Check if image already added to pdf image directory.
+     * If yes, need not to create again (pass empty data)
+     *
+     * @param $imgname
+     * @return bool
+     */
+
+    function image_iscached($imgname)
+    {
+        return isset($this->imagelist[$imgname]);
+    }

@@ -1,0 +1,11 @@
+    /**
+     * Destroys application in Yii::$app by setting it to null.
+     */
+
+    protected function destroyApplication()
+    {
+        if (\Yii::$app && \Yii::$app->has('session', true)) {
+            \Yii::$app->session->close();
+        }
+        \Yii::$app = null;
+    }

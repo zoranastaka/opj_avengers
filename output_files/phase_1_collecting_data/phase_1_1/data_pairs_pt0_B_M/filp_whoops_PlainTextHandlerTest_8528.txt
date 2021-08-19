@@ -1,0 +1,10 @@
+    /**
+     * @covers Whoops\Handler\PlainTextHandler::setLogger
+     */
+
+    public function testSetLogger()
+    {
+        $this->expectExceptionOfType('InvalidArgumentException');
+
+        $this->getHandler()->setLogger(new StdClass());
+    }

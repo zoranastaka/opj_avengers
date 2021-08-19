@@ -1,0 +1,14 @@
+  /**
+   * Record the start time of a previously executed startup phase.
+   *
+   * For startup phases which occur after @{class:PhabricatorStartup} loads,
+   * use @{method:beginStartupPhase} instead. This method can be used to
+   * record a time before the class loads, then hand it over once the class
+   * becomes available.
+   *
+   * @param string Phase name.
+   * @param float Phase start time, from `microtime(true)`.
+   * @task phases
+   */
+
+  public static function recordStartupPhase($phase, $time) {

@@ -1,0 +1,14 @@
+/**
+ * Escape single quotes, htmlspecialchar " < > &, and fix line endings. Stolen from WP.
+ *
+ * Escapes text strings for echoing in JS. It is intended to be used for inline JS
+ * (in a tag attribute, for example onclick="..."). Note that the strings have to
+ * be in single quotes. The filter 'js_escape' is also applied here.
+ *
+ * @since 1.6
+ *
+ * @param string $text The text to be escaped.
+ * @return string Escaped text.
+ */
+
+function yourls_esc_js( $text ) {

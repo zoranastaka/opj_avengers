@@ -1,0 +1,98 @@
+    /**
+     * Fixes line spacing code style for properties and constants.
+     * @param string[] $lines
+     * @return string[]
+     */
+
+    protected function fixLineSpacing($lines)
+    {
+        $propertiesOnly = false;
+        // remove blank lines between properties
+        $skip = true;
+        $level = 0;
+        foreach ($lines as $i => $line) {
+            if (strpos($line, 'class ') !== false) {
+                $skip = false;
+            }
+            if ($skip) {
+                continue;
+            }
+
+            // keep spaces in multi line arrays
+            if (strpos($line, '*') === false && strncmp(trim($line), "'SQLSTATE[", 10) !== 0) {
+                $level += substr_count($line, '[') - substr_count($line, ']');
+            }
+
+            if (trim($line) === '') {
+                if ($level == 0) {
+                    unset($lines[$i]);
+                }
+            } elseif (ltrim($line)[0] !== '*' && strpos($line, 'function ') !== false) {
+                break;
+            } elseif (trim($line) === '}') {
+                $propertiesOnly = true;
+                break;
+            }
+        }
+        $lines = array_values($lines);
+
+        // add back some
+        $endofUse = false;
+        $endofConst = false;
+        $endofPublic = false;
+        $endofProtected = false;
+        $endofPrivate = false;
+        $skip = true;
+        $level = 0; // track array properties
+        $property = '';
+        foreach ($lines as $i => $line) {
+            if (strpos($line, 'class ') !== false) {
+                $skip = false;
+            }
+            if ($skip) {
+                continue;
+            }
+
+            // check for multi line array
+            if ($level > 0) {
+                ${'endof' . $property} = $i;
+            }
+
+            $line = trim($line);
+            if (strncmp($line, 'public $', 8) === 0 || strncmp($line, 'public static $', 15) === 0) {
+                $endofPublic = $i;
+                $property = 'Public';
+                $level = 0;
+            } elseif (strncmp($line, 'protected $', 11) === 0 || strncmp($line, 'protected static $', 18) === 0) {
+                $endofProtected = $i;
+                $property = 'Protected';
+                $level = 0;
+            } elseif (strncmp($line, 'private $', 9) === 0 || strncmp($line, 'private static $', 16) === 0) {
+                $endofPrivate = $i;
+                $property = 'Private';
+                $level = 0;
+            } elseif (strpos($line, 'const ') === 0) {
+                $endofConst = $i;
+                $property = false;
+            } elseif (strpos($line, 'use ') === 0) {
+                $endofUse = $i;
+                $property = false;
+            } elseif (strpos($line, '*') === 0) {
+                $property = false;
+            } elseif (strpos($line, '*') !== 0 && strpos($line, 'function ') !== false || $line === '}') {
+                break;
+            }
+
+            // check for multi line array
+            if ($property !== false && strncmp($line, "'SQLSTATE[", 10) !== 0) {
+                $level += substr_count($line, '[') - substr_count($line, ']');
+            }
+        }
+
+        $endofAll = false;
+        foreach (['Private', 'Protected', 'Public', 'Const', 'Use'] as $var) {
+            if (${'endof' . $var} !== false) {
+                $endofAll = ${'endof' . $var};
+                break;
+            }
+        }

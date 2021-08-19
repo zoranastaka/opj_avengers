@@ -1,0 +1,23 @@
+    /**
+     * @test The class returns the correct T² distances
+     *
+     * R code for expected values:
+     *   new = matrix(c(1:9), 1, 9)
+     *   result = predict(model, new)
+     *   result$T2
+     *
+     * @throws \Exception
+     */
+
+    public function testT2WithNewData()
+    {
+        // Given
+        $expected = [[0.000298777, 0.0055268, 0.1336984, 13.24218, 136.482, 148.0491, 211.9109, 216.495, 512.808]];
+        $newdata  = MatrixFactory::create([[1,2,3,4,5,6,7,8,9]]);
+
+        // When
+        $T²Distances = self::$pca->getT2Distances($newdata)->getMatrix();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $T²Distances, .0001);
+    }

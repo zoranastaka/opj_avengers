@@ -1,0 +1,8 @@
+    /**
+     * @param string|int $index
+     */
+
+    public static function dueToInvalidColumnIndex($index, string $type, string $method): self
+    {
+        return new self($method.'() expects the '.$type.' index to be a valid string or integer, `'.$index.'` given');
+    }

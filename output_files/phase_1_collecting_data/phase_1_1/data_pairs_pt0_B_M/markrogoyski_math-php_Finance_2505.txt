@@ -1,0 +1,57 @@
+    /**
+     * Modified internal rate of return.
+     * Rate of return that discounts outflows (investments) at the financing rate,
+     * and reinvests inflows with an expected rate of return.
+     *
+     * Same as =MIRR formula in most spreadsheet software.
+     *
+     * The formula derivation:
+     * https://en.wikipedia.org/wiki/Modified_internal_rate_of_return
+     *
+     *       _____________________________
+     *     n/ FV(re-invested cash inflows)
+     *  -  /  ----------------------------  - 1.0
+     *   \/   PV(discounted cash outflows)
+     *
+     * Examples:
+     * The rate of return of an initial investment of $100 at 5% financing
+     * with returns of $50, $40, and $30 reinvested at 10%:
+     *  mirr([-100, 50, 40, 30], 0.05, 0.10)
+     *
+     * @param  array $values
+     * @param  float $finance_rate
+     * @param  float $reinvestment_rate
+     *
+     * @return float
+     */
+
+    public static function mirr(array $values, float $finance_rate, float $reinvestment_rate): float
+    {
+        $inflows  = array();
+        $outflows = array();
+
+        for ($i = 0; $i < \count($values); $i++) {
+            if ($values[$i] >= 0) {
+                $inflows[]  = $values[$i];
+                $outflows[] = 0;
+            } else {
+                $inflows[]  = 0;
+                $outflows[] = $values[$i];
+            }
+        }
+
+        $nonzero = function ($x) {
+            return $x != 0;
+        };
+
+        if (\count(\array_filter($inflows, $nonzero)) == 0 || \count(\array_filter($outflows, $nonzero)) == 0) {
+            return \NAN;
+        }
+
+        $root        = \count($values) - 1;
+        $pv_inflows  = self::npv($reinvestment_rate, $inflows);
+        $fv_inflows  = self::fv($reinvestment_rate, $root, 0, -$pv_inflows);
+        $pv_outflows = self::npv($finance_rate, $outflows);
+
+        return self::checkZero(\pow($fv_inflows / -$pv_outflows, 1 / $root) - 1);
+    }

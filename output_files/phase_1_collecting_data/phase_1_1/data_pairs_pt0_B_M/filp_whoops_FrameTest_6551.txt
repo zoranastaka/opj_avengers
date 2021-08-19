@@ -1,0 +1,11 @@
+    /**
+     * @covers Whoops\Exception\Frame::getFile
+     */
+
+    public function testGetFile()
+    {
+        $data  = $this->getFrameData();
+        $frame = $this->getFrameInstance($data);
+
+        $this->assertEquals($frame->getFile(), $data['file']);
+    }

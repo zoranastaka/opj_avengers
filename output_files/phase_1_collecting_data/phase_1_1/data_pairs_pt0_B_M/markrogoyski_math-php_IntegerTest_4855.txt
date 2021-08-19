@@ -1,0 +1,28 @@
+    /**
+     * A000203 the sum of the divisors of n
+     * @see    https://oeis.org/A000203
+     * @return array
+     */
+
+    public function dataProviderForSumOfDivisors(): array
+    {
+        return [
+            [1, 1],
+            [2, 3],
+            [3, 4],
+            [4, 7],
+            [5, 6],
+            [6, 12],
+            [7, 8],
+            [8, 15],
+            [9, 13],
+            [10, 18],
+            [11, 12],
+            [12, 28],
+            [13, 14],
+            [14, 24],
+            [15, 24],
+            [70, 144],
+            [44100, 160797],
+        ];
+    }

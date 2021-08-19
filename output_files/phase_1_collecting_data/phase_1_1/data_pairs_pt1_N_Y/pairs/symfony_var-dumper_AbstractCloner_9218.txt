@@ -1,0 +1,9 @@
+    /**
+     * Sets the minimum tree depth where we are guaranteed to clone all the items.  After this
+     * depth is reached, only setMaxItems items will be cloned.
+     */
+
+    public function setMinDepth(int $minDepth)
+    {
+        $this->minDepth = $minDepth;
+    }

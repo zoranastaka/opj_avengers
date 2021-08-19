@@ -1,0 +1,16 @@
+    /**
+     * @test kullbackLeibler when arrays are different lengths
+     */
+
+    public function testKullbackLeiblerExceptionArraysDifferentLength()
+    {
+        // Given
+        $p = [0.4, 0.5, 0.1];
+        $q = [0.2, 0.8];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Divergence::kullbackLeibler($p, $q);
+    }

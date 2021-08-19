@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function set(string $name, $value)
+    {
+        $this->attributes[$name] = $value;
+    }

@@ -1,0 +1,11 @@
+    /**
+     * Returns a matcher that matches when the method is executed
+     * at least N times.
+     */
+
+    function atLeast(int $requiredInvocations): InvokedAtLeastCountMatcher
+    {
+        return new InvokedAtLeastCountMatcher(
+            $requiredInvocations
+        );
+    }

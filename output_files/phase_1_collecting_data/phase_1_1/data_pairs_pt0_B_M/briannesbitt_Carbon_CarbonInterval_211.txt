@@ -1,0 +1,21 @@
+    /**
+     * Mapping of units and factors for cascading.
+     *
+     * Should only be modified by changing the factors or referenced constants.
+     *
+     * @return array
+     */
+
+    public static function getCascadeFactors()
+    {
+        return static::$cascadeFactors ?: [
+            'milliseconds' => [Carbon::MICROSECONDS_PER_MILLISECOND, 'microseconds'],
+            'seconds' => [Carbon::MILLISECONDS_PER_SECOND, 'milliseconds'],
+            'minutes' => [Carbon::SECONDS_PER_MINUTE, 'seconds'],
+            'hours' => [Carbon::MINUTES_PER_HOUR, 'minutes'],
+            'dayz' => [Carbon::HOURS_PER_DAY, 'hours'],
+            'weeks' => [Carbon::DAYS_PER_WEEK, 'dayz'],
+            'months' => [Carbon::WEEKS_PER_MONTH, 'weeks'],
+            'years' => [Carbon::MONTHS_PER_YEAR, 'months'],
+        ];
+    }

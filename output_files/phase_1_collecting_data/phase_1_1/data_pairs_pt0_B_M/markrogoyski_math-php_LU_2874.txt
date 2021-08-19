@@ -1,0 +1,22 @@
+    /**
+     * Get L, U, or P matrix
+     *
+     * @param string $name
+     *
+     * @return NumericMatrix
+     *
+     * @throws Exception\MatrixException
+     */
+
+    public function __get(string $name): NumericMatrix
+    {
+        switch ($name) {
+            case 'L':
+            case 'U':
+            case 'P':
+                return $this->$name;
+
+            default:
+                throw new Exception\MatrixException("LU class does not have a gettable property: $name");
+        }
+    }

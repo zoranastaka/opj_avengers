@@ -1,0 +1,16 @@
+    /**
+     * @test         sampleVariance
+     * @dataProvider dataProviderForSampleVariance
+     * @param        array $numbers
+     * @param        float $expectedVariance
+     * @throws       \Exception
+     */
+
+    public function testSampleVariance(array $numbers, float $expectedVariance)
+    {
+        // When
+        $variance = Descriptive::sampleVariance($numbers);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedVariance, $variance, 0.01);
+    }

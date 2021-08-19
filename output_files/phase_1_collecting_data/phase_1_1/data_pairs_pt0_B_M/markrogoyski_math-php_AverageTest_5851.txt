@@ -1,0 +1,17 @@
+    /**
+     * @test   generalizedMean with a p of two is the quadratic mean
+     * @throws \Exception
+     */
+
+    public function testGeneralizedMeanPEqualsTwoIsQuadraticMean()
+    {
+        // Given
+        $numbers = [3, 6, 2, 9, 1, 7, 2];
+        $p       = 2;
+
+        // When
+        $mean = Average::generalizedMean($numbers, $p);
+
+        // Then
+        $this->assertEquals(Average::quadraticMean($numbers), $mean);
+    }

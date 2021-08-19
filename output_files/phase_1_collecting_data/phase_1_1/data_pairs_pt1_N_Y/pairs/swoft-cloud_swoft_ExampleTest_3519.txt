@@ -1,0 +1,13 @@
+/**
+ * Class ExampleTest
+ *
+ * @package AppTest\Unit
+ */
+
+class ExampleTest extends TestCase
+{
+    public function testDemo(): void
+    {
+        $this->assertNotEmpty(bean('cliApp'));
+    }
+}

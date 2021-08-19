@@ -1,0 +1,13 @@
+    /**
+     * @test
+     * @throws \Exception
+     */
+
+    public function testGetTwoSidedTValueFromAlphaExceptionBadAlpha()
+    {
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        TDistribution::getTwoSidedTValueFromAlpha(1, 999);
+    }

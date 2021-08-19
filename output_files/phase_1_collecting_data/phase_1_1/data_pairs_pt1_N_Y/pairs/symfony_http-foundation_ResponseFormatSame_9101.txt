@@ -1,0 +1,10 @@
+    /**
+     * @param Response $response
+     *
+     * {@inheritdoc}
+     */
+
+    protected function matches($response): bool
+    {
+        return $this->format === $this->request->getFormat($response->headers->get('Content-Type'));
+    }

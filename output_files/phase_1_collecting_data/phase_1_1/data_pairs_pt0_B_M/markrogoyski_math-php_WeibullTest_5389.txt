@@ -1,0 +1,19 @@
+    /**
+     * @test         median
+     * @dataProvider dataProviderForMedian
+     * @param        float $k
+     * @param        float $λ
+     * @param        float $μ
+     */
+
+    public function testMedian(float $k, float $λ, float $μ)
+    {
+        // Given
+        $weibull = new Weibull($k, $λ);
+
+        // When
+        $median = $weibull->median();
+
+        // Then
+        $this->assertEqualsWithDelta($μ, $median, 0.0001);
+    }

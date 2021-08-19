@@ -1,0 +1,10 @@
+    /**
+     * Returns the number of parameters.
+     *
+     * @return int The number of parameters
+     */
+
+    public function count()
+    {
+        return \count($this->parameters);
+    }

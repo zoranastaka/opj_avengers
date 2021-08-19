@@ -1,0 +1,13 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function raw($export, string $writerType)
+    {
+        $temporaryFile = $this->writer->export($export, $writerType);
+
+        $contents = $temporaryFile->contents();
+        $temporaryFile->delete();
+
+        return $contents;
+    }

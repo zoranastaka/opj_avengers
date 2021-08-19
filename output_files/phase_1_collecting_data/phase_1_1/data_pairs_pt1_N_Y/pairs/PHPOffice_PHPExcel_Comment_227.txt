@@ -1,0 +1,10 @@
+    /**
+     * Is the comment visible by default?
+     *
+     * @return boolean
+     */
+
+    public function getVisible()
+    {
+        return $this->visible;
+    }

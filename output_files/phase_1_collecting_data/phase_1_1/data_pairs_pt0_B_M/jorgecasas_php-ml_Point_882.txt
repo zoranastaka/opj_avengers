@@ -1,0 +1,9 @@
+    /**
+     * @param mixed $offset
+     * @param mixed $value
+     */
+
+    public function offsetSet($offset, $value): void
+    {
+        $this->coordinates[$offset] = $value;
+    }

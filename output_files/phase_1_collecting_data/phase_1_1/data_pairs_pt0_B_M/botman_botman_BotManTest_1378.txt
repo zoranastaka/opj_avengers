@@ -1,0 +1,24 @@
+    /** @test */
+
+    public function it_hears_matching_commands_with_container()
+    {
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'Foo',
+        ]);
+        TestClass::$called = false;
+
+        /** @var ContainerInterface|m\Mock $containerMock */
+        $containerMock = m::mock(ContainerInterface::class);
+        $containerMock->shouldReceive('get')
+            ->with(TestClass::class)
+            ->once()
+            ->andReturn(new TestClass($botman));
+
+        $botman->setContainer($containerMock);
+
+        $botman->hears('foo', TestClass::class.'@foo');
+        $botman->listen();
+        $this->assertTrue(TestClass::$called);
+    }

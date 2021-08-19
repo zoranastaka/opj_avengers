@@ -1,0 +1,3 @@
+/*---html---*/
+
+function html_ta($url,$name){

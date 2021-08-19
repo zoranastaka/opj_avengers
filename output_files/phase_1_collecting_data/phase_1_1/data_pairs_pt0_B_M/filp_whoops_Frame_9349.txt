@@ -1,0 +1,8 @@
+    /**
+     * @return array
+     */
+
+    public function getArgs()
+    {
+        return isset($this->frame['args']) ? (array) $this->frame['args'] : [];
+    }

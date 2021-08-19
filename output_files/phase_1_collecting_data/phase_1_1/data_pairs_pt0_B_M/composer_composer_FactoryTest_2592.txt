@@ -1,0 +1,22 @@
+    /**
+     * @group TLS
+     */
+
+    public function testDefaultValuesAreAsExpected()
+    {
+        $ioMock = $this->getMockBuilder('Composer\IO\IOInterface')->getMock();
+
+        $ioMock->expects($this->once())
+            ->method("writeError")
+            ->with($this->equalTo('<warning>You are running Composer with SSL/TLS protection disabled.</warning>'));
+
+        $config = $this
+            ->getMockBuilder('Composer\Config')
+            ->getMock();
+
+        $config->method('get')
+            ->with($this->equalTo('disable-tls'))
+            ->will($this->returnValue(true));
+
+        Factory::createHttpDownloader($ioMock, $config);
+    }

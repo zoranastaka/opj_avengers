@@ -1,0 +1,9 @@
+    /**
+     * Creates a namespace/class use builder.
+     *
+     * @param Node\Name|string $name Name of the entity (namespace or class) to alias
+     *
+     * @return Builder\Use_ The created use builder
+     */
+
+    public function use($name) : Builder\Use_ {

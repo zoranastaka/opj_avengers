@@ -1,0 +1,9 @@
+  /**
+   * Whether or not to return raw requests
+   * @return boolean
+   */
+
+  public function shouldDefer()
+  {
+    return $this->deferExecution;
+  }

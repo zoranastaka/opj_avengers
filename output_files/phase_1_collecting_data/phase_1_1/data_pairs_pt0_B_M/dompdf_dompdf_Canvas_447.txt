@@ -1,0 +1,10 @@
+    /**
+     * Calculates font height, in points
+     *
+     * @param string $font
+     * @param float $size
+     *
+     * @return float
+     */
+
+    function get_font_height($font, $size);

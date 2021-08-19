@@ -1,0 +1,10 @@
+    /**
+     * Add JavaScript code to the PDF document
+     *
+     * @param string $code
+     */
+
+    function addJavascript($code)
+    {
+        $this->javascript .= $code;
+    }

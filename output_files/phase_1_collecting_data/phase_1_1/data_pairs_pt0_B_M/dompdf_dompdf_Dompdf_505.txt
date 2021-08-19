@@ -1,0 +1,12 @@
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @return $this
+     * @deprecated
+     */
+
+    public function set_option($key, $value)
+    {
+        $this->options->set($key, $value);
+        return $this;
+    }

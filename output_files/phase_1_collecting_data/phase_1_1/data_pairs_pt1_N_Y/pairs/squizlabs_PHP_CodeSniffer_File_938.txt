@@ -1,0 +1,11 @@
+    /**
+     * Returns the list of ignored lines.
+     *
+     * @return array
+     */
+
+    public function getIgnoredLines()
+    {
+        return $this->tokenizer->ignoredLines;
+
+    }//end getIgnoredLines()

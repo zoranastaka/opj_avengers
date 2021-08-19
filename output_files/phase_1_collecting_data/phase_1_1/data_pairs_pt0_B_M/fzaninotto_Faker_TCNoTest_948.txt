@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider validatorProvider
+     * @param $tcNo
+     * @param $isValid
+     */
+
+    public function testIsValid($tcNo, $isValid)
+    {
+        $this->assertEquals($isValid, TCNo::isValid($tcNo), $tcNo);
+    }

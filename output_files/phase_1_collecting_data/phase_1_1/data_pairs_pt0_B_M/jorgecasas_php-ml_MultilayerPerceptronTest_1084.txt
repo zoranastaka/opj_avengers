@@ -1,0 +1,8 @@
+    /**
+     * @return ActivationFunction|MockObject
+     */
+
+    private function getActivationFunctionMock()
+    {
+        return $this->getMockForAbstractClass(ActivationFunction::class);
+    }

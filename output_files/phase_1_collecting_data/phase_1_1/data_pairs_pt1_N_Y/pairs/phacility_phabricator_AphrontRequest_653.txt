@@ -1,0 +1,13 @@
+  /**
+   * Is this a proxied request originating from within the Phabricator cluster?
+   *
+   * IMPORTANT: This means the request is dangerous!
+   *
+   * These requests are **more dangerous** than normal requests (they can not
+   * be safely proxied, because proxying them may cause a loop). Cluster
+   * requests are not guaranteed to come from a trusted source, and should
+   * never be treated as safer than normal requests. They are strictly less
+   * safe.
+   */
+
+  public function isProxiedClusterRequest() {

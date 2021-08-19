@@ -1,0 +1,12 @@
+    /**
+     * Internal method for adding tab completion matchers. This will set any new
+     * matchers once a Shell is available.
+     */
+
+    private function doAddMatchers()
+    {
+        if (!empty($this->newMatchers)) {
+            $this->shell->addMatchers($this->newMatchers);
+            $this->newMatchers = [];
+        }
+    }

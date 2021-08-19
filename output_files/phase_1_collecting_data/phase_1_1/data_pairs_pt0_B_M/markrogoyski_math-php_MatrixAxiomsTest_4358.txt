@@ -1,0 +1,29 @@
+    /**
+     * @test         Axiom: rank(AᵀA) = rank(AAᵀ) = rank(A) = rank(Aᵀ)
+     * @dataProvider dataProviderForSingleMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testRankTransposeEqualities(array $A)
+    {
+        // Given
+        $A   = MatrixFactory::create($A);
+        $Aᵀ  = $A->transpose();
+        $AᵀA = $Aᵀ->multiply($A);
+        $AAᵀ = $A->multiply($Aᵀ);
+
+        // When
+        $rank⟮A⟯   = $A->rank();
+        $rank⟮Aᵀ⟯  = $Aᵀ->rank();
+        $rank⟮AᵀA⟯ = $AᵀA->rank();
+        $rank⟮AAᵀ⟯ = $AAᵀ->rank();
+
+        // Then
+        $this->assertEquals($rank⟮A⟯, $rank⟮Aᵀ⟯);
+        $this->assertEquals($rank⟮A⟯, $rank⟮AᵀA⟯);
+        $this->assertEquals($rank⟮A⟯, $rank⟮AAᵀ⟯);
+        $this->assertEquals($rank⟮Aᵀ⟯, $rank⟮AᵀA⟯);
+        $this->assertEquals($rank⟮Aᵀ⟯, $rank⟮AAᵀ⟯);
+        $this->assertEquals($rank⟮AᵀA⟯, $rank⟮AAᵀ⟯);
+    }

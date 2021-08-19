@@ -1,0 +1,10 @@
+    /**
+     * Get Modified
+     *
+     * @return datetime
+     */
+
+    public function getModified()
+    {
+        return $this->modified;
+    }

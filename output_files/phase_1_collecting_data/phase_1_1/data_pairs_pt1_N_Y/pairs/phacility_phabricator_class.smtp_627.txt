@@ -1,0 +1,7 @@
+  /**
+   * Initialize the class so that the data is in a known state.
+   * @access public
+   * @return void
+   */
+
+  public function __construct() {

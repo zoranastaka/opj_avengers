@@ -1,0 +1,11 @@
+	/**
+	 * @param string $name
+	 * @param ICommentsManager $commentsManager
+	 * @param IUserManager $userManager
+	 * @param IUserSession $userSession
+	 * @param EventDispatcherInterface $dispatcher
+	 * @param ILogger $logger
+	 * @param \Closure $childExistsFunction
+	 */
+
+	public function __construct(

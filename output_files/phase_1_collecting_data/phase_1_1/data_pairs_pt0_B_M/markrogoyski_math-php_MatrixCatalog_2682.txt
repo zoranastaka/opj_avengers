@@ -1,0 +1,8 @@
+    /**
+     * @param Decomposition\Crout $crout
+     */
+
+    public function addCroutDecomposition(Decomposition\Crout $crout): void
+    {
+        $this->crout = $crout;
+    }

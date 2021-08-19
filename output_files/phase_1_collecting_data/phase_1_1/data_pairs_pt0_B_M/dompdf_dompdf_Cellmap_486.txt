@@ -1,0 +1,32 @@
+    /**
+     * Re-adjust frame height if the table height is larger than its content
+     */
+
+    public function set_frame_heights($table_height, $content_height)
+    {
+        // Distribute the increased height proportionally amongst each row
+        foreach ($this->_frames as $arr) {
+            $frame = $arr["frame"];
+
+            $h = 0;
+            foreach ($arr["rows"] as $row) {
+                if (!isset($this->_rows[$row])) {
+                    continue;
+                }
+
+                $h += $this->_rows[$row]["height"];
+            }
+
+            if ($content_height > 0) {
+                $new_height = ($h / $content_height) * $table_height;
+            } else {
+                $new_height = 0;
+            }
+
+            if ($frame instanceof TableCellFrameDecorator) {
+                $frame->set_cell_height($new_height);
+            } else {
+                $frame->get_style()->height = $new_height;
+            }
+        }
+    }

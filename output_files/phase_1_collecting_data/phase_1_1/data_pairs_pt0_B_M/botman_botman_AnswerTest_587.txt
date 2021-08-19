@@ -1,0 +1,7 @@
+    /** @test */
+
+    public function it_can_be_created_using_new()
+    {
+        $answer = new Answer('text');
+        $this->assertSame('text', $answer->getText());
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Mean of the distribution
+     *
+     * μ = λ⁻¹
+     *
+     * @return float
+     */
+
+    public function mean(): float
+    {
+        return 1 / $this->λ;
+    }

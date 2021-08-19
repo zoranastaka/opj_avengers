@@ -1,0 +1,16 @@
+    /**
+     * @test         softmax returns the expected value
+     * @dataProvider dataProviderForSoftmax
+     * @param        array $𝐳
+     * @param        array $expected
+     */
+
+    public function testSoftmax(array $𝐳, array $expected)
+    {
+        // When
+        $σ⟮𝐳⟯ⱼ = Special::softmax($𝐳);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $σ⟮𝐳⟯ⱼ, 0.00001);
+        $this->assertEquals(1, \array_sum($σ⟮𝐳⟯ⱼ));
+    }

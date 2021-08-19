@@ -1,0 +1,10 @@
+    /**
+     * Get the default authentication driver name.
+     *
+     * @return string
+     */
+
+    public function getDefaultDriver()
+    {
+        return $this->app['config']['auth.defaults.guard'];
+    }

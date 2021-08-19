@@ -1,0 +1,26 @@
+    /**
+     * @test Axiom: QR: x = R⁻¹Qᵀb
+     * QR decomposition provides a solution to Ax = b
+     *
+     * @dataProvider dataProviderForSolve
+     * @param        array $A
+     * @param        array $b
+     * @param        array $expected
+     * @throws       \Exception
+     */
+
+    public function testSolveQrDecomposition(array $A, array $b, array $expected)
+    {
+        // Given
+        $A        = MatrixFactory::create($A);
+        $expected = new Vector($expected);
+
+        // And
+        $QR = $A->qrDecomposition();
+
+        // When x = R⁻¹Qᵀb
+        $x = $QR->solve($b);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $x, 0.001);
+    }

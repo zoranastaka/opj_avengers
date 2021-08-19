@@ -1,0 +1,16 @@
+    /**
+     * Get annotation for this id.
+     *
+     * @param int $annotationId
+     *
+     * @return array
+     */
+
+    public function findAnnotationById($annotationId)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.id = :annotationId')->setParameter('annotationId', $annotationId)
+            ->getQuery()
+            ->getSingleResult()
+        ;
+    }

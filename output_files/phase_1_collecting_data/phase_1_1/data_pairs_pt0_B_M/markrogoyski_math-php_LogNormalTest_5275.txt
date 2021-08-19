@@ -1,0 +1,19 @@
+    /**
+     * @test         variance
+     * @dataProvider dataProviderForVariance
+     * @param        float $μ
+     * @param        float $σ
+     * @param        float $expected
+     */
+
+    public function testVariance(float $μ, float $σ, float $expected)
+    {
+        // Given
+        $log_normal = new LogNormal($μ, $σ);
+
+        // When
+        $variance = $log_normal->variance();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $variance, 0.001);
+    }

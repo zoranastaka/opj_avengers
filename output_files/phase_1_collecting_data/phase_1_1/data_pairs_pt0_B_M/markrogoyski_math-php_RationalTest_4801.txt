@@ -1,0 +1,21 @@
+    /**
+     * @test         divide int returns the correct number
+     * @dataProvider dataProviderForDivideInt
+     * @param        array $rn
+     * @param        int   $int
+     * @param        array $result
+     * @throws       \Exception
+     */
+
+    public function testDivideInt(array $rn, int $int, array $result)
+    {
+        // Given
+        $rational_number = new Rational(...$rn);
+        $result_rn       = new Rational(...$result);
+
+        // When
+        $divisionResult = $rational_number->divide($int);
+
+        // Then
+        $this->assertTrue($divisionResult->equals($result_rn));
+    }

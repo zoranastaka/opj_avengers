@@ -1,0 +1,26 @@
+    /**
+     * Determine the CSV record header.
+     *
+     * @throws Exception If the header offset is set and no record is found or is the empty array
+     *
+     * @return string[]
+     */
+
+    protected function setHeader(int $offset): array
+    {
+        $header = $this->seekRow($offset);
+        if (in_array($header, [[], [null]], true)) {
+            throw SyntaxError::dueToHeaderNotFound($offset);
+        }
+
+        if (0 !== $offset) {
+            return $header;
+        }
+
+        $header = $this->removeBOM($header, mb_strlen($this->getInputBOM()), $this->enclosure);
+        if ([''] === $header) {
+            throw SyntaxError::dueToHeaderNotFound($offset);
+        }
+
+        return $header;
+    }

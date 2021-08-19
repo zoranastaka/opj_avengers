@@ -1,0 +1,15 @@
+    /**
+     * @test         getSampleSize
+     * @dataProvider dataProviderForSampleSize
+     * @param        array $points
+     * @param        int   $n
+     */
+
+    public function testGetSampleSize(array $points, int $n)
+    {
+        // Given
+        $regression = new Linear($points);
+
+        // Then
+        $this->assertEquals($n, $regression->getSampleSize());
+    }

@@ -1,0 +1,9 @@
+    /**
+     * @param  mixed $i
+     * @throws Exception\MatrixException
+     */
+
+    public function offsetUnset($i)
+    {
+        throw new Exception\MatrixException('Matrix class does not allow unsetting values');
+    }

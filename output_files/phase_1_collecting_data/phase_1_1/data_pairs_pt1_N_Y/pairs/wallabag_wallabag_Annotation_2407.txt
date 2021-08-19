@@ -1,0 +1,10 @@
+    /**
+     * Get ranges.
+     *
+     * @return array
+     */
+
+    public function getRanges()
+    {
+        return $this->ranges;
+    }

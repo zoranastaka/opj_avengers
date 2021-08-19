@@ -1,0 +1,17 @@
+    /**
+     * @test   brayCurtis exception when inputs are different lengths
+     * @throws Exception\BadDataException
+     */
+
+    public function testBrayCurtisExceptionDifferentNumberElements()
+    {
+        // Given
+        $u = [1, 2, 3];
+        $v = [2, 3];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $distance = Distance::brayCurtis($u, $v);
+    }

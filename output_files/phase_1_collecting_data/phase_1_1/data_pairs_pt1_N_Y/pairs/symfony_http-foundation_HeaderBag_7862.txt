@@ -1,0 +1,24 @@
+    /**
+     * Returns the headers as a string.
+     *
+     * @return string The headers
+     */
+
+    public function __toString()
+    {
+        if (!$headers = $this->all()) {
+            return '';
+        }
+
+        ksort($headers);
+        $max = max(array_map('strlen', array_keys($headers))) + 1;
+        $content = '';
+        foreach ($headers as $name => $values) {
+            $name = ucwords($name, '-');
+            foreach ($values as $value) {
+                $content .= sprintf("%-{$max}s %s\r\n", $name.':', $value);
+            }
+        }
+
+        return $content;
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @param string|int|float $element
+     */
+
+    public function remove($element): self
+    {
+        return $this->removeAll([$element]);
+    }

@@ -1,0 +1,11 @@
+    /**
+     * @codeCoverageIgnore
+     * Link to available budgets
+     *
+     * @return HasMany
+     */
+
+    public function availableBudgets(): HasMany
+    {
+        return $this->hasMany(AvailableBudget::class);
+    }

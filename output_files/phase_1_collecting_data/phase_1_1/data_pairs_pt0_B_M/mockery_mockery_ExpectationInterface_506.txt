@@ -1,0 +1,5 @@
+    /**
+     * @return self
+     */
+
+    public function andReturns();

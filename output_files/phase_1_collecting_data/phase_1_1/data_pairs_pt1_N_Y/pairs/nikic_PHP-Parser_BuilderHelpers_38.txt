@@ -1,0 +1,16 @@
+    /**
+     * Normalizes a doc comment: Converts plain strings to PhpParser\Comment\Doc.
+     *
+     * @param Comment\Doc|string $docComment The doc comment to normalize
+     *
+     * @return Comment\Doc The normalized doc comment
+     */
+
+    public static function normalizeDocComment($docComment) : Comment\Doc {
+        if ($docComment instanceof Comment\Doc) {
+            return $docComment;
+        } elseif (is_string($docComment)) {
+            return new Comment\Doc($docComment);
+        } else {
+            throw new \LogicException('Doc comment must be a string or an instance of PhpParser\Comment\Doc');
+        }

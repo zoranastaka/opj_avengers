@@ -1,0 +1,21 @@
+    /**
+     * Issue an invalid client exception
+     *
+     * @throws OAuthServerException
+     */
+
+    private function issueInvalidClientException($serverRequest)
+    {
+        $clientRepositoryMock = $this->getMockBuilder(ClientRepositoryInterface::class)->getMock();
+        $clientRepositoryMock->method('validateClient')->willReturn(false);
+
+        $grantMock = $this->getMockForAbstractClass(AbstractGrant::class);
+        $grantMock->setClientRepository($clientRepositoryMock);
+
+        $abstractGrantReflection = new \ReflectionClass($grantMock);
+
+        $validateClientMethod = $abstractGrantReflection->getMethod('validateClient');
+        $validateClientMethod->setAccessible(true);
+
+        $validateClientMethod->invoke($grantMock, $serverRequest);
+    }

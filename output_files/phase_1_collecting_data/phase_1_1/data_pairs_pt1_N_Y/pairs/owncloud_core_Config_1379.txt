@@ -1,0 +1,9 @@
+	/**
+	 * Lists all available config keys
+	 *
+	 * Please note that it does not return the values.
+	 *
+	 * @return array an array of key names
+	 */
+
+	public function getKeys() {

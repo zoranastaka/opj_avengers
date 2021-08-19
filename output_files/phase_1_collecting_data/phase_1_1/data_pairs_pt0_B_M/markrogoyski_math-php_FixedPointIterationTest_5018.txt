@@ -1,0 +1,22 @@
+    /**
+     * @test   Solve zero interval
+     * @throws \Exception
+     */
+
+    public function testFixedPointIterationExceptionZeroInterval()
+    {
+        // Given
+        $func = function ($x) {
+            return ($x ** 4 + 8 * $x ** 3 - 13 * $x ** 2 + 96) / 92;
+        };
+        $tol = 0.00001;
+        $a   = 3;
+        $b   = 3;
+        $p   = 3;
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $x = FixedPointIteration::solve($func, $a, $b, $p, $tol);
+    }

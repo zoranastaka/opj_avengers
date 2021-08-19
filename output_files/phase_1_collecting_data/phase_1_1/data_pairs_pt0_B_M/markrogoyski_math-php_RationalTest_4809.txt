@@ -1,0 +1,16 @@
+    /**
+     * @test     Dividing a float throws an exception
+     * @throws   \Exception
+     */
+
+    public function testDivideException()
+    {
+        // Given
+        $number = new Rational(1, 0, 1);
+
+        // Then
+        $this->expectException(Exception\IncorrectTypeException::class);
+
+        // When
+        $number->divide(1.5);
+    }

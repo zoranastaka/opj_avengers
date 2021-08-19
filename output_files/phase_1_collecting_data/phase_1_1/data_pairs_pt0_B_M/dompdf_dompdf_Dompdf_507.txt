@@ -1,0 +1,10 @@
+    /**
+     * Gets the paper orientation
+     *
+     * @return string Either "portrait" or "landscape"
+     */
+
+    public function getPaperOrientation()
+    {
+        return $this->paperOrientation;
+    }

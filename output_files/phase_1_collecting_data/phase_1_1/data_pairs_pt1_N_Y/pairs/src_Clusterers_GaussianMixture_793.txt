@@ -1,0 +1,21 @@
+    /**
+     * Return the membership of a sample to each of the c centroids.
+     *
+     * @param list<int|float> $sample
+     * @return float[]
+     */
+
+    protected function probaSample(array $sample) : array
+    {
+        $jll = $this->jointLogLikelihood($sample);
+
+        $total = logsumexp($jll);
+
+        $dist = [];
+
+        foreach ($jll as $cluster => $likelihood) {
+            $dist[$cluster] = exp($likelihood - $total);
+        }
+
+        return $dist;
+    }

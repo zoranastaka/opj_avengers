@@ -1,0 +1,12 @@
+    /**
+     * Checks whether the method is cacheable or not.
+     *
+     * @see https://tools.ietf.org/html/rfc7231#section-4.2.3
+     *
+     * @return bool True for GET and HEAD, false otherwise
+     */
+
+    public function isMethodCacheable()
+    {
+        return \in_array($this->getMethod(), ['GET', 'HEAD']);
+    }

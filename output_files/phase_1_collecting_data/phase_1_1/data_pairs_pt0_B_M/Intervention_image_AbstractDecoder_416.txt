@@ -1,0 +1,8 @@
+    /**
+     * Initiates new image from path in filesystem
+     *
+     * @param  string $path
+     * @return \Intervention\Image\Image
+     */
+
+    abstract public function initFromPath($path);

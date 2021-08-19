@@ -1,0 +1,8 @@
+    /**
+     * @param array $driver
+     */
+
+    public function __construct($driver)
+    {
+        $this->cache = $driver;
+    }

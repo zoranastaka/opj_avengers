@@ -1,0 +1,12 @@
+    /**
+     * Returns the factory used to create UUIDs
+     */
+
+    public static function getFactory(): UuidFactoryInterface
+    {
+        if (self::$factory === null) {
+            self::$factory = new UuidFactory();
+        }
+
+        return self::$factory;
+    }

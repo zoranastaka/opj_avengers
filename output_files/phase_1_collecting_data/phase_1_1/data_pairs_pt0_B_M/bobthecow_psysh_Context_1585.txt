@@ -1,0 +1,10 @@
+    /**
+     * Set the most recent Exception.
+     *
+     * @param \Exception $e
+     */
+
+    public function setLastException(\Exception $e)
+    {
+        $this->lastException = $e;
+    }

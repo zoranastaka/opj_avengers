@@ -1,0 +1,21 @@
+    /**
+     * @test         submatrix
+     * @dataProvider dataProviderForSubmatrix
+     * @param        array $data
+     * @param        array $params
+     * @param        array $result
+     * @throws       \Exception
+     */
+
+    public function testSubmatrix(array $data, array $params, array $result)
+    {
+        // Given
+        $M = new NumericMatrix($data);
+        $expectedMatrix = new NumericMatrix($result);
+
+        // When
+        $R = $M->submatrix(...$params);
+
+        // Then
+        $this->assertEquals($expectedMatrix->getMatrix(), $R->getMatrix());
+    }

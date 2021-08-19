@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider deferredCallableProvider
+     *
+     * @param string $callable
+     * @param callable|MiddlewareInterface
+     */
+
+    public function testDeferredResolvedCallableWithContainerAndNonAdvancedCallableResolverUnableToResolveCallable(

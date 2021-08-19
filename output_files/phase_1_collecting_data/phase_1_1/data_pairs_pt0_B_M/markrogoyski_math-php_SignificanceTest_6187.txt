@@ -1,0 +1,26 @@
+    /**
+     * @test         tTestOneSampleFromSummaryData
+     * @dataProvider dataProviderForTTestOneSample
+     * @param        array $a
+     * @param        float $H₀
+     * @param        array $expected
+     */
+
+    public function testTTestOneSampleFromSummaryData(array $a, float $H₀, array $expected)
+    {
+        // Given
+        $Hₐ    = Average::mean($a);
+        $s     = Descriptive::standardDeviation($a, Descriptive::SAMPLE);
+        $n     = count($a);
+
+        // When
+        $tTest = Significance::tTestOneSampleFromSummaryData($Hₐ, $s, $n, $H₀);
+
+        // Then
+        $this->assertEqualsWithDelta($expected['t'], $tTest['t'], 0.00001);
+        $this->assertEqualsWithDelta($expected['df'], $tTest['df'], 0.00001);
+        $this->assertEqualsWithDelta($expected['p1'], $tTest['p1'], 0.0001);
+        $this->assertEqualsWithDelta($expected['p2'], $tTest['p2'], 0.00001);
+        $this->assertEqualsWithDelta($expected['mean'], $tTest['mean'], 0.00001);
+        $this->assertEqualsWithDelta($expected['sd'], $tTest['sd'], 0.00001);
+    }

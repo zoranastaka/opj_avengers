@@ -1,0 +1,3 @@
+//KLASA HR ZAPOSLENI ZA SVOJIM METODAMA
+
+class HRZaposleni extends Baza{

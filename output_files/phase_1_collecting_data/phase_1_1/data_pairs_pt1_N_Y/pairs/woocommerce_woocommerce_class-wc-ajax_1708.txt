@@ -1,0 +1,5 @@
+	/**
+	 * Grant download permissions via ajax function.
+	 */
+
+	public static function grant_access_to_download() {

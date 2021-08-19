@@ -1,0 +1,16 @@
+    /**
+     *  Tear down tasks for this container
+     *
+     * @throws \Exception
+     * @return void
+     */
+
+    public function mockery_teardown()
+    {
+        try {
+            $this->mockery_verify();
+        } catch (\Exception $e) {
+            $this->mockery_close();
+            throw $e;
+        }
+    }

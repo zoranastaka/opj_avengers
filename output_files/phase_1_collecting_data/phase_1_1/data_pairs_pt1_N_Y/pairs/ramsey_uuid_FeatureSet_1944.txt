@@ -1,0 +1,9 @@
+    /**
+     * Sets the time provider to use in this environment
+     */
+
+    public function setTimeProvider(TimeProviderInterface $timeProvider): void
+    {
+        $this->timeProvider = $timeProvider;
+        $this->timeGenerator = $this->buildTimeGenerator($timeProvider);
+    }

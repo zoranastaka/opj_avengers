@@ -1,0 +1,12 @@
+    /**
+     * @test 60 supplement observations
+     */
+
+    public function testNumberOfSupplementTypes()
+    {
+        // When
+        $observations = $this->toothGrowth->getSupp();
+
+        // Then
+        $this->assertCount(60, $observations);
+    }

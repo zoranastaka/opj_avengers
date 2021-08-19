@@ -1,0 +1,25 @@
+   /**
+    * Sets the attributes
+    *
+    * @param    mixed   Array of attribute 'name' => 'value' pairs or HTML attribute string
+    * @return   HTML_Common2
+    */
+
+    public function setAttributes($attributes)
+    {
+        $attributes = self::prepareAttributes($attributes);
+        $watched    = array();
+        foreach ($this->watchedAttributes as $watchedKey) {
+            if (isset($attributes[$watchedKey])) {
+                $this->setAttribute($watchedKey, $attributes[$watchedKey]);
+                unset($attributes[$watchedKey]);
+            } else {
+                $this->removeAttribute($watchedKey);
+            }
+            if (isset($this->attributes[$watchedKey])) {
+                $watched[$watchedKey] = $this->attributes[$watchedKey];
+            }
+        }
+        $this->attributes = array_merge($watched, $attributes);
+        return $this;
+    }

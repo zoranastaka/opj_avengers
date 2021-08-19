@@ -1,0 +1,12 @@
+    /**
+     * Return instance of ANYOF matcher.
+     *
+     * @param array ...$args
+     *
+     * @return \Mockery\Matcher\AnyOf
+     */
+
+    public static function anyOf(...$args)
+    {
+        return new \Mockery\Matcher\AnyOf($args);
+    }

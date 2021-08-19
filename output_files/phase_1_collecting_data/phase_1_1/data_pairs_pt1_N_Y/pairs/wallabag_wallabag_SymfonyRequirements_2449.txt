@@ -1,0 +1,17 @@
+    /**
+     * Returns all optional recommendations.
+     *
+     * @return Requirement[]
+     */
+
+    public function getRecommendations()
+    {
+        $array = array();
+        foreach ($this->requirements as $req) {
+            if ($req->isOptional()) {
+                $array[] = $req;
+            }
+        }
+
+        return $array;
+    }

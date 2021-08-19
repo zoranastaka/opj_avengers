@@ -1,0 +1,7 @@
+/**
+ * Code hack to bypass finals.
+ *
+ * Removes all the "final" keywords from class definitions.
+ */
+
+final class BypassFinalsHack extends CodeHack {

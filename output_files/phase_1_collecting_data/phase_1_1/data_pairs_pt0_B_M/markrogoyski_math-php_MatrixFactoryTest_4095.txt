@@ -1,0 +1,15 @@
+    /**
+     * @test         create ObjectMatrix
+     * @dataProvider dataProviderForObjectMatrix
+     * @param        array $A
+     */
+
+    public function testCreateObjectMatrix(array $A)
+    {
+        // When
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertInstanceOf(ObjectMatrix::class, $A);
+        $this->assertInstanceOf(Matrix::class, $A);
+    }

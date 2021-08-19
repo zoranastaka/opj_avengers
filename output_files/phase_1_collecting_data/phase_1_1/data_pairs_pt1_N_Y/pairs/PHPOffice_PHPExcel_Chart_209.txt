@@ -1,0 +1,14 @@
+    /**
+     * Get Major Gridlines
+     *
+     * @return PHPExcel_Chart_GridLines
+     */
+
+    public function getMajorGridlines()
+    {
+        if ($this->majorGridlines !== null) {
+            return $this->majorGridlines;
+        }
+
+        return new PHPExcel_Chart_GridLines();
+    }

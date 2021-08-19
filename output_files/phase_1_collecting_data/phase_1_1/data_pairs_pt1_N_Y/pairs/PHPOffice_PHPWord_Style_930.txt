@@ -1,0 +1,15 @@
+    /**
+     * Get style by name
+     *
+     * @param string $styleName
+     * @return \PhpOffice\PhpWord\Style\AbstractStyle Paragraph|Font|Table|Numbering
+     */
+
+    public static function getStyle($styleName)
+    {
+        if (isset(self::$styles[$styleName])) {
+            return self::$styles[$styleName];
+        }
+
+        return null;
+    }

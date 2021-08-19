@@ -1,0 +1,6 @@
+    /**
+     * Get main socket resource
+     * @return resource
+     */
+
+    public function getMainSocket(){

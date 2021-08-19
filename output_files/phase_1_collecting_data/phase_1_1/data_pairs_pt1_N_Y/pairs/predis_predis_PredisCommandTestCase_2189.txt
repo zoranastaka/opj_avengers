@@ -1,0 +1,15 @@
+    /**
+     * Returns a new command instance with the specified arguments.
+     *
+     * @param array $arguments Arguments for the command
+     *
+     * @return CommandInterface
+     */
+
+    protected function getCommandWithArgumentsArray(array $arguments): CommandInterface
+    {
+        $command = $this->getCommand();
+        $command->setArguments($arguments);
+
+        return $command;
+    }

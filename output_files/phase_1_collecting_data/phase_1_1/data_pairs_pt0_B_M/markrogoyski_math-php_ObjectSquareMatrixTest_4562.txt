@@ -1,0 +1,22 @@
+    /**
+     * @test         subtract
+     * @dataProvider dataProviderSubtract
+     * @param        array $A
+     * @param        array $B
+     * @param        array $expected
+     * @throws       \Exception
+     */
+
+    public function testSubtract(array $A, array $B, array $expected)
+    {
+        // Given
+        $A        = new ObjectSquareMatrix($A);
+        $B        = new ObjectSquareMatrix($B);
+        $expected = new ObjectSquareMatrix($expected);
+
+        // When
+        $difference = $A->subtract($B);
+
+        // Then
+        $this->assertEquals($expected, $difference);
+    }

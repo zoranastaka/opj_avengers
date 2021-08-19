@@ -1,0 +1,7 @@
+    /**
+     * Removes an attribute.
+     *
+     * @return mixed The removed value or null when it does not exist
+     */
+
+    public function remove(string $name);

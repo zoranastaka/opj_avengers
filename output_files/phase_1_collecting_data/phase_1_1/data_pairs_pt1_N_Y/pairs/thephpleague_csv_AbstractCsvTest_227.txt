@@ -1,0 +1,5 @@
+    /**
+     * @dataProvider provideCsvFilterTestingData
+     */
+
+    public function testStreamFilterMode(

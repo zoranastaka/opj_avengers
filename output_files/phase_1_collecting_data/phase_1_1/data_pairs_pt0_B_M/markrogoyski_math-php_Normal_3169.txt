@@ -1,0 +1,12 @@
+    /**
+     * Mean of the distribution
+     *
+     * μ = μ
+     *
+     * @return float
+     */
+
+    public function mean(): float
+    {
+        return $this->μ;
+    }

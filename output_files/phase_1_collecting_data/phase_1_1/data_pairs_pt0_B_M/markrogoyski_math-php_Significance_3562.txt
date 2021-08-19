@@ -1,0 +1,56 @@
+    /**
+     * χ² test (chi-squared goodness of fit test)
+     * Tests the hypothesis that data were generated according to a
+     * particular chance model (Statistics [Freedman, Pisani, Purves]).
+     * https://en.wikipedia.org/wiki/Chi-squared_test#Example_chi-squared_test_for_categorical_data
+     *
+     *        (Oᵢ - Eᵢ)²
+     * χ² = ∑ ----------
+     *            Eᵢ
+     *  where:
+     *   O = observed value
+     *   E = expected value
+     *
+     * k (degrees of freedom) = number of terms - 1
+     *
+     * p = χ² distribution CDF(χ², k)
+     *
+     * @param  array  $observed
+     * @param  array  $expected
+     *
+     * @return array [chi-square, p]
+     *
+     * @throws Exception\BadDataException if count of observed does not equal count of expected
+     */
+
+    public static function chiSquaredTest(array $observed, array $expected): array
+    {
+        // Arrays must have the same number of elements
+        if (\count($observed) !== \count($expected)) {
+            throw new Exception\BadDataException('Observed and expected must have the same number of elements');
+        }
+
+        // Reset array indexes and initialize
+        $O  = \array_values($observed);
+        $E  = \array_values($expected);
+        $n  = \count($observed);        // number of terms
+        $k  = $n - 1;                   // degrees of freedom
+        $χ² = 0;
+
+        /*
+         *        (Oᵢ - Eᵢ)²
+         * χ² = ∑ ----------
+         *            Eᵢ
+         */
+        for ($i = 0; $i < $n; $i++) {
+            $χ² += (($O[$i] - $E[$i]) ** 2) / $E[$i];
+        }
+
+        $chiSquared = new ChiSquared($k);
+        $p = $chiSquared->above($χ²);
+
+        return [
+            'chi-square' => $χ²,
+            'p'          => $p,
+        ];
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @return bool
+     */
+
+    public function is_columns_locked()
+    {
+        return $this->_columns_locked;
+    }

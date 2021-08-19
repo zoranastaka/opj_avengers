@@ -1,0 +1,16 @@
+    /**
+     * @test   approximate exception when there is not constant spacing between points
+     * @throws \Exception
+     */
+
+    public function testNonConstantSpacingException()
+    {
+        // Given
+        $points = [[0,0], [3,3], [2,2], [4,4], [5, 5]];
+
+        // Then
+        $this->expectException(\Exception::class);
+
+        // When
+        BoolesRule::approximate($points);
+    }

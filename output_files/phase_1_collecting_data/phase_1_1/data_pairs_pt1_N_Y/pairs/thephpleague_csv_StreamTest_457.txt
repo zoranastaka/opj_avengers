@@ -1,0 +1,11 @@
+    /**
+     * @covers ::__clone
+     * @covers \League\Csv\UnavailableStream::dueToForbiddenCloning
+     */
+
+    public function testCloningIsForbidden(): void
+    {
+        $this->expectException(UnavailableStream::class);
+
+        clone new Stream(fopen('php://temp', 'r+'));
+    }

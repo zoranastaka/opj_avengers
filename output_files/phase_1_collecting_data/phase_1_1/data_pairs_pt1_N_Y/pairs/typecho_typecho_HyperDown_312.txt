@@ -1,0 +1,14 @@
+    /**
+     * parseMath
+     *
+     * @param array $lines
+     * @param mixed $value
+     * @param int $start
+     * @param int $end
+     * @return string
+     */
+
+    private function parseMath(array $lines, $value, $start, $end)
+    {
+        return '<p>' . $this->markLine($start, $end) . htmlspecialchars(implode("\n", $lines)) . '</p>';
+    }

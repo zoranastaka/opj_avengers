@@ -1,0 +1,10 @@
+    /**
+     * Gets the name of the cookie.
+     *
+     * @return string
+     */
+
+    public function getName()
+    {
+        return $this->name;
+    }

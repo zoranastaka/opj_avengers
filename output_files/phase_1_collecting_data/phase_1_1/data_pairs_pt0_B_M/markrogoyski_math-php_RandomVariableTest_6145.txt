@@ -1,0 +1,26 @@
+    /**
+     * @return array [X, algorithm, kurtosis]
+     */
+
+    public function dataProviderForKurtosis(): array
+    {
+        return [
+            // Population kurtosis
+            [ [ 1987, 1987, 1991, 1992, 1992, 1992, 1992, 1993, 1994, 1994, 1995 ], RandomVariable::POPULATION_KURTOSIS, 0.4466489 ],
+            [ [ 0, 7, 7, 6, 6, 6, 5, 5, 4, 1 ], RandomVariable::POPULATION_KURTOSIS, 0.4813832 ],
+            [ [ 2, 2, 4, 6, 8, 10, 10 ], RandomVariable::POPULATION_KURTOSIS, -1.977778 ],
+            [ [ 1242, 1353, 1142, 1222 ], RandomVariable::POPULATION_KURTOSIS, 1.397048 ],
+            [ [1, 2, 3, 4, 5, 9, 23, 32, 69], RandomVariable::POPULATION_KURTOSIS, 3.789364 ],
+            [ [5,20,40,80,100], RandomVariable::POPULATION_KURTOSIS, -2.103968 ],
+            [ [4, 5, 5, 5, 5, 6], RandomVariable::POPULATION_KURTOSIS, 2.5 ],
+
+            // Sample kurtosis
+            [ [ 1987, 1987, 1991, 1992, 1992, 1992, 1992, 1993, 1994, 1994, 1995 ], RandomVariable::SAMPLE_KURTOSIS, -0.2320107 ],
+            [ [ 0, 7, 7, 6, 6, 6, 5, 5, 4, 1 ], RandomVariable::SAMPLE_KURTOSIS, -0.273157 ],
+            [ [ 2, 2, 4, 6, 8, 10, 10 ], RandomVariable::SAMPLE_KURTOSIS, -1.574074 ],
+            [ [ 1242, 1353, 1142 ], RandomVariable::SAMPLE_KURTOSIS, -1.5 ],
+            [ [1, 2, 3, 4, 5, 9, 23, 32, 69], RandomVariable::SAMPLE_KURTOSIS, 1.389416 ],
+            [ [5,20,40,80,100], RandomVariable::SAMPLE_KURTOSIS, -1.525992 ],
+            [ [4, 5, 5, 5, 5, 6], RandomVariable::SAMPLE_KURTOSIS, 0 ],
+        ];
+    }

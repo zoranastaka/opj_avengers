@@ -1,0 +1,14 @@
+    /**
+     * Set ranges.
+     *
+     * @param array $ranges
+     *
+     * @return Annotation
+     */
+
+    public function setRanges($ranges)
+    {
+        $this->ranges = $ranges;
+
+        return $this;
+    }

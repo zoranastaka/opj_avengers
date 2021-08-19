@@ -1,0 +1,17 @@
+    /**
+     * Get the local PsySH config file.
+     *
+     * Searches for a project specific config file `.psysh.php` in the current
+     * working directory.
+     *
+     * @return string
+     */
+
+    public function getLocalConfigFile()
+    {
+        $localConfig = \getcwd().'/.psysh.php';
+
+        if (@\is_file($localConfig)) {
+            return $localConfig;
+        }
+    }

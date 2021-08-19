@@ -1,0 +1,15 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function initialize(array &$array): void
+    {
+        ++$this->usageIndex;
+        if ($this->usageReporter && 0 <= $this->usageIndex) {
+            ($this->usageReporter)();
+        }
+
+        $this->data[$this->bag->getStorageKey()] = &$array;
+
+        $this->bag->initialize($array);
+    }

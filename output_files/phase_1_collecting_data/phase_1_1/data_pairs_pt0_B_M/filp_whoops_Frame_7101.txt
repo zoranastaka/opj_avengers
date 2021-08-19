@@ -1,0 +1,19 @@
+    /**
+     * Unserializes the frame data, while also preserving
+     * any existing comment data.
+     *
+     * @see Serializable::unserialize
+     * @param string $serializedFrame
+     */
+
+    public function unserialize($serializedFrame)
+    {
+        $frame = unserialize($serializedFrame);
+
+        if (!empty($frame['_comments'])) {
+            $this->comments = $frame['_comments'];
+            unset($frame['_comments']);
+        }
+
+        $this->frame = $frame;
+    }

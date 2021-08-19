@@ -1,0 +1,10 @@
+    /**
+     * Reset the container to null.
+     *
+     * @return void
+     */
+
+    public static function resetContainer()
+    {
+        self::$_container = null;
+    }

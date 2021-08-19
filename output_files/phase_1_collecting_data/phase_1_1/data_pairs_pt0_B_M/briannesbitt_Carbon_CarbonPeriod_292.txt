@@ -1,0 +1,10 @@
+    /**
+     * Returns iteration item date class.
+     *
+     * @return string
+     */
+
+    public function getDateClass(): string
+    {
+        return $this->dateClass;
+    }

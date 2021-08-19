@@ -1,0 +1,10 @@
+    /**
+     * Return all expectations assigned to this director
+     *
+     * @return array
+     */
+
+    public function getDefaultExpectations()
+    {
+        return $this->_defaults;
+    }

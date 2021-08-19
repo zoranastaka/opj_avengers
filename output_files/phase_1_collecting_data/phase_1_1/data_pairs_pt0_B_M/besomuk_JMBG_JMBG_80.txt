@@ -1,0 +1,37 @@
+      /**
+       *
+       * Proverava JMBG i vraca true ako je sve u redu ili false ako nesto nije u redu
+       *
+       * @return      bool
+       *
+       */
+
+      public function isOK()
+      {
+         // odbaci brojeve neispravne duzine
+         if ( strlen($this->num) != 13 )
+            return false;
+
+         // odbaci nule
+         if ( $this->num == "0000000000000" )
+            return false;
+
+         $n = $this->num; // daj ga u varijablu, preglednije je za sabiranje
+
+         // napravi sumu
+         $s = 7*$n[0] + 6*$n[1] + 5*$n[2] + 4*$n[3] + 3*$n[4] + 2*$n[5] +
+              7*$n[6] + 6*$n[7] + 5*$n[8] + 4*$n[9] + 3*$n[10] + 2*$n[11];
+
+         // kontrolna cifra suma mod 11
+         $k = $s % 11;
+
+         // ako si veci od 1, oduzmi od 11
+         if ( $k > 1 )
+            $k = 11 - $k;
+
+         // da li je kontrolna cifra ista kao i ona na 13 mestu?
+         if ( $k == $n[12] )
+            return true;
+         else
+            return false;
+      }

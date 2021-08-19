@@ -1,0 +1,7 @@
+/**
+ * Return an "Add" row for the main table
+ *
+ * @return string HTML of the edit row
+ */
+
+function yourls_table_add_row( $keyword, $url, $title, $ip, $clicks, $timestamp ) {

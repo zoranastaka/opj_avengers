@@ -1,0 +1,10 @@
+	/**
+	 * Get post args
+	 *
+	 * @return array
+	 */
+
+	protected function get_post_args() {
+		if ( property_exists( $this, 'post_args' ) ) {
+			return $this->post_args;
+		}

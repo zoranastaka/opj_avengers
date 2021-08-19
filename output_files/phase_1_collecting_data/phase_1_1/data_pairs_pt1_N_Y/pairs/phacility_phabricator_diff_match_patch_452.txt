@@ -1,0 +1,17 @@
+	/**
+	 * Rehydrate the text in a diff from a string of line hashes to real lines of
+	 * text.
+	 * @param {Array.<Array.<number|string>>} diffs Array of diff tuples.
+	 * @param {Array.<string>} lineArray Array of unique strings.
+	 * @private
+	 */
+
+	function diff_charsToLines(&$diffs, $lineArray) {
+		for ($x = 0; $x < count($diffs); $x++) {
+			$chars = $diffs[$x][1];
+			$text = array ();
+			for ($y = 0; $y < mb_strlen($chars); $y++) {
+				$text[$y] = $lineArray[charCodeAt($chars, $y)];
+			}
+			$diffs[$x][1] = implode('',$text);
+		}

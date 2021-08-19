@@ -1,0 +1,10 @@
+    /**
+     * Returns the region part of the locale.
+     *
+     * @return string|null
+     */
+
+    public function getRegion(): ?string
+    {
+        return $this->region;
+    }

@@ -1,0 +1,84 @@
+    /**
+     * Checks if tracked files have changed. If so, restart all slaves.
+     *
+     * This approach uses simple filemtime to check against modifications. It is using this technique because
+     * all other file watching stuff have either big dependencies or do not work under all platforms without
+     * installing a pecl extension. Also this way is interestingly fast and is only used when debug=true.
+     *
+     * @return bool
+     */
+
+    public function checkChangedFiles()
+    {
+        //If slaves are starting there's no need to check anything
+        if ($this->status === self::STATE_STARTING) {
+            return false;
+        }
+
+        $start = \microtime(true);
+        $numChanged = 0;
+
+        \clearstatcache();
+
+        foreach ($this->filesLastMTime as $filePath => $knownMTime) {
+            //If the file is a directory, just remove it from the list of tracked files
+            if (\is_dir($filePath)) {
+                unset($this->filesLastMd5[$filePath]);
+                unset($this->filesLastMTime[$filePath]);
+
+                continue;
+            }
+
+            //If the file doesn't exist anymore, remove it from the list of tracked files and restart the workers
+            if (!\file_exists($filePath)) {
+                unset($this->filesLastMd5[$filePath]);
+                unset($this->filesLastMTime[$filePath]);
+
+                $this->output->writeln(
+                    \sprintf("<info>[%s] File %s has been removed.</info>", \date('d/M/Y:H:i:s O'), $filePath)
+                );
+                $numChanged++;
+            //If the file modification time has changed, update the metadata and check its contents.
+            } elseif ($knownMTime !== ($actualFileTime = \filemtime($filePath))) {
+                //update time metadata
+                $this->filesLastMTime[$filePath] = $actualFileTime;
+                if ($this->output->isVeryVerbose()) {
+                    $this->output->writeln(
+                        \sprintf("File %s mtime has changed, now checking its contents", $filePath)
+                    );
+                }                //Only if the time AND contents have changed restart, touch() seems to change the file mtime
+                if ($this->filesLastMd5[$filePath] !== $actualFileHash = \md5_file($filePath)) {
+                    //update file hash metadata
+                    $this->filesLastMd5[$filePath] = $actualFileHash;
+
+                    $this->output->writeln(
+                        \sprintf("<info>[%s] File %s has changed.</info>", \date('d/M/Y:H:i:s O'), $filePath)
+                    );
+                    $numChanged++;
+                }
+            }
+        }
+
+        if ($numChanged > 0) {
+            $this->output->writeln(
+                \sprintf(
+                    "<info>[%s] %u of %u known files was changed or removed. Reloading workers.</info>",
+                    \date('d/M/Y:H:i:s O'),
+                    $numChanged,
+                    \count($this->filesLastMTime)
+                )
+            );
+
+            $this->restartSlaves();
+        }
+
+        if ($this->output->isVeryVerbose()) {
+            $this->output->writeln(\sprintf(
+                "Changes detection cycle length = %.3f ms, %u files",
+                (\microtime(true) - $start) * 1000,
+                \count($this->filesLastMTime)
+            ));
+        }
+
+        return $numChanged > 0;
+    }

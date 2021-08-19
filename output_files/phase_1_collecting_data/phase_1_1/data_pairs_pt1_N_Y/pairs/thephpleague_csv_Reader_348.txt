@@ -1,0 +1,11 @@
+    /**
+     * Returns the header offset.
+     *
+     * If no CSV header offset is set this method MUST return null
+     *
+     */
+
+    public function getHeaderOffset(): ?int
+    {
+        return $this->header_offset;
+    }

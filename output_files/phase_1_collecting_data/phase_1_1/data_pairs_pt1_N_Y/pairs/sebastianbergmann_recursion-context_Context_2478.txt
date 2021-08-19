@@ -1,0 +1,34 @@
+    /**
+     * @return bool|int
+     */
+
+    private function addArray(array &$array)
+    {
+        $key = $this->containsArray($array);
+
+        if ($key !== false) {
+            return $key;
+        }
+
+        $key            = count($this->arrays);
+        $this->arrays[] = &$array;
+
+        if (!isset($array[PHP_INT_MAX]) && !isset($array[PHP_INT_MAX - 1])) {
+            $array[] = $key;
+            $array[] = $this->objects;
+        } else { /* cover the improbable case too */
+            do {
+                $key = random_int(PHP_INT_MIN, PHP_INT_MAX);
+            } while (isset($array[$key]));
+
+            $array[$key] = $key;
+
+            do {
+                $key = random_int(PHP_INT_MIN, PHP_INT_MAX);
+            } while (isset($array[$key]));
+
+            $array[$key] = $this->objects;
+        }
+
+        return $key;
+    }

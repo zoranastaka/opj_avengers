@@ -1,0 +1,15 @@
+    /**
+     * @test         isRef returns true for a matrix in row echelon form
+     * @dataProvider dataProviderForRefMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsRef(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isRef());
+    }

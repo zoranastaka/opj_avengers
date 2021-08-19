@@ -1,0 +1,14 @@
+    /**
+     * @dataProvider invalidIntegerValuesDataProvider
+     */
+
+    public function testCanInvalidateNonIntegersIfExist(string $integer)
+    {
+        $dotenv = Dotenv::createImmutable(self::$folder, 'integers.env');
+        $dotenv->load();
+
+        $this->expectException(ValidationException::class);
+        $this->expectExceptionMessage('One or more environment variables failed assertions: INVALID_');
+
+        $dotenv->ifPresent($integer)->isInteger();
+    }

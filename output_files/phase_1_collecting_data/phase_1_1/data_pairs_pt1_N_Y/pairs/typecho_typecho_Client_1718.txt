@@ -1,0 +1,15 @@
+    /**
+     * 增加前缀
+     * <code>
+     * $rpc->metaWeblog->newPost();
+     * </code>
+     *
+     * @access public
+     * @param string $prefix 前缀
+     * @return IXR_Client
+     */
+
+    public function __get($prefix)
+    {
+        return new IXR_Client($this->server, $this->path, $this->port, $this->useragent, $this->prefix . $prefix . '.');
+    }

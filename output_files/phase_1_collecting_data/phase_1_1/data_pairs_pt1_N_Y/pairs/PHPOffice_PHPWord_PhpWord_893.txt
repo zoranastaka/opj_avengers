@@ -1,0 +1,10 @@
+    /**
+     * Get default font size
+     *
+     * @return int
+     */
+
+    public function getDefaultFontSize()
+    {
+        return Settings::getDefaultFontSize();
+    }

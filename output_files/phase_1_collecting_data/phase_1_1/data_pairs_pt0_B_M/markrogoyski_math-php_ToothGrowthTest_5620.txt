@@ -1,0 +1,12 @@
+    /**
+     * @test 60 length observations
+     */
+
+    public function testNumberOfLength()
+    {
+        // When
+        $observations = $this->toothGrowth->getLen();
+
+        // Then
+        $this->assertCount(60, $observations);
+    }

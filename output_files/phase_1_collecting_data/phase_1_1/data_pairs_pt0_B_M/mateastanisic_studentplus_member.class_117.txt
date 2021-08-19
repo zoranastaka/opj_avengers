@@ -1,0 +1,3 @@
+//mozda ne treba
+
+class Member{

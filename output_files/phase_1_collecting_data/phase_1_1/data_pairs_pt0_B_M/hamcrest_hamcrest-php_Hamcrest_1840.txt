@@ -1,0 +1,14 @@
+    /**
+     * Creates a new instance of IsSame.
+     *
+     * @param mixed $object
+     *   The predicate evaluates to true only when the argument is
+     *   this object.
+     *
+     * @return \Hamcrest\Core\IsSame
+     */
+
+    function sameInstance($object)
+    {
+        return \Hamcrest\Core\IsSame::sameInstance($object);
+    }

@@ -1,0 +1,7 @@
+	/**
+	 * Destroy cart session data.
+	 *
+	 * @since 3.2.0
+	 */
+
+	public function destroy_cart_session() {

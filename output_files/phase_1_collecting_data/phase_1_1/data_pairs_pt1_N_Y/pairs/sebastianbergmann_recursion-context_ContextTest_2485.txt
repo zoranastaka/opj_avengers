@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider valuesProvider
+     */
+
+    public function testAdd($value, $key): void
+    {
+        $this->assertEquals($key, $this->context->add($value));
+
+        // Test we get the same key on subsequent adds
+        $this->assertEquals($key, $this->context->add($value));
+    }

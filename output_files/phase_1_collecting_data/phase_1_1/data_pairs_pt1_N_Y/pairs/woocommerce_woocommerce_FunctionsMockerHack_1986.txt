@@ -1,0 +1,26 @@
+/**
+ * Hack to mock standalone functions.
+ *
+ * How to use:
+ *
+ * 1. Invoke 'FunctionsMockerHack::initialize' once, passing an array with the names of the functions
+ * that can be mocked.
+ *
+ * 2. Invoke 'CodeHacker::add_hack(FunctionsMockerHack::get_hack_instance())' once.
+ *
+ * 3. Use 'add_function_mocks' in tests as needed to register callbacks to be executed instead of the functions, e.g.:
+ *
+ * FunctionsMockerHack::add_function_mocks([
+ *   'get_option' => function($name, $default) {
+ *       return 'foo' === $name ? 'bar' : get_option($name, $default);
+ *    }
+ * ]);
+ *
+ * 1 and 2 must be done during the unit testing bootstrap process.
+ *
+ * Note that unless the tests directory is included in the hacking via 'CodeHacker::initialize'
+ * (and they shouldn't!), test code files aren't hacked, therefore the original functions are always
+ * executed inside tests (and thus the above example won't stack-overflow).
+ */
+
+final class FunctionsMockerHack extends CodeHack {

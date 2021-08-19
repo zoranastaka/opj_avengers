@@ -1,0 +1,21 @@
+    /**
+     * @test Axiom Distributive: c(x mod y) = (cx) mod (cy)
+     * Graham, Knuth, Patashnik (1994). Concrete Mathematics, A Foundation For Computer Science. Addison-Wesley.
+     */
+
+    public function testModuloDistributiveLaw()
+    {
+        // Given
+        foreach (\range(-5, 5) as $x) {
+            foreach (\range(-5, 5) as $y) {
+                foreach (\range(-6, 6) as $c) {
+                    // When
+                    $c⟮x mod y⟯   = $c * Arithmetic::modulo($x, $y);
+                    $⟮cx⟯ mod ⟮cy⟯ = Arithmetic::modulo($c * $x, $c * $y);
+
+                    // Then
+                    $this->assertEquals($c⟮x mod y⟯, $⟮cx⟯ mod ⟮cy⟯);
+                }
+            }
+        }
+    }

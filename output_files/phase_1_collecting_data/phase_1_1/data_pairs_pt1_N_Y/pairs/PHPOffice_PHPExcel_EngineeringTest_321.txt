@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider providerBIN2OCT
+     */
+
+    public function testBIN2OCT()
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BINTOOCT'), $args);
+        $this->assertEquals($expectedResult, $result);
+    }

@@ -1,0 +1,9 @@
+    /**
+     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     */
+
+    public function testMinFail()
+    {
+        $arg = new Argument($this->getMockedCommand([10.9]));
+        $arg->min(11);
+    }

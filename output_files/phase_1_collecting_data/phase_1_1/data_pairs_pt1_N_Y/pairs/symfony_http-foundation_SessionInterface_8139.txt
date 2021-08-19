@@ -1,0 +1,7 @@
+    /**
+     * Gets session meta.
+     *
+     * @return MetadataBag
+     */
+
+    public function getMetadataBag();

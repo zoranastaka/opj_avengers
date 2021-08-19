@@ -1,0 +1,12 @@
+    /**
+     * Bootstrap the application events.
+     *
+     * @return void
+     */
+
+    public function boot()
+    {
+        if (method_exists($this->provider, 'boot')) {
+            return $this->provider->boot();
+        }
+    }

@@ -1,0 +1,16 @@
+    /**
+     * @test         sek
+     * @dataProvider dataProviderForSek
+     * @param        int   $n
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testSek(int $n, float $expected)
+    {
+        // When
+        $sek = RandomVariable::sek($n);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $sek, 0.001);
+    }

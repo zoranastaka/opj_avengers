@@ -1,0 +1,32 @@
+    /**
+     * @test Axiom: (PA)⁻¹ = (LU)⁻¹ = U⁻¹L⁻¹
+     * Inverse of the LU decomposition equation is the inverse of the other side.
+     * @dataProvider dataProviderForSquareMatrixGreaterThanOneWithoutOddMatrices
+     * @dataProvider dataProviderForSymmetricMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testInverseWithLUDecompositionInverse(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $LUP = $A->luDecomposition();
+        $L   = $LUP->L;
+        $U   = $LUP->U;
+        $P   = $LUP->P;
+
+        $⟮PA⟯⁻¹ = $P->multiply($A)->inverse();
+        $⟮LU⟯⁻¹ = $L->multiply($U)->inverse();
+
+        $U⁻¹    = $U->inverse();
+        $L⁻¹    = $L->inverse();
+        $U⁻¹L⁻¹ = $U⁻¹->multiply($L⁻¹);
+
+        // Then (PA)⁻¹ = (LU)⁻¹ = U⁻¹L⁻¹
+        $this->assertEquals($⟮PA⟯⁻¹->getMatrix(), $⟮LU⟯⁻¹->getMatrix());
+        $this->assertEquals($⟮LU⟯⁻¹->getMatrix(), $U⁻¹L⁻¹->getMatrix());
+        $this->assertEquals($⟮PA⟯⁻¹->getMatrix(), $U⁻¹L⁻¹->getMatrix());
+    }

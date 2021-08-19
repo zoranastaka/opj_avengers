@@ -1,0 +1,17 @@
+    /**
+     * @test Axiom: Negative definiteness A is ND ⇒ A is NSD
+     * If A is negative definite, then A is also negative semidefinite.
+     * @dataProvider dataProviderForNegativeDefiniteMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testNegativeDefiniteIsAlsoNegativeSemidefinite(array $A)
+    {
+        // Given
+        $A  = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isNegativeDefinite());
+        $this->assertTrue($A->isNegativeSemidefinite());
+    }

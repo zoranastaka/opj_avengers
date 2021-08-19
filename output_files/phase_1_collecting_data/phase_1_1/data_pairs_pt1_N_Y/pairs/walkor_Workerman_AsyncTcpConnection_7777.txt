@@ -1,0 +1,10 @@
+    /**
+     * CancelReconnect.
+     */
+
+    public function cancelReconnect()
+    {
+        if ($this->_reconnectTimer) {
+            Timer::del($this->_reconnectTimer);
+        }
+    }

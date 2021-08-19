@@ -1,0 +1,11 @@
+    /**
+     * @group issue/17
+     */
+
+    public function testMockingAllowsPublicPropertyStubbingOnNamedMock()
+    {
+        $m = mock('Foo');
+        $m->foo = 'bar';
+        $this->assertEquals('bar', $m->foo);
+        //$this->assertArrayHasKey('foo', $m->mockery_getMockableProperties());
+    }

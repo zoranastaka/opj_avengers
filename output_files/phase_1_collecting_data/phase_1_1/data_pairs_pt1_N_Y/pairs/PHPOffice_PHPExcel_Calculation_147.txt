@@ -1,0 +1,8 @@
+    /**
+     * Clear calculation cache
+     */
+
+    public function clearCalculationCache()
+    {
+        $this->calculationCache = array();
+    }

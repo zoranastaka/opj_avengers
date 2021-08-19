@@ -1,0 +1,16 @@
+    /**
+     * Adds VCS patterns.
+     *
+     * @see ignoreVCS()
+     *
+     * @param string|string[] $pattern VCS patterns to ignore
+     */
+
+    public static function addVCSPattern($pattern)
+    {
+        foreach ((array) $pattern as $p) {
+            self::$vcsPatterns[] = $p;
+        }
+
+        self::$vcsPatterns = array_unique(self::$vcsPatterns);
+    }

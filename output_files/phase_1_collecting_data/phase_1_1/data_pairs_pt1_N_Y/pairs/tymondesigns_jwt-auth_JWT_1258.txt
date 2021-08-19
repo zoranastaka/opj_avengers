@@ -1,0 +1,14 @@
+    /**
+     * Get the claims associated with a given subject.
+     *
+     * @param  \Tymon\JWTAuth\Contracts\JWTSubject  $subject
+     *
+     * @return array
+     */
+
+    protected function getClaimsForSubject(JWTSubject $subject)
+    {
+        return array_merge([
+            'sub' => $subject->getJWTIdentifier(),
+        ], $this->lockSubject ? ['prv' => $this->hashSubjectModel($subject)] : []);
+    }

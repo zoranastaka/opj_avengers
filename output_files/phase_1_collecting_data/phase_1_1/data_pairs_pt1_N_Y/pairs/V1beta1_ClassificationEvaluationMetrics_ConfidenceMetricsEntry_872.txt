@@ -1,0 +1,12 @@
+    /**
+     * Output only. The number of labels that were not created by the model,
+     * but if they would, they would not match a ground truth label.
+     *
+     * Generated from protobuf field <code>int64 true_negative_count = 13;</code>
+     * @return int|string
+     */
+
+    public function getTrueNegativeCount()
+    {
+        return $this->true_negative_count;
+    }

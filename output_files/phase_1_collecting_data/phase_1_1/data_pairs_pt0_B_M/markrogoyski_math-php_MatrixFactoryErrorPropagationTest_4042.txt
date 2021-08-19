@@ -1,0 +1,17 @@
+    /**
+     * @test rowSubtract propagates error tolerance to resultant matrix
+     */
+
+    public function testRowSubtract()
+    {
+        // Given
+        $i = 1;
+        $j = 1;
+        $k = 2;
+
+        // When
+        $R = $this->A->rowSubtract($i, $j, $k);
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

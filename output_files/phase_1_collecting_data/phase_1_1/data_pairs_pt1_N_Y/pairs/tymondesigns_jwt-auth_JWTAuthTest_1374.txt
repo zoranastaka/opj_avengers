@@ -1,0 +1,10 @@
+    /** @test */
+
+    public function it_should_magically_call_the_manager()
+    {
+        $this->manager->shouldReceive('getBlacklist')->andReturn(new stdClass);
+
+        $blacklist = $this->jwtAuth->manager()->getBlacklist();
+
+        $this->assertInstanceOf(stdClass::class, $blacklist);
+    }

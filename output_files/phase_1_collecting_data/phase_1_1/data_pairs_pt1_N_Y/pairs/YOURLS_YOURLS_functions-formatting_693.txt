@@ -1,0 +1,10 @@
+/**
+ * Escaping for HTML attributes.  Stolen from WP
+ *
+ * @since 1.6
+ *
+ * @param string $text
+ * @return string
+ */
+
+function yourls_esc_attr( $text ) {

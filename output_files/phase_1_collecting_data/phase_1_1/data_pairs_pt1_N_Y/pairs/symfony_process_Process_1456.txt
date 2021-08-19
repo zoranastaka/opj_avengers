@@ -1,0 +1,46 @@
+    /**
+     * Waits until the callback returns true.
+     *
+     * The callback receives the type of output (out or err) and some bytes
+     * from the output in real-time while writing the standard input to the process.
+     * It allows to have feedback from the independent process during execution.
+     *
+     * @throws RuntimeException         When process timed out
+     * @throws LogicException           When process is not yet started
+     * @throws ProcessTimedOutException In case the timeout was reached
+     */
+
+    public function waitUntil(callable $callback): bool
+    {
+        $this->requireProcessIsStarted(__FUNCTION__);
+        $this->updateStatus(false);
+
+        if (!$this->processPipes->haveReadSupport()) {
+            $this->stop(0);
+            throw new LogicException('Pass the callback to the "Process::start" method or call enableOutput to use a callback with "Process::waitUntil".');
+        }
+        $callback = $this->buildCallback($callback);
+
+        $ready = false;
+        while (true) {
+            $this->checkTimeout();
+            $running = '\\' === \DIRECTORY_SEPARATOR ? $this->isRunning() : $this->processPipes->areOpen();
+            $output = $this->processPipes->readAndWrite($running, '\\' !== \DIRECTORY_SEPARATOR || !$running);
+
+            foreach ($output as $type => $data) {
+                if (3 !== $type) {
+                    $ready = $callback(self::STDOUT === $type ? self::OUT : self::ERR, $data) || $ready;
+                } elseif (!isset($this->fallbackStatus['signaled'])) {
+                    $this->fallbackStatus['exitcode'] = (int) $data;
+                }
+            }
+            if ($ready) {
+                return true;
+            }
+            if (!$running) {
+                return false;
+            }
+
+            usleep(1000);
+        }
+    }

@@ -1,0 +1,62 @@
+    /**
+     * Risk ratio (relative risk) - RR
+     * Computes risk ratio and 95% confidence interval.
+     *
+     * The ratio of the probability of an event occurring in an exposed group
+     * to the probability of the event occurring in a comparison, non-exposed group.
+     * https://en.wikipedia.org/wiki/Relative_risk
+     * http://www.bmj.com/content/343/bmj.d2304
+     *
+     *        P(event when exposed)     a / (a + b)
+     * RR = ------------------------- = -----------
+     *      P(event when non-exposed)   c / (c + d)
+     *
+     * Standard error of the log relative risk:
+     *                ______________________
+     *               / 1   1     1       1
+     * SS{ln(RR)} = /  - + - - ----- - -----
+     *             √   a   c   a + b   c + d
+     *
+     * CI Range(95%) = exp( ln(RR) - z × SS{ln(RR)} ) to exp( ln(RR) + z × SS{ln(RR)} )
+     *
+     * P = exp((-0.717 * z) - (0.416 * z²))
+     *
+     * @param  int   $a Exposed and event present
+     * @param  int   $b Exposed and event absent
+     * @param  int   $c Non-exposed and event present
+     * @param  int   $d Non-exposed and event absent
+     *
+     * @return array [ RR, ci_lower_bound, ci_upper_bound, p ]
+     */
+
+    public static function riskRatio(int $a, int $b, int $c, int $d): array
+    {
+        // Risk ratio
+        $RR = ($a / ($a + $b)) / ($c / ($c + $d));
+
+        // Standard error of the log relative risk
+        $ln⟮RR⟯     = \log($RR);
+        $SS｛ln⟮RR⟯｝ = \sqrt((1 / $a) + (1 / $c) - (1 / ($a + $b)) - (1 / ($c + $d)));
+
+        // Z score for 95% confidence interval
+        $z = 1.96;
+
+        // Confidence interval
+        $ci_lower_bound = \exp($ln⟮RR⟯ - ($z * $SS｛ln⟮RR⟯｝));
+        $ci_upper_bound = \exp($ln⟮RR⟯ + ($z * $SS｛ln⟮RR⟯｝));
+
+        // P-value (significance level)
+        $est = \log($RR);                   // estimate of effect
+        $l   = \log($ci_lower_bound);       // ln CI lower bound
+        $u   = \log($ci_upper_bound);       // ln CI upper bound
+        $SE  = ($u - $l) / (2 * self::Z);  // standard error
+        $z   = \abs($est / $SE);            // test statistic z
+        $p   = \exp((self::NORMAL_LOWER_TAIL_PROBABILITY * $z) - (self::NORMAL_UPPER_TAIL_PROBABILITY * $z ** 2));
+
+        return [
+            'RR'             => $RR,
+            'ci_lower_bound' => $ci_lower_bound,
+            'ci_upper_bound' => $ci_upper_bound,
+            'p'              => $p,
+        ];
+    }

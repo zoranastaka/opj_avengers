@@ -1,0 +1,9 @@
+    /** @dataProvider setInteractiveModeValidProvider */
+
+    public function testsetInteractiveModeValid($interactive)
+    {
+        $config = $this->getConfig();
+        $config->setInteractiveMode($interactive);
+
+        $this->assertSame($interactive, $config->interactiveMode());
+    }

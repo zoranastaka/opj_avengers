@@ -1,0 +1,10 @@
+    /**
+     * Set the readline max history size.
+     *
+     * @param int $value
+     */
+
+    public function setHistorySize($value)
+    {
+        $this->historySize = (int) $value;
+    }

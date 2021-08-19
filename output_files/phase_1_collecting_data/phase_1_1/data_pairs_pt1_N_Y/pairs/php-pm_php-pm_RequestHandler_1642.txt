@@ -1,0 +1,20 @@
+    /**
+     * Handle incoming client connection
+     *
+     * @param ConnectionInterface $incoming
+     */
+
+    public function handle(ConnectionInterface $incoming)
+    {
+        $this->incoming = $incoming;
+
+        $this->incoming->on('data', [$this, 'handleData']);
+
+        $this->start = \microtime(true);
+        $this->requestSentAt = \microtime(true);
+        $this->getNextSlave();
+
+        if ($this->maxExecutionTime > 0) {
+            $this->maxExecutionTimer = $this->loop->addTimer($this->maxExecutionTime, [$this, 'maxExecutionTimeExceeded']);
+        }
+    }

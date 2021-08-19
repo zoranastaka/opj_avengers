@@ -1,0 +1,16 @@
+    /**
+     * @test isNotZero is false when setting a specific tolerance
+     */
+
+    public function testIsNotZeroOutsideOfTolerance()
+    {
+        // Given
+        $x = 0.00000001;
+        $ε = 0.00000001;
+
+        // When
+        $isZero = Support::isNotZero($x, $ε);
+
+        // Then
+        $this->assertFalse($isZero);
+    }

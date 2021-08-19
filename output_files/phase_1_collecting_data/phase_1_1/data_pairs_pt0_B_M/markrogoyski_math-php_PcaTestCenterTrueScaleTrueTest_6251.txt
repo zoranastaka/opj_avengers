@@ -1,0 +1,18 @@
+    /**
+     * @test The class returns the correct critical Q distances
+     *
+     * R code for expected values:
+     *   model$Qlim
+     */
+
+    public function testCriticalQ()
+    {
+        // Given
+        $expected = [9.799571, 3.054654, 1.785614, 1.200338, 0.7974437, 0.534007, 0.2584248, 0.08314212, 0];
+
+        // When
+        $criticalQ = self::$pca->getCriticalQ();
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $criticalQ, .00001);
+    }

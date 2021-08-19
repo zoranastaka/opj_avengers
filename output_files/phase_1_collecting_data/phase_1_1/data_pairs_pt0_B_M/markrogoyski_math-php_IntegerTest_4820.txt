@@ -1,0 +1,15 @@
+    /**
+     * @test     isDeficientNumber returns true if n is a deficient number
+     * @dataProvider dataProviderForDeficientNumbers
+     * @param        int   $n
+     * @throws       \Exception
+     */
+
+    public function testIsDeficientNumber(int $n)
+    {
+        // When
+        $isDeficientNumber = Integer::isDeficientNumber($n);
+
+        // Then
+        $this->assertTrue($isDeficientNumber);
+    }

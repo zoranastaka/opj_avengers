@@ -1,0 +1,10 @@
+    /**
+     * Return the number as a binary string
+     *
+     * @return string
+     */
+
+    public function toBinary(): string
+    {
+        return $this->base256;
+    }

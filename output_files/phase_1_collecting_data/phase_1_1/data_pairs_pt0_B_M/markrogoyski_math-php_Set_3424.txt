@@ -1,0 +1,12 @@
+    /**
+     * Copy
+     * Produces a new set with the same elements as the set.
+     *
+     * @return Set
+     */
+
+    public function copy(): Set
+    {
+        // ImmutableSet extends Set, so return the calling class' type.
+        return new static($this->A);
+    }

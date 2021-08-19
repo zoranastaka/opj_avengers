@@ -1,0 +1,12 @@
+    /**
+     * Mode of the distribution
+     *
+     * mode = 1
+     *
+     * @return int
+     */
+
+    public function mode(): int
+    {
+        return 1;
+    }

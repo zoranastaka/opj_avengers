@@ -1,0 +1,21 @@
+    /**
+     * @param  string      $packageName
+     * @return string|null If the package is being replaced or provided but is not really installed, null will be returned as reference
+     */
+
+    public static function getReference($packageName)
+    {
+        foreach (self::getInstalled() as $installed) {
+            if (!isset($installed['versions'][$packageName])) {
+                continue;
+            }
+
+            if (!isset($installed['versions'][$packageName]['reference'])) {
+                return null;
+            }
+
+            return $installed['versions'][$packageName]['reference'];
+        }
+
+        throw new \OutOfBoundsException('Package "' . $packageName . '" is not installed');
+    }

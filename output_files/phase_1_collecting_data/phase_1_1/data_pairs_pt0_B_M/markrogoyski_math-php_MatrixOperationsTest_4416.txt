@@ -1,0 +1,15 @@
+    /**
+     * @test         rank returns the expected value
+     * @dataProvider dataProviderForRank
+     */
+
+    public function testRank(array $A, $expected)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $rank = $A->rank();
+
+        $this->assertEquals($expected, $rank);
+    }

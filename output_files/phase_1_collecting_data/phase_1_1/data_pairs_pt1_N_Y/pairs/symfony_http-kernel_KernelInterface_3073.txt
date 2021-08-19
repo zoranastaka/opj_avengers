@@ -1,0 +1,7 @@
+    /**
+     * Gets the environment.
+     *
+     * @return string The current environment
+     */
+
+    public function getEnvironment();

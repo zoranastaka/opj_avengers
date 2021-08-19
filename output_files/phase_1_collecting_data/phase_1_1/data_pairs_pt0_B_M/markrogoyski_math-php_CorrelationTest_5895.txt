@@ -1,0 +1,17 @@
+    /**
+     * @test         sampleCoveriance
+     * @dataProvider dataProviderForSampleCovariance
+     * @param        array $X
+     * @param        array $Y
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testSampleCovariance(array $X, array $Y, float $expected)
+    {
+        // When
+        $covariance = Correlation::sampleCovariance($X, $Y);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $covariance, 0.01);
+    }

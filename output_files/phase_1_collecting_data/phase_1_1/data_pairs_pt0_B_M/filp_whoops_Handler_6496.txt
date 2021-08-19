@@ -1,0 +1,8 @@
+    /**
+     * @param Inspector $inspector
+     */
+
+    public function setInspector(Inspector $inspector)
+    {
+        $this->inspector = $inspector;
+    }

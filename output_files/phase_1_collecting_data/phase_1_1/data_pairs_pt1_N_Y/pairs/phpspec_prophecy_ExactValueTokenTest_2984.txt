@@ -1,0 +1,5 @@
+	/**
+	 * @test
+	 */
+
+	public function scores_false_for_object_and_null() {

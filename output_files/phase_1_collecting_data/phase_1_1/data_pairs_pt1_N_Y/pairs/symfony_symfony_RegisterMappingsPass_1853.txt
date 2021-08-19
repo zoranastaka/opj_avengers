@@ -1,0 +1,11 @@
+    /**
+     * Get the service name from the pattern and the configured manager name.
+     *
+     * @throws InvalidArgumentException if none of the managerParameters has a
+     *                                  non-empty value
+     */
+
+    private function getConfigurationServiceName(ContainerBuilder $container): string
+    {
+        return sprintf($this->configurationPattern, $this->getManagerName($container));
+    }

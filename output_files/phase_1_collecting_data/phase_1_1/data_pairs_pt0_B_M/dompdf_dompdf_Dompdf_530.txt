@@ -1,0 +1,9 @@
+    /**
+     * @return Canvas
+     * @deprecated
+     */
+
+    public function get_canvas()
+    {
+        return $this->getCanvas();
+    }

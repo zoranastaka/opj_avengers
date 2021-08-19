@@ -1,0 +1,30 @@
+    /**
+     * Powers of two
+     * https://en.wikipedia.org/wiki/Power_of_two
+     *
+     * 2ⁿ
+     *
+     * Example:
+     *  n = 5
+     *  Sequence:    2⁰, 2¹, 2², 2³, 2⁴
+     *  Sequence:    1,  2,  4,  8,  16
+     *  Array index: 0,  1,  2,  3,  4
+     *
+     * @param  int $n How many numbers in the sequence
+     *
+     * @return array Indexed from 0 (indexes are the power 2 is raised to)
+     */
+
+    public static function powersOfTwo(int $n): array
+    {
+        $powers_of_2 = [];
+        if ($n <= 0) {
+            return $powers_of_2;
+        }
+
+        for ($i = 0; $i < $n; $i++) {
+            $powers_of_2[] = 2 ** $i;
+        }
+
+        return $powers_of_2;
+    }

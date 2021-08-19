@@ -1,0 +1,12 @@
+    /** @test */
+
+    public function it_can_reply_a_message()
+    {
+        $botman = $this->getBot([]);
+        $driver = m::mock(FakeDriver::class)->makePartial();
+        $botman->setDriver($driver);
+
+        $botman->reply('foo', []);
+        $this->assertCount(1, $botman->getDriver()->getBotMessages());
+        $this->assertSame('foo', $botman->getDriver()->getBotMessages()[0]->getText());
+    }

@@ -1,0 +1,18 @@
+    /**
+     * Returns path to temporary directory.
+     *
+     * @since 0.12.0
+     *
+     * @return string
+     */
+
+    public static function getTempDir()
+    {
+        if (!empty(self::$tempDir)) {
+            $tempDir = self::$tempDir;
+        } else {
+            $tempDir = sys_get_temp_dir();
+        }
+
+        return $tempDir;
+    }

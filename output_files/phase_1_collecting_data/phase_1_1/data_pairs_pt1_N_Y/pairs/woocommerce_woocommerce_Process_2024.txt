@@ -1,0 +1,7 @@
+	/**
+	 * Run the command, but throw an Exception on error.
+	 *
+	 * @return ProcessRun
+	 */
+
+	public function run_check() {

@@ -1,0 +1,14 @@
+    /**
+     * @group connected
+     */
+
+    public function testDoesNotThrowExceptionOnConnectWhenAlreadyConnected(): void
+    {
+        $connection = $this->createConnection();
+
+        $connection->connect();
+        $this->assertTrue($connection->isConnected());
+
+        $connection->connect();
+        $this->assertTrue($connection->isConnected());
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Counts lines of text to be written
+     *
+     * @return int
+     */
+
+    public function countLines()
+    {
+        return count(explode(PHP_EOL, $this->text));
+    }

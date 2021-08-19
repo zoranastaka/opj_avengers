@@ -1,0 +1,14 @@
+    /**
+     * @test         isPerfectNumber
+     * @dataProvider dataProviderForPerfectNumbers
+     * @param        int $n
+     */
+
+    public function testIsPerfectNumber(int $n)
+    {
+        // When
+        $isPerfectNumber = Integer::isPerfectNumber($n);
+
+        // Then
+        $this->assertTrue($isPerfectNumber);
+    }

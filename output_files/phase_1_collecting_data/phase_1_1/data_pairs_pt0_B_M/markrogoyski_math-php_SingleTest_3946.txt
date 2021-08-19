@@ -1,0 +1,15 @@
+    /**
+     * @test         square
+     * @dataProvider dataProviderForSquare
+     * @param        array $xs
+     * @param        array $expected
+     */
+
+    public function testSquare(array $xs, array $expected)
+    {
+        // When
+        $squares = Single::square($xs);
+
+        // Then
+        $this->assertEquals($expected, $squares);
+    }

@@ -1,0 +1,46 @@
+    /**
+     * @test The class returns the correct loadings
+     *
+     * R code for expected values:
+     *   model$loadings
+     *
+     * @throws \Exception
+     */
+
+    public function testLoadings()
+    {
+        // Given
+        $expected = [
+            [-0.3931477, 0.02753861, -0.22119309, -0.006126378, -0.320762, 0.72015586, -0.38138068, -0.12465987, 0.11492862],
+            [0.4025537, 0.01570975, -0.25231615, 0.040700251, 0.1171397, 0.2243255, -0.15893251, 0.81032177, 0.16266295],
+            [0.3973528, -0.08888469, -0.07825139, 0.339493732, -0.4867849, -0.01967516, -0.18233095, -0.06416707, -0.66190812],
+            [0.3670814, 0.26941371, -0.01721159, 0.068300993, -0.2947317, 0.35394225, 0.69620751, -0.16573993, 0.25177306],
+            [-0.3118165, 0.34165268, 0.14995507, 0.845658485, 0.1619259, -0.01536794, 0.04767957, 0.13505066, 0.03809096],
+            [0.3734771, -0.17194306, 0.45373418, 0.191260029, -0.1874822, -0.08377237, -0.42777608, -0.19839375, 0.56918844],
+            [-0.2243508, -0.48404435, 0.62812782, -0.030329127, -0.1482495, 0.2575294, 0.27622581, 0.3561335, -0.16873731],
+            [-0.2094749, 0.55078264, 0.20658376, -0.282381831, -0.562486, -0.32298239, -0.08555707, 0.31636479, 0.04719694],
+            [0.2445807, 0.4843131, 0.46412069, -0.214492216, 0.399782, 0.35706914, -0.2060421, -0.10832772, -0.32045892]
+        ];
+
+        // And since each column could be multiplied by -1, we will compare the two and adjust.
+        $loadings   = self::$pca->getLoadings();
+        $load_array = $loadings->getMatrix();
+
+        // Get an array that's roughly ones and negative ones.
+        $quotiant = Multi::divide($expected[1], $load_array[1]);
+
+        // Convert to exactly one or negative one. Cannot be zero.
+        $signum = \array_map(
+            function ($x) {
+                return $x <=> 0;
+            },
+            $quotiant
+        );
+        $sign_change = MatrixFactory::diagonal($signum);
+
+        // Multiplying a sign change matrix on the right changes column signs.
+        $sign_adjusted = $loadings->multiply($sign_change);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $sign_adjusted->getMatrix(), .00001);
+    }

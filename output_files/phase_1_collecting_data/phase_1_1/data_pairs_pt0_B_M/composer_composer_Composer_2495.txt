@@ -1,0 +1,8 @@
+    /**
+     * @param ArchiveManager $manager
+     */
+
+    public function setArchiveManager(ArchiveManager $manager)
+    {
+        $this->archiveManager = $manager;
+    }

@@ -1,0 +1,17 @@
+    /**
+     * @test         inner product
+     * @dataProvider dataProviderForDotProduct
+     */
+
+    public function testInnerProduct(array $A, array $B, $expected)
+    {
+        // Given
+        $A  = new Vector($A);
+        $B  = new Vector($B);
+
+        // When
+        $innerProduct = $A->innerProduct($B);
+
+        // Then
+        $this->assertEquals($expected, $innerProduct);
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @psalm-return non-empty-string
+     */
+
+    public function toString(): string
+    {
+        return $this->codec->encode($this);
+    }

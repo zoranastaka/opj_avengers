@@ -1,0 +1,7 @@
+	/**
+	 * check if certificate import is allowed
+	 *
+	 * @return bool
+	 */
+
+	protected function isCertificateImportAllowed() {

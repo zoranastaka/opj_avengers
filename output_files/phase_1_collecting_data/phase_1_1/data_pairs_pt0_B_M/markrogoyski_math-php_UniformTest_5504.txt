@@ -1,0 +1,16 @@
+    /**
+     * @test     constructor throws a BadDataException if b is < a
+     */
+
+    public function testConstructorException()
+    {
+        // Given
+        $a = 4;
+        $b = 1;
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $uniform = new Uniform($a, $b);
+    }

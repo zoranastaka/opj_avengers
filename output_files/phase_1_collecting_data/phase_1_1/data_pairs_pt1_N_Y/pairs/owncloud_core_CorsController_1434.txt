@@ -1,0 +1,12 @@
+	/**
+	 * CorsController constructor.
+	 *
+	 * @param string $AppName The app's name.
+	 * @param IRequest $request The request.
+	 * @param IUserSession $userSession Logged in user's session
+	 * @param ILogger $logger The logger.
+	 * @param IURLGenerator $urlGenerator Use for url generation
+	 * @param IConfig $config
+	 */
+
+	public function __construct(

@@ -1,0 +1,43 @@
+    /**
+     * Init from given stream
+     *
+     * @param StreamInterface|resource $stream
+     * @return \Intervention\Image\Image
+     */
+
+    public function initFromStream($stream)
+    {
+        if (!$stream instanceof StreamInterface) {
+            $stream = new Stream($stream);
+        }
+
+        try {
+            $offset = $stream->tell();
+        } catch (\RuntimeException $e) {
+            $offset = 0;
+        }
+
+        $shouldAndCanSeek = $offset !== 0 && $stream->isSeekable();
+
+        if ($shouldAndCanSeek) {
+            $stream->rewind();
+        }
+
+        try {
+            $data = $stream->getContents();
+        } catch (\RuntimeException $e) {
+            $data = null;
+        }
+
+        if ($shouldAndCanSeek) {
+            $stream->seek($offset);
+        }
+
+        if ($data) {
+            return $this->initFromBinary($data);
+        }
+
+        throw new NotReadableException(
+            "Unable to init from given stream"
+        );
+    }

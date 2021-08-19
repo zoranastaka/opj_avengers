@@ -1,0 +1,12 @@
+    /**
+     * Is some sort of document security enabled?
+     *
+     * @return boolean
+     */
+
+    public function isSecurityEnabled()
+    {
+        return  $this->lockRevision ||
+                $this->lockStructure ||
+                $this->lockWindows;
+    }

@@ -1,0 +1,18 @@
+    /**
+     * @return array [points, sums]
+     */
+
+    public function dataProviderForMeanSquares(): array
+    {
+        return [
+            [
+                [ [1,2], [2,3], [4,5], [5,7], [6,8] ],
+                [
+                    'mse' => 0.1201550388,
+                    'msr' => 25.6395348837,
+                    'mst' => 6.5,
+                    'sd' => 0.3466338685,
+                ],
+            ],
+        ];
+    }

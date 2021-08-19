@@ -1,0 +1,15 @@
+    /**
+     * @return array [p, μ]
+     */
+
+    public function dataProviderForMean(): array
+    {
+        return [
+            [0.1, 10],
+            [0.2, 5],
+            [0.5, 2],
+            [0.8, 1.25],
+            [0.9, 1.11111111111111],
+            [1, 1],
+        ];
+    }

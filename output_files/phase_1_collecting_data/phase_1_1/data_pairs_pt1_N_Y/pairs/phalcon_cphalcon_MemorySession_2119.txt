@@ -1,0 +1,8 @@
+    /**
+     * Dump all session
+     */
+
+    public function toArray(): array
+    {
+        return (array) $this->memory;
+    }

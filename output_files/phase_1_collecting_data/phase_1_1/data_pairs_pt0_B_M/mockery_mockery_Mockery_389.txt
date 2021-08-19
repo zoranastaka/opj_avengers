@@ -1,0 +1,12 @@
+    /**
+     * Return instance of CONTAINS matcher.
+     *
+     * @param mixed $args
+     *
+     * @return \Mockery\Matcher\Contains
+     */
+
+    public static function contains(...$args)
+    {
+        return new \Mockery\Matcher\Contains($args);
+    }

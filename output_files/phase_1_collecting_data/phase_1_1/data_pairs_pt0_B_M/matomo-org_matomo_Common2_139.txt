@@ -1,0 +1,12 @@
+   /**
+    * Returns the value of an attribute
+    *
+    * @param    string  Attribute name
+    * @return   string  Attribute value, null if attribute does not exist
+    */
+
+    public function getAttribute($name)
+    {
+        $name = strtolower($name);
+        return isset($this->attributes[$name])? $this->attributes[$name]: null;
+    }

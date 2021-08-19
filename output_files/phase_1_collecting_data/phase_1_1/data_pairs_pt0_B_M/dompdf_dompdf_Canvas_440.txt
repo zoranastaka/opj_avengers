@@ -1,0 +1,10 @@
+    /**
+     * Skew
+     *
+     * @param float $angle_x
+     * @param float $angle_y
+     * @param float $x Origin abscissa
+     * @param float $y Origin ordinate
+     */
+
+    function skew($angle_x, $angle_y, $x, $y);

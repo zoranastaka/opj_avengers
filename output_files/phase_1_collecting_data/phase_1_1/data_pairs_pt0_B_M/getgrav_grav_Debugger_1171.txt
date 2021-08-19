@@ -1,0 +1,25 @@
+    /**
+     * Dump exception into the Messages tab of the Debug Bar
+     *
+     * @param Throwable $e
+     * @return Debugger
+     */
+
+    public function addException(Throwable $e)
+    {
+        if ($this->initialized && $this->enabled) {
+            if ($this->debugbar) {
+                $this->debugbar['exceptions']->addThrowable($e);
+            }
+
+            if ($this->clockwork) {
+                /** @var UserData $exceptions */
+                $exceptions = $this->clockwork->userData('Exceptions');
+                $exceptions->data(['message' => $e->getMessage()]);
+
+                $this->clockwork->alert($e->getMessage(), ['exception' => $e]);
+            }
+        }
+
+        return $this;
+    }

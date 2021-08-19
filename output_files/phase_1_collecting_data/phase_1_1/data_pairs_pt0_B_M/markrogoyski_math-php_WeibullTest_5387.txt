@@ -1,0 +1,19 @@
+    /**
+     * @test         mean
+     * @dataProvider dataProviderForMean
+     * @param        float $k
+     * @param        float $λ
+     * @param        float $μ
+     */
+
+    public function testMean(float $k, float $λ, float $μ)
+    {
+        // Given
+        $weibull = new Weibull($k, $λ);
+
+        // When
+        $mean = $weibull->mean();
+
+        // Then
+        $this->assertEqualsWithDelta($μ, $mean, 0.0001);
+    }

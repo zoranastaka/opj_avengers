@@ -1,0 +1,14 @@
+    /**
+     * @return mixed
+     *
+     * @throws InvalidArgumentException
+     */
+
+    public static function mode(array $numbers)
+    {
+        self::checkArrayLength($numbers);
+
+        $values = array_count_values($numbers);
+
+        return array_search(max($values), $values, true);
+    }

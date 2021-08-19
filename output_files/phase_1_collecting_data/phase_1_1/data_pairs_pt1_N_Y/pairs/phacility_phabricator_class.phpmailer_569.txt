@@ -1,0 +1,6 @@
+  /**
+   * Sets Mailer to send message using SMTP.
+   * @return void
+   */
+
+  public function IsSMTP() {

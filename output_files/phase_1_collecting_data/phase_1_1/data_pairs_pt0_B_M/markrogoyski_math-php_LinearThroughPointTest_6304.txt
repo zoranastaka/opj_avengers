@@ -1,0 +1,19 @@
+    /**
+     * @test         evaluate
+     * @dataProvider dataProviderForEvaluate
+     * @param        array $points
+     * @param        float $x
+     * @param        float $y
+     */
+
+    public function testEvaluate(array $points, float $x, float $y)
+    {
+        // Given
+        $force = [0,0];
+
+        // When
+        $regression = new LinearThroughPoint($points, $force);
+
+        // Then
+        $this->assertEqualsWithDelta($y, $regression->evaluate($x), 0.0001);
+    }

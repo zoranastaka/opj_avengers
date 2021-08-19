@@ -1,0 +1,42 @@
+    /**
+     * Remove an item from the queue
+     *
+     * This is different than {@link extract()}; its purpose is to dequeue an
+     * item.
+     *
+     * This operation is potentially expensive, as it requires
+     * re-initialization and re-population of the inner queue.
+     *
+     * Note: this removes the first item matching the provided item found. If
+     * the same item has been added multiple times, it will not remove other
+     * instances.
+     *
+     * @param  mixed $datum
+     * @return bool False if the item was not found, true otherwise.
+     *
+     * @psalm-param T $datum
+     */
+
+    public function remove($datum)
+    {
+        $found = false;
+        foreach ($this->items as $key => $item) {
+            if ($item['data'] === $datum) {
+                $found = true;
+                break;
+            }
+        }
+        if ($found) {
+            unset($this->items[$key]);
+            $this->queue = null;
+
+            if (! $this->isEmpty()) {
+                $queue = $this->getQueue();
+                foreach ($this->items as $item) {
+                    $queue->insert($item['data'], $item['priority']);
+                }
+            }
+            return true;
+        }
+        return false;
+    }

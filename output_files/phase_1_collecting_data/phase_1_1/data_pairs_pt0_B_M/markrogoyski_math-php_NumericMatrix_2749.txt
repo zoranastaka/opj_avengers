@@ -1,0 +1,34 @@
+    /**
+     * Add two matrices - Entrywise sum
+     * Adds each element of one matrix to the same element in the other matrix.
+     * Returns a new matrix.
+     * https://en.wikipedia.org/wiki/Matrix_addition#Entrywise_sum
+     *
+     * @param NumericMatrix $B Matrix to add to this matrix
+     *
+     * @return NumericMatrix
+     *
+     * @throws Exception\MatrixException if matrices have a different number of rows or columns
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MathException
+     */
+
+    public function add($B): NumericMatrix
+    {
+        if ($B->getM() !== $this->m) {
+            throw new Exception\MatrixException('Matrices have different number of rows');
+        }
+        if ($B->getN() !== $this->n) {
+            throw new Exception\MatrixException('Matrices have different number of columns');
+        }
+
+        $R = [];
+
+        for ($i = 0; $i < $this->m; $i++) {
+            for ($j = 0; $j < $this->n; $j++) {
+                $R[$i][$j] = $this->A[$i][$j] + $B[$i][$j];
+            }
+        }
+
+        return MatrixFactory::createNumeric($R, $this->ε);
+    }

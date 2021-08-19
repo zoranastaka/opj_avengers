@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider provideGenerateIntRangeTest
+     */
+
+    public function testGenerateIntRange($min, $max)
+    {
+        $n = $this->generator->generateInt($min, $max);
+        $this->assertTrue($min <= $n);
+        $this->assertTrue($max >= $n);
+    }

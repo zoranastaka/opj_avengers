@@ -1,0 +1,22 @@
+    /**
+     * Range - the difference between the largest and smallest values
+     * It is the size of the smallest interval which contains all the data.
+     * It provides an indication of statistical dispersion.
+     * (https://en.wikipedia.org/wiki/Range_(statistics))
+     *
+     * R = max x - min x
+     *
+     * @param float[] $numbers
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException if the input array of numbers is empty
+     */
+
+    public static function range(array $numbers): float
+    {
+        if (empty($numbers)) {
+            throw new Exception\BadDataException('Cannot find the range of an empty list of numbers');
+        }
+        return \max($numbers) - \min($numbers);
+    }

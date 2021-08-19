@@ -1,0 +1,18 @@
+    /**
+     * @test         gcd returns the greatest common divisor of two integers.
+     * @dataProvider dataProviderForGcd
+     * @param        int $a
+     * @param        int $b
+     * @param        int $expected_gcd
+     * @param        int $_
+     * @param        int $__
+     */
+
+    public function testGCD(int $a, int $b, int $expected_gcd, int $_, int $__)
+    {
+        // When
+        $gcd = Algebra::gcd($a, $b);
+
+        // Then
+        $this->assertEquals($expected_gcd, $gcd);
+    }

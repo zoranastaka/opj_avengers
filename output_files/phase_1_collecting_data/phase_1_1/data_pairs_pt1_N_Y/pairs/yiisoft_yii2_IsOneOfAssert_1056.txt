@@ -1,0 +1,10 @@
+    /**
+     * IsOneOfAssert constructor.
+     * @param array $allowedValues
+     */
+
+    public function __construct(array $allowedValues)
+    {
+        parent::__construct();
+        $this->allowedValues = $allowedValues;
+    }

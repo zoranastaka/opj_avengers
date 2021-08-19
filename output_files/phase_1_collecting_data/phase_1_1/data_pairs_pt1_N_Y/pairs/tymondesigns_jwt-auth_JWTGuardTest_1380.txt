@@ -1,0 +1,6 @@
+    /** @test */
+
+    public function it_should_get_the_request()
+    {
+        $this->assertInstanceOf(Request::class, $this->guard->getRequest());
+    }

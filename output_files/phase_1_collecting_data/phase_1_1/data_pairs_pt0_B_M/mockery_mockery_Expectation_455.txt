@@ -1,0 +1,12 @@
+    /**
+     * Verify this expectation
+     *
+     * @return void
+     */
+
+    public function verify()
+    {
+        foreach ($this->_countValidators as $validator) {
+            $validator->validate($this->_actualCount);
+        }
+    }

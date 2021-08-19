@@ -1,0 +1,16 @@
+    /**
+     * Gets the main request.
+     *
+     * Be warned that making your code aware of the main request
+     * might make it un-compatible with other features of your framework
+     * like ESI support.
+     */
+
+    public function getMainRequest(): ?Request
+    {
+        if (!$this->requests) {
+            return null;
+        }
+
+        return $this->requests[0];
+    }

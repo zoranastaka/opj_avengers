@@ -1,0 +1,24 @@
+    /**
+     * @runInSeparateProcess
+     */
+
+    public function testIdempotence()
+    {
+        DebugClassLoader::enable();
+        DebugClassLoader::enable();
+
+        $functions = spl_autoload_functions();
+        foreach ($functions as $function) {
+            if (\is_array($function) && $function[0] instanceof DebugClassLoader) {
+                $reflClass = new \ReflectionClass($function[0]);
+                $reflProp = $reflClass->getProperty('classLoader');
+                $reflProp->setAccessible(true);
+
+                $this->assertNotInstanceOf(DebugClassLoader::class, $reflProp->getValue($function[0]));
+
+                return;
+            }
+        }
+
+        $this->fail('DebugClassLoader did not register');
+    }

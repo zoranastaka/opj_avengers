@@ -1,0 +1,50 @@
+    /**
+     * Handles incoming requests and transforms a $request into a $response by reference.
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface|Promise
+     * @throws \Exception
+     */
+
+    public function onRequest(ServerRequestInterface $request)
+    {
+        if ($this->isPopulateServer()) {
+            $this->prepareEnvironment($request);
+        }
+
+        $remoteIp = $request->getHeaderLine('X-PHP-PM-Remote-IP');
+        $remotePort = $request->getHeaderLine('X-PHP-PM-Remote-Port');
+
+        $request = $request->withoutHeader('X-PHP-PM-Remote-IP');
+        $request = $request->withoutHeader('X-PHP-PM-Remote-Port');
+
+        $request = $request->withAttribute('remote_address', $remoteIp);
+        $request = $request->withAttribute('remote_port', $remotePort);
+
+        $logTime = \date('d/M/Y:H:i:s O');
+
+        $catchLog = function ($e) {
+            console_log((string) $e);
+            return new Response(500);
+        };
+
+        try {
+            $response = $this->handleRequest($request);
+        } catch (\Throwable $t) {
+            $response = $catchLog($t);
+        }
+
+        $promise = new Promise(function ($resolve) use ($response) {
+            return $resolve($response);
+        });
+
+        $promise = $promise->then(function (ResponseInterface $response) use ($request, $logTime, $remoteIp) {
+            if ($this->isLogging()) {
+                $this->logResponse($request, $response, $logTime, $remoteIp);
+            }
+            return $response;
+        });
+
+        return $promise;
+    }

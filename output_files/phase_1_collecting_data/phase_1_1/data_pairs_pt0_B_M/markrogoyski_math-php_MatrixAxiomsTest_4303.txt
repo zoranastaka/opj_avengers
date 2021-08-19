@@ -1,0 +1,20 @@
+    /**
+     * @test Axiom: Positive semidefiniteness A is PSD ⇔ -A is NSD
+     * If A is positive semidefinite, then -A is negative definite.
+     * @dataProvider dataProviderForPositiveSemidefiniteMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testPositiveSemidefiniteNegativeisNegativeSemidefinite(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $−A = $A->scalarMultiply(-1);
+
+        // Then
+        $this->assertTrue($A->isPositiveSemidefinite());
+        $this->assertTrue($−A->isNegativeSemidefinite());
+    }

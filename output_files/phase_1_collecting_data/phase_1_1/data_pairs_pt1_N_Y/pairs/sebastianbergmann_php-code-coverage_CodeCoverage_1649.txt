@@ -1,0 +1,41 @@
+    /**
+     * @param list<string> $unintentionallyCoveredUnits
+     *
+     * @throws ReflectionException
+     *
+     * @return list<string>
+     */
+
+    private function processUnintentionallyCoveredUnits(array $unintentionallyCoveredUnits): array
+    {
+        $unintentionallyCoveredUnits = array_unique($unintentionallyCoveredUnits);
+        sort($unintentionallyCoveredUnits);
+
+        foreach (array_keys($unintentionallyCoveredUnits) as $k => $v) {
+            $unit = explode('::', $unintentionallyCoveredUnits[$k]);
+
+            if (count($unit) !== 2) {
+                continue;
+            }
+
+            try {
+                $class = new ReflectionClass($unit[0]);
+
+                foreach ($this->parentClassesExcludedFromUnintentionallyCoveredCodeCheck as $parentClass) {
+                    if ($class->isSubclassOf($parentClass)) {
+                        unset($unintentionallyCoveredUnits[$k]);
+
+                        break;
+                    }
+                }
+            } catch (\ReflectionException $e) {
+                throw new ReflectionException(
+                    $e->getMessage(),
+                    (int) $e->getCode(),
+                    $e
+                );
+            }
+        }
+
+        return array_values($unintentionallyCoveredUnits);
+    }

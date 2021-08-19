@@ -1,0 +1,17 @@
+    /**
+     * @test         det
+     * @dataProvider dataProviderForSingularMatrix
+     * @param        array $A
+     */
+
+    public function testDetOfSingularMatrixIsZero(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $det = $A->det();
+
+        // Then
+        $this->assertEqualsWithDelta(0, $det, 0.000001);
+    }

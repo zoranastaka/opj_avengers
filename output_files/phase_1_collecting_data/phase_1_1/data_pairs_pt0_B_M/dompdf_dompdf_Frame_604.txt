@@ -1,0 +1,14 @@
+    /**
+     * @return bool
+     */
+
+    public function is_absolute()
+    {
+        if (isset($this->_is_cache["absolute"])) {
+            return $this->_is_cache["absolute"];
+        }
+
+        $position = $this->get_style()->position;
+
+        return $this->_is_cache["absolute"] = ($position === "absolute" || $position === "fixed");
+    }

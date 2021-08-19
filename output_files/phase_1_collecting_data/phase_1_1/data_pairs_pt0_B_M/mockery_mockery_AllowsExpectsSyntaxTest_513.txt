@@ -1,0 +1,10 @@
+    /** @test */
+
+    public function expectsSetsUpExpectationOfOneCall()
+    {
+        $mock = m::mock();
+        $mock->expects()->foo(123);
+
+        $this->expectException("Mockery\Exception\InvalidCountException");
+        m::close();
+    }

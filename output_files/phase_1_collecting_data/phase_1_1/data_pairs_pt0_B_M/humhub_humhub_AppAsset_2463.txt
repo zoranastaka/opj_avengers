@@ -1,0 +1,13 @@
+    /**
+     * @inheritdoc
+     */
+
+    public static function register($view)
+    {
+        $instance = parent::register($view);
+
+        AppDynamicAsset::register($view);
+        CoreBundleAsset::register($view);
+
+        return $instance;
+    }

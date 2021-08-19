@@ -1,0 +1,10 @@
+    /**
+     * Returns the current user login
+     *
+     * @return string|null
+     */
+
+    public function getLogin()
+    {
+        return $this->login;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Enable experimental caching capability
+     *
+     * @param string $cacheId
+     */
+
+    public function enableCaching($cacheId)
+    {
+        $this->cacheId = $cacheId;
+    }

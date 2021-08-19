@@ -1,0 +1,15 @@
+    /**
+     * @test         frequency
+     * @dataProvider dataProviderForFrequency
+     * @param        array $values
+     * @param        array $expected
+     */
+
+    public function testFrequency(array $values, array $expected)
+    {
+        // When
+        $frequencies = Distribution::frequency($values);
+
+        // Then
+        $this->assertEquals($expected, $frequencies);
+    }

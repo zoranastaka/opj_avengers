@@ -1,0 +1,15 @@
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+
+    public function down()
+    {
+        Schema::table('accounts', function ($table) {
+            $table->dropForeign('accounts_language_id_foreign');
+            $table->dropColumn('language_id');
+        });
+
+        Schema::drop('languages');
+    }

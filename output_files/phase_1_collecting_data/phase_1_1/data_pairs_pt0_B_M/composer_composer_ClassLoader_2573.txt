@@ -1,0 +1,10 @@
+    /**
+     * Turns on searching the include path for class files.
+     *
+     * @param bool $useIncludePath
+     */
+
+    public function setUseIncludePath($useIncludePath)
+    {
+        $this->useIncludePath = $useIncludePath;
+    }

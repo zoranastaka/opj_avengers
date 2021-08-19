@@ -1,0 +1,8 @@
+    /**
+     * @deprecated
+     */
+
+    public function save_font_families()
+    {
+        $this->saveFontFamilies();
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @return Node[]
+     */
+
+    public function getNodes(): array
+    {
+        return $this->nodes;
+    }

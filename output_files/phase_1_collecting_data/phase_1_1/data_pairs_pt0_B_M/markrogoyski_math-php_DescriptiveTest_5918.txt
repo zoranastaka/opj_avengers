@@ -1,0 +1,16 @@
+    /**
+     * @test         range
+     * @dataProvider dataProviderForRange
+     * @param        array $numbers
+     * @param        float $expectedRange
+     * @throws       \Exception
+     */
+
+    public function testRange(array $numbers, float $expectedRange)
+    {
+        // When
+        $range = Descriptive::range($numbers);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedRange, $range, 0.01);
+    }

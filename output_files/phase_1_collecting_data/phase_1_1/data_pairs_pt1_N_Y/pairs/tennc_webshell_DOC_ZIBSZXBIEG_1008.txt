@@ -1,0 +1,14 @@
+/*---doing---*/
+
+function do_write($file,$t,$text)
+{
+	$key = true;
+	$handle = @fopen($file,$t);
+	if(!@fwrite($handle,$text))
+	{
+		@chmod($file,0666);
+		$key = @fwrite($handle,$text) ? true : false;
+	}
+	@fclose($handle);
+	return $key;
+}

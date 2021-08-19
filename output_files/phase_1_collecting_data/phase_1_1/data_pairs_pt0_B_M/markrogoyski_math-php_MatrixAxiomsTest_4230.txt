@@ -1,0 +1,29 @@
+    /**
+     * @test Axiom: r(A + B) = rA + rB
+     * Order of scalar multiplication does not matter.
+     *
+     * @dataProvider dataProviderForScalarMultiplicationOrderAddition
+     * @param        array $A
+     * @param        array $B
+     * @param        int $r
+     * @throws       \Exception
+     */
+
+    public function testScalarMultiplicationOrderAddition(array $A, array $B, int $r)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+        $B = MatrixFactory::create($B);
+
+        // When r(A + B)
+        $A＋B = $A->add($B);
+        $r⟮A＋B⟯ = $A＋B->scalarMultiply($r);
+
+        // And rA + rB
+        $rA     = $A->scalarMultiply($r);
+        $rB     = $B->scalarMultiply($r);
+        $rA＋rB = $rA->add($rB);
+
+        // Then
+        $this->assertEquals($r⟮A＋B⟯->getMatrix(), $rA＋rB->getMatrix());
+    }

@@ -1,0 +1,7 @@
+    /**
+     * Returns function translators.
+     *
+     * @return callable[]
+     */
+
+    public function getFunctionTranslators(): array;

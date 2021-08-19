@@ -1,0 +1,16 @@
+    /**
+     * @test         add multiple arrays
+     * @dataProvider dataProviderForAddMulti
+     * @param        array $expected
+     * @param        array ...$arrays
+     * @throws       \Exception
+     */
+
+    public function testAddMulti(array $expected, array ...$arrays)
+    {
+        // When
+        $sums = Multi::add(...$arrays);
+
+        // Then
+        $this->assertEquals($expected, $sums);
+    }

@@ -1,0 +1,35 @@
+    /**
+     * Redirect standard input and output.
+     *
+     * @throws Exception
+     */
+
+    public static function resetStd()
+    {
+        if (!static::$daemonize || static::$_OS !== \OS_TYPE_LINUX) {
+            return;
+        }
+        global $STDOUT, $STDERR;
+        $handle = \fopen(static::$stdoutFile, "a");
+        if ($handle) {
+            unset($handle);
+            \set_error_handler(function(){});
+            if ($STDOUT) {
+                \fclose($STDOUT);
+            }
+            if ($STDERR) {
+                \fclose($STDERR);
+            }
+            \fclose(\STDOUT);
+            \fclose(\STDERR);
+            $STDOUT = \fopen(static::$stdoutFile, "a");
+            $STDERR = \fopen(static::$stdoutFile, "a");
+            // change output stream
+            static::$_outputStream = null;
+            static::outputStream($STDOUT);
+            \restore_error_handler();
+            return;
+        }
+
+        throw new Exception('Can not open stdoutFile ' . static::$stdoutFile);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Adds a record validator.
+     */
+
+    public function addValidator(callable $validator, string $validator_name): self
+    {
+        $this->validators[$validator_name] = $validator;
+
+        return $this;
+    }

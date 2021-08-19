@@ -1,0 +1,8 @@
+    /**
+     * @dataProvider ean8ValidationProvider
+     */
+
+    public function testEan8Validation($ean8, $valid)
+    {
+        $this->assertTrue(Ean::isValid($ean8) === $valid);
+    }

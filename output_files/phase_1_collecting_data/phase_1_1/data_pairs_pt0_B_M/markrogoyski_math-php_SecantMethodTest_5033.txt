@@ -1,0 +1,14 @@
+    /**
+     * @return array (p₀, p₁, expected)
+     */
+
+    public function dataProviderForPolynomial(): array
+    {
+        return [
+            'solving for f(x) = 0 where x is -4' => [-5, -2, -4],
+            'solving for f(x) = 0 where x is -8' => [-10, -7, -8],
+            'solving for f(x) = 0 where x is 3'  => [2, 5, 3],
+            'solving for f(x) = 0 where x is 1'  => [-1, 2, 1],
+            'Solve for f(x) = 0 where x is 1: Switch p₀ and p₁ and test that they get reversed properly' => [-1, 2, 1],
+        ];
+    }

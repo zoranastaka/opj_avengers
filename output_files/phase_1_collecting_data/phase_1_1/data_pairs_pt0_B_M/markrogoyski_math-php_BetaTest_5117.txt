@@ -1,0 +1,21 @@
+    /**
+     * @test         inverse
+     * @dataProvider dataProviderForInverse
+     * @param        float $α
+     * @param        float $β
+     * @param        float $x
+     * @param        float $expected_inverse
+     * @throws       \Exception
+     */
+
+    public function testInverse(float $α, float $β, float $x, float $expected_inverse)
+    {
+        // Given
+        $beta = new Beta($α, $β);
+
+        // When
+        $inverse = $beta->inverse($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_inverse, $inverse, 0.0000001);
+    }

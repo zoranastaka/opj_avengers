@@ -1,0 +1,12 @@
+    /**
+     * Have the parent separate the points into xs and ys.
+     * Calculate the regression parameters
+     *
+     * @param float[] $points
+     */
+
+    public function __construct(array $points)
+    {
+        parent::__construct($points);
+        $this->calculate();
+    }

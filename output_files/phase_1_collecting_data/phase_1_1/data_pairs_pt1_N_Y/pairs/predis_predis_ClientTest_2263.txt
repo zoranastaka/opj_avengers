@@ -1,0 +1,21 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testConstructorWithConnectionArgument(): void
+    {
+        $factory = new Connection\Factory();
+        $connection = $factory->create('tcp://localhost:7000');
+
+        $client = new Client($connection);
+
+        $this->assertInstanceOf('Predis\Connection\NodeConnectionInterface', $client->getConnection());
+        $this->assertSame($connection, $client->getConnection());
+
+        /** @var NodeConnectionInterface */
+        $connection = $client->getConnection();
+        $parameters = $connection->getParameters();
+
+        $this->assertSame($parameters->host, 'localhost');
+        $this->assertSame($parameters->port, 7000);
+    }

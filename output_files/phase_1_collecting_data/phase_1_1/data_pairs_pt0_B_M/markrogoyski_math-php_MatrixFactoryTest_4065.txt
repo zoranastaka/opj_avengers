@@ -1,0 +1,22 @@
+    /**
+     * @test         create from array of vectors
+     * @dataProvider dataProviderFromArrayOfVectors
+     */
+
+    public function testCreateArrayOfVectors(array $vectors, array $expected)
+    {
+        // Given
+        $vectors = \array_map(
+            function ($vector) {
+                return new Vector($vector);
+            },
+            $vectors
+        );
+
+        // When
+        $A = MatrixFactory::createFromVectors($vectors);
+
+        // Then
+        $this->assertInstanceOf(NumericMatrix::class, $A);
+        $this->assertEquals($expected, $A->getMatrix());
+    }

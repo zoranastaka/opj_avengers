@@ -1,0 +1,22 @@
+    /**
+     * @test         equals
+     * @dataProvider dataProviderForIntToString
+     * @dataProvider dataProviderForStringIntToString
+     * @dataProvider dataProviderForBinaryToString
+     * @dataProvider dataProviderForHexToString
+     * @dataProvider dataProviderForOctalToString
+     * @param        mixed $int
+     * @throws       \Exception
+     */
+
+    public function testEquals($int)
+    {
+        // Given
+        $obj = new ArbitraryInteger($int);
+
+        // When
+        $equals = $obj->equals($obj);
+
+        // Then
+        $this->assertTrue($equals);
+    }

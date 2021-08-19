@@ -1,0 +1,13 @@
+    /**
+     * Sign function (signum function) - sgn
+     * Convenience wrapper for signum function.
+     *
+     * @param float $x
+     *
+     * @return int
+     */
+
+    public static function sgn(float $x): int
+    {
+        return self::signum($x);
+    }

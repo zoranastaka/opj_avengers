@@ -1,0 +1,8 @@
+/**
+ * Get HTML context (stats, index, infos, ...)
+ *
+ * @since  1.7.3
+ * @return string
+ */
+
+function yourls_get_html_context() {

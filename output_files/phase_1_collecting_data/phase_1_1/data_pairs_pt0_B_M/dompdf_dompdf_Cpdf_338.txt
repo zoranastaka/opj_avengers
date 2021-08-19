@@ -1,0 +1,50 @@
+    /**
+     * Set current blend mode & opacity for filled objects.
+     *
+     * Valid blend modes are:
+     *
+     * Normal, Multiply, Screen, Overlay, Darken, Lighten,
+     * ColorDogde, ColorBurn, HardLight, SoftLight, Difference,
+     * Exclusion
+     *
+     * @param string $mode    the blend mode to use
+     * @param float  $opacity 0.0 fully transparent, 1.0 fully opaque
+     */
+
+    function setFillTransparency($mode, $opacity)
+    {
+        static $blend_modes = [
+            "Normal",
+            "Multiply",
+            "Screen",
+            "Overlay",
+            "Darken",
+            "Lighten",
+            "ColorDogde",
+            "ColorBurn",
+            "HardLight",
+            "SoftLight",
+            "Difference",
+            "Exclusion"
+        ];
+
+        if (!in_array($mode, $blend_modes)) {
+            $mode = "Normal";
+        }
+
+        if ($mode === $this->currentFillTransparency["mode"] &&
+            $opacity == $this->currentFillTransparency["opacity"]
+        ) {
+            return;
+        }
+
+        $this->currentFillTransparency["mode"] = $mode;
+        $this->currentFillTransparency["opacity"] = $opacity;
+
+        $options = [
+            "BM" => "/$mode",
+            "ca" => (float)$opacity,
+        ];
+
+        $this->setGraphicsState($options);
+    }

@@ -1,0 +1,22 @@
+    /**
+     * @test         zip with three different iterables of the same size
+     * @dataProvider dataProviderForZipThreeIterablesSameSize
+     * @param        array        $array
+     * @param        \Iterator    $iter
+     * @param        \Traversable $traversable
+     * @param        array        $expected
+     */
+
+    public function testZipThreeIterablesSameSize(array $array, \Iterator $iter, \Traversable $traversable, array $expected)
+    {
+        // Given
+        $result = [];
+
+        // When
+        foreach (Iter::zip($array, $iter, $traversable) as [$value1, $value2, $value3]) {
+            $result[] = [$value1, $value2, $value3];
+        }
+
+        // Then
+        $this->assertEquals($expected, $result);
+    }

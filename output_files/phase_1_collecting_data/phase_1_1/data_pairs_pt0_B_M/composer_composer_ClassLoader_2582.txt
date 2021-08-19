@@ -1,0 +1,10 @@
+    /**
+     * Returns the currently registered loaders indexed by their corresponding vendor directories.
+     *
+     * @return self[]
+     */
+
+    public static function getRegisteredLoaders()
+    {
+        return self::$registeredLoaders;
+    }

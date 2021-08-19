@@ -1,0 +1,10 @@
+	/**
+	 * loc is a location in text1, compute and return the equivalent location in
+	 * text2.
+	 * e.g. 'The cat' vs 'The big cat', 1->1, 5->8
+	 * @param {Array.<Array.<number|string>>} diffs Array of diff tuples.
+	 * @param {number} loc Location within text1.
+	 * @return {number} Location within text2.
+	 */
+
+	function diff_xIndex($diffs, $loc) {

@@ -1,0 +1,10 @@
+    /**
+     * Retrieve the list of known utilities.
+     *
+     * @return array List of utilities.
+     */
+
+    public static function getUtilities()
+    {
+        return self::$utilities;
+    }

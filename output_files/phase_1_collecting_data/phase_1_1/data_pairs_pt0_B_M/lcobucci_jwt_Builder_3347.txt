@@ -1,0 +1,5 @@
+    /**
+     * Configures the expiration time
+     */
+
+    public function expiresAt(DateTimeImmutable $expiration): Builder;

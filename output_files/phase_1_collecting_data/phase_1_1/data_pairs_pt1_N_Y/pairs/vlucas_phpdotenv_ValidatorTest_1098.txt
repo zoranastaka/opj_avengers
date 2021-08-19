@@ -1,0 +1,10 @@
+    /**
+     * @doesNotPerformAssertions
+     */
+
+    public function testDotenvAllowedValuesIfNotPresent()
+    {
+        $dotenv = self::createArrayDotenv()[1];
+        $dotenv->load();
+        $dotenv->ifPresent('FOOQWERTYOOOOOO')->allowedValues(['bar', 'baz']);
+    }

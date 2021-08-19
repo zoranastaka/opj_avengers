@@ -1,0 +1,27 @@
+    /** @test */
+
+    public function it_gets_all_the_journal_entries()
+    {
+        $user = $this->signin();
+        $firstEntry = factory(Entry::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+        $secondEntry = factory(Entry::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $response = $this->json('GET', '/api/journal');
+
+        $response->assertStatus(200);
+        $response->assertJsonStructure([
+            'data' => ['*' => $this->jsonJournal],
+        ]);
+        $response->assertJsonFragment([
+            'object' => 'entry',
+            'id' => $firstEntry->id,
+        ]);
+        $response->assertJsonFragment([
+            'object' => 'entry',
+            'id' => $secondEntry->id,
+        ]);
+    }

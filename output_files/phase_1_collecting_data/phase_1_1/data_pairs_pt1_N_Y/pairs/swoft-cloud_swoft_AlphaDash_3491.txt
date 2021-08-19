@@ -1,0 +1,8 @@
+    /**
+     * @return string
+     */
+
+    public function getMessage(): string
+    {
+        return $this->message;
+    }

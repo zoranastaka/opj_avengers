@@ -1,0 +1,13 @@
+    /**
+     * Absolute Value
+     *
+     * @return ArbitraryInteger
+     *
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function abs(): ArbitraryInteger
+    {
+        return self::fromBinary($this->base256, true);
+    }

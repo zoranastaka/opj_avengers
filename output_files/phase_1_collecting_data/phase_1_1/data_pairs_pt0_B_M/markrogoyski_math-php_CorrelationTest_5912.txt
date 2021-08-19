@@ -1,0 +1,17 @@
+    /**
+     * @test         spearmansRho
+     * @dataProvider dataProviderForSpearmansRho
+     * @param        array $X
+     * @param        array $Y
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testSpearmansRho(array $X, array $Y, float $expected)
+    {
+        // When
+        $ρ = Correlation::spearmansRho($X, $Y);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $ρ, 0.00001);
+    }

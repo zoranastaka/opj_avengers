@@ -1,0 +1,10 @@
+    /**
+     * Clears the optimizer internal vars after the optimization process.
+     */
+
+    protected function clear(): void
+    {
+        $this->samples = [];
+        $this->targets = [];
+        $this->gradientCb = null;
+    }

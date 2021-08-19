@@ -1,0 +1,8 @@
+    /**
+     * Is reflection cache enabled?
+     */
+
+    public function reflectionCacheEnabled()
+    {
+        return $this->_reflectionCacheEnabled;
+    }

@@ -1,0 +1,16 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testGetIteratorWithNonTraversableConnectionNoException(): void
+    {
+        $connection = $this->getMockConnection('tcp://127.0.0.1:6381');
+        $client = new Client($connection);
+
+        /** @var \Iterator */
+        $iterator = $client->getIterator();
+
+        $this->assertInstanceOf('\Predis\Client', $nodeClient = $iterator->current());
+        $this->assertSame($connection, $nodeClient->getConnection());
+        $this->assertSame('127.0.0.1:6381', $iterator->key());
+    }

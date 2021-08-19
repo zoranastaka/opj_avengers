@@ -1,0 +1,53 @@
+    /**
+     * Prints out the usage information for PHPCBF.
+     *
+     * @return void
+     */
+
+    public function printPHPCBFUsage()
+    {
+        echo 'Usage: phpcbf [-nwli] [-d key[=value]] [--ignore-annotations] [--bootstrap=<bootstrap>]'.PHP_EOL;
+        echo '  [--standard=<standard>] [--sniffs=<sniffs>] [--exclude=<sniffs>] [--suffix=<suffix>]'.PHP_EOL;
+        echo '  [--severity=<severity>] [--error-severity=<severity>] [--warning-severity=<severity>]'.PHP_EOL;
+        echo '  [--tab-width=<tabWidth>] [--encoding=<encoding>] [--parallel=<processes>]'.PHP_EOL;
+        echo '  [--basepath=<basepath>] [--extensions=<extensions>] [--ignore=<patterns>]'.PHP_EOL;
+        echo '  [--stdin-path=<stdinPath>] [--file-list=<fileList>] [--filter=<filter>] <file> - ...'.PHP_EOL;
+        echo PHP_EOL;
+        echo ' -     Fix STDIN instead of local files and directories'.PHP_EOL;
+        echo ' -n    Do not fix warnings (shortcut for --warning-severity=0)'.PHP_EOL;
+        echo ' -w    Fix both warnings and errors (on by default)'.PHP_EOL;
+        echo ' -l    Local directory only, no recursion'.PHP_EOL;
+        echo ' -p    Show progress of the run'.PHP_EOL;
+        echo ' -q    Quiet mode; disables progress and verbose output'.PHP_EOL;
+        echo ' -v    Print processed files'.PHP_EOL;
+        echo ' -vv   Print ruleset and token output'.PHP_EOL;
+        echo ' -vvv  Print sniff processing information'.PHP_EOL;
+        echo ' -i    Show a list of installed coding standards'.PHP_EOL;
+        echo ' -d    Set the [key] php.ini value to [value] or [true] if value is omitted'.PHP_EOL;
+        echo PHP_EOL;
+        echo ' --help                Print this help message'.PHP_EOL;
+        echo ' --version             Print version information'.PHP_EOL;
+        echo ' --ignore-annotations  Ignore all phpcs: annotations in code comments'.PHP_EOL;
+        echo PHP_EOL;
+        echo ' <basepath>    A path to strip from the front of file paths inside reports'.PHP_EOL;
+        echo ' <bootstrap>   A comma separated list of files to run before processing begins'.PHP_EOL;
+        echo ' <encoding>    The encoding of the files being fixed (default is utf-8)'.PHP_EOL;
+        echo ' <extensions>  A comma separated list of file extensions to fix'.PHP_EOL;
+        echo '               The type of the file can be specified using: ext/type'.PHP_EOL;
+        echo '               e.g., module/php,es/js'.PHP_EOL;
+        echo ' <file>        One or more files and/or directories to fix'.PHP_EOL;
+        echo ' <fileList>    A file containing a list of files and/or directories to fix (one per line)'.PHP_EOL;
+        echo ' <filter>      Use either the "gitmodified" or "gitstaged" filter,'.PHP_EOL;
+        echo '               or specify the path to a custom filter class'.PHP_EOL;
+        echo ' <patterns>    A comma separated list of patterns to ignore files and directories'.PHP_EOL;
+        echo ' <processes>   How many files should be fixed simultaneously (default is 1)'.PHP_EOL;
+        echo ' <severity>    The minimum severity required to fix an error or warning'.PHP_EOL;
+        echo ' <sniffs>      A comma separated list of sniff codes to include or exclude from fixing'.PHP_EOL;
+        echo '               (all sniffs must be part of the specified standard)'.PHP_EOL;
+        echo ' <standard>    The name or path of the coding standard to use'.PHP_EOL;
+        echo ' <stdinPath>   If processing STDIN, the file path that STDIN will be processed as'.PHP_EOL;
+        echo ' <suffix>      Write modified files to a filename using this suffix'.PHP_EOL;
+        echo '               ("diff" and "patch" are not used in this mode)'.PHP_EOL;
+        echo ' <tabWidth>    The number of spaces each tab represents'.PHP_EOL;
+
+    }//end printPHPCBFUsage()

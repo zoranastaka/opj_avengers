@@ -1,0 +1,8 @@
+	// --------------------------------------------------------------------
+
+	public function test_alternative_path_load()
+	{
+		// Alternative Path
+		$this->ci_vfs_clone('system/language/english/profiler_lang.php');
+		$this->assertTrue($this->lang->load('profiler', 'english', FALSE, TRUE, 'vfs://system/'));
+	}

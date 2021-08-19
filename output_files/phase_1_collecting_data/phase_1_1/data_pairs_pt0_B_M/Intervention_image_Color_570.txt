@@ -1,0 +1,10 @@
+    /**
+     * Calculates RGB(A) in array format of current color instance
+     *
+     * @return array
+     */
+
+    public function getArray()
+    {
+        return [$this->r, $this->g, $this->b, round(1 - $this->a / 127, 2)];
+    }

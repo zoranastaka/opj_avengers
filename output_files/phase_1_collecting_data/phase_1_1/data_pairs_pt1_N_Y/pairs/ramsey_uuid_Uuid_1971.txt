@@ -1,0 +1,11 @@
+    /**
+     * Returns a version 4 (random) UUID
+     *
+     * @return UuidInterface A UuidInterface instance that represents a
+     *     version 4 UUID
+     */
+
+    public static function uuid4(): UuidInterface
+    {
+        return self::getFactory()->uuid4();
+    }

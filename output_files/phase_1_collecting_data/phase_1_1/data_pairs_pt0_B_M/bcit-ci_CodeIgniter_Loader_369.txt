@@ -1,0 +1,15 @@
+	/**
+	 * Class constructor
+	 *
+	 * Sets component load paths, gets the initial output buffering level.
+	 *
+	 * @return	void
+	 */
+
+	public function __construct()
+	{
+		$this->_ci_ob_level = ob_get_level();
+		$this->_ci_classes =& is_loaded();
+
+		log_message('info', 'Loader Class Initialized');
+	}

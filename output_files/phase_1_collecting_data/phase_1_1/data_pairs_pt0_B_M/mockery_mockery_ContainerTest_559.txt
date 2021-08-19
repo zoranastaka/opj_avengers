@@ -1,0 +1,11 @@
+    /**
+     * @group issue/17
+     */
+
+    public function testMockingAllowsPublicPropertyStubbingOnRealClass()
+    {
+        $m = mock('MockeryTestFoo');
+        $m->foo = 'bar';
+        $this->assertEquals('bar', $m->foo);
+        //$this->assertArrayHasKey('foo', $m->mockery_getMockableProperties());
+    }

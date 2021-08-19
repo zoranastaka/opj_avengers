@@ -1,0 +1,8 @@
+    /**
+     * @return \ArrayIterator|\Traversable
+     */
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->values);
+    }

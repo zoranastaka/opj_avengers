@@ -1,0 +1,17 @@
+  /**
+   * Set a time limit (in seconds) for the current script. After time expires,
+   * the script fatals.
+   *
+   * This works like `max_execution_time`, but prints out a useful stack trace
+   * when the time limit expires. This is primarily intended to make it easier
+   * to debug pages which hang by allowing extraction of a stack trace: set a
+   * short debug limit, then use the trace to figure out what's happening.
+   *
+   * The limit is implemented with a tick function, so enabling it implies
+   * some accounting overhead.
+   *
+   * @param int Time limit in seconds.
+   * @return void
+   */
+
+  public static function setDebugTimeLimit($limit) {

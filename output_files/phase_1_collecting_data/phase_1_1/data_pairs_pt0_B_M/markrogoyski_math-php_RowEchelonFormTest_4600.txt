@@ -1,0 +1,22 @@
+    /**
+     * @test   ref lazy load is the same as the computed and returned value.
+     * @throws \Exception
+     */
+
+    public function testRefAlreadyComputed()
+    {
+        // Given
+        $A = new NumericMatrix([
+            [ 4,  1,  2,  -3],
+            [-3,  3, -1,   4],
+            [-1,  2,  5,   1],
+            [ 5,  4,  3,  -1],
+        ]);
+
+        // When
+        $ref1 = $A->ref(); // computes ref
+        $ref2 = $A->ref(); // simply gets already-computed ref
+
+        // Then
+        $this->assertEquals($ref1, $ref2);
+    }

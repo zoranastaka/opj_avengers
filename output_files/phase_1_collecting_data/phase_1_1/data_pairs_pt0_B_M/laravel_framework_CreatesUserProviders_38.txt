@@ -1,0 +1,10 @@
+    /**
+     * Get the default user provider name.
+     *
+     * @return string
+     */
+
+    public function getDefaultUserProvider()
+    {
+        return $this->app['config']['auth.defaults.provider'];
+    }

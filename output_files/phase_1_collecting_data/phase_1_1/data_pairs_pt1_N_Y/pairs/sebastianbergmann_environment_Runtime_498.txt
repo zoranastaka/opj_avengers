@@ -1,0 +1,8 @@
+    /**
+     * Returns true when the runtime used is PHP and Xdebug is loaded.
+     */
+
+    public function hasXdebug(): bool
+    {
+        return ($this->isPHP() || $this->isHHVM()) && extension_loaded('xdebug');
+    }

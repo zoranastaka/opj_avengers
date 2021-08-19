@@ -1,0 +1,20 @@
+    /**
+     * @test         pmf
+     * @dataProvider dataProviderForPmf
+     * @param        array $frequencies
+     * @param        array $probabilities
+     * @param        $expectedPmf
+     * @throws       \Exception
+     */
+
+    public function testPmf(array $frequencies, array $probabilities, $expectedPmf)
+    {
+        // Given
+        $multinomial = new Multinomial($probabilities);
+
+        // When
+        $pmf = $multinomial->pmf($frequencies);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedPmf, $pmf, 0.001);
+    }

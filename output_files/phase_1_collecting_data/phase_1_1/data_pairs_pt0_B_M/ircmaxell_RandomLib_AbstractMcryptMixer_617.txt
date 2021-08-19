@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public static function test()
+    {
+        return extension_loaded('mcrypt');
+    }

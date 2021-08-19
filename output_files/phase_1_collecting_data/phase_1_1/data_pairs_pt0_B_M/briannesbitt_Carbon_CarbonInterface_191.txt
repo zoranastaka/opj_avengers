@@ -1,0 +1,12 @@
+    /**
+     * Format the instance as ISO8601
+     *
+     * @example
+     * ```
+     * echo Carbon::now()->toIso8601String();
+     * ```
+     *
+     * @return string
+     */
+
+    public function toIso8601String();

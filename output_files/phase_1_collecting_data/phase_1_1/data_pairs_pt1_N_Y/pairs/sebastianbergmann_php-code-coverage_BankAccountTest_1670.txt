@@ -1,0 +1,8 @@
+    /**
+     * @covers BankAccount::getBalance
+     */
+
+    public function testBalanceIsInitiallyZero()
+    {
+        $this->assertEquals(0, $this->ba->getBalance());
+    }

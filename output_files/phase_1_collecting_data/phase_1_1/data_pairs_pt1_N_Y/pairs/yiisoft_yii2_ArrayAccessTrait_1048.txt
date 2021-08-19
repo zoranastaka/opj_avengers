@@ -1,0 +1,10 @@
+    /**
+     * Returns the number of data items.
+     * This method is required by Countable interface.
+     * @return int number of data elements.
+     */
+
+    public function count()
+    {
+        return count($this->data);
+    }

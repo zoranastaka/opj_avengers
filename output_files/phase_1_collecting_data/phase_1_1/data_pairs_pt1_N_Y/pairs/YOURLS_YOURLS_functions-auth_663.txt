@@ -1,0 +1,9 @@
+/**
+ * Get auth cookie value
+ *
+ * @since 1.7.7
+ * @param string $user     user name
+ * @return string          cookie value
+ */
+
+function yourls_cookie_value( $user ) {

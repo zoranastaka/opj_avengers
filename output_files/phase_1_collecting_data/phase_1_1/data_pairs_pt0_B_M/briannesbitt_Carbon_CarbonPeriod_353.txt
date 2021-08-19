@@ -1,0 +1,18 @@
+    /**
+     * Prepare given date to be returned to the external logic.
+     *
+     * @param CarbonInterface $date
+     *
+     * @return CarbonInterface
+     */
+
+    protected function prepareForReturn(CarbonInterface $date)
+    {
+        $date = ([$this->dateClass, 'make'])($date);
+
+        if ($this->timezone) {
+            $date = $date->setTimezone($this->timezone);
+        }
+
+        return $date;
+    }

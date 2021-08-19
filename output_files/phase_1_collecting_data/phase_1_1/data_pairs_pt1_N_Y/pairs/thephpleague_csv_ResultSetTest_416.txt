@@ -1,0 +1,12 @@
+    /**
+     * @covers ::fetchColumn
+     * @covers ::getColumnIndex
+     * @covers ::getColumnIndexByValue
+     * @covers ::getColumnIndexByKey
+     */
+
+    public function testFetchColumn(): void
+    {
+        self::assertContains('john', $this->stmt->process($this->csv)->fetchColumn(0));
+        self::assertContains('jane', $this->stmt->process($this->csv)->fetchColumn());
+    }

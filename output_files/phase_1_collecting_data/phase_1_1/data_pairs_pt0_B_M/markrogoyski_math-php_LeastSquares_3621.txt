@@ -1,0 +1,33 @@
+    /**
+     * Cook's Distance
+     * A measures of the influence of each data point on the regression.
+     * Points with excessive influence may be outliers, or may warrent a closer look.
+     *
+     * https://en.wikipedia.org/wiki/Cook%27s_distance
+     *
+     *           _         _
+     *      eᵢ² |     hᵢ    |
+     * Dᵢ = --- | --------- |
+     *      s²p |_(1 - hᵢ)²_|
+     *
+     *   where s ≡ (n - p)⁻¹eᵀ  (mean square residuals)
+     *         e is the mean square error of the residual model
+     *
+     * @return array
+     */
+
+    public function cooksD(): array
+    {
+        $e   = $this->residuals();
+        $h   = $this->leverages();
+        $mse = $this->meanSquareResidual();
+        $p   = $this->p + $this->fit_constant;
+
+        return \array_map(
+            function ($eᵢ, $hᵢ) use ($mse, $p) {
+                return ($eᵢ ** 2 / $mse / $p) * ($hᵢ / (1 - $hᵢ) ** 2);
+            },
+            $e,
+            $h
+        );
+    }

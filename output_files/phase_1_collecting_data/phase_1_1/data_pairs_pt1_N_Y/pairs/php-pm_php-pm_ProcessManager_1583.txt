@@ -1,0 +1,8 @@
+    /**
+     * @param int $requestBodyBuffer
+     */
+
+    public function setRequestBodyBuffer($requestBodyBuffer)
+    {
+        $this->requestBodyBuffer = $requestBodyBuffer;
+    }

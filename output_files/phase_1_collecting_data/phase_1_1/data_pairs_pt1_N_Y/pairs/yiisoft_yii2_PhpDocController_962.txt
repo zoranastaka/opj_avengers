@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function options($actionID)
+    {
+        return array_merge(parent::options($actionID), ['updateFiles', 'skipFrameworkRequirements']);
+    }

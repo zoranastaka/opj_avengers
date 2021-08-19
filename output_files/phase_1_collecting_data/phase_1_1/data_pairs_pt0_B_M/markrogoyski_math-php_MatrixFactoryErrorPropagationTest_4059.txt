@@ -1,0 +1,12 @@
+    /**
+     * @test meanDeviationOfRowVariables propagates error tolerance to resultant matrix
+     */
+
+    public function testMeanDeviationOfRowVariables()
+    {
+        // When
+        $R = $this->A->meanDeviationOfRowVariables();
+
+        // Then
+        $this->assertEquals(self::ε, $R->getError());
+    }

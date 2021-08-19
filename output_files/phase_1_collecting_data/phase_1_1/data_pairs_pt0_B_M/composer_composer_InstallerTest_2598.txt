@@ -1,0 +1,70 @@
+    /**
+     * @dataProvider provideInstaller
+     */
+
+    public function testInstaller(RootPackageInterface $rootPackage, $repositories, array $options)
+    {
+        $io = new BufferIO('', OutputInterface::VERBOSITY_NORMAL, new OutputFormatter(false));
+
+        $downloadManager = $this->getMockBuilder('Composer\Downloader\DownloadManager')
+            ->setConstructorArgs(array($io))
+            ->getMock();
+        $config = $this->getMockBuilder('Composer\Config')->getMock();
+
+        $eventDispatcher = $this->getMockBuilder('Composer\EventDispatcher\EventDispatcher')->disableOriginalConstructor()->getMock();
+        $httpDownloader = $this->getMockBuilder('Composer\Util\HttpDownloader')->disableOriginalConstructor()->getMock();
+        $repositoryManager = new RepositoryManager($io, $config, $httpDownloader, $eventDispatcher);
+        $repositoryManager->setLocalRepository(new InstalledArrayRepository());
+
+        if (!is_array($repositories)) {
+            $repositories = array($repositories);
+        }
+        foreach ($repositories as $repository) {
+            $repositoryManager->addRepository($repository);
+        }
+        $installationManager = new InstallationManagerMock();
+
+        // emulate a writable lock file
+        /** @var ?string $lockData */
+        $lockData = null;
+        $lockJsonMock = $this->getMockBuilder('Composer\Json\JsonFile')->disableOriginalConstructor()->getMock();
+        $lockJsonMock->expects($this->any())
+            ->method('read')
+            ->will($this->returnCallback(function () use (&$lockData) {
+                return json_decode($lockData, true);
+            }));
+        $lockJsonMock->expects($this->any())
+            ->method('exists')
+            ->will($this->returnCallback(function () use (&$lockData) {
+                return $lockData !== null;
+            }));
+        $lockJsonMock->expects($this->any())
+            ->method('write')
+            ->will($this->returnCallback(function ($value, $options = 0) use (&$lockData) {
+                $lockData = json_encode($value, JsonFile::JSON_PRETTY_PRINT);
+            }));
+
+        $tempLockData = null;
+        $locker = new Locker($io, $lockJsonMock, $installationManager, '{}');
+
+        $autoloadGenerator = $this->getMockBuilder('Composer\Autoload\AutoloadGenerator')->disableOriginalConstructor()->getMock();
+
+        $installer = new Installer($io, $config, clone $rootPackage, $downloadManager, $repositoryManager, $locker, $installationManager, $eventDispatcher, $autoloadGenerator);
+        $result = $installer->run();
+
+        $output = str_replace("\r", '', $io->getOutput());
+        $this->assertEquals(0, $result, $output);
+
+        $expectedInstalled = isset($options['install']) ? $options['install'] : array();
+        $expectedUpdated = isset($options['update']) ? $options['update'] : array();
+        $expectedUninstalled = isset($options['uninstall']) ? $options['uninstall'] : array();
+
+        $installed = $installationManager->getInstalledPackages();
+        $this->assertEquals($this->makePackagesComparable($expectedInstalled), $this->makePackagesComparable($installed));
+
+        $updated = $installationManager->getUpdatedPackages();
+        $this->assertSame($expectedUpdated, $updated);
+
+        $uninstalled = $installationManager->getUninstalledPackages();
+        $this->assertSame($expectedUninstalled, $uninstalled);
+    }

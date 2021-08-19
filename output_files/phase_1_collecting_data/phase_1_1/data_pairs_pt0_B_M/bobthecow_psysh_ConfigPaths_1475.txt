@@ -1,0 +1,21 @@
+    /**
+     * Given a list of directories, and a list of filenames, find the ones that
+     * are real files.
+     *
+     * @return string[]
+     */
+
+    private function allRealFiles(array $dirNames, array $fileNames)
+    {
+        $files = [];
+        foreach ($dirNames as $dir) {
+            foreach ($fileNames as $name) {
+                $file = $dir.'/'.$name;
+                if (@\is_file($file)) {
+                    $files[] = $file;
+                }
+            }
+        }
+
+        return $files;
+    }

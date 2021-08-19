@@ -1,0 +1,12 @@
+    /**
+     * @test MatrixException
+     */
+
+    public function testMatrixException()
+    {
+        // Given
+        $e = new Exception\MatrixException('message');
+
+        // Then
+        $this->assertInstanceOf(Exception\MathException::class, $e);
+    }

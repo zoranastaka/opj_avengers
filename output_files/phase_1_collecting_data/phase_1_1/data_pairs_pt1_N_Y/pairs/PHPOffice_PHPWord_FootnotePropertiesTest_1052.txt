@@ -1,0 +1,11 @@
+    /**
+     * Test throws exception if wrong number format given
+     *
+     * @expectedException \InvalidArgumentException
+     */
+
+    public function testWrongNumFmt()
+    {
+        $footnoteProp = new FootnoteProperties();
+        $footnoteProp->setNumFmt(FootnoteProperties::POSITION_DOC_END);
+    }

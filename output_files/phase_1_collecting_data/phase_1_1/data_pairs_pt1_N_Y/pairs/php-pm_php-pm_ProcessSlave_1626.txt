@@ -1,0 +1,10 @@
+    /**
+     * Shuts down the event loop. This basically exits the process.
+     */
+
+    public function shutdown()
+    {
+        if ($this->prepareShutdown()) {
+            exit;
+        }
+    }

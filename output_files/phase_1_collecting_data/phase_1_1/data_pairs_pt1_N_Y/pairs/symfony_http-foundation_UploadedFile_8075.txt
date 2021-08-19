@@ -1,0 +1,13 @@
+    /**
+     * Returns the original file extension.
+     *
+     * It is extracted from the original file name that was uploaded.
+     * Then it should not be considered as a safe value.
+     *
+     * @return string The extension
+     */
+
+    public function getClientOriginalExtension()
+    {
+        return pathinfo($this->originalName, \PATHINFO_EXTENSION);
+    }

@@ -1,0 +1,19 @@
+    /**
+     * Cumulative distribution function
+     *
+     * cdf = Iₓ(α,β)
+     *
+     * @param float $x x ∈ (0,1)
+     *
+     * @return float
+     */
+
+    public function cdf(float $x): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['x' => $x]);
+
+        $α = $this->α;
+        $β = $this->β;
+
+        return Special::regularizedIncompleteBeta($x, $α, $β);
+    }

@@ -1,0 +1,24 @@
+    /**
+     * @test         Multiple sums
+     * @dataProvider dataProviderForMultipleSums
+     * @param        int $x
+     * @param        int $expectedSum
+     */
+
+    public function testMultipleSums(int $x, int $expectedSum)
+    {
+        // Given
+        // f(x) = 8x³ - 13x² -92x + 96
+        $f = function ($x) {
+            return 8 * $x ** 3 - 13 * $x ** 2 - 92 * $x + 96;
+        };
+
+        // Σ(x) = f(x) + f(x) + f(x) + f(x) + f(x) = 5*f(x) = 40x³ - 65x² -460x + 480
+        $adder = Arithmetic::add($f, $f, $f, $f, $f);
+
+        // When
+        $sum = $adder($x);
+
+        // Then
+        $this->assertEquals($expectedSum, $sum);
+    }

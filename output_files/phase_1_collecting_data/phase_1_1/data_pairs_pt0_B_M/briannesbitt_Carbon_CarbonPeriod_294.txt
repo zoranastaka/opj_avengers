@@ -1,0 +1,12 @@
+    /**
+     * Invert the period date interval.
+     *
+     * @return $this
+     */
+
+    public function invertDateInterval()
+    {
+        $interval = $this->dateInterval->invert();
+
+        return $this->setDateInterval($interval);
+    }

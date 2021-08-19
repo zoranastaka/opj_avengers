@@ -1,0 +1,21 @@
+    /**
+     * Get two-sided t value using confidence level percentage
+     *
+     * @param string $ν degrees of freedom
+     * @param string $cl confidence level percentage
+     *
+     * @return float t value
+     *
+     * @throws Exception\BadDataException
+     */
+
+    public static function getTwoSidedTValueFromConfidenceLevel(string $ν, string $cl): float
+    {
+        if (!isset(self::TWO_SIDED_CONFIDENCE_LEVEL[$ν])) {
+            throw new Exception\BadDataException("Degrees of freedom $ν is not in the t table.");
+        }
+        if (!isset(self::TWO_SIDED_CONFIDENCE_LEVEL[$ν][$cl])) {
+            throw new Exception\BadDataException("Confidence level percentage $cl is not in the t table.");
+        }
+        return self::TWO_SIDED_CONFIDENCE_LEVEL[$ν][$cl];
+    }

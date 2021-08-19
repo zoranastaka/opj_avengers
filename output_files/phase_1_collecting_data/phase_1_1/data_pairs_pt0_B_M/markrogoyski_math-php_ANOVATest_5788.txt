@@ -1,0 +1,15 @@
+    /**
+     * @test twoWay throws a BadDataException if there are fewer than two sample sets
+     */
+
+    public function testTwoWayExceptionLessThanTwoAs()
+    {
+        // Given
+        $A₁ = [1, 2, 3];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        ANOVA::twoWay($A₁);
+    }

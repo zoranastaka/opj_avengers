@@ -1,0 +1,5 @@
+    /**
+     * Returns if pipes are able to read output.
+     */
+
+    public function haveReadSupport(): bool;

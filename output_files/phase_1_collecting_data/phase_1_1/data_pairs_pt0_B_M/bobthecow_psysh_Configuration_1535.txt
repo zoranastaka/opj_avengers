@@ -1,0 +1,23 @@
+    /**
+     * Get an OutputPager instance or a command for an external Proc pager.
+     *
+     * If no Pager has been explicitly provided, and Pcntl is available, this
+     * will default to `cli.pager` ini value, falling back to `which less`.
+     *
+     * @return string|OutputPager
+     */
+
+    public function getPager()
+    {
+        if (!isset($this->pager) && $this->usePcntl()) {
+            if ($pager = \ini_get('cli.pager')) {
+                // use the default pager
+                $this->pager = $pager;
+            } elseif ($less = \exec('which less 2>/dev/null')) {
+                // check for the presence of less...
+                $this->pager = $less.' -R -S -F -X';
+            }
+        }
+
+        return $this->pager;
+    }

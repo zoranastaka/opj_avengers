@@ -1,0 +1,8 @@
+	/**
+	 * Shop breadcrumb.
+	 */
+
+	protected function add_crumbs_shop() {
+		if ( intval( get_option( 'page_on_front' ) ) === wc_get_page_id( 'shop' ) ) {
+			return;
+		}

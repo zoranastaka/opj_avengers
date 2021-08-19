@@ -1,0 +1,17 @@
+    /**
+     * Returns all mandatory requirements.
+     *
+     * @return Requirement[]
+     */
+
+    public function getRequirements()
+    {
+        $array = array();
+        foreach ($this->requirements as $req) {
+            if (!$req->isOptional()) {
+                $array[] = $req;
+            }
+        }
+
+        return $array;
+    }

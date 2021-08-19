@@ -1,0 +1,10 @@
+    /**
+     * Get sheet count
+     *
+     * @return int
+     */
+
+    public function getSheetCount()
+    {
+        return count($this->workSheetCollection);
+    }

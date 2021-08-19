@@ -1,0 +1,21 @@
+    /**
+     * Run the migrations.
+     *
+     * @SuppressWarnings(PHPMD.ShortMethodName)
+     */
+
+    public function up(): void
+    {
+        Schema::create(
+            'notes',
+            static function (Blueprint $table) {
+                $table->increments('id');
+                $table->timestamps();
+                $table->softDeletes();
+                $table->integer('noteable_id', false, true);
+                $table->string('noteable_type');
+                $table->string('title')->nullable();
+                $table->text('text')->nullable();
+            }
+        );
+    }

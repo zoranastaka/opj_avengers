@@ -1,0 +1,16 @@
+    /**
+     * @test   Constructor throws an exception when given an empty string
+     * @throws \Exception
+     */
+
+    public function testEmptyStringException()
+    {
+        // Given
+        $number = '';
+
+        // Then
+        $this->expectException(Exception\BadParameterException::class);
+
+        // When
+        $int = new ArbitraryInteger($number);
+    }

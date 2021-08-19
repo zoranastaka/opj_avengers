@@ -1,0 +1,18 @@
+    /** @test */
+
+    public function gifts_create_error()
+    {
+        $user = $this->signin();
+        $contact = factory(Contact::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+
+        $response = $this->json('POST', '/api/gifts', [
+            'contact_id' => $contact->id,
+            'status' => 'idea',
+        ]);
+
+        $this->expectDataError($response, [
+            'The name field is required.',
+        ]);
+    }

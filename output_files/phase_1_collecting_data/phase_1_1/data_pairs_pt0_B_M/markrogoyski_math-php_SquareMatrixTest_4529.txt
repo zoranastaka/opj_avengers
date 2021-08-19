@@ -1,0 +1,14 @@
+    /**
+     * @test         isSquare always returns true for a SquareMatrix
+     * @dataProvider dataProviderForSquareMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsSquare(array $A)
+    {
+        $S = new NumericSquareMatrix($A);
+        $M = new NumericMatrix($A);
+
+        $this->assertTrue($S->isSquare());
+    }

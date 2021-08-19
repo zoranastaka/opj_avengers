@@ -1,0 +1,16 @@
+    /**
+     * @test   There are not enough arrays in the input
+     * @throws Exception\BadDataException
+     */
+
+    public function testNotEnoughArraysException()
+    {
+        // Given
+        $points = [[0,0]];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        NumericalIntegration::validate($points);
+    }

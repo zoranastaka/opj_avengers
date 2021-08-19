@@ -1,0 +1,21 @@
+    /**
+     * @test         cdf
+     * @dataProvider dataProviderForCdf
+     * @param        int   $r
+     * @param        float $p
+     * @param        int   $x
+     * @param        float $expectedCdf
+     * @throws       \Exception
+     */
+
+    public function testCdf(int $r, float $p, int $x, float $expectedCdf)
+    {
+        // Given
+        $pascal = new Pascal($r, $p);
+
+        // When
+        $cdf = $pascal->cdf($x);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedCdf, $cdf, 0.0000001);
+    }

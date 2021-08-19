@@ -1,0 +1,25 @@
+    /**
+     * @param AutocompleteRequest $request
+     *
+     * @return JsonResponse
+     */
+
+    public function currenciesWithCode(AutocompleteRequest $request): JsonResponse
+    {
+        $data       = $request->getData();
+        $collection = $this->repository->searchCurrency($data['query'], $data['limit']);
+        $result     = [];
+
+        /** @var TransactionCurrency $currency */
+        foreach ($collection as $currency) {
+            $result[] = [
+                'id'             => (string)$currency->id,
+                'name'           => sprintf('%s (%s)', $currency->name, $currency->code),
+                'code'           => $currency->code,
+                'symbol'         => $currency->symbol,
+                'decimal_places' => $currency->decimal_places,
+            ];
+        }
+
+        return response()->json($result);
+    }

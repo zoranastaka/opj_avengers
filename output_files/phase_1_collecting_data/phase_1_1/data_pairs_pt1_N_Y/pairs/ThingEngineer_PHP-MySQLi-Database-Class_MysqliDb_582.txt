@@ -1,0 +1,21 @@
+    /**
+     * Mostly internal method to get query and its params out of subquery object
+     * after get() and getAll()
+     *
+     * @return array
+     */
+
+    public function getSubQuery()
+    {
+        if (!$this->isSubQuery) {
+            return null;
+        }
+
+        array_shift($this->_bindParams);
+        $val = Array('query' => $this->_query,
+            'params' => $this->_bindParams,
+            'alias' => isset($this->connectionsSettings[$this->defConnectionName]) ? $this->connectionsSettings[$this->defConnectionName]['host'] : null
+        );
+        $this->reset();
+        return $val;
+    }

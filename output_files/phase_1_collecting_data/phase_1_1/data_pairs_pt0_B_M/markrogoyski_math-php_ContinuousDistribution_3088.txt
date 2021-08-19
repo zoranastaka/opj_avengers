@@ -1,0 +1,9 @@
+    /**
+     * Cumulative distribution function
+     *
+     * @param float $x
+     *
+     * @return mixed
+     */
+
+    public function cdf(float $x);

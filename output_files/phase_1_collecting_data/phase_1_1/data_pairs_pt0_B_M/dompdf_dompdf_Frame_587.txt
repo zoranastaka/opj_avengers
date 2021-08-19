@@ -1,0 +1,14 @@
+    /**
+     * @return FrameList|Frame[]
+     */
+
+    public function get_children()
+    {
+        if (isset($this->_frame_list)) {
+            return $this->_frame_list;
+        }
+
+        $this->_frame_list = new FrameList($this);
+
+        return $this->_frame_list;
+    }

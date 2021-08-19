@@ -1,0 +1,43 @@
+    /**
+     * Exports a value into a single-line string.
+     *
+     * The output of this method is similar to the output of
+     * SebastianBergmann\Exporter\Exporter::export().
+     *
+     * Newlines are replaced by the visible string '\n'.
+     * Contents of arrays and objects (if any) are replaced by '...'.
+     */
+
+    public function shortenedExport(mixed $value): string
+    {
+        if (is_string($value)) {
+            $string = str_replace("\n", '', $this->export($value));
+
+            if (function_exists('mb_strlen') && function_exists('mb_substr') && mb_strlen($string) > 40) {
+                return mb_substr($string, 0, 30) . '...' . mb_substr($string, -7);
+            }
+
+            if (strlen($string) > 40) {
+                return substr($string, 0, 30) . '...' . substr($string, -7);
+            }
+
+            return $string;
+        }
+
+        if (is_object($value)) {
+            return sprintf(
+                '%s Object (%s)',
+                get_class($value),
+                count($this->toArray($value)) > 0 ? '...' : ''
+            );
+        }
+
+        if (is_array($value)) {
+            return sprintf(
+                'Array (%s)',
+                count($value) > 0 ? '...' : ''
+            );
+        }
+
+        return $this->export($value);
+    }

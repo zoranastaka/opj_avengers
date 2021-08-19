@@ -1,0 +1,8 @@
+    /**
+     * Creates the difference of A and B.
+     */
+
+    public static function difference(self $a, self $b): self
+    {
+        return new self(array_diff($a->toArray(), $b->toArray()));
+    }

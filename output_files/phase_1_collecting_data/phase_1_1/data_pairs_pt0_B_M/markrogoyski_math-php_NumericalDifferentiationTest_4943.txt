@@ -1,0 +1,17 @@
+    /**
+     * @test   isTargetInPoints target is not the x-component of one of the points
+     * @throws \Exception
+     */
+
+    public function testTargetNotInPoints()
+    {
+        // Given
+        $target       = 1;
+        $sortedPoints = [[0,0], [3,3], [2,2]];
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        NumericalDifferentiation::isTargetInPoints($target, $sortedPoints);
+    }

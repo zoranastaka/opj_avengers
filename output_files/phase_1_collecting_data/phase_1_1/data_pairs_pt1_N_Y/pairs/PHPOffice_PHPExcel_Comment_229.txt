@@ -1,0 +1,10 @@
+    /**
+     * Get Alignment
+     *
+     * @return string
+     */
+
+    public function getAlignment()
+    {
+        return $this->alignment;
+    }

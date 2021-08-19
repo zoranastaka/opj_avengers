@@ -1,0 +1,16 @@
+    /**
+     * Make a prediction of a given sample dataset.
+     *
+     * @param \Rubix\ML\Datasets\Dataset $dataset
+     * @throws \Rubix\ML\Exceptions\RuntimeException
+     * @return list<int|float>
+     */
+
+    public function predict(Dataset $dataset) : array
+    {
+        if (!$this->strategy->fitted()) {
+            throw new RuntimeException('Estimator has not been trained.');
+        }
+
+        return array_map([$this, 'predictSample'], $dataset->samples());
+    }

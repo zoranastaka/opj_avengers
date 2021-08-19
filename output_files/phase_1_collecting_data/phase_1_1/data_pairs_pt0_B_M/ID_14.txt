@@ -1,0 +1,15 @@
+    /**
+     * Test low priority.
+     */
+
+    public function testLowPriority()
+    {
+        $this->Mail->Priority = 5;
+        $this->Mail->Body = 'Here is the main body.  There should be ' .
+            'a reply to address in this message.';
+        $this->Mail->Subject .= ': Low Priority';
+        $this->Mail->addReplyTo('nobody@nobody.com', 'Nobody (Unit Test)');
+
+        $this->buildBody();
+        self::assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+    }

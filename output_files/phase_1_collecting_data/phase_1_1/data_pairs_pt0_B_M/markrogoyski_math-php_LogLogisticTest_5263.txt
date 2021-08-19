@@ -1,0 +1,18 @@
+    /**
+     * @test         variance is not a number when β ≤ 2
+     * @dataProvider dataProviderForVarianceNan
+     * @param        float $α
+     * @param        float $β
+     */
+
+    public function testVarianceNan(float $α, float $β)
+    {
+        // Given
+        $logLogistic = new LogLogistic($α, $β);
+
+        // When
+        $variance = $logLogistic->variance();
+
+        // Then
+        $this->assertNan($variance);
+    }

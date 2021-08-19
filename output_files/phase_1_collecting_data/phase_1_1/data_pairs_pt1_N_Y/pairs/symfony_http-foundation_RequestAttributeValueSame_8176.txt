@@ -1,0 +1,10 @@
+    /**
+     * @param Request $request
+     *
+     * {@inheritdoc}
+     */
+
+    protected function matches($request): bool
+    {
+        return $this->value === $request->attributes->get($this->name);
+    }

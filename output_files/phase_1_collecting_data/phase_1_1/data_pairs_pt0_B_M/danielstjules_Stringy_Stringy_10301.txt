@@ -1,0 +1,19 @@
+    /*
+     * A multibyte str_shuffle() function. It returns a string with its
+     * characters in random order.
+     *
+     * @return static Object with a shuffled $str
+     */
+
+    public function shuffle()
+    {
+        $indexes = range(0, $this->length() - 1);
+        shuffle($indexes);
+
+        $shuffledStr = '';
+        foreach ($indexes as $i) {
+            $shuffledStr .= \mb_substr($this->str, $i, 1, $this->encoding);
+        }
+
+        return static::create($shuffledStr, $this->encoding);
+    }

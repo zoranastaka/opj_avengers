@@ -1,0 +1,15 @@
+    /**
+     * @param $block
+     * @param $key
+     * @param $line
+     * @return bool
+     */
+
+    private function parseBlockShr($block, $key, $line)
+    {
+        if (preg_match("/^(\* *){3,}\s*$/", $line)) {
+            $this->startBlock('hr', $key)
+                ->endBlock();
+
+            return false;
+        }

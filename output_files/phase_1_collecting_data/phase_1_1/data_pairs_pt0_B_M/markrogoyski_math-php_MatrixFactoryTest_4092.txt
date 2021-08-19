@@ -1,0 +1,16 @@
+    /**
+     * @test   Hilbert exception when n is less than zero
+     * @throws \Exception
+     */
+
+    public function testHilbertExceptionNLessThanZero()
+    {
+        // Given
+        $n = -1;
+
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        MatrixFactory::hilbert(-1);
+    }

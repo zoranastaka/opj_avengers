@@ -1,0 +1,11 @@
+    /**
+     * Get the parameters
+     * Uses the model's getModelParameters method.
+     *
+     * @return array
+     */
+
+    public function getParameters(): array
+    {
+        return $this->getModelParameters($this->parameters);
+    }

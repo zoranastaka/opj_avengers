@@ -1,0 +1,12 @@
+    /**
+     * @test 32 qsec observations
+     */
+
+    public function testNumberOfQsecs()
+    {
+        // When
+        $observations = $this->mtCars->getQsec();
+
+        // Then
+        $this->assertCount(32, $observations);
+    }

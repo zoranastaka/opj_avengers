@@ -1,0 +1,15 @@
+    /**
+     * @test         isNormal when not normal
+     * @dataProvider dataProviderForNonNormalMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsNormalWhenNotNormal(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isNormal());
+    }

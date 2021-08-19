@@ -1,0 +1,19 @@
+    /** @test */
+
+    public function it_allows_multiline_expressions()
+    {
+        $called = false;
+
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => 'Start new order by link:'.PHP_EOL.'/new_order_{hash}',
+        ]);
+
+        $botman->hears('.*/new_order_(.*)', function ($bot, $name) use (&$called) {
+            $called = true;
+            $this->assertSame('{hash}', $name);
+        });
+        $botman->listen();
+        $this->assertTrue($called);
+    }

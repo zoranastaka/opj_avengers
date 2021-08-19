@@ -1,0 +1,13 @@
+    /**
+     * Returns the maximum size of an uploaded file as configured in php.ini.
+     *
+     * @return int|float The maximum size of an uploaded file in bytes (returns float if size > PHP_INT_MAX)
+     */
+
+    public static function getMaxFilesize()
+    {
+        $sizePostMax = self::parseFilesize(ini_get('post_max_size'));
+        $sizeUploadMax = self::parseFilesize(ini_get('upload_max_filesize'));
+
+        return min($sizePostMax ?: \PHP_INT_MAX, $sizeUploadMax ?: \PHP_INT_MAX);
+    }

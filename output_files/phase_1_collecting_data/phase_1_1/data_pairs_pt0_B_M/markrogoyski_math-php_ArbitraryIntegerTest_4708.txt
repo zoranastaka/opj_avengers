@@ -1,0 +1,19 @@
+    /**
+     * @test         Float representation
+     * @dataProvider dataProviderForStringToFloat
+     * @param        string $int
+     * @param        float $float
+     * @throws       \Exception
+     */
+
+    public function testIntToFloat(string $int, float $float)
+    {
+        // Given
+        $obj = new ArbitraryInteger($int);
+
+        // When
+        $floatRepresentation = $obj->toFloat();
+
+        // Then
+        $this->assertSame($float, $floatRepresentation);
+    }

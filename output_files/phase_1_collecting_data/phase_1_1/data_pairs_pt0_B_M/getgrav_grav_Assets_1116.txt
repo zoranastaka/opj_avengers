@@ -1,0 +1,44 @@
+    /**
+     * @param string $collection
+     * @param string $type
+     * @param string|string[] $asset
+     * @param array $options
+     * @return $this
+     */
+
+    protected function addType($collection, $type, $asset, $options)
+    {
+        if (is_array($asset)) {
+            foreach ($asset as $index => $location) {
+                $assetOptions = $options;
+                if (is_array($location)) {
+                    $assetOptions = array_replace_recursive([], $options, $location);
+                    $location = $index;
+                }
+                $this->addType($collection, $type, $location, $assetOptions);
+            }
+
+            return $this;
+        }
+
+        if (($type === $this::CSS_TYPE || $type === $this::JS_TYPE) && isset($this->collections[$asset])) {
+            $this->addType($collection, $type, $this->collections[$asset], $options);
+            return $this;
+        }
+
+        // If pipeline disabled, set to position if provided, else after
+        if (isset($options['pipeline'])) {
+            if ($options['pipeline'] === false) {
+                $exclude_type = ($type === $this::JS_TYPE || $type === $this::INLINE_JS_TYPE) ? $this::JS : $this::CSS;
+                $excludes = strtolower($exclude_type . '_pipeline_before_excludes');
+                if ($this->{$excludes}) {
+                    $default = 'after';
+                } else {
+                    $default = 'before';
+                }
+
+                $options['position'] = $options['position'] ?? $default;
+            }
+
+            unset($options['pipeline']);
+        }

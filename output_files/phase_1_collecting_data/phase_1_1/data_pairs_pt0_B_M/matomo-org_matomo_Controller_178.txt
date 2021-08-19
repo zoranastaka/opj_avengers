@@ -1,0 +1,10 @@
+   /**
+    * Returns whether the form is a wizard
+    *
+    * @return   boolean
+    */
+
+    public function isWizard()
+    {
+        return $this->wizard;
+    }

@@ -1,0 +1,37 @@
+    /**
+     * @covers ::create
+     * @covers ::__construct
+     * @covers ::table
+     * @covers ::tr
+     * @covers ::td
+     * @covers ::convert
+     */
+
+    public function testToHTML(): void
+    {
+        $csv = Reader::createFromPath(__DIR__.'/../test_files/prenoms.csv', 'r')
+            ->setDelimiter(';')
+            ->setHeaderOffset(0)
+        ;
+
+        $stmt = Statement::create()
+            ->offset(3)
+            ->limit(5)
+        ;
+
+        $records = $stmt->process($csv);
+
+        $converter = HTMLConverter::create()
+            ->table('table-csv-data', 'test')
+            ->td('title')
+            ->tr('data-record-offset')
+        ;
+
+        $html = $converter->convert($records);
+        self::assertStringContainsString('<table class="table-csv-data" id="test">', $html);
+        self::assertStringContainsString('<tr data-record-offset="', $html);
+        self::assertStringContainsString('<td title="', $html);
+        self::assertStringNotContainsString('<thead>', $html);
+        self::assertStringNotContainsString('<tbody>', $html);
+        self::assertStringNotContainsString('<tfoot>', $html);
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @dataProvider specialNames
+     */
+
+    public function testSetAllDoesNotSetSpecial($name)
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessageMatches('/Unknown variable: \$\w+/');
+
+        $context = new Context();
+        $context->setAll([$name => 'fail']);
+        $context->get($name);
+
+        $this->fail();
+    }

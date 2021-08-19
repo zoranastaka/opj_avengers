@@ -1,0 +1,17 @@
+    /**
+     * @test
+     * @dataProvider dataProviderForRemove
+     */
+
+    public function testRemove(array $A, $x, array $R)
+    {
+        // Given
+        $setA = new Set($A);
+        $setR = new Set($R);
+
+        // When
+        $setA->remove($x);
+
+        // Then
+        $this->assertEquals($setR, $setA);
+    }

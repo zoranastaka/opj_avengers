@@ -1,0 +1,13 @@
+    /**
+     * @return array
+     */
+
+    public function notCallableDataProvider()
+    {
+        return [
+            [1],
+            [new stdClass],
+            [[]],
+            [1.1],
+        ];
+    }

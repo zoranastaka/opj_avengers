@@ -1,0 +1,29 @@
+    /**
+     * Register mappings and alias with the metadata drivers.
+     */
+
+    public function process(ContainerBuilder $container)
+    {
+        if (!$this->enabled($container)) {
+            return;
+        }
+
+        $mappingDriverDef = $this->getDriver($container);
+        $chainDriverDefService = $this->getChainDriverServiceName($container);
+        // Definition for a Doctrine\Persistence\Mapping\Driver\MappingDriverChain
+        $chainDriverDef = $container->getDefinition($chainDriverDefService);
+        foreach ($this->namespaces as $namespace) {
+            $chainDriverDef->addMethodCall('addDriver', [$mappingDriverDef, $namespace]);
+        }
+
+        if (!\count($this->aliasMap)) {
+            return;
+        }
+
+        $configurationServiceName = $this->getConfigurationServiceName($container);
+        // Definition of the Doctrine\...\Configuration class specific to the Doctrine flavour.
+        $configurationServiceDefinition = $container->getDefinition($configurationServiceName);
+        foreach ($this->aliasMap as $alias => $namespace) {
+            $configurationServiceDefinition->addMethodCall($this->registerAliasMethodName, [$alias, $namespace]);
+        }
+    }

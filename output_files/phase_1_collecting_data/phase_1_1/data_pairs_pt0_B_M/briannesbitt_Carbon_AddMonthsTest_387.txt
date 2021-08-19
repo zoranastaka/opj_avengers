@@ -1,0 +1,13 @@
+    /**
+     * @dataProvider \Tests\Carbon\AddMonthsTest::providerTestAddMonthNoOverflow
+     *
+     * @param int $months
+     * @param int $y
+     * @param int $m
+     * @param int $d
+     */
+
+    public function testAddMonthsNoOverflow($months, $y, $m, $d)
+    {
+        $this->assertCarbon($this->carbon->addMonthsNoOverflow($months), $y, $m, $d);
+    }

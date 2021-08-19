@@ -1,0 +1,20 @@
+    /**
+     * This method determines the ratio of samples used to create the 'bootstrap' subset,
+     * e.g., random samples drawn from the original dataset with replacement (allow repeats),
+     * to train each base classifier.
+     *
+     * @return $this
+     *
+     * @throws InvalidArgumentException
+     */
+
+    public function setSubsetRatio(float $ratio)
+    {
+        if ($ratio < 0.1 || $ratio > 1.0) {
+            throw new InvalidArgumentException('Subset ratio should be between 0.1 and 1.0');
+        }
+
+        $this->subsetRatio = $ratio;
+
+        return $this;
+    }

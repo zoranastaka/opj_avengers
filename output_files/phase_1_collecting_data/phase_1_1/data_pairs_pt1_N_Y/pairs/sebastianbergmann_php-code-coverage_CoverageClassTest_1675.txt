@@ -1,0 +1,9 @@
+    /**
+     * @covers CoveredClass
+     */
+
+    public function testSomething()
+    {
+        $o = new CoveredClass;
+        $o->publicMethod();
+    }

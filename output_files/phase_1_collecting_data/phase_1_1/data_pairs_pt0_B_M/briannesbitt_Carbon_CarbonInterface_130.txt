@@ -1,0 +1,13 @@
+    /**
+     * Modify to the given occurrence of a given day of the week
+     * in the current quarter. If the calculated occurrence is outside the scope
+     * of the current quarter, then return false and no modifications are made.
+     * Use the supplied constants to indicate the desired dayOfWeek, ex. static::MONDAY.
+     *
+     * @param int $nth
+     * @param int $dayOfWeek
+     *
+     * @return mixed
+     */
+
+    public function nthOfQuarter($nth, $dayOfWeek);

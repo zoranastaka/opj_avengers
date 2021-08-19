@@ -1,0 +1,7 @@
+	/**
+	 * Returns error data.
+	 *
+	 * @return array
+	 */
+
+	public function getErrorData() {

@@ -1,0 +1,14 @@
+    /**
+     * @psalm-param class-string $testClassName
+     */
+
+    public function testAfterTestMethodFinished(string $testClassName, Code\ClassMethod ...$calledMethods): void
+    {
+        $this->dispatcher->dispatch(
+            new Test\AfterTestMethodFinished(
+                $this->telemetryInfo(),
+                $testClassName,
+                ...$calledMethods
+            )
+        );
+    }

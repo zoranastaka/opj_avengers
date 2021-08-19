@@ -1,0 +1,30 @@
+    /**
+     * In this case, we add an array that contains arrays.
+     * So each array element will be added, but with the implementation
+     * detail that they will be converted into ArrayObjects.
+     */
+
+    public function testAddMultiWithArrayOfArraysMultipleArraysAndDuplicates()
+    {
+        // Given
+        $set   = new Set([1, 2, 3]);
+        $array = [4, 5, [1, 2, 3], [1, 2, 3], [5, 5, 5]];
+
+        // When
+        $set->addMulti($array);
+
+        // Then, only 7, because [1, 2, 3] was in there twice.
+        $this->assertEquals(7, count($set));
+        $this->assertEquals(7, count($set->asArray()));
+
+        $arrays = 0;
+        foreach ($set as $key => $value) {
+            if (\is_array($value)) {
+                $arrays++;
+                $this->assertEquals(3, count($value));
+            }
+        }
+
+        // There should have been 2 arrays.
+        $this->assertEquals(2, $arrays);
+    }

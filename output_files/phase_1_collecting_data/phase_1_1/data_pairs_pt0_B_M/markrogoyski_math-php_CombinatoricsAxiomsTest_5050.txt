@@ -1,0 +1,15 @@
+    /**
+     * @testCase Axiom: L(n,n) = 1
+     * Lah number identity when n = n
+     *
+     * @dataProvider dataProivderForLahNumberIdentities
+     * @param        int $n
+     * @throws       \Exception
+     */
+
+    public function testLahNumberIdentityNNEqualsOne(int $n)
+    {
+        $L⟮n、n⟯ = Combinatorics::lahNumber($n, $n);
+
+        $this->assertEquals(1, $L⟮n、n⟯);
+    }

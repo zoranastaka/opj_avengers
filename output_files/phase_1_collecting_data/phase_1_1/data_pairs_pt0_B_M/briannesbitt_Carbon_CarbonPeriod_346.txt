@@ -1,0 +1,14 @@
+    /**
+     * Return whether given callable is a string pointing to one of Carbon's is* methods
+     * and should be automatically converted to a filter callback.
+     *
+     * @param callable $callable
+     *
+     * @return bool
+     */
+
+    protected function isCarbonPredicateMethod($callable)
+    {
+        return \is_string($callable) && substr($callable, 0, 2) === 'is' &&
+            (method_exists($this->dateClass, $callable) || ([$this->dateClass, 'hasMacro'])($callable));
+    }

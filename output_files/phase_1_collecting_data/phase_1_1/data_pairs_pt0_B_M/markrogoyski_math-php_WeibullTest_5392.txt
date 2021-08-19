@@ -1,0 +1,16 @@
+    /**
+     * Data generated with https://captaincalculator.com/math/statistics/weibull-distribution-calculator/
+     * @return array [k, λ, μ]
+     */
+
+    public function dataProviderForMode(): array
+    {
+        return [
+            [0.5, 1, 0],
+            [1, 1, 0],
+            [2, 1, 0.70710678],
+            [1, 2, 0],
+            [2, 2, 1.41421356],
+            [22, 27, 26.94296757],
+        ];
+    }

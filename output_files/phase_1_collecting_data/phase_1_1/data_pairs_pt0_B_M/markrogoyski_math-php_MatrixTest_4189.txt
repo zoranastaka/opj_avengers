@@ -1,0 +1,20 @@
+    /**
+     * @test   constructor throws Exception\MatrixException if the number of columns is not consistent
+     * @throws \Exception
+     */
+
+    public function testConstructorExceptionNCountDiffers()
+    {
+        // Given
+        $A = [
+            [1, 2, 3],
+            [2, 3, 4, 5],
+            [3, 4, 5],
+        ];
+
+        // Then
+        $this->expectException(Exception\MatrixException::class);
+
+        // When
+        $matrix = MatrixFactory::create($A);
+    }

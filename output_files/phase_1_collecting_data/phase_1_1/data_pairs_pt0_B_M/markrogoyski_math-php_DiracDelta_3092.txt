@@ -1,0 +1,24 @@
+    /**
+     * Probability density function
+     *
+     *
+     *          /‾
+     *         |  +∞,   x = 0
+     * δ(x) = <
+     *         |  0,    x ≠ 0
+     *          \_
+     *
+     *
+     * @param float $x
+     *
+     * @return float probability
+     */
+
+    public function pdf(float $x): float
+    {
+        if ($x == 0) {
+            return \INF;
+        } else {
+            return 0;
+        }
+    }

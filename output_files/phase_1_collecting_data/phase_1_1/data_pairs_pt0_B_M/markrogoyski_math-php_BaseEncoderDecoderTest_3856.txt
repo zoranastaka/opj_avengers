@@ -1,0 +1,20 @@
+    /**
+     * @test         toBase
+     * @dataProvider dataProviderForTestToBase
+     * @param        string $int
+     * @param        int    $base
+     * @param        string $expected
+     * @throws       \Exception
+     */
+
+    public function testToBase(string $int, int $base, string $expected)
+    {
+        // Given
+        $int = new ArbitraryInteger($int);
+
+        // When
+        $toBase = BaseEncoderDecoder::toBase($int, $base);
+
+        // Theb
+        $this->assertEquals($expected, $toBase);
+    }

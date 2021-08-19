@@ -1,0 +1,10 @@
+    /**
+     * Returns current config for hours per day.
+     *
+     * @return int
+     */
+
+    public static function getHoursPerDay()
+    {
+        return static::getFactor('hours', 'dayz') ?: Carbon::HOURS_PER_DAY;
+    }

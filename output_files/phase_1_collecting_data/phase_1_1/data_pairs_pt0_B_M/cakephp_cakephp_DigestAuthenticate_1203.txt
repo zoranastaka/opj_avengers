@@ -1,0 +1,37 @@
+    /**
+     * Generate the login headers
+     *
+     * @param \Cake\Http\ServerRequest $request Request object.
+     * @return string[] Headers for logging in.
+     */
+
+    public function loginHeaders(ServerRequest $request): array
+    {
+        $realm = $this->_config['realm'] ?: $request->getEnv('SERVER_NAME');
+
+        $options = [
+            'realm' => $realm,
+            'qop' => $this->_config['qop'],
+            'nonce' => $this->generateNonce(),
+            'opaque' => $this->_config['opaque'] ?: md5($realm),
+        ];
+
+        $digest = $this->_getDigest($request);
+        if ($digest && isset($digest['nonce']) && !$this->validNonce($digest['nonce'])) {
+            $options['stale'] = true;
+        }
+
+        $opts = [];
+        foreach ($options as $k => $v) {
+            if (is_bool($v)) {
+                $v = $v ? 'true' : 'false';
+                $opts[] = sprintf('%s=%s', $k, $v);
+            } else {
+                $opts[] = sprintf('%s="%s"', $k, $v);
+            }
+        }
+
+        return [
+            'WWW-Authenticate' => 'Digest ' . implode(',', $opts),
+        ];
+    }

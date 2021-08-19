@@ -1,0 +1,53 @@
+    /**
+     * @requires function Twig\Template::getSourceContext
+     */
+
+    public function testFrameWithTwig()
+    {
+        require_once \dirname(__DIR__).'/Fixtures/Twig.php';
+
+        $f = [
+            new FrameStub([
+                'file' => \dirname(__DIR__).'/Fixtures/Twig.php',
+                'line' => 20,
+                'class' => '__TwigTemplate_VarDumperFixture_u75a09',
+            ]),
+            new FrameStub([
+                'file' => \dirname(__DIR__).'/Fixtures/Twig.php',
+                'line' => 21,
+                'class' => '__TwigTemplate_VarDumperFixture_u75a09',
+                'object' => new \__TwigTemplate_VarDumperFixture_u75a09(null, __FILE__),
+            ]),
+        ];
+
+        $expectedDump = <<<'EODUMP'
+array:2 [
+  0 => {
+    class: "__TwigTemplate_VarDumperFixture_u75a09"
+    src: {
+      %sTwig.php:1 {
+        › 
+        › foo bar
+        ›   twig source
+      }
+    }
+  }
+  1 => {
+    class: "__TwigTemplate_VarDumperFixture_u75a09"
+    object: __TwigTemplate_VarDumperFixture_u75a09 {
+    %A
+    }
+    src: {
+      %sExceptionCasterTest.php:2 {
+        › foo bar
+        ›   twig source
+        › 
+      }
+    }
+  }
+]
+
+EODUMP;
+
+        $this->assertDumpMatchesFormat($expectedDump, $f);
+    }

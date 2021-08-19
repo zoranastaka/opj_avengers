@@ -1,0 +1,23 @@
+    /**
+     * @test Axiom: A is invertible, Aᵀ is inveritble
+     * If A is an invertible matrix, then the transpose is also inveritble
+     * @dataProvider dataProviderForInverse
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIfMatrixIsInvertibleThenTransposeIsInvertible(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $Aᵀ = $A->transpose();
+
+        // Then
+        if ($A->isInvertible()) {
+            $this->assertTrue($Aᵀ->isInvertible());
+        } else {
+            $this->assertFalse($Aᵀ->isInvertible());
+        }
+    }

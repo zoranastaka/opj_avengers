@@ -1,0 +1,21 @@
+    /**
+     * @test         tTestOneSample
+     * @dataProvider dataProviderForTTestOneSample
+     * @param        array $a
+     * @param        float $H₀
+     * @param        array $expected
+     */
+
+    public function testTTestOneSample(array $a, float $H₀, array $expected)
+    {
+        // When
+        $tTest = Significance::tTestOneSample($a, $H₀);
+
+        // Then
+        $this->assertEqualsWithDelta($expected['t'], $tTest['t'], 0.00001);
+        $this->assertEqualsWithDelta($expected['df'], $tTest['df'], 0.00001);
+        $this->assertEqualsWithDelta($expected['p1'], $tTest['p1'], 0.0001);
+        $this->assertEqualsWithDelta($expected['p2'], $tTest['p2'], 0.00001);
+        $this->assertEqualsWithDelta($expected['mean'], $tTest['mean'], 0.00001);
+        $this->assertEqualsWithDelta($expected['sd'], $tTest['sd'], 0.00001);
+    }

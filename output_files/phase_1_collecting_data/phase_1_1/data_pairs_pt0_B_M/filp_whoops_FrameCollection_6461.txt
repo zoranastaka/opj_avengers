@@ -1,0 +1,12 @@
+    /**
+     * Filters frames using a callable, returns the same FrameCollection
+     *
+     * @param  callable        $callable
+     * @return FrameCollection
+     */
+
+    public function filter($callable)
+    {
+        $this->frames = array_values(array_filter($this->frames, $callable));
+        return $this;
+    }

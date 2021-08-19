@@ -1,0 +1,5 @@
+	/**
+	 * Start a background process. Will automatically be closed when the tests finish.
+	 */
+
+	public function background_proc( $cmd ) {

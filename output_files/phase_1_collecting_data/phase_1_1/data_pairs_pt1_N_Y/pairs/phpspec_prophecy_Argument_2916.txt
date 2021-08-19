@@ -1,0 +1,10 @@
+    /**
+     * Matches any single value.
+     *
+     * @return Token\AnyValueToken
+     */
+
+    public static function any()
+    {
+        return new Token\AnyValueToken;
+    }

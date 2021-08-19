@@ -1,0 +1,38 @@
+    /**
+     * Mix the provided array of strings into a single output of the same size
+     *
+     * All elements of the array should be the same size.
+     *
+     * @param array $parts The parts to be mixed
+     *
+     * @return string The mixed result
+     */
+
+    public function mix(array $parts)
+    {
+        if (empty($parts)) {
+            return '';
+        }
+        $len        = Util::safeStrlen($parts[0]);
+        $parts      = $this->normalizeParts($parts);
+        $stringSize = count($parts[0]);
+        $partsSize  = count($parts);
+        $result     = '';
+        $offset     = 0;
+        for ($i = 0; $i < $stringSize; $i++) {
+            $stub = $parts[$offset][$i];
+            for ($j = 1; $j < $partsSize; $j++) {
+                $newKey = $parts[($j + $offset) % $partsSize][$i];
+                //Alternately mix the output for each source
+                if ($j % 2 == 1) {
+                    $stub ^= $this->mixParts1($stub, $newKey);
+                } else {
+                    $stub ^= $this->mixParts2($stub, $newKey);
+                }
+            }
+            $result .= $stub;
+            $offset  = ($offset + 1) % $partsSize;
+        }
+
+        return Util::safeSubstr($result, 0, $len);
+    }

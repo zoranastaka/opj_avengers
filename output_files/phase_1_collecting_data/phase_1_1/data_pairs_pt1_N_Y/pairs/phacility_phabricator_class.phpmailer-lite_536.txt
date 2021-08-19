@@ -1,0 +1,7 @@
+  /**
+   * Assembles the message body.  Returns an empty string on failure.
+   * @access public
+   * @return string The assembled message body
+   */
+
+  public function CreateBody() {

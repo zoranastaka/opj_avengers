@@ -1,0 +1,76 @@
+    /**
+     * Regularized incomplete beta function - Iₓ(a, b)
+     *
+     * https://en.wikipedia.org/wiki/Beta_function#Incomplete_beta_function
+     *
+     * This function looks at the values of x, a, and b, and determines which algorithm is best to calculate
+     * the value of Iₓ(a, b)
+     *
+     * http://www.boost.org/doc/libs/1_35_0/libs/math/doc/sf_and_dist/html/math_toolkit/special/sf_beta/ibeta_function.html
+     * https://github.com/boostorg/math/blob/develop/include/boost/math/special_functions/beta.hpp
+     *
+     * @param float $x Upper limit of the integration 0 ≦ x ≦ 1
+     * @param float $a Shape parameter a > 0
+     * @param float $b Shape parameter b > 0
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException
+     * @throws Exception\BadParameterException
+     * @throws Exception\OutOfBoundsException
+     */
+
+    public static function regularizedIncompleteBeta(float $x, float $a, float $b): float
+    {
+        $limits = [
+            'x' => '[0, 1]',
+            'a' => '(0,∞)',
+            'b' => '(0,∞)',
+        ];
+        Support::checkLimits($limits, ['x' => $x, 'a' => $a, 'b' => $b]);
+
+        if ($x == 1 || $x == 0) {
+            return $x;
+        }
+
+        if ($a == 1) {
+            return 1 - (1 - $x) ** $b;
+        }
+
+        if ($b == 1) {
+            return $x ** $a;
+        }
+
+        if ($x > .9 || $b > $a && $x > .5) {
+            $y = 1 - $x;
+            return 1 - self::regularizedIncompleteBeta($y, $b, $a);
+        }
+        if ($a > 1 && $b > 1) {
+            // Tolerance on evaluating the continued fraction.
+            $tol = .000000000000001;
+            $dif = $tol + 1; // Initialize
+
+            // We will calculate the continuous fraction with a minimum depth of 10.
+            $m = 10;  // Counter
+            $I = 0;
+            do {
+                $I_new = self::iBetaCF($m, $x, $a, $b);
+                if ($m > 10) {
+                    $dif = \abs(($I - $I_new) / $I_new);
+                }
+                $I = $I_new;
+                $m++;
+            } while ($dif > $tol);
+            return $I;
+        } else {
+            if ($a <= 1) {
+                // We shift a up by one, to the region that the continuous fraction works best.
+                $offset = $x ** $a * (1 - $x) ** $b / $a / self::beta($a, $b);
+                return self::regularizedIncompleteBeta($x, $a + 1, $b) + $offset;
+            } else { // $b <= 1
+                // We shift b up by one, to the region that the continuous fraction works best.
+                $offset = $x ** $a * (1 - $x) ** $b / $b / self::beta($a, $b);
+                return self::regularizedIncompleteBeta($x, $a, $b + 1) - $offset;
+            }
+        }
+    }

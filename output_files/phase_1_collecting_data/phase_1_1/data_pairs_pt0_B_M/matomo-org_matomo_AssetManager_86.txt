@@ -1,0 +1,20 @@
+    /**
+     * @param boolean $core
+     * @return string[]
+     */
+
+    public function getLoadedPlugins($core)
+    {
+        $loadedPlugins = array();
+
+        foreach (Manager::getInstance()->getPluginsLoadedAndActivated() as $plugin) {
+            $pluginName = $plugin->getPluginName();
+            $pluginIsCore = Manager::getInstance()->isPluginBundledWithCore($pluginName);
+
+            if (($pluginIsCore && $core) || (!$pluginIsCore && !$core)) {
+                $loadedPlugins[] = $pluginName;
+            }
+        }
+
+        return $loadedPlugins;
+    }

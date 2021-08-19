@@ -1,0 +1,18 @@
+    /**
+     * @test         tScore
+     * @dataProvider dataProviderForTScore
+     * @param        float $Hₐ
+     * @param        float $s
+     * @param        int   $n
+     * @param        float $H₀
+     * @param        float $expected
+     */
+
+    public function testTScore(float $Hₐ, float $s, int $n, float $H₀, float $expected)
+    {
+        // When
+        $t = Significance::tScore($Hₐ, $s, $n, $H₀);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $t, 0.001);
+    }

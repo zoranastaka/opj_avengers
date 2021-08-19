@@ -1,0 +1,11 @@
+    /**
+     * @group disconnected
+     */
+
+    public function testConstructorWithInvalidArgumentType(): void
+    {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Invalid type for connection parameters');
+
+        $client = new Client(new \stdClass());
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @test add throws an Exception\IncorrectTypeException when the argument is not a number or complex number
+     */
+
+    public function testComplexAddException()
+    {
+        // Given
+        $complex = new Complex(1, 1);
+
+        // Then
+        $this->expectException(Exception\IncorrectTypeException::class);
+
+        // When
+        $complex->add("string");
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get the PayloadValidator instance.
+     *
+     * @return \Tymon\JWTAuth\Validators\PayloadValidator
+     */
+
+    public function validator()
+    {
+        return $this->validator;
+    }

@@ -1,0 +1,24 @@
+    /**
+     * `class_implements` includes interfaces from the parents so we have to manually exclude them.
+     *
+     * @return string[]
+     */
+
+    private function getOwnInterfaces(string $class, ?string $parent): array
+    {
+        $ownInterfaces = class_implements($class, false);
+
+        if ($parent) {
+            foreach (class_implements($parent, false) as $interface) {
+                unset($ownInterfaces[$interface]);
+            }
+        }
+
+        foreach ($ownInterfaces as $interface) {
+            foreach (class_implements($interface) as $interface) {
+                unset($ownInterfaces[$interface]);
+            }
+        }
+
+        return $ownInterfaces;
+    }

@@ -1,0 +1,15 @@
+    /**
+     * @covers ::supportsStreamFilter
+     * @covers ::addStreamFilter
+     * @covers \League\Csv\UnavailableFeature
+     */
+
+    public function testFailedAddStreamFilter(): void
+    {
+        $csv = Writer::createFromFileObject(new SplTempFileObject());
+        self::assertFalse($csv->supportsStreamFilter());
+
+        $this->expectException(UnavailableFeature::class);
+
+        $csv->addStreamFilter('string.toupper');
+    }

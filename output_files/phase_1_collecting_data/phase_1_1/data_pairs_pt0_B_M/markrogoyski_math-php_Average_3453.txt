@@ -1,0 +1,44 @@
+    /**
+     * Lehmer mean
+     * https://en.wikipedia.org/wiki/Lehmer_mean
+     *
+     *          ∑xᵢᵖ
+     * Lp(x) = ------
+     *         ∑xᵢᵖ⁻¹
+     *
+     * Special cases:
+     *  L-∞(x) is the min(x)
+     *  L₀(x) is the harmonic mean
+     *  L½(x₀, x₁) is the geometric mean if computed against two numbers
+     *  L₁(x) is the arithmetic mean
+     *  L₂(x) is the contraharmonic mean
+     *  L∞(x) is the max(x)
+     *
+     * @param  float[] $numbers
+     * @param  float   $p
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException if the input array of numbers is empty
+     */
+
+    public static function lehmerMean(array $numbers, $p): float
+    {
+        if (empty($numbers)) {
+            throw new Exception\BadDataException('Cannot find the lehmer mean of an empty list of numbers');
+        }
+
+        // Special cases for infinite p
+        if ($p == -\INF) {
+            return \min($numbers);
+        }
+        if ($p == \INF) {
+            return \max($numbers);
+        }
+
+        // Standard case for non-infinite p
+        $∑xᵢᵖ   = \array_sum(Map\Single::pow($numbers, $p));
+        $∑xᵢᵖ⁻¹ = \array_sum(Map\Single::pow($numbers, $p - 1));
+
+        return $∑xᵢᵖ / $∑xᵢᵖ⁻¹;
+    }

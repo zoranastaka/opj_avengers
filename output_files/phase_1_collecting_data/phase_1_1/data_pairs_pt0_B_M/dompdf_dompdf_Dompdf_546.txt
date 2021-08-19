@@ -1,0 +1,10 @@
+    /**
+     * @param FontMetrics $fontMetrics
+     * @return $this
+     */
+
+    public function setFontMetrics(FontMetrics $fontMetrics)
+    {
+        $this->fontMetrics = $fontMetrics;
+        return $this;
+    }

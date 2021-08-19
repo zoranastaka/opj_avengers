@@ -1,0 +1,16 @@
+    /**
+     * @test         evaluate
+     * @dataProvider dataProviderForEvaluate
+     * @param        array $points
+     * @param        float $x
+     * @param        float $y
+     */
+
+    public function testEvaluate(array $points, float $x, float $y)
+    {
+        // Given
+        $regression = new TheilSen($points);
+
+        // Then
+        $this->assertEquals($y, $regression->evaluate($x));
+    }

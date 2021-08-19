@@ -1,0 +1,23 @@
+    /**
+     * @test         quartic with two complex roots - not set to return complex
+     * @dataProvider dataProviderForQuarticTwoComplex
+     * @param        int $a
+     * @param        int $b
+     * @param        int $c
+     * @param        int $d
+     * @param        int $e
+     * @param        array $quartic expected roots
+     * @throws       \Exception
+     */
+
+    public function testQuarticTwoComplexNotSetToReturnComplex($a, $b, $c, $d, $e, $quartic)
+    {
+        // When
+        [$z₁, $z₂, $z₃, $z₄] = Algebra::quartic($a, $b, $c, $d, $e);
+
+        // Then
+        $this->assertEqualsWithDelta($quartic[0], \floatval($z₁), 0.00000001);
+        $this->assertEqualsWithDelta($quartic[1], \floatval($z₂), 0.00000001);
+        $this->assertNan($z₃, '');
+        $this->assertNan($z₄, '');
+    }

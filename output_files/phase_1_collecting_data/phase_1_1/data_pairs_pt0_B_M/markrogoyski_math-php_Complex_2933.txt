@@ -1,0 +1,24 @@
+    /**
+     * Complex division
+     * Dividing two complex numbers is accomplished by multiplying the first by the inverse of the second
+     * https://en.wikipedia.org/wiki/Complex_number#Multiplication_and_division
+     *
+     * @param mixed $c
+     *
+     * @return Complex
+     *
+     * @throws Exception\IncorrectTypeException if the argument is not numeric or Complex.
+     */
+
+    public function divide($c): Complex
+    {
+        if (\is_numeric($c)) {
+            $r = $this->r / $c;
+            $i = $this->i / $c;
+            return new Complex($r, $i);
+        } elseif ($c instanceof Complex) {
+            return $this->multiply($c->inverse());
+        } else {
+            throw new Exception\IncorrectTypeException('Argument must be real or complex number');
+        }
+    }

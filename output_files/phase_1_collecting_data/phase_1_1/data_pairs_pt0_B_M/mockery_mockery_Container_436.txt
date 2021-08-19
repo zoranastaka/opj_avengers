@@ -1,0 +1,11 @@
+    /**
+     * Set ordering for a group
+     *
+     * @param mixed $group
+     * @param int $order
+     */
+
+    public function mockery_setGroup($group, $order)
+    {
+        $this->_groups[$group] = $order;
+    }

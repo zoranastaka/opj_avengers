@@ -1,0 +1,58 @@
+/**
+ * @author Nicolas Grekas <p@tchwork.com>
+ * @requires extension redis
+ * @group integration
+ */
+
+class RedisCasterTest extends TestCase
+{
+    use VarDumperTestTrait;
+
+    public function testNotConnected()
+    {
+        $redis = new \Redis();
+
+        $xCast = <<<'EODUMP'
+Redis {
+  isConnected: false
+}
+EODUMP;
+
+        $this->assertDumpMatchesFormat($xCast, $redis);
+    }
+
+    public function testConnected()
+    {
+        $redisHost = getenv('REDIS_HOST');
+        $redis = new \Redis();
+        try {
+            $redis->connect($redisHost);
+        } catch (\Exception $e) {
+            self::markTestSkipped($e->getMessage());
+        }
+
+        $xCast = <<<EODUMP
+Redis {%A
+  isConnected: true
+  host: "$redisHost"
+  port: 6379
+  auth: null
+  mode: ATOMIC
+  dbNum: 0
+  timeout: 0.0
+  lastError: null
+  persistentId: null
+  options: {
+    TCP_KEEPALIVE: 0
+    READ_TIMEOUT: 0.0
+    COMPRESSION: NONE
+    SERIALIZER: NONE
+    PREFIX: null
+    SCAN: NORETRY
+  }
+}
+EODUMP;
+
+        $this->assertDumpMatchesFormat($xCast, $redis);
+    }
+}

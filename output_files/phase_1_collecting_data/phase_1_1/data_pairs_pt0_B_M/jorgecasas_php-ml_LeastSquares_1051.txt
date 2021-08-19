@@ -1,0 +1,13 @@
+    /**
+     * @return mixed
+     */
+
+    public function predictSample(array $sample)
+    {
+        $result = $this->intercept;
+        foreach ($this->coefficients as $index => $coefficient) {
+            $result += $coefficient * $sample[$index];
+        }
+
+        return $result;
+    }

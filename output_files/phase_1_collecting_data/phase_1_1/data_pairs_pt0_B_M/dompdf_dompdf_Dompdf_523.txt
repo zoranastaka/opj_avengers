@@ -1,0 +1,11 @@
+    /**
+     * @param string $default_view The default document view
+     * @param array $options The view's options
+     * @return $this
+     * @deprecated
+     */
+
+    public function set_default_view($default_view, $options)
+    {
+        return $this->setDefaultView($default_view, $options);
+    }

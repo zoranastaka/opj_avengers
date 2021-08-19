@@ -1,0 +1,8 @@
+    /**
+     * @return UIAsset
+     */
+
+    private function getMergedCoreJSAsset()
+    {
+        return $this->getMergedUIAsset(self::MERGED_CORE_JS_FILE);
+    }

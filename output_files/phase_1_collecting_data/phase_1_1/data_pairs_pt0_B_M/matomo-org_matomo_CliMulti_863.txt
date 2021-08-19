@@ -1,0 +1,24 @@
+    /**
+     * @param array $piwikUrls
+     * @return array
+     */
+
+    private function requestUrls(array $piwikUrls)
+    {
+        $this->start($piwikUrls);
+
+        $startTime = time();
+        do {
+            $elapsed = time() - $startTime;
+            $timeToWait = $this->getTimeToWaitBeforeNextCheck($elapsed);
+
+            usleep($timeToWait);
+        } while (!$this->hasFinished());
+
+        $results = $this->getResponse();
+        $this->cleanup();
+
+        self::cleanupNotRemovedFiles();
+
+        return $results;
+    }

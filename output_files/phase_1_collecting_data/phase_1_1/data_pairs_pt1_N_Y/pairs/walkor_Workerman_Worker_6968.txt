@@ -1,0 +1,16 @@
+    /**
+     * Init idMap.
+     * return void
+     */
+
+    protected static function initId()
+    {
+        foreach (static::$_workers as $worker_id => $worker) {
+            $new_id_map = array();
+            $worker->count = $worker->count < 1 ? 1 : $worker->count;
+            for($key = 0; $key < $worker->count; $key++) {
+                $new_id_map[$key] = isset(static::$_idMap[$worker_id][$key]) ? static::$_idMap[$worker_id][$key] : 0;
+            }
+            static::$_idMap[$worker_id] = $new_id_map;
+        }
+    }

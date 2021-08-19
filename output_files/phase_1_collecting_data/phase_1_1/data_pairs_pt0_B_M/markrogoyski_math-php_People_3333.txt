@@ -1,0 +1,16 @@
+    /**
+     * Raw data with each observation labeled
+     * ['Lars' => ['height' => 198, 'weight' => 92, 'hairLength' => -1, ... ]]
+     *
+     * @return int[][]
+     */
+
+    public function getLabeledData(): array
+    {
+        return \array_map(
+            function (array $data) {
+                return \array_combine(self::LABELS, $data);
+            },
+            self::DATA
+        );
+    }

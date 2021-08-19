@@ -1,0 +1,17 @@
+    /**
+     * Returns the mandatory requirements that were not met.
+     *
+     * @return Requirement[]
+     */
+
+    public function getFailedRequirements()
+    {
+        $array = array();
+        foreach ($this->requirements as $req) {
+            if (!$req->isFulfilled() && !$req->isOptional()) {
+                $array[] = $req;
+            }
+        }
+
+        return $array;
+    }

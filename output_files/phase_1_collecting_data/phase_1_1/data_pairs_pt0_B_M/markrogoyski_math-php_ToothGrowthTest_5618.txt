@@ -1,0 +1,15 @@
+    /**
+     * @test         Labeled data
+     * @dataProvider dataProviderForLabeledData
+     * @param        int    $i
+     * @param        array  $expectedData
+     */
+
+    public function testLabeledData(int $i, array $expectedData)
+    {
+        // When
+        $labeledData = $this->toothGrowth->getLabeledData();
+
+        // Then
+        $this->assertEquals($expectedData, $labeledData[$i]);
+    }

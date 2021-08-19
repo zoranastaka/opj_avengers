@@ -1,0 +1,16 @@
+    /**
+     * R code for expected values:
+     *   library(mdatools)
+     *   data = mtcars[,c(1:7,10,11)]
+     *   model = pca(data, center=TRUE, scale=FALSE)
+     * @throws Exception\MathException
+     */
+
+    public static function setUpBeforeClass(): void
+    {
+        $mtCars = new SampleData\MtCars();
+
+        // Remove and categorical variables
+        self::$matrix = MatrixFactory::create($mtCars->getData())->columnExclude(8)->columnExclude(7);
+        self::$pca = new PCA(self::$matrix, true, false);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Returns Doubler instance assigned to this Prophet.
+     *
+     * @return Doubler
+     */
+
+    public function getDoubler()
+    {
+        return $this->doubler;
+    }

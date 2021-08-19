@@ -1,0 +1,30 @@
+    /**
+     * A007947 the squarefree kernel of n
+     * @see    https://oeis.org/A007947
+     * @return array
+     */
+
+    public function dataProviderForRadical(): array
+    {
+        return [
+            [1, 1],
+            [2, 2],
+            [3, 3],
+            [4, 2],
+            [5, 5],
+            [6, 6],
+            [7, 7],
+            [8, 2],
+            [9, 3],
+            [10, 10],
+            [11, 11],
+            [12, 6],
+            [13, 13],
+            [14, 14],
+            [15, 15],
+            [16, 2],
+            [17, 17],
+            [18, 6],
+            [19, 19],
+        ];
+    }

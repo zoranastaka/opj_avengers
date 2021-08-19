@@ -1,0 +1,10 @@
+    /**
+     * Returns the login used to authenticate.
+     *
+     * @return string
+     */
+
+    public function getIdentity()
+    {
+        return $this->login;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * The name of the file containing the Settings part
+     *
+     * @return string
+     */
+
+    protected function getSettingsPartName()
+    {
+        return 'word/settings.xml';
+    }

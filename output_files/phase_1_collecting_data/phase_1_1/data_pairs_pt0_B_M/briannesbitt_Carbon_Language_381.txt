@@ -1,0 +1,13 @@
+    /**
+     * Get a string with long ISO name, region in parentheses if applicable, variant in parentheses if applicable.
+     *
+     * @return string
+     */
+
+    public function getFullIsoDescription()
+    {
+        $region = $this->getRegionName();
+        $variant = $this->getVariantName();
+
+        return $this->getFullIsoName().($region ? ' ('.$region.')' : '').($variant ? ' ('.$variant.')' : '');
+    }

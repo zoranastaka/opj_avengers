@@ -1,0 +1,25 @@
+    /**
+     * Returns the longest common prefix between the string and $otherStr.
+     *
+     * @param  string $otherStr Second string for comparison
+     * @return static Object with its $str being the longest common prefix
+     */
+
+    public function longestCommonPrefix($otherStr)
+    {
+        $encoding = $this->encoding;
+        $maxLength = min($this->length(), \mb_strlen($otherStr, $encoding));
+
+        $longestCommonPrefix = '';
+        for ($i = 0; $i < $maxLength; $i++) {
+            $char = \mb_substr($this->str, $i, 1, $encoding);
+
+            if ($char == \mb_substr($otherStr, $i, 1, $encoding)) {
+                $longestCommonPrefix .= $char;
+            } else {
+                break;
+            }
+        }
+
+        return static::create($longestCommonPrefix, $encoding);
+    }

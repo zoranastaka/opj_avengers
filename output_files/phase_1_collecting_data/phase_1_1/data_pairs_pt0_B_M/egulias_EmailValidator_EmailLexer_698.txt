@@ -1,0 +1,22 @@
+    /**
+     * moveNext
+     *
+     * @return boolean
+     */
+
+    public function moveNext()
+    {
+        if ($this->hasToRecord && $this->previous === self::$nullToken) {
+            $this->accumulator .= $this->token['value'];
+        }
+
+        $this->previous = $this->token;
+        $hasNext = parent::moveNext();
+        $this->token = $this->token ?: self::$nullToken;
+
+        if ($this->hasToRecord) {
+            $this->accumulator .= $this->token['value'];
+        }
+
+        return $hasNext;
+    }

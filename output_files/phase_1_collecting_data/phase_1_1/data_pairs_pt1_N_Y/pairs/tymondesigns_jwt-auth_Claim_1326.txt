@@ -1,0 +1,10 @@
+    /**
+     * Get the claim value.
+     *
+     * @return mixed
+     */
+
+    public function getValue()
+    {
+        return $this->value;
+    }

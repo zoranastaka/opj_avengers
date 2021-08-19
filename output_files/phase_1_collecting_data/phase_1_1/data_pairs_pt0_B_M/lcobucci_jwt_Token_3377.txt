@@ -1,0 +1,5 @@
+    /**
+     * Returns if the token minimum time is before than given time
+     */
+
+    public function isMinimumTimeBefore(DateTimeInterface $now): bool;

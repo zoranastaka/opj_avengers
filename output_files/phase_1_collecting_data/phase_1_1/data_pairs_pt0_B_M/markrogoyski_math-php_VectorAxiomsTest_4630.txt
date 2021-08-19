@@ -1,0 +1,21 @@
+    /**
+     * @test Axiom: c(A + B) = cA + cB
+     * Additivity in the vector
+     * @dataProvider dataProviderForTwoVectors
+     */
+
+    public function testAdditivityInTheVectorForScalarMultiplication(array $A, array $B)
+    {
+        // Given
+        $A = new Vector($A);
+        $B = new Vector($B);
+        $c = 4;
+
+        // When
+        $c⟮A＋B⟯ = $A->add($B)->scalarMultiply($c);
+        $⟮cA＋cB⟯ = $A->scalarMultiply($c)->add($B->scalarMultiply($c));
+
+        // Then
+        $this->assertEquals($c⟮A＋B⟯, $⟮cA＋cB⟯);
+        $this->assertEquals($c⟮A＋B⟯->getVector(), $⟮cA＋cB⟯->getVector());
+    }

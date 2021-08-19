@@ -1,0 +1,10 @@
+    /**
+     * Gets the PHP SAPI name.
+     *
+     * @return string The environment
+     */
+
+    public function getSapiName()
+    {
+        return $this->data['sapi_name'];
+    }

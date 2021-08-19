@@ -1,0 +1,9 @@
+	/**
+	 * Add a new personal root certificate to the users' trust store
+	 *
+	 * @NoAdminRequired
+	 * @NoSubadminRequired
+	 * @return array
+	 */
+
+	public function addPersonalRootCertificate() {

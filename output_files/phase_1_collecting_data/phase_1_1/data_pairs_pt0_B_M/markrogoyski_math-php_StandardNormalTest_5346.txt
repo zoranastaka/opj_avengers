@@ -1,0 +1,12 @@
+    /**
+     * @test mean
+     */
+
+    public function testMean()
+    {
+        // When
+        $mean = $this->standardNormal->mean();
+
+        // Then
+        $this->assertEquals(0, $mean);
+    }

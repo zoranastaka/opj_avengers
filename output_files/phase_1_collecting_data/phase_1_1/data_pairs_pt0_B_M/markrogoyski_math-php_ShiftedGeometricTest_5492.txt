@@ -1,0 +1,19 @@
+    /**
+     * @test         cdf
+     * @dataProvider dataProviderForCdf
+     * @param        int $k
+     * @param        float $p
+     * @param        float $expectedCdf
+     */
+
+    public function testCdf(int $k, float $p, float $expectedCdf)
+    {
+        // Given
+        $shiftedGeometric = new ShiftedGeometric($p);
+
+        // When
+        $cdf = $shiftedGeometric->cdf($k);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedCdf, $cdf, 0.001);
+    }

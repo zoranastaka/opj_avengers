@@ -1,0 +1,13 @@
+    /**
+     * Prints logs.
+     *
+     * @Todo, integrate Monolog.
+     *
+     * @param array      $data
+     * @param ConnectionInterface $conn
+     */
+
+    protected function commandLog(array $data, ConnectionInterface $conn)
+    {
+        $this->output->writeln($data['message']);
+    }

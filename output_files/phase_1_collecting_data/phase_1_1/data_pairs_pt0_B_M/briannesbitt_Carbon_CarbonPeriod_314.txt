@@ -1,0 +1,12 @@
+    /**
+     * Return the current date.
+     *
+     * @return CarbonInterface|null
+     */
+
+    public function current()
+    {
+        return $this->valid()
+            ? $this->prepareForReturn($this->current)
+            : null;
+    }

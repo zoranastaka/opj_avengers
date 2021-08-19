@@ -1,0 +1,11 @@
+	/**
+	 * @AfterScenario
+	 */
+
+	public function afterScenario( $event ) {
+		if ( isset( $this->variables['RUN_DIR'] ) ) {
+			// remove altered WP install, unless there's an error
+			if ( $event->getResult() < 4 ) {
+				$this->proc( Utils\esc_cmd( 'rm -r %s', $this->variables['RUN_DIR'] ) )->run();
+			}
+		}

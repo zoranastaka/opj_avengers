@@ -1,0 +1,14 @@
+    /**
+     * @return array (x, expected)
+     */
+
+    public function dataProviderForPolynomialAgrees(): array
+    {
+        return [
+            [0, 0],    // p(0) = 0
+            [1, 5],    // p(1) = 5
+            [3, 2],    // p(3) = 2
+            [7, 10],   // p(7) = 10
+            [10, -4],  // p(10) = -4
+        ];
+    }

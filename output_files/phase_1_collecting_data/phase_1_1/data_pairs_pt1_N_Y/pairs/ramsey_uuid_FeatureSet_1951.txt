@@ -1,0 +1,12 @@
+    /**
+     * Returns a name generator configured for this environment
+     */
+
+    private function buildNameGenerator(): NameGeneratorInterface
+    {
+        if ($this->enablePecl) {
+            return new PeclUuidNameGenerator();
+        }
+
+        return (new NameGeneratorFactory())->getGenerator();
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @return array
+     * @throws \Exception
+     */
+
+    public function dataProviderForSolveExceptionNotVectorOrArray(): array
+    {
+        return [
+            [new NumericMatrix([[1], [2], [3]])],
+            [25],
+        ];
+    }

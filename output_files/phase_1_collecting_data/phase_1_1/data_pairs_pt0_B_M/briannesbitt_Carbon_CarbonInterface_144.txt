@@ -1,0 +1,7 @@
+    /**
+     * Return a serialized string of the instance.
+     *
+     * @return string
+     */
+
+    public function serialize();

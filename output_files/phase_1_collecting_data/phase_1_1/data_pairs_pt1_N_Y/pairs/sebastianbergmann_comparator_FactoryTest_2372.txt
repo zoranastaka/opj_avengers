@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider instanceProvider
+     */
+
+    public function testGetComparatorFor($a, $b, $expected): void
+    {
+        $factory = new Factory;
+        $actual  = $factory->getComparatorFor($a, $b);
+        $this->assertInstanceOf($expected, $actual);
+    }

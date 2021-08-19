@@ -1,0 +1,9 @@
+	/**
+	 * @NoCSRFRequired
+	 * @return DataResponse | DataDisplayResponse
+	 */
+
+	public function getFailedIntegrityCheckFiles() {
+		if (!$this->checker->isCodeCheckEnforced()) {
+			return new DataDisplayResponse('Integrity checker has been disabled. Integrity cannot be verified.');
+		}

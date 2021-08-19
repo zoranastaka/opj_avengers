@@ -1,0 +1,7 @@
+    /**
+     * Gets this bag's name.
+     *
+     * @return string
+     */
+
+    public function getName();

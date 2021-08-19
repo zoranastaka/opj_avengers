@@ -1,0 +1,8 @@
+    /**
+     * Unconsume one character.
+     */
+
+    public function unget() {
+        if ($this->char <= $this->EOF) {
+            $this->char--;
+        }

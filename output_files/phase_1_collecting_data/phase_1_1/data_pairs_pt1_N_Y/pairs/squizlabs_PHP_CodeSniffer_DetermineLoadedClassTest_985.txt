@@ -1,0 +1,11 @@
+    /**
+     * Load the test files.
+     *
+     * @return void
+     */
+
+    public static function setUpBeforeClass()
+    {
+        include __DIR__.'/TestFiles/Sub/C.inc';
+
+    }//end setUpBeforeClass()

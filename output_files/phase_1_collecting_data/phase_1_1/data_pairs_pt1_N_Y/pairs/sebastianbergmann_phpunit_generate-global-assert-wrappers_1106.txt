@@ -1,0 +1,10 @@
+    /**
+     * @param mixed $value , ...
+     */
+
+    function onConsecutiveCalls(): ConsecutiveCallsStub
+    {
+        $args = \func_get_args();
+
+        return new ConsecutiveCallsStub($args);
+    }

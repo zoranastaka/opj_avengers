@@ -1,0 +1,12 @@
+    /**
+     * Sets the current working directory.
+     *
+     * @return $this
+     */
+
+    public function setWorkingDirectory(string $cwd)
+    {
+        $this->cwd = $cwd;
+
+        return $this;
+    }

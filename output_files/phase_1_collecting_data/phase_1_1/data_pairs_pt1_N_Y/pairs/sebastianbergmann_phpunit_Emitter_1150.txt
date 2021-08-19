@@ -1,0 +1,6 @@
+    /**
+     * @psalm-param class-string $originalClassName
+     * @psalm-param class-string $mockClassName
+     */
+
+    public function testMockObjectCreatedFromWsdl(string $wsdlFile, string $originalClassName, string $mockClassName, array $methods, bool $callOriginalConstructor, array $options): void;

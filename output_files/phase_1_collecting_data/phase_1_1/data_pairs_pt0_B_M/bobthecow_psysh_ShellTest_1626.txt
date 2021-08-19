@@ -1,0 +1,10 @@
+    /**
+     * @after
+     */
+
+    public function closeOpenStreams()
+    {
+        foreach ($this->streams as $stream) {
+            \fclose($stream);
+        }
+    }

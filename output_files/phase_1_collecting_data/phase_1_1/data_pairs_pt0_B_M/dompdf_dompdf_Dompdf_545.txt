@@ -1,0 +1,10 @@
+    /**
+     * Get the quirks mode
+     *
+     * @return boolean true if quirks mode is active
+     */
+
+    public function getQuirksmode()
+    {
+        return $this->quirksmode;
+    }

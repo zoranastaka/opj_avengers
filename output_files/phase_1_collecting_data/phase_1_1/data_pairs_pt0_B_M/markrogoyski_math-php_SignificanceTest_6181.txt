@@ -1,0 +1,21 @@
+    /**
+     * @test         zTestTwoSample
+     * @dataProvider dataProviderForZTestTwoSample
+     * @param        float $μ₁
+     * @param        float $μ₂
+     * @param        int   $n₁
+     * @param        int   $n₂
+     * @param        float $σ₁
+     * @param        float $σ₂
+     * @param        float $Δ
+     * @param        array $expected
+     */
+
+    public function testZTestTwoSample(float $μ₁, float $μ₂, int $n₁, int $n₂, float $σ₁, float $σ₂, float $Δ, array $expected)
+    {
+        // When
+        $zTest = Significance::zTestTwoSample($μ₁, $μ₂, $n₁, $n₂, $σ₁, $σ₂, $Δ);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $zTest, 0.001);
+    }

@@ -1,0 +1,13 @@
+    /**
+     * @param array $trace
+     * @return string
+     */
+
+    protected function getFunction($trace)
+    {
+        if (!isset($trace['function'])) {
+            return '';
+        }
+
+        return $trace['function'] . '(' . implode(', ', $trace['args'] ?? []) . ')';
+    }

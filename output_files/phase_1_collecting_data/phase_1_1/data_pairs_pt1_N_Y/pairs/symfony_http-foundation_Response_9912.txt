@@ -1,0 +1,10 @@
+    /**
+     * Is the response empty?
+     *
+     * @final
+     */
+
+    public function isEmpty(): bool
+    {
+        return \in_array($this->statusCode, [204, 304]);
+    }

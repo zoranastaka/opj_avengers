@@ -1,0 +1,24 @@
+    /**
+     * @param mixed $input
+     */
+
+    public function setInput($input): Network
+    {
+        $firstLayer = $this->layers[0];
+
+        foreach ($firstLayer->getNodes() as $key => $neuron) {
+            if ($neuron instanceof Input) {
+                $neuron->setInput($input[$key]);
+            }
+        }
+
+        foreach ($this->getLayers() as $layer) {
+            foreach ($layer->getNodes() as $node) {
+                if ($node instanceof Neuron) {
+                    $node->reset();
+                }
+            }
+        }
+
+        return $this;
+    }

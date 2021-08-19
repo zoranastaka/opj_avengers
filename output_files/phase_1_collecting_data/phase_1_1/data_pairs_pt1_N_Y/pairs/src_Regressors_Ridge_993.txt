@@ -1,0 +1,12 @@
+    /**
+     * Return the estimator type.
+     *
+     * @internal
+     *
+     * @return \Rubix\ML\EstimatorType
+     */
+
+    public function type() : EstimatorType
+    {
+        return EstimatorType::regressor();
+    }

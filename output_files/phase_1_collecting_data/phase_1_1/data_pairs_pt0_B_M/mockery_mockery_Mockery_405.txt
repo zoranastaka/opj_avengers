@@ -1,0 +1,11 @@
+    /**
+     * Gets an specific demeter mock from
+     * the ones kept by the container.
+     *
+     * @param \Mockery\Container $container
+     * @param string $demeterMockKey
+     *
+     * @return mixed
+     */
+
+    private static function getExistingDemeterMock(

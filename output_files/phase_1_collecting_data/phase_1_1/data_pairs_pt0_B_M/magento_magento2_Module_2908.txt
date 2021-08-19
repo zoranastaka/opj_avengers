@@ -1,0 +1,5 @@
+/**
+ * Laminas module declaration
+ */
+
+class Module implements

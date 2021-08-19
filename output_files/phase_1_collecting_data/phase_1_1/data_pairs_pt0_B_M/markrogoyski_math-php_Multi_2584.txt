@@ -1,0 +1,33 @@
+    /**
+     * Map divide against multiple arrays
+     *
+     * [x₁ / y₁, x₂ / y₂, ... ]
+     *
+     * @param array ...$arrays Two or more arrays of numbers
+     *
+     * @return array
+     *
+     * @throws Exception\BadDataException
+     */
+
+    public static function divide(array ...$arrays): array
+    {
+        self::checkArrayLengths($arrays);
+
+        $number_of_arrays = \count($arrays);
+        $length_of_arrays = \count($arrays[0]);
+        $quotients        = \array_map(
+            function ($x) {
+                return $x;
+            },
+            $arrays[0]
+        );
+
+        for ($i = 0; $i < $length_of_arrays; $i++) {
+            for ($j = 1; $j < $number_of_arrays; $j++) {
+                $quotients[$i] /= $arrays[$j][$i];
+            }
+        }
+
+        return $quotients;
+    }

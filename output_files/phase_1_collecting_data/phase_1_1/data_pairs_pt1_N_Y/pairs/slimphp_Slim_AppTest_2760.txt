@@ -1,0 +1,7 @@
+        // @codingStandardsIgnoreStart
+
+        function handle($request, ResponseInterface $response)
+        {
+            $response->getBody()->write('Hello World');
+            return $response;
+        }

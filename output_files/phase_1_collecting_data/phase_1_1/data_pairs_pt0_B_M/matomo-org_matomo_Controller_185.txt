@@ -1,0 +1,11 @@
+   /**
+    * Adds a handler for a specific action
+    *
+    * @param  string                            action name
+    * @param  HTML_QuickForm2_Controller_Action the handler for the action
+    */
+
+    public function addHandler($actionName, HTML_QuickForm2_Controller_Action $action)
+    {
+        $this->handlers[$actionName] = $action;
+    }

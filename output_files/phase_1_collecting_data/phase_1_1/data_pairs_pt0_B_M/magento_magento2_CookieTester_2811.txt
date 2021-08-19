@@ -1,0 +1,8 @@
+    /**
+     * Retrieve cookie metadata factory
+     */
+
+    protected function getCookieMetadataFactory()
+    {
+        return $this->cookieMetadataFactory;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * The intercept
+     * a = (ΣY - b(ΣX)) / N
+     *
+     * @param float $b
+     *
+     * @return float
+     */
+
+    private function aIntercept($b) {

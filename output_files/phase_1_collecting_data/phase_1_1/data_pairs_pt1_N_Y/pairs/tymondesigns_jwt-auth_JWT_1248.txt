@@ -1,0 +1,14 @@
+    /**
+     * Generate a token for a given subject.
+     *
+     * @param  \Tymon\JWTAuth\Contracts\JWTSubject  $subject
+     *
+     * @return string
+     */
+
+    public function fromSubject(JWTSubject $subject)
+    {
+        $payload = $this->makePayload($subject);
+
+        return $this->manager->encode($payload)->get();
+    }

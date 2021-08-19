@@ -1,0 +1,8 @@
+    /**
+     * @param \Throwable $exception
+     */
+
+    public function setException($exception)
+    {
+        $this->exception = $exception;
+    }

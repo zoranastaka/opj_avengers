@@ -1,0 +1,15 @@
+    /**
+     * Return samples belonging to specific label
+     */
+
+    private function getSamplesByLabel(string $label): array
+    {
+        $samples = [];
+        for ($i = 0; $i < $this->sampleCount; ++$i) {
+            if ($this->targets[$i] == $label) {
+                $samples[] = $this->samples[$i];
+            }
+        }
+
+        return $samples;
+    }

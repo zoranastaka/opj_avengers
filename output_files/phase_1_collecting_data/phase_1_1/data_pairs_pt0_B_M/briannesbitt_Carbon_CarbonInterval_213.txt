@@ -1,0 +1,27 @@
+    /**
+     * Returns the factor for a given source-to-target couple.
+     *
+     * @param string $source
+     * @param string $target
+     *
+     * @return int|null
+     */
+
+    public static function getFactor($source, $target)
+    {
+        $source = self::standardizeUnit($source);
+        $target = self::standardizeUnit($target);
+        $factors = static::getFlipCascadeFactors();
+
+        if (isset($factors[$source])) {
+            [$to, $factor] = $factors[$source];
+
+            if ($to === $target) {
+                return $factor;
+            }
+
+            return $factor * static::getFactor($to, $target);
+        }
+
+        return null;
+    }

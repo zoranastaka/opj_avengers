@@ -1,0 +1,19 @@
+    /**
+     * R - correlation coefficient (Pearson's r)
+     *
+     * A measure of the strength and direction of the linear relationship
+     * between two variables
+     * that is defined as the (sample) covariance of the variables
+     * divided by the product of their (sample) standard deviations.
+     *
+     *      n∑⟮xy⟯ − ∑⟮x⟯∑⟮y⟯
+     * --------------------------------
+     * √［（n∑x² − ⟮∑x⟯²）（n∑y² − ⟮∑y⟯²）］
+     *
+     * @return float
+     */
+
+    public function correlationCoefficient(): float
+    {
+        return \sqrt($this->coefficientOfDetermination());
+    }

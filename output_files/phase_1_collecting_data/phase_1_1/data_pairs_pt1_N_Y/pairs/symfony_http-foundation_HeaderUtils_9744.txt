@@ -1,0 +1,39 @@
+    /**
+     * Splits an HTTP header by one or more separators.
+     *
+     * Example:
+     *
+     *     HeaderUtils::split("da, en-gb;q=0.8", ",;")
+     *     // => ['da'], ['en-gb', 'q=0.8']]
+     *
+     * @param string $separators List of characters to split on, ordered by
+     *                           precedence, e.g. ",", ";=", or ",;="
+     *
+     * @return array Nested array with as many levels as there are characters in
+     *               $separators
+     */
+
+    public static function split(string $header, string $separators): array
+    {
+        $quotedSeparators = preg_quote($separators, '/');
+
+        preg_match_all('
+            /
+                (?!\s)
+                    (?:
+                        # quoted-string
+                        "(?:[^"\\\\]|\\\\.)*(?:"|\\\\|$)
+                    |
+                        # token
+                        [^"'.$quotedSeparators.']+
+                    )+
+                (?<!\s)
+            |
+                # separator
+                \s*
+                (?<separator>['.$quotedSeparators.'])
+                \s*
+            /x', trim($header), $matches, \PREG_SET_ORDER);
+
+        return self::groupParts($matches, $separators);
+    }

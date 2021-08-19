@@ -1,0 +1,12 @@
+    /**
+     * Output all remaining data on a file pointer.
+     *
+     * @see http://php.net/manual/en/SplFileObject.fpatssthru.php
+     *
+     * @return int|false
+     */
+
+    public function fpassthru()
+    {
+        return fpassthru($this->stream);
+    }

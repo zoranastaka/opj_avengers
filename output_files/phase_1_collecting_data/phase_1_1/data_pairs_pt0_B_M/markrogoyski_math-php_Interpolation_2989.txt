@@ -1,0 +1,17 @@
+    /**
+     * Sorts our coordinates (arrays) by their x-component (first number) such
+     * that consecutive coordinates have an increasing x-component.
+     *
+     * @param  array $points
+     *
+     * @return array[]
+     */
+
+    protected static function sort(array $points): array
+    {
+        \usort($points, function (array $a, array $b) {
+            return $a[self::X] <=> $b[self::X];
+        });
+
+        return $points;
+    }

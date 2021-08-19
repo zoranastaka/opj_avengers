@@ -1,0 +1,20 @@
+    /**
+     * @return array [Hₐ, n, H₀, σ, ztest]
+     * Test data created from these sites:
+     *   - http://www.socscistatistics.com/tests/ztest_sample_mean/Default2.aspx
+     *   - https://www.easycalculation.com/statistics/p-value-for-z-score.php
+     */
+
+    public function dataProviderForZTestOneSample(): array
+    {
+        return [
+            [96, 55, 100, 12, ['z' => -2.4720661623652, 'p1' => 0.00676, 'p2' => 0.013436]],
+            [83, 40, 80, 5, ['z' => 3.79473, 'p1' => 0.0001, 'p2' => 0.0001]],
+            [20, 200, 19.2, 6, ['z' => 1.88562, 'p1' => 0.02938, 'p2' => 0.0593]],
+            [22.875, 35, 19.5, 5, ['z' => 3.99335, 'p1' => 0.0001, 'p2' => 0.0001]],
+            [112, 30, 100, 15, ['z' => 4.38178, 'p1' => 0.0000, 'p2' => 0.0000]],
+            [18.9, 200, 21, 5, ['z' => -5.9397, 'p1' => 0.0000, 'p2' => 0.0000]],
+            [6.7, 29, 5, 7.1, ['z' => 1.28941, 'p1' => 0.0986, 'p2' => 0.1973]],
+            [80.94, 25, 85, 11.6, ['z' => -1.75, 'p1' => 0.0401, 'p2' => 0.080118]],
+        ];
+    }

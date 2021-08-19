@@ -1,0 +1,10 @@
+    /**
+     * return human readable Tabs hierarchy for display.
+     */
+
+    protected function displayTabs(array $tabs)
+    {
+        $tabsTree = $this->getChildrenTab($tabs);
+
+        return $tabsTree;
+    }

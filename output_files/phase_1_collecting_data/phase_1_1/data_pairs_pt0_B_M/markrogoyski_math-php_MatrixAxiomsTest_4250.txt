@@ -1,0 +1,20 @@
+    /**
+     * @test Axiom: (Aᵀ)ᵀ = A
+     * The transpose of the transpose is the original matrix.
+     *
+     * @dataProvider dataProviderForSquareMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testTransposeOfTransposeIsOriginalMatrix(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // When
+        $⟮A⁻ᵀ⟯ᵀ = $A->transpose()->transpose();
+
+        // Then
+        $this->assertEquals($⟮A⁻ᵀ⟯ᵀ->getMatrix(), $A->getMatrix());
+    }

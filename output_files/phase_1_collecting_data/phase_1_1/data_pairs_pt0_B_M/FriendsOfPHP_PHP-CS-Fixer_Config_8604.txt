@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function setRiskyAllowed(bool $isRiskyAllowed): ConfigInterface
+    {
+        $this->isRiskyAllowed = $isRiskyAllowed;
+
+        return $this;
+    }

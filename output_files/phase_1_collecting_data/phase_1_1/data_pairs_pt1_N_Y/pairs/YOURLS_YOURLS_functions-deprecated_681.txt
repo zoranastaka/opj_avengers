@@ -1,0 +1,15 @@
+/**
+ * "Real" escape. This function should NOT be called directly. Use yourls_escape() instead.
+ *
+ * This function uses a "real" escape if possible, using PDO, MySQL or MySQLi functions,
+ * with a fallback to a "simple" addslashes
+ * If you're implementing a custom DB engine or a custom cache system, you can define an
+ * escape function using filter 'custom_escape_real'
+ *
+ * @since 1.7
+ * @deprecated 1.7.3
+ * @param string $a string to be escaped
+ * @return string escaped string
+ */
+
+function yourls_escape_real( $string ) {

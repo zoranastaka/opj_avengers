@@ -1,0 +1,16 @@
+    /**
+     * @test         ses
+     * @dataProvider dataProviderForSes
+     * @param        int   $n
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testSes(int $n, float $expected)
+    {
+        // When
+        $ses = RandomVariable::ses($n);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $ses, 0.001);
+    }

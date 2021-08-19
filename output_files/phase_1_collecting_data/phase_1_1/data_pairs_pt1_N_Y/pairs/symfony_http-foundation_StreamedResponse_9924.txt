@@ -1,0 +1,12 @@
+    /**
+     * Sets the PHP callback associated with this Response.
+     *
+     * @return $this
+     */
+
+    public function setCallback(callable $callback)
+    {
+        $this->callback = $callback;
+
+        return $this;
+    }

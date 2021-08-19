@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider chainedCommandsOutputProvider
+     */
+
+    public function testChainedCommandsOutput($expected, $operator, $input)
+    {
+        $process = $this->getProcess(sprintf('echo %s %s echo %s', $input, $operator, $input));
+        $process->run();
+        $this->assertEquals($expected, $process->getOutput());
+    }

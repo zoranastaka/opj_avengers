@@ -1,0 +1,17 @@
+    /**
+     * Set the graphics state for compositions
+     *
+     * @param $parameters
+     */
+
+    function setGraphicsState($parameters)
+    {
+        // Create a new graphics state object if necessary
+        if (($gstate = array_search($parameters, $this->gstates)) === false) {
+            $this->numObj++;
+            $this->o_extGState($this->numObj, 'new', $parameters);
+            $gstate = $this->numStates;
+            $this->gstates[$gstate] = $parameters;
+        }
+        $this->addContent("\n/GS$gstate gs");
+    }

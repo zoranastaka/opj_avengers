@@ -1,0 +1,3 @@
+	//registracija tvrtke
+
+	function add_company($oib, $password_hash, $name, $email, $adress, $phone, $description ){

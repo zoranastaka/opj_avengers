@@ -1,0 +1,56 @@
+    /**
+     * Decompose a matrix into an LU Decomposition (using Doolittle decomposition) with pivoting via permutation matrix
+     * Factory method to create LU objects.
+     *
+     * @param NumericMatrix $A
+     *
+     * @return LU
+     *
+     * @throws Exception\BadDataException
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\MathException
+     * @throws Exception\MatrixException
+     * @throws Exception\OutOfBoundsException
+     * @throws Exception\VectorException
+     */
+
+    public static function decompose(NumericMatrix $A): LU
+    {
+        if (!$A->isSquare()) {
+            throw new Exception\MatrixException('LU decomposition only works on square matrices');
+        }
+
+        $n = $A->getN();
+
+        // Initialize L as diagonal ones matrix, and U as zero matrix
+        $L = MatrixFactory::diagonal(\array_fill(0, $n, 1))->getMatrix();
+        $U = MatrixFactory::zero($n, $n)->getMatrix();
+
+        // Create permutation matrix P and pivoted PA
+        $P  = self::pivotize($A);
+        $PA = $P->multiply($A);
+
+        // Fill out L and U
+        for ($i = 0; $i < $n; $i++) {
+            // Calculate Uⱼᵢ
+            for ($j = 0; $j <= $i; $j++) {
+                $sum = 0;
+                for ($k = 0; $k < $j; $k++) {
+                    $sum += $U[$k][$i] * $L[$j][$k];
+                }
+                $U[$j][$i] = $PA[$j][$i] - $sum;
+            }
+
+            // Calculate Lⱼᵢ
+            for ($j = $i; $j < $n; $j++) {
+                $sum = 0;
+                for ($k = 0; $k < $i; $k++) {
+                    $sum += $U[$k][$i] * $L[$j][$k];
+                }
+                $L[$j][$i] = ($U[$i][$i] == 0) ? \NAN : ($PA[$j][$i] - $sum) / $U[$i][$i];
+            }
+        }
+
+        // Create LU decomposition
+        return new LU(MatrixFactory::create($L), MatrixFactory::create($U), $P);
+    }

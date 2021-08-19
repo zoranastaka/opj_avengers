@@ -1,0 +1,43 @@
+    /**
+     * Return a new polynomial that is the product of the current polynomial and an
+     * input polynomial
+     * Example: $polynomial = new Polynomial([2, -16]);          // 2x - 16
+     *          $integral   = $polynomial->integrate();          // x² - 16x
+     *          $product    = $polynomial->multiply($integral);  // 2x³ - 48x² + 256x
+     *
+     * @param mixed $polynomial The polynomial or scalar we are multiplying with our current polynomial
+     *
+     * @return Polynomial The product of our polynomial objects, also a polynomial object
+     *
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function multiply($polynomial): Polynomial
+    {
+        $polynomial = $this->checkNumericOrPolynomial($polynomial);
+        // Calculate the degree of the product of the polynomials
+        $productDegree = $this->degree + $polynomial->degree;
+
+        // Reverse the coefficients arrays so you can multiply component-wise
+        $coefficientsA = \array_reverse($this->coefficients);
+        $coefficientsB = \array_reverse($polynomial->coefficients);
+
+        // Start with an array of coefficients that all equal 0
+        $productCoefficients = \array_fill(0, $productDegree + 1, 0);
+
+        // Iterate through the product of terms component-wise
+        for ($i = 0; $i < $this->degree + 1; $i++) {
+            for ($j = 0; $j < $polynomial->degree + 1; $j++) {
+                // Calculate the degree of the current product
+                $degree = $productDegree - ($i + $j);
+
+                // Calculate the product of the coefficients
+                $product = $coefficientsA[$i] * $coefficientsB[$j];
+
+                // Add the product to the existing coefficient of the current degree
+                $productCoefficients[$degree] = $productCoefficients[$degree] + $product;
+            }
+        }
+
+        return new Polynomial($productCoefficients);
+    }

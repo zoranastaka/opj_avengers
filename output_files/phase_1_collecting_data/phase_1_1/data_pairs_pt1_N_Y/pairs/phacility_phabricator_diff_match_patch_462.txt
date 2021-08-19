@@ -1,0 +1,11 @@
+	/**
+	 * Given two strings, compute a score representing whether the internal
+	 * boundary falls on logical boundaries.
+	 * Scores range from 5 (best) to 0 (worst).
+	 * Closure, makes reference to regex patterns defined above.
+	 * @param {string} one First string
+	 * @param {string} two Second string
+	 * @return {number} The score.
+	 */
+
+	function diff_cleanupSemanticScore($one, $two) {

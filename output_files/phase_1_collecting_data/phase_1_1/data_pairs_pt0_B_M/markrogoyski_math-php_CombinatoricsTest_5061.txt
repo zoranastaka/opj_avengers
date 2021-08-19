@@ -1,0 +1,13 @@
+    /**
+     * @test   risingFactorial n less than zero
+     * @throws \Exception
+     */
+
+    public function testRisingFactorialExceptionNLessThanZero()
+    {
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Combinatorics::risingFactorial(5, -1);
+    }

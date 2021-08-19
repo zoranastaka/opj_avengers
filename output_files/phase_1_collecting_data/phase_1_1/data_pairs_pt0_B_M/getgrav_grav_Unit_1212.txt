@@ -1,0 +1,7 @@
+    /**
+     * HOOK: used after configuration is loaded
+     */
+
+    public function _initialize()
+    {
+    }

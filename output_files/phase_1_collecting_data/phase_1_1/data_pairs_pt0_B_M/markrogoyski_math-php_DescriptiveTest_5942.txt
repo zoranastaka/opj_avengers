@@ -1,0 +1,16 @@
+    /**
+     * @test         sd using sample variance
+     * @dataProvider dataProviderForStandardDeviationUsingSampleVariance
+     * @param        array $numbers
+     * @param        float $expectedStandardDeviation
+     * @throws       \Exception
+     */
+
+    public function testSDeviationUsingSampleVariance(array $numbers, float $expectedStandardDeviation)
+    {
+        // When
+        $sd = Descriptive::sd($numbers);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedStandardDeviation, $sd, 0.01);
+    }

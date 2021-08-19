@@ -1,0 +1,14 @@
+    /**
+     * Get a copy of the instance.
+     *
+     * @return static
+     */
+
+    public function copy()
+    {
+        $date = new static(0);
+        $date->copyProperties($this);
+        $date->step = $this->step;
+
+        return $date;
+    }

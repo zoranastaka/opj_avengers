@@ -1,0 +1,10 @@
+    /**
+     * Return an instance of Strength indicating the strength of the source
+     *
+     * @return \SecurityLib\Strength An instance of one of the strength classes
+     */
+
+    public static function getStrength()
+    {
+        return static::$strength;
+    }

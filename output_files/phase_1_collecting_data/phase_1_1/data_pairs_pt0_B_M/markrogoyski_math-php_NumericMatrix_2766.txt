@@ -1,0 +1,26 @@
+    /**
+     * Adjugate matrix (adjoint, adjunct)
+     * The transpose of its cofactor matrix.
+     * https://en.wikipedia.org/wiki/Adjugate_matrix
+     *
+     * @return NumericMatrix
+     *
+     * @throws Exception\MatrixException is matrix is not square
+     * @throws Exception\IncorrectTypeException
+     * @throws Exception\BadParameterException
+     */
+
+    public function adjugate(): NumericMatrix
+    {
+        if (!$this->isSquare()) {
+            throw new Exception\MatrixException('Matrix is not square; cannot get adjugate Matrix of a non-square matrix');
+        }
+
+        if ($this->n === 1) {
+            return MatrixFactory::createNumeric([[1]], $this->ε);
+        }
+
+        $adj⟮A⟯ = $this->cofactorMatrix()->transpose();
+
+        return $adj⟮A⟯;
+    }

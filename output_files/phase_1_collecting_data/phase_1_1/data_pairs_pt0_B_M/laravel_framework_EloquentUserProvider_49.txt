@@ -1,0 +1,20 @@
+    /**
+     * Update the "remember me" token for the given user in storage.
+     *
+     * @param  \Illuminate\Contracts\Auth\Authenticatable|\Illuminate\Database\Eloquent\Model  $user
+     * @param  string  $token
+     * @return void
+     */
+
+    public function updateRememberToken(UserContract $user, $token)
+    {
+        $user->setRememberToken($token);
+
+        $timestamps = $user->timestamps;
+
+        $user->timestamps = false;
+
+        $user->save();
+
+        $user->timestamps = $timestamps;
+    }

@@ -1,0 +1,12 @@
+    /**
+     * Returns the bundle name (the class short name).
+     */
+
+    final public function getName(): string
+    {
+        if (null === $this->name) {
+            $this->parseClassName();
+        }
+
+        return $this->name;
+    }

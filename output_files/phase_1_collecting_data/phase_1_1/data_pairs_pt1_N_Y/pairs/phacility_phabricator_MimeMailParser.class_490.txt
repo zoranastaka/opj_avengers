@@ -1,0 +1,7 @@
+	/**
+	 * Set the Stream resource we use to get the email text
+	 * @return Object MimeMailParser Instance
+	 * @param $stream Resource
+	 */
+
+	public function setStream($stream) {

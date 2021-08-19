@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function onClose(ConnectionInterface $conn) {
+        if ($conn->httpHeadersReceived) {
+            $this->_httpServer->onClose($conn);
+        }

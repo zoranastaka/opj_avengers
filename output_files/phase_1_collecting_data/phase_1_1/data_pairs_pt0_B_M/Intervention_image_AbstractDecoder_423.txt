@@ -1,0 +1,10 @@
+    /**
+     * Determines if current source data is Imagick object
+     *
+     * @return boolean
+     */
+
+    public function isImagick()
+    {
+        return is_a($this->data, 'Imagick');
+    }

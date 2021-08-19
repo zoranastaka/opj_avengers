@@ -1,0 +1,13 @@
+    /**
+     * @param mixed $a
+     * @param mixed $b
+     *
+     * @dataProvider provideData
+     */
+
+    public function testResult($a, $b, string $operator, bool $expected): void
+    {
+        $result = Comparison::compare($a, $b, $operator);
+
+        self::assertEquals($expected, $result);
+    }

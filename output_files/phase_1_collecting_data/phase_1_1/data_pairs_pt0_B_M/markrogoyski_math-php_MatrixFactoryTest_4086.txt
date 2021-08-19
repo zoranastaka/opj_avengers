@@ -1,0 +1,16 @@
+    /**
+     * @test         one
+     * @dataProvider dataProviderForOne
+     */
+
+    public function testOne($m, $n, array $R)
+    {
+        // Given
+        $R = MatrixFactory::create($R);
+
+        // When
+        $M = MatrixFactory::one($m, $n);
+
+        // Then
+        $this->assertEquals($R, $M);
+    }

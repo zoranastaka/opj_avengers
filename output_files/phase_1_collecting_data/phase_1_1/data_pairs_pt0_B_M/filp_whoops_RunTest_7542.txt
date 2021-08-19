@@ -1,0 +1,18 @@
+    /**
+     * @covers Whoops\Run::unregister
+     */
+
+    public function testUnregisterHandler()
+    {
+        $run = $this->getRunInstance();
+        $run->register();
+
+        $handler = $this->getHandler();
+        $run->pushHandler($handler);
+
+        $run->unregister();
+
+        $this->expectExceptionOfType('Exception');
+
+        throw $this->getException("I'm not supposed to be caught!");
+    }

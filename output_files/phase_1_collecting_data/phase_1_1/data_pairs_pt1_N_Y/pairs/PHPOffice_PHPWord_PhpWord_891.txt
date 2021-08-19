@@ -1,0 +1,10 @@
+    /**
+     * Get default font name
+     *
+     * @return string
+     */
+
+    public function getDefaultFontName()
+    {
+        return Settings::getDefaultFontName();
+    }

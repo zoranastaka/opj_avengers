@@ -1,0 +1,6 @@
+    /** @test */
+
+    public function it_should_get_the_jwt_provider()
+    {
+        $this->assertInstanceOf(JWT::class, $this->manager->getJWTProvider());
+    }

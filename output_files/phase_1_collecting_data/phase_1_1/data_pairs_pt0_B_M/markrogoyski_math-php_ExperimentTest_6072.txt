@@ -1,0 +1,21 @@
+    /**
+     * @test         riskRatio
+     * @dataProvider dataProviderForRiskRatio
+     * @param        int   $a
+     * @param        int   $b
+     * @param        int   $c
+     * @param        int   $d
+     * @param        array $expected
+     */
+
+    public function testRiskRatio(int $a, int $b, int $c, int $d, array $expected)
+    {
+        // When
+        $riskRation = Experiment::riskRatio($a, $b, $c, $d);
+
+        // Then
+        $this->assertEqualsWithDelta($expected['RR'], $riskRation['RR'], 0.001);
+        $this->assertEqualsWithDelta($expected['ci_lower_bound'], $riskRation['ci_lower_bound'], 0.001);
+        $this->assertEqualsWithDelta($expected['ci_upper_bound'], $riskRation['ci_upper_bound'], 0.001);
+        $this->assertEqualsWithDelta($expected['p'], $riskRation['p'], 0.0001);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * @param DOMDocument $dom
+     * @return $this
+     */
+
+    public function setDom(DOMDocument $dom)
+    {
+        $this->dom = $dom;
+        return $this;
+    }

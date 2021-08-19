@@ -1,0 +1,10 @@
+    /**
+     * Get Title
+     *
+     * @return PHPExcel_Chart_Title
+     */
+
+    public function getTitle()
+    {
+        return $this->title;
+    }

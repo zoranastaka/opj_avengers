@@ -1,0 +1,11 @@
+    /**
+     * Number of cylinders observations for all models
+     * ['Mazda RX4' => 6, 'Honda civic' => 4, ... ]
+     *
+     * @return number[]
+     */
+
+    public function getCyl(): array
+    {
+        return \array_column(self::DATA, 1);
+    }

@@ -1,0 +1,7 @@
+    /**
+     * @param number $v
+     *
+     * @return number
+     */
+
+    private function square($v) {

@@ -1,0 +1,22 @@
+    /**
+     * @test         inverse
+     * @dataProvider dataProviderForInverse
+     * @param        array $A
+     * @param        array $A⁻¹
+     * @throws       \Exception
+     */
+
+    public function testInverse(array $A, array $A⁻¹)
+    {
+        // Given
+        $A   = MatrixFactory::create($A);
+        $A⁻¹ = MatrixFactory::create($A⁻¹);
+
+        // When
+        $inverse      = $A->inverse();
+        $inverseAgain = $A->inverse();
+
+        // Then
+        $this->assertEqualsWithDelta($A⁻¹, $inverse, 0.001); // Test calculation
+        $this->assertEqualsWithDelta($A⁻¹, $inverseAgain, 0.001); // Test class attribute
+    }

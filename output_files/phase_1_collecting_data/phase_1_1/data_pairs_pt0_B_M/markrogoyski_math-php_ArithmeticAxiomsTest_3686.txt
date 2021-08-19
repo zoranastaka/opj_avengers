@@ -1,0 +1,16 @@
+    /**
+     * @test Axiom: dr(n) = 0 ⇔ n = 9m for m = 1, 2, 3 ⋯
+     * The digital root of a nonzero number is 9 if and only if the number is itself a multiple of 9.
+     */
+
+    public function testDigitalRootMultipleOfNine()
+    {
+        // Given
+        for ($n = 9; $n <= 900; $n += 9) {
+            // When
+            $digitalRoot = Arithmetic::digitalRoot($n);
+
+            // Then
+            $this->assertEquals(9, $digitalRoot);
+        }
+    }

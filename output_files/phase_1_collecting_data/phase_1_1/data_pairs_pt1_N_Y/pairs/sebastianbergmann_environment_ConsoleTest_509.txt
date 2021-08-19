@@ -1,0 +1,9 @@
+    /**
+     * @todo Now that this component is PHP 7-only and uses return type declarations
+     * this test makes even less sense than before
+     */
+
+    public function testCanDetectNumberOfColumns(): void
+    {
+        $this->assertIsInt($this->console->getNumberOfColumns());
+    }

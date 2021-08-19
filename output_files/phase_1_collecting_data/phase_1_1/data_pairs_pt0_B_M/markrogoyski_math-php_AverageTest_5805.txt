@@ -1,0 +1,17 @@
+    /**
+     * @test   kthSmallest when k is larger than n
+     * @throws \Exception
+     */
+
+    public function testKthSmallestExceptionWhenKIsLargerThanN()
+    {
+        // Given
+        $numbers = [1, 2, 3];
+        $k       = 4;
+
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Average::kthSmallest($numbers, $k);
+    }

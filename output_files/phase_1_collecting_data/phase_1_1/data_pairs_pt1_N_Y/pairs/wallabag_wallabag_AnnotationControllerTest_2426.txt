@@ -1,0 +1,41 @@
+    /**
+     * Test fetching annotations for an entry.
+     *
+     * @dataProvider dataForEachAnnotations
+     */
+
+    public function testGetAnnotations($prefixUrl)
+    {
+        $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
+
+        $user = $em
+            ->getRepository('WallabagUserBundle:User')
+            ->findOneByUserName('admin');
+        $entry = $em
+            ->getRepository('WallabagCoreBundle:Entry')
+            ->findOneByUsernameAndNotArchived('admin');
+
+        $annotation = new Annotation($user);
+        $annotation->setEntry($entry);
+        $annotation->setText('This is my annotation /o/');
+        $annotation->setQuote('content');
+
+        $em->persist($annotation);
+        $em->flush();
+
+        if ('annotations' === $prefixUrl) {
+            $this->logInAs('admin');
+        }
+
+        $this->client->request('GET', $prefixUrl . '/' . $entry->getId() . '.json');
+        $this->assertSame(200, $this->client->getResponse()->getStatusCode());
+
+        $content = json_decode($this->client->getResponse()->getContent(), true);
+        $this->assertGreaterThanOrEqual(1, $content['total']);
+        $this->assertSame($annotation->getText(), $content['rows'][0]['text']);
+
+        // we need to re-fetch the annotation becase after the flush, it has been "detached" from the entity manager
+        $annotation = $em->getRepository('WallabagAnnotationBundle:Annotation')->findAnnotationById($annotation->getId());
+        $em->remove($annotation);
+        $em->flush();
+    }

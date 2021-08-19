@@ -1,0 +1,10 @@
+    /**
+     * 初始化数据
+     *
+     * @param string $data
+     */
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }

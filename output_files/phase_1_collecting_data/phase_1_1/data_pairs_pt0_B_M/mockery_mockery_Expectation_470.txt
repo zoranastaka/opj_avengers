@@ -1,0 +1,12 @@
+    /**
+     * Set a sequential queue of return values with an array
+     *
+     * @param array $values
+     * @return self
+     */
+
+    public function andReturnValues(array $values)
+    {
+        call_user_func_array(array($this, 'andReturn'), $values);
+        return $this;
+    }

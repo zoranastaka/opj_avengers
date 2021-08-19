@@ -1,0 +1,13 @@
+    /** @test */
+
+    public function it_should_set_the_request()
+    {
+        $request = Request::create('/foo', 'GET', ['token' => 'some.random.token']);
+
+        $this->parser->shouldReceive('setRequest')->once()->with($request);
+        $this->parser->shouldReceive('parseToken')->andReturn('some.random.token');
+
+        $token = $this->jwtAuth->setRequest($request)->getToken();
+
+        $this->assertEquals('some.random.token', $token);
+    }

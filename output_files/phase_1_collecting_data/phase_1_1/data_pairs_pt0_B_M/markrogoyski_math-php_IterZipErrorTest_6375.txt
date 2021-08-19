@@ -1,0 +1,14 @@
+    /**
+     * @return array
+     */
+
+    public function dataProviderForNonIterables(): array
+    {
+        return [
+            'int'    => [5],
+            'float'  => [5.5],
+            'string' => ['abc def'],
+            'bool'   => [true],
+            'object' => [new \stdClass()],
+        ];
+    }

@@ -1,0 +1,9 @@
+    /**
+     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     */
+
+    public function testTypeDigitFailFloat()
+    {
+        $arg = new Argument($this->getMockedCommand([12.5]));
+        $arg->type('digit');
+    }

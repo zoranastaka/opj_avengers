@@ -1,0 +1,8 @@
+    /**
+     * @requires extension xdebug
+     */
+
+    public function testCanCollectCodeCoverageWhenXdebugExtensionIsEnabled(): void
+    {
+        $this->assertTrue($this->env->canCollectCodeCoverage());
+    }

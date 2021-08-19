@@ -1,0 +1,10 @@
+    /**
+     * Get Creator
+     *
+     * @return string
+     */
+
+    public function getCreator()
+    {
+        return $this->creator;
+    }

@@ -1,0 +1,8 @@
+    /**
+     * @return FontMetrics
+     */
+
+    public function getFontMetrics()
+    {
+        return $this->fontMetrics;
+    }

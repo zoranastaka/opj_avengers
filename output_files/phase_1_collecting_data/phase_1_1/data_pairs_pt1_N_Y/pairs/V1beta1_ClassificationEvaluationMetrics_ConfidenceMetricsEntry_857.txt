@@ -1,0 +1,15 @@
+    /**
+     * Output only. The harmonic mean of recall and precision.
+     *
+     * Generated from protobuf field <code>float f1_score = 4;</code>
+     * @param float $var
+     * @return $this
+     */
+
+    public function setF1Score($var)
+    {
+        GPBUtil::checkFloat($var);
+        $this->f1_score = $var;
+
+        return $this;
+    }

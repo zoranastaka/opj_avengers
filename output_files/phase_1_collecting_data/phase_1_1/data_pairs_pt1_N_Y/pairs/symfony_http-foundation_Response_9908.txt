@@ -1,0 +1,10 @@
+    /**
+     * Was there a server side error?
+     *
+     * @final
+     */
+
+    public function isServerError(): bool
+    {
+        return $this->statusCode >= 500 && $this->statusCode < 600;
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @return mixed
+     */
+
+    protected function predictSampleBinary(array $sample)
+    {
+        if (Comparison::compare($sample[$this->column], $this->value, $this->operator)) {
+            return $this->binaryLabels[0];
+        }
+
+        return $this->binaryLabels[1];
+    }

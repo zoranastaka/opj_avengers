@@ -1,0 +1,9 @@
+    /**
+     * @dataProvider provideToStringData
+     */
+
+    public function testToString($value, array $attributes, $string)
+    {
+        $item = new AcceptHeaderItem($value, $attributes);
+        $this->assertEquals($string, (string) $item);
+    }

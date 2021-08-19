@@ -1,0 +1,7 @@
+	/**
+	 * Public for the sake of unit-testing
+	 *
+	 * @return array
+	 */
+
+	protected function getCurlVersion() {

@@ -1,0 +1,10 @@
+    /**
+     * @return $this
+     */
+
+    public function setMaxIterations(int $maxIterations)
+    {
+        $this->maxIterations = $maxIterations;
+
+        return $this;
+    }

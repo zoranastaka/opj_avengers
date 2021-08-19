@@ -1,0 +1,15 @@
+    /**
+     * @test         alternativeSkewness Nan
+     * @dataProvider dataProviderForSkewnessNan
+     * @param        array $X
+     * @throws       \Exception
+     */
+
+    public function testAlternativeSkewnessNan(array $X)
+    {
+        // When
+        $skewness = RandomVariable::alternativeSkewness($X);
+
+        // Then
+        $this->assertNan($skewness);
+    }

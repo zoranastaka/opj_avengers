@@ -1,0 +1,13 @@
+    /**
+     * @test
+     */
+
+    public function can_download_an_export_object()
+    {
+        $export = new EmptyExport();
+
+        $response = $this->SUT->download($export, 'filename.xlsx');
+
+        $this->assertInstanceOf(BinaryFileResponse::class, $response);
+        $this->assertEquals('attachment; filename=filename.xlsx', str_replace('"', '', $response->headers->get('Content-Disposition')));
+    }

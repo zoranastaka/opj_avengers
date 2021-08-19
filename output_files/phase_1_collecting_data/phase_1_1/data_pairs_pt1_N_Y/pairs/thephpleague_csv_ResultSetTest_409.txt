@@ -1,0 +1,32 @@
+    /**
+     * @covers \League\Csv\Statement::where
+     * @covers \League\Csv\Statement::create
+     * @covers \League\Csv\Statement::process
+     * @covers \League\Csv\ResultSet::combineHeader
+     * @covers \League\Csv\ResultSet::getRecords
+     */
+
+    public function testFilter(): void
+    {
+        $func1 = function (array $row): bool {
+            return !in_array('jane', $row, true);
+        };
+
+        $func2 = function (array $row): bool {
+            return !in_array('john', $row, true);
+        };
+
+        $stmt = Statement::create($func1);
+        $result1 = $stmt->process($this->csv);
+
+        $result2 = $stmt->where($func2)->process($result1, ['foo', 'bar']);
+        $result3 = $stmt->where($func2)->process($result2, ['foo', 'bar']);
+
+        self::assertNotContains(
+            ['jane', 'doe', 'jane.doe@example.com'],
+            iterator_to_array($result1, false)
+        );
+
+        self::assertCount(0, $result2);
+        self::assertEquals($result3, $result2);
+    }

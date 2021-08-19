@@ -1,0 +1,8 @@
+	/**
+	 * Load the specified class
+	 *
+	 * @param string $class
+	 * @return bool
+	 */
+
+	public function load($class) {

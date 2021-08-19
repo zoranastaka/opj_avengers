@@ -1,0 +1,28 @@
+    /**
+     * Checks if the optimization is not effective enough and can be stopped
+     * in case large enough changes in the solution do not happen
+     */
+
+    protected function earlyStop(array $oldTheta): bool
+    {
+        // Check for early stop: No change larger than threshold (default 1e-5)
+        $diff = array_map(
+            function ($w1, $w2) {
+                return abs($w1 - $w2) > $this->threshold ? 1 : 0;
+            },
+            $oldTheta,
+            $this->theta
+        );
+
+        if (array_sum($diff) == 0) {
+            return true;
+        }
+
+        // Check if the last two cost values are almost the same
+        $costs = array_slice($this->costValues, -2);
+        if (count($costs) === 2 && abs($costs[1] - $costs[0]) < $this->threshold) {
+            return true;
+        }
+
+        return false;
+    }

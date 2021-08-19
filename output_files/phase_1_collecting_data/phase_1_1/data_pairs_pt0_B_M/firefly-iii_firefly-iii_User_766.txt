@@ -1,0 +1,11 @@
+    /**
+     * @codeCoverageIgnore
+     * Link to transactions.
+     *
+     * @return HasManyThrough
+     */
+
+    public function transactions(): HasManyThrough
+    {
+        return $this->hasManyThrough(Transaction::class, TransactionJournal::class);
+    }

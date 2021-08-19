@@ -1,0 +1,5 @@
+    /**
+     * @dataProvider insertProvider()
+     */
+
+    public function testInsert($expected, $str, $substring, $index,

@@ -1,0 +1,8 @@
+    /**
+     * Retrieve the currently consume character.
+     * @note This performs bounds checking
+     *
+     * @return bool|string
+     */
+
+    public function char() {

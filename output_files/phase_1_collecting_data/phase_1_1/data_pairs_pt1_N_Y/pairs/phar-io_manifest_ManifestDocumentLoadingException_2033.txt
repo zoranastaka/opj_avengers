@@ -1,0 +1,7 @@
+    /**
+     * ManifestDocumentLoadingException constructor.
+     *
+     * @param LibXMLError[] $libxmlErrors
+     */
+
+    public function __construct(array $libxmlErrors) {

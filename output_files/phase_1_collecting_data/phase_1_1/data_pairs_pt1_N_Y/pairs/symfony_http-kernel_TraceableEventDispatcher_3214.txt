@@ -1,0 +1,31 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    protected function afterDispatch(string $eventName, object $event)
+    {
+        switch ($eventName) {
+            case KernelEvents::CONTROLLER_ARGUMENTS:
+                $this->stopwatch->start('controller', 'section');
+                break;
+            case KernelEvents::RESPONSE:
+                $token = $event->getResponse()->headers->get('X-Debug-Token');
+                if (null === $token) {
+                    break;
+                }
+                $this->stopwatch->stopSection($token);
+                break;
+            case KernelEvents::TERMINATE:
+                // In the special case described in the `preDispatch` method above, the `$token` section
+                // does not exist, then closing it throws an exception which must be caught.
+                $token = $event->getResponse()->headers->get('X-Debug-Token');
+                if (null === $token) {
+                    break;
+                }
+                try {
+                    $this->stopwatch->stopSection($token);
+                } catch (\LogicException $e) {
+                }
+                break;
+        }
+    }

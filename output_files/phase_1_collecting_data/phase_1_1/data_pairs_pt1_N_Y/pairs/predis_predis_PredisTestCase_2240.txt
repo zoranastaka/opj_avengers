@@ -1,0 +1,12 @@
+    /**
+     * Merges a named array of connection parameters with current defaults.
+     *
+     * @param array $additional Additional connection parameters
+     *
+     * @return array
+     */
+
+    protected function getParametersArray(array $additional): array
+    {
+        return array_merge($this->getDefaultParametersArray(), $additional);
+    }

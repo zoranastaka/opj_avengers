@@ -1,0 +1,6 @@
+	/**
+	 * Get the environment variables required for launched `wp` processes
+	 * @beforeSuite
+	 */
+
+	private static function get_process_env_variables() {

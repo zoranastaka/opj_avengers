@@ -1,0 +1,19 @@
+    /**
+     * @test Axiom: |A ∪ B| = |A| + |B| - |A ∩ B|
+     * The cardinality (count) of unsion of A and B is equal to the cardinality of A + B minus the cardinality of A intersection B
+     *
+     * @dataProvider dataProviderForTwoSets
+     * @param        Set $A
+     * @param        Set $B
+     */
+
+    public function testCardinalityOfUnion(Set $A, Set $B)
+    {
+        // Given
+        $A∪B = $A->union($B);
+        $A∩B = $A->intersect($B);
+
+        // Then
+        $this->assertEquals(count($A) + count($B) - count($A∩B), count($A∪B));
+        $this->assertEquals(count($A->asArray()) + count($B->asArray()) - count($A∩B->asArray()), count($A∪B->asArray()));
+    }

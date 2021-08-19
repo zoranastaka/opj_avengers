@@ -1,0 +1,12 @@
+    /**
+     * Gets the not called listeners.
+     *
+     * @return array
+     *
+     * @see TraceableEventDispatcher
+     */
+
+    public function getNotCalledListeners()
+    {
+        return $this->data['not_called_listeners'];
+    }

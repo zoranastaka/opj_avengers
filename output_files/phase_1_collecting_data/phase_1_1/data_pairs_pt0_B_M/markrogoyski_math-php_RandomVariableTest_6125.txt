@@ -1,0 +1,17 @@
+    /**
+     * @test         skewness
+     * @dataProvider dataProviderForSkewness
+     * @param        array $X
+     * @param        string $type
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testSkewness(array $X, string $type, float $expected)
+    {
+        // When
+        $skewness = RandomVariable::skewness($X, $type);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $skewness, 0.000001);
+    }

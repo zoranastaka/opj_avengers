@@ -1,0 +1,10 @@
+    /**
+     * @dataProvider acceptsFailsProvider
+     */
+
+    public function testAcceptsFails($expected, $actual): void
+    {
+        $this->assertFalse(
+            $this->comparator->accepts($expected, $actual)
+        );
+    }

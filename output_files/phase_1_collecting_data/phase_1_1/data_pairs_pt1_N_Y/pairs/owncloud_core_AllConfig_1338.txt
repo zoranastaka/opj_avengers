@@ -1,0 +1,8 @@
+	/**
+	 * Delete an app wide defined value
+	 *
+	 * @param string $appName the appName that we stored the value under
+	 * @param string $key the key of the value, under which it was saved
+	 */
+
+	public function deleteAppValue($appName, $key) {

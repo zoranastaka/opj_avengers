@@ -1,0 +1,17 @@
+    /**
+     * @test         divide two arrays
+     * @dataProvider dataProviderForDivideTwoArrays
+     * @param        array $xs
+     * @param        array $ys
+     * @param        array $expected
+     * @throws       \Exception
+     */
+
+    public function testDivideTwoArrays(array $xs, array $ys, array $expected)
+    {
+        // When
+        $quotients = Multi::divide($xs, $ys);
+
+        // Then
+        $this->assertEquals($expected, $quotients);
+    }

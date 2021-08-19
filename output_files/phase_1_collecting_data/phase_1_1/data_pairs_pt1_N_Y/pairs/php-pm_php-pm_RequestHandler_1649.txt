@@ -1,0 +1,57 @@
+    /**
+     * Handle slave disconnected
+     *
+     * Typically called after slave has finished handling request
+     */
+
+    public function slaveClosed()
+    {
+        $this->verboseTimer(function ($took) {
+            return \sprintf('<info>Worker %d took abnormal %.3f seconds for handling a connection</info>', $this->slave->getPort(), $took);
+        });
+
+        //Don't send anything if the client already closed the connection
+        if ($this->incoming->isWritable()) {
+            // Return a "502 Bad Gateway" response if the response was empty
+            if ($this->lastOutgoingData == '') {
+                $this->output->writeln('Script did not return a valid HTTP response. Maybe it has called exit() prematurely?');
+                $this->incoming->write($this->createErrorResponse('502 Bad Gateway', 'Slave returned an invalid HTTP response. Maybe the script has called exit() prematurely?'));
+            }
+            $this->incoming->end();
+        }
+        if ($this->maxExecutionTime > 0) {
+            $this->loop->cancelTimer($this->maxExecutionTimer);
+            //Explicitly null the property to avoid a cyclic memory reference
+            $this->maxExecutionTimer = null;
+        }
+
+        if ($this->slave->getStatus() === Slave::LOCKED) {
+            // slave was locked, so mark as closed now.
+            $this->slave->close();
+            $this->output->writeln(\sprintf('Marking locked worker #%d as closed', $this->slave->getPort()));
+            $this->slave->getConnection()->close();
+        } elseif ($this->slave->getStatus() !== Slave::CLOSED) {
+            // if slave has already closed its connection to master,
+            // it probably died and is already terminated
+
+            // mark slave as available
+            $this->slave->release();
+
+            /** @var ConnectionInterface $connection */
+            $connection = $this->slave->getConnection();
+
+            $maxRequests = $this->slave->getMaxRequests();
+            if ($this->slave->getHandledRequests() >= $maxRequests) {
+                $this->slave->close();
+                $this->output->writeln(\sprintf('Restart worker #%d because it reached max requests of %d', $this->slave->getPort(), $maxRequests));
+                $connection->close();
+            }
+            // Enforce memory limit
+            $memoryLimit = $this->slave->getMemoryLimit();
+            if ($memoryLimit > 0 && $this->slave->getUsedMemory() >= $memoryLimit) {
+                $this->slave->close();
+                $this->output->writeln(\sprintf('Restart worker #%d because it reached memory limit of %d', $this->slave->getPort(), $memoryLimit));
+                $connection->close();
+            }
+        }
+    }

@@ -1,0 +1,13 @@
+    /**
+     * Create a new instance with the specified uploaded files.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * updated body parameters.
+     *
+     * @param array $uploadedFiles An array tree of UploadedFileInterface instances.
+     * @return static
+     * @throws \InvalidArgumentException if an invalid structure is provided.
+     */
+
+    public function withUploadedFiles(array $uploadedFiles);

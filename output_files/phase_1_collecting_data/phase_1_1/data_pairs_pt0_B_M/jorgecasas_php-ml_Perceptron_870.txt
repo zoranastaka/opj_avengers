@@ -1,0 +1,8 @@
+    /**
+     * Returns the cost values obtained during the training.
+     */
+
+    public function getCostValues(): array
+    {
+        return $this->costValues;
+    }

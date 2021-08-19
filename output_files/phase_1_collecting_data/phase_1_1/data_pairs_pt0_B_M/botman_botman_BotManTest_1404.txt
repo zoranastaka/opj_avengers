@@ -1,0 +1,30 @@
+    /** @test */
+
+    public function it_can_group_commands_by_middleware()
+    {
+        $called = false;
+
+        $botman = $this->getBot([
+            'event' => [
+                'user' => 'U0X12345',
+                'text' => 'successful',
+            ],
+        ]);
+        $botman->middleware->received(new TestMiddleware());
+        $botman->group(['middleware' => new TestMiddleware()], function ($botman) use (&$called) {
+            $botman->hears('successful', function ($bot) use (&$called) {
+                $called = true;
+                $this->assertSame([
+                    'driver_name' => 'Fake',
+                    'test' => 'successful',
+                ], $bot->getMessage()->getExtras());
+            });
+        });
+
+        $botman->hears('foo', function ($bot) {
+            $this->assertSame([], $bot->getMessage()->getExtras());
+        });
+        $botman->listen();
+
+        $this->assertTrue($called);
+    }

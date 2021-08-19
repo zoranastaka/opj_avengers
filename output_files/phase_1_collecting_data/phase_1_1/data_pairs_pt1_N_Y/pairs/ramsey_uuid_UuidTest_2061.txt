@@ -1,0 +1,9 @@
+    /**
+     * @depends testGetVersionForVersion3
+     */
+
+    public function testUuidVersionConstantForVersion3(): void
+    {
+        $uuid = Uuid::fromString('6fa459ea-ee8a-3ca4-894e-db77e160355e');
+        $this->assertSame($uuid->getVersion(), Uuid::UUID_TYPE_HASH_MD5);
+    }

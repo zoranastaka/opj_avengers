@@ -1,0 +1,9 @@
+    /**
+     * @test   Matrix implements \ArrayAccess
+     * @throws \Exception
+     */
+
+    public function testArrayAccessInterfaceOffExists()
+    {
+        $this->assertTrue($this->matrix->offsetExists(0));
+    }

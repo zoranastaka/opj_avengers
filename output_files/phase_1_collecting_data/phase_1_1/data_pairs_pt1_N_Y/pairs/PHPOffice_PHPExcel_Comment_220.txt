@@ -1,0 +1,10 @@
+    /**
+     * Get Author
+     *
+     * @return string
+     */
+
+    public function getAuthor()
+    {
+        return $this->author;
+    }

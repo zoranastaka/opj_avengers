@@ -1,0 +1,15 @@
+    /**
+     * @test Unknown built-in kernel throws an Exception
+     */
+
+    public function testUnknownBuildInKernel()
+    {
+        // Given
+        $KDE = new KernelDensityEstimation($this->data);
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        $KDE->setKernelFunction('DoesNotExist');
+    }

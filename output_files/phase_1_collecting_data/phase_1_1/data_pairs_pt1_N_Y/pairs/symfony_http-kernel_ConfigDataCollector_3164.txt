@@ -1,0 +1,10 @@
+    /**
+     * Returns true if APCu is enabled.
+     *
+     * @return bool true if APCu is enabled, false otherwise
+     */
+
+    public function hasApcu()
+    {
+        return $this->data['apcu_enabled'];
+    }

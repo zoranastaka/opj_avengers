@@ -1,0 +1,9 @@
+    /**
+     * Creates a parameter builder.
+     *
+     * @param string $name Name of the parameter
+     *
+     * @return Builder\Param The created parameter builder
+     */
+
+    public function param(string $name) : Builder\Param {

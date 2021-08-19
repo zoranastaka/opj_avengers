@@ -1,0 +1,10 @@
+    /**
+     * Returns encoded image data of current image
+     *
+     * @return string
+     */
+
+    public function getEncoded()
+    {
+        return $this->encoded;
+    }

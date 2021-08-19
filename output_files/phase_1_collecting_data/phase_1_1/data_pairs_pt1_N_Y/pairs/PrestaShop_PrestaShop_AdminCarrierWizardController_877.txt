@@ -1,0 +1,70 @@
+    /**
+     * @param Carrier $carrier
+     *
+     * @return string
+     */
+
+    public function renderStepFour($carrier)
+    {
+        $this->fields_form = [
+            'form' => [
+                'id_form' => 'step_carrier_conf',
+                'input' => [
+                    [
+                        'type' => 'text',
+                        'label' => $this->trans('Maximum package width (%s)', ['%s' => Configuration::get('PS_DIMENSION_UNIT')], 'Admin.Shipping.Feature'),
+                        'name' => 'max_width',
+                        'required' => false,
+                        'hint' => $this->trans('Maximum width managed by this carrier. Set the value to "0", or leave this field blank to ignore.', [], 'Admin.Shipping.Help') . ' ' . $this->trans('The value must be an integer.', [], 'Admin.Shipping.Help'),
+                    ],
+                    [
+                        'type' => 'text',
+                        'label' => $this->trans('Maximum package height (%s)', ['%s' => Configuration::get('PS_DIMENSION_UNIT')], 'Admin.Shipping.Feature'),
+                        'name' => 'max_height',
+                        'required' => false,
+                        'hint' => $this->trans('Maximum height managed by this carrier. Set the value to "0", or leave this field blank to ignore.', [], 'Admin.Shipping.Help') . ' ' . $this->trans('The value must be an integer.', [], 'Admin.Shipping.Help'),
+                    ],
+                    [
+                        'type' => 'text',
+                        'label' => $this->trans('Maximum package depth (%s)', ['%s' => Configuration::get('PS_DIMENSION_UNIT')], 'Admin.Shipping.Feature'),
+                        'name' => 'max_depth',
+                        'required' => false,
+                        'hint' => $this->trans('Maximum depth managed by this carrier. Set the value to "0", or leave this field blank to ignore.', [], 'Admin.Shipping.Help') . ' ' . $this->trans('The value must be an integer.', [], 'Admin.Shipping.Help'),
+                    ],
+                    [
+                        'type' => 'text',
+                        'label' => $this->trans('Maximum package weight (%s)', ['%s' => Configuration::get('PS_WEIGHT_UNIT')], 'Admin.Shipping.Feature'),
+                        'name' => 'max_weight',
+                        'required' => false,
+                        'hint' => $this->trans('Maximum weight managed by this carrier. Set the value to "0", or leave this field blank to ignore.', [], 'Admin.Shipping.Help'),
+                    ],
+                    [
+                        'type' => 'group',
+                        'label' => $this->trans('Group access', [], 'Admin.Shipping.Feature'),
+                        'name' => 'groupBox',
+                        'values' => Group::getGroups(Context::getContext()->language->id),
+                        'hint' => $this->trans('Mark the groups that are allowed access to this carrier.', [], 'Admin.Shipping.Help'),
+                    ],
+                ],
+            ],
+        ];
+
+        $fields_value = $this->getStepFourFieldsValues($carrier);
+
+        // Added values of object Group
+        $carrier_groups = $carrier->getGroups();
+        $carrier_groups_ids = [];
+        if (is_array($carrier_groups)) {
+            foreach ($carrier_groups as $carrier_group) {
+                $carrier_groups_ids[] = $carrier_group['id_group'];
+            }
+        }
+
+        $groups = Group::getGroups($this->context->language->id);
+
+        foreach ($groups as $group) {
+            $fields_value['groupBox_' . $group['id_group']] = Tools::getValue('groupBox_' . $group['id_group'], (in_array($group['id_group'], $carrier_groups_ids) || empty($carrier_groups_ids) && !$carrier->id));
+        }
+
+        return $this->renderGenericForm(['form' => $this->fields_form], $fields_value);
+    }

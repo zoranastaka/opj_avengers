@@ -1,0 +1,16 @@
+    /**
+     * @test         copySign
+     * @dataProvider dataProviderForCopySign
+     * @param        float $x
+     * @param        float $y
+     * @param        float $x_with_y_sign
+     */
+
+    public function testCopySign(float $x, float $y, float $x_with_y_sign)
+    {
+        // When
+        $copy_sign = Arithmetic::copySign($x, $y);
+
+        // Then
+        $this->assertSame($x_with_y_sign, $copy_sign);
+    }

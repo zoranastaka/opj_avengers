@@ -1,0 +1,10 @@
+   /**
+    * Returns the HTML representation of the element
+    *
+    * This magic method allows using the instances of HTML_Common2 in string
+    * contexts
+    *
+    * @return string
+    */
+
+    abstract public function __toString();

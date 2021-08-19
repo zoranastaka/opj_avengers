@@ -1,0 +1,12 @@
+    /**
+     * Create routes to test authentication with guards.
+     */
+
+    public function setUpRoutes(): void
+    {
+        Route::middleware('auth:api')->get('/check-api-guard-permission', function (Request $request) {
+            return [
+                'status' => $request->user()->checkPermissionTo('use_api_guard'),
+            ];
+        });
+    }

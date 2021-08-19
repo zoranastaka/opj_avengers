@@ -1,0 +1,18 @@
+    /**
+     * @test         digitSum returns the expected sum of digits for base 10
+     * @dataProvider dataProviderForDigitSumBaseTen
+     * @param        int $x
+     * @param        int $expected
+     */
+
+    public function testDigitSum(int $x, int $expected)
+    {
+        // Given
+        $base = 10;
+
+        // When
+        $digital_sum = Arithmetic::digitSum($x, $base);
+
+        // Then
+        $this->assertEquals($expected, $digital_sum);
+    }

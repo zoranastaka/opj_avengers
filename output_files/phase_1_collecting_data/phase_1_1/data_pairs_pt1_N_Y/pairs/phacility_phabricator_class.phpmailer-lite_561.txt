@@ -1,0 +1,7 @@
+  /**
+   * Adds a custom header.
+   * @access public
+   * @return void
+   */
+
+  public function AddCustomHeader($custom_header) {

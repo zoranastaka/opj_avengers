@@ -1,0 +1,9 @@
+    /**
+     * New server instance.
+     *
+     * @param AccessTokenRepositoryInterface       $accessTokenRepository
+     * @param CryptKey|string                      $publicKey
+     * @param null|AuthorizationValidatorInterface $authorizationValidator
+     */
+
+    public function __construct(

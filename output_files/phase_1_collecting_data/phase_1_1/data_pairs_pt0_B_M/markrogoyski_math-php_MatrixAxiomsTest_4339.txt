@@ -1,0 +1,16 @@
+    /**
+     * @test Axiom: Signature matrix is involutory
+     * @dataProvider dataProviderForSignatureMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testSignatureMatrixIsInvolutory(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertTrue($A->isSignature());
+        $this->assertTrue($A->isInvolutory());
+    }

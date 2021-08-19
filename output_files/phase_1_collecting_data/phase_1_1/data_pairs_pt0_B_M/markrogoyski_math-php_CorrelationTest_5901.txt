@@ -1,0 +1,18 @@
+    /**
+     * @test         weightedCorrelationCoefficient
+     * @dataProvider dataProviderForWeightedCorrelationCoefficient
+     * @param        array $x
+     * @param        array $y
+     * @param        array $w
+     * @param        float $expected
+     * @throws       \Exception
+     */
+
+    public function testWeightedCorrelationCoefficient(array $x, array $y, array $w, float $expected)
+    {
+        // When
+        $wcc = Correlation::weightedCorrelationCoefficient($x, $y, $w);
+
+        // Then
+        $this->assertEqualsWithDelta($expected, $wcc, 0.00001);
+    }

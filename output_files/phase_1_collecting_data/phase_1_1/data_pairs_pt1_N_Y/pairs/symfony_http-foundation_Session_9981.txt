@@ -1,0 +1,10 @@
+    /**
+     * Gets the attributebag interface.
+     *
+     * Note that this method was added to help with IDE autocompletion.
+     */
+
+    private function getAttributeBag(): AttributeBagInterface
+    {
+        return $this->getBag($this->attributeName);
+    }

@@ -1,0 +1,7 @@
+    /**
+     * Get remote IP.
+     *
+     * @return string
+     */
+
+    abstract public function getRemoteIp();

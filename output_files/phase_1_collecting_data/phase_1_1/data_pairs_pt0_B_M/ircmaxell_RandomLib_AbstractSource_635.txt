@@ -1,0 +1,11 @@
+    /**
+     * If the source is currently available.
+     * Reasons might be because the library is not installed
+     *
+     * @return bool
+     */
+
+    public static function isSupported()
+    {
+        return true;
+    }

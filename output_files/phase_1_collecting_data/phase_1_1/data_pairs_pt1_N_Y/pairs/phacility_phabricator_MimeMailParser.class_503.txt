@@ -1,0 +1,7 @@
+	/**
+	 * Retrieve the Header from a MIME part from file
+	 * @return String Mime Header Part
+	 * @param $part Array
+	 */
+
+	private function getPartHeaderFromFile(&$part) {

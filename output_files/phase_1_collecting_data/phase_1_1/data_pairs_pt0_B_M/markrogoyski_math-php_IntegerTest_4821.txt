@@ -1,0 +1,36 @@
+    /**
+     * A005100 deficient numbers: numbers n such that σ₁(n) < 2n
+     * @see    https://oeis.org/A005100
+     * @return array
+     */
+
+    public function dataProviderForDeficientNumbers(): array
+    {
+        return [
+            [1],
+            [2],
+            [3],
+            [4],
+            [5],
+            [7],
+            [8],
+            [9],
+            [10],
+            [11],
+            [13],
+            [14],
+            [15],
+            [16],
+            [17],
+            [19],
+            [21],
+            [22],
+            [23],
+            [25],
+            [26],
+            [27],
+            [29],
+            [31],
+            [32],
+        ];
+    }

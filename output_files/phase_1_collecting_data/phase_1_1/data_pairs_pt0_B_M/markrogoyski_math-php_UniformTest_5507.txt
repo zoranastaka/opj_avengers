@@ -1,0 +1,20 @@
+    /**
+     * @test         mean
+     * @dataProvider dataProviderForAverage
+     * @param        int   $a
+     * @param        int   $b
+     * @param        float $expectedMean
+     * @throws       \Exception
+     */
+
+    public function testMean(int $a, int $b, float $expectedMean)
+    {
+        // Given
+        $uniform = new Uniform($a, $b);
+
+        // When
+        $mean = $uniform->mean();
+
+        // Then
+        $this->assertEqualsWithDelta($expectedMean, $mean, 0.0001);
+    }

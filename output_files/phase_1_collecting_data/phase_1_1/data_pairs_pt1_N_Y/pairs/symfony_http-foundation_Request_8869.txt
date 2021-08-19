@@ -1,0 +1,10 @@
+    /**
+     * Gets the format associated with the request.
+     *
+     * @return string|null The format (null if no content type is present)
+     */
+
+    public function getContentType()
+    {
+        return $this->getFormat($this->headers->get('CONTENT_TYPE', ''));
+    }

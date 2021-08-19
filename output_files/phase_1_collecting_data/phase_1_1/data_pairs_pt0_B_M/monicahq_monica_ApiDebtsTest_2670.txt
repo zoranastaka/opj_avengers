@@ -1,0 +1,51 @@
+    /** @test */
+
+    public function it_creates_a_debt()
+    {
+        $user = $this->signin();
+        $user->locale = 'fr';
+        $contact = factory(Contact::class)->create([
+            'account_id' => $user->account_id,
+        ]);
+        $currency = factory(Currency::class)->create([
+            'iso' => 'USD',
+            'symbol' => '$',
+        ]);
+        $user->currency()->associate($currency);
+        $user->save();
+
+        $response = $this->json('POST', '/api/debts', [
+            'contact_id' => $contact->id,
+            'in_debt' => 'yes',
+            'status' => 'inprogress',
+            'amount' => 42,
+            'reason' => 'that\'s why',
+        ]);
+
+        $response->assertStatus(201);
+        $response->assertJsonStructure([
+            'data' => $this->jsonDebt,
+        ]);
+        $debt_id = $response->json('data.id');
+        $response->assertJsonFragment([
+            'object' => 'debt',
+            'id' => $debt_id,
+            'in_debt' => 'yes',
+            'status' => 'inprogress',
+            'amount' => '42.00',
+            'value' => '42,00',
+            'amount_with_currency' => '42,00'.chr(0xA0).'$US',
+            'reason' => 'that\'s why',
+        ]);
+
+        $this->assertGreaterThan(0, $debt_id);
+        $this->assertDatabaseHas('debts', [
+            'account_id' => $user->account_id,
+            'contact_id' => $contact->id,
+            'id' => $debt_id,
+            'in_debt' => 'yes',
+            'status' => 'inprogress',
+            'amount' => 4200,
+            'reason' => 'that\'s why',
+        ]);
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @test Scaled scake
+     */
+
+    public function testGetScaledScale()
+    {
+        // When
+        $scaledScale = $this->cereal->getScaledScale();
+
+        // Then
+        $this->assertCount(6, $scaledScale);
+    }

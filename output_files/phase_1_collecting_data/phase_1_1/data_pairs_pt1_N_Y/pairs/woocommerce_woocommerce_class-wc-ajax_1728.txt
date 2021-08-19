@@ -1,0 +1,5 @@
+	/**
+	 * Ajax request handling for page searching.
+	 */
+
+	public static function json_search_pages() {

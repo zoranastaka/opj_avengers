@@ -1,0 +1,13 @@
+    /**
+     * @param string $source
+     * @return string
+     * @throws \JakubOnderka\PhpConsoleColor\InvalidStyleException
+     * @throws \InvalidArgumentException
+     */
+
+    public function getWholeFileWithLineNumbers($source)
+    {
+        $tokenLines = $this->getHighlightedLines($source);
+        $lines = $this->colorLines($tokenLines);
+        return $this->lineNumbers($lines);
+    }

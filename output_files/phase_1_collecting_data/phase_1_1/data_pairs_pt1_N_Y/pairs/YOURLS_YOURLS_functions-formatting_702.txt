@@ -1,0 +1,9 @@
+/**
+ * Return a timestamp, plus or minus the time offset if defined
+ *
+ * @since 1.7.10
+ * @param  string|int $timestamp  a timestamp
+ * @return int                    a timestamp, plus or minus offset if defined
+ */
+
+function yourls_get_timestamp( $timestamp ) {

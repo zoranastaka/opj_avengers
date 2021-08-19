@@ -1,0 +1,8 @@
+    /**
+     * @param object $export
+     * @param string $writerType
+     *
+     * @return string
+     */
+
+    public function raw($export, string $writerType);

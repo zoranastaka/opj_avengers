@@ -1,0 +1,12 @@
+    /**
+     * Sets the base hostname
+     *
+     * @param string $baseHost
+     * @return $this
+     */
+
+    public function setBaseHost($baseHost)
+    {
+        $this->baseHost = $baseHost;
+        return $this;
+    }

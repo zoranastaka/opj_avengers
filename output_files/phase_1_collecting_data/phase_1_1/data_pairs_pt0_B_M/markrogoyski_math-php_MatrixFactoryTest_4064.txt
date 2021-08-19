@@ -1,0 +1,15 @@
+    /**
+     * @test         create square matrix
+     * @dataProvider dataProviderForSquareMatrix
+     */
+
+    public function testCreateSquareMatrix(array $A)
+    {
+        // When
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertInstanceOf(NumericSquareMatrix::class, $A);
+        $this->assertInstanceOf(NumericMatrix::class, $A);
+        $this->assertInstanceOf(Matrix::class, $A);
+    }

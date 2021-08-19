@@ -1,0 +1,66 @@
+    /**
+     * Full Integer Division
+     * returns both the integer result and remainder
+     *
+     * @param int|string|ArbitraryInteger $divisor
+     *
+     * @return array (int, mod)
+     *
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function fullIntdiv($divisor): array
+    {
+        if ($this->lessThan($divisor)) {
+            return [new ArbitraryInteger(0), $this];
+        }
+
+        // If the divisor is less than Int_max / 256 then
+        // the native php intdiv and mod functions can be used.
+        $safe_bytes = new ArbitraryInteger(\intdiv(\PHP_INT_MAX, 256));
+        $divisor    = self::create($divisor);
+
+        if ($divisor->lessThan($safe_bytes)) {
+            $divisor  = $divisor->toInt();
+            $base_256 = $this->base256;
+            $len      = \strlen($base_256);
+
+            $carry = 0;
+            $int   = '';
+            for ($i = 0; $i < $len; $i++) {
+                $chr_obj = self::fromBinary(\substr($base_256, $i, 1), $this->isPositive);  // Grab same number of chars from $this
+                $chr     = $chr_obj->toInt();
+                $int_chr = \intdiv($chr + $carry * 256, $divisor);  // Calculate $int and $mod
+                $carry   = ($chr + $carry * 256) % $divisor;
+                if ($int !== '' || $int_chr !== 0) {
+                    $int .= \chr($int_chr);
+                }
+            }
+
+            $int = self::fromBinary((string) $int, $this->isPositive);
+            $mod = new ArbitraryInteger($carry);
+        } else {
+            $int     = new ArbitraryInteger(0);
+            $base256 = $this->base256;
+            $length  = \strlen($base256);
+            $mod     = new ArbitraryInteger(0);
+
+            // Pop a char of the left of $base256 onto the right of $mod
+            for ($i = 0; $i < $length; $i++) {
+                $new_char = self::fromBinary($base256[$i], true);
+                $mod      = $mod->leftShift(8)->add($new_char);
+                $new_int  = new ArbitraryInteger(0);
+
+                if ($mod->greaterThan($divisor)) {
+                    while (!$mod->lessThan($divisor)) {
+                        $new_int = $new_int->add(1);
+                        $mod     = $mod->subtract($divisor);
+                    }
+                }
+                $int = $int->leftShift(8)->add($new_int);
+            }
+        }
+
+        return [$int, $mod];
+    }

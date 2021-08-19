@@ -1,0 +1,18 @@
+    /**
+     * @param int $type
+     * @throws \UnexpectedValueException
+     * @return boolean
+     *
+     * @psalm-suppress InvalidScalarArgument
+     */
+
+    public function find($type)
+    {
+        $search = clone $this;
+        $search->skipUntil($type);
+
+        if (!$search->lookahead) {
+            throw new \UnexpectedValueException($type . ' not found');
+        }
+        return true;
+    }

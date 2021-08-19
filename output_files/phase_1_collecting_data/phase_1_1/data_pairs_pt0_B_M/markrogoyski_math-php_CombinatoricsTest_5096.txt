@@ -1,0 +1,16 @@
+    /**
+     * @test         lahNumber n or k less than one
+     * @dataProvider dataProviderForLahNumberExceptionNOrKLessThanOne
+     * @param        int $n
+     * @param        int $k
+     * @throws       \Exception
+     */
+
+    public function testLahNumberExceptionNOrKLessThanOne(int $n, int $k)
+    {
+        // Then
+        $this->expectException(Exception\OutOfBoundsException::class);
+
+        // When
+        Combinatorics::lahNumber($n, $k);
+    }

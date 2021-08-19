@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider providerBIN2DEC
+     */
+
+    public function testBIN2DEC()
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BINTODEC'), $args);
+        $this->assertEquals($expectedResult, $result);
+    }

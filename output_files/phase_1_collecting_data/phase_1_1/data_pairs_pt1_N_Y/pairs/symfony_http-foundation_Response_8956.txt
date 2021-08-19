@@ -1,0 +1,10 @@
+    /**
+     * Is the response a redirect?
+     *
+     * @final
+     */
+
+    public function isRedirection(): bool
+    {
+        return $this->statusCode >= 300 && $this->statusCode < 400;
+    }

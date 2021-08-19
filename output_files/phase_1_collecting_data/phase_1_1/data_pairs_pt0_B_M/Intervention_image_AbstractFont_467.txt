@@ -1,0 +1,13 @@
+    /**
+     * Set vertical text alignment
+     *
+     * @param  string $valign
+     * @return void
+     */
+
+    public function valign($valign)
+    {
+        $this->valign = $valign;
+
+        return $this;
+    }

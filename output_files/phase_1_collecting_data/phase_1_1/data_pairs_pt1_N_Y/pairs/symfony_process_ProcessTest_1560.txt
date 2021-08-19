@@ -1,0 +1,11 @@
+    /**
+     * @dataProvider provideInvalidInputValues
+     */
+
+    public function testInvalidInput($value)
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('"Symfony\Component\Process\Process::setInput" only accepts strings, Traversable objects or stream resources.');
+        $process = $this->getProcess('foo');
+        $process->setInput($value);
+    }

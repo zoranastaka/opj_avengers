@@ -1,0 +1,10 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    protected function applyFix(\SplFileInfo $file, Tokens $tokens): void
+    {
+        foreach ($this->proxyFixers as $fixer) {
+            $fixer->fix($file, $tokens);
+        }
+    }

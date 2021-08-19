@@ -1,0 +1,17 @@
+    /**
+     * @covers Whoops\Exception\Inspector::getPreviousExceptionCodes
+     */
+
+    public function testGetPreviousExceptionCodes()
+    {
+        $exception1        = $this->getException('My first exception', 99);
+        $exception2        = $this->getException('My second exception', 20, $exception1);
+        $exception3        = $this->getException('And the third one', 10, $exception2);
+
+        $inspector         = $this->getInspectorInstance($exception3);
+
+        $previousExceptions = $inspector->getPreviousExceptionCodes();
+
+        $this->assertEquals($exception2->getCode(), $previousExceptions[0]);
+        $this->assertEquals($exception1->getCode(), $previousExceptions[1]);
+    }

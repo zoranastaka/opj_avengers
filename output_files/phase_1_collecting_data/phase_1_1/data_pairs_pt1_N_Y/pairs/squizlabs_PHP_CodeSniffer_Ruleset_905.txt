@@ -1,0 +1,82 @@
+    /**
+     * Populates the array of PHP_CodeSniffer_Sniff objects for this file.
+     *
+     * @return void
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If sniff registration fails.
+     */
+
+    public function populateTokenListeners()
+    {
+        // Construct a list of listeners indexed by token being listened for.
+        $this->tokenListeners = [];
+
+        foreach ($this->sniffs as $sniffClass => $sniffObject) {
+            $this->sniffs[$sniffClass] = null;
+            $this->sniffs[$sniffClass] = new $sniffClass();
+
+            $sniffCode = Util\Common::getSniffCode($sniffClass);
+            $this->sniffCodes[$sniffCode] = $sniffClass;
+
+            // Set custom properties.
+            if (isset($this->ruleset[$sniffCode]['properties']) === true) {
+                foreach ($this->ruleset[$sniffCode]['properties'] as $name => $value) {
+                    $this->setSniffProperty($sniffClass, $name, $value);
+                }
+            }
+
+            $tokenizers = [];
+            $vars       = get_class_vars($sniffClass);
+            if (isset($vars['supportedTokenizers']) === true) {
+                foreach ($vars['supportedTokenizers'] as $tokenizer) {
+                    $tokenizers[$tokenizer] = $tokenizer;
+                }
+            } else {
+                $tokenizers = ['PHP' => 'PHP'];
+            }
+
+            $tokens = $this->sniffs[$sniffClass]->register();
+            if (is_array($tokens) === false) {
+                $msg = "Sniff $sniffClass register() method must return an array";
+                throw new RuntimeException($msg);
+            }
+
+            $ignorePatterns = [];
+            $patterns       = $this->getIgnorePatterns($sniffCode);
+            foreach ($patterns as $pattern => $type) {
+                $replacements = [
+                    '\\,' => ',',
+                    '*'   => '.*',
+                ];
+
+                $ignorePatterns[] = strtr($pattern, $replacements);
+            }
+
+            $includePatterns = [];
+            $patterns        = $this->getIncludePatterns($sniffCode);
+            foreach ($patterns as $pattern => $type) {
+                $replacements = [
+                    '\\,' => ',',
+                    '*'   => '.*',
+                ];
+
+                $includePatterns[] = strtr($pattern, $replacements);
+            }
+
+            foreach ($tokens as $token) {
+                if (isset($this->tokenListeners[$token]) === false) {
+                    $this->tokenListeners[$token] = [];
+                }
+
+                if (isset($this->tokenListeners[$token][$sniffClass]) === false) {
+                    $this->tokenListeners[$token][$sniffClass] = [
+                        'class'      => $sniffClass,
+                        'source'     => $sniffCode,
+                        'tokenizers' => $tokenizers,
+                        'ignore'     => $ignorePatterns,
+                        'include'    => $includePatterns,
+                    ];
+                }
+            }
+        }//end foreach
+
+    }//end populateTokenListeners()

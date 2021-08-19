@@ -1,0 +1,11 @@
+    /**
+     * Check if a Custom Property is defined
+     *
+     * @param string $propertyName
+     * @return boolean
+     */
+
+    public function isCustomPropertySet($propertyName)
+    {
+        return isset($this->customProperties[$propertyName]);
+    }

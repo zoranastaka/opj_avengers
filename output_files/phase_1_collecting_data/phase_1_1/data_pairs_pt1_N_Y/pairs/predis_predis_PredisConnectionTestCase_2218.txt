@@ -1,0 +1,14 @@
+    /**
+     * @group connected
+     */
+
+    public function testReadsIntegerResponses(): void
+    {
+        $commands = $this->getCommandFactory();
+        $connection = $this->createConnection(true);
+
+        $connection->executeCommand($commands->create('rpush', array('metavars', 'foo', 'hoge', 'lol')));
+        $connection->writeRequest($commands->create('llen', array('metavars')));
+
+        $this->assertSame(3, $connection->read());
+    }

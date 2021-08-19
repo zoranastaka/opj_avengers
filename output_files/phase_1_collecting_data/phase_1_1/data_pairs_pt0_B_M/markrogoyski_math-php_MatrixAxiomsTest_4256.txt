@@ -1,0 +1,23 @@
+    /**
+     * @test Axiom: tr(AB) = tr(BA)
+     * Trace of product does not matter the order they were multiplied
+     *
+     * @dataProvider dataProviderForTwoSquareMatrices
+     * @param        array $A
+     * @param        array $B
+     * @throws       \Exception
+     */
+
+    public function testTraceOfProductIsSameRegardlessOfOrderMultiplied(array $A, array $B)
+    {
+        // Given
+        $A  = MatrixFactory::create($A);
+        $B  = MatrixFactory::create($B);
+
+        // When
+        $tr⟮AB⟯ = $A->multiply($B)->trace();
+        $tr⟮BA⟯ = $B->multiply($A)->trace();
+
+        // Then
+        $this->assertEquals($tr⟮AB⟯, $tr⟮BA⟯);
+    }

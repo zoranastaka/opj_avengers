@@ -1,0 +1,17 @@
+    /**
+     * @test         isNotDeficientNumber returns true if n is not a deficient number
+     * @dataProvider dataProviderForAbundantNumbers
+     * @dataProvider dataProviderForPerfectNumbers
+     * @dataProvider dataProviderForPrimeFactorizationOutOfBoundsException
+     * @param        int   $n
+     * @throws       \Exception
+     */
+
+    public function testIsNotDeficientNumber(int $n)
+    {
+        // When
+        $isDeficientNumber = Integer::isDeficientNumber($n);
+
+        // Then
+        $this->assertFalse($isDeficientNumber);
+    }

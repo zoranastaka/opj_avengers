@@ -1,0 +1,8 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function create($name)
+    {
+        return $this->itemFactory->create()->setItemId(rand())->setName($name);
+    }

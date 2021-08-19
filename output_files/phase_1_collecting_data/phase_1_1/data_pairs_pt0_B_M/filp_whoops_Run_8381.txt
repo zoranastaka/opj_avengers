@@ -1,0 +1,26 @@
+    /**
+     * Special case to deal with Fatal errors and the like.
+     *
+     * @return void
+     */
+
+    public function handleShutdown()
+    {
+        // If we reached this step, we are in shutdown handler.
+        // An exception thrown in a shutdown handler will not be propagated
+        // to the exception handler. Pass that information along.
+        $this->canThrowExceptions = false;
+
+        $error = $this->system->getLastError();
+        if ($error && Misc::isLevelFatal($error['type'])) {
+            // If there was a fatal error,
+            // it was not handled in handleError yet.
+            $this->allowQuit = false;
+            $this->handleError(
+                $error['type'],
+                $error['message'],
+                $error['file'],
+                $error['line']
+            );
+        }
+    }

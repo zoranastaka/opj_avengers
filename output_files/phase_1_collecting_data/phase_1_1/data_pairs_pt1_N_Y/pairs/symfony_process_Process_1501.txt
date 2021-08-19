@@ -1,0 +1,20 @@
+    /**
+     * Returns whether PTY is supported on the current operating system.
+     *
+     * @return bool
+     */
+
+    public static function isPtySupported()
+    {
+        static $result;
+
+        if (null !== $result) {
+            return $result;
+        }
+
+        if ('\\' === \DIRECTORY_SEPARATOR) {
+            return $result = false;
+        }
+
+        return $result = (bool) @proc_open('echo 1 >/dev/null', [['pty'], ['pty'], ['pty']], $pipes);
+    }

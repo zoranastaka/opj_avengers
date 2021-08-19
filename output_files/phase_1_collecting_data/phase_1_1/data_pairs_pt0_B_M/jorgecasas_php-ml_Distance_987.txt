@@ -1,0 +1,20 @@
+    /**
+     * @throws InvalidArgumentException
+     */
+
+    protected function deltas(array $a, array $b): array
+    {
+        $count = count($a);
+
+        if ($count !== count($b)) {
+            throw new InvalidArgumentException('Size of given arrays does not match');
+        }
+
+        $deltas = [];
+
+        for ($i = 0; $i < $count; $i++) {
+            $deltas[] = abs($a[$i] - $b[$i]);
+        }
+
+        return $deltas;
+    }

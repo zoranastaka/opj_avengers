@@ -1,0 +1,9 @@
+    /**
+     * @group abstract
+     */
+
+    public function testCanMockAbstractClassWithAbstractPublicMethod()
+    {
+        $m = mock('MockeryTest_AbstractWithAbstractPublicMethod');
+        $this->assertInstanceOf(MockeryTest_AbstractWithAbstractPublicMethod::class, $m);
+    }

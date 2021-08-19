@@ -1,0 +1,11 @@
+    /**
+     * Check if the page contains the given element.
+     * @param  string  $selector
+     */
+
+    protected function pageNotHasElement($selector)
+    {
+        $elements = $this->crawler->filter($selector);
+        $this->assertFalse(count($elements) > 0, "The page contains " . count($elements) . " elements matching " . $selector);
+        return $this;
+    }

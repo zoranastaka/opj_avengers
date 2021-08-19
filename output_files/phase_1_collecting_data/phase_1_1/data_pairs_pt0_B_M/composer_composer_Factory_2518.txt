@@ -1,0 +1,9 @@
+    /**
+     * @param Repository\RepositoryManager $rm
+     * @param string                       $vendorDir
+     */
+
+    protected function addLocalRepository(IOInterface $io, RepositoryManager $rm, $vendorDir, RootPackageInterface $rootPackage)
+    {
+        $rm->setLocalRepository(new Repository\InstalledFilesystemRepository(new JsonFile($vendorDir.'/composer/installed.json', null, $io), true, $rootPackage));
+    }

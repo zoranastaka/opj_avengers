@@ -1,0 +1,11 @@
+    /**
+     * @codeCoverageIgnore
+     * Link to transaction groups.
+     *
+     * @return HasMany
+     */
+
+    public function transactionGroups(): HasMany
+    {
+        return $this->hasMany(TransactionGroup::class);
+    }

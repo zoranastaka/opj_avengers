@@ -1,0 +1,15 @@
+    /**
+     * @test         testIsSquarefree
+     * @dataProvider dataProviderForSquarefreeIntegers
+     * @param        int $n
+     * @throws       \Exception
+     */
+
+    public function testIsSquarefree(int $n)
+    {
+        // When
+        $isSquarefree = Integer::isSquarefree($n);
+
+        // Then
+        $this->assertTrue($isSquarefree);
+    }

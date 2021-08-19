@@ -1,0 +1,18 @@
+    /**
+     * @test         eigenvectors throws a BadDataException when the array of eigenvales is too long or short
+     * @dataProvider dataProviderForIncorrectNumberOfEigenvectors
+     * @param        array $A
+     * @param        array $B
+     */
+
+    public function testIncorrectNumberOfEigenvectors(array $A, array $B)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->expectException(Exception\BadDataException::class);
+
+        // When
+        Eigenvector::eigenvectors($A, $B);
+    }

@@ -1,0 +1,12 @@
+    /**
+     * @test
+     */
+
+    public function it_supports_arguments_for_magic_methods()
+    {
+        $class = new \ReflectionClass('Fixtures\Prophecy\WithPhpdocClass');
+
+        $classNode = $this->applyPatchTo($class);
+
+        $this->assertEquals([new ArgumentNode('data')], $classNode->getMethod('__unserialize')->getArguments());
+    }

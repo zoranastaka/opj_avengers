@@ -1,0 +1,10 @@
+    /**
+     * Get the Mixer used for this instance
+     *
+     * @return Mixer the current mixer
+     */
+
+    public function getMixer()
+    {
+        return $this->mixer;
+    }

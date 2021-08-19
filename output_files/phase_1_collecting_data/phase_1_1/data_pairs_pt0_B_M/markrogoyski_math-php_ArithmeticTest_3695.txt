@@ -1,0 +1,16 @@
+    /**
+     * @test         root returns the expected value.
+     * @dataProvider dataProviderForRoot
+     * @param        float $x
+     * @param        int   $n
+     * @param        float $expected_root
+     */
+
+    public function testRoot(float $x, int $n, float $expected_root)
+    {
+        // When
+        $root = Arithmetic::root($x, $n);
+
+        // Then
+        $this->assertEqualsWithDelta($expected_root, $root, 0.000000001);
+    }

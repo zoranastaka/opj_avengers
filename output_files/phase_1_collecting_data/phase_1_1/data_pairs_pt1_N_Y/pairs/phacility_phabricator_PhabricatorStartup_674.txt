@@ -1,0 +1,6 @@
+/* -(  Output Capture  )----------------------------------------------------- */
+
+  public static function beginOutputCapture() {
+    if (self::$capturingOutput) {
+      self::didFatal('Already capturing output!');
+    }

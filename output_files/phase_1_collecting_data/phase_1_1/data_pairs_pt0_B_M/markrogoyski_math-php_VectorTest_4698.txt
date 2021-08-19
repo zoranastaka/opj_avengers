@@ -1,0 +1,20 @@
+    /**
+     * @test         As row matrix
+     * @dataProvider dataProviderForAsRowMatrix
+     * @param        array $A
+     * @param        array $R
+     * @throws       Exception\MathException
+     */
+
+    public function testAsRowMatrix(array $A, array $R)
+    {
+        // Given
+        $A = new Vector($A);
+        $R = new NumericMatrix($R);
+
+        // When
+        $M = $A->asRowMatrix();
+
+        // Then
+        $this->assertEquals($R->getMatrix(), $M->getMatrix());
+    }

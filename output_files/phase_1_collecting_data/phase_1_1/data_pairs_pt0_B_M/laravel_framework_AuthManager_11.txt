@@ -1,0 +1,10 @@
+    /**
+     * Get the user resolver callback.
+     *
+     * @return \Closure
+     */
+
+    public function userResolver()
+    {
+        return $this->userResolver;
+    }

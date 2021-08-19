@@ -1,0 +1,7 @@
+	/**
+	 * Returns the error code.
+	 *
+	 * @return string
+	 */
+
+	public function getErrorCode() {

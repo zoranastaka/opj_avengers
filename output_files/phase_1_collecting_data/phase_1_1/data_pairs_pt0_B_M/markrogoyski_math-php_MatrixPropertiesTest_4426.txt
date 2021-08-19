@@ -1,0 +1,15 @@
+    /**
+     * @test         isInvertible returns false for a non-invertible matrix.
+     * @dataProvider dataProviderForSingularMatrix
+     * @param        array $A
+     * @throws       \Exception
+     */
+
+    public function testIsInvertibleFalseForNonInvertibleMatrix(array $A)
+    {
+        // Given
+        $A = MatrixFactory::create($A);
+
+        // Then
+        $this->assertFalse($A->isInvertible());
+    }

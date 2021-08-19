@@ -1,0 +1,22 @@
+    /**
+     * @test         Mahalanobis between two points
+     * @dataProvider dataProviderForMahalanobisPoint
+     * @param        array         $x
+     * @param        array         $y
+     * @param        NumericMatrix $data
+     * @param        float         $expectedDistance
+     * @throws       \Exception
+     */
+
+    public function testMahalanobisPoint(array $x, array $y, NumericMatrix $data, float $expectedDistance)
+    {
+        // Given
+        $x_m = new NumericMatrix($x);
+        $y_m = new NumericMatrix($y);
+
+        // when
+        $distance = Distance::mahalanobis($x_m, $data, $y_m);
+
+        // Then
+        $this->assertEqualsWithDelta($expectedDistance, $distance, 0.0001);
+    }

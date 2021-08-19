@@ -1,0 +1,93 @@
+    /**
+     * {@inheritdoc}
+     */
+
+    public function prepare(Request $request)
+    {
+        if (!$this->headers->has('Content-Type')) {
+            $this->headers->set('Content-Type', $this->file->getMimeType() ?: 'application/octet-stream');
+        }
+
+        if ('HTTP/1.0' !== $request->server->get('SERVER_PROTOCOL')) {
+            $this->setProtocolVersion('1.1');
+        }
+
+        $this->ensureIEOverSSLCompatibility($request);
+
+        $this->offset = 0;
+        $this->maxlen = -1;
+
+        if (false === $fileSize = $this->file->getSize()) {
+            return $this;
+        }
+        $this->headers->set('Content-Length', $fileSize);
+
+        if (!$this->headers->has('Accept-Ranges')) {
+            // Only accept ranges on safe HTTP methods
+            $this->headers->set('Accept-Ranges', $request->isMethodSafe() ? 'bytes' : 'none');
+        }
+
+        if (self::$trustXSendfileTypeHeader && $request->headers->has('X-Sendfile-Type')) {
+            // Use X-Sendfile, do not send any content.
+            $type = $request->headers->get('X-Sendfile-Type');
+            $path = $this->file->getRealPath();
+            // Fall back to scheme://path for stream wrapped locations.
+            if (false === $path) {
+                $path = $this->file->getPathname();
+            }
+            if ('x-accel-redirect' === strtolower($type)) {
+                // Do X-Accel-Mapping substitutions.
+                // @link https://www.nginx.com/resources/wiki/start/topics/examples/x-accel/#x-accel-redirect
+                $parts = HeaderUtils::split($request->headers->get('X-Accel-Mapping', ''), ',=');
+                foreach ($parts as $part) {
+                    [$pathPrefix, $location] = $part;
+                    if (substr($path, 0, \strlen($pathPrefix)) === $pathPrefix) {
+                        $path = $location.substr($path, \strlen($pathPrefix));
+                        // Only set X-Accel-Redirect header if a valid URI can be produced
+                        // as nginx does not serve arbitrary file paths.
+                        $this->headers->set($type, $path);
+                        $this->maxlen = 0;
+                        break;
+                    }
+                }
+            } else {
+                $this->headers->set($type, $path);
+                $this->maxlen = 0;
+            }
+        } elseif ($request->headers->has('Range') && $request->isMethod('GET')) {
+            // Process the range headers.
+            if (!$request->headers->has('If-Range') || $this->hasValidIfRangeHeader($request->headers->get('If-Range'))) {
+                $range = $request->headers->get('Range');
+
+                if (0 === strpos($range, 'bytes=')) {
+                    [$start, $end] = explode('-', substr($range, 6), 2) + [0];
+
+                    $end = ('' === $end) ? $fileSize - 1 : (int) $end;
+
+                    if ('' === $start) {
+                        $start = $fileSize - $end;
+                        $end = $fileSize - 1;
+                    } else {
+                        $start = (int) $start;
+                    }
+
+                    if ($start <= $end) {
+                        $end = min($end, $fileSize - 1);
+                        if ($start < 0 || $start > $end) {
+                            $this->setStatusCode(416);
+                            $this->headers->set('Content-Range', sprintf('bytes */%s', $fileSize));
+                        } elseif ($end - $start < $fileSize - 1) {
+                            $this->maxlen = $end < $fileSize ? $end - $start + 1 : -1;
+                            $this->offset = $start;
+
+                            $this->setStatusCode(206);
+                            $this->headers->set('Content-Range', sprintf('bytes %s-%s/%s', $start, $end, $fileSize));
+                            $this->headers->set('Content-Length', $end - $start + 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        return $this;
+    }
