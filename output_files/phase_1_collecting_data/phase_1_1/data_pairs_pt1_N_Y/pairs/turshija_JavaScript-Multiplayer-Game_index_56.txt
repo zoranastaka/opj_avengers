@@ -1,4 +1,0 @@
-            // Funkcija koja pokrece loptu na osnovu brzine, i odbija od ivica mape
-            // TODO
-
-            function moveBall(canvas, ball, deltaTime) {

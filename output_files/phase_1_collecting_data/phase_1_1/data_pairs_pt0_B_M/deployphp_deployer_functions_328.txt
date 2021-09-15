@@ -1,8 +1,0 @@
-/**
- * Parse set values.
- */
-
-function parse(string $value): string
-{
-    return Context::get()->getConfig()->parse($value);
-}

@@ -1,8 +1,0 @@
-	//vraća tvrtku (klasa) s određenim oib-om
-
-	function get_company_by_oib($oib){
-		try{
-			$db = DB::getConnection();
-			$st = $db->prepare( 'SELECT * FROM studentplus_companies WHERE oib=:oib ORDER BY oib' );
-			$st->execute( array( 'oib' => $oib ) );
-		}

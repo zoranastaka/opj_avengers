@@ -1,8 +1,0 @@
-    /**
-     * A test suite started.
-     */
-
-    public function startTestSuite(TestSuite $suite): void
-    {
-        //
-    }

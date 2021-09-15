@@ -1,8 +1,0 @@
-    /**
-     * Next (Iterator interface)
-     */
-
-    public function next()
-    {
-        $this->iterator_position = \array_shift($this->iterator_keys);
-    }

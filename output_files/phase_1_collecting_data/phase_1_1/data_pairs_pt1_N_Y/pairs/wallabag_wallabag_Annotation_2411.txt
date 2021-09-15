@@ -1,9 +1,0 @@
-    /**
-     * @VirtualProperty
-     * @SerializedName("user")
-     */
-
-    public function getUserName()
-    {
-        return $this->user->getName();
-    }

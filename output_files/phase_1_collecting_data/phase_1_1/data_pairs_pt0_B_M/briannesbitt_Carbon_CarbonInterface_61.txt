@@ -1,7 +1,0 @@
-    /**
-     * Get the translator of the current instance or the default if none set.
-     *
-     * @return \Symfony\Component\Translation\TranslatorInterface
-     */
-
-    public function getLocalTranslator();

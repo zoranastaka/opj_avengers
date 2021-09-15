@@ -1,8 +1,0 @@
-    /**
-     * Converts the UUID to a string for PHP serialization
-     */
-
-    public function serialize(): string
-    {
-        return $this->getBytes();
-    }

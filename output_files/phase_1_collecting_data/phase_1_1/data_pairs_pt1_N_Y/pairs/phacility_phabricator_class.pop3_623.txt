@@ -1,8 +1,0 @@
-  /**
-   * Send a string down the open socket connection to the POP3 server
-   * @access private
-   * @param string $string
-   * @return integer
-   */
-
-  private function sendString ($string) {

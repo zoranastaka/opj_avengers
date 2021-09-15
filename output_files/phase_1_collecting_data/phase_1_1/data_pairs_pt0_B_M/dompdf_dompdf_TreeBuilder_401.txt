@@ -1,5 +1,0 @@
-    /**
-     * Converts a magic number to a readable name. Use for debugging.
-     */
-
-    private function strConst($number) {

@@ -1,8 +1,0 @@
-    /**
-     * @test Limits constant is correct format
-     */
-
-    public function testBernoulliParameterLimits()
-    {
-        $this->limitTest(Discrete\Bernoulli::PARAMETER_LIMITS);
-    }

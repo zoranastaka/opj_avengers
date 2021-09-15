@@ -1,8 +1,0 @@
-    /**
-     * @return string
-     */
-
-    protected function getAgentId()
-    {
-        return $this->app['config']->get('agent_id');
-    }

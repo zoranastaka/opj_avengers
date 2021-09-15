@@ -1,3 +1,0 @@
-//KONEKCIJA SA BAZOM "BAZAZAPOSLENIH"
-
-class Baza{

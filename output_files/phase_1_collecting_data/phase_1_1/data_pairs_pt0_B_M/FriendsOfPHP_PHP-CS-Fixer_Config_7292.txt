@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function getRules(): array
-    {
-        return $this->rules;
-    }

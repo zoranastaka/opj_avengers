@@ -1,5 +1,0 @@
-        /*
-         * Packages Service Providers...
-         */
-
-        env('APP_DEBUG') ? Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class : null,

@@ -1,5 +1,0 @@
-  /**
-   * NOTE: Phabricator patch to remove use of "/e". See D2147.
-   */
-
-  private function encodeQCallback(array $matches) {

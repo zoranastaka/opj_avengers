@@ -1,9 +1,0 @@
-	/**
-	 * Disable the code hacker.
-	 */
-
-	public static function disable() {
-		if ( self::$enabled ) {
-			stream_wrapper_restore( self::PROTOCOL );
-			self::$enabled = false;
-		}

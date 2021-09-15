@@ -1,9 +1,0 @@
-    /**
-     * Returns the response component.
-     * @return \yii\web\Response|\yii\console\Response the response component.
-     */
-
-    public function getResponse()
-    {
-        return $this->get('response');
-    }

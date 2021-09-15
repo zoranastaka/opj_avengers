@@ -1,9 +1,0 @@
-    /**
-     * @deprecated To avoid conflict between different third-party libraries, static setters should not be used.
-     *             You should rather use the ->settings() method.
-     * @see settings
-     *
-     * @param int $humanDiffOptions
-     */
-
-    public static function setHumanDiffOptions($humanDiffOptions);

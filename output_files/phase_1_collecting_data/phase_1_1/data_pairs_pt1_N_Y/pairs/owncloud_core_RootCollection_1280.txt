@@ -1,7 +1,0 @@
-	/**
-	 * Deleted the current node
-	 *
-	 * @throws Forbidden
-	 */
-
-	public function delete() {

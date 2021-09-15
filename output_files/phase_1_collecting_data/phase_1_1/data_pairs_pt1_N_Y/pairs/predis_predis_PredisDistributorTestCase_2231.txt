@@ -1,7 +1,0 @@
-    /**
-     * Returns a new instance of the tested distributor.
-     *
-     * @return DistributorInterface
-     */
-
-    abstract protected function getDistributorInstance(): DistributorInterface;

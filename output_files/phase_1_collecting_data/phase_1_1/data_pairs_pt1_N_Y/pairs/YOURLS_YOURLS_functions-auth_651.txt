@@ -1,8 +1,0 @@
-/**
- * Check to see if any passwords are stored as cleartext.
- *
- * @since 1.7
- * @return bool true if any passwords are cleartext
- */
-
-function yourls_has_cleartext_passwords() {

@@ -1,8 +1,0 @@
-    /**
-     * @return Style
-     */
-
-    public function get_style()
-    {
-        return $this->_style;
-    }

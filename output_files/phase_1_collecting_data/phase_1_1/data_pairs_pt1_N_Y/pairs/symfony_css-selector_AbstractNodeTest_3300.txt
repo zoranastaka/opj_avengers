@@ -1,6 +1,0 @@
-    /** @dataProvider getSpecificityValueTestData */
-
-    public function testSpecificityValue(NodeInterface $node, $value)
-    {
-        $this->assertEquals($value, $node->getSpecificity()->getValue());
-    }

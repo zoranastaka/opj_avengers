@@ -1,8 +1,0 @@
-    /**
-     * @param string $uri
-     * @param string $method
-     * @param array  $data
-     * @return ServerRequestInterface
-     */
-
-    protected function createServerRequest(

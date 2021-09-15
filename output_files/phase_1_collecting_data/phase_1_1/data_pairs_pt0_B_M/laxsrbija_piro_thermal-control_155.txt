@@ -1,3 +1,0 @@
-	// Postavlja temperaturu na određenu vrednost
-
-	function setTemp($arg) {

@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function getRootDir()
-    {
-        return __DIR__;
-    }

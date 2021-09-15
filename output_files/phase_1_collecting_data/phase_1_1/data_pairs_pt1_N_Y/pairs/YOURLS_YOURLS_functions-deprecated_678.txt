@@ -1,6 +1,0 @@
-/**
- * Check if we'll need interface display function (ie not API or redirection)
- *
- */
-
-function yourls_has_interface() {

@@ -1,8 +1,0 @@
-    /**
-     * @covers ::globalFunction()
-     */
-
-    public function testSomething()
-    {
-        globalFunction();
-    }

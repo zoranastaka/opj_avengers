@@ -1,7 +1,0 @@
-    /** @test */
-
-    public function it_should_get_the_parser_instance()
-    {
-        $parser = $this->jwtAuth->parser();
-        $this->assertInstanceOf(Parser::class, $parser);
-    }

@@ -1,8 +1,0 @@
-  /**
-   * Returns the proper RFC 822 formatted date.
-   * @access public
-   * @return string
-   * @static
-   */
-
-  public static function RFCDate() {

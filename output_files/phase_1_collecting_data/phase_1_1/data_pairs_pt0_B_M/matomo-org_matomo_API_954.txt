@@ -1,9 +1,0 @@
-    /**
-     * Returns the section [APISettings] if defined in config.ini.php
-     * @return array
-     */
-
-    public function getSettings()
-    {
-        return Config::getInstance()->APISettings;
-    }

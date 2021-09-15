@@ -1,9 +1,0 @@
-    /**
-     * Get matrix
-     * @return array[] of arrays
-     */
-
-    public function getMatrix(): array
-    {
-        return $this->A;
-    }

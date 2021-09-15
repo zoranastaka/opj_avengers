@@ -1,8 +1,0 @@
-    /**
-     * Matches if value is not null.
-     */
-
-    function notNullValue()
-    {
-        return \Hamcrest\Core\IsNull::notNullValue();
-    }

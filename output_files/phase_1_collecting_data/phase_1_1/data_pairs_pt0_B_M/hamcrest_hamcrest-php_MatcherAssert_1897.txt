@@ -1,8 +1,0 @@
-    /**
-     * Resets the number of assertions performed to zero.
-     */
-
-    public static function resetCount()
-    {
-        self::$_count = 0;
-    }

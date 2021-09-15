@@ -1,5 +1,0 @@
-    /**
-     * @return ContainerInterface
-     */
-
-    abstract public function getContainer() : ContainerInterface;

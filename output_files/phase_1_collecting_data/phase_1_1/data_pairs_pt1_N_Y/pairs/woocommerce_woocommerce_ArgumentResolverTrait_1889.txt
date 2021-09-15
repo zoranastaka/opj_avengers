@@ -1,5 +1,0 @@
-    /**
-     * @return Container
-     */
-
-    abstract public function getLeagueContainer() : Container;

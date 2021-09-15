@@ -1,8 +1,0 @@
-/**
- * API function wrapper: Just the global counts of shorturls and clicks
- *
- * @since 1.6
- * @return array Result of API call
- */
-
-function yourls_api_action_db_stats() {

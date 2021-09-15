@@ -1,8 +1,0 @@
-    /**
-     * @return bool
-     */
-
-    public function is_layout_fixed()
-    {
-        return $this->_fixed_layout;
-    }

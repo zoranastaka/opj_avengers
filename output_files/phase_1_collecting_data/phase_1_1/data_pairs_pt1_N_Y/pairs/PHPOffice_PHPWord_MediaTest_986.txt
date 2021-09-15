@@ -1,8 +1,0 @@
-    /**
-     * Get footer media elements
-     */
-
-    public function testGetFooterMediaElementsWithNull()
-    {
-        $this->assertEquals(array(), Media::getElements('footer'));
-    }

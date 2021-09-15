@@ -1,9 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function onCreate(): bool
-    {
-        return isset($this->params['sequence'])
-            && self::isValidSequence($this->params['sequence']);
-    }

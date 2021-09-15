@@ -1,9 +1,0 @@
-    /**
-     * An array with elements that match the given matchers in the same order.
-     */
-
-    function contains(/* args... */)
-    {
-        $args = func_get_args();
-        return call_user_func_array(array('\Hamcrest\Arrays\IsArrayContainingInOrder', 'arrayContaining'), $args);
-    }

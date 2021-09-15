@@ -1,8 +1,0 @@
-    /**
-     * Returns list of Language object for each available locale. This object allow you to get the ISO name, native
-     * name, region and variant of the locale.
-     *
-     * @return Language[]
-     */
-
-    public static function getAvailableLocalesInfo();

@@ -1,8 +1,0 @@
-    /**
-     * Disable the Debugbar
-     */
-
-    public function disable()
-    {
-        $this->enabled = false;
-    }

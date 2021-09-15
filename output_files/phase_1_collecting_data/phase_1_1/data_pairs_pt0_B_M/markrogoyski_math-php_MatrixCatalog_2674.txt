@@ -1,8 +1,0 @@
-    /**
-     * @return bool
-     */
-
-    public function hasLuDecomposition(): bool
-    {
-        return isset($this->LU);
-    }

@@ -1,5 +1,0 @@
-    /**
-     * To be overwritten by OneVsRest classifiers.
-     */
-
-    abstract protected function resetBinary(): void;

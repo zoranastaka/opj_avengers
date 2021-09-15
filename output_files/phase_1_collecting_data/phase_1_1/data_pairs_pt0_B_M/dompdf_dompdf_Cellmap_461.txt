@@ -1,8 +1,0 @@
-    /**
-     * @param $fixed
-     */
-
-    public function set_layout_fixed($fixed)
-    {
-        $this->_fixed_layout = $fixed;
-    }

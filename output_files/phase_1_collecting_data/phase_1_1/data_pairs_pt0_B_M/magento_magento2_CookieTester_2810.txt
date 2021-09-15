@@ -1,7 +1,0 @@
-    /**
-     * @param \Magento\Framework\App\Action\Context $context
-     * @param PhpCookieManager $cookieManager
-     * @param CookieMetadataFactory $cookieMetadataFactory
-     */
-
-    public function __construct(

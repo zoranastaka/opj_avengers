@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function set(string $type, $messages)
-    {
-        $this->flashes['new'][$type] = (array) $messages;
-    }

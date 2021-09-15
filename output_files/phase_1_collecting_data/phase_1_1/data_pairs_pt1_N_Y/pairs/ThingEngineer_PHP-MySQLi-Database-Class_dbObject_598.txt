@@ -1,8 +1,0 @@
-    /**
-     * Helper function to create dbObject with Object return type.
-     * Added for consistency. Works same way as new $objname ()
-     *
-     * @return dbObject
-     */
-
-    private function ObjectBuilder () {

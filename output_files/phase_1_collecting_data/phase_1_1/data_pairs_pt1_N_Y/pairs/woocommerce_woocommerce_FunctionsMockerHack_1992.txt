@@ -1,5 +1,0 @@
-	/**
-	 * Unregister all the registered function mocks.
-	 */
-
-	public function reset() {

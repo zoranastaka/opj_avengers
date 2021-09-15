@@ -1,9 +1,0 @@
-    /**
-     * Disables the strict_variables option.
-     */
-
-    public function disableStrictVariables()
-    {
-        $this->strictVariables = false;
-        $this->updateOptionsHash();
-    }

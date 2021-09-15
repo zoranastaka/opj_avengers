@@ -1,5 +1,0 @@
-	/**
-	 * AJAX apply coupon on checkout page.
-	 */
-
-	public static function apply_coupon() {

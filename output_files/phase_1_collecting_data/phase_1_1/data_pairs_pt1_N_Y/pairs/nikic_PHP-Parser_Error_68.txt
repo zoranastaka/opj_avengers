@@ -1,9 +1,0 @@
-    /**
-     * Formats message including line and column information.
-     *
-     * @param string $code Source code associated with the error, for calculation of the columns
-     *
-     * @return string Formatted message
-     */
-
-    public function getMessageWithColumnInfo(string $code) : string {

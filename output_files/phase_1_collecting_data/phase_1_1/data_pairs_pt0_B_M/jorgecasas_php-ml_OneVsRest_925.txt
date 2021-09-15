@@ -1,8 +1,0 @@
-    /**
-     * Each classifier that make use of OvR approach should be able to
-     * return a probability for a sample to belong to the given label.
-     *
-     * @return mixed
-     */
-
-    abstract protected function predictProbability(array $sample, string $label);

@@ -1,8 +1,0 @@
-    /**
-     * @return string
-     */
-
-    public function getBridge()
-    {
-        return $this->bridge;
-    }

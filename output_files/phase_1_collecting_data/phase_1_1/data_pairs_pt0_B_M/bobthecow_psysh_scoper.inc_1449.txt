@@ -1,6 +1,0 @@
-        // https://github.com/humbug/php-scoper/issues/286
-
-        static function (string $filePath, string $prefix, string $contents): string {
-            if ('vendor/symfony/debug/Exception/FlattenException.php' !== $filePath) {
-                return $contents;
-            }

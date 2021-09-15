@@ -1,8 +1,0 @@
-    /**
-     * Delete a comment from the system.
-     */
-
-    public function delete(Comment $comment)
-    {
-        $comment->delete();
-    }

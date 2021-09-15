@@ -1,5 +1,0 @@
-    /**
-     * @param HttpServerInterface
-     */
-
-    public function __construct(HttpServerInterface $component) {

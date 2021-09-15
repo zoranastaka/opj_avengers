@@ -1,8 +1,0 @@
-    /**
-     * Check whether to disable input validation.
-     */
-
-    public function yolo()
-    {
-        return $this->yolo;
-    }

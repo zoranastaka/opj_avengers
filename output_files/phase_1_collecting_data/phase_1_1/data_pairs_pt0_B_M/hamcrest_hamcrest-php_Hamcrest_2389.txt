@@ -1,8 +1,0 @@
-    /**
-     * Is the value a string?
-     */
-
-    function stringValue()
-    {
-        return \Hamcrest\Type\IsString::stringValue();
-    }

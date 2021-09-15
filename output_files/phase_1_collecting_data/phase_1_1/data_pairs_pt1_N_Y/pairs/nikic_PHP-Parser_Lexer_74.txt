@@ -1,7 +1,0 @@
-    /**
-     * Handles __halt_compiler() by returning the text after it.
-     *
-     * @return string Remaining text
-     */
-
-    public function handleHaltCompiler() : string {

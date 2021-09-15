@@ -1,8 +1,0 @@
-    /**
-     * @return Point[]|SplObjectStorage
-     */
-
-    public function getIterator()
-    {
-        return $this->points;
-    }

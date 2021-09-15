@@ -1,8 +1,0 @@
-    /**
-     * @return Collection
-     */
-
-    public function getParts(): Collection
-    {
-        return $this->parts;
-    }

@@ -1,6 +1,0 @@
-	/**
-	 * Inialize some stuff
-	 * @return
-	 */
-
-	public function __construct() {

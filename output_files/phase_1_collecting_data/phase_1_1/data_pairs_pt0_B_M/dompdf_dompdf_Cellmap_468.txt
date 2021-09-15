@@ -1,8 +1,0 @@
-    /**
-     * @return array
-     */
-
-    public function &get_rows()
-    {
-        return $this->_rows;
-    }

@@ -1,8 +1,0 @@
-    /**
-     * @requires PHP
-     */
-
-    public function testGetVersionReturnsPhpVersionWhenRunningPhp(): void
-    {
-        $this->assertSame(PHP_VERSION, $this->env->getVersion());
-    }

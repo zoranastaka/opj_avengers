@@ -1,6 +1,0 @@
-	/**
-	 * Retrieve the Attachment Headers
-	 * @return String
-	 */
-
-	public function getHeaders() {

@@ -1,7 +1,0 @@
-	/**
-	 *  Read entry from directory handle.
-	 *
-	 * @return false|string string representing the next filename, or FALSE if there is no next file.
-	 */
-
-	public function dir_readdir() {

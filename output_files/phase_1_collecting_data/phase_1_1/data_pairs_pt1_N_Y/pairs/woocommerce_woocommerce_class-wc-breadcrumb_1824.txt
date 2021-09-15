@@ -1,5 +1,0 @@
-	/**
-	 * Page trail.
-	 */
-
-	protected function add_crumbs_page() {

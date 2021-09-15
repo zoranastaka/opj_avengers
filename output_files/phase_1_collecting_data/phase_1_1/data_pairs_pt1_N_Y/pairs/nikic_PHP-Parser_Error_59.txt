@@ -1,7 +1,0 @@
-    /**
-     * Gets the line the error starts in.
-     *
-     * @return int Error start line
-     */
-
-    public function getStartLine() : int {

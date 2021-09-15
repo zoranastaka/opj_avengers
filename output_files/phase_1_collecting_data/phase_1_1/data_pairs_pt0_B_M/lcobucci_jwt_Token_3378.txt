@@ -1,5 +1,0 @@
-    /**
-     * Returns if the token is expired
-     */
-
-    public function isExpired(DateTimeInterface $now): bool;

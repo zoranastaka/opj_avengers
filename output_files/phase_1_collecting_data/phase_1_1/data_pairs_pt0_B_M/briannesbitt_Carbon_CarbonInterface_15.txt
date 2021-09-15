@@ -1,9 +1,0 @@
-    /**
-     * The __set_state handler.
-     *
-     * @param string|array $dump
-     *
-     * @return static
-     */
-
-    public static function __set_state($dump);

@@ -1,8 +1,0 @@
-    /**
-     * @return string
-     */
-
-    public function getHomeDir()
-    {
-        return getenv('HOME') ?: (getenv('HOMEDRIVE') . DIRECTORY_SEPARATOR . getenv('HOMEPATH'));
-    }

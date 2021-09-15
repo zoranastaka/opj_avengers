@@ -1,5 +1,0 @@
-    /**
-     * @return FixerInterface[]
-     */
-
-    abstract protected function createProxyFixers(): array;

@@ -1,3 +1,0 @@
-	//studentov glavni dashboard
-
-	public function all_offers(){

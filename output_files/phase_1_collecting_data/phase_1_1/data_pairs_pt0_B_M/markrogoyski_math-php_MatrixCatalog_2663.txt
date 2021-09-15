@@ -1,8 +1,0 @@
-    /**
-     * @return Matrix
-     */
-
-    public function getTranspose(): Matrix
-    {
-        return $this->Aᵀ;
-    }

@@ -1,8 +1,0 @@
-    /**
-     * @deprecated
-     */
-
-    public static function getConfigDirs()
-    {
-        return (new self())->configDirs();
-    }

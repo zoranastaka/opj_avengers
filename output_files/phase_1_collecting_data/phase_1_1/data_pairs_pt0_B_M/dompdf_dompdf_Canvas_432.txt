@@ -1,7 +1,0 @@
-    /**
-     * Sets the total number of pages
-     *
-     * @param int $count
-     */
-
-    function set_page_count($count);

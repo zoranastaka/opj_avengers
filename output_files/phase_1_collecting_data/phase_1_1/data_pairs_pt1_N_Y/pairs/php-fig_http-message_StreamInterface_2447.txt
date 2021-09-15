@@ -1,7 +1,0 @@
-    /**
-     * Returns whether or not the stream is writable.
-     *
-     * @return bool
-     */
-
-    public function isWritable();

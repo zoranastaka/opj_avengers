@@ -1,9 +1,0 @@
-    /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
-     */
-
-    public function testTypeBooleanFail()
-    {
-        $arg = new Argument($this->getMockedCommand(['foo']));
-        $arg->type('boolean');
-    }

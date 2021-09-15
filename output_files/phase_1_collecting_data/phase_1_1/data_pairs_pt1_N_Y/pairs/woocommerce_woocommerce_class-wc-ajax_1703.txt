@@ -1,5 +1,0 @@
-	/**
-	 * Delete variations via ajax function.
-	 */
-
-	public static function remove_variations() {

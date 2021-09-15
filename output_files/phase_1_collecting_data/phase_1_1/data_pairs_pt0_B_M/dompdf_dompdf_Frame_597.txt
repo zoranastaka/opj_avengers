@@ -1,8 +1,0 @@
-    /**
-     * @param \Dompdf\FrameDecorator\AbstractFrameDecorator $decorator
-     */
-
-    public function set_decorator(FrameDecorator\AbstractFrameDecorator $decorator)
-    {
-        $this->_decorator = $decorator;
-    }

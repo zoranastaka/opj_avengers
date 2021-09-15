@@ -1,5 +1,0 @@
-	/**
-	 * Product tag trail.
-	 */
-
-	protected function add_crumbs_product_tag() {

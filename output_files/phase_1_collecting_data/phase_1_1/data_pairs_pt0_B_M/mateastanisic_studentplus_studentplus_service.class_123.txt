@@ -1,8 +1,0 @@
-	//vraća polje svih ponuda kojima sam poslao zahtjev (bez obzira na status)
-
-	function get_accepted_offers_by_id($id_student){
-		try{
-			$db = DB::getConnection();
-			$st = $db->prepare( 'SELECT * FROM studentplus_members WHERE id_student=:id_student ORDER BY id_student' );
-			$st->execute( array( 'id_student' => $id_student ) );
-		}

@@ -1,7 +1,0 @@
-/**
- * Autoloader class.
- *
- * @since 3.7.0
- */
-
-class Autoloader {

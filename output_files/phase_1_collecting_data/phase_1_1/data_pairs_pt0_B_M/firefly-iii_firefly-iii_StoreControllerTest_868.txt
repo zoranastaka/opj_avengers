@@ -1,9 +1,0 @@
-    /**
-     * @return array
-     */
-
-    public function emptyDataProvider(): array
-    {
-        return [[[]]];
-
-    }

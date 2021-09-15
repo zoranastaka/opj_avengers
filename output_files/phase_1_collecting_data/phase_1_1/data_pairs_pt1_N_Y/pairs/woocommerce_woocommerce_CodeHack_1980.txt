@@ -1,5 +1,0 @@
-	/**
-	 * Revert the hack to its initial state.
-	 */
-
-	abstract public function reset();

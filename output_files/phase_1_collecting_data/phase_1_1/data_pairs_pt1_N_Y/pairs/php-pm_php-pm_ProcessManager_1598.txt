@@ -1,8 +1,0 @@
-    /**
-     * @return int
-     */
-
-    public function getReloadTimeout()
-    {
-        return $this->reloadTimeout;
-    }

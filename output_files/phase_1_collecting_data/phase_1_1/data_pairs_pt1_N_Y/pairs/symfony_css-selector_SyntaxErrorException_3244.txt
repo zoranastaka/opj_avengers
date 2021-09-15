@@ -1,8 +1,0 @@
-    /**
-     * @return self
-     */
-
-    public static function pseudoElementFound(string $pseudoElement, string $unexpectedLocation)
-    {
-        return new self(sprintf('Unexpected pseudo-element "::%s" found %s.', $pseudoElement, $unexpectedLocation));
-    }

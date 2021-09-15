@@ -1,8 +1,0 @@
-    /**
-     * @param AutoloadGenerator $autoloadGenerator
-     */
-
-    public function setAutoloadGenerator(AutoloadGenerator $autoloadGenerator)
-    {
-        $this->autoloadGenerator = $autoloadGenerator;
-    }

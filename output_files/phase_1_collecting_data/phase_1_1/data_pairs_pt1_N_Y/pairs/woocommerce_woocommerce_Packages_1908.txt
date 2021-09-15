@@ -1,5 +1,0 @@
-	/**
-	 * Callback for WordPress init hook.
-	 */
-
-	public static function on_init() {

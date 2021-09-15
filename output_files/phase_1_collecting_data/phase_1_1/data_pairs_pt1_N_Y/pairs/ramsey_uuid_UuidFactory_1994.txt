@@ -1,9 +1,0 @@
-    /**
-     * @inheritDoc
-     * @psalm-pure
-     */
-
-    public function uuid3($ns, string $name): UuidInterface
-    {
-        return $this->uuidFromNsAndName($ns, $name, 3, 'md5');
-    }

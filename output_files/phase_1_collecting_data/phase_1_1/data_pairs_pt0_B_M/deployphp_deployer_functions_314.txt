@@ -1,9 +1,0 @@
-/**
- * Returns current host.
- *
- */
-
-function currentHost(): Host
-{
-    return Context::get()->getHost();
-}

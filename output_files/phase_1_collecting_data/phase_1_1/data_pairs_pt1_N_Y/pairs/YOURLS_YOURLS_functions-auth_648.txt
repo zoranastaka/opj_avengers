@@ -1,9 +1,0 @@
-/**
- * Overwrite plaintext passwords in config file with phpassed versions.
- *
- * @since 1.7
- * @param string $config_file Full path to file
- * @return true if overwrite was successful, an error message otherwise
- */
-
-function yourls_hash_passwords_now( $config_file ) {

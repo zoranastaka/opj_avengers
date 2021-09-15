@@ -1,7 +1,0 @@
-  /**
-   * Returns the message MIME.
-   * @access public
-   * @return string
-   */
-
-  public function GetMailMIME() {

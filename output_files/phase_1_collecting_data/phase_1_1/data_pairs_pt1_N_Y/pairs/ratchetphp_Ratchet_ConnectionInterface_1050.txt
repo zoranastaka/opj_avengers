@@ -1,7 +1,0 @@
-    /**
-     * Send data to the connection
-     * @param  string $data
-     * @return \Ratchet\ConnectionInterface
-     */
-
-    function send($data);

@@ -1,8 +1,0 @@
-/**
- * Class ConsoleApplication
- * Include only Console application related components here
- */
-
-class ConsoleApplication extends \humhub\components\console\Application
-{
-}

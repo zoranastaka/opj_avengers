@@ -1,9 +1,0 @@
-    /** @test */
-
-    public function it_acts_as_partial()
-    {
-        $spy = spy(function ($number) { return $number + 1;});
-
-        $this->assertEquals(124, $spy(123));
-        $spy->shouldHaveBeenCalled();
-    }

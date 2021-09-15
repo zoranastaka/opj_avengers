@@ -1,9 +1,0 @@
-    /**
-     * notice the adapted behavior here: EBook::getPage() will return two integers, but Book
-     * supports only a current page getter, so we adapt the behavior here
-     */
-
-    public function getPage(): int
-    {
-        return $this->eBook->getPage()[0];
-    }

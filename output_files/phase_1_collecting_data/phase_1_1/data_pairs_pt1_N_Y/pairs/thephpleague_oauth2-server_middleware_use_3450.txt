@@ -1,3 +1,0 @@
-// Access token issuer
-
-$app->post('/access_token', function () {

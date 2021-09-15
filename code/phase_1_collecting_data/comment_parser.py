@@ -5,7 +5,7 @@ import pandas as pd
 
 from typing import List
 
-from opj_avengers.code.phase_1.scraper import read_json
+from opj_avengers.code.phase_1_collecting_data.scraper import read_json
 
 
 class Comment:

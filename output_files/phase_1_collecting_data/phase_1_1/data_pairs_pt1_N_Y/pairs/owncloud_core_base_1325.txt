@@ -1,5 +1,0 @@
-	/**
-	 * register hooks for previews
-	 */
-
-	public static function registerPreviewHooks() {

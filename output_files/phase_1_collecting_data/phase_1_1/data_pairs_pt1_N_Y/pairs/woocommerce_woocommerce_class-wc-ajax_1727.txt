@@ -1,5 +1,0 @@
-	/**
-	 * Search for categories and return json.
-	 */
-
-	public static function json_search_categories() {

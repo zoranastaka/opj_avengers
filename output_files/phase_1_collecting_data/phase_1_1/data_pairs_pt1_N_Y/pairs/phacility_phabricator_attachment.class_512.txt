@@ -1,6 +1,0 @@
-	/**
-	 * Retrieve the Attachment Content-Disposition
-	 * @return String
-	 */
-
-	public function getContentDisposition() {

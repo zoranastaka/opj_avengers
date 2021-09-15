@@ -1,7 +1,0 @@
-    /**
-     * Converts string into regexp.
-     *
-     * @return string
-     */
-
-    abstract protected function toRegex(string $str);

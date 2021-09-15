@@ -1,6 +1,0 @@
-  /**
-   * Sets Mailer to send message using PHP mail() function.
-   * @return void
-   */
-
-  public function IsMail() {

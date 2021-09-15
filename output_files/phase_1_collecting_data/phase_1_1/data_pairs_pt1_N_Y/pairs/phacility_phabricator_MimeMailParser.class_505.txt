@@ -1,7 +1,0 @@
-	/**
-	 * Retrieve the Header from a MIME part from text
-	 * @return String Mime Header Part
-	 * @param $part Array
-	 */
-
-	private function getPartHeaderFromText(&$part) {

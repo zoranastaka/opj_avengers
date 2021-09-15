@@ -1,9 +1,0 @@
-/**
- * Check if a long URL already exists in the DB. Return NULL (doesn't exist) or an object with URL informations.
- *
- * @since 1.5.1
- * @deprecated 1.7.10
- *
- */
-
-function yourls_url_exists( $url ) {

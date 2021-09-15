@@ -1,5 +1,0 @@
-	/**
-	 * Prints the upgrade page
-	 */
-
-	private static function printUpgradePage() {

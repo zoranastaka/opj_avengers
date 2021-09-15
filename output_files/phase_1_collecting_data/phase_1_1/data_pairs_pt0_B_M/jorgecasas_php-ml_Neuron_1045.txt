@@ -1,8 +1,0 @@
-    /**
-     * @return Synapse[]
-     */
-
-    public function getSynapses(): array
-    {
-        return $this->synapses;
-    }

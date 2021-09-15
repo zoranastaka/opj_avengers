@@ -1,7 +1,0 @@
-    /** @test */
-
-    public function it_retrieves_the_user()
-    {
-        $botman = $this->getBot('');
-        $this->assertInstanceOf(UserInterface::class, $botman->getUser());
-    }

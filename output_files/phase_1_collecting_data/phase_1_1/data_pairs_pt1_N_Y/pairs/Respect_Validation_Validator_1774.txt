@@ -1,8 +1,0 @@
-    /**
-     * Create instance validator.
-     */
-
-    public static function create(): self
-    {
-        return new self();
-    }

@@ -1,8 +1,0 @@
-    /**
-     * @return Options
-     */
-
-    public function getOptions()
-    {
-        return $this->options;
-    }

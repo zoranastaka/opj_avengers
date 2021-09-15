@@ -1,5 +1,0 @@
-	/**
-	 * @return RedirectResponse
-	 */
-
-	public function rescanFailedIntegrityCheck() {

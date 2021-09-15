@@ -1,9 +1,0 @@
-    /**
-     * Get the raw callable macro registered globally for a given name.
-     *
-     * @param string $name
-     *
-     * @return callable|null
-     */
-
-    public static function getMacro($name);

@@ -1,7 +1,0 @@
-    /**
-     * @codeCoverageIgnore
-     */
-
-    private function __construct()
-    {
-    }

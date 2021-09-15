@@ -1,9 +1,0 @@
-    /**
-     * @param mixed $i
-     * @return bool
-     */
-
-    public function offsetExists($i): bool
-    {
-        return isset($this->A[$i]);
-    }

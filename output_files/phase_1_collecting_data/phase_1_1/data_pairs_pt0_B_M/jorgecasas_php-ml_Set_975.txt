@@ -1,8 +1,0 @@
-    /**
-     * @param string|int|float|bool $element
-     */
-
-    public function add($element): self
-    {
-        return $this->addAll([$element]);
-    }

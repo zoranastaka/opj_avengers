@@ -1,5 +1,0 @@
-    /**
-     * @dataProvider startsWithProvider()
-     */
-
-    public function testStartsWith($expected, $str, $substring,

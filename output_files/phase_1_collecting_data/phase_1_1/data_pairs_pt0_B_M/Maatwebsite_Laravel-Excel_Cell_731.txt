@@ -1,8 +1,0 @@
-    /**
-     * @return SpreadsheetCell
-     */
-
-    public function getDelegate(): SpreadsheetCell
-    {
-        return $this->cell;
-    }

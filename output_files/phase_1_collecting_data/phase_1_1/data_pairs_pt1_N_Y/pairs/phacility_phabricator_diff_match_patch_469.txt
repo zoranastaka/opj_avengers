@@ -1,8 +1,0 @@
-	/**
-	 * Compute the Levenshtein distance; the number of inserted, deleted or
-	 * substituted characters.
-	 * @param {Array.<Array.<number|string>>} diffs Array of diff tuples.
-	 * @return {number} Number of changes.
-	 */
-
-	function diff_levenshtein($diffs) {

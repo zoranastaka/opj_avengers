@@ -1,8 +1,0 @@
-    /**
-     * @test
-     */
-
-    public function is_bound()
-    {
-        $this->assertTrue($this->app->bound('excel'));
-    }

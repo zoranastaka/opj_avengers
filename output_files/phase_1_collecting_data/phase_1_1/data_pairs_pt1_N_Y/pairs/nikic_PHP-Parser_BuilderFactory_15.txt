@@ -1,9 +1,0 @@
-    /**
-     * Creates a function builder.
-     *
-     * @param string $name Name of the function
-     *
-     * @return Builder\Function_ The created function builder
-     */
-
-    public function function(string $name) : Builder\Function_ {

@@ -1,7 +1,0 @@
-    /**
-     * Get local IP.
-     *
-     * @return string
-     */
-
-    abstract public function getLocalIp();

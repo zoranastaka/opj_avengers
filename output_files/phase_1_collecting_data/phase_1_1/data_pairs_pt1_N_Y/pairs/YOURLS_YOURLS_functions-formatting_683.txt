@@ -1,8 +1,0 @@
-/**
- * Perform a replacement while a string is found, eg $subject = '%0%0%0DDD', $search ='%0D' -> $result =''
- *
- * Stolen from WP's _deep_replace
- *
- */
-
-function yourls_deep_replace( $search, $subject ){

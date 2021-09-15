@@ -1,6 +1,0 @@
-    /**
-     * @param ResourceConnection $resource
-     * @param LogFactory $logFactory
-     */
-
-    public function __construct(

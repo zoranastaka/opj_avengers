@@ -1,5 +1,0 @@
-	/*
-	 * Metoda vrati ceo sadrzaj datog linka
-	 */
-
-	function procitaj($link) {

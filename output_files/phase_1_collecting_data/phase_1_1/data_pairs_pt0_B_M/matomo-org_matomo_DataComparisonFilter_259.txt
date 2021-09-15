@@ -1,6 +1,0 @@
-        // add comparison parameters as metadata
-
-        $table->filter(function (DataTable $singleTable) use ($comparisonSeries) {
-            if (isset($this->compareSegments)) {
-                $singleTable->setMetadata('compareSegments', $this->compareSegments);
-            }

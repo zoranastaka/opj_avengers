@@ -1,5 +1,0 @@
-  /**
-   * @task validation
-   */
-
-  public static function rebuildRequest() {

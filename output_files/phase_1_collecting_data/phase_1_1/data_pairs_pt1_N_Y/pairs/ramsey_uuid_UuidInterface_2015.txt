@@ -1,7 +1,0 @@
-    /**
-     * Casts the UUID to the string standard representation
-     *
-     * @psalm-return non-empty-string
-     */
-
-    public function __toString(): string;

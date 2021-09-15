@@ -1,8 +1,0 @@
-    /**
-     * @return RepositoryManager
-     */
-
-    public function getRepositoryManager()
-    {
-        return $this->repositoryManager;
-    }

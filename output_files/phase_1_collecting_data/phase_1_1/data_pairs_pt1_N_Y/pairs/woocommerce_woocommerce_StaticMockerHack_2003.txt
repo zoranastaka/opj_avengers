@@ -1,7 +1,0 @@
-	/**
-	 * Get the only existing instance of this class. 'get_instance' is not used to avoid conflicts since that's a widely used method name.
-	 *
-	 * @return StaticMockerHack The only existing instance of this class.
-	 */
-
-	public static function get_hack_instance() {

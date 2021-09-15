@@ -1,9 +1,0 @@
-    /**
-     * Call native PHP DateTime/DateTimeImmutable add() method.
-     *
-     * @param DateInterval $interval
-     *
-     * @return static
-     */
-
-    public function rawAdd(DateInterval $interval);

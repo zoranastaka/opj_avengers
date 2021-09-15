@@ -1,9 +1,0 @@
-    /**
-     * Return the real parts of the eigenvalues<br>
-     *  d = real(diag(D));
-     */
-
-    public function getRealEigenvalues(): array
-    {
-        return $this->d;
-    }

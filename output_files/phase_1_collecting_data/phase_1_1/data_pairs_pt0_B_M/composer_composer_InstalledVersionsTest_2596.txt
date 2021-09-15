@@ -1,8 +1,0 @@
-    /**
-     * @dataProvider getPrettyVersionProvider
-     */
-
-    public function testGetPrettyVersion($expected, $name)
-    {
-        $this->assertSame($expected, InstalledVersions::getPrettyVersion($name));
-    }

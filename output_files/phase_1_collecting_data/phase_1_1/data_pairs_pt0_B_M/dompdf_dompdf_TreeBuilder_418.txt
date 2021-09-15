@@ -1,5 +1,0 @@
-    /**
-     * For debugging, prints the stack
-     */
-
-    private function printStack() {

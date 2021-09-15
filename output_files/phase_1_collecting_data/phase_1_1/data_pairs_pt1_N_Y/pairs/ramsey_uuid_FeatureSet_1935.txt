@@ -1,8 +1,0 @@
-    /**
-     * Returns the node provider configured for this environment
-     */
-
-    public function getNodeProvider(): NodeProviderInterface
-    {
-        return $this->nodeProvider;
-    }

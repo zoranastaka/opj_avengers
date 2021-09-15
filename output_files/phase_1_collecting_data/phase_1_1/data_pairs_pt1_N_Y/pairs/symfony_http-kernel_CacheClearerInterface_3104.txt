@@ -1,5 +1,0 @@
-    /**
-     * Clears any caches necessary.
-     */
-
-    public function clear(string $cacheDir);

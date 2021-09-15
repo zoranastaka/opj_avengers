@@ -1,8 +1,0 @@
-    /**
-     * @param DownloadManager $manager
-     */
-
-    public function setDownloadManager(DownloadManager $manager)
-    {
-        $this->downloadManager = $manager;
-    }

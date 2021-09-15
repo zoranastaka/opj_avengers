@@ -1,9 +1,0 @@
-    /**
-     * Set the instance's timezone from a string or object.
-     *
-     * @param DateTimeZone|string $value
-     *
-     * @return static
-     */
-
-    public function setTimezone($value);

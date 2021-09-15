@@ -1,8 +1,0 @@
-    /**
-     * Tells whether empty records are skipped by the instance.
-     */
-
-    public function isEmptyRecordsIncluded(): bool
-    {
-        return $this->is_empty_records_included;
-    }

@@ -1,9 +1,0 @@
-    /** @test */
-
-    public function it_should_throw_an_exception_when_trying_to_add_to_the_payload()
-    {
-        $this->expectException(PayloadException::class);
-        $this->expectExceptionMessage('The payload is immutable');
-
-        $this->payload['foo'] = 'bar';
-    }

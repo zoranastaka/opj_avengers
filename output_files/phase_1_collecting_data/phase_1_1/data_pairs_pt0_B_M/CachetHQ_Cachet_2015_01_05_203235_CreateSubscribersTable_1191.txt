@@ -1,8 +1,0 @@
-    /**
-     * Reverse the migrations.
-     */
-
-    public function down()
-    {
-        Schema::drop('subscribers');
-    }

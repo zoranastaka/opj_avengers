@@ -1,9 +1,0 @@
-    /**
-     * @expectedException InvalidArgumentException
-     */
-
-    public function testGetFormatterThrowsExceptionOnIncorrectProvider()
-    {
-        $generator = new Generator;
-        $generator->getFormatter('fooFormatter');
-    }

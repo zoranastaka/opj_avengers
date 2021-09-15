@@ -1,8 +1,0 @@
-    /**
-     * Tells whether the BOM can be stripped if presents.
-     */
-
-    public function isInputBOMIncluded(): bool
-    {
-        return $this->is_input_bom_included;
-    }

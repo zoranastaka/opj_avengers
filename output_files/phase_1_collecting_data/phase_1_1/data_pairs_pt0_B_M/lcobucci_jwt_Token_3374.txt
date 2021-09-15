@@ -1,5 +1,0 @@
-    /**
-     * Returns if the token has the given subject
-     */
-
-    public function isRelatedTo(string $subject): bool;

@@ -1,8 +1,0 @@
-    /**
-     * @requires extension pcov
-     */
-
-    public function testCanCollectCodeCoverageWhenPcovExtensionIsEnabled(): void
-    {
-        $this->assertTrue($this->env->canCollectCodeCoverage());
-    }

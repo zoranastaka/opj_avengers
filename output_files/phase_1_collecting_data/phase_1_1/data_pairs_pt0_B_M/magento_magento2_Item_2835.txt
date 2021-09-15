@@ -1,8 +1,0 @@
-    /**
-     * @return string
-     */
-
-    public function getName()
-    {
-        return $this->_data['name'];
-    }

@@ -1,8 +1,0 @@
-    /**
-     * @return Matrix
-     */
-
-    public function getInverse(): Matrix
-    {
-        return $this->A⁻¹;
-    }

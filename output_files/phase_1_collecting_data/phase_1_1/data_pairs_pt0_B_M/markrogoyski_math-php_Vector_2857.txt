@@ -1,9 +1,0 @@
-    /**
-     * @param mixed $i
-     * @throws Exception\VectorException
-     */
-
-    public function offsetUnset($i)
-    {
-        throw new Exception\VectorException('Vector class does not allow unsetting values');
-    }

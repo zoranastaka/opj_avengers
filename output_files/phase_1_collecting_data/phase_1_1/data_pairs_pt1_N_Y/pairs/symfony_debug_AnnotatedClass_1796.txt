@@ -1,7 +1,0 @@
-    /**
-     * @deprecated
-     */
-
-    public function deprecatedMethod()
-    {
-    }

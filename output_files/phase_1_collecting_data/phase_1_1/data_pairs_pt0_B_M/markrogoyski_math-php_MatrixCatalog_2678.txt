@@ -1,8 +1,0 @@
-    /**
-     * @return Decomposition\QR
-     */
-
-    public function getQrDecomposition(): Decomposition\QR
-    {
-        return $this->QR;
-    }

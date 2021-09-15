@@ -1,9 +1,0 @@
-	/**
-	 * The extension can define additional navigation entries. The array returned has to contain two keys 'top'
-	 * and 'apps' which hold arrays with the relevant entries.
-	 * If no further entries are to be added false is no be returned.
-	 *
-	 * @return array|false
-	 */
-
-	public function getNavigation() {

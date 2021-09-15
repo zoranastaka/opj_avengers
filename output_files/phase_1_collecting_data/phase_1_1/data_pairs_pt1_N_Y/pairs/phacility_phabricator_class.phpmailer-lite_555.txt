@@ -1,7 +1,0 @@
-  /**
-   * Adds the error message to the error container.
-   * @access protected
-   * @return void
-   */
-
-  protected function SetError($msg) {

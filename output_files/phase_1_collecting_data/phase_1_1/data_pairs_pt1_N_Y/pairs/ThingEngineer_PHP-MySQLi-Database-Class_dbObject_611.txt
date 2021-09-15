@@ -1,5 +1,0 @@
-    /*
-     * Function building hasOne joins for get/getOne method
-     */
-
-    private function processHasOneWith () {

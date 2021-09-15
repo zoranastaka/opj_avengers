@@ -1,3 +1,0 @@
-	//vidi studentove prijave
-
-	public function my_applications(){

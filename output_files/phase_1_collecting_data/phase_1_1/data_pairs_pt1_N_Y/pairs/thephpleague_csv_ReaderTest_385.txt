@@ -1,9 +1,0 @@
-    /**
-     * @covers ::createFromPath
-     */
-
-    public function testCreateFromPath(): void
-    {
-        $csv = Reader::createFromPath(__DIR__.'/../test_files/foo_readonly.csv');
-        self::assertCount(1, $csv);
-    }

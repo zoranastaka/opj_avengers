@@ -1,8 +1,0 @@
-/**
- * Writes an info message.
- */
-
-function info(string $message): void
-{
-    writeln("<fg=green;options=bold>info</> " . parse($message));
-}

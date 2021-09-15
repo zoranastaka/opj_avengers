@@ -1,8 +1,0 @@
-/**
- * Return an "Edit" row for the main table
- *
- * @param string $keyword Keyword to edit
- * @return string HTML of the edit row
- */
-
-function yourls_table_edit_row( $keyword ) {

@@ -1,8 +1,0 @@
-    /**
-     * @expectedException \Intervention\Image\Exception\NotReadableException
-     */
-
-    public function testMakeFromNotExisting()
-    {
-        $this->manager()->make('tests/images/not_existing.png');
-    }

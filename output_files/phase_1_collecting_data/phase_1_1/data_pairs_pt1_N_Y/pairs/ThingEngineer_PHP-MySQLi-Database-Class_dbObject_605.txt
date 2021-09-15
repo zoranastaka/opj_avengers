@@ -1,7 +1,0 @@
-    /**
-     * Function to get a total records count
-     *
-     * @return int
-     */
-
-    protected function count () {

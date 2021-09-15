@@ -1,5 +1,0 @@
-    /**
-     * Fixes Doctrine annotations from the given PHPDoc style comment.
-     */
-
-    abstract protected function fixAnnotations(DoctrineAnnotationTokens $doctrineAnnotationTokens): void;

@@ -1,3 +1,0 @@
-	//registracija studenta
-
-	function add_student($username, $password_hash, $name, $surname, $email, $phone, $school, $grades, $free_time, $cv ){

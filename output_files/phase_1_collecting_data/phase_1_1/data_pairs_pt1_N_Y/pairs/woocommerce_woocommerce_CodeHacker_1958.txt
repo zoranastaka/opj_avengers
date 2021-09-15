@@ -1,5 +1,0 @@
-	/**
-	 * Close a resource.
-	 */
-
-	public function stream_close() {

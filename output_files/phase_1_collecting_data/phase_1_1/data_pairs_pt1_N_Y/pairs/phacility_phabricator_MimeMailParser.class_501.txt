@@ -1,7 +1,0 @@
-	/**
-	 * Retrieve the raw Header of a MIME part
-	 * @return String
-	 * @param $part Object
-	 */
-
-	private function getPartHeaderRaw(&$part) {

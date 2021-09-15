@@ -1,5 +1,0 @@
-    /**
-     * Sets the session ID.
-     */
-
-    public function setId(string $id);

@@ -1,8 +1,0 @@
-	/**
-	 * @return PlaygroundExample[]
-	 */
-
-	public function getPlaygroundExamples(): array
-	{
-		return $this->playgroundExamples;
-	}

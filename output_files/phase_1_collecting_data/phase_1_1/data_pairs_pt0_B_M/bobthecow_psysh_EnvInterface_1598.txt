@@ -1,7 +1,0 @@
-    /**
-     * Get an environment variable by name.
-     *
-     * @return string|null
-     */
-
-    public function get($key);

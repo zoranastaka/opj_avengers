@@ -1,9 +1,0 @@
-    /**
-     * return the invalid data submitted.
-     *
-     */
-
-    public function getRecord(): array
-    {
-        return $this->record;
-    }

@@ -1,9 +1,0 @@
-    /* 
-     * Sum of the product of x and y
-     *
-     * @param array $data
-     *
-     * @return number
-     */
-
-    private function sumXY(array $data) {

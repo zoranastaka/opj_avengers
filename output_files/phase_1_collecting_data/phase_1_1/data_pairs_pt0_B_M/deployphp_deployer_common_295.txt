@@ -1,9 +1,0 @@
-// Name of current user who is running deploy.
-// It will be shown in `dep status` command as author.
-// If not set will try automatically get git user name,
-// otherwise output of `whoami` command.
-
-set('user', function () {
-    if (getenv('CI') !== false) {
-        return 'ci';
-    }

@@ -1,8 +1,0 @@
-    /**
-     * Initiates color object from integer
-     *
-     * @param  int $value
-     * @return \Intervention\Image\AbstractColor
-     */
-
-    abstract public function initFromInteger($value);

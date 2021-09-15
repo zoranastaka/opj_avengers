@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    protected function matches($other)
-    {
-        return in_array($other, $this->allowedValues, false);
-    }

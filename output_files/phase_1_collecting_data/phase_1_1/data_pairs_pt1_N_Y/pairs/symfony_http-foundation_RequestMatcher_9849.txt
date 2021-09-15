@@ -1,8 +1,0 @@
-    /**
-     * Adds a check for the URL path info.
-     */
-
-    public function matchPath(?string $regexp)
-    {
-        $this->path = $regexp;
-    }

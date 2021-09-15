@@ -1,8 +1,0 @@
-    /**
-     * @return Transformer[]
-     */
-
-    public function getTransformers(): array
-    {
-        return $this->transformers;
-    }

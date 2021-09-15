@@ -1,8 +1,0 @@
-    /**
-     * @return RouteResolverInterface
-     */
-
-    public function getRouteResolver(): RouteResolverInterface
-    {
-        return $this->routeResolver;
-    }

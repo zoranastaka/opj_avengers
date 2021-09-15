@@ -1,8 +1,0 @@
-    /**
-     * @test Limits constant is correct format
-     */
-
-    public function testWeibullSupportLimits()
-    {
-        $this->limitTest(Continuous\Weibull::SUPPORT_LIMITS);
-    }

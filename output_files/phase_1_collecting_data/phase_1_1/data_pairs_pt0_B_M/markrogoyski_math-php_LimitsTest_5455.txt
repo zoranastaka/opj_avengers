@@ -1,9 +1,0 @@
-    /**
-     * @test Limits constant is correct format
-     */
-
-    public function testShiftedGeometricLimits()
-    {
-        $this->limitTest(Discrete\ShiftedGeometric::PARAMETER_LIMITS);
-        $this->limitTest(Discrete\ShiftedGeometric::SUPPORT_LIMITS);
-    }

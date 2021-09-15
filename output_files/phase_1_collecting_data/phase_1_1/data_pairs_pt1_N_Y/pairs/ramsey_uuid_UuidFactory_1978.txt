@@ -1,8 +1,0 @@
-    /**
-     * Returns the node provider used by this factory
-     */
-
-    public function getNodeProvider(): NodeProviderInterface
-    {
-        return $this->nodeProvider;
-    }

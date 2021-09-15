@@ -1,6 +1,0 @@
-    /** @test */
-
-    public function it_can_find_a_driver_by_name()
-    {
-        $this->assertInstanceOf(NullDriver::class, DriverManager::loadFromName('foo', []));
-    }

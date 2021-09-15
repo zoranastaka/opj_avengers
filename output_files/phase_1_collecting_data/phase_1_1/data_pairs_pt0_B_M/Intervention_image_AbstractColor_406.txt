@@ -1,8 +1,0 @@
-    /**
-     * Initiates color object from given ImagickPixel object
-     *
-     * @param  ImagickPixel $value
-     * @return \Intervention\Image\AbstractColor
-     */
-
-    abstract public function initFromObject($value);

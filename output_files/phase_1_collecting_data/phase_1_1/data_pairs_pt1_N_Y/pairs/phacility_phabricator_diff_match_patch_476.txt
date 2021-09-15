@@ -1,9 +1,0 @@
-	/**
-	 * Increase the context until it is unique,
-	 * but don't let the pattern expand beyond Match_MaxBits.
-	 * @param {patch_obj} patch The patch to grow.
-	 * @param {string} text Source text.
-	 * @private
-	 */
-
-	function patch_addContext($patch, $text) {

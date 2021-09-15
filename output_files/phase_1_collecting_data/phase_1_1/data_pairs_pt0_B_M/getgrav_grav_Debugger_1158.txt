@@ -1,8 +1,0 @@
-    /**
-     * @return Clockwork|null
-     */
-
-    public function getClockwork(): ?Clockwork
-    {
-        return $this->enabled ? $this->clockwork : null;
-    }

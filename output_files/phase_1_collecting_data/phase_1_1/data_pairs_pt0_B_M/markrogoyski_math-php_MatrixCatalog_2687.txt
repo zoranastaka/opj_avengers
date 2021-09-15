@@ -1,8 +1,0 @@
-    /**
-     * @return number
-     */
-
-    public function getDeterminant()
-    {
-        return $this->det;
-    }

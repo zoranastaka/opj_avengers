@@ -1,8 +1,0 @@
-    /**
-     * Reset media elements
-     */
-
-    public static function resetElements()
-    {
-        self::$elements = array();
-    }

@@ -1,5 +1,0 @@
-    /**
-     * @param mixed $target
-     */
-
-    abstract protected function trainSample(array $sample, $target): void;

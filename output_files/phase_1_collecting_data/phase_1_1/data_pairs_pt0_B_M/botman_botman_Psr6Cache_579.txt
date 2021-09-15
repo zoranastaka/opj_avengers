@@ -1,9 +1,0 @@
-    /**
-     * @param string $key
-     * @return bool
-     */
-
-    public function has($key)
-    {
-        return $this->adapter->hasItem($key);
-    }

@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function clear()
-    {
-        return $this->bag->clear();
-    }

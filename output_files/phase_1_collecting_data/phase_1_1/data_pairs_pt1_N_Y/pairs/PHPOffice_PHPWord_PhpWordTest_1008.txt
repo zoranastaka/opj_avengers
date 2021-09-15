@@ -1,9 +1,0 @@
-    /**
-     * @covers \PhpOffice\PhpWord\PhpWord::getSettings
-     */
-
-    public function testGetSettings()
-    {
-        $phpWord = new PhpWord();
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Metadata\\Settings', $phpWord->getSettings());
-    }

@@ -1,7 +1,0 @@
-/**
- * Connect to DB
- *
- * @since 1.0
- */
-
-function yourls_db_connect() {

@@ -1,8 +1,0 @@
-    /**
-     * @return Answer
-     */
-
-    public function getConversationAnswer()
-    {
-        return $this->getDriver()->getConversationAnswer($this->message);
-    }

@@ -1,3 +1,0 @@
-// Custom git bin of remote host.
-
-set('bin/git', function () {

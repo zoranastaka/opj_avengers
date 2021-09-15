@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function toString(): string
-    {
-        return 'format is '.($this->format ?? 'null');
-    }

@@ -1,7 +1,0 @@
-    /** @test */
-
-    public function it_can_be_created()
-    {
-        $answer = Answer::create('text');
-        $this->assertSame('text', $answer->getText());
-    }

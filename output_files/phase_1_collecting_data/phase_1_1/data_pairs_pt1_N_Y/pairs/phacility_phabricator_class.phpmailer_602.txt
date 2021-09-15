@@ -1,6 +1,0 @@
-  /**
-   * Clears all recipients assigned in the ReplyTo array.  Returns void.
-   * @return void
-   */
-
-  public function ClearReplyTos() {

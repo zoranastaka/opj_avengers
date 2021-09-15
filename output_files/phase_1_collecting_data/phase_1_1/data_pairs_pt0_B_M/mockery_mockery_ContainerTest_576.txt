@@ -1,6 +1,0 @@
-    /** @group issue/158 */
-
-    public function testMockeryShouldRespectInterfaceWithMethodParamSelf()
-    {
-        $this->assertInstanceOf(MockInterface::class, mock('MockeryTest_InterfaceWithMethodParamSelf'));
-    }

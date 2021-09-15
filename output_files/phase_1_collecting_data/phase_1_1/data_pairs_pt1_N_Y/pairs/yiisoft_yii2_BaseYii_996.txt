@@ -1,9 +1,0 @@
-    /**
-     * Sets the logger object.
-     * @param Logger $logger the logger object.
-     */
-
-    public static function setLogger($logger)
-    {
-        self::$_logger = $logger;
-    }

@@ -1,8 +1,0 @@
-  /**
-   * Performs SMTP authentication.  Must be run after running the
-   * Hello() method.  Returns true if successfully authenticated.
-   * @access public
-   * @return bool
-   */
-
-  public function Authenticate($username, $password) {

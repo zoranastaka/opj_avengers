@@ -1,8 +1,0 @@
-    /**
-     * Is the value a scalar (boolean, integer, double, or string)?
-     */
-
-    function scalarValue()
-    {
-        return \Hamcrest\Type\IsScalar::scalarValue();
-    }

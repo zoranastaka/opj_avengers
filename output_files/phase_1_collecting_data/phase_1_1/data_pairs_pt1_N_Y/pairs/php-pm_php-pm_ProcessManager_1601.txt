@@ -1,8 +1,0 @@
-    /**
-     * Handling zombie processes on SIGCHLD
-     */
-
-    public function handleSigchld()
-    {
-        $pid = \pcntl_waitpid(-1, $status, WNOHANG);
-    }

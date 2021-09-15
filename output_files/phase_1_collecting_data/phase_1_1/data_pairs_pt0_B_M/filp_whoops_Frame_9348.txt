@@ -1,8 +1,0 @@
-    /**
-     * @return string|null
-     */
-
-    public function getFunction()
-    {
-        return isset($this->frame['function']) ? $this->frame['function'] : null;
-    }

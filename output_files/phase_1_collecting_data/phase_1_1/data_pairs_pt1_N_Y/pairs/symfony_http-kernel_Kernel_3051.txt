@@ -1,8 +1,0 @@
-    /**
-     * Gets the patterns defining the classes to parse and cache for annotations.
-     */
-
-    public function getAnnotatedClassesToCompile(): array
-    {
-        return [];
-    }

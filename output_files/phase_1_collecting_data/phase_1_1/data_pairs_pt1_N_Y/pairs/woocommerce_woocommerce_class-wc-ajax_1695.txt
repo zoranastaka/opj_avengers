@@ -1,5 +1,0 @@
-	/**
-	 * Process ajax checkout form.
-	 */
-
-	public static function checkout() {

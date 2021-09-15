@@ -1,7 +1,0 @@
-    /**
-     * Get the last day of week
-     *
-     * @return int
-     */
-
-    public static function getWeekEndsAt();

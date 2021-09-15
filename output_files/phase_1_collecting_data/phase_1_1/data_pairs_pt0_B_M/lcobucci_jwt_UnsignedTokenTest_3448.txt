@@ -1,9 +1,0 @@
-    /**
-     * @test
-     * @depends builderCanGenerateAToken
-     */
-
-    public function tokenValidationShouldAllowCustomConstraint(Token $generated): void
-    {
-        self::assertTrue($this->config->validator()->validate($generated, $this->validUserConstraint()));
-    }

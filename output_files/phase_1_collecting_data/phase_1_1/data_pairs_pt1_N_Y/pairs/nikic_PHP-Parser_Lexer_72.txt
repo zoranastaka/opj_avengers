@@ -1,7 +1,0 @@
-    /**
-     * Check whether comment token is unterminated.
-     *
-     * @return bool
-     */
-
-    private function isUnterminatedComment($token) : bool {

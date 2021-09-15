@@ -1,5 +1,0 @@
-	/**
-	 * Add variation via ajax function.
-	 */
-
-	public static function add_variation() {

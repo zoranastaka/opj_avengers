@@ -1,7 +1,0 @@
-	/**
-	 * Dispatch updater.
-	 *
-	 * Updater will still run via cron job if this fails for any reason.
-	 */
-
-	public function dispatch() {

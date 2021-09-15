@@ -1,6 +1,0 @@
-    #[\ReturnTypeWillChange]
-
-    public function jsonSerialize()
-    {
-        return $this->content;
-    }

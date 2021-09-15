@@ -1,3 +1,0 @@
-//get the digits value by it's place
-
-function getDigit($num,$i){

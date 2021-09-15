@@ -1,8 +1,0 @@
-    /**
-     * Matches if value is a string equal to $string, regardless of whitespace.
-     */
-
-    function equalToIgnoringWhiteSpace($string)
-    {
-        return \Hamcrest\Text\IsEqualIgnoringWhiteSpace::equalToIgnoringWhiteSpace($string);
-    }

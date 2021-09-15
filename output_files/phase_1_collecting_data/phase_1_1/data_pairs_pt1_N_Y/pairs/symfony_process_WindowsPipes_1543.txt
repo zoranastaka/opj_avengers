@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function areOpen(): bool
-    {
-        return $this->pipes && $this->fileHandles;
-    }

@@ -1,5 +1,0 @@
-    /**
-     * @dataProvider countSubstrProvider()
-     */
-
-    public function testCountSubstr($expected, $str, $substring,

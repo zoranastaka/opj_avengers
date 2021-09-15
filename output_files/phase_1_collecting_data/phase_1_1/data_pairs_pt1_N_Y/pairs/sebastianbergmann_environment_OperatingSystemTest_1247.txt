@@ -1,8 +1,0 @@
-    /**
-     * @requires OS Darwin
-     */
-
-    public function testFamilyReturnsDarwinWhenRunningOnDarwin(): void
-    {
-        $this->assertEquals('Darwin', $this->os->getFamily());
-    }

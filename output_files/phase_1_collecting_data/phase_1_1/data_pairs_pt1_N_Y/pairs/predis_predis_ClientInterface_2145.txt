@@ -1,7 +1,0 @@
-    /**
-     * Returns the client options specified upon initialization.
-     *
-     * @return OptionsInterface
-     */
-
-    public function getOptions();

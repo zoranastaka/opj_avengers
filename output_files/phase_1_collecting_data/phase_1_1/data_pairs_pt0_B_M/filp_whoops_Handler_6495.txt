@@ -1,8 +1,0 @@
-    /**
-     * @return RunInterface
-     */
-
-    protected function getRun()
-    {
-        return $this->run;
-    }

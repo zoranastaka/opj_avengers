@@ -1,6 +1,0 @@
-    /** @before */
-
-    public function createConfiguration(): void
-    {
-        $this->config = Configuration::forSymmetricSigner(new Sha256(), InMemory::plainText('testing'));
-    }

@@ -1,5 +1,0 @@
-    /**
-     * Actually normalize the given type.
-     */
-
-    abstract protected function normalize(string $type): string;

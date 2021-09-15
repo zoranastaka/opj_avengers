@@ -1,7 +1,0 @@
-		/**
-		 * Check if contacts are available (e.g. contacts app enabled)
-		 *
-		 * @return bool true if enabled, false if not
-		 */
-
-		public function isEnabled() {

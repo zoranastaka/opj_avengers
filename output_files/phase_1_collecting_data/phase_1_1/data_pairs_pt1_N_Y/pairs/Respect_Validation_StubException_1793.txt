@@ -1,7 +1,0 @@
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
-
-final class StubException extends ValidationException
-{
-}

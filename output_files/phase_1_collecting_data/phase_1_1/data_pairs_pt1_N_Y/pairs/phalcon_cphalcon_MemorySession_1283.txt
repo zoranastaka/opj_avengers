@@ -1,8 +1,0 @@
-    /**
-     * Returns the stored session handler
-     */
-
-    public function getAdapter(): SessionHandlerInterface
-    {
-        // TODO: Implement getAdapter() method.
-    }

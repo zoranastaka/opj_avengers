@@ -1,5 +1,0 @@
-    /**
-     * @dataProvider regexReplaceProvider()
-     */
-
-    public function testregexReplace($expected, $str, $pattern, $replacement,

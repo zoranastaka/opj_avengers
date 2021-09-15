@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function has(string $name)
-    {
-        return $this->getAttributeBag()->has($name);
-    }

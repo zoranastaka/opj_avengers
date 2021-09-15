@@ -1,8 +1,0 @@
-    /**
-     * @param Reduction\ReducedRowEchelonForm $RREF
-     */
-
-    public function addReducedRowEchelonForm(Reduction\ReducedRowEchelonForm $RREF): void
-    {
-        $this->RREF = $RREF;
-    }

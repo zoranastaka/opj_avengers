@@ -1,6 +1,0 @@
-	/**
-	 * Free the held resouces
-	 * @return void
-	 */
-
-	public function __destruct() {

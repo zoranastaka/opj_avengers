@@ -1,8 +1,0 @@
-/**
- * Change the current working directory.
- */
-
-function cd(string $path): void
-{
-    set('working_path', parse($path));
-}

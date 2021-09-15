@@ -1,7 +1,0 @@
-  /**
-   * Changes every end of line from CR or LF to CRLF.
-   * @access private
-   * @return string
-   */
-
-  private function FixEOL($str) {

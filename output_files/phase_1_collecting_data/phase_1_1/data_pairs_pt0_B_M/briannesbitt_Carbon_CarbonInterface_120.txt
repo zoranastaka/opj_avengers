@@ -1,7 +1,0 @@
-    /**
-     * Modify to midday, default to self::$midDayAt
-     *
-     * @return static
-     */
-
-    public function midDay();

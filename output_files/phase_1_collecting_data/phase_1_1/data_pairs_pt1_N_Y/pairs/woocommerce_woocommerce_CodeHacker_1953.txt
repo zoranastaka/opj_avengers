@@ -1,7 +1,0 @@
-	/**
-	 * Rewind directory handle.
-	 *
-	 * @return TRUE on success or FALSE on failure.
-	 */
-
-	public function dir_rewinddir() {

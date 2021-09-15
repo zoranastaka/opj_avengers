@@ -1,8 +1,0 @@
-    /**
-     * The value is < $value.
-     */
-
-    function lessThan($value)
-    {
-        return \Hamcrest\Number\OrderingComparison::lessThan($value);
-    }

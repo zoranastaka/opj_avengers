@@ -1,7 +1,0 @@
-    /**
-     * Converts object data to an associative array.
-     *
-     * @return array Converted data
-     */
-
-    public function toArray () {

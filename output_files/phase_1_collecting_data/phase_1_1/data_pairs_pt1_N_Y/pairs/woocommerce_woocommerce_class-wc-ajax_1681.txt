@@ -1,5 +1,0 @@
-	/**
-	 * Hook in ajax handlers.
-	 */
-
-	public static function init() {

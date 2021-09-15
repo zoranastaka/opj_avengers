@@ -1,8 +1,0 @@
-    /**
-     * @dataProvider dataProviderForSumOfSquaresDeviations
-     */
-
-    public function testSumOfSquares(array $numbers, float $sum): void
-    {
-        self::assertEqualsWithDelta($sum, StandardDeviation::sumOfSquares($numbers), 0.0001);
-    }

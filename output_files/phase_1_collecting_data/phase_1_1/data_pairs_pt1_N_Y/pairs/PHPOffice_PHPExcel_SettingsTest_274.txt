@@ -1,8 +1,0 @@
-    /**
-     */
-
-    public function testGetXMLSettings()
-    {
-        $result = call_user_func(array('PHPExcel_Settings','getLibXmlLoaderOptions'));
-        $this->assertTrue((bool) ((LIBXML_DTDLOAD | LIBXML_DTDATTR) & $result));
-    }

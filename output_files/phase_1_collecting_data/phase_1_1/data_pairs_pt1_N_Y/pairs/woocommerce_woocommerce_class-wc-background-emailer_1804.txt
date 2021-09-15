@@ -1,9 +1,0 @@
-	/**
-	 * Save and run queue.
-	 */
-
-	public function dispatch_queue() {
-		if ( ! empty( $this->data ) ) {
-			$this->close_http_connection();
-			$this->save()->dispatch();
-		}

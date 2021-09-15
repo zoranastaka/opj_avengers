@@ -1,8 +1,0 @@
-    /**
-     * @return Inspector
-     */
-
-    protected function getInspector()
-    {
-        return $this->inspector;
-    }

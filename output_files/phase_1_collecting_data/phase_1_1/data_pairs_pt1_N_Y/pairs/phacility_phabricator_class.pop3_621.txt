@@ -1,7 +1,0 @@
-  /**
-   * Constructor, sets the initial values
-   * @access public
-   * @return POP3
-   */
-
-  public function __construct() {

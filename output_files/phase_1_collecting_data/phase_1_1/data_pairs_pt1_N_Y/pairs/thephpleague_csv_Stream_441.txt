@@ -1,8 +1,0 @@
-    /**
-     * Return the URI of the underlying stream.
-     */
-
-    public function getPathname(): string
-    {
-        return stream_get_meta_data($this->stream)['uri'];
-    }

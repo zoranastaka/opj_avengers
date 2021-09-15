@@ -1,8 +1,0 @@
-    /**
-     * Returns the time generator used by this factory
-     */
-
-    public function getTimeGenerator(): TimeGeneratorInterface
-    {
-        return $this->timeGenerator;
-    }

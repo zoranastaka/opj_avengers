@@ -1,8 +1,0 @@
-    /** @test */
-
-    public function it_can_assign_a_role_using_an_id()
-    {
-        $this->testUser->assignRole($this->testUserRole->id);
-
-        $this->assertTrue($this->testUser->hasRole($this->testUserRole));
-    }

@@ -1,9 +1,0 @@
-	//vraća sve ponude čije ime je JEDNAKO varijabli $name 
-	//kod pretraživanja
-
-	function get_offers_by_name($name){
-		try{
-			$db = DB::getConnection();
-			$st = $db->prepare( 'SELECT * FROM studentplus_offers WHERE name=:name ORDER BY id' );
-			$st->execute( array( 'name' => $name ) );
-		}

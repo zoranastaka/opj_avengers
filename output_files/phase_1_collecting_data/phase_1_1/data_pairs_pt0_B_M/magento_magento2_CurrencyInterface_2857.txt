@@ -1,7 +1,0 @@
-    /**
-     * Removes any set cache
-     *
-     * @return void
-     */
-
-    public static function removeCache();

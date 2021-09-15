@@ -1,7 +1,0 @@
-  /**
-   * Determine whether to reject a connection.
-   *
-   * @return bool True to reject the connection.
-   */
-
-  abstract protected function shouldRejectConnection($score);

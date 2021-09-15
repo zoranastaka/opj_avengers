@@ -1,7 +1,0 @@
-    /**
-     * Helper function to create dbObject with Json return type
-     *
-     * @return dbObject
-     */
-
-    private function JsonBuilder () {

@@ -1,9 +1,0 @@
-    /**
-     * Starts the session storage.
-     *
-     * @return bool
-     *
-     * @throws \RuntimeException if session fails to start
-     */
-
-    public function start();

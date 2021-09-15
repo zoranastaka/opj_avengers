@@ -1,8 +1,0 @@
-    /**
-     * @expectedException \Intervention\Image\Exception\NotReadableException
-     */
-
-   public function testMakeFromPathBroken()
-   {
-       $this->manager()->make('tests/images/broken.png');
-   }

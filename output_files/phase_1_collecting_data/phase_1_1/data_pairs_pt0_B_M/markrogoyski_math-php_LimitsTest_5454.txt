@@ -1,8 +1,0 @@
-    /**
-     * @test Limits constant is correct format
-     */
-
-    public function testGeometricSupportLimits()
-    {
-        $this->limitTest(Discrete\Geometric::SUPPORT_LIMITS);
-    }

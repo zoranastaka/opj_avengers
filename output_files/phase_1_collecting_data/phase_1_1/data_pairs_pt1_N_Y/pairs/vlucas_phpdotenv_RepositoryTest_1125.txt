@@ -1,8 +1,0 @@
-    /**
-     * @return void
-     */
-
-    private function load()
-    {
-        Dotenv::createMutable(\dirname(\dirname(__DIR__)).'/fixtures/env')->load();
-    }

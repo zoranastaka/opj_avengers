@@ -1,3 +1,0 @@
-/*---css---*/
-
-function css_img($img){

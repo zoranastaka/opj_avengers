@@ -1,8 +1,0 @@
-    /**
-     * @return string
-     */
-
-    public function getSocketPath()
-    {
-        return $this->socketPath;
-    }

@@ -1,7 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function deactivate(Composer $composer, IOInterface $io)
-    {
-    }

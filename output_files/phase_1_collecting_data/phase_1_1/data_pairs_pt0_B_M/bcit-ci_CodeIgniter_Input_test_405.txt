@@ -1,6 +1,0 @@
-	// --------------------------------------------------------------------
-
-	public function test_server()
-	{
-		$this->assertEquals('GET', $this->input->server('REQUEST_METHOD'));
-	}

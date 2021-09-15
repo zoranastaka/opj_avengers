@@ -1,7 +1,0 @@
-    /**
-     * Returns the input stream.
-     *
-     * @return HTML5_InputStream
-     */
-
-    public function stream() {

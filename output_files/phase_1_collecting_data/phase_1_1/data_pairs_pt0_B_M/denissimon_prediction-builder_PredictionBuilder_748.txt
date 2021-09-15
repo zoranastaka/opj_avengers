@@ -1,8 +1,0 @@
-    /**
-     * The slope, or the regression coefficient
-     * b = ((ΣXY / N) - (ΣX / N)(ΣY / N)) / ((ΣX² / N) - (ΣX / N)²)
-     *
-     * @return float
-     */
-
-    private function bSlope() {

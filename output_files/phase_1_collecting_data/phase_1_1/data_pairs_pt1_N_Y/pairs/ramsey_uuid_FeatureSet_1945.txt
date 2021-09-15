@@ -1,8 +1,0 @@
-    /**
-     * Set the validator to use in this environment
-     */
-
-    public function setValidator(ValidatorInterface $validator): void
-    {
-        $this->validator = $validator;
-    }

@@ -1,8 +1,0 @@
-    /**
-     * @param string $name
-     */
-
-    public function removeTheme($name)
-    {
-        unset($this->themes[$name]);
-    }

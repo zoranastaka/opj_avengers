@@ -1,9 +1,0 @@
-    /**
-     * Diagonal matrix must be lower triangular
-     * @inheritDoc
-     */
-
-    public function isLowerTriangular(): bool
-    {
-        return true;
-    }

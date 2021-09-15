@@ -1,8 +1,0 @@
-    /**
-     * Does traversable size satisfy a given matcher?
-     */
-
-    function traversableWithSize($size)
-    {
-        return \Hamcrest\Collection\IsTraversableWithSize::traversableWithSize($size);
-    }

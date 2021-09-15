@@ -1,5 +1,0 @@
-    /**
-     * The class name used by the various mapping drivers.
-     */
-
-    abstract protected function getMetadataDriverClass(string $driverType): string;

@@ -1,8 +1,0 @@
-    /**
-     * @requires PHP
-     */
-
-    public function testGetVendorUrlReturnsPhpDotNetWhenRunningPhp(): void
-    {
-        $this->assertSame('https://secure.php.net/', $this->env->getVendorUrl());
-    }

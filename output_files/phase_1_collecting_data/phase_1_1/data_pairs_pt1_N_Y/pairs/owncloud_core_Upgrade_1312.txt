@@ -1,8 +1,0 @@
-	/**
-	 * Execute the upgrade command
-	 *
-	 * @param InputInterface $input input interface
-	 * @param OutputInterface $output output interface
-	 */
-
-	protected function execute(InputInterface $input, OutputInterface $output) {

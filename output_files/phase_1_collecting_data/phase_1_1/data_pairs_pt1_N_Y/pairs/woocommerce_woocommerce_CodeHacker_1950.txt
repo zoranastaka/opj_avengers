@@ -1,5 +1,0 @@
-	/**
-	 * Close directory handle.
-	 */
-
-	public function dir_closedir() {

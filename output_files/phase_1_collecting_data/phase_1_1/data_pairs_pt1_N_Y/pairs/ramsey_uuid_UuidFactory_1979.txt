@@ -1,8 +1,0 @@
-    /**
-     * Returns the random generator used by this factory
-     */
-
-    public function getRandomGenerator(): RandomGeneratorInterface
-    {
-        return $this->randomGenerator;
-    }

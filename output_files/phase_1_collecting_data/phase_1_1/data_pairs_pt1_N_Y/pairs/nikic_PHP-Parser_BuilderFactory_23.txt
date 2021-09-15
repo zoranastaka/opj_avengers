@@ -1,9 +1,0 @@
-    /**
-     * Creates a constant fetch node.
-     *
-     * @param string|Name $name Constant name
-     *
-     * @return Expr\ConstFetch
-     */
-
-    public function constFetch($name) : Expr\ConstFetch {

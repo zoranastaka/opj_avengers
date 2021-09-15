@@ -1,9 +1,0 @@
-    /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
-     */
-
-    public function testRequiredFailSecondParameter()
-    {
-        $arg = new Argument($this->getMockedCommand(['foo']), 1);
-        $arg->required();
-    }

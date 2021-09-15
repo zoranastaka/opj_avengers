@@ -1,5 +1,0 @@
-    /**
-     * Reset dynamic object properties to improve performance.
-     */
-
-    abstract protected function resetProperties(): void;

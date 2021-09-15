@@ -1,6 +1,0 @@
-            // It's a success, so resolve the handlers in the queue.
-
-            Utils::queue()->add(static function () use ($id, $value, $handlers) {
-                foreach ($handlers as $handler) {
-                    self::callHandler($id, $value, $handler);
-                }

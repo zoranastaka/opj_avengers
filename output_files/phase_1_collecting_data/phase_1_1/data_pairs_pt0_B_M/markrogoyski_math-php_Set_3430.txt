@@ -1,8 +1,0 @@
-    /**
-     * Current (Iterator interface)
-     */
-
-    public function current()
-    {
-        return $this->A[$this->iterator_position];
-    }

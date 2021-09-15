@@ -1,9 +1,0 @@
-    /**
-     * @param $type
-     * @param $callback
-     */
-
-    public function hook($type, $callback)
-    {
-        $this->_hooks[$type][] = $callback;
-    }

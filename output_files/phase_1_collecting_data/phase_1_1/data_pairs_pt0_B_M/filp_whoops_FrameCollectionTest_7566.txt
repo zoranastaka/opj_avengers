@@ -1,9 +1,0 @@
-    /**
-     * @covers Whoops\Exception\FrameCollection::offsetGet
-     */
-
-    public function testArrayAccessGet()
-    {
-        $collection = $this->getFrameCollectionInstance();
-        $this->assertInstanceOf('Whoops\\Exception\\Frame', $collection[0]);
-    }

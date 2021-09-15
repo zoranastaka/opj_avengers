@@ -1,5 +1,0 @@
-	/**
-	 * register hooks for the cache
-	 */
-
-	public static function registerLogRotate() {

@@ -1,6 +1,0 @@
-/**
- * An opinionated facade class to quickly and easily create a WebSocket server.
- * A few configuration assumptions are made and some best-practice security conventions are applied by default.
- */
-
-class App {

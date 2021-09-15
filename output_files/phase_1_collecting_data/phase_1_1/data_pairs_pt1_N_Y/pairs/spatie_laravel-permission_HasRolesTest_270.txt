@@ -1,8 +1,0 @@
-    /** @test */
-
-    public function it_can_assign_a_role_using_an_object()
-    {
-        $this->testUser->assignRole($this->testUserRole);
-
-        $this->assertTrue($this->testUser->hasRole($this->testUserRole));
-    }

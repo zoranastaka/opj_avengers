@@ -1,8 +1,0 @@
-    /**
-     * @return array
-     */
-
-    public function getPossibleStyles()
-    {
-        return array_keys($this->styles);
-    }

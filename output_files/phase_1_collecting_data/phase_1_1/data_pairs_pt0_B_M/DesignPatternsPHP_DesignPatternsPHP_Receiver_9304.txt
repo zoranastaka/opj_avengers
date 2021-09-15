@@ -1,8 +1,0 @@
-    /**
-     * Disable receiver to display message date
-     */
-
-    public function disableDate()
-    {
-        $this->enableDate = false;
-    }

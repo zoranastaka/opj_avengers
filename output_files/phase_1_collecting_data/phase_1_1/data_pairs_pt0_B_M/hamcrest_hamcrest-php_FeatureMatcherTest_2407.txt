@@ -1,6 +1,0 @@
-    // -- Creation Methods
-
-    private function _resultMatcher()
-    {
-        return new \Hamcrest\ResultMatcher();
-    }

@@ -1,8 +1,0 @@
-    /**
-     * Filters elements of an Iterator using a callback function.
-     */
-
-    protected function filter(Iterator $iterator, callable $callable): CallbackFilterIterator
-    {
-        return new CallbackFilterIterator($iterator, $callable);
-    }

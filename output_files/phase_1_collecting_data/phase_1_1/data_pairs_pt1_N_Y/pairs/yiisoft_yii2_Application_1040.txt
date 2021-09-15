@@ -1,9 +1,0 @@
-    /**
-     * Returns the internationalization (i18n) component.
-     * @return \yii\i18n\I18N the internationalization application component.
-     */
-
-    public function getI18n()
-    {
-        return $this->get('i18n');
-    }

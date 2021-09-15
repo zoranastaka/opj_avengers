@@ -1,7 +1,0 @@
-    /**
-     * Unlisten.
-     *
-     * @return void
-     */
-
-    public function unlisten() {

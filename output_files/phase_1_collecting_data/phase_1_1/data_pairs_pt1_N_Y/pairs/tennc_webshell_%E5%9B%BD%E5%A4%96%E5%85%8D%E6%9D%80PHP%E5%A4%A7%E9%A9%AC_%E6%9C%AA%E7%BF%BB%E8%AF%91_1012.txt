@@ -1,5 +1,0 @@
-##################
-##[ HTML START ]##
-##################
-
-function srv_info($title,$contents) {

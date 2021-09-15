@@ -1,7 +1,0 @@
-    /** @group issue/144 */
-
-    public function testMockeryShouldInterpretEmptyArrayAsConstructorArgs()
-    {
-        $mock = mock("EmptyConstructorTest", array());
-        $this->assertSame(0, $mock->numberOfConstructorArgs);
-    }

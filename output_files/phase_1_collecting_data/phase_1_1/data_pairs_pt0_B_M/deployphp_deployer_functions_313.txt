@@ -1,9 +1,0 @@
-/**
- * Get host by host alias.
- *
- */
-
-function getHost(string $alias): Host
-{
-    return Deployer::get()->hosts->get($alias);
-}

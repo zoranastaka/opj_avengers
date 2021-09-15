@@ -1,8 +1,0 @@
-    /**
-     * Initiates new image from Imagick object
-     *
-     * @param \Imagick $object
-     * @return \Intervention\Image\Image
-     */
-
-    abstract public function initFromImagick(\Imagick $object);

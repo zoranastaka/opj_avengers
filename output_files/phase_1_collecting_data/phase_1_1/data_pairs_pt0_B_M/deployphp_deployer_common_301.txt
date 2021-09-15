@@ -1,5 +1,0 @@
-/**
- * Hook on deploy failure.
- */
-
-task('deploy:failed', function () {

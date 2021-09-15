@@ -1,5 +1,0 @@
-	/**
-	 * Save order items via ajax.
-	 */
-
-	public static function save_order_items() {

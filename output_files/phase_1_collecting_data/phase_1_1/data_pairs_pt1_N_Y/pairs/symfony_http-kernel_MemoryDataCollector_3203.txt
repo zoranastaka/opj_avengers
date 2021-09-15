@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function lateCollect()
-    {
-        $this->updateMemoryUsage();
-    }

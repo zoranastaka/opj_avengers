@@ -1,8 +1,0 @@
-    /**
-     * {@inheritDoc}
-     */
-
-    public function getSessionValue($name)
-    {
-        return $this->session->get($name);
-    }

@@ -1,8 +1,0 @@
-    /**
-     * Returns the time generator configured for this environment
-     */
-
-    public function getTimeGenerator(): TimeGeneratorInterface
-    {
-        return $this->timeGenerator;
-    }

@@ -1,9 +1,0 @@
-    /**
-     * @expectedException \Exception
-     */
-
-    public function testOffsetSet()
-    {
-        $stringy = S::create('fòô', 'UTF-8');
-        $stringy[1] = 'invalid';
-    }

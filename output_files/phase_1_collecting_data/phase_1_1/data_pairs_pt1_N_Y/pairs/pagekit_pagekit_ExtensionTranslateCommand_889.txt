@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    protected function configure()
-    {
-        $this->addArgument('extension', InputArgument::OPTIONAL, 'Extension name');
-    }

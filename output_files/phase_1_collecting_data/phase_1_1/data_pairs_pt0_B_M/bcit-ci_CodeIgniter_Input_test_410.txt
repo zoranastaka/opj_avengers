@@ -1,6 +1,0 @@
-	// --------------------------------------------------------------------
-
-	public function test_input_stream()
-	{
-		$this->markTestSkipped('TODO: Find a way to test input://');
-	}

@@ -1,8 +1,0 @@
-    /**
-     * @return array
-     */
-
-    public function getTokens()
-    {
-        return $this->tokens;
-    }

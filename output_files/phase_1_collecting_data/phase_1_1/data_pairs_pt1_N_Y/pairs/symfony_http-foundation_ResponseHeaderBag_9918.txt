@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function hasCacheControlDirective(string $key)
-    {
-        return \array_key_exists($key, $this->computedCacheControl);
-    }

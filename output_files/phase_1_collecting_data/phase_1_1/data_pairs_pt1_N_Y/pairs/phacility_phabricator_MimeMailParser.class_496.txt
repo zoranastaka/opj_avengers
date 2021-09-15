@@ -1,7 +1,0 @@
-	/**
-	 * Returns the attachments contents in order of appearance
-	 * @return Array
-	 * @param $type Object[optional]
-	 */
-
-	public function getAttachments() {

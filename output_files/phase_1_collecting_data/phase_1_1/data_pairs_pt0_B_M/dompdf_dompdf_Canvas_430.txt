@@ -1,7 +1,0 @@
-    /**
-     * Returns the current page number
-     *
-     * @return int
-     */
-
-    function get_page_number();

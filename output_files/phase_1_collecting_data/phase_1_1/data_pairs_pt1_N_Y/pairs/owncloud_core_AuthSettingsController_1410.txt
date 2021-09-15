@@ -1,8 +1,0 @@
-	/**
-	 * @NoAdminRequired
-	 * @NoSubadminRequired
-	 *
-	 * @return JSONResponse | array
-	 */
-
-	public function destroy($id) {

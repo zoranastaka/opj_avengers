@@ -1,3 +1,0 @@
-//klasa koja predstavlja jedan film
-
-class Movie{

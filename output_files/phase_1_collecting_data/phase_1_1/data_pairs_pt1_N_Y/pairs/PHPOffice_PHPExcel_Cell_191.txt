@@ -1,8 +1,0 @@
-    /**
-     *    @deprecated        Since version 1.7.8 for planned changes to cell for array formula handling
-     */
-
-    public function getFormulaAttributes()
-    {
-        return $this->formulaAttributes;
-    }

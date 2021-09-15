@@ -1,8 +1,0 @@
-    /**
-     * Sets the DCE Security provider to use in this environment
-     */
-
-    public function setDceSecurityProvider(DceSecurityProviderInterface $dceSecurityProvider): void
-    {
-        $this->dceSecurityGenerator = $this->buildDceSecurityGenerator($dceSecurityProvider);
-    }

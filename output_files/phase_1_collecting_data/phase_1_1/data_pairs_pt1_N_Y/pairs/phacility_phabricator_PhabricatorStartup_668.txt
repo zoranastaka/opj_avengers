@@ -1,5 +1,0 @@
-  /**
-   * @task info
-   */
-
-  public static function getStartTime() {

@@ -1,8 +1,0 @@
-    /**
-     * @param Frame[] $frames Array of Frame instances, usually from $e->getPrevious()
-     */
-
-    public function prependFrames(array $frames)
-    {
-        $this->frames = array_merge($frames, $this->frames);
-    }

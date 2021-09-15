@@ -1,6 +1,0 @@
-    /**
-     * @param $token
-     * @return mixed
-     */
-
-    public function adjustSVGAttributes($token) {

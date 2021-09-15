@@ -1,5 +1,0 @@
-	/**
-	 * Initiate new background process.
-	 */
-
-	public function __construct() {

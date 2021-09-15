@@ -1,8 +1,0 @@
-    /**
-     * Used to set predefined features to consider while deciding which column to use for a split
-     */
-
-    protected function setSelectedFeatures(array $selectedFeatures): void
-    {
-        $this->selectedFeatures = $selectedFeatures;
-    }

@@ -1,6 +1,0 @@
-/**
- * @param an array of integers
- * @return is array sorted in ascending
- */
-
-function array_check(array $arr): void{

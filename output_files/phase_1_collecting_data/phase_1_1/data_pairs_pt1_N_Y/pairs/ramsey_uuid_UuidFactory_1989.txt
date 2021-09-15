@@ -1,8 +1,0 @@
-    /**
-     * @psalm-mutation-free
-     */
-
-    public function getValidator(): ValidatorInterface
-    {
-        return $this->validator;
-    }

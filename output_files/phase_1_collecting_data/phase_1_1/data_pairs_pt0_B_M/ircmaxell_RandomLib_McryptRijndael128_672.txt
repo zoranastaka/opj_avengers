@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public static function getStrength()
-    {
-        return new Strength(Strength::HIGH);
-    }

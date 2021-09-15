@@ -1,6 +1,0 @@
-    /** @test */
-
-    public function it_should_get_the_payload_factory()
-    {
-        $this->assertInstanceOf(Factory::class, $this->manager->getPayloadFactory());
-    }

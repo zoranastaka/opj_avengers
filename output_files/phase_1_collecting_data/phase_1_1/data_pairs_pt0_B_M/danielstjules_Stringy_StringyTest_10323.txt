@@ -1,9 +1,0 @@
-    /**
-     * @expectedException \OutOfBoundsException
-     */
-
-    public function testOffsetGetOutOfBounds()
-    {
-        $stringy = S::create('fòô', 'UTF-8');
-        $test = $stringy[3];
-    }

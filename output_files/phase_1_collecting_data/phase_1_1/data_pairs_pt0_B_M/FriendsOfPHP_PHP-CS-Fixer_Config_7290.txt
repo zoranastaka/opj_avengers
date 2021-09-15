@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function getPhpExecutable(): ?string
-    {
-        return $this->phpExecutable;
-    }

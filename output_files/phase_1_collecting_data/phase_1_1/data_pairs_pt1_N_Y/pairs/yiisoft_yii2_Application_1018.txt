@@ -1,9 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function init()
-    {
-        $this->state = self::STATE_INIT;
-        $this->bootstrap();
-    }

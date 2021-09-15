@@ -1,9 +1,0 @@
-    /**
-     * Determine if a time string will produce a relative date.
-     *
-     * @param string $time
-     *
-     * @return bool true if time match a relative date, false if absolute or invalid time string
-     */
-
-    public static function hasRelativeKeywords($time);

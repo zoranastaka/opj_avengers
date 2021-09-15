@@ -1,5 +1,0 @@
-    /**
-     * @param mixed $compareTo
-     */
-
-    public function greaterThan($compareTo): ChainedValidator;

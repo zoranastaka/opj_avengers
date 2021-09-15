@@ -1,8 +1,0 @@
-    /**
-     * A test started.
-     */
-
-    public function startTest(Test $test): void
-    {
-        //
-    }

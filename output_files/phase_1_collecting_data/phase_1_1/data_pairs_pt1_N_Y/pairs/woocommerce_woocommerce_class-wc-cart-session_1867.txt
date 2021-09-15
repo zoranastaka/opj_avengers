@@ -1,7 +1,0 @@
-	/**
-	 * Returns the contents of the cart in an array without the 'data' element.
-	 *
-	 * @return array contents of the cart
-	 */
-
-	public function get_cart_for_session() {

@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function save()
-    {
-        $this->storage->save();
-    }

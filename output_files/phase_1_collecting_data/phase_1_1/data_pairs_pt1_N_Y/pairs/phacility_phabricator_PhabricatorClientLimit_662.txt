@@ -1,8 +1,0 @@
-  /**
-   * Get the APC key for the smallest stored bucket.
-   *
-   * @return string APC key for the smallest stored bucket.
-   * @task ratelimit
-   */
-
-  private function getMinimumBucketCacheKey() {

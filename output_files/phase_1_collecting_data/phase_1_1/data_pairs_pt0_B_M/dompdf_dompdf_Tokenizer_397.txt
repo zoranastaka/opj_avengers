@@ -1,7 +1,0 @@
-    /**
-     * Returns a serialized representation of the tree.
-     *
-     * @return DOMDocument|DOMNodeList
-     */
-
-    public function save() {

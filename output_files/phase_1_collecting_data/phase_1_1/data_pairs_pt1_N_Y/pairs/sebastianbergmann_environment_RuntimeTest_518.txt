@@ -1,8 +1,0 @@
-    /**
-     * @requires PHP
-     */
-
-    public function testIsHhvmReturnsFalseWhenRunningOnPhp(): void
-    {
-        $this->assertFalse($this->env->isHHVM());
-    }

@@ -1,6 +1,0 @@
-    /**
-     * @param  Inspector $inspector
-     * @return void
-     */
-
-    public function setInspector(Inspector $inspector);

@@ -1,6 +1,0 @@
-  /**
-  * Return the current array of attachments
-  * @return array
-  */
-
-  public function GetAttachments() {

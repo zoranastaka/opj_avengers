@@ -1,9 +1,0 @@
-    /**
-     * @alias copy
-     *
-     * Get a copy of the instance.
-     *
-     * @return static
-     */
-
-    public function clone();

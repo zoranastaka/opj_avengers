@@ -1,3 +1,0 @@
-// Title of project based on git repo
-
-set('cimonitor_title', function () {

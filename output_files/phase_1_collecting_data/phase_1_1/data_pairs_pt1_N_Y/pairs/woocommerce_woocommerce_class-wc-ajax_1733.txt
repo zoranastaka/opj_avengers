@@ -1,8 +1,0 @@
-	/**
-	 * Triggered when clicking the rating footer.
-	 */
-
-	public static function rated() {
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			wp_die( -1 );
-		}

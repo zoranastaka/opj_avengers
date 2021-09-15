@@ -1,6 +1,0 @@
-    /**
-     * @param \Magento\Framework\Authorization\PolicyInterface $aclPolicy
-     * @param \Magento\Framework\Authorization\RoleLocatorInterface $roleLocator
-     */
-
-    public function __construct(

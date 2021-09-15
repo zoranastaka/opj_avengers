@@ -1,8 +1,0 @@
-    /**
-     * Adds the stack logger for a connection.
-     */
-
-    public function addLogger(string $name, DebugStack $logger)
-    {
-        $this->loggers[$name] = $logger;
-    }

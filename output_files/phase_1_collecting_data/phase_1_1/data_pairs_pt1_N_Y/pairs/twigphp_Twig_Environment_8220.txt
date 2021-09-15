@@ -1,8 +1,0 @@
-    /**
-     * Disables the auto_reload option.
-     */
-
-    public function disableAutoReload()
-    {
-        $this->autoReload = false;
-    }

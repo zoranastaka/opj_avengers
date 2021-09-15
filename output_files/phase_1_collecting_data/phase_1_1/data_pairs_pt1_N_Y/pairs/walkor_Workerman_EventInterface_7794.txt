@@ -1,7 +1,0 @@
-    /**
-     * Remove all timers.
-     *
-     * @return void
-     */
-
-    public function clearAllTimer();

@@ -1,9 +1,0 @@
-    /** @dataProvider setVerbosityValidProvider */
-
-    public function testSetVerbosityValid($verbosity)
-    {
-        $config = $this->getConfig();
-        $config->setVerbosity($verbosity);
-
-        $this->assertSame($verbosity, $config->verbosity());
-    }

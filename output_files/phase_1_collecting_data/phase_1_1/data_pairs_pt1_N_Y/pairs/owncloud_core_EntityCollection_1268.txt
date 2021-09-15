@@ -1,5 +1,0 @@
-	/**
-	 * @inheritdoc
-	 */
-
-	public function getProperties($properties) {

@@ -1,7 +1,0 @@
-    /**
-     * Whether this resolver can resolve the value for the given ArgumentMetadata.
-     *
-     * @return bool
-     */
-
-    public function supports(Request $request, ArgumentMetadata $argument);

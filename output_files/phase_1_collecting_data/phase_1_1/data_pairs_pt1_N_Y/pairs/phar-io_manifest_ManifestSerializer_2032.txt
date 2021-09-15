@@ -1,3 +1,0 @@
-/** @psalm-suppress MissingConstructor */
-
-class ManifestSerializer {

@@ -1,8 +1,0 @@
-    /**
-     * construct
-     */
-
-    public function __construct()
-    {
-        $this->_eventBase = \event_base_new();
-    }

@@ -1,8 +1,0 @@
-    /**
-     * Count section media elements
-     */
-
-    public function testCountSectionMediaElementsWithNull()
-    {
-        $this->assertEquals(0, Media::countElements('section'));
-    }

@@ -1,9 +1,0 @@
-    /**
-     * @param float|int $value
-     * @param float|int $calculatedvalue
-     */
-
-    public function differentiate($value, $calculatedvalue): float
-    {
-        return $calculatedvalue >= $this->theta ? 1.0 : 0.0;
-    }

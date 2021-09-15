@@ -1,9 +1,0 @@
-    /**
-     * Initialises the context.
-     */
-
-    public function __construct()
-    {
-        $this->arrays  = [];
-        $this->objects = new SplObjectStorage;
-    }

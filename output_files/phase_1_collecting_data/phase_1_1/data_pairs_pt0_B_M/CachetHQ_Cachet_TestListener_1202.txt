@@ -1,8 +1,0 @@
-    /**
-     * A warning occurred.
-     */
-
-    public function addWarning(Test $test, Warning $e, float $time): void
-    {
-        //
-    }

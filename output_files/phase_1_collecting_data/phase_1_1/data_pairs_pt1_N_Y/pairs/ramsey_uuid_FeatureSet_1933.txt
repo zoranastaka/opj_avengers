@@ -1,8 +1,0 @@
-    /**
-     * Returns the DCE Security generator configured for this environment
-     */
-
-    public function getDceSecurityGenerator(): DceSecurityGeneratorInterface
-    {
-        return $this->dceSecurityGenerator;
-    }

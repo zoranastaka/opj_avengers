@@ -1,8 +1,0 @@
-  /**
-   * Generate DKIM signature
-   *
-   * @access public
-   * @param string $s Header
-   */
-
-  public function DKIM_Sign($s) {

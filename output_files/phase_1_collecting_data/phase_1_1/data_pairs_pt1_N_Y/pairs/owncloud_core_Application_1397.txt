@@ -1,5 +1,0 @@
-/**
- * @package OC\Settings
- */
-
-class Application extends App {

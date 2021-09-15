@@ -1,5 +1,0 @@
-    /**
-     * Returns if the token has the given id
-     */
-
-    public function isIdentifiedBy(string $id): bool;

@@ -1,5 +1,0 @@
-    /**
-     * Performs the actual parsing of the document.
-     */
-
-    public function parse() {

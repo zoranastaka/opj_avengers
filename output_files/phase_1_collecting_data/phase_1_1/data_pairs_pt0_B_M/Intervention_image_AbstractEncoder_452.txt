@@ -1,7 +1,0 @@
-    /**
-     * Processes and returns image as WebP encoded string
-     *
-     * @return string
-     */
-
-    abstract protected function processWebp();

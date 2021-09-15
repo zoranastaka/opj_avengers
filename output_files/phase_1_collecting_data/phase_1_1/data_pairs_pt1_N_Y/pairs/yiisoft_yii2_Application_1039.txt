@@ -1,9 +1,0 @@
-    /**
-     * Returns the URL manager for this application.
-     * @return \yii\web\UrlManager the URL manager for this application.
-     */
-
-    public function getUrlManager()
-    {
-        return $this->get('urlManager');
-    }

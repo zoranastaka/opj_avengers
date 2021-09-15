@@ -1,9 +1,0 @@
-    /**
-     * Add two objects together
-     *
-     * @param mixed $object_or_scalar the value to be added
-     *
-     * @return ObjectArithmetic sum.
-     */
-
-    public function add($object_or_scalar);

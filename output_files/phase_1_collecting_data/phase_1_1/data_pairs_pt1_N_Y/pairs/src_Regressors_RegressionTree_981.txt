@@ -1,8 +1,0 @@
-    /**
-     * @param int $maxHeight
-     * @param int $maxLeafSize
-     * @param float $minPurityIncrease
-     * @param int|null $maxFeatures
-     */
-
-    public function __construct(

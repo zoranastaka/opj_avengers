@@ -1,9 +1,0 @@
-    /**
-     * @dataProvider flattenDataProvider
-     */
-
-    public function testFile(\Throwable $exception)
-    {
-        $flattened = FlattenException::createFromThrowable($exception);
-        $this->assertSame($exception->getFile(), $flattened->getFile());
-    }

@@ -1,9 +1,0 @@
-	/**
-	 * Removes a key from the config and removes it from config.php if required
-	 * @param string $key
-	 */
-
-	public function deleteKey($key) {
-		if ($this->isReadOnly()) {
-			throw new \Exception('Config file is read only.');
-		}

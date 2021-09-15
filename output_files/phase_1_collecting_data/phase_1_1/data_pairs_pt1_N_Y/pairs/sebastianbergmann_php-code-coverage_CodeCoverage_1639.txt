@@ -1,8 +1,0 @@
-    /**
-     * Sets the coverage data.
-     */
-
-    public function setData(ProcessedCodeCoverageData $data): void
-    {
-        $this->data = $data;
-    }

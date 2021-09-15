@@ -1,3 +1,0 @@
-            // Crtanje lopte na osnovu podataka iz prosledjenog niza
-
-            function drawBall(context, ball) {

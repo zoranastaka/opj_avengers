@@ -1,8 +1,0 @@
-    /**
-     * @deprecated
-     */
-
-    public static function getDataDirs()
-    {
-        return (new self())->dataDirs();
-    }

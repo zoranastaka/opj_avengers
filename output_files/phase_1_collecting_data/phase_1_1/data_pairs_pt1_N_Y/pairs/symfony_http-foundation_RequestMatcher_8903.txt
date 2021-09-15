@@ -1,8 +1,0 @@
-    /**
-     * Adds a check for request attribute.
-     */
-
-    public function matchAttribute(string $key, string $regexp)
-    {
-        $this->attributes[$key] = $regexp;
-    }

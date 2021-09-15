@@ -1,8 +1,0 @@
-    /**
-     * @return string[]|int[]|float[]|bool[]
-     */
-
-    public function toArray(): array
-    {
-        return $this->elements;
-    }

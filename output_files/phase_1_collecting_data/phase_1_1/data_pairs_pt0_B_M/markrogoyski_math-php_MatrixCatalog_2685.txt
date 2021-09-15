@@ -1,8 +1,0 @@
-    /**
-     * @param number $det
-     */
-
-    public function addDeterminant($det): void
-    {
-        $this->det = $det;
-    }

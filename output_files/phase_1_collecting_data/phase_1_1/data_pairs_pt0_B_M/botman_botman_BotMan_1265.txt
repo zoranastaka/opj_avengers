@@ -1,8 +1,0 @@
-    /**
-     * @return DriverInterface
-     */
-
-    public function getDriver()
-    {
-        return $this->driver;
-    }

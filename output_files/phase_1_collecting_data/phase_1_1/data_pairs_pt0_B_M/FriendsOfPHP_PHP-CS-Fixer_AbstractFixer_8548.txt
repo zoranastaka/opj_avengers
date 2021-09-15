@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function supports(\SplFileInfo $file): bool
-    {
-        return true;
-    }

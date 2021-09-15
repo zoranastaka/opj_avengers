@@ -1,9 +1,0 @@
-    /** @test */
-
-    public function spy_creates_a_spy()
-    {
-        $double = spy();
-
-        $this->assertInstanceOf(\Mockery\MockInterface::class, $double);
-        $double->foo();
-    }

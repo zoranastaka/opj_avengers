@@ -1,8 +1,0 @@
-    /**
-     * Returns the name generator configured for this environment
-     */
-
-    public function getNameGenerator(): NameGeneratorInterface
-    {
-        return $this->nameGenerator;
-    }

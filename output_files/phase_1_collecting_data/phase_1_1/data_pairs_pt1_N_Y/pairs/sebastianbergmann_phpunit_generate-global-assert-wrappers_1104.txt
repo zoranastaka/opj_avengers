@@ -1,9 +1,0 @@
-    /**
-     * Returns a matcher that matches when the method is executed
-     * at most N times.
-     */
-
-    function atMost(int $allowedInvocations): InvokedAtMostCountMatcher
-    {
-        return new InvokedAtMostCountMatcher($allowedInvocations);
-    }

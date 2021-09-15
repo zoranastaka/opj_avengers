@@ -1,3 +1,0 @@
-     //konstruktor
-
-     function __construct(){

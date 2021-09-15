@@ -1,6 +1,0 @@
-	/**
-	 * @param string $app
-	 * @return array
-	 */
-
-	private function getAppValues($app) {

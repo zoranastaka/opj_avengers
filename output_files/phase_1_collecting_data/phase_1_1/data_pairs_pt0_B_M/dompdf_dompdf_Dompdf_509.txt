@@ -1,9 +1,0 @@
-    /**
-     * @return FrameTree
-     * @deprecated
-     */
-
-    public function get_tree()
-    {
-        return $this->getTree();
-    }

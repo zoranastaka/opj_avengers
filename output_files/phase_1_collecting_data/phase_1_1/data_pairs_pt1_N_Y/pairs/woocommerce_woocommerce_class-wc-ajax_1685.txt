@@ -1,5 +1,0 @@
-	/**
-	 * Hook in methods - uses WordPress ajax handlers (admin-ajax).
-	 */
-
-	public static function add_ajax_events() {

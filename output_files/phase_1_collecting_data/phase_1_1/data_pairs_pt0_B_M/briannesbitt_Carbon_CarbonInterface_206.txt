@@ -1,9 +1,0 @@
-    /**
-     * @alias getTimestamp
-     *
-     * Returns the UNIX timestamp for the current date.
-     *
-     * @return int
-     */
-
-    public function unix();

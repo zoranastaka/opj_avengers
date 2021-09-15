@@ -1,5 +1,0 @@
-    /**
-     * @return int
-     */
-
-    public function getOrderNumber();

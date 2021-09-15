@@ -1,8 +1,0 @@
-    /**
-     * @param mixed $value
-     */
-
-    public function __set(string $name, $value)
-    {
-        $this[$name] = $value;
-    }

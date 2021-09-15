@@ -1,8 +1,0 @@
-    /**
-     * @inheritdoc
-     */
-
-    public function exists(): bool
-    {
-        return $this->started;
-    }

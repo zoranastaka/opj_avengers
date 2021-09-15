@@ -1,9 +1,0 @@
-    /**
-     * Appends an arbitary value to the description.
-     *
-     * @param mixed $value
-     *
-     * @return \Hamcrest\Description
-     */
-
-    public function appendValue($value);

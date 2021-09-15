@@ -1,7 +1,0 @@
-/**
- * IXR日期
- *
- * @package IXR
- */
-
-class IXR_Date {

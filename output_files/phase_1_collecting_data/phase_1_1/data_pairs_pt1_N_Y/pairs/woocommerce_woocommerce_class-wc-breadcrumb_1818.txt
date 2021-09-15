@@ -1,7 +1,0 @@
-	/**
-	 * Get the breadcrumb.
-	 *
-	 * @return array
-	 */
-
-	public function get_breadcrumb() {

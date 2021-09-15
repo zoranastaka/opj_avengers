@@ -1,5 +1,0 @@
-		/**
-		 * Controllers
-		 */
-
-		$container->registerService('SettingsPageController', function (IContainer $c) {

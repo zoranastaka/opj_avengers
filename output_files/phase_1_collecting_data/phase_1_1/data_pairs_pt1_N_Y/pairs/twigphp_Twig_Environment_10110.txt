@@ -1,8 +1,0 @@
-    /**
-     * @internal
-     */
-
-    public function getTest(string $name): ?TwigTest
-    {
-        return $this->extensionSet->getTest($name);
-    }

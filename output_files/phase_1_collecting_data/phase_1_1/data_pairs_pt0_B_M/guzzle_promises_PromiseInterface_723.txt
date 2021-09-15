@@ -1,9 +1,0 @@
-    /**
-     * Reject the promise with the given reason.
-     *
-     * @param mixed $reason
-     *
-     * @throws \RuntimeException if the promise is already resolved.
-     */
-
-    public function reject($reason);

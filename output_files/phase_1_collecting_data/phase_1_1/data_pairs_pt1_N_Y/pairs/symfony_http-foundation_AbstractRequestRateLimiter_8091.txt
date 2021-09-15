@@ -1,5 +1,0 @@
-    /**
-     * @return LimiterInterface[] a set of limiters using keys extracted from the request
-     */
-
-    abstract protected function getLimiters(Request $request): array;

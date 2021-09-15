@@ -1,9 +1,0 @@
-    /**
-     * @group partial
-     */
-
-    public function testCanUseExclamationToBlacklistMethod()
-    {
-        $m = mock('MockeryTest_PartialNormalClass2[!foo]');
-        $this->assertSame('abc', $m->foo());
-    }

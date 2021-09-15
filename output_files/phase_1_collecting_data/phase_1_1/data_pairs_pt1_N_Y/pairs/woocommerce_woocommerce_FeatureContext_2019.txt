@@ -1,5 +1,0 @@
-	/**
-	 * Terminate a process and any of its children.
-	 */
-
-	private static function terminate_proc( $proc ) {

@@ -1,8 +1,0 @@
-    /**
-     * {@inheritDoc}
-     */
-
-    public function deleteSessionValue($name)
-    {
-        $this->session->remove($name);
-    }

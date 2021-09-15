@@ -1,8 +1,0 @@
-    /** @test */
-
-    public function it_verifies_the_closure_was_not_called()
-    {
-        $spy = spy(function () {});
-
-        $spy->shouldNotHaveBeenCalled();
-    }

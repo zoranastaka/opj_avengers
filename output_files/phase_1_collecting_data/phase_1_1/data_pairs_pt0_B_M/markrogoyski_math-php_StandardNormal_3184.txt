@@ -1,8 +1,0 @@
-    /**
-     * StandardNormal constructor
-     */
-
-    public function __construct()
-    {
-        parent::__construct(self::μ, self::σ);
-    }

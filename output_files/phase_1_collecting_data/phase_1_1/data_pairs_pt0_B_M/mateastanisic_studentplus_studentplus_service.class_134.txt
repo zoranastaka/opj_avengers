@@ -1,8 +1,0 @@
-	//vraća polje svih članova (-1/0/1) neke ponude čiji id šaljemo
-
-	function get_students_in_offer_by_id($id_offer){
-		try{
-			$db = DB::getConnection();
-			$st = $db->prepare( 'SELECT * FROM studentplus_members WHERE id_offer=:id_offer ORDER BY id_offer' );
-			$st->execute( array( 'id_offer' => $id_offer ) );
-		}

@@ -1,8 +1,0 @@
-    /**
-     * @return string
-     */
-
-    protected function getDocumentContentTypesName()
-    {
-        return '[Content_Types].xml';
-    }

@@ -1,9 +1,0 @@
-    /**
-     * Prefix add raw SQL query.
-     *
-     * @author Emre Emir <https://github.com/bejutassle>
-     * @param string $query      User-provided query to execute.
-     * @return string Contains the returned rows from the query.
-     */
-
-    public function rawAddPrefix($query){

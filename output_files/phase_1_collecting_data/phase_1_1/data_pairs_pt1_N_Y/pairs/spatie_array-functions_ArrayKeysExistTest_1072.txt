@@ -1,8 +1,0 @@
-    /**
-     * @test
-     */
-
-    public function it_returns_false_for_searching_for_needles_in_an_empty_haystack()
-    {
-        $this->assertFalse(array_keys_exist(['a', 'b', 'c'], []));
-    }

@@ -1,7 +1,0 @@
-	/**
-	 * Remove all fees.
-	 *
-	 * @since 3.2.0
-	 */
-
-	public function remove_all_fees() {

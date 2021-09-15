@@ -1,8 +1,0 @@
-	/**
-	 * Schedule a download permissions adjustment for a product if necessary.
-	 * This should be executed whenever a product is saved.
-	 *
-	 * @param \WC_Product $product The product to schedule a download permission adjustments for.
-	 */
-
-	public function maybe_schedule_adjust_download_permissions( \WC_Product $product ) {

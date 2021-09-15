@@ -1,9 +1,0 @@
-    /**
-     * Returns the alternative number for a given date property if available in the current locale.
-     *
-     * @param string $key date property
-     *
-     * @return string
-     */
-
-    public function getAltNumber(string $key): string;

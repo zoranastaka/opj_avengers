@@ -1,7 +1,0 @@
-    /**
-     * Unregisters all handlers registered by this Whoops\Run instance
-     *
-     * @return Run
-     */
-
-    public function unregister();

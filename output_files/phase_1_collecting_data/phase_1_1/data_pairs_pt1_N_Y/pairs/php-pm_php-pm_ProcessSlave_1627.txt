@@ -1,8 +1,0 @@
-    /**
-     * @return string
-     */
-
-    protected function getStaticDirectory()
-    {
-        return $this->config['static-directory'];
-    }

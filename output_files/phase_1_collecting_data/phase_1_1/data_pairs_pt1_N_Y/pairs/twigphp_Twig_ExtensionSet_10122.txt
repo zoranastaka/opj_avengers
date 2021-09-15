@@ -1,8 +1,0 @@
-    /**
-     * @return ExtensionInterface[]
-     */
-
-    public function getExtensions(): array
-    {
-        return $this->extensions;
-    }

@@ -1,8 +1,0 @@
-    /**
-     * The value is not > $value, nor < $value.
-     */
-
-    function comparesEqualTo($value)
-    {
-        return \Hamcrest\Number\OrderingComparison::comparesEqualTo($value);
-    }

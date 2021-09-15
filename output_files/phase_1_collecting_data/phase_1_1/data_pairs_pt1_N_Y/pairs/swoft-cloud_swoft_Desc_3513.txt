@@ -1,8 +1,0 @@
-    /**
-     * @throws DbException
-     */
-
-    public function down(): void
-    {
-        $this->schema->dropIfExists('desc');
-    }

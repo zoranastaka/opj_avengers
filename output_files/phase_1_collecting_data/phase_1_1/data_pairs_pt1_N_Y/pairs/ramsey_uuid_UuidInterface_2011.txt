@@ -1,5 +1,0 @@
-    /**
-     * Returns the fields that comprise this UUID
-     */
-
-    public function getFields(): FieldsInterface;

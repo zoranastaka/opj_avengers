@@ -1,7 +1,0 @@
-/**
- * Class Extension
- *
- * @package OCA\Comments\Activity
- */
-
-class Extension implements IExtension {

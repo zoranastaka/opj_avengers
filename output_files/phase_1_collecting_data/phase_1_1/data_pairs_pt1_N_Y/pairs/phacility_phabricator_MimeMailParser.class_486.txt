@@ -1,9 +1,0 @@
-/**
- * Fast Mime Mail parser Class using PHP's MailParse Extension
- * @author gabe@fijiwebdesign.com
- * @url http://www.fijiwebdesign.com/
- * @license http://creativecommons.org/licenses/by-sa/3.0/us/
- * @version $Id$
- */
-
-class MimeMailParser {

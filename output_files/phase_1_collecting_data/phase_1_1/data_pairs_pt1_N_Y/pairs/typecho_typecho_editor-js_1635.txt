@@ -1,3 +1,0 @@
-    // 修正白名单
-
-    converter.hook('makeHtml', function (html) {

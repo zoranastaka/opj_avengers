@@ -1,3 +1,0 @@
-	// Upis u INI datoteku
-
-	function upis() {

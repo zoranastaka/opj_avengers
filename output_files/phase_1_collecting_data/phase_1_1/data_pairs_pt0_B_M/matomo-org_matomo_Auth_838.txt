@@ -1,7 +1,0 @@
-    /**
-     * Sets the password to authenticate with.
-     *
-     * @param string $password Password (not hashed).
-     */
-
-    public function setPassword($password);

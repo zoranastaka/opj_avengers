@@ -1,7 +1,0 @@
-    /**
-     * HOOK: on every Actor class initialization
-     */
-
-    public function _cleanup()
-    {
-    }

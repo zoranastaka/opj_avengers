@@ -1,6 +1,0 @@
-/**
- * Echo the tbody start tag
- *
- */
-
-function yourls_table_tbody_start() {

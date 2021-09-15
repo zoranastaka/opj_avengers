@@ -1,5 +1,0 @@
-	/*
-	 * Metoda restartuje server pozivom KGB API-ja
-	 */
-
-	function restartujServer($serverid,$token) {

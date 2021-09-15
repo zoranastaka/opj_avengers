@@ -1,8 +1,0 @@
-    /**
-     * Sets the maximum number of items to clone past the minimum depth in nested structures.
-     */
-
-    public function setMaxItems(int $maxItems)
-    {
-        $this->maxItems = $maxItems;
-    }

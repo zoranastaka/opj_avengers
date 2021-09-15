@@ -1,3 +1,0 @@
-                // k(x,y)=tanh(γ.xT.y+c0) where c0=1
-
-                return function ($x, $y): float {

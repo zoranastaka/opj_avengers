@@ -1,9 +1,0 @@
-  /**
-   * Sets Mailer to send message using the qmail MTA.
-   * @return void
-   */
-
-  public function IsQmail() {
-    if (stristr(ini_get('sendmail_path'), 'qmail')) {
-      $this->Sendmail = '/var/qmail/bin/sendmail';
-    }

@@ -1,9 +1,0 @@
-    /**
-     * Get created date as a relative diff.
-     * @return mixed
-     */
-
-    public function getCreatedAttribute()
-    {
-        return $this->created_at->diffForHumans();
-    }

@@ -1,9 +1,0 @@
-    /**
-     * @param $matches
-     * @return string
-     */
-
-    public static function transerCommentCallback($matches)
-    {
-        return self::$parser->makeHolder($matches[0]);
-    }

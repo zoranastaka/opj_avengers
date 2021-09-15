@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function toString(): string
-    {
-        return 'two arrays contain the same elements.';
-    }

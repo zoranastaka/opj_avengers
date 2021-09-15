@@ -1,8 +1,0 @@
-/**
- * Get time offset, as defined in config, filtered
- *
- * @since 1.7.10
- * @return int       Time offset
- */
-
-function yourls_get_time_offset() {

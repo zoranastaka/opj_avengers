@@ -1,7 +1,0 @@
-/**
- * This controller is responsible for managing white-listed domains for CORS
- *
- * @package OC\Settings\Controller
- */
-
-class CorsController extends Controller {

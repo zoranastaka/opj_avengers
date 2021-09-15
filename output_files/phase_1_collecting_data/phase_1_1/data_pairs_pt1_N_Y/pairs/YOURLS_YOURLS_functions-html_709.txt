@@ -1,6 +1,0 @@
-/**
- * Display <h1> header and logo
- *
- */
-
-function yourls_html_logo() {

@@ -1,7 +1,0 @@
-    /**
-     * Factory method to create the zero value of the object
-     *
-     * @return ObjectArithmetic
-     */
-
-    public static function createZeroValue(): ObjectArithmetic;

@@ -1,7 +1,0 @@
-    /**
-     * @param float $number
-     *
-     * @return float
-     */
-
-    private function round_($number) {

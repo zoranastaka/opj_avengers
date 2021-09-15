@@ -1,8 +1,0 @@
-	/**
-	 * Parse a textual representation of patches and return a list of patch objects.
-	 * @param {string} textline Text representation of patches.
-	 * @return {Array.<patch_obj>} Array of patch objects.
-	 * @throws {Error} If invalid input.
-	 */
-
-	function patch_fromText($textline) {

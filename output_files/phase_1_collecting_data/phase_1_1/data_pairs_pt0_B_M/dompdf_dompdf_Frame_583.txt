@@ -1,8 +1,0 @@
-    /**
-     * @return Frame
-     */
-
-    public function get_first_child()
-    {
-        return $this->_first_child;
-    }

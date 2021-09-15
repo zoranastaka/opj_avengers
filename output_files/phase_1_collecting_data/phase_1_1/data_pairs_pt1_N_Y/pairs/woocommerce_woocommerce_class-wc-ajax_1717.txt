@@ -1,7 +1,0 @@
-	/**
-	 * Remove an order item.
-	 *
-	 * @throws Exception If order is invalid.
-	 */
-
-	public static function remove_order_item() {

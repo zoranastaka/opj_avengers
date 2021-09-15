@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function distance(array $a, array $b): float
-    {
-        return max($this->deltas($a, $b));
-    }

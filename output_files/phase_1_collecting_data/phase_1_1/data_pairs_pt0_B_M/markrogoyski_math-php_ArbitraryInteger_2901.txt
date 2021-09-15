@@ -1,9 +1,0 @@
-    /**
-     * is the number positive?
-     * @return bool
-     */
-
-    public function isPositive(): bool
-    {
-        return $this->isPositive;
-    }

@@ -1,6 +1,0 @@
-    /**
-     * @param  \Throwable $exception
-     * @return void
-     */
-
-    public function setException($exception);

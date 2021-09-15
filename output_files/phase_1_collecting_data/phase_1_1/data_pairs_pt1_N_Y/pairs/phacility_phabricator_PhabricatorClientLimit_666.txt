@@ -1,8 +1,0 @@
-  /**
-   * Get the current rate limit score for a given client.
-   *
-   * @return float The client's current score.
-   * @task ratelimit
-   */
-
-  private function getScore() {

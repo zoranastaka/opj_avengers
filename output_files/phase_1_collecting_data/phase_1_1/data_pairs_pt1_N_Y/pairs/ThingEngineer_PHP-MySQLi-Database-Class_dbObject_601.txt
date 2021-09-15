@@ -1,7 +1,0 @@
-    /**
-     * Delete method. Works only if object primaryKey is defined
-     *
-     * @return boolean Indicates success. 0 or 1.
-     */
-
-    public function delete () {

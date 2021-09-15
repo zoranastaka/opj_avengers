@@ -1,9 +1,0 @@
-	/**
-	 * For a given method additional types to be displayed in the settings can be returned.
-	 * In case no additional types are to be added false is to be returned.
-	 *
-	 * @param string $method
-	 * @return array|false
-	 */
-
-	public function getDefaultTypes($method) {

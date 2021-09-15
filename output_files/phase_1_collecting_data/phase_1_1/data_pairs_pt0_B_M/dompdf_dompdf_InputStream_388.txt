@@ -1,6 +1,0 @@
-    /**
-     * @param $data | Data to parse
-     * @throws Exception
-     */
-
-    public function __construct($data) {

@@ -1,7 +1,0 @@
-    /**
-     * Create a Carbon instance for the lowest supported date.
-     *
-     * @return static
-     */
-
-    public static function minValue();

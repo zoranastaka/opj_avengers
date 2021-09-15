@@ -1,8 +1,0 @@
-  /**
-   * Attaches all fs, string, and binary attachments to the message.
-   * Returns an empty string on failure.
-   * @access private
-   * @return string
-   */
-
-  private function AttachAll() {

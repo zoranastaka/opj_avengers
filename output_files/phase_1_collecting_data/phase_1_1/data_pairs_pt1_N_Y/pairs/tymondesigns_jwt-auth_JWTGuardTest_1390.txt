@@ -1,7 +1,0 @@
-    /** @test */
-
-    public function it_should_magically_call_the_jwt_instance()
-    {
-        $this->jwt->shouldReceive('factory')->andReturn(Mockery::mock(Factory::class));
-        $this->assertInstanceOf(Factory::class, $this->guard->factory());
-    }

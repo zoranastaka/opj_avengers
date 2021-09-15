@@ -1,7 +1,0 @@
-    /** @test */
-
-    public function it_has_a_button_type()
-    {
-        $button = Button::create('text');
-        $this->assertSame('button', Arr::get($button->toArray(), 'type'));
-    }

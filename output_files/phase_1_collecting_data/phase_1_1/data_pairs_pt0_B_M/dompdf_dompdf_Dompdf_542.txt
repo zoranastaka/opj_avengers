@@ -1,9 +1,0 @@
-    /**
-     * @param array $callbacks the set of callbacks to set
-     * @deprecated
-     */
-
-    public function set_callbacks($callbacks)
-    {
-        $this->setCallbacks($callbacks);
-    }

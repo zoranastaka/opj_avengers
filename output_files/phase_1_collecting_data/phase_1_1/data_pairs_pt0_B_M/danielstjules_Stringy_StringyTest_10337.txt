@@ -1,5 +1,0 @@
-    /**
-     * @dataProvider longestCommonPrefixProvider()
-     */
-
-    public function testLongestCommonPrefix($expected, $str, $otherStr,

@@ -1,9 +1,0 @@
-	/**
-	 * Add query vars.
-	 *
-	 * @since  2.4.0
-	 * @param  array $vars Query variables.
-	 * @return string[]
-	 */
-
-	public function add_query_vars( $vars ) {

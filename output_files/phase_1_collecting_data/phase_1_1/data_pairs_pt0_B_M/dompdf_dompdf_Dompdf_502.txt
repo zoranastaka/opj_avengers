@@ -1,9 +1,0 @@
-    /**
-     * @return string
-     * @deprecated
-     */
-
-    public function output_html()
-    {
-        return $this->outputHtml();
-    }

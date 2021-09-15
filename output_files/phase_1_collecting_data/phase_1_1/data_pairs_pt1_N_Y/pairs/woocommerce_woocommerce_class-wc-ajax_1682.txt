@@ -1,5 +1,0 @@
-	/**
-	 * Set WC AJAX constant and headers.
-	 */
-
-	public static function define_ajax() {

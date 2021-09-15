@@ -1,7 +1,0 @@
-	/**
-	 * Add order fee via ajax.
-	 *
-	 * @throws Exception If order is invalid.
-	 */
-
-	public static function add_order_fee() {

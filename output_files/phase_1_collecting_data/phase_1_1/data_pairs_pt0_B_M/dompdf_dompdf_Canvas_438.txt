@@ -1,5 +1,0 @@
-    /**
-     * Restore last state
-     */
-
-    function restore();

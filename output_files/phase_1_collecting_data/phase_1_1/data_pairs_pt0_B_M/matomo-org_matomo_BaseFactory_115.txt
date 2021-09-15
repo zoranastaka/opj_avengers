@@ -1,8 +1,0 @@
-    /**
-     * Should return a class name based on the class's associated string ID.
-     */
-
-    protected static function getClassNameFromClassId($id)
-    {
-        return $id;
-    }

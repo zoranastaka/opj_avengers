@@ -1,7 +1,0 @@
-    /**
-     * Return the image's height in pixels
-     *
-     * @return float
-     */
-
-    function get_height();

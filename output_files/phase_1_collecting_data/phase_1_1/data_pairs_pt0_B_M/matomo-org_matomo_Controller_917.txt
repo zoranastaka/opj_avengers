@@ -1,9 +1,0 @@
-   /**
-    * Removes the session variable containing the controller data
-    */
-
-    public function destroySessionContainer()
-    {
-        unset($_SESSION[sprintf(self::KEY_CONTAINER, $this->id)]);
-        $this->sessionContainer = null;
-    }

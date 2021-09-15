@@ -1,8 +1,0 @@
-    /**
-     * @param CacheItemPoolInterface $adapter
-     */
-
-    public function __construct(CacheItemPoolInterface $adapter)
-    {
-        $this->adapter = $adapter;
-    }

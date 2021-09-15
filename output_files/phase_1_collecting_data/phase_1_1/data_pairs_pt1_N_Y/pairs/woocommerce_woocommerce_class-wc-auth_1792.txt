@@ -1,9 +1,0 @@
-	/**
-	 * Auth endpoint.
-	 *
-	 * @since 2.4.0
-	 * @throws Exception When validation fails.
-	 * @param string $route Route.
-	 */
-
-	protected function auth_endpoint( $route ) {

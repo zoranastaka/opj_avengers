@@ -1,7 +1,0 @@
-    /**
-     * Show truthy properties on var_dump().
-     *
-     * @return array
-     */
-
-    public function __debugInfo();

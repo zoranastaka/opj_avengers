@@ -1,8 +1,0 @@
-    /**
-     * Set the handler for the session
-     */
-
-    public function setAdapter(SessionHandlerInterface $handler): ManagerInterface
-    {
-        // TODO: Implement setAdapter() method.
-    }

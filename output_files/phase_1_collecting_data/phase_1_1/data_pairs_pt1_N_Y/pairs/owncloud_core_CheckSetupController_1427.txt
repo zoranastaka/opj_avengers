@@ -1,7 +1,0 @@
-	/**
-	 * Check if the reverse proxy configuration is working as expected
-	 *
-	 * @return bool
-	 */
-
-	private function forwardedForHeadersWorking() {

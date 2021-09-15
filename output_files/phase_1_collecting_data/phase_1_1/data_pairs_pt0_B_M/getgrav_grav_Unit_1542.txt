@@ -1,9 +1,0 @@
-    /**
-     * HOOK: before each step
-     *
-     * @param Codeception\Step $step*
-     */
-
-    public function _beforeStep(Codeception\Step $step)
-    {
-    }

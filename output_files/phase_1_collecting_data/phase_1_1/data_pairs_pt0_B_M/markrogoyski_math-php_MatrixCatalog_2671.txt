@@ -1,8 +1,0 @@
-    /**
-     * @return bool
-     */
-
-    public function hasReducedRowEchelonForm(): bool
-    {
-        return isset($this->RREF);
-    }

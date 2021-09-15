@@ -1,5 +1,0 @@
-    /**
-     * @dataProvider exceptionData
-     */
-
-    public function testException($x, $data) {

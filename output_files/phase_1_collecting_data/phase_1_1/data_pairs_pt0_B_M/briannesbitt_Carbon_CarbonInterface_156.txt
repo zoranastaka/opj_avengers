@@ -1,9 +1,0 @@
-    /**
-     * Set the default translator instance to use.
-     *
-     * @param \Symfony\Component\Translation\TranslatorInterface $translator
-     *
-     * @return void
-     */
-
-    public static function setTranslator(\Symfony\Component\Translation\TranslatorInterface $translator);

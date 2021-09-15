@@ -1,6 +1,0 @@
-    /**
-     * @param string $userAgent
-     * @return string
-     */
-
-    private function prepareUserAgent($userAgent) {

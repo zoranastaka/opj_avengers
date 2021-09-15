@@ -1,5 +1,0 @@
-    /**
-     * @psalm-param class-string $testClassName
-     */
-
-    public function testPostConditionFinished(string $testClassName, Code\ClassMethod ...$calledMethods): void;

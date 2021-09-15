@@ -1,8 +1,0 @@
-	/**
-	 * Get prefix for use with wp_cache_set. Allows all cache in a group to be invalidated at once.
-	 *
-	 * @param  string $group Group of cache to get.
-	 * @return string
-	 */
-
-	public static function get_cache_prefix( $group ) {

@@ -1,7 +1,0 @@
-    /**
-     * Gets the project dir (path of the project's composer file).
-     *
-     * @return string
-     */
-
-    public function getProjectDir();

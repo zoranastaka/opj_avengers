@@ -1,6 +1,0 @@
-/**
- * Make sure an integer is a valid integer (PHP's intval() limits to too small numbers)
- *
- */
-
-function yourls_sanitize_int( $int ) {

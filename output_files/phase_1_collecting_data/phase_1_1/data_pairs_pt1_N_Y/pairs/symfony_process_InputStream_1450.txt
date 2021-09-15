@@ -1,8 +1,0 @@
-    /**
-     * Tells whether the write buffer is closed or not.
-     */
-
-    public function isClosed()
-    {
-        return !$this->open;
-    }

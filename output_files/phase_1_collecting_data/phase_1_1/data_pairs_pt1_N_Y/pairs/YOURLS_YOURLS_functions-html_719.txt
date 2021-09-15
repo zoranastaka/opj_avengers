@@ -1,7 +1,0 @@
-/**
- * Output translated strings used by the Javascript calendar
- *
- * @since 1.6
- */
-
-function yourls_l10n_calendar_strings() {

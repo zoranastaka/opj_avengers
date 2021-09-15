@@ -1,8 +1,0 @@
-    /**
-     * A test ended.
-     */
-
-    public function endTest(Test $test, float $time): void
-    {
-        //
-    }

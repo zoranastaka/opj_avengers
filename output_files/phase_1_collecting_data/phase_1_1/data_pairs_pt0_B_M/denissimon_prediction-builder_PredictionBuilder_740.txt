@@ -1,8 +1,0 @@
-    /**
-     * Constructor
-     *
-     * @param number $x
-     * @param array  $data
-     */
-
-    public function __construct($x, array $data) {

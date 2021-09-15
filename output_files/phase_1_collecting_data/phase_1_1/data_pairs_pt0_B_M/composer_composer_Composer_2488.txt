@@ -1,8 +1,0 @@
-    /**
-     * @return Locker
-     */
-
-    public function getLocker()
-    {
-        return $this->locker;
-    }

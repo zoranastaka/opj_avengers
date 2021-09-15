@@ -1,8 +1,0 @@
-	/**
-	 * Sets and deletes system wide values
-	 *
-	 * @param array $configs Associative array with `key => value` pairs
-	 *                       If value is null, the config key will be deleted
-	 */
-
-	public function setSystemValues(array $configs) {

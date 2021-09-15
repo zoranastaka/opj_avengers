@@ -1,6 +1,0 @@
-	/**
-	 * @param string $source
-	 * @return bool
-	 */
-
-	private function isMITLicensed($source) {

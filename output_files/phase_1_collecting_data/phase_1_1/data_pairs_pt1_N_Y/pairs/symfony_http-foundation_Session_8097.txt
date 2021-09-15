@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function replace(array $attributes)
-    {
-        $this->getAttributeBag()->replace($attributes);
-    }

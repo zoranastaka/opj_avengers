@@ -1,5 +1,0 @@
-	/**
-	 * Delete a refund.
-	 */
-
-	public static function delete_refund() {

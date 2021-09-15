@@ -1,7 +1,0 @@
-  /**
-   * Get the current bucket ID for storing rate limit scores.
-   *
-   * @return int The current bucket ID.
-   */
-
-  private function getCurrentBucketID() {

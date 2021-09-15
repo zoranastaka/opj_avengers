@@ -1,5 +1,0 @@
-    /**
-     * Returns if the current state has open file handles or pipes.
-     */
-
-    public function areOpen(): bool;

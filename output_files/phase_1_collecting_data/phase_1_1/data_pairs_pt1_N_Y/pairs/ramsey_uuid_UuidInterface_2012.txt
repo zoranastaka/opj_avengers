@@ -1,5 +1,0 @@
-    /**
-     * Returns the hexadecimal representation of the UUID
-     */
-
-    public function getHex(): Hexadecimal;

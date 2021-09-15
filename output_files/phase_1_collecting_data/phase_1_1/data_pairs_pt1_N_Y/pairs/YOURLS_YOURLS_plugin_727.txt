@@ -1,3 +1,0 @@
-// Update option in database
-
-function ozh_yourls_samplepage_update_option() {

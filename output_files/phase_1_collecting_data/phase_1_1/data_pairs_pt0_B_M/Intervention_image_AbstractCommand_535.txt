@@ -1,8 +1,0 @@
-    /**
-     * Executes current command on given image
-     *
-     * @param  \Intervention\Image\Image $image
-     * @return mixed
-     */
-
-    abstract public function execute($image);

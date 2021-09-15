@@ -1,8 +1,0 @@
-    /**
-     * Test if an array has both an key and value in parity with each other.
-     */
-
-    function hasKeyValuePair($key, $value)
-    {
-        return \Hamcrest\Arrays\IsArrayContainingKeyValuePair::hasKeyValuePair($key, $value);
-    }

@@ -1,7 +1,0 @@
-	/**
-	 * @test
-	 * @see https://github.com/phpspec/prophecy/issues/268
-	 * @see https://stackoverflow.com/a/19097159/2424814
-	 */
-
-	public function does_not_trigger_nesting_error() {

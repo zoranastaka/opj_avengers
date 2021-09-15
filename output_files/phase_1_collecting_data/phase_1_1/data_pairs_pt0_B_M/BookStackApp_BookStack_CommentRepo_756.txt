@@ -1,9 +1,0 @@
-    /**
-     * Get the next local ID relative to the linked entity.
-     */
-
-    protected function getNextLocalId(Entity $entity): int
-    {
-        $comments = $entity->comments(false)->orderBy('local_id', 'desc')->first();
-        return ($comments->local_id ?? 0) + 1;
-    }

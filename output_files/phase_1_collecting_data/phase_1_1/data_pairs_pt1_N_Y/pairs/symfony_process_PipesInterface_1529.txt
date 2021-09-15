@@ -1,5 +1,0 @@
-    /**
-     * Returns an array of descriptors for the use of proc_open.
-     */
-
-    public function getDescriptors(): array;

@@ -1,9 +1,0 @@
-    /**
-     * @see Serializable::serialize
-     * @return string
-     */
-
-    public function serialize()
-    {
-        return serialize($this->frames);
-    }

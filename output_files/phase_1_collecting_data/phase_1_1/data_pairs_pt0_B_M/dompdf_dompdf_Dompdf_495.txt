@@ -1,9 +1,0 @@
-    /**
-     * @param string $cacheId
-     * @deprecated
-     */
-
-    public function enable_caching($cacheId)
-    {
-        $this->enableCaching($cacheId);
-    }

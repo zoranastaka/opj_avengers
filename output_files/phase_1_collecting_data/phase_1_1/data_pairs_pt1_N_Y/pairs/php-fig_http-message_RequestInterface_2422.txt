@@ -1,7 +1,0 @@
-    /**
-     * Retrieves the HTTP method of the request.
-     *
-     * @return string Returns the request method.
-     */
-
-    public function getMethod();

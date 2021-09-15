@@ -1,6 +1,0 @@
-        // Symfony patches
-
-        static function (string $filePath, string $prefix, string $contents): string {
-            if ('vendor/symfony/debug/DebugClassLoader.php' !== $filePath) {
-                return $contents;
-            }

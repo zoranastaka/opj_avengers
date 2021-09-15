@@ -1,9 +1,0 @@
-    /**
-     * Builds a prediction of the expected value of y for a given x, based on a linear regression model.
-     *
-     * @return \stdClass
-     *
-     * @throws \InvalidArgumentException
-     */
-
-    public function build() {

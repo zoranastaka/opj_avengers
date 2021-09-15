@@ -1,8 +1,0 @@
-    /**
-     * Is the value a boolean?
-     */
-
-    function booleanValue()
-    {
-        return \Hamcrest\Type\IsBoolean::booleanValue();
-    }

@@ -1,8 +1,0 @@
-    /**
-     * @return LayeredNetwork|MockObject
-     */
-
-    private function getLayeredNetworkMock()
-    {
-        return $this->getMockForAbstractClass(LayeredNetwork::class);
-    }

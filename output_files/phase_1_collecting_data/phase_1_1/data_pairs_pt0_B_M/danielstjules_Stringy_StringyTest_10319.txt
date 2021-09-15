@@ -1,9 +1,0 @@
-    /**
-     * @expectedException InvalidArgumentException
-     */
-
-    public function testConstructWithArray()
-    {
-        (string) new S([]);
-        $this->fail('Expecting exception when the constructor is passed an array');
-    }

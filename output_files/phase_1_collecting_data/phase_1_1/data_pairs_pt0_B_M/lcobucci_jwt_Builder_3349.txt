@@ -1,5 +1,0 @@
-    /**
-     * Configures the time that the token was issued
-     */
-
-    public function issuedAt(DateTimeImmutable $issuedAt): Builder;

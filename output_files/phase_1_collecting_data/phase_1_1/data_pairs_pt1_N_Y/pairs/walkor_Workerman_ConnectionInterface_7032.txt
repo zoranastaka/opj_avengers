@@ -1,7 +1,0 @@
-    /**
-     * Get remote address.
-     *
-     * @return string
-     */
-
-    abstract public function getRemoteAddress();

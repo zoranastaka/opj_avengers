@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function getCommandFactory()
-    {
-        return $this->commands;
-    }

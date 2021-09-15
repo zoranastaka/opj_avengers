@@ -1,9 +1,0 @@
-    /**
-     * Creates a class builder.
-     *
-     * @param string $name Name of the class
-     *
-     * @return Builder\Class_ The created class builder
-     */
-
-    public function class(string $name) : Builder\Class_ {

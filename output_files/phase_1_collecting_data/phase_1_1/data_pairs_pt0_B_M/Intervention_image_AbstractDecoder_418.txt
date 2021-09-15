@@ -1,8 +1,0 @@
-    /**
-     * Initiates new image from GD resource
-     *
-     * @param  Resource $resource
-     * @return \Intervention\Image\Image
-     */
-
-    abstract public function initFromGdResource($resource);

@@ -1,5 +1,0 @@
-    /**
-     * @param mixed[] $superset
-     */
-
-    public static function subset(array $superset): ChainedValidator;

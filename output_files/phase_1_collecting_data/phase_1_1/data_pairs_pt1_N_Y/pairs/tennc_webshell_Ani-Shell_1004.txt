@@ -1,3 +1,0 @@
-/***********************************************************/
-
-// exec_all , A function used to execute commands , This function will only execute if the Safe Mode is

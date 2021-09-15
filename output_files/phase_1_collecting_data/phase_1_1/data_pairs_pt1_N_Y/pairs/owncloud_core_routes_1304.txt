@@ -1,3 +1,0 @@
-// Sharing routes
-
-$this->create('files_sharing.sharecontroller.showShare', '/s/{token}')->action(static function ($urlParams) {

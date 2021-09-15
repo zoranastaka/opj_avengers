@@ -1,9 +1,0 @@
-    /**
-     * Checks if macro is registered globally.
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-
-    public static function hasMacro($name);

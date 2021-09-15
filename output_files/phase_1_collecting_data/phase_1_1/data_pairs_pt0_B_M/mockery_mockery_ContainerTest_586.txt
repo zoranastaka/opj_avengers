@@ -1,9 +1,0 @@
-    /**
-     * @dataProvider classNameProvider
-     */
-
-    public function testIsValidClassName($expected, $className)
-    {
-        $container = new \Mockery\Container();
-        $this->assertSame($expected, $container->isValidClassName($className));
-    }

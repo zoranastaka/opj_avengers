@@ -1,9 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function update(Item $entityItem)
-    {
-        return $this->itemFactory->create()->setItemId($entityItem->getItemId())
-            ->setName('Updated' . $entityItem->getName());
-    }

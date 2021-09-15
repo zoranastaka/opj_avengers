@@ -1,8 +1,0 @@
-    /**
-     * @return DownloadManager
-     */
-
-    public function getDownloadManager()
-    {
-        return $this->downloadManager;
-    }

@@ -1,8 +1,0 @@
-    /**
-     * @test Limits constant is correct format
-     */
-
-    public function testUniformSupportLimits()
-    {
-        $this->limitTest(Continuous\Uniform::SUPPORT_LIMITS);
-    }

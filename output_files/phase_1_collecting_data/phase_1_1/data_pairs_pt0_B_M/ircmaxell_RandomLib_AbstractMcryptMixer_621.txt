@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    protected function getPartSize()
-    {
-        return $this->blockSize;
-    }

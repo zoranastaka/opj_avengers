@@ -1,5 +1,0 @@
-	/**
-	 * AJAX receive updated cart_totals div.
-	 */
-
-	public static function get_cart_totals() {

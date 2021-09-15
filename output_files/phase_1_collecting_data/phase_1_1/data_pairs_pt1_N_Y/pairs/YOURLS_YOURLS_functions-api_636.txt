@@ -1,8 +1,0 @@
-/**
- * API function wrapper: Stats about links (XX top, bottom, last, rand)
- *
- * @since 1.6
- * @return array Result of API call
- */
-
-function yourls_api_action_stats() {

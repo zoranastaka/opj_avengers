@@ -1,9 +1,0 @@
-    /**
-     * @return AccessTokenEntityInterface
-     * @codeCoverageIgnore
-     */
-
-    public function getAccessToken()
-    {
-        return $this->accessToken;
-    }

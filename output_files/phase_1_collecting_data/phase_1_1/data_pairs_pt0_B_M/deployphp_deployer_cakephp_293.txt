@@ -1,7 +1,0 @@
-/**
- * Create plugins' symlinks
- */
-
-task('deploy:init', function () {
-    run('{{release_or_current_path}}/bin/cake plugin assets symlink');
-})->desc('Initialization');

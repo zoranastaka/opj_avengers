@@ -20,7 +20,7 @@ for index, row in df_merged.iterrows():
     if os.path.isfile(originial):
         pass
         shutil.copyfile(originial, target)
-    else :
+    else:
         print(row['pair_id'])
         cnt += 1
 

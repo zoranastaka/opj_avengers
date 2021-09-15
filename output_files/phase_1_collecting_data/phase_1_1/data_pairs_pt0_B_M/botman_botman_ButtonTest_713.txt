@@ -1,7 +1,0 @@
-    /** @test */
-
-    public function it_defaults_name_to_text()
-    {
-        $button = Button::create('text');
-        $this->assertSame('text', Arr::get($button->toArray(), 'name'));
-    }

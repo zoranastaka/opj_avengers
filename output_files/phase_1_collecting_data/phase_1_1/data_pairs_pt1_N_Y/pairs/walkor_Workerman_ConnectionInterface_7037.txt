@@ -1,7 +1,0 @@
-    /**
-     * Is ipv6.
-     *
-     * @return bool
-     */
-
-    abstract public function isIPv6();

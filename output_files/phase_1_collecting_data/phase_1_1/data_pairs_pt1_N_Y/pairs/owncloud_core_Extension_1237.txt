@@ -1,9 +1,0 @@
-	/**
-	 * The extension can define the parameter grouping by returning the index as integer.
-	 * In case no grouping is required false is to be returned.
-	 *
-	 * @param array $activity
-	 * @return integer|false
-	 */
-
-	public function getGroupParameter($activity) {

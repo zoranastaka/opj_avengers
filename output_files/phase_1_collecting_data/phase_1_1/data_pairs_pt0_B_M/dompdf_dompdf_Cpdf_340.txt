@@ -1,9 +1,0 @@
-    /**
-     * @param $x
-     * @param $y
-     */
-
-    function lineTo($x, $y)
-    {
-        $this->addContent(sprintf("\n%.3F %.3F l", $x, $y));
-    }

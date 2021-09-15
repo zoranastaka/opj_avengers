@@ -1,5 +1,0 @@
-    /**
-     * Returns if the token was issued before of given time
-     */
-
-    public function hasBeenIssuedBefore(DateTimeInterface $now): bool;

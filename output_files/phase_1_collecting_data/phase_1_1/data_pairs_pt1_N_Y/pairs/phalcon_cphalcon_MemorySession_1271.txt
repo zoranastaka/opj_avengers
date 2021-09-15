@@ -1,8 +1,0 @@
-    /**
-     * Alias: Removes a session variable from an application context
-     */
-
-    public function __unset(string $index)
-    {
-        $this->remove($index);
-    }

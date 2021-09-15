@@ -1,8 +1,0 @@
-    /**
-     * Alias: Gets a session variable from an application context
-     */
-
-    public function __get(string $index)
-    {
-        return $this->get($index);
-    }

@@ -1,9 +1,0 @@
-	// --------------------------------------------------------------------
-
-	public function test_set_item()
-	{
-		$this->assertNull($this->config->item('not_yet_set'));
-
-		$this->config->set_item('not_yet_set', 'is set');
-		$this->assertEquals('is set', $this->config->item('not_yet_set'));
-	}

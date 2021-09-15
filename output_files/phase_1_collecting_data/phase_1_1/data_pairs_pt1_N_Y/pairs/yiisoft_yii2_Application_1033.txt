@@ -1,9 +1,0 @@
-    /**
-     * Returns the error handler component.
-     * @return \yii\web\ErrorHandler|\yii\console\ErrorHandler the error handler application component.
-     */
-
-    public function getErrorHandler()
-    {
-        return $this->get('errorHandler');
-    }

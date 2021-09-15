@@ -1,8 +1,0 @@
-    /**
-     * Matches if value (class, object, or array) has named $property.
-     */
-
-    function set($property)
-    {
-        return \Hamcrest\Core\Set::set($property);
-    }

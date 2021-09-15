@@ -1,5 +1,0 @@
-    /**
-     * @param array $data
-     */
-
-    private function validate ($data) {

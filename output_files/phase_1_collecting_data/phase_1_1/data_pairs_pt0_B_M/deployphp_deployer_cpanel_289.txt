@@ -1,5 +1,0 @@
-// Tasks
-
-task('build', function () {
-    run('cd {{release_path}} && build');
-});

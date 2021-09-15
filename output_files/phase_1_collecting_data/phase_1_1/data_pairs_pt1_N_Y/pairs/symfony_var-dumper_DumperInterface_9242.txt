@@ -1,9 +1,0 @@
-    /**
-     * Dumps while entering an hash.
-     *
-     * @param int        $type     A Cursor::HASH_* const for the type of hash
-     * @param string|int $class    The object class, resource type or array count
-     * @param bool       $hasChild When the dump of the hash has child item
-     */
-
-    public function enterHash(Cursor $cursor, int $type, $class, bool $hasChild);

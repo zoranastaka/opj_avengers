@@ -1,8 +1,0 @@
-    /**
-     * @test Limits constant is correct format
-     */
-
-    public function testNoncentralTParameterLimits()
-    {
-        $this->limitTest(Continuous\NoncentralT::PARAMETER_LIMITS);
-    }

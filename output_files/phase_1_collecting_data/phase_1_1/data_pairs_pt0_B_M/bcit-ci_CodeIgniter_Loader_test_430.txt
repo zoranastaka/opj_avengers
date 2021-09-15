@@ -1,7 +1,0 @@
-	// --------------------------------------------------------------------
-
-	// public function testDatabase()
-	// {
-	// 	$this->assertInstanceOf('CI_Loader', $this->load->database());
-	// 	$this->assertInstanceOf('CI_Loader', $this->load->dbutil());
-	// }

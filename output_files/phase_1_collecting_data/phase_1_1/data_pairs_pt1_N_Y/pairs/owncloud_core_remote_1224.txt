@@ -1,5 +1,0 @@
-/**
- * @param Exception | Error $e
- */
-
-function handleException($e) {

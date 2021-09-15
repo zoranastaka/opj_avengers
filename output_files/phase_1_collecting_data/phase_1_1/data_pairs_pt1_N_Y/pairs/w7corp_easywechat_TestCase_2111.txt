@@ -1,8 +1,0 @@
-    /**
-     * Run extra tear down code.
-     */
-
-    protected function finish()
-    {
-        // call more tear down methods
-    }

@@ -1,8 +1,0 @@
-	/**
-	 * Comments plugin
-	 *
-	 * @param ICommentsManager $commentsManager
-	 * @param IUserSession $userSession
-	 */
-
-	public function __construct(ICommentsManager $commentsManager, IUserSession $userSession) {

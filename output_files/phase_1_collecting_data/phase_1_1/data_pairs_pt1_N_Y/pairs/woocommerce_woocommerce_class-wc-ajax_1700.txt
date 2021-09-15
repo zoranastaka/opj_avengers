@@ -1,5 +1,0 @@
-	/**
-	 * Get order details.
-	 */
-
-	public static function get_order_details() {

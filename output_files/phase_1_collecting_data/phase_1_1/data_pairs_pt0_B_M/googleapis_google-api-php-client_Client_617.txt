@@ -1,9 +1,0 @@
-  /**
-   * Set the OAuth 2.0 Client Secret.
-   * @param string $clientSecret
-   */
-
-  public function setClientSecret($clientSecret)
-  {
-    $this->config['client_secret'] = $clientSecret;
-  }

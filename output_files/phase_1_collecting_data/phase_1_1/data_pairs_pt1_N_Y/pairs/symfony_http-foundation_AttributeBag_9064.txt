@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function has(string $name)
-    {
-        return \array_key_exists($name, $this->attributes);
-    }

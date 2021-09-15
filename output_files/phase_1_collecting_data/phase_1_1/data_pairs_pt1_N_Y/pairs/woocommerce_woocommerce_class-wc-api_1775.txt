@@ -1,8 +1,0 @@
-	/**
-	 * Return if the rest API classes were already loaded.
-	 *
-	 * @since 3.7.0
-	 * @return boolean
-	 */
-
-	protected function is_rest_api_loaded() {

@@ -1,3 +1,0 @@
-	//dohvaća sve ponude
-
-	public function all_offers(){

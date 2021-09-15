@@ -1,9 +1,0 @@
-    /** @test */
-
-    public function expects_can_take_a_string()
-    {
-        $mock = m::mock();
-        $mock->expects("foo")->andReturns(123);
-
-        $this->assertEquals(123, $mock->foo(456, 789));
-    }

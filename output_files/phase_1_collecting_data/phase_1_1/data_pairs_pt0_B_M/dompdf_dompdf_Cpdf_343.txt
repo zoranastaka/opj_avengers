@@ -1,8 +1,0 @@
-    /**
-     * draw a bezier curve based on 4 control points
-     */
-
-    function quadTo($cpx, $cpy, $x, $y)
-    {
-        $this->addContent(sprintf("\n%.3F %.3F %.3F %.3F v", $cpx, $cpy, $x, $y));
-    }

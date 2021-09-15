@@ -1,8 +1,0 @@
-    /**
-     * @return bool
-     */
-
-    public function hasInverse(): bool
-    {
-        return isset($this->A⁻¹);
-    }

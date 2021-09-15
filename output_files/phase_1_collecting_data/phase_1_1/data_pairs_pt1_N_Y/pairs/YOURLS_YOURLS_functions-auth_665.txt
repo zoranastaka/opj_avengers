@@ -1,6 +1,0 @@
-/**
- * Return salted string
- *
- */
-
-function yourls_salt( $string ) {

@@ -1,3 +1,0 @@
-// setup container for tests
-
-function setupRootContainer() {

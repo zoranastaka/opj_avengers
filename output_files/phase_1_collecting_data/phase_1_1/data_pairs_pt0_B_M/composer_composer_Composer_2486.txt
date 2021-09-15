@@ -1,8 +1,0 @@
-    /**
-     * @return Config
-     */
-
-    public function getConfig()
-    {
-        return $this->config;
-    }

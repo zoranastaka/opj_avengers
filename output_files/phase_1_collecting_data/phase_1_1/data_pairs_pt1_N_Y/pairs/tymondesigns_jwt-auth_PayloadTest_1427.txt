@@ -1,9 +1,0 @@
-    /** @test */
-
-    public function it_should_match_values()
-    {
-        $values = $this->payload->toArray();
-        $values['sub'] = (string) $values['sub'];
-
-        $this->assertTrue($this->payload->matches($values));
-    }

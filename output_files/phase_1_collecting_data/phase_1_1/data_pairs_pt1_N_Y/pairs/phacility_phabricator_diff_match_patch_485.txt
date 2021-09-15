@@ -1,9 +1,0 @@
-/**
- * as in javascript encodeURI() following the MDN description
- *
- * @link https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/encodeURI
- * @param $url
- * @return string
- */
-
-function encodeURI($url) {

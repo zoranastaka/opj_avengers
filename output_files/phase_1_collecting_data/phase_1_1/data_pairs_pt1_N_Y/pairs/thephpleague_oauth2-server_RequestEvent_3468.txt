@@ -1,9 +1,0 @@
-    /**
-     * @return ServerRequestInterface
-     * @codeCoverageIgnore
-     */
-
-    public function getRequest()
-    {
-        return $this->request;
-    }

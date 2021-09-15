@@ -1,9 +1,0 @@
-    /**
-     * @expectedException \Exception
-     */
-
-    public function testOffsetUnset()
-    {
-        $stringy = S::create('fòô', 'UTF-8');
-        unset($stringy[1]);
-    }

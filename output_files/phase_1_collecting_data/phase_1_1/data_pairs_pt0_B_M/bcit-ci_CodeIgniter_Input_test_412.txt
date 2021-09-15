@@ -1,6 +1,0 @@
-	// --------------------------------------------------------------------
-
-	public function test_get_request_header()
-	{
-		$this->markTestSkipped('TODO: Find a way to test HTTP headers');
-	}

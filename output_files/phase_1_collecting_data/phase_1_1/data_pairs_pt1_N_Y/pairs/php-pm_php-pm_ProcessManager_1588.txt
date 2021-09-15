@@ -1,8 +1,0 @@
-    /**
-     * @param string $appBootstrap
-     */
-
-    public function setAppBootstrap($appBootstrap)
-    {
-        $this->appBootstrap = $appBootstrap;
-    }

@@ -1,8 +1,0 @@
-    /**
-     * @internal
-     */
-
-    public function setSessionFactory(callable $factory)
-    {
-        $this->session = $factory;
-    }

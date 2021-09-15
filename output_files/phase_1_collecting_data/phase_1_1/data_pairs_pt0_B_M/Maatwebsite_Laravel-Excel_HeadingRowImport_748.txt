@@ -1,8 +1,0 @@
-    /**
-     * @return int
-     */
-
-    public function limit(): int
-    {
-        return 1;
-    }

@@ -1,7 +1,0 @@
-    /**
-     * Go forward to the next weekday.
-     *
-     * @return static
-     */
-
-    public function nextWeekday();

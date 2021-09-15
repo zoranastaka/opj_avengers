@@ -1,7 +1,0 @@
-	/**
-	 * Get fees.
-	 *
-	 * @return array
-	 */
-
-	public function get_fees() {

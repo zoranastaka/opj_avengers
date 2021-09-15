@@ -1,8 +1,0 @@
-/**
- * Print HTML link for favicon
- *
- * @since 1.7.10
- * @return mixed|void
- */
-
-function yourls_html_favicon() {

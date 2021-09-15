@@ -1,8 +1,0 @@
-	/**
-	 * Add a transient to delete on shutdown.
-	 *
-	 * @since 3.6.0
-	 * @param string|array $keys Transient key or keys.
-	 */
-
-	public static function queue_delete_transient( $keys ) {

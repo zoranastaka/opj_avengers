@@ -1,7 +1,0 @@
-    /**
-     * Checks if the session was started.
-     *
-     * @return bool
-     */
-
-    public function isStarted();

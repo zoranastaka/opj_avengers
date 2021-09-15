@@ -1,9 +1,0 @@
-    /**
-     * Returns the security component.
-     * @return \yii\base\Security the security application component.
-     */
-
-    public function getSecurity()
-    {
-        return $this->get('security');
-    }

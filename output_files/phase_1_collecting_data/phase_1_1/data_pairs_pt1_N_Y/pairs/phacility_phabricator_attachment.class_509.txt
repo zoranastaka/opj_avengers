@@ -1,5 +1,0 @@
-/**
- * Model of an Attachment
- */
-
-class MimeMailParser_attachment {

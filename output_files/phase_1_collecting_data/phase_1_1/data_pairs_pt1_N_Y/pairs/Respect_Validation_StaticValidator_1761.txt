@@ -1,6 +1,0 @@
-    /**
-     * @param mixed $minimum
-     * @param mixed $maximum
-     */
-
-    public static function between($minimum, $maximum): ChainedValidator;

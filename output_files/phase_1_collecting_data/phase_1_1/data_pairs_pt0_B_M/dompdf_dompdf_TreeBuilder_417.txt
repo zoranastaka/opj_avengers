@@ -1,5 +1,0 @@
-    /**
-     * @param $node
-     */
-
-    public function fosterParent($node) {

@@ -1,8 +1,0 @@
-    /**
-     * Get a full URL to start a tag name search for this tag name.
-     */
-
-    public function nameUrl(): string
-    {
-        return url('/search?term=%5B' . urlencode($this->name) .'%5D');
-    }

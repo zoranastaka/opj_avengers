@@ -1,8 +1,0 @@
-    /**
-     * @see EventInterface::loop()
-     */
-
-    public function loop()
-    {
-        $this->_eventBase->loop();
-    }

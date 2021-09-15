@@ -1,9 +1,0 @@
-    /**
-     * Creates a hash for the given payload
-     *
-     * @throws CannotSignPayload  When payload signing fails.
-     * @throws InvalidKeyProvided When issue key is invalid/incompatible.
-     * @throws ConversionFailed   When signature could not be converted.
-     */
-
-    public function sign(string $payload, Key $key): string;

@@ -1,8 +1,0 @@
-    /**
-     * @param PluginManager $manager
-     */
-
-    public function setPluginManager(PluginManager $manager)
-    {
-        $this->pluginManager = $manager;
-    }

@@ -1,8 +1,0 @@
-    /**
-     * @return float|mixed
-     */
-
-    public function replaceValue(array $currentAxis)
-    {
-        return Mean::mode($currentAxis);
-    }

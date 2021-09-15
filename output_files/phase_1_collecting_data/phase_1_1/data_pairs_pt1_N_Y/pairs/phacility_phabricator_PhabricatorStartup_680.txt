@@ -1,5 +1,0 @@
-  /**
-   * @task validation
-   */
-
-  private static function normalizeInput() {

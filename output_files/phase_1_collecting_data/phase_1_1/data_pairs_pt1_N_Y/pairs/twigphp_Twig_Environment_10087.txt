@@ -1,8 +1,0 @@
-    /**
-     * Enables the auto_reload option.
-     */
-
-    public function enableAutoReload()
-    {
-        $this->autoReload = true;
-    }

@@ -1,5 +1,0 @@
-	/**
-	 * AJAX update shipping method on cart page.
-	 */
-
-	public static function update_shipping_method() {

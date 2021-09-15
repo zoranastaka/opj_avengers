@@ -1,8 +1,0 @@
-    /**
-     * @dataProvider valuesProvider
-     */
-
-    public function testContainsNotFound($value): void
-    {
-        $this->assertFalse($this->context->contains($value));
-    }

@@ -1,9 +1,0 @@
-  /**
-   * Set the OAuth 2.0 Redirect URI.
-   * @param string $redirectUri
-   */
-
-  public function setRedirectUri($redirectUri)
-  {
-    $this->config['redirect_uri'] = $redirectUri;
-  }

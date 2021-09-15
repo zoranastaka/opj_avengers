@@ -1,7 +1,0 @@
-    /**
-     * Get local address.
-     *
-     * @return string
-     */
-
-    abstract public function getLocalAddress();

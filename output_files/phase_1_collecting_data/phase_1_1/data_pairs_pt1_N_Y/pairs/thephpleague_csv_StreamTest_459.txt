@@ -1,9 +1,0 @@
-    /**
-     * @covers ::__construct
-     */
-
-    public function testCreateStreamWithWrongResourceType(): void
-    {
-        $this->expectException(TypeError::class);
-        new Stream(curl_init());
-    }

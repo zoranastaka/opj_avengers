@@ -1,5 +1,0 @@
-	/**
-	 * Hook in methods.
-	 */
-
-	public static function init() {

@@ -1,8 +1,0 @@
-    /**
-     * Element-wise subtracting of another matrix from this one
-     */
-
-    public function subtract(self $other): self
-    {
-        return $this->sum($other, -1);
-    }

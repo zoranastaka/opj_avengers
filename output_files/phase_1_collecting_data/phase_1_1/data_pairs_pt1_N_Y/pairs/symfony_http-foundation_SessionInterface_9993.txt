@@ -1,7 +1,0 @@
-    /**
-     * Returns the session ID.
-     *
-     * @return string
-     */
-
-    public function getId();

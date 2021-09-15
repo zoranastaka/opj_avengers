@@ -1,8 +1,0 @@
-		/**
-		 * Get (and load when needed) the address book for $key
-		 *
-		 * @param string $addressBookKey
-		 * @return \OCP\IAddressBook
-		 */
-
-		protected function getAddressBook($addressBookKey) {

@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function getRiskyAllowed(): bool
-    {
-        return $this->isRiskyAllowed;
-    }

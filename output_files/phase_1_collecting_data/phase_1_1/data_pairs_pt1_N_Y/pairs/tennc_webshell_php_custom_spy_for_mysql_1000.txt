@@ -1,3 +1,0 @@
-/*传输解码*/
-
-function decode($s){

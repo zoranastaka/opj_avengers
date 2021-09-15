@@ -1,8 +1,0 @@
-    /**
-     * @inheritdoc
-     */
-
-    public function setId(string $id)
-    {
-        $this->sessionId = $id;
-    }

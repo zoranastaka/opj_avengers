@@ -1,7 +1,0 @@
-    /**
-     * Gets the attributes of the node/token the error occurred at.
-     *
-     * @return array
-     */
-
-    public function getAttributes() : array {

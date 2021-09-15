@@ -1,5 +1,0 @@
-	/*
-	 * Metoda cita Gpanel feed, parsira i vraca niz servera sa informacijama
-	 */
-
-	function parseServersFromFeed($feed,$tokenid) {

@@ -1,7 +1,0 @@
-/**
- * Class Application
- *
- * @package OC\Core
- */
-
-class Application extends App {

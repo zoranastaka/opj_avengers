@@ -1,7 +1,0 @@
-  /**
-   * Get the score to add when a client disconnects.
-   *
-   * @return double Connection score.
-   */
-
-  abstract protected function getDisconnectScore(array $request_state);

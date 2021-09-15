@@ -1,3 +1,0 @@
-	//svi studenti koji su se prijavili na neku ponudu
-
-	public function show_students(){

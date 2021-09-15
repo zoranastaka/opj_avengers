@@ -1,8 +1,0 @@
-    /**
-     * @return string
-     */
-
-    public function getPhpIntlLocale()
-    {
-        return $this->data['php_intl_locale'];
-    }

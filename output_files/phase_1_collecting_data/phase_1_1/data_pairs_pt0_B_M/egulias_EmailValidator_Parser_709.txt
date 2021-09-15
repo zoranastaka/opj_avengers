@@ -1,8 +1,0 @@
-    /**
-     * @return Warning\Warning[]
-     */
-
-    public function getWarnings() : array
-    {
-        return $this->warnings;
-    }

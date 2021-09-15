@@ -1,8 +1,0 @@
-    /**
-     * Register the autoloader
-     */
-
-    public static function register()
-    {
-        spl_autoload_register([new self, 'autoload']);
-    }

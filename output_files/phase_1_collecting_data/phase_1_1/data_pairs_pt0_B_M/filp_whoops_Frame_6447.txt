@@ -1,8 +1,0 @@
-    /**
-     * @param array[]
-     */
-
-    public function __construct(array $frame)
-    {
-        $this->frame = $frame;
-    }

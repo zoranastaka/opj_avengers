@@ -1,6 +1,0 @@
-	/**
-	 * Checks whether a local memcache is installed or not
-	 * @return bool
-	 */
-
-	private function isMemcacheConfigured() {

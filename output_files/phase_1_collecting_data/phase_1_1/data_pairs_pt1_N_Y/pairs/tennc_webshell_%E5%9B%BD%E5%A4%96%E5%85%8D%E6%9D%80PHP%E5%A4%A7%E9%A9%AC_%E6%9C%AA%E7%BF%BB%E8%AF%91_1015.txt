@@ -1,4 +1,0 @@
-## END dQ99Sh UPDATE FUNCTIONS ##
-## FILESYSTEM FUNCTIONS ##
-
-function fs_copy_dir($d,$t) {

@@ -1,8 +1,0 @@
-	/**
-	 * Returns an array with all the child nodes
-	 *
-	 * @return \Sabre\DAV\INode[]
-	 * @throws MethodNotAllowed
-	 */
-
-	public function getChildren() {

@@ -1,3 +1,0 @@
-	//obradi register
-
-	public function check_register(){

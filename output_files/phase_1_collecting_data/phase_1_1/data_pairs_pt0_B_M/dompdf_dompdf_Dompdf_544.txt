@@ -1,9 +1,0 @@
-    /**
-     * @return boolean
-     * @deprecated
-     */
-
-    public function get_quirksmode()
-    {
-        return $this->getQuirksmode();
-    }

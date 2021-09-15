@@ -1,8 +1,0 @@
-    /**
-     * @return array
-     */
-
-    protected function metadata(): array
-    {
-        return [];
-    }

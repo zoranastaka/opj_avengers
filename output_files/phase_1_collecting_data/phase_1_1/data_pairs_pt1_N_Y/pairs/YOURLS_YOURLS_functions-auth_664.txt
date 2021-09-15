@@ -1,8 +1,0 @@
-/**
- * Return a time-dependent string for nonce creation
- *
- * Actually, this returns a float: ceil rounds up a value but is of type float, see https://www.php.net/ceil
- *
- */
-
-function yourls_tick() {

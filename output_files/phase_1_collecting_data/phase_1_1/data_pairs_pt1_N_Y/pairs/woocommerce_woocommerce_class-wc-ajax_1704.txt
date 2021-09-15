@@ -1,5 +1,0 @@
-	/**
-	 * Save attributes via ajax.
-	 */
-
-	public static function save_attributes() {

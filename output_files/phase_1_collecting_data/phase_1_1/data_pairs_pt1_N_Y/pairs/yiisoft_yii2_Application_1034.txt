@@ -1,9 +1,0 @@
-    /**
-     * Returns the cache component.
-     * @return \yii\caching\CacheInterface the cache application component. Null if the component is not enabled.
-     */
-
-    public function getCache()
-    {
-        return $this->get('cache', false);
-    }

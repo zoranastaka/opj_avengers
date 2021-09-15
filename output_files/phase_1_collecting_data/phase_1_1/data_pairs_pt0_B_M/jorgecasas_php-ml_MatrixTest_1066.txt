@@ -1,8 +1,0 @@
-    /**
-     * @dataProvider dataProviderForFrobeniusNorm
-     */
-
-    public function testFrobeniusNorm(array $matrix, float $norm): void
-    {
-        self::assertEqualsWithDelta($norm, (new Matrix($matrix))->frobeniusNorm(), 0.0001);
-    }

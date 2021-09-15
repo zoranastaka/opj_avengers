@@ -1,9 +1,0 @@
-    /**
-     * @covers Whoops\Exception\FrameCollection::offsetExists
-     */
-
-    public function testArrayAccessExists()
-    {
-        $collection = $this->getFrameCollectionInstance();
-        $this->assertArrayHasKey(0, $collection);
-    }

@@ -1,7 +1,0 @@
-	/**
-	 * Read the attachment Body and save temporary file resource
-	 * @return String Mime Body Part
-	 * @param $part Array
-	 */
-
-	private function getAttachmentStream(&$part) {

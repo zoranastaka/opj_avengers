@@ -1,7 +1,0 @@
-	// --------------------------------------------------------------------
-
-	public function test_post_not_exists()
-	{
-		$this->assertSame(array(), $this->input->post());
-		$this->assertNull($this->input->post('foo'));
-	}

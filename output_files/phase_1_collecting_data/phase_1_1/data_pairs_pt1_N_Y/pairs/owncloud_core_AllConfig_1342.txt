@@ -1,8 +1,0 @@
-	/**
-	 * Delete all user values
-	 *
-	 * @param string $userId the userId of the user that we want to remove all values from
-	 * @return bool
-	 */
-
-	public function deleteAllUserValues($userId) {

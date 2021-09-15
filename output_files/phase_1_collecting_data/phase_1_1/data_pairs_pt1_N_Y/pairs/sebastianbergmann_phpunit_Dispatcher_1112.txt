@@ -1,5 +1,0 @@
-    /**
-     * @throws UnknownEventTypeException
-     */
-
-    public function dispatch(Event $event): void;

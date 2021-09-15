@@ -1,8 +1,0 @@
-    /**
-     * @return int[]
-     */
-
-    public function getIncome(): array
-    {
-        return \array_combine($this->getNames(), \array_column(self::DATA, 5));
-    }

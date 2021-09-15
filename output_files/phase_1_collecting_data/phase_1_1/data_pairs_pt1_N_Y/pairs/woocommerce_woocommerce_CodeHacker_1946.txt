@@ -1,8 +1,0 @@
-	/**
-	 * Execute the 'reset()' method in all the registered hacks.
-	 */
-
-	public static function reset_hacks() {
-		foreach ( self::$hacks as $hack ) {
-			call_user_func( array( $hack, 'reset' ) );
-		}

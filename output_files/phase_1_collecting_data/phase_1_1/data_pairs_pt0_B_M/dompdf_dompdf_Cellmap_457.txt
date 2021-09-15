@@ -1,9 +1,0 @@
-    /**
-     * @param TableFrameDecorator $table
-     */
-
-    public function __construct(TableFrameDecorator $table)
-    {
-        $this->_table = $table;
-        $this->reset();
-    }

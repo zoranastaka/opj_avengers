@@ -1,8 +1,0 @@
-    /**
-     * @requires extension pcov
-     */
-
-    public function testPCOVCanBeDetected(): void
-    {
-        $this->assertTrue($this->env->hasPCOV());
-    }

@@ -1,9 +1,0 @@
-    /**
-     * @covers Whoops\Run::sendExitCode
-     */
-
-    public function testSendExitCodeDefaultCode()
-    {
-        $run = $this->getRunInstance();
-        $this->assertEquals(1, $run->sendExitCode());
-    }

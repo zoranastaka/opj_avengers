@@ -1,9 +1,0 @@
-    /**
-     * Get error / zero tolerance
-     * @return float
-     */
-
-    public function getError(): float
-    {
-        return $this->ε;
-    }

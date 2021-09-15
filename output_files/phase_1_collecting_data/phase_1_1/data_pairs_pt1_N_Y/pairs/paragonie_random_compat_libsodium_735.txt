@@ -1,9 +1,0 @@
-        /**
-         * Generate an unbiased random integer between 0 and a specified value
-         * /dev/urandom
-         *
-         * @param int $upperBoundNonInclusive
-         * @return int
-         */
-
-        function randombytes_uniform(

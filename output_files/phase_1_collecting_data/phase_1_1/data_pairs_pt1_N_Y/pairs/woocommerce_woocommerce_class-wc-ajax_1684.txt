@@ -1,5 +1,0 @@
-	/**
-	 * Check for WC Ajax request and fire action.
-	 */
-
-	public static function do_wc_ajax() {

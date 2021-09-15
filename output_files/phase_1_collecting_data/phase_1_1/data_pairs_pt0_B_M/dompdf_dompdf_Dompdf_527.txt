@@ -1,9 +1,0 @@
-    /**
-     * @return resource
-     * @deprecated
-     */
-
-    public function get_http_context()
-    {
-        return $this->getHttpContext();
-    }

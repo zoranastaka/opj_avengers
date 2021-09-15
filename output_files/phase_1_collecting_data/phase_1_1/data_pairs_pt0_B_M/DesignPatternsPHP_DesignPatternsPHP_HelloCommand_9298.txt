@@ -1,9 +1,0 @@
-    /**
-     * execute and output "Hello World".
-     */
-
-    public function execute()
-    {
-        // sometimes, there is no receiver and this is the command which does all the work
-        $this->output->write('Hello World');
-    }

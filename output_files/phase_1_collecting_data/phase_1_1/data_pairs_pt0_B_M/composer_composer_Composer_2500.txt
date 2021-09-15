@@ -1,8 +1,0 @@
-    /**
-     * @return PluginManager
-     */
-
-    public function getPluginManager()
-    {
-        return $this->pluginManager;
-    }

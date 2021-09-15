@@ -1,9 +1,0 @@
-/**
- * Return a date() format for date (no time), filtered
- *
- * @since 1.7.10
- * @param  string $format  Date format string
- * @return string          Date format string
- */
-
-function yourls_get_date_format( $format ) {

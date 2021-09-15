@@ -1,9 +1,0 @@
-    /**
-     * Sends the specified command instance to Redis.
-     *
-     * @param CommandInterface $command Command instance.
-     *
-     * @return mixed
-     */
-
-    public function executeCommand(CommandInterface $command);

@@ -1,9 +1,0 @@
-  /**
-   * Closes the socket and cleans up the state of the class.
-   * It is not considered good to use this function without
-   * first trying to use QUIT.
-   * @access public
-   * @return void
-   */
-
-  public function Close() {

@@ -1,8 +1,0 @@
-    /**
-     * Get a full URL to start a tag name and value search for this tag's values.
-     */
-
-    public function valueUrl(): string
-    {
-        return url('/search?term=%5B' . urlencode($this->name) .'%3D' . urlencode($this->value) . '%5D');
-    }

@@ -1,9 +1,0 @@
-    /**
-     * Get updated date as a relative diff.
-     * @return mixed
-     */
-
-    public function getUpdatedAttribute()
-    {
-        return $this->updated_at->diffForHumans();
-    }

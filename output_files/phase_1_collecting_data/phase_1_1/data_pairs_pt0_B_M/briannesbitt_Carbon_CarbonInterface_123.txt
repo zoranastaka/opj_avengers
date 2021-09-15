@@ -1,7 +1,0 @@
-    /**
-     * Calls \DateTime::modify if mutable or \DateTimeImmutable::modify else.
-     *
-     * @see https://php.net/manual/en/datetime.modify.php
-     */
-
-    public function modify($modify);

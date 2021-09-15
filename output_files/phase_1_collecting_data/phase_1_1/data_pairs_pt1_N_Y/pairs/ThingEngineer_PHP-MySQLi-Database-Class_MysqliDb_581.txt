@@ -1,7 +1,0 @@
-    /**
-     * Method returns mysql error code
-     *
-     * @return int
-     */
-
-    public function getLastErrno () {

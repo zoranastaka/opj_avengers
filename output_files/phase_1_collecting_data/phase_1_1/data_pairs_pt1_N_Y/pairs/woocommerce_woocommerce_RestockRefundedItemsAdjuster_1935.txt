@@ -1,5 +1,0 @@
-/**
- * Class to adjust or initialize the restock refunded items.
- */
-
-class RestockRefundedItemsAdjuster {

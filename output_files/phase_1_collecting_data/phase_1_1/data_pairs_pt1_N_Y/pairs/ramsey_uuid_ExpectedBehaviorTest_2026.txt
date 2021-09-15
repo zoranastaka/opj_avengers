@@ -1,9 +1,0 @@
-    /**
-     * @dataProvider provideIsValid
-     */
-
-    public function testIsValid($uuid, $expected)
-    {
-        $this->assertSame($expected, Uuid::isValid($uuid), "{$uuid} is not a valid UUID");
-        $this->assertSame($expected, Uuid::isValid(strtoupper($uuid)), strtoupper($uuid) . ' is not a valid UUID');
-    }

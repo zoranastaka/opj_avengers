@@ -1,7 +1,0 @@
-    /**
-     * Returns list of locale units for ISO formatting.
-     *
-     * @return array
-     */
-
-    public static function getIsoUnits();

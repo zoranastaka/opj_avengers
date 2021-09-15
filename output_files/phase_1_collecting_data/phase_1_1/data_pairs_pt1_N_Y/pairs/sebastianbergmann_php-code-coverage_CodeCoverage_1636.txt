@@ -1,8 +1,0 @@
-    /**
-     * Returns the code coverage information as a graph of node objects.
-     */
-
-    public function getReport(): Directory
-    {
-        return (new Builder($this->coveredFileAnalyser()))->build($this);
-    }

@@ -1,8 +1,0 @@
-    /**
-     * @param string|null $appenv
-     */
-
-    public function setAppEnv($appenv)
-    {
-        $this->appenv = $appenv;
-    }

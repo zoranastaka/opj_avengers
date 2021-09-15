@@ -1,8 +1,0 @@
-    /**
-     * @return Request|null
-     */
-
-    public function getCurrentRequest()
-    {
-        return end($this->requests) ?: null;
-    }

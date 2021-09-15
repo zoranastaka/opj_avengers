@@ -1,3 +1,0 @@
-// Generate a random keyword
-
-function ozh_random_shorturl() {

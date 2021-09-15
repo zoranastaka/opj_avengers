@@ -1,8 +1,0 @@
-    /**
-     * Returns the number converter configured for this environment
-     */
-
-    public function getNumberConverter(): NumberConverterInterface
-    {
-        return $this->numberConverter;
-    }

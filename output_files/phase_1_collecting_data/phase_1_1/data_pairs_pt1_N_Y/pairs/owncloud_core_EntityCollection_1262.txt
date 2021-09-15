@@ -1,7 +1,0 @@
-	/**
-	 * returns the ID of this entity
-	 *
-	 * @return string
-	 */
-
-	public function getId() {

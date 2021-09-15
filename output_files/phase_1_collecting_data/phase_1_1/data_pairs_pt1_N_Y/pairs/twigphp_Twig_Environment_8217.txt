@@ -1,9 +1,0 @@
-    /**
-     * Disables debugging mode.
-     */
-
-    public function disableDebug()
-    {
-        $this->debug = false;
-        $this->updateOptionsHash();
-    }

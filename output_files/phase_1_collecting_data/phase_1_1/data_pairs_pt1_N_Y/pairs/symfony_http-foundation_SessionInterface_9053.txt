@@ -1,5 +1,0 @@
-    /**
-     * Clears all attributes.
-     */
-
-    public function clear();

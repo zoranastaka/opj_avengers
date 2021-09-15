@@ -1,9 +1,0 @@
-    /**
-     * Diagonal matrix must be triangular
-     * @inheritDoc
-     */
-
-    public function isTriangular(): bool
-    {
-        return true;
-    }

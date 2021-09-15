@@ -1,7 +1,0 @@
-    /**
-     * HOOK: after suite
-     **/
-
-    public function _afterSuite()
-    {
-    }

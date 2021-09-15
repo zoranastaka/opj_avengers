@@ -1,3 +1,0 @@
-// Custom php bin of remote host.
-
-set('bin/php', function () {

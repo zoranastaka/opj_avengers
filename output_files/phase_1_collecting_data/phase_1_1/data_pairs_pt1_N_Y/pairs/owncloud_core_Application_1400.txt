@@ -1,5 +1,0 @@
-		/**
-		 * Core class wrappers
-		 */
-
-		$container->registerService('Config', function (IContainer $c) {

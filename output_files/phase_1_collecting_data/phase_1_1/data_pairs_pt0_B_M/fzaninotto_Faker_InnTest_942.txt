@@ -1,8 +1,0 @@
-    /**
-     * @dataProvider checksumProvider
-     */
-
-    public function testChecksum($inn, $checksum)
-    {
-        $this->assertEquals($checksum, Inn::checksum($inn), $inn);
-    }

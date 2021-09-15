@@ -1,6 +1,0 @@
-  /**
-   * Disconnect from the POP3 server
-   * @access public
-   */
-
-  public function Disconnect () {

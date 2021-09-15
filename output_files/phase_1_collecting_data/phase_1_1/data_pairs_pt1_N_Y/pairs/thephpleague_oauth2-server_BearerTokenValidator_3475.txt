@@ -1,8 +1,0 @@
-    /**
-     * @param AccessTokenRepositoryInterface $accessTokenRepository
-     */
-
-    public function __construct(AccessTokenRepositoryInterface $accessTokenRepository)
-    {
-        $this->accessTokenRepository = $accessTokenRepository;
-    }

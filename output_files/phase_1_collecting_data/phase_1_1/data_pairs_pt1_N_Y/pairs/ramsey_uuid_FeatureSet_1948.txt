@@ -1,8 +1,0 @@
-    /**
-     * Returns a number converter configured for this environment
-     */
-
-    private function buildNumberConverter(CalculatorInterface $calculator): NumberConverterInterface
-    {
-        return new GenericNumberConverter($calculator);
-    }

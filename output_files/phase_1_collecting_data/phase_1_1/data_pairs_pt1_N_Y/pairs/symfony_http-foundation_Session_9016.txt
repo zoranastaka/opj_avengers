@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function remove(string $name)
-    {
-        return $this->getAttributeBag()->remove($name);
-    }

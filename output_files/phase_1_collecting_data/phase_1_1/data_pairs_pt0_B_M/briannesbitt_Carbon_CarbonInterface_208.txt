@@ -1,7 +1,0 @@
-    /**
-     * Returns the milliseconds timestamps used amongst other by Date javascript objects.
-     *
-     * @return float
-     */
-
-    public function valueOf();

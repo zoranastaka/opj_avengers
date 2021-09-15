@@ -1,9 +1,0 @@
-    /**
-     * Creates a method builder.
-     *
-     * @param string $name Name of the method
-     *
-     * @return Builder\Method The created method builder
-     */
-
-    public function method(string $name) : Builder\Method {

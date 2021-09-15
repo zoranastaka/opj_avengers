@@ -1,8 +1,0 @@
-    /**
-     * Get the entity that this tag belongs to
-     */
-
-    public function entity(): MorphTo
-    {
-        return $this->morphTo('entity');
-    }

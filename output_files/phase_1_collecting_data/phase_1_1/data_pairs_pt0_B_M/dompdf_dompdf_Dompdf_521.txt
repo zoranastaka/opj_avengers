@@ -1,9 +1,0 @@
-    /**
-     * @return string
-     * @deprecated
-     */
-
-    public function get_base_path()
-    {
-        return $this->getBasePath();
-    }

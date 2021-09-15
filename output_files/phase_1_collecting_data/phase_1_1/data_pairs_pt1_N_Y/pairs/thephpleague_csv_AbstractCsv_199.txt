@@ -1,9 +1,0 @@
-    /**
-     * Tells whether the stream filter read capabilities can be used.
-     */
-
-    public function supportsStreamFilterOnRead(): bool
-    {
-        return $this->document instanceof Stream
-            && ((static::STREAM_FILTER_MODE & STREAM_FILTER_READ) === STREAM_FILTER_READ);
-    }

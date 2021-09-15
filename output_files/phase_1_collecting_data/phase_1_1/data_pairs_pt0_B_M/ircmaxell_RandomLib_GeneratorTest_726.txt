@@ -1,8 +1,0 @@
-    /**
-     * @dataProvider provideGenerate
-     */
-
-    public function testGenerate($size, $expect)
-    {
-        $this->assertEquals($expect, $this->generator->generate($size));
-    }

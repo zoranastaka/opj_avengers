@@ -1,9 +1,0 @@
-	/**
-	 * Loads the config file
-	 *
-	 * Reads the config file and saves it to the cache
-	 *
-	 * @throws \Exception If no lock could be acquired or the config file has not been found
-	 */
-
-	private function readData() {

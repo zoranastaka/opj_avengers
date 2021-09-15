@@ -1,8 +1,0 @@
-    /**
-     * Initiates new image from binary data
-     *
-     * @param  string $data
-     * @return \Intervention\Image\Image
-     */
-
-    abstract public function initFromBinary($data);

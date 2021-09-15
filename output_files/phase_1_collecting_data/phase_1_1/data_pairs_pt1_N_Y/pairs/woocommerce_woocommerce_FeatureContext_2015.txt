@@ -1,5 +1,0 @@
-	/**
-	 * @BeforeSuite
-	 */
-
-	public static function prepare( SuiteEvent $event ) {

@@ -1,8 +1,0 @@
-    /**
-     * Initiates color object from given array
-     *
-     * @param  array $value
-     * @return \Intervention\Image\AbstractColor
-     */
-
-    abstract public function initFromArray($value);

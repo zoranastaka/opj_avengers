@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function getSpecificity(): Specificity
-    {
-        return $this->selector->getSpecificity()->plus($this->subSelector->getSpecificity());
-    }

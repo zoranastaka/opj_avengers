@@ -1,7 +1,0 @@
-    /** Just a quickie roundup of a few Hamcrest matchers to check nothing obvious out of place **/
-
-    public function testAnythingConstraintMatchesArgument()
-    {
-        $this->mock->shouldReceive('foo')->with(anything())->once();
-        $this->mock->foo(2);
-    }

@@ -1,9 +1,0 @@
-    /**
-     * Adds class and id attributes to an HTML tag.
-     */
-
-    protected function addHTMLAttributes(DOMElement $node): void
-    {
-        $node->setAttribute('class', $this->class_name);
-        $node->setAttribute('id', $this->id_value);
-    }

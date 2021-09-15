@@ -1,7 +1,0 @@
-/**
- * Tests for the activity listener
- *
- * @group DB
- */
-
-class ActivityListenerTest extends \Test\TestCase {

@@ -1,5 +1,0 @@
-    /**
-     * Collects data as late as possible.
-     */
-
-    public function lateCollect();

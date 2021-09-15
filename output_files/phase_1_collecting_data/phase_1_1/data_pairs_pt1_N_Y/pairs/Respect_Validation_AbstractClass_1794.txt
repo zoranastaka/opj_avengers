@@ -1,7 +1,0 @@
-/**
- * @author Henrique Moody <henriquemoody@gmail.com>
- */
-
-abstract class AbstractClass implements Validatable
-{
-}

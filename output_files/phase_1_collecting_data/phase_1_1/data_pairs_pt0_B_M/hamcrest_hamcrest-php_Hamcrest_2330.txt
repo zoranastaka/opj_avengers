@@ -1,8 +1,0 @@
-    /**
-     * Returns true if traversable is not empty.
-     */
-
-    function nonEmptyTraversable()
-    {
-        return \Hamcrest\Collection\IsEmptyTraversable::nonEmptyTraversable();
-    }

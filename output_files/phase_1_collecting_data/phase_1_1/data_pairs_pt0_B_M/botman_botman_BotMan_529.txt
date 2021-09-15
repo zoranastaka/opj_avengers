@@ -1,8 +1,0 @@
-    /**
-     * @param DriverInterface $driver
-     */
-
-    public function setDriver(DriverInterface $driver)
-    {
-        $this->driver = $driver;
-    }

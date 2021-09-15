@@ -1,8 +1,0 @@
-    /**
-     * @internal
-     */
-
-    public function getBinaryOperators(): array
-    {
-        return $this->extensionSet->getBinaryOperators();
-    }

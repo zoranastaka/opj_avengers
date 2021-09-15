@@ -1,8 +1,0 @@
-    /**
-     * @return int[]
-     */
-
-    public function getSex(): array
-    {
-        return \array_combine($this->getNames(), \array_column(self::DATA, 8));
-    }

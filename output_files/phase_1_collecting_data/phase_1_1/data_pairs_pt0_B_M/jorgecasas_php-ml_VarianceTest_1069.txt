@@ -1,8 +1,0 @@
-    /**
-     * @dataProvider dataProviderForPopulationVariance
-     */
-
-    public function testVarianceFromInt(array $numbers, float $variance): void
-    {
-        self::assertEqualsWithDelta($variance, Variance::population($numbers), 0.001);
-    }

@@ -1,3 +1,0 @@
-// Chatwork settings
-
-set('chatwork_token', function () {

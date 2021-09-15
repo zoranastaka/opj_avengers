@@ -1,5 +1,0 @@
-	/**
-	 * Get customer details via ajax.
-	 */
-
-	public static function get_customer_details() {

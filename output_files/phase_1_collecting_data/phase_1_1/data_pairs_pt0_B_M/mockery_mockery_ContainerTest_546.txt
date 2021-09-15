@@ -1,9 +1,0 @@
-    /**
-     * @group issue/4
-     */
-
-    public function testCanMockClassContainingMagicCallMethodWithoutTypeHinting()
-    {
-        $m = mock('MockeryTest_Call2');
-        $this->assertInstanceOf(MockeryTest_Call2::class, $m);
-    }

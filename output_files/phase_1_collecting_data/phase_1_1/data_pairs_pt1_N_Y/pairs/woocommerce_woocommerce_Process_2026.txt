@@ -1,8 +1,0 @@
-	/**
-	 * @var array $props Properties of executed command.
-	 */
-
-	public function __construct( $props ) {
-		foreach ( $props as $key => $value ) {
-			$this->$key = $value;
-		}

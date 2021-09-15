@@ -1,9 +1,0 @@
-    /**
-     * @after
-     */
-
-    protected function tearDownVarDumper(): void
-    {
-        $this->varDumperConfig['casters'] = [];
-        $this->varDumperConfig['flags'] = null;
-    }

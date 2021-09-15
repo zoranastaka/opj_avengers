@@ -1,3 +1,0 @@
-// used for heartbeat
-
-$this->create('heartbeat', '/heartbeat')->action(function () {

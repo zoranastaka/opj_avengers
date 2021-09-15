@@ -1,8 +1,0 @@
-    /**
-     * Is the value a float/double?
-     */
-
-    function floatValue()
-    {
-        return \Hamcrest\Type\IsDouble::doubleValue();
-    }

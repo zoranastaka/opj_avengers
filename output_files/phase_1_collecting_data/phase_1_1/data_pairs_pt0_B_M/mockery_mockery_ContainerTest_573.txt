@@ -1,6 +1,0 @@
-    /** @group nette */
-
-    public function testMockeryShouldNotMockCallstaticMagicMethod()
-    {
-        $this->assertInstanceOf(MockInterface::class, mock('MockeryTest_CallStatic'));
-    }

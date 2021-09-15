@@ -1,8 +1,0 @@
-    /** @test */
-
-    public function it_can_load_custom_drivers()
-    {
-        $count = count(DriverManager::getAvailableDrivers());
-        DriverManager::loadDriver(TestDriver::class);
-        $this->assertSame($count + 1, count(DriverManager::getAvailableDrivers()));
-    }

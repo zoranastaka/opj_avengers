@@ -1,5 +1,0 @@
-    /**
-     * @depends testConstruct
-     */
-
-    public function testSetMessageAndLine(Error $error) {

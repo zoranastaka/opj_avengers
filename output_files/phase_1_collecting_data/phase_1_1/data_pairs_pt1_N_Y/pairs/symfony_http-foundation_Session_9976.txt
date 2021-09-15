@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function setName(string $name)
-    {
-        $this->storage->setName($name);
-    }

@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    protected function getCipher()
-    {
-        return 'rijndael-128';
-    }

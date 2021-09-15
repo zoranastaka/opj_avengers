@@ -1,5 +1,0 @@
-	/**
-	 * Sets the php session data for the cart and coupons.
-	 */
-
-	public function set_session() {

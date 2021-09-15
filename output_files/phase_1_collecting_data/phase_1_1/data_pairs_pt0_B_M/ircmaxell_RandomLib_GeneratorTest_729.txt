@@ -1,8 +1,0 @@
-    /**
-     * @expectedException RangeException
-     */
-
-    public function testGenerateIntFail()
-    {
-        $n = $this->generator->generateInt(-1, PHP_INT_MAX);
-    }

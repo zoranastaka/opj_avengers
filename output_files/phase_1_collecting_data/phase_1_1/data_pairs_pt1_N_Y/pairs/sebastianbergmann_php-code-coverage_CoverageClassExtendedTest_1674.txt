@@ -1,9 +1,0 @@
-    /**
-     * @covers CoveredClass<extended>
-     */
-
-    public function testSomething()
-    {
-        $o = new CoveredClass;
-        $o->publicMethod();
-    }

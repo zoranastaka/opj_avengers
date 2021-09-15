@@ -1,3 +1,0 @@
-        // Filter out all frames with a line number under 6
-
-        $frames->filter(function ($frame) {

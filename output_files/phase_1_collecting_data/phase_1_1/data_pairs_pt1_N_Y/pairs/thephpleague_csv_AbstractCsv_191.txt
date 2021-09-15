@@ -1,8 +1,0 @@
-    /**
-     * Returns the current field delimiter.
-     */
-
-    public function getDelimiter(): string
-    {
-        return $this->delimiter;
-    }

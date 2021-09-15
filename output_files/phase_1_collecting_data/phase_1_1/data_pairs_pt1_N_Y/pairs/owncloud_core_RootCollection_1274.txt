@@ -1,9 +1,0 @@
-	/**
-	 * @param ICommentsManager $commentsManager
-	 * @param IUserManager $userManager
-	 * @param IUserSession $userSession
-	 * @param EventDispatcherInterface $dispatcher
-	 * @param ILogger $logger
-	 */
-
-	public function __construct(

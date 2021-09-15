@@ -1,9 +1,0 @@
-    /** 
-     * Sum of the vector values
-     * 
-     * @param array $vector
-     *
-     * @return number
-     */
-
-    private function sum(array $vector) {

@@ -1,7 +1,0 @@
-    /**
-     * Checks if an attribute is defined.
-     *
-     * @return bool
-     */
-
-    public function has(string $name);

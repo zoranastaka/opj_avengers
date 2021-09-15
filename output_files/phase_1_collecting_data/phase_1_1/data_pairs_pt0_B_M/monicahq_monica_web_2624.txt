@@ -1,6 +1,0 @@
-        // Introductions
-
-        Route::name('introductions.')->group(function () {
-            Route::get('/people/{contact}/introductions/edit', 'Contacts\\IntroductionsController@edit')->name('edit');
-            Route::post('/people/{contact}/introductions/update', 'Contacts\\IntroductionsController@update')->name('update');
-        });

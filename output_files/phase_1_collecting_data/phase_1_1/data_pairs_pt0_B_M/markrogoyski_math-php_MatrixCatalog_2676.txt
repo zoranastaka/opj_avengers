@@ -1,8 +1,0 @@
-    /**
-     * @param Decomposition\QR $QR
-     */
-
-    public function addQrDecomposition(Decomposition\QR $QR): void
-    {
-        $this->QR = $QR;
-    }

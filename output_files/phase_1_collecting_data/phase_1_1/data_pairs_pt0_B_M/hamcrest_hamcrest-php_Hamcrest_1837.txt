@@ -1,8 +1,0 @@
-    /**
-     * Matches if value does not match $value.
-     */
-
-    function not($value)
-    {
-        return \Hamcrest\Core\IsNot::not($value);
-    }

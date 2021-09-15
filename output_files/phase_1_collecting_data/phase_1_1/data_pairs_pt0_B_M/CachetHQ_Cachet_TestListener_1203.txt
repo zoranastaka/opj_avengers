@@ -1,8 +1,0 @@
-    /**
-     * A failure occurred.
-     */
-
-    public function addFailure(Test $test, AssertionFailedError $e, float $time): void
-    {
-        //
-    }

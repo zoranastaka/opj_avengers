@@ -1,9 +1,0 @@
-    /**
-     * @dataProvider checkDigitProvider
-     */
-
-    public function testComputeCheckDigit($partialNumber, $checkDigit)
-    {
-        $this->assertInternalType('string', $checkDigit);
-        $this->assertEquals($checkDigit, Luhn::computeCheckDigit($partialNumber));
-    }

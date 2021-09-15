@@ -1,8 +1,0 @@
-    /**
-     * Disable calculation cache
-     */
-
-    public function disableCalculationCache()
-    {
-        $this->setCalculationCacheEnabled(false);
-    }

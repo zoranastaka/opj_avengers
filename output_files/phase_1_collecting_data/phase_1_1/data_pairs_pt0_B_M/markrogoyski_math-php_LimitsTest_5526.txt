@@ -1,8 +1,0 @@
-    /**
-     * @test Limits constant is correct format
-     */
-
-    public function testHypergeometricParameterLimits()
-    {
-        $this->limitTest(Multivariate\Hypergeometric::PARAMETER_LIMITS);
-    }

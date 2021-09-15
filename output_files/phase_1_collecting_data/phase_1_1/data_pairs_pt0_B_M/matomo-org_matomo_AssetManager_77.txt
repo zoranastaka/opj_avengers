@@ -1,8 +1,0 @@
-    /**
-     * @param UIAssetCacheBuster $cacheBuster
-     */
-
-    public function setCacheBuster($cacheBuster)
-    {
-        $this->cacheBuster = $cacheBuster;
-    }

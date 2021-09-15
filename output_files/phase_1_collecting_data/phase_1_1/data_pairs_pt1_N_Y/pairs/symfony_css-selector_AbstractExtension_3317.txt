@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function getPseudoClassTranslators(): array
-    {
-        return [];
-    }

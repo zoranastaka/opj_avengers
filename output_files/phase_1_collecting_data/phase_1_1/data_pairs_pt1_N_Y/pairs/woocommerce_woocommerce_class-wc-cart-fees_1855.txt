@@ -1,5 +1,0 @@
-	/**
-	 * Register methods for this object on the appropriate WordPress hooks.
-	 */
-
-	public function init() {}

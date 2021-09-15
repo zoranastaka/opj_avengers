@@ -1,9 +1,0 @@
-		/**
-		 * This function can be used to delete the contact identified by the given id
-		 *
-		 * @param object $id the unique identifier to a contact
-		 * @param string $addressBookKey identifier of the address book in which the contact shall be deleted
-		 * @return bool successful or not
-		 */
-
-		public function delete($id, $addressBookKey) {

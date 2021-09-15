@@ -1,8 +1,0 @@
-    /**
-     * Key (Iterator interface)
-     */
-
-    public function key()
-    {
-        return $this->iterator_position;
-    }

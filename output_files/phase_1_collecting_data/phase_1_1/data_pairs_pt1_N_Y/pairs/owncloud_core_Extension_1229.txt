@@ -1,9 +1,0 @@
-	/**
-	 * The extension can return an array of additional notification types.
-	 * If no additional types are to be added false is to be returned
-	 *
-	 * @param string $languageCode
-	 * @return array|false
-	 */
-
-	public function getNotificationTypes($languageCode) {

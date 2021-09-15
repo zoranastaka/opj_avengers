@@ -1,8 +1,0 @@
-    /**
-     * Returns if the expected hash matches with the data and key
-     *
-     * @throws InvalidKeyProvided When issue key is invalid/incompatible.
-     * @throws ConversionFailed   When signature could not be converted.
-     */
-
-    public function verify(string $expected, string $payload, Key $key): bool;

@@ -1,6 +1,0 @@
-        // Hoa patches
-
-        static function (string $filePath, string $prefix, string $contents): string {
-            if ('vendor/hoa/stream/Stream.php' !== $filePath) {
-                return $contents;
-            }

@@ -1,5 +1,0 @@
-	/**
-	 * Add order note via ajax.
-	 */
-
-	public static function add_order_note() {

@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function stream_eof(): bool
-    {
-        return feof($this->stream);
-    }

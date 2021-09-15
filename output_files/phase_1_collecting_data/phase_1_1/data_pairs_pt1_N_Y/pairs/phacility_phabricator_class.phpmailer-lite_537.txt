@@ -1,6 +1,0 @@
-  /**
-   * Returns the start of a message boundary.
-   * @access private
-   */
-
-  private function GetBoundary($boundary, $charSet, $contentType, $encoding) {

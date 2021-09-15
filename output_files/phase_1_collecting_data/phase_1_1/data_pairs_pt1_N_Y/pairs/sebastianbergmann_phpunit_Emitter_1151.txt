@@ -1,5 +1,0 @@
-    /**
-     * @psalm-param class-string $className
-     */
-
-    public function testPartialMockObjectCreated(string $className, string ...$methodNames): void;

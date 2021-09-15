@@ -1,8 +1,0 @@
-    /**
-     * @return IncomingMessage
-     */
-
-    public function getMessage()
-    {
-        return $this->message;
-    }

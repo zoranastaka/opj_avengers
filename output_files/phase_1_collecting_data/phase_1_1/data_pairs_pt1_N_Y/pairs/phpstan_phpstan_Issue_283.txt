@@ -1,8 +1,0 @@
-	/**
-	 * @return Comment[]
-	 */
-
-	public function getComments(): iterable
-	{
-		return $this->comments;
-	}

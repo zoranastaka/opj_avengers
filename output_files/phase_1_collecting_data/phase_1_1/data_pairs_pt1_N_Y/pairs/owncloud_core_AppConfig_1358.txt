@@ -1,8 +1,0 @@
-	/**
-	 * Load all the app config values
-	 */
-
-	protected function loadConfigValues() {
-		if ($this->configLoaded) {
-			return;
-		}

@@ -1,3 +1,0 @@
-// File routes
-
-$this->create('files.viewcontroller.showFile', '/f/{fileId}')->action(static function ($urlParams) {

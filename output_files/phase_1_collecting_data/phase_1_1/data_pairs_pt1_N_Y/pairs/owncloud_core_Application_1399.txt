@@ -1,5 +1,0 @@
-		/**
-		 * Middleware
-		 */
-
-		$container->registerService('SubadminMiddleware', function (IContainer $c) {

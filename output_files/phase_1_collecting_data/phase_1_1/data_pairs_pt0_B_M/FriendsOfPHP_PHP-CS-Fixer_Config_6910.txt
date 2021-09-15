@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function getCustomFixers(): array
-    {
-        return $this->customFixers;
-    }

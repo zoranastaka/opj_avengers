@@ -1,5 +1,0 @@
-	/**
-	 * Get a refreshed cart fragment, including the mini cart HTML.
-	 */
-
-	public static function get_refreshed_fragments() {

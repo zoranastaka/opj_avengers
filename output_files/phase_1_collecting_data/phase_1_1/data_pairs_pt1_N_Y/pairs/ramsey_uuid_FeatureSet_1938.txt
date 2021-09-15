@@ -1,8 +1,0 @@
-    /**
-     * Returns the time converter configured for this environment
-     */
-
-    public function getTimeConverter(): TimeConverterInterface
-    {
-        return $this->timeConverter;
-    }

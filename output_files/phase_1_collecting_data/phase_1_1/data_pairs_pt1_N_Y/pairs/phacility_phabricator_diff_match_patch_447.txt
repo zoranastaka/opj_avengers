@@ -1,6 +1,0 @@
-/**
- * Class containing the diff, match and patch methods.
- * @constructor
- */
-
-class diff_match_patch {

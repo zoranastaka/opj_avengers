@@ -1,7 +1,0 @@
-	/**
-	 * Retrieve the Body of a MIME part
-	 * @return String
-	 * @param $part Object
-	 */
-
-	private function getPartBody(&$part) {

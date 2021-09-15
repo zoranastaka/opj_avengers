@@ -1,3 +1,0 @@
-        // Exception
-
-        throw new \BadMethodCallException("Method $function is not defined.");

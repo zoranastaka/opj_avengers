@@ -1,8 +1,0 @@
-    /**
-     * @param int $maxRequests
-     */
-
-    public function setMaxRequests($maxRequests)
-    {
-        $this->maxRequests = $maxRequests;
-    }

@@ -1,9 +1,0 @@
-    /**
-     * @test
-     */
-
-    public function it_returns_false_when_needle_is_not_present_in_haystack()
-    {
-        $this->assertFalse(array_keys_exist('d', ['a' => 'foo', 'b' => 'bar', 'c' => 'baz']));
-        $this->assertFalse(array_keys_exist(['d'], ['a' => 'foo', 'b' => 'bar', 'c' => 'baz']));
-    }

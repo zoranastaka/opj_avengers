@@ -1,8 +1,0 @@
-    /** @test */
-
-    public function it_throws_an_exception_when_assigning_a_role_from_a_different_guard()
-    {
-        $this->expectException(GuardDoesNotMatch::class);
-
-        $this->testUser->assignRole($this->testAdminRole);
-    }

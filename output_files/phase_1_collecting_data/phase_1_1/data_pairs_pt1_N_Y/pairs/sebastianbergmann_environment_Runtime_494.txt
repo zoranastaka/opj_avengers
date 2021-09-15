@@ -1,9 +1,0 @@
-    /**
-     * Returns true when Xdebug or PCOV is available or
-     * the runtime used is PHPDBG.
-     */
-
-    public function canCollectCodeCoverage(): bool
-    {
-        return $this->hasXdebug() || $this->hasPCOV() || $this->hasPHPDBGCodeCoverage();
-    }

@@ -1,8 +1,0 @@
-    /**
-     * HTML representation of the tree without column names
-     */
-
-    public function __toString(): string
-    {
-        return $this->getHTML();
-    }

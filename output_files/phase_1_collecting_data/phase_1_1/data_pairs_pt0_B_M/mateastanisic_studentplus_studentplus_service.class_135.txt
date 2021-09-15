@@ -1,9 +1,0 @@
-	//vracamo je li student prijavljen za neku praksu
-
-	function is_student_applied($id_student, $id_offer){
-		try{
-			$db = DB::getConnection();
-			$st = $db->prepare( 'SELECT * FROM studentplus_members WHERE id_offer=:id_offer AND id_student=:id_student' );
-
-			$st->execute( array( 'id_offer' => $id_offer, 'id_student' => $id_student ) );
-		}

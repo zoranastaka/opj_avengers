@@ -1,3 +1,0 @@
-// Custom ln bin of remote host.
-
-set('bin/symlink', function () {

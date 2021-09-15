@@ -1,8 +1,0 @@
-    /**
-     * @return Frame
-     */
-
-    public function get_parent()
-    {
-        return $this->_parent;
-    }

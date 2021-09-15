@@ -1,6 +1,0 @@
-/**
- * Echo the table start tag
- *
- */
-
-function yourls_table_end() {

@@ -1,8 +1,0 @@
-    /**
-     * @test
-     */
-
-    public function it_returns_true_when_all_needles_are_present_in_haystack()
-    {
-        $this->assertTrue(values_in_array(['a', 'b'], ['a', 'b', 'c']));
-    }

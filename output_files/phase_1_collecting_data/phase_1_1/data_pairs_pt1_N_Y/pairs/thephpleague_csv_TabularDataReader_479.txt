@@ -1,6 +1,0 @@
-    /**
-     * Returns the number of records contained in the tabular data structure
-     * excluding the header record.
-     */
-
-    public function count(): int;

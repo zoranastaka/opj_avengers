@@ -1,7 +1,0 @@
-/**
- * 获取url地址
- *
- * @return string
- */
-
-function _u() {

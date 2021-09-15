@@ -1,7 +1,0 @@
-    /**
-     * Is ipv4.
-     *
-     * @return bool
-     */
-
-    abstract public function isIPv4();

@@ -1,7 +1,0 @@
-    /**
-     * What type of data does the matrix contain
-     *
-     * @return string the type of data in the Matrix
-     */
-
-    abstract public function getObjectType(): string;

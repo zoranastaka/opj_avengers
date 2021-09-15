@@ -1,3 +1,0 @@
-	//dodaj novu ponudu u bazu
-
-	function add_offer($company, $name, $description, $adress, $period){

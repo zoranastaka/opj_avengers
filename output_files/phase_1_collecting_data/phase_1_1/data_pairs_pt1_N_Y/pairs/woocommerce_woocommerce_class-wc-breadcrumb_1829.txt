@@ -1,5 +1,0 @@
-	/**
-	 * Category trail.
-	 */
-
-	protected function add_crumbs_category() {

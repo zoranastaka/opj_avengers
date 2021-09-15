@@ -1,8 +1,0 @@
-    /**
-     * Tell whether the specify stream filter is attach to the current stream.
-     */
-
-    public function hasStreamFilter(string $filtername): bool
-    {
-        return $this->stream_filters[$filtername] ?? false;
-    }

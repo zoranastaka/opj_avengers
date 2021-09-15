@@ -1,8 +1,0 @@
-    /**
-     * Returns a matcher that matches when the method is executed exactly once.
-     */
-
-    function once(): InvokedCountMatcher
-    {
-        return new InvokedCountMatcher(1);
-    }

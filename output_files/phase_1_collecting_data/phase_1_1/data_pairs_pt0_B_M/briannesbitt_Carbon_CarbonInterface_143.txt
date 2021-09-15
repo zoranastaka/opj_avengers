@@ -1,7 +1,0 @@
-    /**
-     * The number of seconds until 23:59:59.
-     *
-     * @return int
-     */
-
-    public function secondsUntilEndOfDay();

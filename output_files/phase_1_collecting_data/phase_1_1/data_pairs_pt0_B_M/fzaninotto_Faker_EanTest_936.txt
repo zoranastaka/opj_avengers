@@ -1,8 +1,0 @@
-    /**
-     * @dataProvider Ean13checksumProvider
-     */
-
-    public function testChecksumEan13($partial, $checksum)
-    {
-        $this->assertEquals($checksum, Ean::checksum($partial));
-    }

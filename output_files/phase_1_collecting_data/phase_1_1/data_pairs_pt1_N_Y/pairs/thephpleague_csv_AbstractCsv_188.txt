@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function __clone()
-    {
-        throw UnavailableStream::dueToForbiddenCloning(static::class);
-    }

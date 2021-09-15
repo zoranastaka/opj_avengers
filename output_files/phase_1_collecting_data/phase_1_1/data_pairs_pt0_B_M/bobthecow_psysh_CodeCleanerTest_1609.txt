@@ -1,9 +1,0 @@
-    /**
-     * @dataProvider semicolonCodeProvider
-     */
-
-    public function testAutomaticSemicolons(array $lines, $requireSemicolons, $expected)
-    {
-        $cc = new CodeCleaner();
-        $this->assertSame($expected, $cc->clean($lines, $requireSemicolons));
-    }

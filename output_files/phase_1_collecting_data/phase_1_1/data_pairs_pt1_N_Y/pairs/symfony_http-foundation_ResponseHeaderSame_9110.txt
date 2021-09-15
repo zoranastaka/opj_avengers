@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function toString(): string
-    {
-        return sprintf('has header "%s" with value "%s"', $this->headerName, $this->expectedValue);
-    }

@@ -1,7 +1,0 @@
-	/**
-	 * Retrieve information about a file resource.
-	 *
-	 * @return array See stat().
-	 */
-
-	public function stream_stat() {

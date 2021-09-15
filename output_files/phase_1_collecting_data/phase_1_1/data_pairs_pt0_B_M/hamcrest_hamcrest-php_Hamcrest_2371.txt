@@ -1,8 +1,0 @@
-    /**
-     * Matches if value is a string that contains $substring.
-     */
-
-    function containsString($substring)
-    {
-        return \Hamcrest\Text\StringContains::containsString($substring);
-    }

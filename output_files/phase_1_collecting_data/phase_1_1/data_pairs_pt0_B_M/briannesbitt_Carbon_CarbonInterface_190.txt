@@ -1,7 +1,0 @@
-    /**
-     * Return a immutable copy of the instance.
-     *
-     * @return CarbonImmutable
-     */
-
-    public function toImmutable();

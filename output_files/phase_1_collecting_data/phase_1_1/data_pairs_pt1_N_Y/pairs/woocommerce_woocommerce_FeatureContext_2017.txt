@@ -1,5 +1,0 @@
-	/**
-	 * @BeforeScenario
-	 */
-
-	public function beforeScenario( $event ) {

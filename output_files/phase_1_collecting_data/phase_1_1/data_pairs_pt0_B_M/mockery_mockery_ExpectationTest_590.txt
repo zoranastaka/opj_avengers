@@ -1,8 +1,0 @@
-    /** @test */
-
-    public function it_can_throw_a_throwable()
-    {
-        $this->expectException(\Error::class);
-        $this->mock->shouldReceive('foo')->andThrow(new \Error());
-        $this->mock->foo();
-    }

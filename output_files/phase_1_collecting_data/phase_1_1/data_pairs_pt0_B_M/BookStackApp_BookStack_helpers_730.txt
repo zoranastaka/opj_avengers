@@ -1,9 +1,0 @@
-/**
- * Helper method to get the current User.
- * Defaults to public 'Guest' user if not logged in.
- */
-
-function user(): User
-{
-    return auth()->user() ?: User::getDefault();
-}

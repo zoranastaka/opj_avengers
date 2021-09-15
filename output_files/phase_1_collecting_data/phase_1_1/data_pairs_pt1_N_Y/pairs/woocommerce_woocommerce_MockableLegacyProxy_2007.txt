@@ -1,9 +1,0 @@
-	/**
-	 * Register the static method mocks to use.
-	 *
-	 * @param array $mocks An associative array where keys are class names and values are associative arrays, in which keys are method names and values are method replacement callbacks.
-	 *
-	 * @throws \Exception Invalid parameter.
-	 */
-
-	public function register_static_mocks( array $mocks ) {

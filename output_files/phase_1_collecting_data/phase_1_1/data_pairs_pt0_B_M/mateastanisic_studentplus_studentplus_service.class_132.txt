@@ -1,8 +1,0 @@
-	// vraća id studenta s određenim username-om
-
-	function get_id_by_username($username){
-		try{
-			$db = DB::getConnection();
-			$st = $db->prepare( 'SELECT id FROM studentplus_students WHERE username=:username' );
-			$st->execute( array( 'username' => $username ) );
-		}

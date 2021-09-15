@@ -1,8 +1,0 @@
-    /**
-     * @return RootPackageInterface
-     */
-
-    public function getPackage()
-    {
-        return $this->package;
-    }

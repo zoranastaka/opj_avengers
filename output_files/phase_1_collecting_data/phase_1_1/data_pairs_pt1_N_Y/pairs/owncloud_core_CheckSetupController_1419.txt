@@ -1,5 +1,0 @@
-/**
- * @package OC\Settings\Controller
- */
-
-class CheckSetupController extends Controller {

@@ -1,5 +1,0 @@
-	/**
-	 * Add a breadcrumb for author archives.
-	 */
-
-	protected function add_crumbs_author() {

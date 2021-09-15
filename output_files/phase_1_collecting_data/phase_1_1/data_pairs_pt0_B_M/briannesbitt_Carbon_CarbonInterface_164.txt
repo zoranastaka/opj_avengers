@@ -1,7 +1,0 @@
-    /**
-     * Get the month overflow global behavior (can be overridden in specific instances).
-     *
-     * @return bool
-     */
-
-    public static function shouldOverflowMonths();

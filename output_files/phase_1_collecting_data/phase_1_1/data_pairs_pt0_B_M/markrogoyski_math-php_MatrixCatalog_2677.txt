@@ -1,8 +1,0 @@
-    /**
-     * @return bool
-     */
-
-    public function hasQrDecomposition(): bool
-    {
-        return isset($this->QR);
-    }

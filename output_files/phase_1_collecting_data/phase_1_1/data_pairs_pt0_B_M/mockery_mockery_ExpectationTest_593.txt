@@ -1,7 +1,0 @@
-    /** @issue #253 */
-
-    public function testShouldIgnoreMissingDefaultSelfAndReturnsSelf()
-    {
-        $this->mock->shouldIgnoreMissing(\Mockery::self());
-        $this->assertSame($this->mock, $this->mock->a()->b());
-    }

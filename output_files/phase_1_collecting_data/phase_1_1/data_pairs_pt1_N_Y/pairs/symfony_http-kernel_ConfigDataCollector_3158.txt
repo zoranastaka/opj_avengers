@@ -1,8 +1,0 @@
-    /**
-     * @return int The PHP architecture as number of bits (e.g. 32 or 64)
-     */
-
-    public function getPhpArchitecture()
-    {
-        return $this->data['php_architecture'];
-    }

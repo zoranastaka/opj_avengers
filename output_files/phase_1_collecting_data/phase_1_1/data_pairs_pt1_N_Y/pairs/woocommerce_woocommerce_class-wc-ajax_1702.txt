@@ -1,5 +1,0 @@
-	/**
-	 * Add a new attribute via ajax function.
-	 */
-
-	public static function add_new_attribute() {

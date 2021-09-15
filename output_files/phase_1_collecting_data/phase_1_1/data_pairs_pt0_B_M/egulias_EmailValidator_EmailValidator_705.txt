@@ -1,8 +1,0 @@
-    /**
-     * @return boolean
-     */
-
-    public function hasWarnings()
-    {
-        return !empty($this->warnings);
-    }

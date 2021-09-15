@@ -1,5 +1,0 @@
-/**
- * Class to assign default category to products.
- */
-
-class AssignDefaultCategory {

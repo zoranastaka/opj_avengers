@@ -1,9 +1,0 @@
-    /**
-     * Dumps a string.
-     *
-     * @param string $str The string being dumped
-     * @param bool   $bin Whether $str is UTF-8 or binary encoded
-     * @param int    $cut The number of characters $str has been cut by
-     */
-
-    public function dumpString(Cursor $cursor, string $str, bool $bin, int $cut);

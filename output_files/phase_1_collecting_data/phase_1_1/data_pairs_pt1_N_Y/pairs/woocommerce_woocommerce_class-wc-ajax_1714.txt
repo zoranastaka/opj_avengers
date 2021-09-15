@@ -1,7 +1,0 @@
-	/**
-	 * Add order tax column via ajax.
-	 *
-	 * @throws Exception If order or tax rate is invalid.
-	 */
-
-	public static function add_order_tax() {

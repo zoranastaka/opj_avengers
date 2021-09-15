@@ -1,8 +1,0 @@
-    /**
-     * @inheritdoc
-     */
-
-    public function set(string $index, $value)
-    {
-        $this->memory[$this->prepareIndex($index)] = $value;
-    }

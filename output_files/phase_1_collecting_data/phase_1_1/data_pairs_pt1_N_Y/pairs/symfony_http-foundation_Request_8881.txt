@@ -1,8 +1,0 @@
-    /**
-     * @return bool
-     */
-
-    public function isNoCache()
-    {
-        return $this->headers->hasCacheControlDirective('no-cache') || 'no-cache' == $this->headers->get('Pragma');
-    }

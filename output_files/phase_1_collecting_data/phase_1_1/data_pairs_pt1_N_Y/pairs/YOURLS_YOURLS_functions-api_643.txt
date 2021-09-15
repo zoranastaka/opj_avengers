@@ -1,6 +1,0 @@
-/**
- * Expand short url to long url
- *
- */
-
-function yourls_api_expand( $shorturl ) {

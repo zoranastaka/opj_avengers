@@ -1,8 +1,0 @@
-    /**
-     * @return int
-     */
-
-    public function getDenominator(): int
-    {
-        return $this->denominator;
-    }

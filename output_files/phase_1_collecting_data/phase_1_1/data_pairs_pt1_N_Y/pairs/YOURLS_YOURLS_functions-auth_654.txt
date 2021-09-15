@@ -1,6 +1,0 @@
-/**
- * Check auth against encrypted COOKIE data. Sets user if applicable, returns bool
- *
- */
-
-function yourls_check_auth_cookie() {

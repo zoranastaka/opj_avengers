@@ -1,9 +1,0 @@
-    /** 
-     * Sum of the vector squared values
-     *
-     * @param array $vector
-     *
-     * @return number
-     */
-
-    private function sumSquared(array $vector) {

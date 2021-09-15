@@ -1,8 +1,0 @@
-    /**
-     * Sets the maximum cloned length for strings.
-     */
-
-    public function setMaxString(int $maxString)
-    {
-        $this->maxString = $maxString;
-    }

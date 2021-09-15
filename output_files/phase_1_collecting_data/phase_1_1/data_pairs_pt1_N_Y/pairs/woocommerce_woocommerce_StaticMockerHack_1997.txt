@@ -1,7 +1,0 @@
-	/**
-	 * StaticMockerHack constructor.
-	 *
-	 * @param array $mockable_classes An associative array of class name => array of class methods.
-	 */
-
-	private function __construct( $mockable_classes ) {

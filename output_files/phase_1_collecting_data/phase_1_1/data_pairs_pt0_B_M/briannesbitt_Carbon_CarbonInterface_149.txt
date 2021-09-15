@@ -1,9 +1,0 @@
-    /**
-     * Set the translator for the current instance.
-     *
-     * @param \Symfony\Component\Translation\TranslatorInterface $translator
-     *
-     * @return $this
-     */
-
-    public function setLocalTranslator(\Symfony\Component\Translation\TranslatorInterface $translator);

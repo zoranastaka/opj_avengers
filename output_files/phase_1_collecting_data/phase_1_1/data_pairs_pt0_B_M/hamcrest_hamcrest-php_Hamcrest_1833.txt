@@ -1,9 +1,0 @@
-    /**
-     * Is the value equal to another value, as tested by the use of the "=="
-     * comparison operator?
-     */
-
-    function equalTo($item)
-    {
-        return \Hamcrest\Core\IsEqual::equalTo($item);
-    }

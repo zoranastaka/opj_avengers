@@ -1,8 +1,0 @@
-	// --------------------------------------------------------------------
-
-	public function test_cookie()
-	{
-		$_COOKIE['foo'] = 'bar';
-		$this->assertEquals('bar', $this->input->cookie('foo'));
-		$this->assertNull($this->input->cookie('bar'));
-	}

@@ -1,5 +1,0 @@
-    /**
-     * Update constructedObjectId on cloned.
-     */
-
-    public function __clone();

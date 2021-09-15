@@ -1,8 +1,0 @@
-    /**
-     * @test Limits constant is correct format
-     */
-
-    public function testDiracDeltaSupportLimits()
-    {
-        $this->limitTest(Continuous\DiracDelta::SUPPORT_LIMITS);
-    }

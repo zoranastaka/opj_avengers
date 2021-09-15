@@ -1,9 +1,0 @@
-    /**
-     * Evaluates to false if ANY of the passed in matchers evaluate to true.
-     */
-
-    function noneOf(/* args... */)
-    {
-        $args = func_get_args();
-        return call_user_func_array(array('\Hamcrest\Core\AnyOf', 'noneOf'), $args);
-    }

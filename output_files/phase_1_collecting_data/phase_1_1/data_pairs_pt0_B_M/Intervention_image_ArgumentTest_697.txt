@@ -1,9 +1,0 @@
-    /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
-     */
-
-    public function testTypeIntegerFail()
-    {
-        $arg = new Argument($this->getMockedCommand(['foo']));
-        $arg->type('integer');
-    }

@@ -1,8 +1,0 @@
-	/**
-	 * The Constructor.
-	 */
-
-	public function __construct() {
-		if ( function_exists( '__autoload' ) ) {
-			spl_autoload_register( '__autoload' );
-		}

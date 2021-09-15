@@ -1,8 +1,0 @@
-/**
- * Debug mode set
- *
- * @since 1.7.3
- * @param bool $bool Debug on or off
- */
-
-function yourls_debug_mode( $bool ) {

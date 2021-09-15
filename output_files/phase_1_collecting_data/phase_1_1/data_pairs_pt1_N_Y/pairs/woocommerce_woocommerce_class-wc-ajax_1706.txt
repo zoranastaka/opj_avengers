@@ -1,5 +1,0 @@
-	/**
-	 * Link all variations via ajax function.
-	 */
-
-	public static function link_all_variations() {

@@ -1,5 +1,0 @@
-    /**
-     * @uses \PharIo\Manifest\ApplicationName
-     */
-
-    public function testCanHandleUnknownType(): void {

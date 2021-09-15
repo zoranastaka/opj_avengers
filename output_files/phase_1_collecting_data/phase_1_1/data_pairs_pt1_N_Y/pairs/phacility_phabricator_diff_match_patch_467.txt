@@ -1,7 +1,0 @@
-	/**
-	 * Compute and return the source text (all equalities and deletions).
-	 * @param {Array.<Array.<number|string>>} diffs Array of diff tuples.
-	 * @return {string} Source text.
-	 */
-
-	function diff_text1($diffs) {

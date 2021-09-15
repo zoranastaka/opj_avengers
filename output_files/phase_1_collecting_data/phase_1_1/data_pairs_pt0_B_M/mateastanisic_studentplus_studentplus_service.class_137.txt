@@ -1,3 +1,0 @@
-	//vraća polje svih  članova koji su podnijeli zahtjev (i koje je tvrtka prihvatila)
-
-	function get_accepted_students_in_offer($id_offer){

@@ -1,5 +1,0 @@
-	/**
-	 * Product category trail.
-	 */
-
-	protected function add_crumbs_product_category() {

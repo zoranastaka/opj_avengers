@@ -1,9 +1,0 @@
-    /**
-     * Appends some plain text to the description.
-     *
-     * @param string $text
-     *
-     * @return \Hamcrest\Description
-     */
-
-    public function appendText($text);

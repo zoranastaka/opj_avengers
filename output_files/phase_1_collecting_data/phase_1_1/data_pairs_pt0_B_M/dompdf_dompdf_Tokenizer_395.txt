@@ -1,3 +1,0 @@
-// all flags are in hyphenated form
-
-class HTML5_Tokenizer {

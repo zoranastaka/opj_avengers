@@ -1,8 +1,0 @@
-    /**
-     * @param bool $populateServer
-     */
-
-    public function setPopulateServer($populateServer)
-    {
-        $this->populateServer = $populateServer;
-    }

@@ -1,3 +1,0 @@
-	// Funkcija za automatizaciju grejnog tela
-
-	function autoTemp() {

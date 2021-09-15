@@ -1,3 +1,0 @@
-	// Vraća broj dana besprekidnog rada sistema
-
-	function getUptime() {

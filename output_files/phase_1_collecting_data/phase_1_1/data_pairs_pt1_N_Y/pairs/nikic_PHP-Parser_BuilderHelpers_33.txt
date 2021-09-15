@@ -1,9 +1,0 @@
-    /**
-     * Normalizes a name: Converts string names to Name nodes.
-     *
-     * @param Name|string $name The name to normalize
-     *
-     * @return Name The normalized name
-     */
-
-    public static function normalizeName($name) : Name {

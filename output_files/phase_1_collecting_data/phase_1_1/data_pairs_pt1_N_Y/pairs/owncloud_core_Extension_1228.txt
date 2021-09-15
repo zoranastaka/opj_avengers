@@ -1,8 +1,0 @@
-	/**
-	 * @param IFactory $languageFactory
-	 * @param IManager $activityManager
-	 * @param ICommentsManager $commentsManager
-	 * @param IURLGenerator $URLGenerator
-	 */
-
-	public function __construct(IFactory $languageFactory, IManager $activityManager, ICommentsManager $commentsManager, IURLGenerator $URLGenerator) {

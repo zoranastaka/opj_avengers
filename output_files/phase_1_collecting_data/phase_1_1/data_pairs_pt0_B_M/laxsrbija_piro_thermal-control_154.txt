@@ -1,4 +1,0 @@
-	// Režim postavljen na "A" služi za pozive unutar
-	// Androida, nakon čega vraća trenutne parametre
-
-	function getMode() {

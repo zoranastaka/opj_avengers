@@ -1,9 +1,0 @@
-    /**
-     * Sets the request method.
-     */
-
-    public function setMethod(string $method)
-    {
-        $this->method = null;
-        $this->server->set('REQUEST_METHOD', $method);
-    }

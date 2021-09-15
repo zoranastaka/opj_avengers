@@ -1,9 +1,0 @@
-  /**
-   * sets function to be called when an access token is fetched
-   * @param callable $tokenCallback - function ($cacheKey, $accessToken)
-   */
-
-  public function setTokenCallback(callable $tokenCallback)
-  {
-    $this->config['token_callback'] = $tokenCallback;
-  }

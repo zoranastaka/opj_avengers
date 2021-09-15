@@ -1,7 +1,0 @@
-    /** @test */
-
-    public function it_returns_text_as_string()
-    {
-        $answer = new Answer('foo');
-        $this->assertSame('foo', (string) $answer);
-    }

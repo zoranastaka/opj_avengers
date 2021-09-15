@@ -1,9 +1,0 @@
-    /**
-     * @return DOMDocument
-     * @deprecated
-     */
-
-    public function get_dom()
-    {
-        return $this->getDom();
-    }

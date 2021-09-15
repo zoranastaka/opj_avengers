@@ -1,5 +1,0 @@
-	/*
-	 * metoda skenira server na GT.rs i vraca informacije
-	 */
-
-	function skenirajServer($ip) {

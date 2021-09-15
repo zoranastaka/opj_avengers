@@ -1,9 +1,0 @@
-    /** @dataProvider setColorModeValidProvider */
-
-    public function testSetColorModeValid($colorMode)
-    {
-        $config = $this->getConfig();
-        $config->setColorMode($colorMode);
-
-        $this->assertSame($colorMode, $config->colorMode());
-    }

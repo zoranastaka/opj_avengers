@@ -1,7 +1,0 @@
-    /**
-     * should be used for internal checks, not implemented as yet
-     */
-
-    function checkAllHere()
-    {
-    }

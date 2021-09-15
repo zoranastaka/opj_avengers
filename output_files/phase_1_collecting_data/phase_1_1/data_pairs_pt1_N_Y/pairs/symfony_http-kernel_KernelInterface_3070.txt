@@ -1,7 +1,0 @@
-    /**
-     * Gets the registered bundle instances.
-     *
-     * @return BundleInterface[] An array of registered bundle instances
-     */
-
-    public function getBundles();

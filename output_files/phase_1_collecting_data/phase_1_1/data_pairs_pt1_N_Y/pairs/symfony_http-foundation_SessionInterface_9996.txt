@@ -1,5 +1,0 @@
-    /**
-     * Sets the session name.
-     */
-
-    public function setName(string $name);

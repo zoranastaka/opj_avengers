@@ -1,5 +1,0 @@
-    /**
-     * Close the connection
-     */
-
-    function close();

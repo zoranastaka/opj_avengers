@@ -1,7 +1,0 @@
-/**
- * WC_Cart_Session class.
- *
- * @since 3.2.0
- */
-
-final class WC_Cart_Session {

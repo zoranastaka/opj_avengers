@@ -1,9 +1,0 @@
-/**
-* PHP emulation of JS's encodeURI
-*
-* @link https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/encodeURI
-* @param $url
-* @return string
-*/
-
-function yourls_encodeURI( $url ) {

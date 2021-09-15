@@ -1,8 +1,0 @@
-    /**
-     * ends the last clipping shape
-     */
-
-    function clippingEnd()
-    {
-        $this->restore();
-    }

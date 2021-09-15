@@ -1,3 +1,0 @@
-	//obradi prijavu studenta za neku ponudu
-
-	function asign_student_to_offer($id_student, $id_offer){

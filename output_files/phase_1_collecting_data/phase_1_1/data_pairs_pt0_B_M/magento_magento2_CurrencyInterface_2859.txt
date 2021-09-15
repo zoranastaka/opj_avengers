@@ -1,7 +1,0 @@
-    /**
-     * Returns the value
-     *
-     * @return float
-     */
-
-    public function getValue();

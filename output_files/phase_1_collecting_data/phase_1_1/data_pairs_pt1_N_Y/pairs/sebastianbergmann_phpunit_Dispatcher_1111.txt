@@ -1,5 +1,0 @@
-    /**
-     * @throws UnknownSubscriberTypeException
-     */
-
-    public function registerSubscriber(Subscriber $subscriber): void;

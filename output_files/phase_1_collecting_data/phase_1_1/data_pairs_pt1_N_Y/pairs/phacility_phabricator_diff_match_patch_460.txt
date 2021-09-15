@@ -1,6 +1,0 @@
-	/**
-	 * Reduce the number of edits by eliminating semantically trivial equalities.
-	 * @param {Array.<Array.<number|string>>} diffs Array of diff tuples.
-	 */
-
-	function diff_cleanupSemantic(&$diffs) {

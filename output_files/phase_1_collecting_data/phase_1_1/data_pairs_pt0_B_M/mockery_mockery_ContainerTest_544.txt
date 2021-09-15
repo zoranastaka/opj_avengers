@@ -1,8 +1,0 @@
-    /**
-     * @group partial
-     */
-
-    public function testCanUseEmptyMethodlist()
-    {
-        $m = mock('MockeryTest_PartialNormalClass2[]');
-    }

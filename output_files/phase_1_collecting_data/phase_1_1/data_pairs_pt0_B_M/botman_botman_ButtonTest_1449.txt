@@ -1,8 +1,0 @@
-    /** @test */
-
-    public function it_can_have_a_name()
-    {
-        $button = Button::create('text')->name('name');
-        $this->assertSame('text', Arr::get($button->toArray(), 'text'));
-        $this->assertSame('name', Arr::get($button->toArray(), 'name'));
-    }

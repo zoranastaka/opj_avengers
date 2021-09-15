@@ -1,5 +1,0 @@
-		/**
-		 * removes all registered address book instances
-		 */
-
-		public function clear() {

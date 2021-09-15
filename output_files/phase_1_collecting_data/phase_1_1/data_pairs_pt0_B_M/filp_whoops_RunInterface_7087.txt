@@ -1,7 +1,0 @@
-    /**
-     * Registers this instance as an error handler.
-     *
-     * @return Run
-     */
-
-    public function register();

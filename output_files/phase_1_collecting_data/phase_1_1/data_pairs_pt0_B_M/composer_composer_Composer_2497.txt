@@ -1,8 +1,0 @@
-    /**
-     * @param InstallationManager $manager
-     */
-
-    public function setInstallationManager(InstallationManager $manager)
-    {
-        $this->installationManager = $manager;
-    }

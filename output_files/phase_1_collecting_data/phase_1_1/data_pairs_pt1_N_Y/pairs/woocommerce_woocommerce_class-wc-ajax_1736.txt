@@ -1,5 +1,0 @@
-	/**
-	 * Save variations via AJAX.
-	 */
-
-	public static function save_variations() {

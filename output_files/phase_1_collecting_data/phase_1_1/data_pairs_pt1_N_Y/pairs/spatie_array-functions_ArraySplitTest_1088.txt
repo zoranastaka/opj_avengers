@@ -1,8 +1,0 @@
-    /**
-     * @test
-     */
-
-    public function it_splits_an_array_in_two_by_default()
-    {
-        $this->assertSame(array_split(['a', 'b']), [['a'], ['b']]);
-    }

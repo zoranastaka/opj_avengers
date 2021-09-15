@@ -1,8 +1,0 @@
-	//vraća ponudu s poslanim id-om
-
-	function get_offer_by_id($id){
-		try{
-			$db = DB::getConnection();
-			$st = $db->prepare( 'SELECT * FROM studentplus_offers WHERE id=:id ORDER BY id' );
-			$st->execute( array('id' => $id ));
-		}

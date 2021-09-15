@@ -1,8 +1,0 @@
-    /**
-     * Remove all overridden parameter maps from internal PHP classes.
-     */
-
-    public function resetInternalClassMethodParamMaps()
-    {
-        $this->_internalClassParamMap = array();
-    }

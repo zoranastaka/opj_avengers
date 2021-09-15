@@ -1,8 +1,0 @@
-    /**
-     * @return InvalidEmail|null
-     */
-
-    public function getError()
-    {
-        return $this->error;
-    }

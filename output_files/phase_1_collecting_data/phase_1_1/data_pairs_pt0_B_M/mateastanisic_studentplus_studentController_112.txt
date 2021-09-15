@@ -1,3 +1,0 @@
-	//obradi login
-
-	public function check_login(){

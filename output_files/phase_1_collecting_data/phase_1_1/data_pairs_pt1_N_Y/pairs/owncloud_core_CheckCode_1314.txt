@@ -1,6 +1,0 @@
-	/**
-	 * @param string $appId
-	 * @param $output
-	 */
-
-	private function analyseUpdateFile($appId, OutputInterface $output) {

@@ -1,6 +1,0 @@
-  /**
-   * Clears all custom headers.  Returns void.
-   * @return void
-   */
-
-  public function ClearCustomHeaders() {

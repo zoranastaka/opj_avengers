@@ -1,7 +1,0 @@
-    /**
-     * Create a Carbon instance for the greatest supported date.
-     *
-     * @return static
-     */
-
-    public static function maxValue();

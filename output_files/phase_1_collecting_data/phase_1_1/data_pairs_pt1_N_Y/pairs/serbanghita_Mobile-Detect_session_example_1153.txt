@@ -1,8 +1,0 @@
-// Your default site layouts.
-// Update this array if you have fewer layout types.
-
-function layoutTypes()
-{
-    return array('classic', 'mobile', 'tablet');
-
-}

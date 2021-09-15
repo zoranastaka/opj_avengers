@@ -1,8 +1,0 @@
-    /**
-     * @issue issue/21
-     */
-
-    public function testClassDeclaringIssetDoesNotThrowException()
-    {
-        $this->assertInstanceOf(MockInterface::class, mock('MockeryTest_IssetMethod'));
-    }

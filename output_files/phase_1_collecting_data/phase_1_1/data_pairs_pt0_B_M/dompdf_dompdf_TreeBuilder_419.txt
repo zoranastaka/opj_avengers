@@ -1,8 +1,0 @@
-    /**
-     * For debugging, prints active formatting elements
-     */
-
-    private function printActiveFormattingElements() {
-        if (!$this->a_formatting) {
-            return;
-        }

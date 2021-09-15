@@ -1,8 +1,0 @@
-    /**
-     * Matches if value is null or a zero-length string.
-     */
-
-    function isEmptyOrNullString()
-    {
-        return \Hamcrest\Text\IsEmptyString::isEmptyOrNullString();
-    }

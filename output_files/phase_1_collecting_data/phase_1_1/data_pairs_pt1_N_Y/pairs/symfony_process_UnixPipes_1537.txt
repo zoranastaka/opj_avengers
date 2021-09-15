@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function haveReadSupport(): bool
-    {
-        return $this->haveReadSupport;
-    }

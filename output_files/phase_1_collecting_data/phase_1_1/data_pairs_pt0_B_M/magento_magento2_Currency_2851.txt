@@ -1,9 +1,0 @@
-    /**
-     * Creates a currency instance.
-     *
-     * @param CacheInterface $appCache
-     * @param string|array $options Options array or currency short name when string is given
-     * @param string $locale Locale name
-     */
-
-    public function __construct(

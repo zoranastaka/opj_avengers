@@ -1,5 +1,0 @@
-    /**
-     * @throws InvalidArgumentException
-     */
-
-    public function __construct(

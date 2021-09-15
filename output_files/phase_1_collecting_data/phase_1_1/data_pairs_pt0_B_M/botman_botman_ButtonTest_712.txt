@@ -1,7 +1,0 @@
-    /** @test */
-
-    public function it_can_have_a_value()
-    {
-        $button = Button::create('text')->value('value');
-        $this->assertSame('value', Arr::get($button->toArray(), 'value'));
-    }

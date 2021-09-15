@@ -1,8 +1,0 @@
-    /**
-     * @param Writer       $writer
-     * @param QueuedWriter $queuedWriter
-     * @param Reader       $reader
-     * @param Filesystem   $filesystem
-     */
-
-    public function __construct(

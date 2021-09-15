@@ -1,7 +1,0 @@
-    /**
-     * Return the class name.
-     *
-     * @return string
-     */
-
-    public function getClassName() : string;

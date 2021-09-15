@@ -1,8 +1,0 @@
-    /**
-     * Escape a CSV record.
-     */
-
-    public function escapeRecord(array $record): array
-    {
-        return array_map([$this, 'escapeField'], $record);
-    }

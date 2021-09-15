@@ -1,3 +1,0 @@
-        // Tags
-
-        Route::name('tags.')->group(function () {

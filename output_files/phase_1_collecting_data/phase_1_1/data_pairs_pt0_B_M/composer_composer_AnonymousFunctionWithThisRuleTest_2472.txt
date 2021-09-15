@@ -1,8 +1,0 @@
-    /**
-     * @inheritDoc
-     */
-
-    protected function getRule(): \PHPStan\Rules\Rule
-    {
-        return new AnonymousFunctionWithThisRule();
-    }

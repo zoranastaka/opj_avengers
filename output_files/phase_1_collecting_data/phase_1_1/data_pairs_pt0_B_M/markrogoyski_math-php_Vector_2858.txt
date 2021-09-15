@@ -1,8 +1,0 @@
-    /**
-     * @return array
-     */
-
-    public function jsonSerialize(): array
-    {
-        return $this->A;
-    }

@@ -1,9 +1,0 @@
-    /**
-     * @param $file
-     * @deprecated
-     */
-
-    public function load_html_file($file)
-    {
-        $this->loadHtmlFile($file);
-    }

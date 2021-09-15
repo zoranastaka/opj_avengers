@@ -1,8 +1,0 @@
-            /**
-             * @return Collection
-             */
-
-            public function collection()
-            {
-                return collect(['foo', 'bar']);
-            }

@@ -1,5 +1,0 @@
-    /**
-     * Returns the algorithm id
-     */
-
-    public function algorithmId(): string;

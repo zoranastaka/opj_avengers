@@ -1,7 +1,0 @@
-	/**
-	 * Init the package loader.
-	 *
-	 * @since 3.7.0
-	 */
-
-	public static function init() {

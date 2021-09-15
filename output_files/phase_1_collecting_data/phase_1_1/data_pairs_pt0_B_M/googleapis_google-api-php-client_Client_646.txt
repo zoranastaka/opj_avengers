@@ -1,8 +1,0 @@
-  /**
-   * @param array $cacheConfig
-   */
-
-  public function setCacheConfig(array $cacheConfig)
-  {
-    $this->config['cache_config'] = $cacheConfig;
-  }

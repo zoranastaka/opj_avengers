@@ -1,6 +1,0 @@
-    /**
-     * @param ObjectManagerInterface $objectManager
-     * @param string $instanceName
-     */
-
-    public function __construct(

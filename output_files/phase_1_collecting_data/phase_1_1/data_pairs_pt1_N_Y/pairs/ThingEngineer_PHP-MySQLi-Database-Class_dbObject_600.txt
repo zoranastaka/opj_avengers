@@ -1,5 +1,0 @@
-    /**
-     * @return mixed insert id or false in case of failure
-     */
-
-    public function insert () {

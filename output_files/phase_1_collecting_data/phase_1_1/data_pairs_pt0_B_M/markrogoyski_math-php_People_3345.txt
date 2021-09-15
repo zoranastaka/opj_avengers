@@ -1,8 +1,0 @@
-    /**
-     * @return int[]
-     */
-
-    public function getSwim(): array
-    {
-        return \array_combine($this->getNames(), \array_column(self::DATA, 9));
-    }

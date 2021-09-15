@@ -1,9 +1,0 @@
-    /**
-     * @dataProvider provideVariantTestValues
-     */
-
-    public function testApplyVariant(int $clockSeq, int $expectedInt, string $expectedHex): void
-    {
-        $this->assertSame($expectedInt, BinaryUtils::applyVariant($clockSeq));
-        $this->assertSame($expectedHex, dechex(BinaryUtils::applyVariant($clockSeq)));
-    }

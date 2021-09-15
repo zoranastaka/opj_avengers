@@ -1,8 +1,0 @@
-    /**
-     * @param LineBox $line
-     */
-
-    public function set_containing_line(LineBox $line)
-    {
-        $this->_containing_line = $line;
-    }

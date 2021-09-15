@@ -1,7 +1,0 @@
-    /**
-     * Sets the line the error starts in.
-     *
-     * @param int $line Error start line
-     */
-
-    public function setStartLine(int $line) {

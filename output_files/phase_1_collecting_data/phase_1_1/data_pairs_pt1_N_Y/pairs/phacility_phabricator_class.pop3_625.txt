@@ -1,6 +1,0 @@
-  /**
-   * If debug is enabled, display the error message array
-   * @access private
-   */
-
-  private function displayErrors () {

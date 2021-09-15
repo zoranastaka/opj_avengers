@@ -1,9 +1,0 @@
-    /**
-     * Returns the log dispatcher component.
-     * @return \yii\log\Dispatcher the log dispatcher application component.
-     */
-
-    public function getLog()
-    {
-        return $this->get('log');
-    }

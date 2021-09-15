@@ -1,7 +1,0 @@
-    /**
-     * Prepare the object for JSON serialization.
-     *
-     * @return array|string
-     */
-
-    public function jsonSerialize();

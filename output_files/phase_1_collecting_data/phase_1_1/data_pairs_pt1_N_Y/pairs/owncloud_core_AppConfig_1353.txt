@@ -1,9 +1,0 @@
-	/**
-	 * check if a key is set in the appconfig
-	 *
-	 * @param string $app
-	 * @param string $key
-	 * @return bool
-	 */
-
-	public function hasKey($app, $key) {

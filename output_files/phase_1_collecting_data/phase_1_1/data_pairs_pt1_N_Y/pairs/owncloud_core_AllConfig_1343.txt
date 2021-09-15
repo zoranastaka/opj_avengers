@@ -1,8 +1,0 @@
-	/**
-	 * Delete all user related values of one app
-	 *
-	 * @param string $appName the appName of the app that we want to remove all values from
-	 * @return bool
-	 */
-
-	public function deleteAppFromAllUsers($appName) {

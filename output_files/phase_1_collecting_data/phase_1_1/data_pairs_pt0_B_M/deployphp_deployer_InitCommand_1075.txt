@@ -1,6 +1,0 @@
-// Tasks
-
-task('build', function () {
-    cd('{{release_path}}');
-    run('npm run build');
-});

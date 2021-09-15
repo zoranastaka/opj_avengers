@@ -1,9 +1,0 @@
-    /**
-     * @param string|Expr $expr
-     * @return Expr
-     */
-
-    private function normalizeStringExpr($expr) : Expr {
-        if ($expr instanceof Expr) {
-            return $expr;
-        }

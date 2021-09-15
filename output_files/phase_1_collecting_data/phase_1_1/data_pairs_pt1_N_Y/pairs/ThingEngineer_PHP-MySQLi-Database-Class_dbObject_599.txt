@@ -1,8 +1,0 @@
-    /**
-     * Helper function to create a virtual table class
-     *
-     * @param string tableName Table name
-     * @return dbObject
-     */
-
-    public static function table ($tableName) {

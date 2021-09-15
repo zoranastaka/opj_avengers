@@ -1,9 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    protected function resetProperties(): void
-    {
-        $this->nb_records = -1;
-        $this->header = [];
-    }

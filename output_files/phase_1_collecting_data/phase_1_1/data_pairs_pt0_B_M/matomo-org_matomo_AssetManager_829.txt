@@ -1,8 +1,0 @@
-    /**
-     * @return UIAsset
-     */
-
-    public function getMergedStylesheetAsset()
-    {
-        return $this->getMergedUIAsset(self::MERGED_CSS_FILE);
-    }

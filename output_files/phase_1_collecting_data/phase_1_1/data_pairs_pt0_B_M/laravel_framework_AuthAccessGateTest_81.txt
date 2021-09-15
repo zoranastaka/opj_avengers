@@ -1,3 +1,0 @@
-        // Assert that the callback receives the new user with ID of 2 instead of ID of 1...
-
-        $gate->define('foo', function ($user) {

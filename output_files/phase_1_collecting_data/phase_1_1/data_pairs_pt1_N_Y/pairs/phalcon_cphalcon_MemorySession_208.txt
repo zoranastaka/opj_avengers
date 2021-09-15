@@ -1,8 +1,0 @@
-    /**
-     * Alias: Check whether a session variable is set in an application context
-     */
-
-    public function __isset(string $index): bool
-    {
-        return $this->has($index);
-    }

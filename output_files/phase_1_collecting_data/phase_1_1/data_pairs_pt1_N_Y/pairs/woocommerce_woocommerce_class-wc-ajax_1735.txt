@@ -1,5 +1,0 @@
-	/**
-	 * Load variations via AJAX.
-	 */
-
-	public static function load_variations() {

@@ -1,5 +1,0 @@
-    /**
-     * @return \Magento\TestModule1\Service\V1\Entity\Item[]
-     */
-
-    public function items();

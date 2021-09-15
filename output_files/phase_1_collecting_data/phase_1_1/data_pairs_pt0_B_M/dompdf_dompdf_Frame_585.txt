@@ -1,8 +1,0 @@
-    /**
-     * @return Frame
-     */
-
-    public function get_prev_sibling()
-    {
-        return $this->_prev_sibling;
-    }

@@ -1,8 +1,0 @@
-    /** @test */
-
-    public function it_can_set_a_callback_id()
-    {
-        $answer = new Answer();
-        $answer->setCallbackId('foo');
-        $this->assertSame('foo', $answer->getCallbackId());
-    }

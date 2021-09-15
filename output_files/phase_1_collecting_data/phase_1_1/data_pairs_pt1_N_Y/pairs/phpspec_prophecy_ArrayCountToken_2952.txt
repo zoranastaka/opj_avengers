@@ -1,8 +1,0 @@
-    /**
-     * @param integer $value
-     */
-
-    public function __construct($value)
-    {
-        $this->count = $value;
-    }

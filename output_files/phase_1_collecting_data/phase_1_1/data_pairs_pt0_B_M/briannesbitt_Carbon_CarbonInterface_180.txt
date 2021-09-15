@@ -1,9 +1,0 @@
-    /**
-     * @alias setTimezone
-     *
-     * @param DateTimeZone|string $value
-     *
-     * @return static
-     */
-
-    public function timezone($value);

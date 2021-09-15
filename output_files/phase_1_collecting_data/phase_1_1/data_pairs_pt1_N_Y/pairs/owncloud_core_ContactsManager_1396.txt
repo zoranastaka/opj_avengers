@@ -1,8 +1,0 @@
-		/**
-		 * Load all address books registered with 'register'
-		 */
-
-		protected function loadAddressBooks() {
-			foreach ($this->addressBookLoaders as $callable) {
-				$callable($this);
-			}

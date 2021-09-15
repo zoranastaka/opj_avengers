@@ -1,8 +1,0 @@
-	/**
-	 * Prevent caching on certain pages
-	 */
-
-	public static function prevent_caching() {
-		if ( ! is_blog_installed() ) {
-			return;
-		}

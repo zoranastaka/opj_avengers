@@ -1,7 +1,0 @@
-    /**
-     * Returns combination translators.
-     *
-     * @return callable[]
-     */
-
-    public function getCombinationTranslators(): array;

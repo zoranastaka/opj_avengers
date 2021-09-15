@@ -1,8 +1,0 @@
-    /**
-     * Opens the underlying connection and connects to the server.
-     */
-
-    public function connect()
-    {
-        $this->connection->connect();
-    }

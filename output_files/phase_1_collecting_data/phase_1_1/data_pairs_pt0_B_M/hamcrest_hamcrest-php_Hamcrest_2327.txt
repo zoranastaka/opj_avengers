@@ -1,8 +1,0 @@
-    /**
-     * Matches an empty array.
-     */
-
-    function emptyArray()
-    {
-        return \Hamcrest\Arrays\IsArrayWithSize::emptyArray();
-    }

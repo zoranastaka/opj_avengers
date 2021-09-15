@@ -1,3 +1,0 @@
-//obradi registraciju
-
-	public function check_register(){

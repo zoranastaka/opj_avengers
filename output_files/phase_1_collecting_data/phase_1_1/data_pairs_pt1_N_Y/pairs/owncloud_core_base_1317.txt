@@ -1,6 +1,0 @@
-	/**
-	 * Limit maintenance mode access
-	 * @param IRequest $request
-	 */
-
-	public static function checkMaintenanceMode(IRequest $request) {

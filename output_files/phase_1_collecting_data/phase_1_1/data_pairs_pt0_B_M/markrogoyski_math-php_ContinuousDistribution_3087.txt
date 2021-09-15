@@ -1,9 +1,0 @@
-    /**
-     * Probability density function
-     *
-     * @param float $x
-     *
-     * @return mixed
-     */
-
-    public function pdf(float $x);

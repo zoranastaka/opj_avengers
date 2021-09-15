@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function getCacheDir()
-    {
-        return _PS_CACHE_DIR_;
-    }

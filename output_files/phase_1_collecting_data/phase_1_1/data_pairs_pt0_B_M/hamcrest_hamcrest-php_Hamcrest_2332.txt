@@ -1,9 +1,0 @@
-    /**
-     * Evaluates to true only if ALL of the passed in matchers evaluate to true.
-     */
-
-    function allOf(/* args... */)
-    {
-        $args = func_get_args();
-        return call_user_func_array(array('\Hamcrest\Core\AllOf', 'allOf'), $args);
-    }

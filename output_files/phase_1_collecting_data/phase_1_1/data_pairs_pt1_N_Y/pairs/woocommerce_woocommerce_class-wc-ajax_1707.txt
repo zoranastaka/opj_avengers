@@ -1,5 +1,0 @@
-	/**
-	 * Delete download permissions via ajax function.
-	 */
-
-	public static function revoke_access_to_download() {

@@ -1,8 +1,0 @@
-    /**
-     * @return string
-     */
-
-    public function getPhpTimezone()
-    {
-        return $this->data['php_timezone'];
-    }

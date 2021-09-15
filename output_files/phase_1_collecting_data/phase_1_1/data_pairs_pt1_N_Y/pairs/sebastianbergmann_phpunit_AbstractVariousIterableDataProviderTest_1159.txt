@@ -1,9 +1,0 @@
-    /**
-     * @dataProvider asArrayProvider
-     * @dataProvider asIteratorProvider
-     * @dataProvider asTraversableProvider
-     */
-
-    public function testAbstract(): void
-    {
-    }

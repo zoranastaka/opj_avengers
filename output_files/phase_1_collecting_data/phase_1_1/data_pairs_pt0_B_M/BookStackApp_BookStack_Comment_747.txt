@@ -1,8 +1,0 @@
-    /**
-     * Check if a comment has been updated since creation.
-     */
-
-    public function isUpdated(): bool
-    {
-        return $this->updated_at->timestamp > $this->created_at->timestamp;
-    }

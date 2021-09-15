@@ -1,8 +1,0 @@
-    /**
-     * @dataProvider validatorProvider
-     */
-
-    public function testIsValid($iban, $isValid)
-    {
-        $this->assertEquals($isValid, Iban::isValid($iban), $iban);
-    }

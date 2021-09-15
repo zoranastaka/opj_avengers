@@ -1,8 +1,0 @@
-/**
- * Check auth against signature. Sets user if applicable, returns bool
- *
- * @since 1.4.1
- * @return bool False if signature missing or invalid, true if valid
- */
-
-function yourls_check_signature() {

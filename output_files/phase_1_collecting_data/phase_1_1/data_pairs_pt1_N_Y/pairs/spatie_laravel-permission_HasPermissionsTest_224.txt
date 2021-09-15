@@ -1,8 +1,0 @@
-    /** @test */
-
-    public function it_can_assign_a_permission_to_a_user()
-    {
-        $this->testUser->givePermissionTo($this->testUserPermission);
-
-        $this->assertTrue($this->testUser->hasPermissionTo($this->testUserPermission));
-    }

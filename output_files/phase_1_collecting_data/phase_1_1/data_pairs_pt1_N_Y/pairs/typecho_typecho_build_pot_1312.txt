@@ -1,8 +1,0 @@
-/**
- * get pot from file
- * 
- * @param string $file
- * @return string
- */
-
-function get_pot($file) {

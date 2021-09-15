@@ -1,8 +1,0 @@
-	/**
-	 * Sets the read marker to the specified date for the logged in user
-	 *
-	 * @param \DateTime $value
-	 * @return bool
-	 */
-
-	public function setReadMarker($value) {

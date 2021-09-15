@@ -1,8 +1,0 @@
-    /**
-     * @return \DOMElement|\DOMText
-     */
-
-    public function get_node()
-    {
-        return $this->_node;
-    }

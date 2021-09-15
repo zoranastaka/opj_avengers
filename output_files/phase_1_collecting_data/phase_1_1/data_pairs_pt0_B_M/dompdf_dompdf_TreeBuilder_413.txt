@@ -1,5 +1,0 @@
-    /**
-     * @param $token
-     */
-
-    private function insertRCDATAElement($token) {

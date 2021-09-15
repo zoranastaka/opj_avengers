@@ -1,8 +1,0 @@
-	//vrati studentovo ime ako znamo username
-
-	function get_studentname_by_username($username){
-		try{
-			$db = DB::getConnection();
-			$st = $db->prepare( 'SELECT * FROM studentplus_students WHERE username=:username ORDER BY username' );
-			$st->execute( array('username' => $username ) );
-		}

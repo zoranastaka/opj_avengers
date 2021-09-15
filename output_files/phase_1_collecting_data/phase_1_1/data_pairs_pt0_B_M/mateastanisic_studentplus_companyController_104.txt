@@ -1,3 +1,0 @@
-	//ide poslije ispunjavanja forme za pravljenje nove ponude
-
-	public function check_new_offer(){

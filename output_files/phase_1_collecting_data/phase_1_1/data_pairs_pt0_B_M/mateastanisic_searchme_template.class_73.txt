@@ -1,6 +1,0 @@
-	// Setter za varijable u asocijativnom polju.
-
-	public function __set($index, $value)
-	{
-	    $this->vars[$index] = $value;
-	}

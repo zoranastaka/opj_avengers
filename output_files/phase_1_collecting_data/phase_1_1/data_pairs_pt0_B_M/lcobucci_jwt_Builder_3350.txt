@@ -1,5 +1,0 @@
-    /**
-     * Configures the issuer
-     */
-
-    public function issuedBy(string $issuer): Builder;

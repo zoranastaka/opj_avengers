@@ -1,7 +1,0 @@
-    /**
-     * Calculates bounding box of current font setting
-     *
-     * @return array
-     */
-
-    abstract public function getBoxSize();

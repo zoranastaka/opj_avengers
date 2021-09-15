@@ -1,8 +1,0 @@
-    /**
-     * @return array
-     */
-
-    public function getScaledCenter(): array
-    {
-        return self::SCALED_CENTER;
-    }

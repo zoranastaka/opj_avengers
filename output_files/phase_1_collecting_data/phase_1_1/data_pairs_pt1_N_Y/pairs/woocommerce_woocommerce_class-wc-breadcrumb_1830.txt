@@ -1,5 +1,0 @@
-	/**
-	 * Tag trail.
-	 */
-
-	protected function add_crumbs_tag() {

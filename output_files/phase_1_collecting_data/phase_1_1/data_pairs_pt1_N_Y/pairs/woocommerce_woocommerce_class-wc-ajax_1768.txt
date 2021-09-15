@@ -1,9 +1,0 @@
-	/**
-	 * Save method settings
-	 */
-
-	public static function shipping_zone_methods_save_settings() {
-		if ( ! isset( $_POST['wc_shipping_zones_nonce'], $_POST['instance_id'], $_POST['data'] ) ) {
-			wp_send_json_error( 'missing_fields' );
-			wp_die();
-		}

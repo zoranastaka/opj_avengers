@@ -1,9 +1,0 @@
-    /**
-     * @dataProvider sourceProvider
-     * @covers ::includeEmptyRecords
-     * @covers ::skipEmptyRecords
-     * @covers ::isEmptyRecordsIncluded
-     * @covers ::getRecords
-     */
-
-    public function testSkippingEmptyRecords(

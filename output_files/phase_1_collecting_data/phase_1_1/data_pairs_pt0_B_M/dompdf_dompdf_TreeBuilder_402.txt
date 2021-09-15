@@ -1,5 +1,0 @@
-    /**
-     * HTML5_TreeBuilder constructor.
-     */
-
-    public function __construct() {

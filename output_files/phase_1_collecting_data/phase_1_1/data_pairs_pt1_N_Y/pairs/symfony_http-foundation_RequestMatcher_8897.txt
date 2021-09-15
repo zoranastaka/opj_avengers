@@ -1,8 +1,0 @@
-    /**
-     * Adds a check for the URL host name.
-     */
-
-    public function matchHost(?string $regexp)
-    {
-        $this->host = $regexp;
-    }

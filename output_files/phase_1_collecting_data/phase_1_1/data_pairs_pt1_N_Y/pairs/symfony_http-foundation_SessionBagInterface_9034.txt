@@ -1,7 +1,0 @@
-    /**
-     * Gets the storage key for this bag.
-     *
-     * @return string
-     */
-
-    public function getStorageKey();

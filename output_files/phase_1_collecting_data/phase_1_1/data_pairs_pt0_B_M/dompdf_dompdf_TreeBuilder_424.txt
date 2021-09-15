@@ -1,6 +1,0 @@
-    /**
-     * @param $token
-     * @param $namespaceURI
-     */
-
-    public function insertForeignElement($token, $namespaceURI) {

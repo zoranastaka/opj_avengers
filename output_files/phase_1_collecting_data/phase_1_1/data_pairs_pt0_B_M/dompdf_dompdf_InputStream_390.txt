@@ -1,7 +1,0 @@
-    /**
-     * Returns the current column of the current line that the tokenizer is at.
-     *
-     * @return int
-     */
-
-    public function getColumnOffset() {

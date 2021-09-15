@@ -1,8 +1,0 @@
-    /**
-     * {@inheritDoc}
-     */
-
-    public function setSessionValue($name, $value)
-    {
-        $this->session->put($name, $value);
-    }

@@ -1,9 +1,0 @@
-  /**
-   * Sends mail using the PHP mail() function.
-   * @param string $header The message headers
-   * @param string $body The message body
-   * @access protected
-   * @return bool
-   */
-
-  protected function MailSend($header, $body) {

@@ -1,5 +1,0 @@
-    /**
-     * @param mixed $compareTo
-     */
-
-    public static function identical($compareTo): ChainedValidator;

@@ -1,9 +1,0 @@
-    /**
-     * @return array
-     * @deprecated
-     */
-
-    public function get_font_families()
-    {
-        return $this->getFontFamilies();
-    }

@@ -1,7 +1,0 @@
-  /**
-   * Get a human-readable explanation of why the client is being rejected.
-   *
-   * @return string Brief rejection message.
-   */
-
-  abstract protected function getRateLimitReason($score);

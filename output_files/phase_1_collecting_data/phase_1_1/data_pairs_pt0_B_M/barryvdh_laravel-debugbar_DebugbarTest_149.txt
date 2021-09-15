@@ -1,3 +1,0 @@
-        // Force the Debugbar to Enable on test/cli applications
-
-        $app->resolving(LaravelDebugbar::class, function ($debugbar) {

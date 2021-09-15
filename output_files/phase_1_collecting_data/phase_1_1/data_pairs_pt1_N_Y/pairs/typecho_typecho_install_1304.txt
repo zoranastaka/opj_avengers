@@ -1,7 +1,0 @@
-/**
- * 获取多个传递参数
- *
- * @return array
- */
-
-function _rFrom() {

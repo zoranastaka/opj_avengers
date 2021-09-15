@@ -1,7 +1,0 @@
-	/**
-	 * Remove an order tax.
-	 *
-	 * @throws Exception If there is an error whilst deleting the rate.
-	 */
-
-	public static function remove_order_tax() {

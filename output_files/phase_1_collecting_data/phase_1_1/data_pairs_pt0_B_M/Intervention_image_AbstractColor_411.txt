@@ -1,7 +1,0 @@
-    /**
-     * Calculates RGB(A) in array format of current color instance
-     *
-     * @return array
-     */
-
-    abstract public function getArray();

@@ -1,7 +1,0 @@
-	/**
-	 * Release a temporary hold on stock for an order.
-	 *
-	 * @param \WC_Order $order Order object.
-	 */
-
-	public function release_stock_for_order( $order ) {

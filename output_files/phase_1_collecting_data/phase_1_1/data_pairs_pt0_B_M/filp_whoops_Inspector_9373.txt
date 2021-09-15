@@ -1,8 +1,0 @@
-    /**
-     * @param \Throwable $exception The exception to inspect
-     */
-
-    public function __construct($exception)
-    {
-        $this->exception = $exception;
-    }

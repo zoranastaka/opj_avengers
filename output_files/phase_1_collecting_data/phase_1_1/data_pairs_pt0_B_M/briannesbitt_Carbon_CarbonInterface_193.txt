@@ -1,7 +1,0 @@
-    /**
-     * Return a mutable copy of the instance.
-     *
-     * @return Carbon
-     */
-
-    public function toMutable();

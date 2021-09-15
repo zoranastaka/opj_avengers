@@ -1,7 +1,0 @@
-	/**
-	 * Generate breadcrumb trail.
-	 *
-	 * @return array of breadcrumbs
-	 */
-
-	public function generate() {

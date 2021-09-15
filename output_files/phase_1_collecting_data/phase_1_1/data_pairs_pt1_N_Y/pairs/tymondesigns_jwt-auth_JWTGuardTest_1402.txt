@@ -1,9 +1,0 @@
-    /** @test */
-
-    public function it_should_get_the_payload()
-    {
-        $this->jwt->shouldReceive('setRequest')->andReturn($this->jwt);
-        $this->jwt->shouldReceive('getToken')->once()->andReturn('foo.bar.baz');
-        $this->jwt->shouldReceive('getPayload')->once()->andReturn(Mockery::mock(Payload::class));
-        $this->assertInstanceOf(Payload::class, $this->guard->payload());
-    }

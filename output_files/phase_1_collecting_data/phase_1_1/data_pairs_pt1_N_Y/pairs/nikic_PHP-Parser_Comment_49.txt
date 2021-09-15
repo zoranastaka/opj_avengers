@@ -1,9 +1,0 @@
-    /**
-     * Gets the file offset the comment started on.
-     *
-     * @deprecated Use getStartFilePos() instead
-     *
-     * @return int File offset
-     */
-
-    public function getFilePos() : int {

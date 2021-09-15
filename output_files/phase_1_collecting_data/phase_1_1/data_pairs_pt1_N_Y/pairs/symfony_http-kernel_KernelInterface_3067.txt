@@ -1,5 +1,0 @@
-    /**
-     * Loads the container configuration.
-     */
-
-    public function registerContainerConfiguration(LoaderInterface $loader);

@@ -1,3 +1,0 @@
-	// Funkcija za vraćanje trenutne temperature procesora
-
-	function getShellTemp() {

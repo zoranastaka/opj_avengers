@@ -1,8 +1,0 @@
-    /**
-     * @dataProvider satisfiesProvider
-     */
-
-    public function testSatisfies($expected, $name, $constraint)
-    {
-        $this->assertSame($expected, InstalledVersions::satisfies(new VersionParser, $name, $constraint));
-    }

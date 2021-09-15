@@ -1,8 +1,0 @@
-    /**
-     * @test Limits constant is correct format
-     */
-
-    public function testExponentialSupportLimits()
-    {
-        $this->limitTest(Continuous\Exponential::PARAMETER_LIMITS);
-    }

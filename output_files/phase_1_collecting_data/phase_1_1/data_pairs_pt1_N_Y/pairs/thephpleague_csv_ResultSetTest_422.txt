@@ -1,9 +1,0 @@
-    /**
-     * @covers ::fetchPairs
-     * @covers ::getColumnIndex
-     */
-
-    public function testFetchPairsWithInvalidOffset(): void
-    {
-        self::assertCount(0, iterator_to_array($this->stmt->process($this->csv)->fetchPairs(10, 1), true));
-    }

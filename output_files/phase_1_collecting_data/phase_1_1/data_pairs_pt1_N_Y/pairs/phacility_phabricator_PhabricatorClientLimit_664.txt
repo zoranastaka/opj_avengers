@@ -1,8 +1,0 @@
-  /**
-   * Get the APC key for a given bucket.
-   *
-   * @param int Bucket to get the key for.
-   * @return string APC key for the bucket.
-   */
-
-  private function getBucketCacheKey($bucket_id) {

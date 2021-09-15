@@ -1,3 +1,0 @@
-	//koji button je stisnuo
-
-	public function check_button_choice(){

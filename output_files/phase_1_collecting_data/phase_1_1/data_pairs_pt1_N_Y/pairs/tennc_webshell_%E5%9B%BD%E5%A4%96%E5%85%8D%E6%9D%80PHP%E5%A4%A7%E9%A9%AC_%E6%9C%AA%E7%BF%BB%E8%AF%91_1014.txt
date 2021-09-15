@@ -1,3 +1,0 @@
-## dQ99Sh UPDATE FUNCTIONS ##
-
-function dQ99getsource($fn) {

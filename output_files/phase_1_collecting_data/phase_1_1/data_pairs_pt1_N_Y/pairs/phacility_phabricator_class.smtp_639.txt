@@ -1,7 +1,0 @@
-  /**
-  * Get the current error
-  * @access public
-  * @return array
-  */
-
-  public function getError() {

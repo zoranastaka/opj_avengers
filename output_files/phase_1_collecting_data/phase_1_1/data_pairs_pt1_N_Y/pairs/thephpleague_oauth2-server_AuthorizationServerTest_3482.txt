@@ -1,6 +1,0 @@
-            /* @return null|CryptKey */
-
-            public function getPrivateKey()
-            {
-                return $this->privateKey;
-            }

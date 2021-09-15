@@ -1,7 +1,0 @@
-    /**
-     * Cancels the promise if possible.
-     *
-     * @link https://github.com/promises-aplus/cancellation-spec/issues/7
-     */
-
-    public function cancel();

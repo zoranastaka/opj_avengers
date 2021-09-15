@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function getFiles(): array
-    {
-        return $this->files;
-    }

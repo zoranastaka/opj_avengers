@@ -1,5 +1,0 @@
-    /**
-     * Updates the exception message after a change to rawMessage or rawLine.
-     */
-
-    protected function updateMessage() {

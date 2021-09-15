@@ -1,9 +1,0 @@
-    /**
-     * @VirtualProperty
-     * @SerializedName("annotator_schema_version")
-     */
-
-    public function getVersion()
-    {
-        return 'v1.0';
-    }

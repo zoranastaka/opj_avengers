@@ -1,7 +1,0 @@
-/**
- * Class SinceTagCheckVisitor
- *
- * this class checks all methods for the presence of the @since tag
- */
-
-class SinceTagCheckVisitor extends \PhpParser\NodeVisitorAbstract {

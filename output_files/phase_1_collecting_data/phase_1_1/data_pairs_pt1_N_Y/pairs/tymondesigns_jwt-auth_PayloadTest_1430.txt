@@ -1,9 +1,0 @@
-    /** @test */
-
-    public function it_should_not_match_values()
-    {
-        $values = $this->payload->toArray();
-        $values['sub'] = 'dummy_subject';
-
-        $this->assertFalse($this->payload->matches($values));
-    }

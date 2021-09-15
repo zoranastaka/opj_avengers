@@ -1,9 +1,0 @@
-    /** @return iterable<string[]> */
-
-    public function datesWithPotentialRoundingIssues(): iterable
-    {
-        yield ['1613938511.017448'];
-        yield ['1613938511.023691'];
-        yield ['1613938511.018045'];
-        yield ['1616074725.008455'];
-    }

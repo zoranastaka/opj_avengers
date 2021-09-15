@@ -1,9 +1,0 @@
-	/**
-	 * Retrieve a list of code contributors
-	 *
-	 * @param string $file
-	 * @param string|bool $gitRoot
-	 * @return string
-	 */
-
-	private function getAuthors($file, $gitRoot) {

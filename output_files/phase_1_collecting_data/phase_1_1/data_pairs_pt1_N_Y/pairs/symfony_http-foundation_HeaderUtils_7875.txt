@@ -1,7 +1,0 @@
-    /**
-     * This class should not be instantiated.
-     */
-
-    private function __construct()
-    {
-    }

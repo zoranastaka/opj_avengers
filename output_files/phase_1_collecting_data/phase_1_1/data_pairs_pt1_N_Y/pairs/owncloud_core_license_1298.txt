@@ -1,6 +1,0 @@
-	/**
-	 * @param string $source
-	 * @return string
-	 */
-
-	private function eatOldLicense($source) {

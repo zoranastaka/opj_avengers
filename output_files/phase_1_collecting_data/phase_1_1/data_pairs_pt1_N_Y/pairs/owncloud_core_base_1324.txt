@@ -1,5 +1,0 @@
-	/**
-	 * register hooks for the filesystem
-	 */
-
-	public static function registerFilesystemHooks() {

@@ -1,7 +1,0 @@
-	/**
-	 * Get a hash of the customer location.
-	 *
-	 * @return string
-	 */
-
-	public static function geolocation_ajax_get_location_hash() {

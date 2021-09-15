@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function isRisky(): bool
-    {
-        return false;
-    }

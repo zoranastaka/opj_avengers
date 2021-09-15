@@ -1,9 +1,0 @@
-/**
- * Helper methos for the REST API.
- *
- * Class ApiUtil
- *
- * @package Automattic\WooCommerce\Internal
- */
-
-class RestApiUtil {

@@ -1,8 +1,0 @@
-    /**
-     * Add autoloader to autoloaders queue
-     */
-
-    public function register()
-    {
-        spl_autoload_register(array($this, 'autoload'));
-    }

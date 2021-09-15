@@ -1,9 +1,0 @@
-    /**
-     * @param RequestHandlerInterface $requestHandler
-     * @param ContainerInterface|null $container
-     * @param CallableResolverInterface|null $callableResolver
-     *
-     * @return MiddlewareDispatcher
-     */
-
-    protected function createMiddlewareDispatcher(

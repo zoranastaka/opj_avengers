@@ -1,5 +1,0 @@
-    /**
-     * Run the server by entering the event loop
-     */
-
-    public function run() {

@@ -1,9 +1,0 @@
-  /**
-   * Emit an HTTP 429 "Too Many Requests" response (indicating that the user
-   * has exceeded application rate limits) and exit.
-   *
-   * @return exit This method **does not return**.
-   * @task ratelimit
-   */
-
-  private static function didRateLimit($reason) {

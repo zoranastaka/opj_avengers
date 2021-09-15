@@ -1,9 +1,0 @@
-	/**
-	 * Delete a file.
-	 *
-	 * @param string $path The file URL which should be deleted.
-	 *
-	 * @return bool TRUE on success or FALSE on failure.
-	 */
-
-	public function unlink( $path ) {

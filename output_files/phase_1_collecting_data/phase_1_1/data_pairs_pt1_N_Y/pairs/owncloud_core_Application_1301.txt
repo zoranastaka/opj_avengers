@@ -1,5 +1,0 @@
-		/**
-		 * Controllers
-		 */
-
-		$container->registerService('LostController', static function (SimpleContainer $c) {

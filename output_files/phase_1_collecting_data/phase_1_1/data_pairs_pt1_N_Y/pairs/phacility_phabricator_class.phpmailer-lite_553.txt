@@ -1,7 +1,0 @@
-  /**
-   * Clears all previously set filesystem, string, and binary
-   * attachments.  Returns void.
-   * @return void
-   */
-
-  public function ClearAttachments() {

@@ -1,9 +1,0 @@
-  /**
-   * Clears all recipients assigned in the BCC array.  Returns void.
-   * @return void
-   */
-
-  public function ClearBCCs() {
-    foreach($this->bcc as $bcc) {
-      unset($this->all_recipients[strtolower($bcc[0])]);
-    }

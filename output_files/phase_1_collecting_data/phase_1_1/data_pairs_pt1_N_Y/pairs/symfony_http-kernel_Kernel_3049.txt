@@ -1,8 +1,0 @@
-    /**
-     * {@inheritdoc}
-     */
-
-    public function getLogDir()
-    {
-        return $this->getProjectDir().'/var/log';
-    }

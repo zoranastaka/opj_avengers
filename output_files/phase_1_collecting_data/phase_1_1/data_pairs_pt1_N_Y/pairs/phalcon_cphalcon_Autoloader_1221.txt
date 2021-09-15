@@ -1,8 +1,0 @@
-    /**
-     * @param string $baseDir Base directory for all script source files
-     */
-
-    public function __construct($baseDir)
-    {
-        $this->baseDir = str_replace('\\', '/', $baseDir);
-    }

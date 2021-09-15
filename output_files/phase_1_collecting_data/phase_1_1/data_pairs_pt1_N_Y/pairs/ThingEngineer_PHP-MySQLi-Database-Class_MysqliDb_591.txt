@@ -1,5 +1,0 @@
-    /**
-     * Abstraction method that will build an JOIN part of the query
-     */
-
-    protected function _buildJoin () {

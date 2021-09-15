@@ -1,9 +1,0 @@
-	// --------------------------------------------------------------------
-
-	public function test__get()
-	{
-		$this->assertEquals('foo', $this->ci_obj->test_model->property);
-
-		$this->ci_obj->controller_property = 'bar';
-		$this->assertEquals('bar', $this->ci_obj->test_model->controller_property);
-	}

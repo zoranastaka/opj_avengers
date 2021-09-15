@@ -1,8 +1,0 @@
-    /**
-     * Retrieve cookie metadata factory
-     */
-
-    protected function getCookieManager()
-    {
-        return $this->cookieManager;
-    }

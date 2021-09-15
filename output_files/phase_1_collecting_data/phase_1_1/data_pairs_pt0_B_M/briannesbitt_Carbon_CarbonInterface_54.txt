@@ -1,7 +1,0 @@
-    /**
-     * Get the days of the week
-     *
-     * @return array
-     */
-
-    public static function getDays();

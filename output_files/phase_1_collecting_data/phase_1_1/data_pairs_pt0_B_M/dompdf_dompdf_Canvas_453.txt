@@ -1,7 +1,0 @@
-    /**
-     * Starts a new page
-     *
-     * Subsequent drawing operations will appear on the new page.
-     */
-
-    function new_page();

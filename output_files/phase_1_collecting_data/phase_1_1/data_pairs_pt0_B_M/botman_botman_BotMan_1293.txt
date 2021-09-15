@@ -1,8 +1,0 @@
-    /**
-     * @return OutgoingMessage|Question
-     */
-
-    public function getOutgoingMessage()
-    {
-        return $this->outgoingMessage;
-    }

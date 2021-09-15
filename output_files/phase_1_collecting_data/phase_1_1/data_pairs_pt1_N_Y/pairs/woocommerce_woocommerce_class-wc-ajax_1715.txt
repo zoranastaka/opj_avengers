@@ -1,7 +1,0 @@
-	/**
-	 * Add order discount via ajax.
-	 *
-	 * @throws Exception If order or coupon is invalid.
-	 */
-
-	public static function add_coupon_discount() {

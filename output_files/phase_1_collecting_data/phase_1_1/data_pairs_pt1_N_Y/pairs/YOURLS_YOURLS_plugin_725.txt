@@ -1,3 +1,0 @@
-// Don't increment sequential keyword tracker
-
-function ozh_random_shorturl_next_decimal( $next ) {

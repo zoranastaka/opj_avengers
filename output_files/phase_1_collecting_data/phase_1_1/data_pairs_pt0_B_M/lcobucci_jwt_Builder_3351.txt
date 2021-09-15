@@ -1,5 +1,0 @@
-    /**
-     * Configures the time before which the token cannot be accepted
-     */
-
-    public function canOnlyBeUsedAfter(DateTimeImmutable $notBefore): Builder;

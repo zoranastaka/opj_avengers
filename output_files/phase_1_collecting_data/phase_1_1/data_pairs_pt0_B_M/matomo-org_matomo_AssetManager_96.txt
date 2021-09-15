@@ -1,8 +1,0 @@
-    /**
-     * @return UIAsset
-     */
-
-    protected function getMergedNonCoreJSAsset()
-    {
-        return $this->getMergedUIAsset(self::MERGED_NON_CORE_JS_FILE);
-    }

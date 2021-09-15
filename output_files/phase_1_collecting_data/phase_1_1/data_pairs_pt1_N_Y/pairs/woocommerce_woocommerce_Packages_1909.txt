@@ -1,8 +1,0 @@
-	/**
-	 * Checks a package exists by looking for it's directory.
-	 *
-	 * @param string $package Package name.
-	 * @return boolean
-	 */
-
-	public static function package_exists( $package ) {

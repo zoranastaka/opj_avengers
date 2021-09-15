@@ -1,7 +1,0 @@
-	/**
-	 * Create/Update API key.
-	 *
-	 * @throws Exception On invalid or empty description, user, or permissions.
-	 */
-
-	public static function update_api_key() {

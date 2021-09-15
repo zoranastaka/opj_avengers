@@ -1,7 +1,0 @@
-    /**
-     * Returns the underlying connection instance.
-     *
-     * @return ConnectionInterface
-     */
-
-    public function getConnection();

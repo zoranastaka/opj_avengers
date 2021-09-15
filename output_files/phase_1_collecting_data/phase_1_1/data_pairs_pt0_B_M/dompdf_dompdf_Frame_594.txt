@@ -1,8 +1,0 @@
-    /**
-     * @return LineBox
-     */
-
-    public function &get_containing_line()
-    {
-        return $this->_containing_line;
-    }

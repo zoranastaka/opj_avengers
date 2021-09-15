@@ -1,7 +1,0 @@
-  /**
-   * Get the number of penalty points to add when a client hits a rate limit.
-   *
-   * @return double Penalty score.
-   */
-
-  abstract protected function getPenaltyScore();

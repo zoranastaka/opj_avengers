@@ -1,5 +1,0 @@
-    /**
-     * Ends the last clipping shape
-     */
-
-    function clipping_end();

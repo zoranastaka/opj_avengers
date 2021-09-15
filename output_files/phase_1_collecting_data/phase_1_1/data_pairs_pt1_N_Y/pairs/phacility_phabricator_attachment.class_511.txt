@@ -1,6 +1,0 @@
-	/**
-	 * Retrieve the Attachment Content-Type
-	 * @return String
-	 */
-
-	public function getContentType() {

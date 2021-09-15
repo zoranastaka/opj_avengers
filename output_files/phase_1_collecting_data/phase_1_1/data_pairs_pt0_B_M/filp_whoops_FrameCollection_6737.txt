@@ -1,9 +1,0 @@
-    /**
-     * @see IteratorAggregate::getIterator
-     * @return ArrayIterator
-     */
-
-    public function getIterator()
-    {
-        return new ArrayIterator($this->frames);
-    }

@@ -1,8 +1,0 @@
-    /**
-     * Returns the name generator used by this factory
-     */
-
-    public function getNameGenerator(): NameGeneratorInterface
-    {
-        return $this->nameGenerator;
-    }

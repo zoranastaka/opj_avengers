@@ -1,3 +1,0 @@
-		//make sure temporary files are cleaned up
-
-		\OC::$server->getShutdownHandler()->register(function () {

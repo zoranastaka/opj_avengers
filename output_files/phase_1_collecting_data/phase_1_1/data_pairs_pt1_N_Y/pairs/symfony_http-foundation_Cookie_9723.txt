@@ -1,8 +1,0 @@
-    /**
-     * @param bool $default The default value of the "secure" flag when it is set to null
-     */
-
-    public function setSecureDefault(bool $default): void
-    {
-        $this->secureDefault = $default;
-    }

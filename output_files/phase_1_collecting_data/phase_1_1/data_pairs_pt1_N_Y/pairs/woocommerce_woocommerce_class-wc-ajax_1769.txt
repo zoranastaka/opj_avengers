@@ -1,9 +1,0 @@
-	/**
-	 * Handle submissions from assets/js/wc-shipping-classes.js Backbone model.
-	 */
-
-	public static function shipping_classes_save_changes() {
-		if ( ! isset( $_POST['wc_shipping_classes_nonce'], $_POST['changes'] ) ) {
-			wp_send_json_error( 'missing_fields' );
-			wp_die();
-		}

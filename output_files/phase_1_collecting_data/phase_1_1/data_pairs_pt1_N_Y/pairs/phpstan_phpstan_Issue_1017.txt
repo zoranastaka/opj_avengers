@@ -1,6 +1,0 @@
-	/**
-	 * @param Comment[] $comments
-	 * @param PlaygroundExample[] $playgroundExamples
-	 */
-
-	public function __construct(

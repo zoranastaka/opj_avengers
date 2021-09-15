@@ -1,8 +1,0 @@
-    /**
-     * @param Http $response
-     * @param Json $serializer
-     * @param Escaper $escaper
-     * @param DocumentRoot|null $documentRoot
-     */
-
-    public function __construct(

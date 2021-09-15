@@ -1,8 +1,0 @@
-    /**
-     * @group issue/13
-     */
-
-    public function testCanPartiallyMockObjectWhereMethodHasReferencedParameter()
-    {
-        $this->assertInstanceOf(MockInterface::class, Mockery::mock(new MockeryTest_MethodParamRef2()));
-    }

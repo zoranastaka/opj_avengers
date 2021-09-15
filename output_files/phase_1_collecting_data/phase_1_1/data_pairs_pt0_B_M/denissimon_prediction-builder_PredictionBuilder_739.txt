@@ -1,9 +1,0 @@
-    /**
-     * Reads the data from a given array
-     * 
-     * @param array $data
-     *
-     * @throws \InvalidArgumentException
-     */
-
-    public function readFromArray(array $data) {

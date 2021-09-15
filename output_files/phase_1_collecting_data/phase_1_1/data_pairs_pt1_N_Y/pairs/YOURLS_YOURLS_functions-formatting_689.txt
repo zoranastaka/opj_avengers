@@ -1,6 +1,0 @@
-/**
- * Sanitize a filename (no Win32 stuff)
- *
- */
-
-function yourls_sanitize_filename( $file ) {

@@ -1,8 +1,0 @@
-    /**
-     * @return boolean
-     */
-
-    public function isLogging()
-    {
-        return $this->logging;
-    }

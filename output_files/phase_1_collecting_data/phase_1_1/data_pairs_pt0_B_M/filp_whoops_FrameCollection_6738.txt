@@ -1,9 +1,0 @@
-    /**
-     * @see ArrayAccess::offsetExists
-     * @param int $offset
-     */
-
-    public function offsetExists($offset)
-    {
-        return isset($this->frames[$offset]);
-    }

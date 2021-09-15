@@ -1,9 +1,0 @@
-    /**
-     * @param $html
-     * @return mixed
-     */
-
-    public static function transerComment($html)
-    {
-        return preg_replace_callback("/<!\-\-(.+?)\-\->/s", array('Markdown', 'transerCommentCallback'), $html);
-    }

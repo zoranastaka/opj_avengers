@@ -1,9 +1,0 @@
-/**
- * @covers \PharIo\Manifest\BundledComponentCollection
- * @covers \PharIo\Manifest\BundledComponentCollectionIterator
- *
- * @uses \PharIo\Manifest\BundledComponent
- * @uses \PharIo\Version\Version
- */
-
-class BundledComponentCollectionTest extends TestCase {
