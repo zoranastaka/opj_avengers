@@ -1,0 +1,24 @@
+    /**
+     * Comparing 2 date intervals.
+     *
+     * @param DateInterval $first
+     * @param DateInterval $second
+     *
+     * @return int
+     */
+
+    public static function compareDateIntervals(DateInterval $first, DateInterval $second)
+    {
+        $current = Carbon::now();
+        $passed = $current->avoidMutation()->add($second);
+        $current->add($first);
+
+        if ($current < $passed) {
+            return -1;
+        }
+        if ($current > $passed) {
+            return 1;
+        }
+
+        return 0;
+    }

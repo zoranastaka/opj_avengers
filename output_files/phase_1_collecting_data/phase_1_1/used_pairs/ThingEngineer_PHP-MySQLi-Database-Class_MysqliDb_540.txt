@@ -1,0 +1,17 @@
+    /**
+     * Set the connection name to use in the next query
+     *
+     * @param string $name
+     *
+     * @return $this
+     * @throws Exception
+     */
+
+    public function connection($name)
+    {
+        if (!isset($this->connectionsSettings[$name]))
+            throw new Exception('Connection ' . $name . ' was not added.');
+
+        $this->defConnectionName = $name;
+        return $this;
+    }

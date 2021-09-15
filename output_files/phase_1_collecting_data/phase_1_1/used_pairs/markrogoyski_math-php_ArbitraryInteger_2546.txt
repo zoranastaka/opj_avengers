@@ -1,0 +1,19 @@
+    /**
+     * Create a random ArbitraryInteger
+     *
+     * @param int $bytes
+     *
+     * @return Number\ArbitraryInteger
+     *
+     * @throws Exception\BadParameterException
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public static function rand(int $bytes): Number\ArbitraryInteger
+    {
+        if ($bytes <= 0) {
+            throw new Exception\BadParameterException('Cannot produce a random number with zero or negative bytes.');
+        }
+
+        return Number\ArbitraryInteger::fromBinary(\random_bytes($bytes), \mt_rand(0, 1) === 0);
+    }

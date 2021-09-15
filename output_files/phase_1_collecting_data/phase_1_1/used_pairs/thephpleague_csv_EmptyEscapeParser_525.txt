@@ -1,0 +1,14 @@
+    /**
+     * Filters the submitted document.
+     *
+     * @return SplFileObject|Stream
+     */
+
+    private static function filterDocument(object $document)
+    {
+        if ($document instanceof Stream || $document instanceof SplFileObject) {
+            return $document;
+        }
+
+        throw new TypeError(__METHOD__.' expects parameter 1 to be a '.Stream::class.' or a SplFileObject object, '.get_class($document).' given.');
+    }

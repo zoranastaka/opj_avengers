@@ -1,0 +1,15 @@
+    /**
+     *    If this cell is in a merge range, then return the range
+     *
+     *    @return string
+     */
+
+    public function getMergeRange()
+    {
+        foreach ($this->getWorksheet()->getMergeCells() as $mergeRange) {
+            if ($this->isInRange($mergeRange)) {
+                return $mergeRange;
+            }
+        }
+        return false;
+    }

@@ -1,0 +1,16 @@
+    /**
+     * Validate the matrix is entirely complex
+     *
+     * @throws Exception\IncorrectTypeException if all elements are not complex
+     */
+
+    protected function validateComplexData(array $A)
+    {
+        foreach ($A as $i => $row) {
+            foreach ($row as $object) {
+                if (!$object instanceof Complex) {
+                    throw new Exception\IncorrectTypeException("All elements in the complex matrix must be complex. Got " . \get_class($object));
+                }
+            }
+        }
+    }

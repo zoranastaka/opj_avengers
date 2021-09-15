@@ -1,0 +1,13 @@
+    /**
+     * Check whether to use Pcntl.
+     *
+     * If `setUsePcntl` has been set to true, but Pcntl is not actually
+     * available, this will return false.
+     *
+     * @return bool True if the current Shell should use Pcntl
+     */
+
+    public function usePcntl()
+    {
+        return isset($this->usePcntl) ? ($this->hasPcntl && $this->usePcntl) : $this->hasPcntl;
+    }

@@ -1,0 +1,19 @@
+    /**
+     * Replaces variable names in cloned
+     * rows/blocks with indexed names
+     *
+     * @param int $count
+     * @param string $xmlBlock
+     *
+     * @return string
+     */
+
+    protected function indexClonedVariables($count, $xmlBlock)
+    {
+        $results = array();
+        for ($i = 1; $i <= $count; $i++) {
+            $results[] = preg_replace('/\$\{([^:]*?)(:.*?)?\}/', '\${\1#' . $i . '\2}', $xmlBlock);
+        }
+
+        return $results;
+    }

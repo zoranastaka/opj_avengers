@@ -1,0 +1,24 @@
+    /**
+     * Return an array of all children of the current CMSCategory.
+     *
+     * @return PrestaShopCollection Collection of CMSCategory
+     */
+
+    private function getAllChildren()
+    {
+        // Get children
+        $toDelete = [(int) $this->id];
+        $this->recursiveDelete($toDelete, (int) $this->id);
+        $toDelete = array_unique($toDelete);
+        // remove id of current CMSCategory because we want only ids of children
+        unset($toDelete[0]);
+
+        if (count($toDelete)) {
+            $children = new PrestaShopCollection('CMSCategory');
+            $children->where('id_cms_category', 'in', $toDelete);
+
+            return $children;
+        }
+
+        return $toDelete;
+    }

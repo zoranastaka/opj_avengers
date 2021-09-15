@@ -1,0 +1,21 @@
+    /**
+     * Find and replace macros in the given XML section.
+     *
+     * @param mixed $search
+     * @param mixed $replace
+     * @param string $documentPartXML
+     * @param int $limit
+     *
+     * @return string
+     */
+
+    protected function setValueForPart($search, $replace, $documentPartXML, $limit)
+    {
+        // Note: we can't use the same function for both cases here, because of performance considerations.
+        if (self::MAXIMUM_REPLACEMENTS_DEFAULT === $limit) {
+            return str_replace($search, $replace, $documentPartXML);
+        }
+        $regExpEscaper = new RegExp();
+
+        return preg_replace($regExpEscaper->escape($search), $replace, $documentPartXML, $limit);
+    }

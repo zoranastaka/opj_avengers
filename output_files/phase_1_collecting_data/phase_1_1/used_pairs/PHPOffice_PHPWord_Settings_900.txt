@@ -1,0 +1,10 @@
+    /**
+     * Return the compatibility option used by the XMLWriter
+     *
+     * @return bool Compatibility
+     */
+
+    public static function hasCompatibility()
+    {
+        return self::$xmlWriterCompatibility;
+    }

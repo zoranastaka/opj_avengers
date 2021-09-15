@@ -1,0 +1,10 @@
+    /**
+     * Get the readline max history size.
+     *
+     * @return int
+     */
+
+    public function getHistorySize()
+    {
+        return $this->historySize;
+    }

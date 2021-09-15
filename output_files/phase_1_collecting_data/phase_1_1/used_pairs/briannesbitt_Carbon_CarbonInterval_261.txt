@@ -1,0 +1,14 @@
+    /**
+     * Determines if the instance is greater (longer) than another
+     *
+     * @param CarbonInterval|DateInterval|mixed $interval
+     *
+     * @see greaterThan()
+     *
+     * @return bool
+     */
+
+    public function gt($interval): bool
+    {
+        return $this->greaterThan($interval);
+    }

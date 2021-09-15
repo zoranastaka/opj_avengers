@@ -1,0 +1,10 @@
+    /**
+     * Checks if core module installation is available
+     *
+     * @return boolean
+     */
+
+    protected function coreAvailable()
+    {
+        return (extension_loaded('imagick') && class_exists('Imagick'));
+    }

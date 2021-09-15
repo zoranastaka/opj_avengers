@@ -1,0 +1,14 @@
+    /**
+     * Determines if current source data is GD resource
+     *
+     * @return boolean
+     */
+
+    public function isGdResource()
+    {
+        if (is_resource($this->data)) {
+            return (get_resource_type($this->data) == 'gd');
+        }
+
+        return false;
+    }

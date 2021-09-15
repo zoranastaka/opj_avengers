@@ -1,0 +1,14 @@
+    /**
+     * Add new item
+     *
+     * @param \PhpOffice\PhpWord\Element\AbstractContainer $item
+     * @return int
+     */
+
+    public function addItem($item)
+    {
+        $index = $this->countItems() + 1;
+        $this->items[$index] = $item;
+
+        return $index;
+    }

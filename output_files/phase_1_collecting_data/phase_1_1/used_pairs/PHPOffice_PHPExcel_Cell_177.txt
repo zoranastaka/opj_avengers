@@ -1,0 +1,15 @@
+    /**
+     *    Get Hyperlink
+     *
+     *    @return    PHPExcel_Cell_Hyperlink
+     *    @throws    PHPExcel_Exception
+     */
+
+    public function getHyperlink()
+    {
+        if (!isset($this->parent)) {
+            throw new PHPExcel_Exception('Cannot get hyperlink for cell that is not bound to a worksheet');
+        }
+
+        return $this->getWorksheet()->getHyperlink($this->getCoordinate());
+    }

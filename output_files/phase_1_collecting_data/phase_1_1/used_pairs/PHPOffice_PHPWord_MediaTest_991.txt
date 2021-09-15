@@ -1,0 +1,17 @@
+    /**
+     * Add footer media element and reset media
+     */
+
+    public function testAddFooterMediaElement()
+    {
+        $local = __DIR__ . '/_files/images/mars.jpg';
+        $remote = self::getRemoteImageUrl();
+        Media::addElement('footer1', 'image', $local, new Image($local));
+        Media::addElement('footer1', 'image', $local, new Image($local));
+        Media::addElement('footer1', 'image', $remote, new Image($remote));
+
+        $this->assertCount(2, Media::getElements('footer1'));
+
+        Media::resetElements();
+        $this->assertCount(0, Media::getElements('footer1'));
+    }

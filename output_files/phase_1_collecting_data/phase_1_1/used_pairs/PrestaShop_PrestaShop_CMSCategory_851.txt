@@ -1,0 +1,17 @@
+    /**
+     * Delete pages which are in CMSCategories to delete.
+     *
+     * @return bool Deletion result
+     */
+
+    private function deleteCMS()
+    {
+        $result = true;
+        $cms = new PrestaShopCollection('CMS');
+        $cms->where('id_cms_category', '=', $this->id);
+        foreach ($cms as $c) {
+            $result &= $c->delete();
+        }
+
+        return $result;
+    }

@@ -1,0 +1,11 @@
+    /**
+     * Helper function to create dbObject with JSON return type
+     *
+     * @return MysqliDb
+     */
+
+    public function jsonBuilder()
+    {
+        $this->returnType = 'json';
+        return $this;
+    }

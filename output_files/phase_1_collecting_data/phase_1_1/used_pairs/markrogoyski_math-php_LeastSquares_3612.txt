@@ -1,0 +1,22 @@
+    /**
+     * SStot - The total Sum Squares
+     *
+     * the sum, over all observations, of the squared differences of
+     * each observation from the overall mean.
+     * https://en.wikipedia.org/wiki/Total_sum_of_squares
+     *
+     * For Simple Linear Regression
+     * SStot = ∑(yᵢ - ȳ)²
+     *
+     * For Regression through a point
+     * SStot = ∑yᵢ²
+     *
+     * @return float
+     *
+     * @throws Exception\BadDataException
+     */
+
+    public function sumOfSquaresTotal(): float
+    {
+        return $this->sumOfSquaresResidual() + $this->sumOfSquaresRegression();
+    }

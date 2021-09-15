@@ -1,0 +1,10 @@
+    /**
+     * Sets X coordinate
+     *
+     * @param int $x
+     */
+
+    public function setX($x)
+    {
+        $this->x = intval($x);
+    }

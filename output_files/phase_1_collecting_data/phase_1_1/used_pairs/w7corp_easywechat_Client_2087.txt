@@ -1,0 +1,14 @@
+    /**
+     * Get current url.
+     *
+     * @return string
+     */
+
+    public function getUrl(): string
+    {
+        if ($this->url) {
+            return $this->url;
+        }
+
+        return Support\current_url();
+    }

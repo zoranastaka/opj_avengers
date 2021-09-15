@@ -1,0 +1,8 @@
+    /**
+     * HTML-encodes a string.
+     */
+
+    private function escapeHtml(string $str): string
+    {
+        return htmlspecialchars($str, \ENT_COMPAT | \ENT_SUBSTITUTE, $this->charset);
+    }

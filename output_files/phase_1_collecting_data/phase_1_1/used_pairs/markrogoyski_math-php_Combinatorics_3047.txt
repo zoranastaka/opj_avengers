@@ -1,0 +1,24 @@
+    /**
+     * Factorial (iterative)
+     * Represents the number of ways to arrange n things (permutations)
+     * n! = n(n - 1)(n - 2) ・・・ (n - (n - 1))
+     *
+     * @param  int $n
+     *
+     * @return float number of permutations of n
+     *
+     * @throws Exception\OutOfBoundsException if n < 0
+     */
+
+    public static function factorial(int $n): float
+    {
+        if ($n < 0) {
+            throw new Exception\OutOfBoundsException('Cannot compute factorial of a negative number.');
+        }
+        $factorial = 1;
+        while ($n > 1) {
+            $factorial *= $n;
+            --$n;
+        }
+        return $factorial;
+    }

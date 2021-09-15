@@ -1,0 +1,13 @@
+  /**
+   * Checks if a string contains multibyte characters.
+   * @access public
+   * @param string $str multi-byte text to wrap encode
+   * @return bool
+   */
+
+  public function HasMultiBytes($str) {
+    if (function_exists('mb_strlen')) {
+      return (strlen($str) > mb_strlen($str, $this->CharSet));
+    } else { // Assume no multibytes (we can't handle without mbstring functions anyway)
+      return false;
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Get current ordered number
+     *
+     * @return int
+     */
+
+    public function mockery_getCurrentOrder()
+    {
+        return $this->_currentOrder;
+    }

@@ -1,0 +1,19 @@
+    /**
+     * Processes and returns encoded image as GIF string
+     *
+     * @return string
+     */
+
+    protected function processGif()
+    {
+        $format = 'gif';
+        $compression = \Imagick::COMPRESSION_LZW;
+
+        $imagick = $this->image->getCore();
+        $imagick->setFormat($format);
+        $imagick->setImageFormat($format);
+        $imagick->setCompression($compression);
+        $imagick->setImageCompression($compression);
+
+        return $imagick->getImagesBlob();
+    }

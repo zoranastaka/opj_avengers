@@ -1,0 +1,10 @@
+    /**
+     * Get color of text
+     *
+     * @return mixed
+     */
+
+    public function getColor()
+    {
+        return $this->color;
+    }

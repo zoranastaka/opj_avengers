@@ -1,0 +1,8 @@
+    /**
+     * Calculates hexadecimal value of current color instance
+     *
+     * @param  string $prefix
+     * @return string
+     */
+
+    abstract public function getHex($prefix);

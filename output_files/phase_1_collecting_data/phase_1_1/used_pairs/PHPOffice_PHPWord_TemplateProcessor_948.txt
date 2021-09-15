@@ -1,0 +1,10 @@
+    /**
+     * Delete a block of text.
+     *
+     * @param string $blockname
+     */
+
+    public function deleteBlock($blockname)
+    {
+        $this->replaceBlock($blockname, '');
+    }

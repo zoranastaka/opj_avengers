@@ -1,0 +1,17 @@
+    /**
+     * Initiates color object from integer
+     *
+     * @param  int $value
+     * @return \Intervention\Image\AbstractColor
+     */
+
+    public function initFromInteger($value)
+    {
+        $a = ($value >> 24) & 0xFF;
+        $r = ($value >> 16) & 0xFF;
+        $g = ($value >> 8) & 0xFF;
+        $b = $value & 0xFF;
+        $a = $this->rgb2alpha($a);
+
+        $this->setPixel($r, $g, $b, $a);
+    }

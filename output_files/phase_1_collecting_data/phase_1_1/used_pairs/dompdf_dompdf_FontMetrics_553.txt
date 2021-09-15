@@ -1,0 +1,27 @@
+    /**
+     * Saves the stored font family cache
+     *
+     * The name and location of the cache file are determined by {@link
+     * FontMetrics::CACHE_FILE}. This file should be writable by the
+     * webserver process.
+     *
+     * @see FontMetrics::loadFontFamilies()
+     */
+
+    public function saveFontFamilies()
+    {
+        // replace the path to the DOMPDF font directories with the corresponding constants (allows for more portability)
+        $cacheData = sprintf("<?php return array (%s", PHP_EOL);
+        foreach ($this->fontLookup as $family => $variants) {
+            $cacheData .= sprintf("  '%s' => array(%s", addslashes($family), PHP_EOL);
+            foreach ($variants as $variant => $path) {
+                $path = sprintf("'%s'", $path);
+                $path = str_replace('\'' . $this->getOptions()->getFontDir() , '$fontDir . \'' , $path);
+                $path = str_replace('\'' . $this->getOptions()->getRootDir() , '$rootDir . \'' , $path);
+                $cacheData .= sprintf("    '%s' => %s,%s", $variant, $path, PHP_EOL);
+            }
+            $cacheData .= sprintf("  ),%s", PHP_EOL);
+        }
+        $cacheData .= ") ?>";
+        file_put_contents($this->getCacheFile(), $cacheData);
+    }

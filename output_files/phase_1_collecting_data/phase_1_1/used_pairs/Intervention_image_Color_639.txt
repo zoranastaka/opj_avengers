@@ -1,0 +1,10 @@
+    /**
+     * Returns RGB alpha value of current color
+     *
+     * @return float
+     */
+
+    public function getAlphaValue()
+    {
+        return round($this->pixel->getColorValue(\Imagick::COLOR_ALPHA), 2);
+    }

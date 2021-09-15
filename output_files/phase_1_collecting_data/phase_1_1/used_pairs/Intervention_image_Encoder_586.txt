@@ -1,0 +1,12 @@
+    /**
+     * Processes and returns encoded image as ICO string
+     *
+     * @return string
+     */
+
+    protected function processIco()
+    {
+        throw new NotSupportedException(
+            "ICO format is not supported by Gd Driver."
+        );
+    }

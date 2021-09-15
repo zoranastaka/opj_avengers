@@ -1,0 +1,10 @@
+    /**
+     * Returns clone of given core
+     *
+     * @return mixed
+     */
+
+    public function cloneCore($core)
+    {
+        return clone $core;
+    }

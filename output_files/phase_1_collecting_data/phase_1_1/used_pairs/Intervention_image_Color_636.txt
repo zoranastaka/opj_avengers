@@ -1,0 +1,10 @@
+    /**
+     * Returns RGB red value of current color
+     *
+     * @return int
+     */
+
+    public function getRedValue()
+    {
+        return intval(round($this->pixel->getColorValue(\Imagick::COLOR_RED) * 255));
+    }

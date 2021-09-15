@@ -1,0 +1,25 @@
+    /**
+     * Buffer incoming data until slave connection is available
+     * and headers have been received
+     *
+     * @param string $data
+     */
+
+    public function handleData($data)
+    {
+        $this->incomingBuffer .= $data;
+
+        if ($this->connection && $this->isHeaderEnd($this->incomingBuffer)) {
+            $remoteAddress = (string) $this->incoming->getRemoteAddress();
+            $headersToReplace = [
+                'X-PHP-PM-Remote-IP' => \trim(\parse_url($remoteAddress, PHP_URL_HOST), '[]'),
+                'X-PHP-PM-Remote-Port' => \trim(\parse_url($remoteAddress, PHP_URL_PORT), '[]')
+            ];
+
+            $buffer = $this->replaceHeader($this->incomingBuffer, $headersToReplace);
+            $this->connection->write($buffer);
+
+            $this->incoming->removeListener('data', [$this, 'handleData']);
+            $this->incoming->pipe($this->connection);
+        }
+    }

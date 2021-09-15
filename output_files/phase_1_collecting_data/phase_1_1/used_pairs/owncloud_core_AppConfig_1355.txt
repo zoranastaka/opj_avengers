@@ -1,0 +1,23 @@
+	/**
+	 * Deletes a key
+	 *
+	 * @param string $app app
+	 * @param string $key key
+	 * @return boolean|null
+	 */
+
+	public function deleteKey($app, $key) {
+		$this->emittingCall(function () use (&$app, &$key) {
+			$this->loadConfigValues();
+
+			$sql = $this->conn->getQueryBuilder();
+			$sql->delete('appconfig')
+				->where($sql->expr()->eq('appid', $sql->createParameter('app')))
+				->andWhere($sql->expr()->eq('configkey', $sql->createParameter('configkey')))
+				->setParameter('app', $app)
+				->setParameter('configkey', $key);
+			$sql->execute();
+
+			unset($this->cache[$app][$key]);
+			return true;
+		}, [

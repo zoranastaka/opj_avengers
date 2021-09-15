@@ -1,0 +1,10 @@
+    /**
+     * Creates new command instance
+     *
+     * @param array $arguments
+     */
+
+    public function __construct($arguments)
+    {
+        $this->arguments = $arguments;
+    }

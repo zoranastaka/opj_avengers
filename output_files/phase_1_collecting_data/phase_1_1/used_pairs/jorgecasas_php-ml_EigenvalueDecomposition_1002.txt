@@ -1,0 +1,23 @@
+    /**
+     * Performs complex division.
+     *
+     * @param int|float $xr
+     * @param int|float $xi
+     * @param int|float $yr
+     * @param int|float $yi
+     */
+
+    private function cdiv($xr, $xi, $yr, $yi): void
+    {
+        if (abs($yr) > abs($yi)) {
+            $r = $yi / $yr;
+            $d = $yr + $r * $yi;
+            $this->cdivr = ($xr + $r * $xi) / $d;
+            $this->cdivi = ($xi - $r * $xr) / $d;
+        } else {
+            $r = $yr / $yi;
+            $d = $yi + $r * $yr;
+            $this->cdivr = ($r * $xr + $xi) / $d;
+            $this->cdivi = ($r * $xi - $xr) / $d;
+        }
+    }

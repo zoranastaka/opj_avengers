@@ -1,0 +1,10 @@
+    /**
+     * Get path to font file
+     *
+     * @return string
+     */
+
+    public function getFile()
+    {
+        return $this->file;
+    }

@@ -1,0 +1,22 @@
+    /**
+     * Exit current process.
+     *
+     * @return void
+     */
+
+    protected static function exitAndClearAll()
+    {
+        foreach (static::$_workers as $worker) {
+            $socket_name = $worker->getSocketName();
+            if ($worker->transport === 'unix' && $socket_name) {
+                list(, $address) = \explode(':', $socket_name, 2);
+                @\unlink($address);
+            }
+        }
+        @\unlink(static::$pidFile);
+        static::log("Workerman[" . \basename(static::$_startFile) . "] has been stopped");
+        if (static::$onMasterStop) {
+            \call_user_func(static::$onMasterStop);
+        }
+        exit(0);
+    }

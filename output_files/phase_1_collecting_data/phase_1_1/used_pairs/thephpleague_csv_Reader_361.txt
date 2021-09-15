@@ -1,0 +1,13 @@
+    /**
+     * Enable skipping empty records.
+     */
+
+    public function skipEmptyRecords(): self
+    {
+        if ($this->is_empty_records_included) {
+            $this->is_empty_records_included = false;
+            $this->nb_records = -1;
+        }
+
+        return $this;
+    }

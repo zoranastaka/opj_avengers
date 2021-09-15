@@ -1,0 +1,11 @@
+    /**
+     * Create a new PHPExcel_DocumentProperties
+     */
+
+    public function __construct()
+    {
+        // Initialise values
+        $this->lastModifiedBy = $this->creator;
+        $this->created  = time();
+        $this->modified = time();
+    }

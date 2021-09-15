@@ -1,0 +1,10 @@
+    /**
+     * Return the PDF Rendering Library.
+     *
+     * @return string
+     */
+
+    public static function getPdfRendererName()
+    {
+        return self::$pdfRendererName;
+    }

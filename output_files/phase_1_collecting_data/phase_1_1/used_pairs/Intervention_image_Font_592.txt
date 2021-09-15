@@ -1,0 +1,57 @@
+    /**
+     * Calculates bounding box of current font setting
+     *
+     * @return Array
+     */
+
+    public function getBoxSize()
+    {
+        $box = [];
+
+        if ($this->hasApplicableFontFile()) {
+
+            // imagettfbbox() converts numeric entities to their respective
+            // character. Preserve any originally double encoded entities to be
+            // represented as is.
+            // eg: &amp;#160; will render &#160; rather than its character.
+            $this->text = preg_replace('/&(#(?:x[a-fA-F0-9]+|[0-9]+);)/', '&#38;\1', $this->text);
+            $this->text = mb_encode_numericentity($this->text, array(0x0080, 0xffff, 0, 0xffff), 'UTF-8');
+
+            // get bounding box with angle 0
+            $box = imagettfbbox($this->getPointSize(), 0, $this->file, $this->text);
+
+            // rotate points manually
+            if ($this->angle != 0) {
+
+                $angle = pi() * 2 - $this->angle * pi() * 2 / 360;
+
+                for ($i=0; $i<4; $i++) {
+                    $x = $box[$i * 2];
+                    $y = $box[$i * 2 + 1];
+                    $box[$i * 2] = cos($angle) * $x - sin($angle) * $y;
+                    $box[$i * 2 + 1] = sin($angle) * $x + cos($angle) * $y;
+                }
+            }
+
+            $box['width'] = intval(abs($box[4] - $box[0]));
+            $box['height'] = intval(abs($box[5] - $box[1]));
+
+        } else {
+
+            // get current internal font size
+            $width = $this->getInternalFontWidth();
+            $height = $this->getInternalFontHeight();
+
+            if (strlen($this->text) == 0) {
+                // no text -> no boxsize
+                $box['width'] = 0;
+                $box['height'] = 0;
+            } else {
+                // calculate boxsize
+                $box['width'] = strlen($this->text) * $width;
+                $box['height'] = $height;
+            }
+        }
+
+        return $box;
+    }

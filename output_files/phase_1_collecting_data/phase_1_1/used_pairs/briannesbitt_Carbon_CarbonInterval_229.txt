@@ -1,0 +1,60 @@
+    /**
+     * Get a part of the CarbonInterval object.
+     *
+     * @param string $name
+     *
+     * @throws UnknownGetterException
+     *
+     * @return int|float|string
+     */
+
+    public function get($name)
+    {
+        if (substr($name, 0, 5) === 'total') {
+            return $this->total(substr($name, 5));
+        }
+
+        switch ($name) {
+            case 'years':
+                return $this->y;
+
+            case 'months':
+                return $this->m;
+
+            case 'dayz':
+                return $this->d;
+
+            case 'hours':
+                return $this->h;
+
+            case 'minutes':
+                return $this->i;
+
+            case 'seconds':
+                return $this->s;
+
+            case 'milli':
+            case 'milliseconds':
+                return (int) (round($this->f * Carbon::MICROSECONDS_PER_SECOND) / Carbon::MICROSECONDS_PER_MILLISECOND);
+
+            case 'micro':
+            case 'microseconds':
+                return (int) round($this->f * Carbon::MICROSECONDS_PER_SECOND);
+
+            case 'microExcludeMilli':
+                return (int) round($this->f * Carbon::MICROSECONDS_PER_SECOND) % Carbon::MICROSECONDS_PER_MILLISECOND;
+
+            case 'weeks':
+                return (int) ($this->d / static::getDaysPerWeek());
+
+            case 'daysExcludeWeeks':
+            case 'dayzExcludeWeeks':
+                return $this->d % static::getDaysPerWeek();
+
+            case 'locale':
+                return $this->getTranslatorLocale();
+
+            default:
+                throw new UnknownGetterException($name);
+        }
+    }

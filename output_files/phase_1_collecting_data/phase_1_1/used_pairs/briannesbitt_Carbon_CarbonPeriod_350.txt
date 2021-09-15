@@ -1,0 +1,14 @@
+    /**
+     * Handle change of the parameters.
+     */
+
+    protected function handleChangedParameters()
+    {
+        if (($this->getOptions() & static::IMMUTABLE) && $this->dateClass === Carbon::class) {
+            $this->setDateClass(CarbonImmutable::class);
+        } elseif (!($this->getOptions() & static::IMMUTABLE) && $this->dateClass === CarbonImmutable::class) {
+            $this->setDateClass(Carbon::class);
+        }
+
+        $this->validationResult = null;
+    }

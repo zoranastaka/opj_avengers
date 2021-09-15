@@ -1,0 +1,22 @@
+    /**
+     * Gets the digest headers from the request/environment.
+     *
+     * @param \Cake\Http\ServerRequest $request Request object.
+     * @return array|null Array of digest information.
+     */
+
+    protected function _getDigest(ServerRequest $request): ?array
+    {
+        $digest = $request->getEnv('PHP_AUTH_DIGEST');
+        if (empty($digest) && function_exists('apache_request_headers')) {
+            $headers = apache_request_headers();
+            if (!empty($headers['Authorization']) && substr($headers['Authorization'], 0, 7) === 'Digest ') {
+                $digest = substr($headers['Authorization'], 7);
+            }
+        }
+        if (empty($digest)) {
+            return null;
+        }
+
+        return $this->parseAuthData($digest);
+    }

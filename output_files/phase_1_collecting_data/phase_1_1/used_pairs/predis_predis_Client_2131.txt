@@ -1,0 +1,10 @@
+    /**
+     * Returns the current state of the underlying connection.
+     *
+     * @return bool
+     */
+
+    public function isConnected()
+    {
+        return $this->connection->isConnected();
+    }

@@ -1,0 +1,14 @@
+    /**
+     *    Get cell value with formatting
+     *
+     *    @return    string
+     */
+
+    public function getFormattedValue()
+    {
+        return (string) PHPExcel_Style_NumberFormat::toFormattedString(
+            $this->getCalculatedValue(),
+            $this->getStyle()
+                ->getNumberFormat()->getFormatCode()
+        );
+    }

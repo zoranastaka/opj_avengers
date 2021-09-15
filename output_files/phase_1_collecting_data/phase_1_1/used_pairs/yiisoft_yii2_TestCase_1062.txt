@@ -1,0 +1,10 @@
+    /**
+     * Clean up after test.
+     * By default the application created with [[mockApplication]] will be destroyed.
+     */
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+        $this->destroyApplication();
+    }

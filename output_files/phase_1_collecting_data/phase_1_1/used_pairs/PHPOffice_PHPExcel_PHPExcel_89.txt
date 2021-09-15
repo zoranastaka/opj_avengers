@@ -1,0 +1,10 @@
+    /**
+    * Is the project signed ?
+    *
+    * @return boolean true|false
+    */
+
+    public function hasMacrosCertificate()
+    {
+        return !is_null($this->macrosCertificate);
+    }

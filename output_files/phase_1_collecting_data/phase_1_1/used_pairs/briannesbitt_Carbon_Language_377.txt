@@ -1,0 +1,12 @@
+    /**
+     * Returns the short ISO language name.
+     *
+     * @return string
+     */
+
+    public function getIsoName(): string
+    {
+        $name = $this->getFullIsoName();
+
+        return trim(strstr($name, ',', true) ?: $name);
+    }

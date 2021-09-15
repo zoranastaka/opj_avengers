@@ -1,0 +1,8 @@
+/**
+ * Check if the current user has general access.
+ */
+
+function hasAppAccess(): bool
+{
+    return !auth()->guest() || setting('app-public');
+}

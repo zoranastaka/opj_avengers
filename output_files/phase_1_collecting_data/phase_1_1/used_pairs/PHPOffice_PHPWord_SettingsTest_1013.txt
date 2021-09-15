@@ -1,0 +1,15 @@
+    /**
+     * Test set/get PDF renderer
+     */
+
+    public function testSetGetPdfRenderer()
+    {
+        $domPdfPath = realpath(PHPWORD_TESTS_BASE_DIR . '/../vendor/dompdf/dompdf');
+
+        $this->assertFalse(Settings::setPdfRenderer('FOO', 'dummy/path'));
+        $this->assertTrue(Settings::setPdfRenderer(Settings::PDF_RENDERER_DOMPDF, $domPdfPath));
+        $this->assertEquals(Settings::PDF_RENDERER_DOMPDF, Settings::getPdfRendererName());
+        $this->assertEquals($domPdfPath, Settings::getPdfRendererPath());
+        $this->assertFalse(Settings::setPdfRendererPath('dummy/path'));
+        $this->assertEquals($domPdfPath, Settings::getPdfRendererPath());
+    }

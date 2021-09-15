@@ -1,0 +1,14 @@
+    /**
+     * Checks if current font has access to an applicable font file
+     *
+     * @return boolean
+     */
+
+    protected function hasApplicableFontFile()
+    {
+        if (is_string($this->file)) {
+            return file_exists($this->file);
+        }
+
+        return false;
+    }

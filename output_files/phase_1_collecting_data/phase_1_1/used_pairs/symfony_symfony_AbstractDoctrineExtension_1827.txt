@@ -1,0 +1,14 @@
+    /**
+     * Register the alias for this mapping driver.
+     *
+     * Aliases can be used in the Query languages of all the Doctrine object managers to simplify writing tasks.
+     */
+
+    protected function setMappingDriverAlias(array $mappingConfig, string $mappingName)
+    {
+        if (isset($mappingConfig['alias'])) {
+            $this->aliasMap[$mappingConfig['alias']] = $mappingConfig['prefix'];
+        } else {
+            $this->aliasMap[$mappingName] = $mappingConfig['prefix'];
+        }
+    }

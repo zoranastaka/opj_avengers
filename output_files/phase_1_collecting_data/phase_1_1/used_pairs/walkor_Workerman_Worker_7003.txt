@@ -1,0 +1,78 @@
+    /**
+     * Write statistics data to disk.
+     *
+     * @return void
+     */
+
+    protected static function writeConnectionsStatisticsToStatusFile()
+    {
+        // For master process.
+        if (static::$_masterPid === \posix_getpid()) {
+            \file_put_contents(static::$_statisticsFile, "--------------------------------------------------------------------- WORKERMAN CONNECTION STATUS --------------------------------------------------------------------------------\n", \FILE_APPEND);
+            \file_put_contents(static::$_statisticsFile, "PID      Worker          CID       Trans   Protocol        ipv4   ipv6   Recv-Q       Send-Q       Bytes-R      Bytes-W       Status         Local Address          Foreign Address\n", \FILE_APPEND);
+            \chmod(static::$_statisticsFile, 0722);
+            foreach (static::getAllWorkerPids() as $worker_pid) {
+                \posix_kill($worker_pid, \SIGIO);
+            }
+            return;
+        }
+
+        // For child processes.
+        $bytes_format = function($bytes)
+        {
+            if($bytes > 1024*1024*1024*1024) {
+                return round($bytes/(1024*1024*1024*1024), 1)."TB";
+            }
+            if($bytes > 1024*1024*1024) {
+                return round($bytes/(1024*1024*1024), 1)."GB";
+            }
+            if($bytes > 1024*1024) {
+                return round($bytes/(1024*1024), 1)."MB";
+            }
+            if($bytes > 1024) {
+                return round($bytes/(1024), 1)."KB";
+            }
+            return $bytes."B";
+        };
+
+        $pid = \posix_getpid();
+        $str = '';
+        \reset(static::$_workers);
+        $current_worker = current(static::$_workers);
+        $default_worker_name = $current_worker->name;
+
+        /** @var \Workerman\Worker $worker */
+        foreach(TcpConnection::$connections as $connection) {
+            /** @var \Workerman\Connection\TcpConnection $connection */
+            $transport      = $connection->transport;
+            $ipv4           = $connection->isIpV4() ? ' 1' : ' 0';
+            $ipv6           = $connection->isIpV6() ? ' 1' : ' 0';
+            $recv_q         = $bytes_format($connection->getRecvBufferQueueSize());
+            $send_q         = $bytes_format($connection->getSendBufferQueueSize());
+            $local_address  = \trim($connection->getLocalAddress());
+            $remote_address = \trim($connection->getRemoteAddress());
+            $state          = $connection->getStatus(false);
+            $bytes_read     = $bytes_format($connection->bytesRead);
+            $bytes_written  = $bytes_format($connection->bytesWritten);
+            $id             = $connection->id;
+            $protocol       = $connection->protocol ? $connection->protocol : $connection->transport;
+            $pos            = \strrpos($protocol, '\\');
+            if ($pos) {
+                $protocol = \substr($protocol, $pos+1);
+            }
+            if (\strlen($protocol) > 15) {
+                $protocol = \substr($protocol, 0, 13) . '..';
+            }
+            $worker_name = isset($connection->worker) ? $connection->worker->name : $default_worker_name;
+            if (\strlen($worker_name) > 14) {
+                $worker_name = \substr($worker_name, 0, 12) . '..';
+            }
+            $str .= \str_pad($pid, 9) . \str_pad($worker_name, 16) .  \str_pad($id, 10) . \str_pad($transport, 8)
+                . \str_pad($protocol, 16) . \str_pad($ipv4, 7) . \str_pad($ipv6, 7) . \str_pad($recv_q, 13)
+                . \str_pad($send_q, 13) . \str_pad($bytes_read, 13) . \str_pad($bytes_written, 13) . ' '
+                . \str_pad($state, 14) . ' ' . \str_pad($local_address, 22) . ' ' . \str_pad($remote_address, 22) ."\n";
+        }
+        if ($str) {
+            \file_put_contents(static::$_statisticsFile, $str, \FILE_APPEND);
+        }
+    }

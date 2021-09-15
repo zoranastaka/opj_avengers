@@ -1,0 +1,13 @@
+    /**
+     * Return the event payload.
+     *
+     * @return mixed
+     */
+
+    public function getPayload()
+    {
+        return [
+            'event' => 'test_event',
+            'data' => 'foo',
+        ];
+    }

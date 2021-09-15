@@ -1,0 +1,14 @@
+    /**
+     * Get the highest AttributeGroup position.
+     *
+     * @return int $position Position
+     */
+
+    public static function getHigherPosition()
+    {
+        $sql = 'SELECT MAX(`position`)
+				FROM `' . _DB_PREFIX_ . 'attribute_group`';
+        $position = Db::getInstance()->getValue($sql);
+
+        return (is_numeric($position)) ? $position : -1;
+    }

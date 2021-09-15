@@ -1,0 +1,14 @@
+    /**
+     * tests find() with the env var PHP_PATH.
+     */
+
+    public function testFindArguments()
+    {
+        $f = new PhpExecutableFinder();
+
+        if ('phpdbg' === \PHP_SAPI) {
+            $this->assertEquals(['-qrr'], $f->findArguments(), '::findArguments() returns phpdbg arguments');
+        } else {
+            $this->assertEquals([], $f->findArguments(), '::findArguments() returns no arguments');
+        }
+    }

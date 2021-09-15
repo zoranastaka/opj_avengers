@@ -1,0 +1,22 @@
+    /**
+     * Initiates new image from binary data
+     *
+     * @param  string $data
+     * @return \Intervention\Image\Image
+     */
+
+    public function initFromBinary($binary)
+    {
+        $resource = @imagecreatefromstring($binary);
+
+        if ($resource === false) {
+             throw new NotReadableException(
+                "Unable to init from given binary data."
+            );
+        }
+
+        $image = $this->initFromGdResource($resource);
+        $image->mime = finfo_buffer(finfo_open(FILEINFO_MIME_TYPE), $binary);
+
+        return $image;
+    }

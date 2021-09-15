@@ -1,0 +1,16 @@
+    /**
+     * Become a user.
+     *
+     * @return $this
+     */
+
+    protected function beUser()
+    {
+        $this->user = factory(User::class)->create([
+            'username' => 'cachet-test',
+        ]);
+
+        $this->be($this->user);
+
+        return $this;
+    }

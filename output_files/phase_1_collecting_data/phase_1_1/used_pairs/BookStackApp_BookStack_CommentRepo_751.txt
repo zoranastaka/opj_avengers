@@ -1,0 +1,8 @@
+    /**
+     * Get a comment by ID.
+     */
+
+    public function getById(int $id): Comment
+    {
+        return $this->comment->newQuery()->findOrFail($id);
+    }

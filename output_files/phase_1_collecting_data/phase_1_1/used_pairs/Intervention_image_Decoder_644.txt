@@ -1,0 +1,18 @@
+    /**
+     * Initiates new image from Imagick object
+     *
+     * @param  Imagick $object
+     * @return \Intervention\Image\Image
+     */
+
+    public function initFromImagick(\Imagick $object)
+    {
+        // currently animations are not supported
+        // so all images are turned into static
+        $object = $this->removeAnimation($object);
+
+        // reset image orientation
+        $object->setImageOrientation(\Imagick::ORIENTATION_UNDEFINED);
+
+        return new Image(new Driver, $object);
+    }

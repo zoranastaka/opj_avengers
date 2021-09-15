@@ -1,0 +1,10 @@
+    /**
+     * Convert the date period into a string.
+     *
+     * @return string
+     */
+
+    public function __toString()
+    {
+        return $this->toString();
+    }

@@ -1,0 +1,15 @@
+    /**
+     * Get item by index
+     *
+     * @param int $index
+     * @return \PhpOffice\PhpWord\Element\AbstractContainer
+     */
+
+    public function getItem($index)
+    {
+        if (array_key_exists($index, $this->items)) {
+            return $this->items[$index];
+        }
+
+        return null;
+    }

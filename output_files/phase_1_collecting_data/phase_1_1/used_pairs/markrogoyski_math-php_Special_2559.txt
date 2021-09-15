@@ -1,0 +1,28 @@
+    /**
+     * Beta function
+     *
+     * https://en.wikipedia.org/wiki/Beta_function
+     *
+     *           Γ(x)Γ(y)
+     * β(x, y) = --------
+     *           Γ(x + y)
+     *
+     * @param  float $x
+     * @param  float $y
+     *
+     * @return float
+     *
+     * @throws Exception\OutOfBoundsException
+     */
+
+    public static function beta(float $x, float $y): float
+    {
+        if ($x == 0 || $y == 0) {
+            return \INF;
+        }
+
+        $Γ⟮x⟯Γ⟮y⟯   = self::gamma($x) * self::gamma($y);
+        $Γ⟮x ＋ y⟯ = self::gamma($x + $y);
+
+        return $Γ⟮x⟯Γ⟮y⟯ / $Γ⟮x ＋ y⟯;
+    }

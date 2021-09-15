@@ -1,0 +1,18 @@
+    /**
+     * Returns a new string with the prefix $substring removed, if present.
+     *
+     * @param  string $substring The prefix to remove
+     * @return static Object having a $str without the prefix $substring
+     */
+
+    public function removeLeft($substring)
+    {
+        $stringy = static::create($this->str, $this->encoding);
+
+        if ($stringy->startsWith($substring)) {
+            $substringLength = \mb_strlen($substring, $stringy->encoding);
+            return $stringy->substr($substringLength);
+        }
+
+        return $stringy;
+    }

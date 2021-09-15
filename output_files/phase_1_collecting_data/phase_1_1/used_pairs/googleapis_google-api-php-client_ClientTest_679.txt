@@ -1,0 +1,51 @@
+  /**
+   * Test that the Refresh Token is not set when a new refresh token is returned.
+   */
+
+  public function testRefreshTokenIsNotSetWhenNewRefreshTokenIsReturned()
+  {
+    $refreshToken = 'REFRESH_TOKEN';
+    $token = json_encode(array(
+        'access_token' => 'xyz',
+        'id_token' => 'ID_TOKEN',
+        'refresh_token' => 'NEW_REFRESH_TOKEN'
+    ));
+
+    $postBody = $this->prophesize('GuzzleHttp\Psr7\Stream');
+    $postBody->__toString()
+        ->wilLReturn($token);
+
+    if ($this->isGuzzle5()) {
+      $response = $this->getGuzzle5ResponseMock();
+      $response->getStatusCode()
+          ->willReturn(200);
+    } else {
+      $response = $this->prophesize('Psr\Http\Message\ResponseInterface');
+    }
+
+    $response->getBody()
+        ->willReturn($postBody->reveal());
+
+    $response->hasHeader('Content-Type')->willReturn(false);
+
+    $http = $this->prophesize('GuzzleHttp\ClientInterface');
+
+    if ($this->isGuzzle5()) {
+      $guzzle5Request = new GuzzleHttp\Message\Request('POST', '/', ['body' => $token]);
+      $http->createRequest(Argument::any(), Argument::any(), Argument::any())
+          ->willReturn($guzzle5Request);
+
+      $http->send(Argument::type('GuzzleHttp\Message\Request'))
+          ->willReturn($response->reveal());
+    } else {
+      $http->send(Argument::type('Psr\Http\Message\RequestInterface'), [])
+          ->shouldBeCalledTimes(1)
+          ->willReturn($response->reveal());
+    }
+
+    $client = $this->getClient();
+    $client->setHttpClient($http->reveal());
+    $client->fetchAccessTokenWithRefreshToken($refreshToken);
+    $token = $client->getAccessToken();
+    $this->assertEquals('NEW_REFRESH_TOKEN', $token['refresh_token']);
+  }

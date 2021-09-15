@@ -1,0 +1,10 @@
+    /**
+     * Returns a prettier, more comprehensible version of a row evolution label for display.
+     */
+
+    private function cleanOriginalLabel($label)
+    {
+        $label = str_replace(LabelFilter::SEPARATOR_RECURSIVE_LABEL, ' - ', $label);
+        $label = SafeDecodeLabel::decodeLabelSafe($label);
+        return $label;
+    }

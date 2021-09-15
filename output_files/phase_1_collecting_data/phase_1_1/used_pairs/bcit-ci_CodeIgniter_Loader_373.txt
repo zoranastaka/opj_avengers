@@ -1,0 +1,13 @@
+	/**
+	 * Get Variable
+	 *
+	 * Check if a variable is set and retrieve it.
+	 *
+	 * @param	string	$key	Variable name
+	 * @return	mixed	The variable or NULL if not found
+	 */
+
+	public function get_var($key)
+	{
+		return isset($this->_ci_cached_vars[$key]) ? $this->_ci_cached_vars[$key] : NULL;
+	}

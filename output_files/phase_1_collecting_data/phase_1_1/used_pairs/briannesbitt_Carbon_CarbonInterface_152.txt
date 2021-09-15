@@ -1,0 +1,9 @@
+    /**
+     * Set the time by time string.
+     *
+     * @param string $time
+     *
+     * @return static
+     */
+
+    public function setTimeFromTimeString($time);

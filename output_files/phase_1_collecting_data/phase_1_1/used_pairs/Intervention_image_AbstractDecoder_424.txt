@@ -1,0 +1,10 @@
+    /**
+     * Determines if current source data is Intervention\Image\Image object
+     *
+     * @return boolean
+     */
+
+    public function isInterventionImage()
+    {
+        return is_a($this->data, '\Intervention\Image\Image');
+    }

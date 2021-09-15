@@ -1,0 +1,27 @@
+    /**
+     * Probability density function
+     *
+     *              1
+     * f(x|μ,σ) = ----- ℯ^−⟮x − μ⟯²∕2σ²
+     *            σ√⟮2π⟯
+     *
+     * @param float $x random variable
+     *
+     * @return float f(x|μ,σ)
+     */
+
+    public function pdf(float $x): float
+    {
+        Support::checkLimits(self::SUPPORT_LIMITS, ['x' => $x]);
+
+        $μ     = $this->μ;
+        $σ     = $this->σ;
+        $π     = \M_PI;
+        $σ√⟮2π⟯ = $σ * \sqrt(2 * $π);
+
+        $⟮x − μ⟯²∕2σ² = \pow(($x - $μ), 2) / (2 * $σ ** 2);
+
+        $ℯ＾−⟮x − μ⟯²∕2σ² = \exp(-$⟮x − μ⟯²∕2σ²);
+
+        return ( 1 / $σ√⟮2π⟯ ) * $ℯ＾−⟮x − μ⟯²∕2σ²;
+    }

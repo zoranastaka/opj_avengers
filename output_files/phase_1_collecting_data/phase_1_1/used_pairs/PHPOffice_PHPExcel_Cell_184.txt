@@ -1,0 +1,13 @@
+    /**
+     *    Re-bind parent
+     *
+     *    @param    PHPExcel_Worksheet $parent
+     *    @return    PHPExcel_Cell
+     */
+
+    public function rebindParent(PHPExcel_Worksheet $parent)
+    {
+        $this->parent = $parent->getCellCacheController();
+
+        return $this->notifyCacheController();
+    }

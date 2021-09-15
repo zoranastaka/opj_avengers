@@ -1,0 +1,11 @@
+    /**
+     * Return true if end date is now or later.
+     * (Rather start/end are included by options is ignored.)
+     *
+     * @return bool
+     */
+
+    public function isEnded(): bool
+    {
+        return $this->endsBeforeOrAt();
+    }

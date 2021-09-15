@@ -1,0 +1,13 @@
+    /**
+     * Set font size in pixels
+     *
+     * @param  int $size
+     * @return void
+     */
+
+    public function size($size)
+    {
+        $this->size = $size;
+
+        return $this;
+    }

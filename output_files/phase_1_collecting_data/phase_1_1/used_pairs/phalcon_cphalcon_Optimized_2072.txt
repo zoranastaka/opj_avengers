@@ -1,0 +1,26 @@
+    /**
+     * Copy phalcon.c and optimize it by replacing specific strings with the precalculated hash values.
+     * Precalculation is, actually, the optimization being performed.
+     */
+
+    protected function copyAndOptimizePhalconC()
+    {
+        $platforms = array_keys($this->settings);
+
+        // Init generated content
+        $generated = array();
+        foreach ($platforms as $platform) {
+            $generated[$platform] = '';
+        }
+
+        // Generate line by line
+        $filePath = $this->sourceBuildDir . '/phalcon.zep.c';
+        foreach (file($filePath) as $line) {
+            $this->filterLine($line, $generated);
+        }
+
+        // Output result
+        foreach ($platforms as $platform) {
+            file_put_contents($this->settings[$platform]['dir'] . '/phalcon.zep.c', $generated[$platform]);
+        }
+    }

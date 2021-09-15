@@ -1,0 +1,12 @@
+    /**
+     *    Send notification to the cache controller
+     *
+     *    @return void
+     **/
+
+    public function notifyCacheController()
+    {
+        $this->parent->updateCacheData($this);
+
+        return $this;
+    }

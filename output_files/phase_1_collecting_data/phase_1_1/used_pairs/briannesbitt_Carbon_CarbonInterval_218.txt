@@ -1,0 +1,10 @@
+    /**
+     * Returns current config for microseconds per second.
+     *
+     * @return int
+     */
+
+    public static function getMillisecondsPerSecond()
+    {
+        return static::getFactor('milliseconds', 'seconds') ?: Carbon::MILLISECONDS_PER_SECOND;
+    }

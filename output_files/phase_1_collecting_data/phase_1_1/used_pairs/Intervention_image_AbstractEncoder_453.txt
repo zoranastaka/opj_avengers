@@ -1,0 +1,15 @@
+    /**
+     * Processes and returns encoded image as data-url string
+     *
+     * @return string
+     */
+
+    protected function processDataUrl()
+    {
+        $mime = $this->image->mime ? $this->image->mime : 'image/png';
+
+        return sprintf('data:%s;base64,%s',
+            $mime,
+            base64_encode($this->process($this->image, $mime, $this->quality))
+        );
+    }

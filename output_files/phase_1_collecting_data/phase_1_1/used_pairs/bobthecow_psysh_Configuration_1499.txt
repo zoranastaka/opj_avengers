@@ -1,0 +1,10 @@
+    /**
+     * Sets whether readline erases old duplicate history entries.
+     *
+     * @param bool $value
+     */
+
+    public function setEraseDuplicates($value)
+    {
+        $this->eraseDuplicates = (bool) $value;
+    }

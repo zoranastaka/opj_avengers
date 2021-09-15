@@ -1,0 +1,16 @@
+    /**
+     * Test load template
+     *
+     * @deprecated 0.12.0
+     */
+
+    public function testLoadTemplate()
+    {
+        $templateFqfn = __DIR__ . '/_files/templates/blank.docx';
+
+        $phpWord = new PhpWord();
+        $this->assertInstanceOf(
+            'PhpOffice\\PhpWord\\TemplateProcessor',
+            $phpWord->loadTemplate($templateFqfn)
+        );
+    }

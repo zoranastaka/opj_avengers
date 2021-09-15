@@ -1,0 +1,11 @@
+    /**
+     * Test throws exception if wrong position given
+     *
+     * @expectedException \InvalidArgumentException
+     */
+
+    public function testWrongPos()
+    {
+        $footnoteProp = new FootnoteProperties();
+        $footnoteProp->setPos(NumberFormat::LOWER_ROMAN);
+    }

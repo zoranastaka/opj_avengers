@@ -1,0 +1,26 @@
+    /**
+     * Initialise the cache storage
+     *
+     * @param    PHPExcel_Worksheet     $parent        Enable cell caching for this worksheet
+     * @return    PHPExcel_CachedObjectStorage_ICache
+     **/
+
+    public static function getInstance(PHPExcel_Worksheet $parent)
+    {
+        $cacheMethodIsAvailable = true;
+        if (self::$cacheStorageMethod === null) {
+            $cacheMethodIsAvailable = self::initialize();
+        }
+
+        if ($cacheMethodIsAvailable) {
+            $instance = new self::$cacheStorageClass(
+                $parent,
+                self::$storageMethodParameters[self::$cacheStorageMethod]
+            );
+            if ($instance !== null) {
+                return $instance;
+            }
+        }
+
+        return false;
+    }

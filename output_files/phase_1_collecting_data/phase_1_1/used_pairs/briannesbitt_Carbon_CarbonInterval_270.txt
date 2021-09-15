@@ -1,0 +1,20 @@
+    /**
+     * Determines if the instance is between two others, bounds excluded.
+     *
+     * @example
+     * ```
+     * CarbonInterval::hours(48)->betweenExcluded(CarbonInterval::day(), CarbonInterval::days(3)); // true
+     * CarbonInterval::hours(48)->betweenExcluded(CarbonInterval::day(), CarbonInterval::hours(36)); // false
+     * CarbonInterval::hours(48)->betweenExcluded(CarbonInterval::day(), CarbonInterval::days(2)); // false
+     * ```
+     *
+     * @param CarbonInterval|DateInterval|mixed $interval1
+     * @param CarbonInterval|DateInterval|mixed $interval2
+     *
+     * @return bool
+     */
+
+    public function betweenExcluded($interval1, $interval2): bool
+    {
+        return $this->between($interval1, $interval2, false);
+    }

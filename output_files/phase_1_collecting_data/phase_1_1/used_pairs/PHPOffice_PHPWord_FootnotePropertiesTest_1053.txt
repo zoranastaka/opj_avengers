@@ -1,0 +1,11 @@
+    /**
+     * Test throws exception if wrong number restart given
+     *
+     * @expectedException \InvalidArgumentException
+     */
+
+    public function testWrongNumRestart()
+    {
+        $footnoteProp = new FootnoteProperties();
+        $footnoteProp->setNumRestart(NumberFormat::LOWER_ROMAN);
+    }

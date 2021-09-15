@@ -1,0 +1,15 @@
+    /**
+     *    Does this cell contain Data validation rules?
+     *
+     *    @return    boolean
+     *    @throws    PHPExcel_Exception
+     */
+
+    public function hasDataValidation()
+    {
+        if (!isset($this->parent)) {
+            throw new PHPExcel_Exception('Cannot check for data validation when cell is not bound to a worksheet');
+        }
+
+        return $this->getWorksheet()->dataValidationExists($this->getCoordinate());
+    }

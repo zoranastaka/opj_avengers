@@ -1,0 +1,30 @@
+    /**
+     * Check the HTTP headers for signs of mobile.
+     * This is the fastest mobile check possible; it's used
+     * inside isMobile() method.
+     *
+     * @return bool
+     */
+
+    public function checkHttpHeadersForMobile()
+    {
+
+        foreach ($this->getMobileHeaders() as $mobileHeader => $matchType) {
+            if (isset($this->httpHeaders[$mobileHeader])) {
+                if (isset($matchType['matches']) && is_array($matchType['matches'])) {
+                    foreach ($matchType['matches'] as $_match) {
+                        if (strpos($this->httpHeaders[$mobileHeader], $_match) !== false) {
+                            return true;
+                        }
+                    }
+
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
+    }

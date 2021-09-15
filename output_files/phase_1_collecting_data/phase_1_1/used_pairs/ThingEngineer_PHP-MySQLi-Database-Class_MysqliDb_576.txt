@@ -1,0 +1,30 @@
+    /**
+     * Method attempts to prepare the SQL query
+     * and throws an error if there was a problem.
+     *
+     * @return mysqli_stmt
+     * @throws Exception
+     */
+
+    protected function _prepareQuery()
+    {
+        $stmt = $this->mysqli()->prepare($this->_query);
+
+        if ($stmt !== false) {
+            if ($this->traceEnabled)
+                $this->traceStartQ = microtime(true);
+            return $stmt;
+        }
+
+        if ($this->mysqli()->errno === 2006 && $this->autoReconnect === true && $this->autoReconnectCount === 0) {
+            $this->connect($this->defConnectionName);
+            $this->autoReconnectCount++;
+            return $this->_prepareQuery();
+        }
+
+        $error = $this->mysqli()->error;
+        $query = $this->_query;
+        $errno = $this->mysqli()->errno;
+        $this->reset();
+        throw new Exception(sprintf('%s query: %s', $error, $query), $errno);
+    }

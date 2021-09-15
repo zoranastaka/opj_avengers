@@ -1,0 +1,16 @@
+    /**
+     * Return the string summary of this composite expectation
+     *
+     * @return string
+     */
+
+    public function __toString()
+    {
+        $return = '[';
+        $parts = array();
+        foreach ($this->_expectations as $exp) {
+            $parts[] = (string) $exp;
+        }
+        $return .= implode(', ', $parts) . ']';
+        return $return;
+    }

@@ -1,0 +1,34 @@
+    /**
+     * Associate an array of id_attachment $array to the product $id_product
+     * and remove eventual previous association.
+     *
+     * @param int $idProduct Product ID
+     * @param array $array Attachment IDs
+     *
+     * @return bool Whether the attachments have been successfully associated with the Product
+     */
+
+    public static function attachToProduct($idProduct, $array)
+    {
+        $result1 = Attachment::deleteProductAttachments($idProduct);
+
+        if (is_array($array)) {
+            $ids = [];
+            foreach ($array as $idAttachment) {
+                if ((int) $idAttachment > 0) {
+                    $ids[] = ['id_product' => (int) $idProduct, 'id_attachment' => (int) $idAttachment];
+                }
+            }
+
+            if (!empty($ids)) {
+                $result2 = Db::getInstance()->insert('product_attachment', $ids);
+            }
+        }
+
+        Product::updateCacheAttachment((int) $idProduct);
+        if (is_array($array)) {
+            return $result1 && (!isset($result2) || $result2);
+        }
+
+        return $result1;
+    }

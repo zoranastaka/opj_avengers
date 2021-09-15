@@ -1,0 +1,10 @@
+    /**
+     * Alias of getWidth()
+     *
+     * @return int
+     */
+
+    public function width()
+    {
+        return $this->getWidth();
+    }

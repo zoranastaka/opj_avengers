@@ -1,0 +1,12 @@
+    /**
+     * Get regression equation (y = axᵇ) in format y = ax^b
+     *
+     * @param array $params
+     *
+     * @return string
+     */
+
+    public function getModelEquation(array $params): string
+    {
+        return \sprintf('y = %fx^%f', $params[self::$A], $params[self::$B]);
+    }

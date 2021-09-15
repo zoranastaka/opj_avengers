@@ -1,0 +1,15 @@
+    /**
+     * Unserialize a string into a PriorityQueue object
+     *
+     * Serialization format is compatible with {@link Laminas\Stdlib\SplPriorityQueue}
+     *
+     * @param  string $data
+     * @return void
+     */
+
+    public function unserialize($data)
+    {
+        foreach (unserialize($data) as $item) {
+            $this->insert($item['data'], $item['priority']);
+        }
+    }

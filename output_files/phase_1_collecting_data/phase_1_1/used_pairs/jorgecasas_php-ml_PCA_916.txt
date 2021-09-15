@@ -1,0 +1,20 @@
+    /**
+     * Normalization of the data includes subtracting mean from
+     * each dimension therefore dimensions will be centered to zero
+     */
+
+    protected function normalize(array $data, int $n): array
+    {
+        if (count($this->means) === 0) {
+            $this->calculateMeans($data, $n);
+        }
+
+        // Normalize data
+        foreach (array_keys($data) as $i) {
+            for ($k = 0; $k < $n; ++$k) {
+                $data[$i][$k] -= $this->means[$k];
+            }
+        }
+
+        return $data;
+    }

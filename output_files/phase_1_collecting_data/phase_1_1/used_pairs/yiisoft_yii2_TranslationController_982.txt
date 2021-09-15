@@ -1,0 +1,13 @@
+    /**
+     * Getting DIFF from git.
+     *
+     * @param string $translatedFilePath path pointing to translated file
+     * @param string $sourceFilePath path pointing to original file
+     * @return string DIFF
+     */
+
+    protected function getDiff($translatedFilePath, $sourceFilePath)
+    {
+        $lastTranslationHash = shell_exec('git log -1 --format=format:"%H" -- ' . $translatedFilePath);
+        return shell_exec('git diff ' . $lastTranslationHash . '..HEAD -- ' . $sourceFilePath);
+    }

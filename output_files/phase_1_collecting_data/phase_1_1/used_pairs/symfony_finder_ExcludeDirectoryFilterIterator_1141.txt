@@ -1,0 +1,21 @@
+    /**
+     * Filters the iterator values.
+     *
+     * @return bool True if the value should be kept, false otherwise
+     */
+
+    public function accept()
+    {
+        if ($this->isRecursive && isset($this->excludedDirs[$this->getFilename()]) && $this->isDir()) {
+            return false;
+        }
+
+        if ($this->excludedPattern) {
+            $path = $this->isDir() ? $this->current()->getRelativePathname() : $this->current()->getRelativePath();
+            $path = str_replace('\\', '/', $path);
+
+            return !preg_match($this->excludedPattern, $path);
+        }
+
+        return true;
+    }

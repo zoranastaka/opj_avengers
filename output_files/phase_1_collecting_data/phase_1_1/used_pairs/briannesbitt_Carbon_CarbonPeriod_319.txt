@@ -1,0 +1,10 @@
+    /**
+     * Format the date period as ISO 8601.
+     *
+     * @return string
+     */
+
+    public function spec()
+    {
+        return $this->toIso8601String();
+    }

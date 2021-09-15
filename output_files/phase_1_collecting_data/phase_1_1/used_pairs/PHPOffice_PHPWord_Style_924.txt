@@ -1,0 +1,12 @@
+    /**
+     * Add link style
+     *
+     * @param string $styleName
+     * @param array|\PhpOffice\PhpWord\Style\AbstractStyle $styles
+     * @return \PhpOffice\PhpWord\Style\Font
+     */
+
+    public static function addLinkStyle($styleName, $styles)
+    {
+        return self::setStyleValues($styleName, new Font('link'), $styles);
+    }

@@ -1,0 +1,10 @@
+    /**
+     * Returns both requirements and recommendations.
+     *
+     * @return Requirement[]
+     */
+
+    public function all()
+    {
+        return $this->requirements;
+    }

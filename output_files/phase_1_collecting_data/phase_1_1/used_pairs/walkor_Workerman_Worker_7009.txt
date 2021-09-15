@@ -1,0 +1,10 @@
+    /**
+     * Parse local socket address.
+     *
+     * @throws Exception
+     */
+
+    protected function parseSocketAddress() {
+        if (!$this->_socketName) {
+            return;
+        }

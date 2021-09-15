@@ -1,0 +1,12 @@
+    /**
+     * Enable the Debugbar and boot, if not already booted.
+     */
+
+    public function enable()
+    {
+        $this->enabled = true;
+
+        if (!$this->booted) {
+            $this->boot();
+        }
+    }

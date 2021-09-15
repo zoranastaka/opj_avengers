@@ -1,0 +1,12 @@
+    /**
+     * Create a new remove component group command instance.
+     *
+     * @param \CachetHQ\Cachet\Models\ComponentGroup $group
+     *
+     * @return void
+     */
+
+    public function __construct(ComponentGroup $group)
+    {
+        $this->group = $group;
+    }

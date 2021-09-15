@@ -1,0 +1,10 @@
+    /**
+     * Returns options used while encoding data to JSON.
+     *
+     * @return int
+     */
+
+    public function getEncodingOptions()
+    {
+        return $this->encodingOptions;
+    }

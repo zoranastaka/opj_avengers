@@ -1,0 +1,16 @@
+    /**
+     * Filter XML attribute name.
+     *
+     * @param string $value Element name
+     *
+     * @throws DOMException If the Element attribute name is invalid
+     */
+
+    protected function filterAttributeName(string $value): string
+    {
+        if ('' === $value) {
+            return $value;
+        }
+
+        return (new DOMAttr($value))->name;
+    }

@@ -1,0 +1,14 @@
+    /**
+     * Removes the entity attachment from each of its activities
+     * and instead uses the 'extra' field with the entities name.
+     * Used when an entity is deleted.
+     */
+
+    public function removeEntity(Entity $entity)
+    {
+        $entity->activity()->update([
+            'detail'       => $entity->name,
+            'entity_id'   => null,
+            'entity_type' => null,
+        ]);
+    }

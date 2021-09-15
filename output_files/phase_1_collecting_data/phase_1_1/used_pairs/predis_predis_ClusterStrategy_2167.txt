@@ -1,0 +1,16 @@
+    /**
+     * Extracts the key from BITOP command.
+     *
+     * @param CommandInterface $command Command instance.
+     *
+     * @return string|null
+     */
+
+    protected function getKeyFromBitOp(CommandInterface $command)
+    {
+        $arguments = $command->getArguments();
+
+        if ($this->checkSameSlotForKeys(array_slice($arguments, 1, count($arguments)))) {
+            return $arguments[1];
+        }
+    }

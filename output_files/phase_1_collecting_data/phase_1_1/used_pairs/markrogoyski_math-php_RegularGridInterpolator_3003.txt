@@ -1,0 +1,34 @@
+    /**
+     * Find the indicies and norm distances for search point
+     *
+     * @param float[] $xi 1-dimensional array ( search point = [x,y,z ....] )
+     *
+     * @return array[] (indices in grid for search point, normDistances for search point)
+     */
+
+    private function findIndices($xi): array
+    {
+        $indices       = [];  // Find relevant edges between which xi are situated
+        $normDistances = [];  // Compute distance to lower edge in unity units
+
+        // Iterate through dimensions x-y-z-...>
+        // $grid - 1nd array, example all x values (or all y..)
+        // $x float, search point: x or y or z...
+        foreach (Iter::zip($xi, $this->grid) as [$x, $grid]) {
+            $gridSize = \count($grid);                       // Column count
+            $i        = Search::sorted($grid, $x) - 1;  // Min match index
+            if ($i < 0) {
+                $i = 0;
+            }
+            if ($i > $gridSize - 2) {
+                $i = $gridSize - 2;
+            }
+
+            $indices[]       = $i;
+            $lessValue       = $grid[$i];
+            $greaterValue    = $grid[$i + 1];
+            $normDistances[] = ($x - $lessValue) / ($greaterValue - $lessValue);
+        }
+
+        return [$indices, $normDistances];
+    }

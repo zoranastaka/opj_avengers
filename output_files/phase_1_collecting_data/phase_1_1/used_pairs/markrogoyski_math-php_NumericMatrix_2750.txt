@@ -1,0 +1,41 @@
+    /**
+     * Direct sum of two matrices: A ⊕ B
+     * The direct sum of any pair of matrices A of size m × n and B of size p × q
+     * is a matrix of size (m + p) × (n + q)
+     * https://en.wikipedia.org/wiki/Matrix_addition#Direct_sum
+     *
+     * @param  NumericMatrix $B Matrix to add to this matrix
+     *
+     * @return NumericMatrix
+     *
+     * @throws Exception\IncorrectTypeException
+     */
+
+    public function directSum(NumericMatrix $B): NumericMatrix
+    {
+        $m = $this->m + $B->getM();
+        $n = $this->n + $B->getN();
+
+        $R = [];
+
+        for ($i = 0; $i < $m; $i++) {
+            for ($j = 0; $j < $n; $j++) {
+                $R[$i][$j] = 0;
+            }
+        }
+        for ($i = 0; $i < $this->m; $i++) {
+            for ($j = 0; $j < $this->n; $j++) {
+                $R[$i][$j] = $this->A[$i][$j];
+            }
+        }
+
+        $m = $B->getM();
+        $n = $B->getN();
+        for ($i = 0; $i < $m; $i++) {
+            for ($j = 0; $j < $n; $j++) {
+                $R[$i + $this->m][$j + $this->n] = $B[$i][$j];
+            }
+        }
+
+        return MatrixFactory::createNumeric($R, $this->ε);
+    }

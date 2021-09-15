@@ -1,0 +1,8 @@
+    /**
+     * Reverse the migrations.
+     */
+
+    public function down()
+    {
+        Schema::drop('component_groups');
+    }

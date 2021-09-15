@@ -1,0 +1,18 @@
+    /**
+     * Register the Autoloader with SPL
+     *
+     */
+
+    public static function register()
+    {
+        if (function_exists('__autoload')) {
+            // Register any existing autoloader function with SPL, so we don't get any clashes
+            spl_autoload_register('__autoload');
+        }
+        // Register ourselves with SPL
+        if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+            return spl_autoload_register(array('PHPExcel_Autoloader', 'load'), true, true);
+        } else {
+            return spl_autoload_register(array('PHPExcel_Autoloader', 'load'));
+        }
+    }

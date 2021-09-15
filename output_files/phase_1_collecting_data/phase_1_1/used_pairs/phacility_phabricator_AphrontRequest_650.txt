@@ -1,0 +1,12 @@
+  /**
+   * Set a cookie which expires soon.
+   *
+   * To set a durable cookie, see @{method:setCookie}.
+   *
+   * @param string  Cookie name.
+   * @param string  Cookie value.
+   * @return this
+   * @task cookie
+   */
+
+  public function setTemporaryCookie($name, $value) {

@@ -1,0 +1,18 @@
+    /**
+     * Return ServiceProvider according to Laravel version
+     *
+     * @return \Intervention\Image\Provider\ProviderInterface
+     */
+
+    private function getProvider()
+    {
+        if ($this->app instanceof LumenApplication) {
+            $provider = '\Intervention\Image\ImageServiceProviderLumen';
+        } elseif (version_compare(IlluminateApplication::VERSION, '5.0', '<')) {
+            $provider = '\Intervention\Image\ImageServiceProviderLaravel4';
+        } else {
+            $provider = '\Intervention\Image\ImageServiceProviderLaravelRecent';
+        }
+
+        return new $provider($this->app);
+    }

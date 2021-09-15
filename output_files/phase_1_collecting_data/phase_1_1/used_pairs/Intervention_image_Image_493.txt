@@ -1,0 +1,10 @@
+    /**
+     * Checks if current image is already encoded
+     *
+     * @return boolean
+     */
+
+    public function isEncoded()
+    {
+        return ! empty($this->encoded);
+    }

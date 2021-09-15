@@ -1,0 +1,11 @@
+    /**
+     * Fix the given argument in current constraint
+     *
+     * @param  int $type
+     * @return void
+     */
+
+    public function fix($type)
+    {
+        $this->fixed = ($this->fixed & ~(1 << $type)) | (1 << $type);
+    }

@@ -1,0 +1,24 @@
+/**
+ * This function converts the
+ * submitted Decimal Number to
+ * Octal Number.
+ *
+ * @param string $decimalNumber
+ * @return string
+ */
+
+function decimalToOctal($decimalNumber)
+{
+    if (!is_numeric($decimalNumber)) {
+        throw new \Exception('Please pass a valid Decimal Number for Converting it to an Octal Number.');
+    }
+
+    $octalNumber = '';
+
+    while ($decimalNumber > 0) {
+        $octalNumber = ($decimalNumber % 8) . $octalNumber;
+        $decimalNumber /= 8;
+    }
+
+    return $octalNumber;
+}

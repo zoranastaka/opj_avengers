@@ -1,0 +1,21 @@
+    /**
+     * Get all found aliases from DB with search query.
+     *
+     * @return string Comma separated aliases
+     */
+
+    public function getAliases()
+    {
+        if (!Alias::isFeatureActive()) {
+            return '';
+        }
+
+        $aliases = Db::getInstance()->executeS('
+		SELECT a.alias
+		FROM `' . _DB_PREFIX_ . 'alias` a
+		WHERE `search` = \'' . pSQL($this->search) . '\'');
+
+        $aliases = array_map('implode', $aliases);
+
+        return implode(', ', $aliases);
+    }

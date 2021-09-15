@@ -1,0 +1,9 @@
+    /**
+     * Decodes from JSON, validating the errors
+     *
+     * @return mixed
+     *
+     * @throws CannotDecodeContent When something goes wrong while decoding.
+     */
+
+    public function jsonDecode(string $json);

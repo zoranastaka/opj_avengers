@@ -1,0 +1,20 @@
+    /**
+     * The objective is to minimize the distance between all data points
+     * and all cluster centers. This method returns the summation of all
+     * these distances
+     */
+
+    protected function getObjective(): float
+    {
+        $sum = 0.0;
+        $distance = new Euclidean();
+        for ($i = 0; $i < $this->clustersNumber; ++$i) {
+            $clust = $this->clusters[$i]->getCoordinates();
+            for ($k = 0; $k < $this->sampleCount; ++$k) {
+                $point = $this->samples[$k];
+                $sum += $distance->distance($clust, $point);
+            }
+        }
+
+        return $sum;
+    }

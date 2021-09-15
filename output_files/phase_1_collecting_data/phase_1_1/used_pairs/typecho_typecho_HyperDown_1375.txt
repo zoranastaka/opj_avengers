@@ -1,0 +1,14 @@
+    /**
+     * parseMh
+     *
+     * @param array $lines
+     * @param int $num
+     * @param int $start
+     * @param int $end
+     * @return string
+     */
+
+    private function parseMh(array $lines, $num, $start, $end)
+    {
+        return $this->parseSh($lines, $num, $start, $end);
+    }

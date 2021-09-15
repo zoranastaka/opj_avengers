@@ -1,0 +1,18 @@
+    /**
+     * Find slug by Module ID.
+     *
+     * @param int $idModule Module ID
+     *
+     * @return string Full module slug
+     */
+
+    public static function findSlugByIdModule($idModule)
+    {
+        $result = Db::getInstance()->getRow('
+            SELECT `name`
+            FROM `' . _DB_PREFIX_ . 'module`
+            WHERE `id_module` = "' . (int) $idModule . '"
+        ');
+
+        return self::sluggifyModule($result);
+    }

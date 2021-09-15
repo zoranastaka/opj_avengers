@@ -1,0 +1,32 @@
+    /**
+     * Check if CMSCategory can be moved in another one.
+     *
+     * @param int $id_parent Parent candidate
+     *
+     * @return bool Parent validity
+     */
+
+    public static function checkBeforeMove($id_cms_category, $id_parent)
+    {
+        if ($id_cms_category == $id_parent) {
+            return false;
+        }
+        if ($id_parent == 1) {
+            return true;
+        }
+        $i = (int) $id_parent;
+
+        while (42) {
+            $result = Db::getInstance()->getRow('SELECT `id_parent` FROM `' . _DB_PREFIX_ . 'cms_category` WHERE `id_cms_category` = ' . (int) $i);
+            if (!isset($result['id_parent'])) {
+                return false;
+            }
+            if ($result['id_parent'] == $id_cms_category) {
+                return false;
+            }
+            if ($result['id_parent'] == 1) {
+                return true;
+            }
+            $i = $result['id_parent'];
+        }
+    }

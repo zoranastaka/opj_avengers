@@ -1,0 +1,31 @@
+    /**
+     * Finds and orders all service tags with the given name by their priority.
+     *
+     * The order of additions must be respected for services having the same priority,
+     * and knowing that the \SplPriorityQueue class does not respect the FIFO method,
+     * we should not use this class.
+     *
+     * @see https://bugs.php.net/53710
+     * @see https://bugs.php.net/60926
+     */
+
+    private function findAndSortTags(array $tagNames, ContainerBuilder $container): array
+    {
+        $sortedTags = [];
+
+        foreach ($tagNames as $tagName) {
+            foreach ($container->findTaggedServiceIds($tagName, true) as $serviceId => $tags) {
+                foreach ($tags as $attributes) {
+                    $priority = $attributes['priority'] ?? 0;
+                    $sortedTags[$priority][] = [$tagName, $serviceId, $attributes];
+                }
+            }
+        }
+
+        if ($sortedTags) {
+            krsort($sortedTags);
+            $sortedTags = array_merge(...$sortedTags);
+        }
+
+        return $sortedTags;
+    }

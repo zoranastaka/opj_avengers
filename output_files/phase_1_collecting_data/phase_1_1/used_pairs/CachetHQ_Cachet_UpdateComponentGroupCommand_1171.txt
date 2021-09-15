@@ -1,0 +1,20 @@
+    /**
+     * Create a add component group command instance.
+     *
+     * @param \CachetHQ\Cachet\Models\ComponentGroup $group
+     * @param string                                 $name
+     * @param int                                    $order
+     * @param int                                    $collapsed
+     * @param int                                    $visible
+     *
+     * @return void
+     */
+
+    public function __construct(ComponentGroup $group, $name, $order, $collapsed, $visible)
+    {
+        $this->group = $group;
+        $this->name = $name;
+        $this->order = (int) $order;
+        $this->collapsed = $collapsed;
+        $this->visible = (int) $visible;
+    }

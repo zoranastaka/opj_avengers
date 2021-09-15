@@ -1,0 +1,14 @@
+    /**
+     * Returns the long ISO language name.
+     *
+     * @return string
+     */
+
+    public function getFullIsoName(): string
+    {
+        if (!$this->isoName) {
+            $this->isoName = $this->getNames()['isoName'];
+        }
+
+        return $this->isoName;
+    }
